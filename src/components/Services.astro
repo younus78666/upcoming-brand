@@ -117,7 +117,7 @@ const services = [
       <p class="eyebrow">What we do</p>
       <h2 class="h2-section">Which WordPress services does Upcoming Brand offer?</h2>
       <p class="lead">
-        Upcoming Brand's WordPress web design services cover eight core areas: custom website design, WooCommerce development, monthly care plans, speed optimization, SEO and schema, website migration, security and recovery, and a bundled monthly partnership that covers everything above.
+        Upcoming Brand's WordPress web design services cover nine core areas: custom website design, WooCommerce development, monthly care plans, speed optimization, SEO and schema, website migration, security and recovery, hosting setup, and a bundled monthly partnership that covers everything above.
       </p>
     </div>
 
@@ -152,33 +152,38 @@ const services = [
 
 <style>
   .services-section {
-    background: var(--paper);
+    background: var(--cream-soft);
   }
 
   .services-intro {
-    max-width: 640px;
-    margin-bottom: 52px;
+    max-width: 700px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .services-intro .eyebrow {
+    justify-content: center;
   }
 
   /* ── GRID ── */
   .services-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 22px;
   }
 
   /* ── CARD ── */
   .service-card {
-    background: var(--cream-soft);
-    border: 1px solid var(--line);
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
     border-top: 3px solid var(--amber);
     border-radius: var(--radius-md);
-    padding: 28px 26px 24px;
+    padding: 32px 28px 26px;
     display: flex;
     flex-direction: column;
     gap: 14px;
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--transition), transform var(--transition), border-top-color var(--transition);
+    box-shadow: 0 2px 12px rgba(15,20,25,0.07), 0 1px 3px rgba(15,20,25,0.05);
+    transition: box-shadow var(--transition), transform var(--transition);
     position: relative;
     overflow: hidden;
   }
@@ -196,9 +201,8 @@ const services = [
   }
 
   .service-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 32px rgba(15,20,25,0.12);
-    border-top-color: var(--amber-deep);
+    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(15,20,25,0.13), 0 2px 8px rgba(15,20,25,0.07);
   }
 
   .service-card:hover::after {
@@ -208,9 +212,10 @@ const services = [
   /* ── DARK CARD ── */
   .service-card-dark {
     background: var(--ink);
-    border: 1px solid rgba(244,239,230,0.1);
+    border: 1.5px solid rgba(244,239,230,0.08);
     border-top: 3px solid var(--amber);
     color: var(--cream);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.18), 0 1px 4px rgba(0,0,0,0.12);
   }
 
   .service-card-dark::after {
@@ -218,8 +223,7 @@ const services = [
   }
 
   .service-card-dark:hover {
-    border-top-color: var(--amber);
-    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.15);
   }
 
   /* ── TOP ROW ── */
