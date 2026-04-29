@@ -1,12 +1,5 @@
 ---
 ---
-<!-- ========================= ANNOUNCEMENT BAR ========================= -->
-<div class="announce">
-  <span class="announce-dot"></span>
-  <span>Now booking May 2026 &mdash; 2 slots remaining this quarter.</span>
-  <a href="#contact" class="announce-link">Secure yours &rarr;</a>
-</div>
-
 <!-- ========================= NAVIGATION ========================= -->
 <nav class="site-nav" id="nav">
   <a href="/" class="brand" aria-label="Upcoming Brand home">
@@ -496,42 +489,6 @@
 </div>
 
 <style>
-  /* ====================================================
-     ANNOUNCEMENT BAR
-     ==================================================== */
-  .announce {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 10px var(--pad);
-    font-family: var(--f-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    position: relative;
-    z-index: 101;
-  }
-  .announce-dot {
-    width: 6px; height: 6px;
-    background: var(--amber);
-    border-radius: 50%;
-    flex-shrink: 0;
-    animation: ann-pulse 2.4s ease-in-out infinite;
-  }
-  @keyframes ann-pulse {
-    0%, 100% { opacity: 0.4; transform: scale(0.8); }
-    50% { opacity: 1; transform: scale(1.2); }
-  }
-  .announce-link {
-    color: var(--amber);
-    text-decoration: underline;
-    text-underline-offset: 3px;
-    white-space: nowrap;
-  }
-
   /* ====================================================
      NAV SHELL
      ==================================================== */
