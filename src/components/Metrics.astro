@@ -33,25 +33,29 @@ const metrics = [
 ];
 ---
 <section class="metrics-section section-pad" id="metrics">
-
   <div class="container">
+
     <div class="metrics-intro">
-      <p class="eyebrow">By the numbers</p>
-      <h2 class="h2-section">What a 7-year WordPress practice looks like</h2>
-      <p class="lead">
-        These aren't agency-padded numbers. They're from real WordPress projects across Maryland, the DMV metro, and 12 countries — accumulated over seven years of full-time WordPress work with a $0 hourly billing policy.
+      <p class="eyebrow metrics-eyebrow">By the numbers</p>
+      <h2 class="h2-section metrics-h2">What a 7-year WordPress practice looks like</h2>
+      <p class="lead metrics-lead">
+        These aren't agency-padded numbers. Real projects across Maryland, the DMV metro, and 12 countries — seven years of full-time WordPress work, zero hourly billing.
       </p>
     </div>
 
     <div class="metrics-grid" role="list" aria-label="Key performance metrics">
       {metrics.map((m) => (
         <div class="metric-card" role="listitem">
-          <span class="metric-num">{m.num}</span>
+          <div class="metric-num-wrap">
+            <span class="metric-num">{m.num}</span>
+            <span class="metric-rule" aria-hidden="true"></span>
+          </div>
           <span class="metric-label">{m.label}</span>
-          <span class="metric-sub mono-xs">{m.sub}</span>
+          <p class="metric-sub mono-xs">{m.sub}</p>
         </div>
       ))}
     </div>
+
   </div>
 </section>
 
@@ -76,7 +80,7 @@ const metrics = [
     font-style: italic;
     letter-spacing: -0.04em;
     color: var(--cream);
-    opacity: 0.04;
+    opacity: 0.03;
     white-space: nowrap;
     pointer-events: none;
     user-select: none;
@@ -88,111 +92,109 @@ const metrics = [
     z-index: 2;
   }
 
-  .metrics-section .eyebrow {
-    color: rgba(244,239,230,0.45);
+  /* ── INTRO ── */
+  .metrics-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
   }
 
-  .metrics-section .eyebrow::before {
+  .metrics-eyebrow {
+    color: rgba(244,239,230,0.45);
+    justify-content: center;
+  }
+
+  .metrics-eyebrow::before {
     background: rgba(244,239,230,0.25);
   }
 
-  .metrics-section .h2-section {
+  .metrics-h2 {
     color: var(--cream);
   }
 
-  .metrics-section .lead {
-    color: rgba(244,239,230,0.65);
-    max-width: 60ch;
+  .metrics-lead {
+    color: rgba(244,239,230,0.6);
   }
 
-  .metrics-intro {
-    margin-bottom: 56px;
-  }
-
+  /* ── GRID ── */
   .metrics-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1px solid rgba(244,239,230,0.1);
-    border-radius: var(--radius-md);
-    overflow: hidden;
+    gap: 20px;
   }
 
+  /* ── CARD ── */
   .metric-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.09);
+    border-top: 3px solid rgba(212,147,46,0.55);
+    border-radius: var(--radius-md);
+    padding: clamp(28px, 3vw, 44px);
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: clamp(28px, 3vw, 48px);
-    border-right: 1px solid rgba(244,239,230,0.1);
-    border-bottom: 1px solid rgba(244,239,230,0.1);
-    position: relative;
-    transition: background var(--transition);
-  }
-
-  .metric-card:nth-child(3n) {
-    border-right: none;
-  }
-
-  .metric-card:nth-child(4),
-  .metric-card:nth-child(5),
-  .metric-card:nth-child(6) {
-    border-bottom: none;
+    gap: 10px;
+    transition: background var(--transition), transform var(--transition), border-top-color var(--transition), box-shadow var(--transition);
   }
 
   .metric-card:hover {
-    background: rgba(244,239,230,0.04);
+    background: rgba(244,239,230,0.07);
+    border-top-color: var(--amber);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 36px rgba(0,0,0,0.25);
+  }
+
+  /* ── NUMBER + RULE ── */
+  .metric-num-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
   }
 
   .metric-num {
     font-family: var(--f-display);
-    font-size: clamp(40px, 5vw, 72px);
+    font-size: clamp(44px, 5vw, 68px);
     font-weight: 300;
     letter-spacing: -0.04em;
     line-height: 1;
     color: var(--amber);
+    display: block;
   }
 
+  .metric-rule {
+    display: block;
+    width: 36px;
+    height: 2px;
+    background: linear-gradient(to right, var(--amber), rgba(212,147,46,0.2));
+    border-radius: 2px;
+  }
+
+  /* ── LABEL ── */
   .metric-label {
     font-size: 15px;
     font-weight: 500;
-    color: rgba(244,239,230,0.85);
-    line-height: 1.3;
+    color: rgba(244,239,230,0.9);
+    line-height: 1.35;
   }
 
+  /* ── SUB ── */
   .metric-sub {
-    color: rgba(244,239,230,0.4);
-    line-height: 1.4;
-    margin-top: 4px;
+    color: rgba(244,239,230,0.38);
+    line-height: 1.5;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
   }
 
-  @media (max-width: 1000px) {
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
     .metrics-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-
-    .metric-card {
-      border-right: 1px solid rgba(244,239,230,0.1);
-      border-bottom: 1px solid rgba(244,239,230,0.1);
-    }
-
-    .metric-card:nth-child(3n) { border-right: 1px solid rgba(244,239,230,0.1); }
-    .metric-card:nth-child(2n) { border-right: none; }
-    .metric-card:nth-child(5),
-    .metric-card:nth-child(6) { border-bottom: none; }
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 500px) {
     .metrics-grid {
       grid-template-columns: 1fr;
-    }
-
-    .metric-card {
-      border-right: none;
-      border-bottom: 1px solid rgba(244,239,230,0.1);
-    }
-
-    .metric-card:last-child {
-      border-bottom: none;
     }
   }
 </style>
