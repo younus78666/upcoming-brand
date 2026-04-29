@@ -22,6 +22,7 @@ const cities = [
   { name: "Pasadena",       county: "Anne Arundel Co." },
   { name: "Owings Mills",   county: "Baltimore Co." },
   { name: "Severn",         county: "Anne Arundel Co." },
+  { name: "Pikesville",     county: "Baltimore Co." },
 ];
 
 const contactDetails = [
@@ -244,12 +245,12 @@ const contactDetails = [
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: sticky;
-    top: 88px;
+    height: 100%;
   }
 
   .contact-card {
     flex: 1;
+    min-height: 0;
   }
 
   /* ── MAP ── */
@@ -395,7 +396,7 @@ const contactDetails = [
     }
 
     .locations-sidebar {
-      position: static;
+      height: auto;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
@@ -403,6 +404,7 @@ const contactDetails = [
 
     .contact-card {
       flex: unset;
+      min-height: unset;
     }
 
     .city-grid {
