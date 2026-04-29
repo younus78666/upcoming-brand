@@ -1,80 +1,146 @@
 ---
 const faqs = [
   {
+    num: "01",
+    category: "Pricing",
     q: "How much does a WordPress website cost in Maryland?",
-    a: "Most Maryland small business WordPress websites fall between $1,500 and $10,000. A straightforward 8-page site for a contractor or solo practitioner starts around $1,500–$3,500. A 15–20 page site with custom design, SEO setup, and blog integration runs $3,500–$6,000. Complex builds with WooCommerce, appointment booking, or IDX integration start at $6,000. Every quote we send is fixed-scope — one price, no hourly surprises.",
+    a: "Most Maryland small business WordPress websites fall between $1,500 and $10,000. A straightforward 8-page site for a contractor or solo practitioner starts at $1,500–$3,500. A 15–20 page site with custom design, SEO setup, and blog runs $3,500–$6,000. Complex WooCommerce, booking, or IDX builds start at $6,000. Every quote is fixed-scope — one price, no hourly surprises.",
   },
   {
+    num: "02",
+    category: "Timeline",
     q: "How long does a WordPress project take from start to launch?",
-    a: "Starter sites (up to 8 pages) take 4–6 weeks from signed scope to live launch. Growth sites (up to 20 pages with custom design) take 6–8 weeks. Custom builds take 8–10 weeks. Timeline depends most on how quickly you can provide feedback — our design review and revision rounds are where most delays happen.",
+    a: "Starter sites (up to 8 pages) take 4–6 weeks. Growth sites (up to 20 pages with custom design) take 6–8 weeks. Custom builds take 8–10 weeks. Timeline depends most on how quickly you can review and provide feedback — our design rounds are where most delays happen.",
   },
   {
+    num: "03",
+    category: "Performance",
     q: "Will my site score 90+ on Google PageSpeed?",
-    a: "Yes — we commit to it in writing. Every site we launch targets a PageSpeed score of 90 or above on both mobile and desktop, with LCP under 2.5 seconds, INP under 200ms, and all three Core Web Vitals passing in Google Search Console. For context: only 44% of WordPress sites on mobile pass all three Core Web Vitals. We're aiming for the other 56% to be your competition.",
+    a: "Yes — we commit to it in writing. Every site we launch targets a PageSpeed score of 90+ on both mobile and desktop, with LCP under 2.5s, INP under 200ms, and all three Core Web Vitals passing in Search Console. For context: only 44% of WordPress sites on mobile pass all three Core Web Vitals. We're building for the other 56% to be your competition.",
   },
   {
+    num: "04",
+    category: "Migration",
     q: "Can you migrate my existing Wix or Squarespace site to WordPress?",
-    a: "Yes — without losing your existing search rankings. We build a complete 301 redirect map before any DNS changes, run a pre-launch ranking benchmark, and check rank parity in Search Console for 30 days after launch. Most migrations see no ranking loss and often see improvement within 60 days because the WordPress build is faster and better structured.",
+    a: "Yes — without losing your Google rankings. We build a complete 301 redirect map before any DNS changes, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch. Most migrations see no ranking loss and often see improvement within 60 days because the WordPress build is faster and better structured.",
   },
   {
+    num: "05",
+    category: "Industries",
     q: "Do you work with law firms, dental practices, and regulated industries?",
-    a: "Yes. Law firm, dental practice, and medical clinic websites make up a significant portion of our Maryland client base. We understand the compliance considerations (HIPAA-aware forms, attorney ethics rules for testimonials), the conversion patterns, and the schema types (LegalService, Dentist, MedicalOrganization) that help these sites rank in competitive local searches.",
+    a: "Yes. Law firm, dental, and medical websites make up a significant part of our Maryland client base. We understand the compliance considerations — HIPAA-aware forms, attorney ethics rules for testimonials — and the schema types (LegalService, Dentist, MedicalOrganization) that help these sites rank in competitive local searches.",
   },
   {
+    num: "06",
+    category: "Care Plans",
     q: "What's included in your monthly care plans?",
-    a: "Care plans start at $150/month and include weekly WordPress core and plugin updates, off-site backups to S3 or Google Drive, uptime monitoring, a 4-hour SLA for support tickets, and a monthly performance report. You communicate directly with the founder — not a help-desk system. Higher-tier plans include content updates, SEO reporting, and quarterly strategy reviews.",
+    a: "Care plans start at $150/month and include weekly WordPress core and plugin updates, off-site backups to S3 or Google Drive, uptime monitoring, and a 4-hour SLA for support tickets. You communicate directly with the founder — not a help desk. Higher-tier plans include content updates, SEO reporting, and quarterly strategy reviews.",
   },
   {
+    num: "07",
+    category: "Platform",
     q: "Why WordPress instead of Webflow, Squarespace, or Wix?",
-    a: "WordPress is open source: you own your data, there's no platform lock-in, and no monthly SaaS fee that scales with your revenue. 43% of all websites run on WordPress. The total cost of ownership over 5 years is consistently lower than any SaaS website platform — and you can move hosts any time.",
+    a: "WordPress is open source: you own your data, there's no platform lock-in, and no monthly SaaS fee that scales with your revenue. 43% of all websites run on WordPress for good reason. The total cost of ownership over 5 years is consistently lower than any SaaS website platform — and you can move hosts any time.",
   },
   {
+    num: "08",
+    category: "SEO",
     q: "Do you guarantee specific Google rankings?",
-    a: "No ethical agency can guarantee rankings — anyone who does is lying to you. We guarantee clean schema markup, Core Web Vitals in the green, proper internal linking, and a topical map built for your market. Clients on our SEO care plan typically see top-10 positions for 20–40 targeted keywords within 6–9 months.",
+    a: "No ethical agency can guarantee rankings — anyone who does is lying. We guarantee clean schema markup, Core Web Vitals in the green, proper internal linking, and a topical map built for your market. Clients on our SEO care plan typically see top-10 positions for 20–40 targeted keywords within 6–9 months.",
+  },
+  {
+    num: "09",
+    category: "Timeline",
+    q: "What happens if I need changes after launch?",
+    a: "The first 30 days post-launch are covered at no extra cost — we fix anything that doesn't match the agreed scope. After that, care plan clients get unlimited small changes (text, images, hours) included. Larger additions are quoted as fixed-scope additions, the same as the original project.",
+  },
+  {
+    num: "10",
+    category: "Pricing",
+    q: "Is there a payment plan or deposit structure?",
+    a: "Yes. All projects are split 50% upfront and 50% before launch. We do not charge hourly at any point in the project. Care plans are billed monthly with a 30-day cancel notice — no contracts, no minimum commitment.",
   },
 ];
+
+const categoryColors = {
+  "Pricing":     { bg: "rgba(212,147,46,0.1)",  text: "var(--amber-deep)",   border: "rgba(212,147,46,0.25)" },
+  "Timeline":    { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",            border: "rgba(92,128,64,0.2)" },
+  "Performance": { bg: "rgba(66,133,244,0.08)",  text: "#2a6fc4",            border: "rgba(66,133,244,0.18)" },
+  "Migration":   { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",            border: "rgba(160,100,200,0.2)" },
+  "Industries":  { bg: "rgba(176,74,62,0.08)",   text: "var(--red)",         border: "rgba(176,74,62,0.18)" },
+  "Care Plans":  { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)",  border: "rgba(212,147,46,0.25)" },
+  "Platform":    { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",   border: "rgba(15,20,25,0.12)" },
+  "SEO":         { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",            border: "rgba(92,128,64,0.2)" },
+};
 ---
 <section class="faq-section section-pad" id="faq">
   <div class="container">
     <div class="faq-layout">
+
+      <!-- LEFT SIDEBAR -->
       <div class="faq-sidebar">
         <p class="eyebrow">Common questions</p>
-        <h2 class="h2-section">WordPress web design questions Maryland business owners ask before hiring us</h2>
+        <h2 class="h2-section faq-h2">WordPress web design questions Maryland business owners ask before hiring us</h2>
         <p class="faq-sidebar-text">
-          The questions we get on almost every discovery call — answered up front so you don't have to wait for a sales call to get a straight answer.
+          Every question we get on discovery calls — answered up front so you don't need a sales call to get a straight answer.
         </p>
-        <a href="#contact" class="cta-outline faq-sidebar-cta">Ask your question &rarr;</a>
+
+        <div class="faq-stats">
+          <div class="faq-stat">
+            <span class="faq-stat-num">10</span>
+            <span class="faq-stat-label mono-xs">Questions answered</span>
+          </div>
+          <div class="faq-stat-divider" aria-hidden="true"></div>
+          <div class="faq-stat">
+            <span class="faq-stat-num">6</span>
+            <span class="faq-stat-label mono-xs">Topic areas</span>
+          </div>
+        </div>
+
+        <a href="#contact" class="cta-btn faq-sidebar-cta">Ask your own question &rarr;</a>
+        <p class="faq-cta-note mono-xs">We reply within 4 business hours</p>
       </div>
 
+      <!-- RIGHT: ACCORDION -->
       <div class="faq-list" id="faq-accordion">
-        {faqs.map((faq, i) => (
-          <div class="faq-item" data-faq-item>
-            <button
-              class="faq-trigger"
-              aria-expanded="false"
-              aria-controls={`faq-answer-${i}`}
-              id={`faq-btn-${i}`}
-            >
-              <span class="faq-q">{faq.q}</span>
-              <span class="faq-icon" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path class="faq-plus-h" d="M4 10H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                  <path class="faq-plus-v" d="M10 4V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                </svg>
-              </span>
-            </button>
-            <div
-              class="faq-answer"
-              id={`faq-answer-${i}`}
-              role="region"
-              aria-labelledby={`faq-btn-${i}`}
-              hidden
-            >
-              <p class="faq-a">{faq.a}</p>
+        {faqs.map((faq, i) => {
+          const cat = categoryColors[faq.category] || categoryColors["Platform"];
+          return (
+            <div class="faq-item" data-faq-item>
+              <button
+                class="faq-trigger"
+                aria-expanded={i === 0 ? "true" : "false"}
+                aria-controls={`faq-answer-${i}`}
+                id={`faq-btn-${i}`}
+              >
+                <span class="faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                <span class="faq-q">{faq.q}</span>
+                <span
+                  class="faq-cat mono-xs"
+                  style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                  aria-hidden="true"
+                >{faq.category}</span>
+                <span class="faq-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                    <path class="faq-plus-h" d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    <path class="faq-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  </svg>
+                </span>
+              </button>
+              <div
+                class="faq-answer"
+                id={`faq-answer-${i}`}
+                role="region"
+                aria-labelledby={`faq-btn-${i}`}
+                hidden={i !== 0 ? true : undefined}
+              >
+                <p class="faq-a">{faq.a}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
+
     </div>
   </div>
 </section>
@@ -82,59 +148,124 @@ const faqs = [
 <style>
   .faq-section {
     background: var(--paper);
-    border-top: 1px solid var(--line);
   }
 
+  /* ── LAYOUT ── */
   .faq-layout {
     display: grid;
-    grid-template-columns: 360px 1fr;
-    gap: 64px;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
     align-items: start;
   }
 
+  /* ── SIDEBAR ── */
   .faq-sidebar {
     position: sticky;
     top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
   }
 
   .faq-sidebar-text {
-    font-size: 15px;
+    font-size: 14px;
     color: var(--ink-muted);
-    margin-bottom: 24px;
-    line-height: 1.6;
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  .faq-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
   }
 
   .faq-sidebar-cta {
-    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
   }
 
-  /* Accordion */
+  .faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* ── ACCORDION ── */
   .faq-list {
     display: flex;
     flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
   }
 
   .faq-item {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(15,20,25,0.07);
     border-left: 3px solid transparent;
-    transition: border-left-color var(--transition);
+    transition: border-left-color var(--transition), background var(--transition);
+    background: var(--paper);
   }
 
-  .faq-item:first-child {
-    border-top: 1px solid var(--line);
+  .faq-item:last-child {
+    border-bottom: none;
   }
 
   .faq-item:has(.faq-trigger[aria-expanded="true"]) {
     border-left-color: var(--amber);
+    background: var(--cream-soft);
   }
 
+  /* ── TRIGGER ── */
   .faq-trigger {
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
     width: 100%;
-    padding: 20px 0;
+    padding: 20px 22px;
     background: none;
     border: none;
     cursor: pointer;
@@ -142,23 +273,57 @@ const faqs = [
     transition: color var(--transition);
   }
 
-  .faq-trigger:hover {
+  .faq-trigger:hover .faq-q {
     color: var(--amber-deep);
   }
 
-  .faq-q {
-    font-size: 16px;
+  /* ── NUMBER ── */
+  .faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
     font-weight: 500;
-    line-height: 1.4;
+    opacity: 0.7;
+    flex-shrink: 0;
   }
 
+  /* ── QUESTION ── */
+  .faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-q {
+    color: var(--ink);
+  }
+
+  /* ── CATEGORY TAG ── */
+  .faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .faq-cat { display: inline-block; }
+  }
+
+  /* ── ICON ── */
   .faq-icon {
     flex-shrink: 0;
-    width: 20px;
-    height: 20px;
+    width: 18px;
+    height: 18px;
     color: var(--ink-muted);
     transition: color var(--transition), transform var(--transition);
-    margin-top: 2px;
   }
 
   .faq-trigger[aria-expanded="true"] .faq-icon {
@@ -166,6 +331,7 @@ const faqs = [
     transform: rotate(45deg);
   }
 
+  /* ── ANSWER ── */
   .faq-answer {
     overflow: hidden;
   }
@@ -176,17 +342,18 @@ const faqs = [
   }
 
   @keyframes faq-open {
-    from { opacity: 0; transform: translateY(-6px); }
-    to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 
   .faq-a {
-    padding-bottom: 20px;
-    font-size: 15px;
-    line-height: 1.7;
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
     color: var(--ink-muted);
   }
 
+  /* ── RESPONSIVE ── */
   @media (max-width: 1000px) {
     .faq-layout {
       grid-template-columns: 1fr;
@@ -195,6 +362,18 @@ const faqs = [
 
     .faq-sidebar {
       position: static;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .faq-trigger {
+      grid-template-columns: 28px 1fr auto;
+      gap: 10px;
+      padding: 16px 16px;
+    }
+
+    .faq-a {
+      padding: 0 16px 18px 54px;
     }
   }
 </style>
@@ -209,15 +388,11 @@ const faqs = [
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
 
-      // Close all
       items.forEach((other) => {
-        const otherBtn = other.querySelector('.faq-trigger');
-        const otherAnswer = other.querySelector('.faq-answer');
-        otherBtn.setAttribute('aria-expanded', 'false');
-        otherAnswer.hidden = true;
+        other.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+        other.querySelector('.faq-answer').hidden = true;
       });
 
-      // Open this one if it was closed
       if (!expanded) {
         btn.setAttribute('aria-expanded', 'true');
         answer.hidden = false;
