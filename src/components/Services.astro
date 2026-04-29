@@ -82,6 +82,21 @@ const services = [
     dark: false,
   },
   {
+    num: "008",
+    title: "Hosting & Server Setup",
+    summary: "Managed WordPress hosting configured for speed and reliability — WP Engine, Kinsta, or SiteGround, fully set up for you.",
+    bullets: ["Server-level caching & PHP 8.2+", "SSL, DNS, and domain configuration", "Staging environment for safe updates"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="3" width="20" height="5" rx="1"/>
+      <rect x="2" y="10" width="20" height="5" rx="1"/>
+      <rect x="2" y="17" width="20" height="5" rx="1"/>
+      <circle cx="6" cy="5.5" r="1" fill="currentColor"/>
+      <circle cx="6" cy="12.5" r="1" fill="currentColor"/>
+      <circle cx="6" cy="19.5" r="1" fill="currentColor"/>
+    </svg>`,
+    dark: false,
+  },
+  {
     num: "ALL",
     title: "Bundled. Retained. Done.",
     summary: "One monthly partnership covers design, maintenance, SEO, and support — so you never chase a freelancer again.",
@@ -148,7 +163,7 @@ const services = [
   /* ── GRID ── */
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
   }
 
@@ -192,7 +207,6 @@ const services = [
 
   /* ── DARK CARD ── */
   .service-card-dark {
-    grid-column: span 2;
     background: var(--ink);
     border: 1px solid rgba(244,239,230,0.1);
     border-top: 3px solid var(--amber);
@@ -329,12 +343,6 @@ const services = [
   }
 
   /* ── RESPONSIVE ── */
-  @media (max-width: 1200px) {
-    .services-grid {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
-
   @media (max-width: 900px) {
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
