@@ -187,7 +187,7 @@ const cases = [
   .work-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 380px;
+    height: 460px;
     border: 1.5px solid rgba(15,20,25,0.08);
     border-radius: var(--radius-md);
     overflow: hidden;
@@ -212,11 +212,12 @@ const cases = [
 
   /* ── CONTENT ── */
   .work-content {
-    padding: clamp(36px, 4vw, 56px);
+    padding: clamp(32px, 4vw, 52px);
     display: flex;
     flex-direction: column;
     gap: 20px;
     justify-content: center;
+    overflow: hidden;
     border-right: 1px solid rgba(15,20,25,0.08);
     background: var(--paper);
     transition: background var(--transition);
@@ -498,7 +499,7 @@ const cases = [
   @media (max-width: 900px) {
     .work-row {
       grid-template-columns: 1fr;
-      min-height: unset;
+      height: auto;
     }
 
     /* Reset reversed-row order — content always first on mobile */
