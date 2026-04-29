@@ -4,41 +4,144 @@
 
   <div class="container">
     <div class="final-cta-inner">
+
+      <!-- LEFT: copy -->
       <div class="final-cta-content">
+
+        <div class="final-cta-logo-wrap">
+          <img
+            src="/upcoming_brand_master_bundle/logo-export-set/04-dark-background-logo.png"
+            alt="Upcoming Brand"
+            class="final-cta-logo"
+            width="180"
+            height="48"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+
         <p class="eyebrow final-cta-eyebrow">Ready to start?</p>
         <h2 class="display-lg final-cta-h2" id="final-cta-heading">
           Let's build the WordPress website your Maryland business actually needs.
         </h2>
-        <div class="final-cta-buttons">
-          <a href="mailto:hello@upcomingbrand.com" class="cta-btn cta-btn-light">
-            Book a free discovery call &rarr;
-          </a>
-          <a href="#hero" class="cta-outline cta-outline-light">
-            Get a written proposal &#8599;
-          </a>
+
+        <div class="final-cta-trust">
+          <div class="trust-row">
+            <span class="trust-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+              </svg>
+            </span>
+            <span>Fixed-scope pricing — one price, no surprises</span>
+          </div>
+          <div class="trust-row">
+            <span class="trust-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </span>
+            <span>Reply within 4 business hours</span>
+          </div>
+          <div class="trust-row">
+            <span class="trust-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/>
+              </svg>
+            </span>
+            <span>Maryland-based · on-site within 90 min of DC</span>
+          </div>
+          <div class="trust-row">
+            <span class="trust-icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+              </svg>
+            </span>
+            <span>No long-term contracts · 30-day cancel</span>
+          </div>
         </div>
-        <p class="final-cta-note mono-xs">
-          Fixed-scope pricing only &middot; 4-business-hour response &middot; No long-term contract &middot; Maryland-based, on-site within 90 min of DC
+
+        <p class="final-cta-reviews mono-xs">
+          <span class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+          5.0 on Google &nbsp;·&nbsp; 99% Job Success on Upwork
         </p>
       </div>
 
-      <!-- Decorative element -->
-      <div class="final-cta-deco" aria-hidden="true">
-        <div class="deco-circle-outer">
-          <div class="deco-circle-inner">
-            <div class="deco-mark">
-              <span class="deco-mark-dot"></span>
+      <!-- RIGHT: contact card -->
+      <div class="final-cta-card" aria-label="Contact form">
+        <div class="contact-card-header">
+          <div class="avail-badge">
+            <span class="avail-dot" aria-hidden="true"></span>
+            <span class="mono-xs">Taking new projects — April 2026</span>
+          </div>
+          <h3 class="contact-card-title">Book a free discovery call</h3>
+          <p class="contact-card-sub">45 minutes · No sales pitch · Fixed-scope quote within 24 hours</p>
+        </div>
+
+        <form class="contact-form" name="contact" method="POST" action="#contact" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label mono-xs" for="cta-name">Your name</label>
+              <input
+                class="form-input"
+                type="text"
+                id="cta-name"
+                name="name"
+                placeholder="Jane Smith"
+                autocomplete="name"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label mono-xs" for="cta-email">Email address</label>
+              <input
+                class="form-input"
+                type="email"
+                id="cta-email"
+                name="email"
+                placeholder="jane@business.com"
+                autocomplete="email"
+              />
             </div>
           </div>
-        </div>
-        <div class="deco-lines">
-          <div class="deco-line"></div>
-          <div class="deco-line deco-line-2"></div>
-          <div class="deco-line deco-line-3"></div>
-        </div>
+
+          <div class="form-group">
+            <label class="form-label mono-xs" for="cta-business">Business type</label>
+            <select class="form-input form-select" id="cta-business" name="business">
+              <option value="" disabled selected>Select your industry</option>
+              <option>Law Firm / Attorney</option>
+              <option>Dental Practice</option>
+              <option>Medical Clinic</option>
+              <option>Real Estate / Brokerage</option>
+              <option>Contractor / Trades</option>
+              <option>Restaurant / Hospitality</option>
+              <option>Nonprofit / Church</option>
+              <option>Small Business / Startup</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label mono-xs" for="cta-message">Tell us about your project</label>
+            <textarea
+              class="form-input form-textarea"
+              id="cta-message"
+              name="message"
+              rows="3"
+              placeholder="What does your current site look like? What's not working? Any timeline or budget in mind?"
+            ></textarea>
+          </div>
+
+          <button type="submit" class="cta-btn cta-btn-light form-submit">
+            Send &amp; request a quote &rarr;
+          </button>
+        </form>
       </div>
+
     </div>
   </div>
+
+  <!-- Background watermark -->
+  <div class="cta-watermark" aria-hidden="true">Upcoming Brand</div>
+
 </section>
 
 <style>
@@ -49,18 +152,17 @@
     overflow: hidden;
   }
 
-  .final-cta::before {
-    content: "Ready.";
+  .cta-watermark {
     position: absolute;
-    bottom: -40px;
-    right: -20px;
+    bottom: -32px;
+    right: -16px;
     font-family: var(--f-display);
-    font-size: clamp(80px, 15vw, 200px);
+    font-size: clamp(60px, 12vw, 160px);
     font-weight: 300;
     font-style: italic;
     letter-spacing: -0.04em;
     color: var(--cream);
-    opacity: 0.04;
+    opacity: 0.03;
     white-space: nowrap;
     pointer-events: none;
     user-select: none;
@@ -68,20 +170,38 @@
     line-height: 1;
   }
 
+  /* ── LAYOUT ── */
   .final-cta-inner {
     position: relative;
     z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
   }
 
-  .final-cta-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 64px;
-    align-items: center;
+  /* ── LEFT ── */
+  .final-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .final-cta-logo-wrap {
+    display: flex;
+  }
+
+  .final-cta-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    object-position: left center;
+    opacity: 0.9;
   }
 
   .final-cta-eyebrow {
     color: rgba(244,239,230,0.45);
+    margin-top: -8px;
   }
 
   .final-cta-eyebrow::before {
@@ -90,108 +210,223 @@
 
   .final-cta-h2 {
     color: var(--cream);
-    margin-bottom: 32px;
-    max-width: 16ch;
+    max-width: 18ch;
+    margin: 0;
   }
 
-  .final-cta-buttons {
+  /* ── TRUST ROWS ── */
+  .final-cta-trust {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 12px;
-    margin-bottom: 24px;
   }
 
-  .final-cta-note {
-    color: rgba(244,239,230,0.4);
-    letter-spacing: 0.06em;
-    line-height: 1.5;
+  .trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+    line-height: 1.4;
   }
 
-  /* Decorative */
-  .final-cta-deco {
-    position: relative;
-    width: 280px;
-    height: 280px;
+  .trust-icon {
     flex-shrink: 0;
-  }
-
-  .deco-circle-outer {
-    width: 220px;
-    height: 220px;
-    border-radius: 50%;
-    border: 1px solid rgba(244,239,230,0.08);
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-
-  .deco-circle-inner {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
     border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber);
+  }
+
+  /* ── REVIEWS ── */
+  .final-cta-reviews {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .review-stars {
+    color: var(--amber);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ── RIGHT CARD ── */
+  .final-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .contact-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .contact-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(20px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .contact-card-sub {
+    font-size: 13px;
+    color: rgba(244,239,230,0.45);
+    line-height: 1.5;
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── FORM ── */
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-input::placeholder {
+    color: rgba(244,239,230,0.25);
+  }
+
+  .form-input:focus {
+    border-color: rgba(212,147,46,0.5);
     background: rgba(212,147,46,0.04);
   }
 
-  .deco-mark {
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    background: var(--ink-soft);
-    display: flex;
-    align-items: center;
+  .form-select {
+    cursor: pointer;
+    color: rgba(244,239,230,0.6);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='rgba(244,239,230,0.4)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+
+  .form-select option {
+    background: #1a2030;
+    color: var(--cream);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 80px;
+    line-height: 1.5;
+  }
+
+  .form-submit {
+    width: 100%;
     justify-content: center;
-    border: 1px solid rgba(244,239,230,0.1);
+    margin-top: 4px;
   }
 
-  .deco-mark-dot {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background: var(--amber);
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .final-cta-inner {
+      grid-template-columns: 1fr 420px;
+      gap: 48px;
+    }
   }
-
-  .deco-lines {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-  }
-
-  .deco-line {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 1px;
-    width: 140px;
-    background: linear-gradient(to right, rgba(212,147,46,0.3), transparent);
-    transform-origin: left center;
-  }
-
-  .deco-line { transform: rotate(0deg); }
-  .deco-line-2 { transform: rotate(60deg); }
-  .deco-line-3 { transform: rotate(-60deg); }
 
   @media (max-width: 900px) {
     .final-cta-inner {
       grid-template-columns: 1fr;
+      gap: 48px;
     }
 
-    .final-cta-deco {
-      display: none;
+    .final-cta-h2 {
+      max-width: 100%;
     }
   }
 
   @media (max-width: 600px) {
-    .final-cta-buttons {
-      flex-direction: column;
-      align-items: flex-start;
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .final-cta-card {
+      padding: 24px 20px 20px;
     }
   }
 </style>
