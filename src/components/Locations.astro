@@ -16,6 +16,12 @@ const cities = [
   { name: "Glen Burnie",    county: "Anne Arundel Co." },
   { name: "Waldorf",        county: "Charles Co." },
   { name: "Laurel",         county: "Prince George's Co." },
+  { name: "College Park",   county: "Prince George's Co." },
+  { name: "Catonsville",    county: "Baltimore Co." },
+  { name: "Greenbelt",      county: "Prince George's Co." },
+  { name: "Pasadena",       county: "Anne Arundel Co." },
+  { name: "Owings Mills",   county: "Baltimore Co." },
+  { name: "Severn",         county: "Anne Arundel Co." },
 ];
 
 const contactDetails = [
@@ -159,13 +165,18 @@ const contactDetails = [
     display: grid;
     grid-template-columns: 1fr 360px;
     gap: 48px;
-    align-items: start;
+    align-items: stretch;
+  }
+
+  .locations-main {
+    display: flex;
+    flex-direction: column;
   }
 
   /* ── CITY GRID ── */
   .city-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 10px;
     margin-bottom: 16px;
   }
@@ -235,6 +246,10 @@ const contactDetails = [
     gap: 20px;
     position: sticky;
     top: 88px;
+  }
+
+  .contact-card {
+    flex: 1;
   }
 
   /* ── MAP ── */
@@ -376,6 +391,7 @@ const contactDetails = [
   @media (max-width: 1100px) {
     .locations-layout {
       grid-template-columns: 1fr;
+      align-items: start;
     }
 
     .locations-sidebar {
@@ -383,6 +399,10 @@ const contactDetails = [
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 20px;
+    }
+
+    .contact-card {
+      flex: unset;
     }
 
     .city-grid {
