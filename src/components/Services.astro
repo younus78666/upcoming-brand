@@ -3,57 +3,94 @@ const services = [
   {
     num: "001",
     title: "Custom WordPress Design",
-    summary: "Brand-first custom WordPress web design for Maryland businesses. We build on Elementor Pro with an Astra parent theme.",
+    summary: "Brand-first custom WordPress builds for Maryland businesses. Figma to live site — responsive, pixel-accurate, and fast.",
     bullets: ["Figma designs · 2 revision rounds", "Elementor Pro build · Astra parent theme", "Pixel-accurate responsive"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="3" width="20" height="14" rx="2"/>
+      <path d="M8 21h8M12 17v4"/>
+      <path d="M7 8h.01M10 8h.01"/>
+      <path d="M13 8h4M7 12h10"/>
+    </svg>`,
     dark: false,
   },
   {
     num: "002",
     title: "WooCommerce Stores",
-    summary: "Online stores that handle real inventory, real checkout flows, and real Stripe edge cases.",
+    summary: "Online stores built for real inventory, real checkout flows, and real Stripe edge cases — not demo data.",
     bullets: ["Stripe, PayPal, and Authorize.net", "Product configurators, variations, subscriptions", "Abandoned cart recovery"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+      <path d="M3 6h18"/>
+      <path d="M16 10a4 4 0 01-8 0"/>
+    </svg>`,
     dark: false,
   },
   {
     num: "003",
     title: "Care Plans & Maintenance",
-    summary: "Monthly retainers covering updates, off-site backups, security monitoring, uptime.",
-    bullets: ["Weekly plugin and WordPress core updates", "Off-site backups to S3 or Google Drive", "Uptime monitoring with 4-hour incident response"],
+    summary: "Monthly retainers covering updates, off-site backups, security monitoring, and uptime — with a 4-hour SLA.",
+    bullets: ["Weekly plugin and WordPress core updates", "Off-site backups to S3 or Google Drive", "Uptime monitoring · 4-hour incident response"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      <path d="M9 12l2 2 4-4"/>
+    </svg>`,
     dark: false,
   },
   {
     num: "004",
     title: "Speed Optimization",
-    summary: "Core Web Vitals focused. Every project ships with LCP under 2s.",
-    bullets: ["WP Rocket and Seraphinite Accelerator", "Image optimization with WebP conversion", "Cloudflare CDN, CSS/JS minification"],
+    summary: "Core Web Vitals focused. Every project ships with LCP under 2s and all three vitals green in Search Console.",
+    bullets: ["WP Rocket · image optimization · WebP conversion", "Cloudflare CDN · CSS/JS minification", "Post-launch PageSpeed verification report"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+    </svg>`,
     dark: false,
   },
   {
     num: "005",
     title: "SEO & Schema",
-    summary: "RankMath Pro, structured data, topical maps.",
+    summary: "RankMath Pro, structured data, and topical maps — built to rank for the keywords that bring paying clients.",
     bullets: ["Keyword research and topical map", "JSON-LD schema for 15+ page types", "Internal linking plan"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="11" cy="11" r="8"/>
+      <path d="M21 21l-4.35-4.35"/>
+      <path d="M8 14l2-3 2 2 2-4"/>
+    </svg>`,
     dark: false,
   },
   {
     num: "006",
     title: "Migration & Redesign",
-    summary: "From Wix, Webflow, Squarespace to custom WordPress without losing rankings.",
+    summary: "From Wix, Webflow, or Squarespace to custom WordPress — without losing your Google rankings.",
     bullets: ["301 redirect mapping", "Zero-downtime switchover", "Pre/post-launch rank parity check"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M17 3l4 4-4 4M3 7h18"/>
+      <path d="M7 21l-4-4 4-4M21 17H3"/>
+    </svg>`,
     dark: false,
   },
   {
     num: "007",
     title: "Security & Recovery",
-    summary: "Hardening, 2FA, firewall, malware recovery.",
+    summary: "Hardening, 2FA, firewall setup, and same-day recovery if your site gets hacked.",
     bullets: ["Wordfence with 2FA", "Daily malware scanning", "Same-day hacked site recovery"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="5" y="11" width="14" height="10" rx="2"/>
+      <path d="M8 11V7a4 4 0 018 0v4"/>
+      <circle cx="12" cy="16" r="1" fill="currentColor"/>
+    </svg>`,
     dark: false,
   },
   {
     num: "ALL",
     title: "Bundled. Retained. Done.",
-    summary: "One monthly partnership: design, maintenance, SEO, support.",
+    summary: "One monthly partnership covers design, maintenance, SEO, and support — so you never chase a freelancer again.",
     bullets: ["Dedicated account manager", "Unlimited small changes", "Quarterly strategy reviews"],
+    icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+      <path d="M2 17l10 5 10-5"/>
+      <path d="M2 12l10 5 10-5"/>
+    </svg>`,
     dark: true,
     cta: "Let's talk &rarr;",
   },
@@ -67,15 +104,13 @@ const services = [
       <p class="lead">
         Upcoming Brand's WordPress web design services cover eight core areas: custom website design, WooCommerce development, monthly care plans, speed optimization, SEO and schema, website migration, security and recovery, and a bundled monthly partnership that covers everything above.
       </p>
-      <p class="services-sub">
-        We don't sell everything to everyone. We sell the WordPress web design services Maryland businesses actually need to ship a site that ranks in Google and keeps working after launch day.
-      </p>
     </div>
 
     <div class="services-grid">
       {services.map((svc) => (
-        <div class={`service-card card ${svc.dark ? 'card-dark service-card-dark' : ''}`}>
-          <div class="svc-header">
+        <div class={`service-card ${svc.dark ? 'service-card-dark' : ''}`}>
+          <div class="svc-top">
+            <div class="svc-icon" aria-hidden="true" set:html={svc.icon} />
             <span class="svc-num mono-xs">{svc.num}</span>
           </div>
           <h3 class="svc-title">{svc.title}</h3>
@@ -88,14 +123,12 @@ const services = [
               </li>
             ))}
           </ul>
-          {svc.cta && (
-            <div class="svc-cta-wrap">
-              <a href="#contact" class="cta-btn-light cta-btn" set:html={svc.cta} />
-            </div>
-          )}
-          {!svc.cta && (
-            <a href="#contact" class="link-arrow svc-learn-more">Learn more &rarr;</a>
-          )}
+          <div class="svc-footer">
+            {svc.cta
+              ? <a href="#contact" class="cta-btn cta-btn-light" set:html={svc.cta} />
+              : <a href="#contact" class="svc-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+            }
+          </div>
         </div>
       ))}
     </div>
@@ -103,100 +136,161 @@ const services = [
 </section>
 
 <style>
+  .services-section {
+    background: var(--paper);
+  }
+
   .services-intro {
     max-width: 640px;
-    margin-bottom: 48px;
+    margin-bottom: 52px;
   }
 
-  .services-sub {
-    font-size: 15px;
-    color: var(--ink-muted);
-    margin-top: 16px;
-    line-height: 1.6;
-  }
-
+  /* ── GRID ── */
   .services-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: 20px;
   }
 
+  /* ── CARD ── */
   .service-card {
-    padding: 28px 24px;
+    background: var(--cream-soft);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 26px 24px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+    gap: 14px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), transform var(--transition), border-top-color var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--amber), transparent);
+    opacity: 0;
+    transition: opacity var(--transition);
   }
 
   .service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 32px rgba(15,20,25,0.12);
+    border-top-color: var(--amber-deep);
   }
 
-  .svc-learn-more {
-    margin-top: auto;
+  .service-card:hover::after {
+    opacity: 1;
   }
 
+  /* ── DARK CARD ── */
   .service-card-dark {
     grid-column: span 2;
+    background: var(--ink);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    color: var(--cream);
   }
 
-  .svc-header {
+  .service-card-dark::after {
+    background: linear-gradient(to right, var(--amber), var(--amber-deep), transparent);
+  }
+
+  .service-card-dark:hover {
+    border-top-color: var(--amber);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3);
+  }
+
+  /* ── TOP ROW ── */
+  .svc-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  /* ── ICON ── */
+  .svc-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    margin-bottom: 4px;
+    justify-content: center;
+    color: var(--amber);
+    flex-shrink: 0;
   }
 
+  .svc-icon svg {
+    display: block;
+  }
+
+  .service-card-dark .svc-icon {
+    background: rgba(212,147,46,0.12);
+    border-color: rgba(212,147,46,0.3);
+  }
+
+  /* ── NUMBER ── */
   .svc-num {
     color: var(--amber);
     letter-spacing: 0.1em;
-    font-size: 13px;
+    font-size: 11px;
     font-weight: 500;
+    opacity: 0.7;
+    padding-top: 2px;
   }
 
-  .service-card-dark .svc-num {
-    color: var(--amber);
-  }
-
+  /* ── TITLE ── */
   .svc-title {
     font-family: var(--f-display);
-    font-size: clamp(18px, 1.8vw, 22px);
+    font-size: clamp(17px, 1.6vw, 21px);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.2;
   }
 
+  .service-card-dark .svc-title {
+    color: var(--cream);
+  }
+
+  /* ── SUMMARY ── */
   .svc-summary {
     font-size: 13px;
-    line-height: 1.6;
+    line-height: 1.65;
     color: var(--ink-muted);
-    flex: 1;
   }
 
   .service-card-dark .svc-summary {
-    color: rgba(244,239,230,0.65);
+    color: rgba(244,239,230,0.6);
   }
 
+  /* ── BULLETS ── */
   .svc-bullets {
     display: flex;
     flex-direction: column;
     gap: 7px;
-    margin-top: 4px;
+    flex: 1;
   }
 
   .svc-bullet {
     display: flex;
     align-items: flex-start;
-    gap: 8px;
+    gap: 9px;
     font-size: 12px;
     color: var(--ink-muted);
-    line-height: 1.4;
+    line-height: 1.45;
   }
 
   .service-card-dark .svc-bullet {
-    color: rgba(244,239,230,0.5);
+    color: rgba(244,239,230,0.45);
   }
 
   .svc-bullet-dot {
@@ -208,10 +302,33 @@ const services = [
     margin-top: 5px;
   }
 
-  .svc-cta-wrap {
-    margin-top: 8px;
+  /* ── FOOTER ── */
+  .svc-footer {
+    padding-top: 6px;
+    border-top: 1px solid var(--line);
+    margin-top: 4px;
   }
 
+  .service-card-dark .svc-footer {
+    border-top-color: rgba(244,239,230,0.1);
+  }
+
+  .svc-link {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: 0.01em;
+    transition: opacity var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .svc-link:hover {
+    opacity: 0.75;
+  }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 1200px) {
     .services-grid {
       grid-template-columns: repeat(3, 1fr);
@@ -222,9 +339,7 @@ const services = [
     .services-grid {
       grid-template-columns: repeat(2, 1fr);
     }
-  }
 
-  @media (max-width: 900px) {
     .service-card-dark {
       grid-column: span 2;
     }
