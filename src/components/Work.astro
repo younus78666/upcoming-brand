@@ -340,13 +340,16 @@ const cases = [
 
   /* ── VISUAL (RIGHT) ── */
   .work-visual {
+    position: relative;
     display: flex;
     flex-direction: column;
     overflow: hidden;
   }
 
-  /* Real screenshot */
+  /* Real screenshot — absolutely fills the panel */
   .work-screenshot {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
