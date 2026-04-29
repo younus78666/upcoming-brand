@@ -1,0 +1,1593 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const stats = [
+  { val: "Pg 1", label: "Rankings for 11 attorney keywords" },
+  { val: "94",   label: "PageSpeed score on mobile" },
+  { val: "+312%", label: "Organic intake leads" },
+];
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Slow sites lose clients before they call",
+    body: "The average Maryland law firm site scores 38 on mobile PageSpeed. Every second of load time costs you 7% of conversions — and courts in competitive practice areas are relentless.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "Template shops don't know attorney ethics rules",
+    body: "Testimonials, case results, guarantees — Maryland bar rules restrict what your site can say. Generic agencies get this wrong constantly, leaving you exposed to bar complaints.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "Missing schema = missing the Local Pack",
+    body: "Google's Local Pack (the 3-map results) relies on LegalService schema markup. Without it, competitors with worse sites outrank you for searches like 'divorce attorney Baltimore'.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "Practice area pages that rank",
+    body: "One dedicated, schema-marked page per practice area — Personal Injury, Family Law, Criminal Defense, Estate Planning, Business Law, Real Estate. Each targets 3–5 high-intent local keywords.",
+    tags: ["LegalService schema", "Local SEO", "Internal linking"],
+  },
+  {
+    num: "02",
+    title: "Intake forms that actually convert",
+    body: "Multi-step intake forms with conditional logic route leads to the right attorney or paralegal instantly. Spam-protected, WCAG 2.1 accessible, tested on iOS Safari and Android Chrome.",
+    tags: ["Conditional logic", "Spam protection", "Accessibility"],
+  },
+  {
+    num: "03",
+    title: "Attorney profile pages",
+    body: "Individual bios with education, bar admissions, case results (bar-compliant), headshots, and direct contact. Each profile is a standalone SEO landing page for the attorney's name.",
+    tags: ["Attorney schema", "Direct contact", "Name rankings"],
+  },
+  {
+    num: "04",
+    title: "Ethics-compliant copy guidance",
+    body: "We flag anything that violates Maryland bar advertising rules during the design phase — before it goes live. Results-based claims, testimonials, and guarantees reviewed against MRPC 7.1–7.5.",
+    tags: ["MRPC review", "Testimonial rules", "Results claims"],
+  },
+  {
+    num: "05",
+    title: "Google Business Profile sync",
+    body: "NAP consistency across your site, GBP, and local citations. We set up Organization + LegalService JSON-LD that feeds directly into Google's knowledge graph and Local Pack triggers.",
+    tags: ["NAP consistency", "JSON-LD", "Local Pack"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals in the green",
+    body: "Every build ships with a PageSpeed score of 90+ on mobile and desktop, LCP under 2.5s, INP under 200ms. Written into the scope — if we miss it at launch, we fix it at no cost.",
+    tags: ["90+ PageSpeed", "LCP < 2.5s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    title: "Practice area audit & keyword research",
+    body: "We map your 6–8 practice areas against actual search volume in your target cities. You'll see exactly which keywords are worth targeting and which competitors are ranking for them.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    title: "Figma mockups reviewed with you",
+    body: "Full desktop and mobile mockups for every key page. We handle the layout — you focus on confirming the content hierarchy and that the messaging matches how you present in person.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    title: "WordPress build with schema & SEO",
+    body: "Built on Elementor Pro + Astra with RankMath Pro. Every page gets its JSON-LD schema, meta title, meta description, and is cross-tested across Chrome, Safari, Firefox, and Edge.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    title: "Search Console setup & 30-day monitoring",
+    body: "We submit your sitemap, verify ownership, and monitor Search Console for the first 30 days post-launch. Any indexing issues are resolved the same day they surface.",
+  },
+];
+
+const faqs = [
+  {
+    q: "How long does a law firm website take to rank on Google?",
+    a: "Practice area pages for mid-competition keywords (e.g. 'estate planning attorney Frederick MD') typically reach page 1 within 4–6 months on a new site with proper on-page SEO and schema. Highly competitive terms like 'personal injury attorney Baltimore' take 9–18 months and require an ongoing content strategy.",
+  },
+  {
+    q: "Can you build a site while keeping our current domain and email?",
+    a: "Yes. We build on a staging subdomain, run a pre-launch crawl to map all existing URLs, set up 301 redirects, and then cut over DNS. Your email runs on a separate MX record and is never touched. Most migrations see zero ranking disruption within 30 days.",
+  },
+  {
+    q: "Do you handle the copywriting for practice area pages?",
+    a: "Yes — copywriting is included in Growth and Custom builds. We draft SEO-optimised copy for every practice area page and attorney bio, send for your review, and revise based on your feedback. Copy is written to comply with Maryland bar advertising rules and never makes guarantees or results-based promises.",
+  },
+  {
+    q: "What makes a law firm site different from a regular business site?",
+    a: "Three things: schema markup (LegalService, Attorney, LegalAid types that generic builders don't implement), ethics compliance (MRPC 7.1–7.5 governs every headline and CTA), and conversion architecture (intake forms routed by practice area, click-to-call prominence, trust signals like bar memberships above the fold).",
+  },
+  {
+    q: "Do you offer care plans for law firm sites?",
+    a: "Yes, starting at $150/month. Care plans include weekly WordPress core and plugin updates, off-site backups, uptime monitoring, and a 4-hour SLA on support tickets. You communicate directly with the founder — not a help desk. Law firm clients can add monthly content updates and local citation management.",
+  },
+  {
+    q: "Will you guarantee specific keyword rankings?",
+    a: "No ethical agency can guarantee rankings — and you should be suspicious of any that do. We guarantee clean LegalService schema, Core Web Vitals in the green, and a properly structured topical map. Clients on our SEO care plan typically see top-10 positions for 15–25 targeted attorney keywords within 9 months.",
+  },
+];
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 8 pages (Home, About, 4 practice areas, Contact, Blog)",
+      "Mobile-responsive, accessibility-aware",
+      "RankMath Pro SEO + LegalService schema",
+      "Contact form with spam protection",
+      "Attorney bio page",
+      "PageSpeed 90+ at launch",
+      "30 days free post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 20 pages with custom Figma design",
+      "6+ practice area pages, attorney profiles",
+      "Multi-step intake form with conditional logic",
+      "Service area pages for 3–5 Maryland cities",
+      "Full JSON-LD schema (LegalService, Attorney, FAQ)",
+      "Google Search Console + Analytics setup",
+      "60 days free post-launch support",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited pages — large multi-attorney firms",
+      "ACF Pro attorney roster with filter/search",
+      "Custom intake routing by practice area",
+      "MRPC compliance review built into process",
+      "Dedicated project manager",
+      "First 3 months of care plan included",
+      "90 days free post-launch support",
+    ],
+    cta: "Start a conversation",
+  },
+];
+---
+<BaseLayout
+  title="Law Firm Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland law firms. Practice area pages, intake forms, LegalService schema, 90+ PageSpeed. Fixed-scope pricing from $1,500. Baltimore, Annapolis, Frederick."
+  canonicalUrl="https://upcomingbrand.com/industries/law-firm-website-design/"
+>
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lf-hero section-pad">
+    <div class="container">
+      <div class="lf-hero-inner">
+        <div class="lf-hero-content">
+
+          <nav class="lf-breadcrumb mono-xs" aria-label="Breadcrumb">
+            <a href="/">Home</a>
+            <span aria-hidden="true">/</span>
+            <a href="/#industries">Industries</a>
+            <span aria-hidden="true">/</span>
+            <span>Law Firm Website Design</span>
+          </nav>
+
+          <p class="eyebrow lf-eyebrow">Law firm web design · Maryland</p>
+          <h1 class="display-lg lf-h1">
+            WordPress websites built for Maryland law firms that need to rank, convert, and comply.
+          </h1>
+          <p class="lead lf-lead">
+            Fixed-scope builds from $1,500. LegalService schema, intake forms, ethics-compliant copy, and a written 90+ PageSpeed guarantee — delivered in 4–10 weeks.
+          </p>
+
+          <div class="lf-hero-btns">
+            <a href="#contact" class="cta-btn cta-btn-light">Book a free discovery call &rarr;</a>
+            <a href="#pricing" class="cta-outline cta-outline-light">See pricing &#8599;</a>
+          </div>
+
+          <div class="lf-hero-stats">
+            {stats.map((s) => (
+              <div class="lf-stat">
+                <span class="lf-stat-val">{s.val}</span>
+                <span class="lf-stat-label mono-xs">{s.label}</span>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+        <div class="lf-hero-visual" aria-hidden="true">
+          <div class="lf-hero-card">
+            <div class="lf-hc-top">
+              <span class="lf-hc-badge mono-xs">Case result · Meridian Law Group</span>
+            </div>
+            <img
+              src="/work/meridian-law-group.png"
+              alt="Meridian Law Group website"
+              class="lf-hc-img"
+              width="520"
+              height="340"
+              loading="eager"
+              decoding="async"
+            />
+            <div class="lf-hc-stats">
+              <div class="lf-hcs-item">
+                <span class="lf-hcs-val">+312%</span>
+                <span class="lf-hcs-label mono-xs">Organic leads</span>
+              </div>
+              <div class="lf-hcs-divider"></div>
+              <div class="lf-hcs-item">
+                <span class="lf-hcs-val">94</span>
+                <span class="lf-hcs-label mono-xs">PageSpeed mobile</span>
+              </div>
+              <div class="lf-hcs-divider"></div>
+              <div class="lf-hcs-item">
+                <span class="lf-hcs-val">Pg 1</span>
+                <span class="lf-hcs-label mono-xs">11 keywords</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why most law firm sites fail</p>
+        <h2 class="h2-section">Three problems we fix before any Maryland attorney goes live</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build</p>
+        <h2 class="h2-section">Every law firm WordPress site from Upcoming Brand includes</h2>
+        <p class="lead">Six things every Maryland attorney's website needs to compete in local search and convert visitors into consultations.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Case study</p>
+          <h2 class="h2-section lf-case-h2">Meridian Law Group, Baltimore</h2>
+          <p class="lf-case-desc">
+            A 40-year Baltimore firm with six practice areas came to us with a 12-second mobile load time, page-3 Google rankings, and an intake form that broke on iOS Safari. We rebuilt the entire site in 7 weeks.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+312%</span>
+              <span class="lf-cr-label mono-xs">Organic leads within 6 months</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">94</span>
+              <span class="lf-cr-label mono-xs">PageSpeed score on mobile</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">Pg 1</span>
+              <span class="lf-cr-label mono-xs">Rankings for 11 attorney keywords</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">7 wks</span>
+              <span class="lf-cr-label mono-xs">From kickoff to live</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"We'd tried two other agencies before Upcoming Brand. Both disappeared after launch and left us with a site that took 12 seconds to load on mobile. Upcoming Brand delivered in 7 weeks, hit 91 on PageSpeed, and we've been ranking page one for three practice area keywords ever since."</p>
+            <footer>
+              <cite class="lf-cite-name">Maya Rodriguez</cite>
+              <span class="lf-cite-role mono-xs">Managing Partner · Meridian Law Group · Baltimore, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/meridian-law-group.png"
+            alt="Meridian Law Group website redesign — Baltimore law firm"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site · Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark">How it works</p>
+        <h2 class="h2-section">From first call to ranked law firm website in 4–10 weeks</h2>
+        <p class="lead">A fixed-scope process means you know the price, scope, and deadline before you sign anything.</p>
+      </div>
+      <div class="lf-process-grid">
+        {process.map((step, i) => (
+          <div class="lf-process-step">
+            <div class="lf-ps-num-row">
+              <span class="lf-ps-num mono-xs">{step.num}</span>
+              <span class="lf-ps-phase mono-xs">{step.phase}</span>
+            </div>
+            <h3 class="lf-ps-title">{step.title}</h3>
+            <p class="lf-ps-body">{step.body}</p>
+            {i < process.length - 1 && (
+              <div class="lf-ps-connector" aria-hidden="true"></div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope law firm website pricing</h2>
+        <p class="lead">One price, one scope, one timeline. No hourly billing, no retainer creep. Every project starts with a written proposal.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with monthly care plans from <strong>$150/month</strong> — updates, backups, uptime monitoring, and direct-founder support.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-intro">
+        <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+        <h2 class="h2-section">Law firm web design questions Maryland attorneys ask</h2>
+      </div>
+      <div class="lf-faq-list" id="lf-faq-accordion">
+        {faqs.map((faq, i) => (
+          <div class="lf-faq-item" data-faq-item>
+            <button
+              class="lf-faq-trigger"
+              aria-expanded={i === 0 ? "true" : "false"}
+              aria-controls={`lf-faq-${i}`}
+              id={`lf-faq-btn-${i}`}
+            >
+              <span class="lf-faq-q">{faq.q}</span>
+              <span class="lf-faq-icon" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path class="lf-plus-h" d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div
+              class="lf-faq-answer"
+              id={`lf-faq-${i}`}
+              role="region"
+              aria-labelledby={`lf-faq-btn-${i}`}
+              hidden={i !== 0 ? true : undefined}
+            >
+              <p class="lf-faq-a">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Law firm websites · Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Ready to build a law firm website that ranks and converts?
+          </h2>
+          <div class="lf-cta-trust">
+            {[
+              "Fixed-scope pricing — one price, no surprises",
+              "Reply within 4 business hours",
+              "Maryland-based · on-site within 90 min of DC",
+              "No long-term contracts · 30-day cancel",
+            ].map((item) => (
+              <div class="lf-trust-row">
+                <span class="lf-trust-icon" aria-hidden="true">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                </span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;·&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — April 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">45 minutes · No sales pitch · Fixed-scope quote within 24 hours</p>
+          </div>
+          <form class="lf-form" name="contact-law-firm" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="lf-name">Your name</label>
+                <input class="lf-form-input" type="text" id="lf-name" name="name" placeholder="Jane Smith" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="lf-email">Email address</label>
+                <input class="lf-form-input" type="email" id="lf-email" name="email" placeholder="jane@lawfirm.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="lf-firm">Firm name &amp; practice area</label>
+              <input class="lf-form-input" type="text" id="lf-firm" name="firm" placeholder="Smith &amp; Associates · Family Law" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="lf-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="lf-message" name="message" rows="3" placeholder="Slow load times, not ranking, outdated design, bad intake form…"></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Law Firm</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow {
+    color: rgba(244,239,230,0.5);
+  }
+  .lf-eyebrow::before {
+    background: rgba(244,239,230,0.3);
+  }
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO
+  ══════════════════════ */
+  .lf-hero {
+    background: var(--ink);
+    color: var(--cream);
+    overflow: hidden;
+  }
+
+  .lf-hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 520px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  /* breadcrumb */
+  .lf-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.35);
+    font-size: 11px;
+  }
+  .lf-breadcrumb a {
+    color: rgba(244,239,230,0.45);
+    transition: color var(--transition);
+  }
+  .lf-breadcrumb a:hover { color: var(--amber); }
+
+  .lf-h1 {
+    color: var(--cream);
+    max-width: 20ch;
+  }
+
+  .lf-lead {
+    color: rgba(244,239,230,0.65);
+    max-width: 52ch;
+  }
+
+  .lf-hero-btns {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .lf-hero-stats {
+    display: flex;
+    gap: 32px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(244,239,230,0.1);
+  }
+
+  .lf-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-stat-val {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 34px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-stat-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    max-width: 14ch;
+    line-height: 1.3;
+  }
+
+  /* hero visual card */
+  .lf-hero-visual {
+    position: relative;
+  }
+
+  .lf-hero-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+  }
+
+  .lf-hc-top {
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(244,239,230,0.07);
+    display: flex;
+    align-items: center;
+  }
+
+  .lf-hc-badge {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-hc-img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+  }
+
+  .lf-hc-stats {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    gap: 20px;
+    border-top: 1px solid rgba(244,239,230,0.07);
+    background: rgba(244,239,230,0.03);
+  }
+
+  .lf-hcs-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+  }
+
+  .lf-hcs-val {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-hcs-label {
+    font-size: 9px;
+    color: rgba(244,239,230,0.35);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-hcs-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(244,239,230,0.08);
+    flex-shrink: 0;
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: border-top-color var(--transition), box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    border-top-color: var(--amber);
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1.5px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .lf-process-step {
+    padding: 32px 28px;
+    border-right: 1px solid rgba(15,20,25,0.08);
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:last-child {
+    border-right: none;
+  }
+
+  .lf-process-step:hover {
+    background: var(--cream-soft);
+  }
+
+  .lf-ps-num-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+
+  .lf-ps-num {
+    font-size: 10px;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    font-weight: 500;
+  }
+
+  .lf-ps-phase {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    padding: 2px 8px;
+    border: 1px solid rgba(15,20,25,0.1);
+    border-radius: var(--radius-pill);
+  }
+
+  .lf-ps-title {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-ps-body {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-ps-connector {
+    position: absolute;
+    top: 36px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    background: var(--amber);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    border: 2px solid var(--paper);
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-intro {
+    max-width: 640px;
+    margin-bottom: 40px;
+  }
+
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+    max-width: 860px;
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: rgba(212,147,46,0.03);
+  }
+
+  .lf-faq-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    padding: 20px 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 24px 22px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-hero-inner { grid-template-columns: 1fr 440px; gap: 48px; }
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-hero-inner   { grid-template-columns: 1fr; }
+    .lf-hero-visual  { display: none; }
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-process-grid { grid-template-columns: repeat(2, 1fr); }
+    .lf-process-step { border-right: none; border-bottom: 1px solid rgba(15,20,25,0.08); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-ps-connector { display: none; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-hero-stats   { flex-direction: column; gap: 16px; }
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+</style>
+
+<script>
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>
