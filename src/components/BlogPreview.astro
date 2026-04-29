@@ -1,60 +1,88 @@
 ---
 const articles = [
   {
+    num: "01",
     tag: "Pricing Guide",
     readTime: "10 min read",
+    date: "Apr 2026",
     title: "How Much Does a WordPress Website Cost in Maryland? (2026 Complete Pricing Guide)",
     desc: "Everything you need to know about Maryland web design costs — from a 5-page contractor site at $2,500 to a custom law firm build at $10,000. Fixed pricing explained.",
     href: "#",
-    imgGradient: "linear-gradient(135deg, #1C232B 0%, #2C3E50 100%)",
+    imgGradient: "linear-gradient(145deg, #1A2535 0%, #0F1A28 60%, #1C2C20 100%)",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+    </svg>`,
   },
   {
+    num: "02",
     tag: "Platform Comparison",
     readTime: "9 min read",
+    date: "Mar 2026",
     title: "WordPress vs. Squarespace for Maryland Law Firms: Which Platform Wins?",
     desc: "We run both platforms through the same 12-point test — Core Web Vitals, SEO, attorney schema markup, content management, and total 3-year cost.",
     href: "#",
-    imgGradient: "linear-gradient(135deg, #0F1419 0%, #2A3A28 100%)",
+    imgGradient: "linear-gradient(145deg, #0F1A10 0%, #0F1419 60%, #1A2020 100%)",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
+    </svg>`,
   },
   {
+    num: "03",
     tag: "Performance",
     readTime: "7 min read",
+    date: "Feb 2026",
     title: "Why 56% of Maryland Businesses Are Leaving PageSpeed Points on the Table",
     desc: "Only 44% of WordPress sites pass all three Core Web Vitals on mobile. Here's exactly what's failing and the fastest fixes for Maryland service businesses.",
     href: "#",
-    imgGradient: "linear-gradient(135deg, #2C1810 0%, #3A2A1C 100%)",
+    imgGradient: "linear-gradient(145deg, #2C1A0A 0%, #1A120A 60%, #200F0F 100%)",
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+    </svg>`,
   },
 ];
 ---
 <section class="blog-section section-pad" id="blog">
   <div class="container">
+
     <div class="blog-intro">
-      <p class="eyebrow">From the blog</p>
+      <p class="eyebrow blog-eyebrow">From the blog</p>
       <h2 class="h2-section">WordPress web design resources for Maryland business owners</h2>
       <p class="lead">Practical articles about WordPress performance, local SEO, and what actually moves the needle for Maryland service businesses.</p>
     </div>
 
     <div class="blog-grid">
       {articles.map((article) => (
-        <article class="blog-card card">
+        <article class="blog-card">
           <a href={article.href} class="blog-card-link" aria-label={`Read: ${article.title}`}>
-            <!-- Placeholder image area -->
-            <div class="blog-img" aria-hidden="true" style={`background: ${article.imgGradient}`}>
-              <div class="blog-img-pattern"></div>
-              <div class="blog-img-tag-wrap">
+
+            <!-- Image area -->
+            <div class="blog-img" style={`background: ${article.imgGradient}`}>
+              <div class="blog-img-noise"></div>
+              <div class="blog-img-icon" aria-hidden="true" set:html={article.icon} />
+              <div class="blog-img-overlay"></div>
+              <div class="blog-img-bottom">
                 <span class="blog-img-tag mono-xs">{article.tag}</span>
+                <span class="blog-img-num mono-xs">{article.num}</span>
               </div>
             </div>
 
+            <!-- Body -->
             <div class="blog-body">
               <div class="blog-meta">
-                <span class="blog-tag mono-xs">{article.tag}</span>
+                <span class="blog-date mono-xs">{article.date}</span>
+                <span class="blog-dot" aria-hidden="true"></span>
                 <span class="blog-read mono-xs">{article.readTime}</span>
               </div>
               <h3 class="blog-title">{article.title}</h3>
               <p class="blog-desc">{article.desc}</p>
-              <span class="blog-cta-link">Read article &rarr;</span>
+              <span class="blog-cta-link">
+                Read article
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                  <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
             </div>
+
           </a>
         </article>
       ))}
@@ -62,7 +90,9 @@ const articles = [
 
     <div class="blog-footer">
       <a href="#" class="cta-outline">Browse all articles &rarr;</a>
+      <p class="blog-footer-note mono-xs">New articles every 2 weeks · No newsletter required</p>
     </div>
+
   </div>
 </section>
 
@@ -71,30 +101,42 @@ const articles = [
     background: var(--cream-soft);
   }
 
+  /* ── INTRO ── */
   .blog-intro {
+    text-align: center;
     max-width: 600px;
-    margin-bottom: 40px;
+    margin: 0 auto 48px;
   }
 
+  .blog-eyebrow {
+    justify-content: center;
+  }
+
+  /* ── GRID ── */
   .blog-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-bottom: 32px;
+    gap: 22px;
+    margin-bottom: 36px;
+    align-items: stretch;
   }
 
+  /* ── CARD ── */
   .blog-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    overflow: hidden;
-    border-top: 3px solid transparent;
-    transition: box-shadow var(--transition), transform var(--transition), border-top-color var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+    transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
   }
 
   .blog-card:hover {
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 12px 36px rgba(15,20,25,0.12);
     transform: translateY(-4px);
-    border-top-color: var(--amber);
+    border-color: rgba(212,147,46,0.3);
   }
 
   .blog-card-link {
@@ -105,103 +147,180 @@ const articles = [
     color: inherit;
   }
 
-  /* Image placeholder */
+  /* ── IMAGE AREA ── */
   .blog-img {
-    height: 180px;
+    height: 200px;
     position: relative;
     overflow: hidden;
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
   }
 
-  .blog-img-pattern {
+  .blog-img-noise {
     position: absolute;
     inset: 0;
-    background:
-      linear-gradient(135deg, transparent 40%, rgba(212,147,46,0.08) 100%),
+    background-image:
       repeating-linear-gradient(
         -45deg,
         transparent,
-        transparent 12px,
-        rgba(244,239,230,0.03) 12px,
-        rgba(244,239,230,0.03) 13px
+        transparent 14px,
+        rgba(244,239,230,0.025) 14px,
+        rgba(244,239,230,0.025) 15px
       );
   }
 
-  .blog-img-tag-wrap {
+  .blog-img-icon {
     position: relative;
-    padding: 16px;
+    z-index: 1;
+    color: rgba(212,147,46,0.55);
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.06);
+    border: 1px solid rgba(212,147,46,0.15);
+    border-radius: var(--radius-md);
+    transition: background var(--transition), color var(--transition), border-color var(--transition);
+  }
+
+  .blog-card:hover .blog-img-icon {
+    color: rgba(212,147,46,0.85);
+    background: rgba(212,147,46,0.1);
+    border-color: rgba(212,147,46,0.3);
+  }
+
+  .blog-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(15,20,25,0.5) 0%, transparent 50%);
+  }
+
+  .blog-img-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 2;
   }
 
   .blog-img-tag {
     background: rgba(212,147,46,0.9);
     color: var(--ink);
-    padding: 4px 10px;
+    padding: 3px 10px;
     border-radius: var(--radius-pill);
+    font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
 
-  .blog-body {
-    padding: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    flex: 1;
+  .blog-img-num {
+    color: rgba(244,239,230,0.35);
+    font-size: 11px;
+    letter-spacing: 0.1em;
   }
 
+  /* ── BODY ── */
+  .blog-body {
+    padding: 24px 22px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+    border-top: 1px solid rgba(15,20,25,0.06);
+  }
+
+  /* ── META ── */
   .blog-meta {
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 8px;
   }
 
-  .blog-tag {
+  .blog-date {
     color: var(--amber-deep);
-    letter-spacing: 0.1em;
+    font-size: 10px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  .blog-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ink-muted);
+    opacity: 0.3;
+    flex-shrink: 0;
   }
 
   .blog-read {
     color: var(--ink-muted);
+    font-size: 10px;
     letter-spacing: 0.05em;
   }
 
+  /* ── TITLE ── */
   .blog-title {
     font-family: var(--f-display);
-    font-size: clamp(17px, 1.8vw, 21px);
+    font-size: clamp(16px, 1.6vw, 19px);
     font-weight: 400;
     letter-spacing: -0.02em;
-    line-height: 1.25;
-  }
-
-  .blog-desc {
-    font-size: 14px;
-    color: var(--ink-muted);
-    line-height: 1.5;
-    flex: 1;
-  }
-
-  .blog-cta-link {
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--amber-deep);
-    margin-top: 8px;
+    line-height: 1.3;
+    color: var(--ink);
     transition: color var(--transition);
   }
 
+  .blog-card:hover .blog-title {
+    color: var(--amber-deep);
+  }
+
+  /* ── DESC ── */
+  .blog-desc {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+    flex: 1;
+  }
+
+  /* ── READ LINK ── */
+  .blog-cta-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--amber-deep);
+    margin-top: 4px;
+    transition: gap var(--transition), color var(--transition);
+  }
+
   .blog-card:hover .blog-cta-link {
+    gap: 10px;
     color: var(--ink);
   }
 
+  /* ── FOOTER ── */
   .blog-footer {
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
   }
 
+  .blog-footer-note {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    opacity: 0.6;
+  }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
     .blog-grid {
       grid-template-columns: 1fr 1fr;
