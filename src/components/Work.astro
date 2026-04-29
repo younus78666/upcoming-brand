@@ -151,11 +151,26 @@ const cases = [
     </div>
 
     <div class="work-footer">
-      <div class="work-footer-left">
-        <p class="work-footer-num">400+</p>
-        <p class="work-footer-label">projects delivered across Maryland and 12 countries</p>
+      <div class="work-footer-stats">
+        <div class="wf-stat">
+          <span class="wf-stat-num">400+</span>
+          <span class="wf-stat-label mono-xs">Projects delivered</span>
+        </div>
+        <div class="wf-stat-divider" aria-hidden="true"></div>
+        <div class="wf-stat">
+          <span class="wf-stat-num">12</span>
+          <span class="wf-stat-label mono-xs">Countries served</span>
+        </div>
+        <div class="wf-stat-divider" aria-hidden="true"></div>
+        <div class="wf-stat">
+          <span class="wf-stat-num">90+</span>
+          <span class="wf-stat-label mono-xs">Avg PageSpeed score</span>
+        </div>
       </div>
-      <a href="#contact" class="cta-outline">View full portfolio &rarr;</a>
+      <div class="work-footer-cta">
+        <p class="work-footer-sub">Every project ships with a written fixed-scope — one price, one timeline, no surprises.</p>
+        <a href="#contact" class="cta-btn cta-btn-light">View full portfolio &rarr;</a>
+      </div>
     </div>
 
   </div>
@@ -468,35 +483,67 @@ const cases = [
   .work-footer {
     display: flex;
     align-items: center;
-    gap: 24px;
-    margin-top: 32px;
-    padding: 28px 32px;
-    border: 1.5px solid rgba(15,20,25,0.08);
+    justify-content: space-between;
+    gap: 32px;
+    margin-top: 48px;
+    padding: 36px 40px;
     border-radius: var(--radius-md);
-    background: var(--cream-soft);
+    background: var(--ink);
+    border-top: 3px solid var(--amber);
+    box-shadow: 0 8px 32px rgba(15,20,25,0.12);
   }
 
-  .work-footer-left {
-    flex: 1;
+  .work-footer-stats {
     display: flex;
-    align-items: baseline;
-    gap: 14px;
+    align-items: center;
+    gap: 32px;
+    flex-shrink: 0;
   }
 
-  .work-footer-num {
+  .wf-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .wf-stat-num {
     font-family: var(--f-display);
-    font-size: 40px;
+    font-size: clamp(32px, 3.5vw, 48px);
     font-weight: 300;
     letter-spacing: -0.04em;
     color: var(--amber);
     line-height: 1;
   }
 
-  .work-footer-label {
-    font-size: 14px;
-    color: var(--ink-muted);
-    max-width: 28ch;
-    line-height: 1.4;
+  .wf-stat-label {
+    color: rgba(244,239,230,0.45);
+    font-size: 10px;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+  }
+
+  .wf-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(244,239,230,0.1);
+    flex-shrink: 0;
+  }
+
+  .work-footer-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+  }
+
+  .work-footer-sub {
+    font-size: 13px;
+    color: rgba(244,239,230,0.45);
+    line-height: 1.5;
+    text-align: right;
+    max-width: 36ch;
+    font-family: var(--f-mono);
+    letter-spacing: 0.02em;
   }
 
   /* ── RESPONSIVE ── */
@@ -531,20 +578,36 @@ const cases = [
     }
   }
 
+  @media (max-width: 768px) {
+    .work-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 28px 24px;
+    }
+
+    .work-footer-cta {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .work-footer-sub {
+      text-align: left;
+      max-width: 100%;
+    }
+  }
+
   @media (max-width: 600px) {
     .work-content {
       padding: 28px 20px;
     }
 
-    .work-footer {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 20px;
+    .work-footer-stats {
+      gap: 20px;
     }
 
-    .work-footer-left {
-      flex-direction: column;
-      gap: 4px;
+    .wf-stat-num {
+      font-size: 28px;
     }
 
     .work-stats {
