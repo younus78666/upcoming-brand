@@ -13,9 +13,6 @@ const items = [
 const allItems = [...items, ...items];
 ---
 <section class="marquee-section" aria-label="Trusted by Maryland operators">
-  <div class="marquee-label container">
-    <p class="eyebrow">Trusted by Maryland operators</p>
-  </div>
   <div class="marquee-track-wrap" aria-hidden="true">
     <div class="marquee-track">
       {allItems.map((item) => (
@@ -33,19 +30,6 @@ const allItems = [...items, ...items];
     background: var(--ink);
     padding-block: 32px;
     overflow: hidden;
-  }
-
-  .marquee-label {
-    margin-bottom: 20px;
-  }
-
-  .marquee-label .eyebrow {
-    color: rgba(244, 239, 230, 0.45);
-    justify-content: flex-start;
-  }
-
-  .marquee-label .eyebrow::before {
-    background: rgba(244, 239, 230, 0.25);
   }
 
   .marquee-track-wrap {
