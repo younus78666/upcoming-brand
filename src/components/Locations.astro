@@ -1,17 +1,8 @@
 ---
 const cities = [
-  { name: "Baltimore", searches: "720/mo" },
-  { name: "Annapolis", searches: "390/mo" },
-  { name: "Frederick", searches: "210/mo" },
-  { name: "Bethesda", searches: null },
-  { name: "Rockville", searches: null },
-  { name: "Silver Spring", searches: null },
-  { name: "Columbia", searches: null },
-  { name: "Gaithersburg", searches: null },
-  { name: "Towson", searches: null },
-  { name: "Ellicott City", searches: null },
-  { name: "Germantown", searches: null },
-  { name: "Hagerstown", searches: null },
+  "Baltimore", "Annapolis", "Frederick", "Bethesda",
+  "Rockville", "Silver Spring", "Columbia", "Gaithersburg",
+  "Towson", "Ellicott City", "Germantown", "Hagerstown",
 ];
 ---
 <section class="locations-section section-pad" id="locations">
@@ -28,10 +19,7 @@ const cities = [
         <div class="city-grid" role="list" aria-label="Maryland cities we serve">
           {cities.map((city) => (
             <div class="city-tile" role="listitem">
-              <span class="city-name">{city.name}</span>
-              {city.searches && (
-                <span class="city-searches mono-xs">{city.searches}</span>
-              )}
+              <span class="city-name">{city}</span>
             </div>
           ))}
         </div>
@@ -118,7 +106,7 @@ const cities = [
   .city-tile {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     padding: 12px 14px;
     border: 1px solid var(--line);
     border-radius: var(--radius-sm);
@@ -135,12 +123,6 @@ const cities = [
   .city-name {
     font-size: 14px;
     font-weight: 500;
-  }
-
-  .city-searches {
-    color: var(--ink-muted);
-    font-size: 10px;
-    letter-spacing: 0.06em;
   }
 
   /* Sidebar */
