@@ -1,6 +1,18 @@
 ---
 ---
 <section class="final-cta section-pad" id="contact" aria-labelledby="final-cta-heading">
+
+  <!-- Wave decoration -->
+  <div class="cta-waves" aria-hidden="true">
+    <svg viewBox="0 0 1440 500" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-100 380 C200 200 500 340 820 220 C1060 130 1260 270 1540 140" stroke="rgba(244,239,230,0.09)" stroke-width="1.5"/>
+      <path d="M-100 480 C150 300 450 430 780 310 C1020 210 1250 360 1540 240" stroke="rgba(244,239,230,0.06)" stroke-width="1"/>
+      <path d="M-100 280 C250 130 550 250 860 155 C1080 80 1300 210 1540 100" stroke="rgba(244,239,230,0.05)" stroke-width="0.8"/>
+      <path d="M0 500 C350 310 700 450 1020 320 C1230 235 1390 370 1540 280" stroke="rgba(212,147,46,0.2)" stroke-width="1.4"/>
+      <path d="M-100 180 C200 60 520 170 840 90 C1060 30 1290 160 1540 70" stroke="rgba(212,147,46,0.12)" stroke-width="1"/>
+    </svg>
+  </div>
+
   <div class="container">
     <div class="final-cta-inner">
       <div class="final-cta-content">
@@ -48,6 +60,17 @@
     overflow: hidden;
   }
 
+  .cta-waves {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .cta-waves svg {
+    width: 100%;
+    height: 100%;
+  }
+
   .final-cta::before {
     content: "Ready.";
     position: absolute;
@@ -69,7 +92,7 @@
 
   .final-cta-inner {
     position: relative;
-    z-index: 1;
+    z-index: 2;
   }
 
   .final-cta-inner {
