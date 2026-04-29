@@ -64,9 +64,14 @@ const socials = [
     <div class="footer-top">
       <!-- Brand column -->
       <div class="footer-brand">
-        <a href="/" class="brand-mark footer-brand-mark" aria-label="Upcoming Brand home">
-          <span class="brand-mark-icon" aria-hidden="true"></span>
-          <span class="brand-mark-text">Upcoming Brand</span>
+        <a href="/" class="footer-brand-mark" aria-label="Upcoming Brand home">
+          <img
+            src="/upcoming_brand_master_bundle/website-kit/02-footer-logo-dark.png"
+            alt="Upcoming Brand"
+            class="footer-logo-img"
+            width="200"
+            height="52"
+          />
         </a>
         <p class="footer-tagline">WordPress web design services based in Maryland — Baltimore, Annapolis, Frederick &amp; the DMV metro.</p>
         <div class="footer-socials" role="list" aria-label="Social media links">
@@ -140,16 +145,10 @@ const socials = [
     display: inline-flex;
   }
 
-  .footer-brand-mark .brand-mark-icon {
-    background: rgba(244,239,230,0.15);
-  }
-
-  .footer-brand-mark .brand-mark-icon::after {
-    background: var(--amber);
-  }
-
-  .footer-brand-mark .brand-mark-text {
-    color: var(--cream);
+  .footer-logo-img {
+    height: 44px;
+    width: auto;
+    display: block;
   }
 
   .footer-tagline {

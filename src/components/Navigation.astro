@@ -3,8 +3,13 @@
 <!-- ========================= NAVIGATION ========================= -->
 <nav class="site-nav" id="nav">
   <a href="/" class="brand" aria-label="Upcoming Brand home">
-    <span class="brand-mark" aria-hidden="true"></span>
-    Upcoming Brand
+    <img
+      src="/upcoming_brand_master_bundle/website-kit/01-header-logo-light-edited.png"
+      alt="Upcoming Brand"
+      class="brand-logo"
+      width="180"
+      height="48"
+    />
   </a>
 
   <ul class="nav-links" role="list">
@@ -512,31 +517,14 @@
 
   /* Brand */
   .brand {
-    font-family: var(--f-display);
-    font-size: 22px;
-    font-weight: 500;
-    letter-spacing: -0.02em;
     display: flex;
     align-items: center;
-    gap: 10px;
-    color: var(--ink);
     flex-shrink: 0;
   }
-  .brand-mark {
-    display: inline-block;
-    width: 28px; height: 28px;
-    background: var(--ink);
-    border-radius: 50%;
-    position: relative;
-    flex-shrink: 0;
-  }
-  .brand-mark::after {
-    content: "";
-    position: absolute;
-    top: 8px; left: 8px;
-    width: 12px; height: 12px;
-    background: var(--amber);
-    border-radius: 50%;
+  .brand-logo {
+    height: 40px;
+    width: auto;
+    display: block;
   }
 
   /* ====================================================
