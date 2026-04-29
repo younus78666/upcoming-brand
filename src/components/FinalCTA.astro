@@ -2,14 +2,16 @@
 ---
 <section class="final-cta section-pad" id="contact" aria-labelledby="final-cta-heading">
 
-  <!-- Wave decoration -->
+  <!-- Wave decoration — bottom-right corner only -->
   <div class="cta-waves" aria-hidden="true">
-    <svg viewBox="0 0 1440 500" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <path d="M-100 380 C200 200 500 340 820 220 C1060 130 1260 270 1540 140" stroke="rgba(244,239,230,0.09)" stroke-width="1.5"/>
-      <path d="M-100 480 C150 300 450 430 780 310 C1020 210 1250 360 1540 240" stroke="rgba(244,239,230,0.06)" stroke-width="1"/>
-      <path d="M-100 280 C250 130 550 250 860 155 C1080 80 1300 210 1540 100" stroke="rgba(244,239,230,0.05)" stroke-width="0.8"/>
-      <path d="M0 500 C350 310 700 450 1020 320 C1230 235 1390 370 1540 280" stroke="rgba(212,147,46,0.2)" stroke-width="1.4"/>
-      <path d="M-100 180 C200 60 520 170 840 90 C1060 30 1290 160 1540 70" stroke="rgba(212,147,46,0.12)" stroke-width="1"/>
+    <svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M420 340 C345 268 262 285 172 195 C104 128 52 65 0 5" stroke="rgba(244,239,230,0.14)" stroke-width="1.6" fill="none"/>
+      <path d="M420 300 C352 236 272 252 190 168 C124 102 68 46 15 -5" stroke="rgba(244,239,230,0.09)" stroke-width="1.1" fill="none"/>
+      <path d="M420 380 C335 302 248 322 152 228 C82 158 28 88 -12 20" stroke="rgba(212,147,46,0.25)" stroke-width="1.4" fill="none"/>
+      <!-- dot accents -->
+      <circle cx="312" cy="196" r="2.5" fill="rgba(212,147,46,0.45)"/>
+      <circle cx="350" cy="160" r="1.5" fill="rgba(212,147,46,0.32)"/>
+      <circle cx="272" cy="232" r="1.8" fill="rgba(244,239,230,0.3)"/>
     </svg>
   </div>
 
@@ -60,9 +62,13 @@
     overflow: hidden;
   }
 
+  /* Wave — bottom-right corner only */
   .cta-waves {
     position: absolute;
-    inset: 0;
+    bottom: 0;
+    right: 0;
+    width: clamp(260px, 30vw, 420px);
+    height: clamp(200px, 25vw, 340px);
     pointer-events: none;
     z-index: 0;
   }

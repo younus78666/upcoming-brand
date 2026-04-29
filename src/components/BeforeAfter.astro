@@ -30,14 +30,16 @@ const after = [
 
 <section class="ba-section section-pad" id="why-us">
 
-  <!-- Wave decoration (amber arcs on cream background) -->
+  <!-- Wave decoration — bottom-right corner only -->
   <div class="ba-waves" aria-hidden="true">
-    <svg viewBox="0 0 1440 600" fill="none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-      <path d="M-100 480 C150 300 400 420 700 300 C950 195 1150 340 1540 190" stroke="#D4932E" stroke-width="1.5" opacity="0.22"/>
-      <path d="M-100 380 C100 220 350 340 650 230 C900 140 1100 270 1540 120" stroke="#D4932E" stroke-width="1" opacity="0.15"/>
-      <path d="M-100 560 C200 380 500 500 820 370 C1070 265 1280 400 1540 270" stroke="#A86F1F" stroke-width="1" opacity="0.12"/>
-      <path d="M200 600 C500 420 780 540 1080 400 C1280 310 1400 430 1540 360" stroke="#D4932E" stroke-width="0.8" opacity="0.1"/>
-      <path d="M-100 280 C200 140 450 240 750 150 C980 75 1200 200 1540 80" stroke="#D4932E" stroke-width="0.7" opacity="0.08"/>
+    <svg viewBox="0 0 420 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M420 340 C340 270 260 290 170 200 C100 130 50 70 0 10" stroke="#D4932E" stroke-width="1.6" opacity="0.28" fill="none"/>
+      <path d="M420 300 C350 240 275 258 195 175 C128 108 72 52 18 0" stroke="#D4932E" stroke-width="1.1" opacity="0.2" fill="none"/>
+      <path d="M420 380 C330 300 245 325 150 230 C80 155 30 85 -10 20" stroke="#A86F1F" stroke-width="0.9" opacity="0.15" fill="none"/>
+      <!-- small dot accents -->
+      <circle cx="310" cy="200" r="2.5" fill="#D4932E" opacity="0.35"/>
+      <circle cx="348" cy="165" r="1.5" fill="#D4932E" opacity="0.25"/>
+      <circle cx="270" cy="235" r="1.8" fill="#D4932E" opacity="0.2"/>
     </svg>
   </div>
 
@@ -133,10 +135,13 @@ const after = [
     overflow: hidden;
   }
 
-  /* Wave overlay */
+  /* Wave — bottom-right corner only */
   .ba-waves {
     position: absolute;
-    inset: 0;
+    bottom: 0;
+    right: 0;
+    width: clamp(260px, 30vw, 420px);
+    height: clamp(200px, 25vw, 340px);
     pointer-events: none;
     z-index: 0;
   }
