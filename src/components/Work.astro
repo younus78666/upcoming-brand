@@ -1,100 +1,92 @@
 ---
 const cases = [
   {
+    num: "01",
     tag: "Law Firm",
     city: "Baltimore",
     year: "2026",
     client: "Meridian Law Group",
-    desc: "48-page rebuild for 40-year firm, 6 practice silos, intake routing.",
+    desc: "48-page rebuild for a 40-year firm with six practice areas. Full intake routing, location schema, and a topical map targeting 22 Baltimore attorney keywords.",
     stats: [
       { val: "+312%", label: "Organic leads" },
       { val: "94", label: "PageSpeed mobile" },
-      { val: "48", label: "Pages rebuilt" },
+      { val: "Pg 1", label: "11 keywords" },
     ],
-    color: "#1C3A5C",
-    gradient: "linear-gradient(135deg, #1C232B 0%, #2C3E50 100%)",
+    gradient: "linear-gradient(145deg, #111820 0%, #1C3A50 60%, #0F2035 100%)",
+    accentColor: "rgba(212,147,46,0.7)",
+    navColor: "rgba(255,255,255,0.12)",
+    heroColor: "rgba(212,147,46,0.18)",
   },
   {
-    tag: "Dental",
+    num: "02",
+    tag: "Dental Practice",
     city: "Annapolis",
     year: "2025",
     client: "Chesapeake Dental",
-    desc: "3-location practice, integrated booking, insurance verification.",
+    desc: "3-location dental group unified under one WordPress install. Integrated online booking, insurance verification widget, and per-location SEO landing pages.",
     stats: [
       { val: "+218%", label: "Online bookings" },
       { val: "92", label: "PageSpeed mobile" },
       { val: "3", label: "Locations unified" },
     ],
-    color: "#2A4A3E",
-    gradient: "linear-gradient(135deg, #F4EFE6 0%, #D4C5A9 100%)",
+    gradient: "linear-gradient(145deg, #0D1F1A 0%, #183828 60%, #0A1510 100%)",
+    accentColor: "rgba(92,128,64,0.7)",
+    navColor: "rgba(255,255,255,0.1)",
+    heroColor: "rgba(92,128,64,0.2)",
   },
   {
+    num: "03",
     tag: "Real Estate",
     city: "Bethesda",
     year: "2025",
     client: "Tidewater Realty",
-    desc: "IDX-powered brokerage, 80+ agent profiles, MLS data sync.",
+    desc: "IDX-powered brokerage site with 80+ agent profiles, MLS data sync, and neighborhood pages targeting Bethesda, Chevy Chase, and Rockville buyers.",
     stats: [
       { val: "80+", label: "Agent profiles" },
-      { val: "2.4s", label: "LCP" },
+      { val: "2.4s", label: "LCP time" },
       { val: "+156%", label: "Qualified leads" },
     ],
-    color: "#3A2A1C",
-    gradient: "linear-gradient(135deg, #0F1419 0%, #1C3A2D 100%)",
+    gradient: "linear-gradient(145deg, #1A1008 0%, #2E1C0A 60%, #3A2410 100%)",
+    accentColor: "rgba(180,120,40,0.7)",
+    navColor: "rgba(255,255,255,0.1)",
+    heroColor: "rgba(180,120,40,0.18)",
   },
   {
+    num: "04",
     tag: "E-commerce",
     city: "Rockville",
     year: "2025",
     client: "Arden Interiors",
-    desc: "340 SKUs, custom product configurator, 3.8% conversion rate.",
+    desc: "340-SKU WooCommerce store with a custom product configurator, fabric sample request flow, and Stripe checkout — shipping Maryland, Virginia, and DC.",
     stats: [
       { val: "3.8%", label: "Conversion rate" },
       { val: "340", label: "Products live" },
-      { val: "+89%", label: "Average order value" },
+      { val: "+89%", label: "Avg order value" },
     ],
-    color: "#2E1E3A",
-    gradient: "linear-gradient(135deg, #2C1810 0%, #4A2818 100%)",
+    gradient: "linear-gradient(145deg, #1A0F1E 0%, #2E183A 60%, #1C0E24 100%)",
+    accentColor: "rgba(160,100,200,0.5)",
+    navColor: "rgba(255,255,255,0.1)",
+    heroColor: "rgba(160,100,200,0.15)",
   },
 ];
 ---
 <section class="work-section section-pad" id="work">
   <div class="container">
+
     <div class="work-intro">
       <p class="eyebrow">Selected work</p>
       <h2 class="h2-section">Recent WordPress web design builds from the studio</h2>
+      <p class="lead">Four examples from 400+ projects. Every stat below is from a live Google Analytics or Search Console report.</p>
     </div>
 
-    <div class="work-grid">
-      {cases.map((c) => (
-        <article class="work-card" style={`--card-color: ${c.color}`}>
-          <!-- Image placeholder -->
-          <div class="work-img" aria-hidden="true" style={`background: ${c.gradient}`}>
-            <div class="work-img-inner">
-              <span class="work-img-label mono-xs">{c.client}</span>
-              <div class="work-img-decoration">
-                <div class="work-browser">
-                  <div class="browser-dots">
-                    <span></span><span></span><span></span>
-                  </div>
-                  <div class="browser-bar"></div>
-                  <div class="browser-content">
-                    <div class="bc-nav"></div>
-                    <div class="bc-hero"></div>
-                    <div class="bc-body">
-                      <div class="bc-line"></div>
-                      <div class="bc-line bc-line-short"></div>
-                      <div class="bc-line"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <div class="work-list">
+      {cases.map((c, i) => (
+        <article class="work-row">
 
-          <!-- Card body -->
-          <div class="work-body">
-            <div class="work-meta">
+          <!-- LEFT: Text content -->
+          <div class="work-content">
+            <div class="work-num-row">
+              <span class="work-num" aria-hidden="true">{c.num}</span>
               <span class="work-tag mono-xs">{c.tag}</span>
               <span class="work-loc mono-xs">{c.city} &middot; {c.year}</span>
             </div>
@@ -108,187 +100,159 @@ const cases = [
                 </div>
               ))}
             </div>
+            <a href="#contact" class="work-cta">View case study <span aria-hidden="true">&rarr;</span></a>
           </div>
+
+          <!-- RIGHT: Browser mockup -->
+          <div class="work-visual" aria-hidden="true" style={`background: ${c.gradient}`}>
+            <div class="wb-chrome">
+              <div class="wb-dots">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="wb-urlbar"></div>
+            </div>
+            <div class="wb-body">
+              <div class="wb-nav" style={`background: ${c.navColor}`}></div>
+              <div class="wb-hero" style={`background: ${c.heroColor}`}>
+                <div class="wb-hero-line" style={`background: ${c.accentColor}`}></div>
+                <div class="wb-hero-sub"></div>
+                <div class="wb-hero-btn" style={`background: ${c.accentColor}`}></div>
+              </div>
+              <div class="wb-cards">
+                <div class="wb-card"></div>
+                <div class="wb-card"></div>
+                <div class="wb-card"></div>
+              </div>
+              <div class="wb-text-block">
+                <div class="wb-line wb-line-full"></div>
+                <div class="wb-line wb-line-mid"></div>
+                <div class="wb-line wb-line-short"></div>
+              </div>
+            </div>
+          </div>
+
         </article>
       ))}
     </div>
 
     <div class="work-footer">
-      <p class="work-footer-text">40+ more case studies in the full portfolio.</p>
-      <a href="#portfolio" class="cta-outline">View all case studies &rarr;</a>
+      <div class="work-footer-left">
+        <p class="work-footer-num">400+</p>
+        <p class="work-footer-label">projects delivered across Maryland and 12 countries</p>
+      </div>
+      <a href="#contact" class="cta-outline">View full portfolio &rarr;</a>
     </div>
+
   </div>
 </section>
 
 <style>
+  .work-section {
+    background: var(--paper);
+  }
+
+  /* ── INTRO ── */
   .work-intro {
-    margin-bottom: 40px;
+    max-width: 640px;
+    margin-bottom: 56px;
   }
 
-  .work-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 40px;
-  }
-
-  .work-card {
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--amber);
+  /* ── LIST ── */
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1.5px solid rgba(15,20,25,0.08);
     border-radius: var(--radius-md);
     overflow: hidden;
+    box-shadow: 0 2px 16px rgba(15,20,25,0.07);
+  }
+
+  /* ── ROW ── */
+  .work-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 320px;
+    border-bottom: 1px solid rgba(15,20,25,0.08);
+  }
+
+  .work-row:last-child {
+    border-bottom: none;
+  }
+
+  /* ── CONTENT (LEFT) ── */
+  .work-content {
+    padding: clamp(32px, 4vw, 52px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    border-right: 1px solid rgba(15,20,25,0.08);
     background: var(--paper);
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--transition), transform var(--transition);
+    transition: background var(--transition);
   }
 
-  .work-card:hover {
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+  .work-row:hover .work-content {
+    background: var(--cream-soft);
   }
 
-  /* Image placeholder */
-  .work-img {
-    height: 220px;
-    position: relative;
-    overflow: hidden;
+  /* ── NUM ROW ── */
+  .work-num-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 12px;
   }
 
-  .work-img-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .work-img-label {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
-    color: rgba(255,255,255,0.5);
-    z-index: 2;
-  }
-
-  /* SVG browser mockup */
-  .work-img-decoration {
-    width: 75%;
-    max-width: 260px;
-  }
-
-  .work-browser {
-    background: rgba(255,255,255,0.08);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  .browser-dots {
-    display: flex;
-    gap: 4px;
-    padding: 8px 10px 6px;
-    background: rgba(0,0,0,0.2);
-  }
-
-  .browser-dots span {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-  }
-
-  .browser-bar {
-    height: 4px;
-    background: rgba(255,255,255,0.06);
-    margin: 4px 10px;
-    border-radius: 2px;
-  }
-
-  .browser-content {
-    padding: 8px 10px 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .bc-nav {
-    height: 6px;
-    background: rgba(255,255,255,0.12);
-    border-radius: 2px;
-    width: 60%;
-  }
-
-  .bc-hero {
-    height: 32px;
-    background: rgba(212,147,46,0.2);
-    border-radius: 4px;
-    margin-block: 3px;
-  }
-
-  .bc-body {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .bc-line {
-    height: 4px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 2px;
-  }
-
-  .bc-line-short { width: 70%; }
-
-  /* Card body */
-  .work-body {
-    padding: 24px;
-  }
-
-  .work-meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  .work-num {
+    font-family: var(--f-display);
+    font-size: 13px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+    color: var(--amber);
+    opacity: 0.7;
   }
 
   .work-tag {
     background: var(--amber-glow);
     color: var(--amber-deep);
-    border: 1px solid rgba(212,147,46,0.2);
+    border: 1px solid rgba(212,147,46,0.22);
     padding: 3px 10px;
     border-radius: var(--radius-pill);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.09em;
+    font-size: 10px;
   }
 
   .work-loc {
     color: var(--ink-muted);
+    font-size: 11px;
+    margin-left: auto;
   }
 
+  /* ── CLIENT NAME ── */
   .work-client {
     font-family: var(--f-display);
-    font-size: clamp(18px, 2vw, 24px);
+    font-size: clamp(22px, 2.5vw, 34px);
     font-weight: 400;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--ink);
   }
 
+  /* ── DESCRIPTION ── */
   .work-desc {
     font-size: 14px;
     color: var(--ink-muted);
-    line-height: 1.5;
-    margin-bottom: 20px;
+    line-height: 1.65;
+    max-width: 46ch;
   }
 
+  /* ── STATS ── */
   .work-stats {
     display: flex;
     gap: 0;
-    border-top: 1px solid var(--line);
     padding-top: 16px;
+    border-top: 1px solid var(--line);
   }
 
   .work-stat {
@@ -296,55 +260,215 @@ const cases = [
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding-right: 16px;
+    padding-right: 20px;
     border-right: 1px solid var(--line);
   }
 
   .work-stat:last-child {
     border-right: none;
     padding-right: 0;
-    padding-left: 16px;
+    padding-left: 20px;
   }
 
   .work-stat:nth-child(2) {
-    padding-left: 16px;
+    padding-left: 20px;
   }
 
   .wstat-val {
     font-family: var(--f-display);
-    font-size: 22px;
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-size: clamp(20px, 2vw, 26px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
     line-height: 1;
     color: var(--amber);
   }
 
   .wstat-label {
     color: var(--ink-muted);
-    letter-spacing: 0.06em;
-    font-family: var(--f-mono);
+    letter-spacing: 0.07em;
+    font-size: 10px;
+    text-transform: uppercase;
   }
 
-  /* Footer */
+  /* ── CTA LINK ── */
+  .work-cta {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amber);
+    letter-spacing: 0.01em;
+    transition: opacity var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .work-cta:hover {
+    opacity: 0.7;
+  }
+
+  /* ── VISUAL (RIGHT) ── */
+  .work-visual {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* Browser chrome */
+  .wb-chrome {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: rgba(0,0,0,0.25);
+    flex-shrink: 0;
+  }
+
+  .wb-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .wb-dots span {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.18);
+  }
+
+  .wb-urlbar {
+    flex: 1;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 3px;
+    max-width: 180px;
+  }
+
+  /* Browser body */
+  .wb-body {
+    flex: 1;
+    padding: 12px 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .wb-nav {
+    height: 8px;
+    border-radius: 3px;
+    width: 70%;
+  }
+
+  .wb-hero {
+    flex: 0 0 auto;
+    border-radius: 6px;
+    padding: 16px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    min-height: 90px;
+  }
+
+  .wb-hero-line {
+    height: 7px;
+    border-radius: 3px;
+    width: 65%;
+  }
+
+  .wb-hero-sub {
+    height: 5px;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.12);
+    width: 45%;
+  }
+
+  .wb-hero-btn {
+    height: 14px;
+    border-radius: 4px;
+    width: 80px;
+    margin-top: 4px;
+    opacity: 0.8;
+  }
+
+  .wb-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+
+  .wb-card {
+    height: 40px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 4px;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .wb-text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-top: 4px;
+  }
+
+  .wb-line {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+  }
+
+  .wb-line-full { width: 100%; }
+  .wb-line-mid { width: 75%; }
+  .wb-line-short { width: 50%; }
+
+  /* ── FOOTER ── */
   .work-footer {
     display: flex;
     align-items: center;
     gap: 24px;
-    padding: 24px;
-    border: 1px solid var(--line);
+    margin-top: 32px;
+    padding: 28px 32px;
+    border: 1.5px solid rgba(15,20,25,0.08);
     border-radius: var(--radius-md);
     background: var(--cream-soft);
   }
 
-  .work-footer-text {
-    font-size: 15px;
-    color: var(--ink-muted);
+  .work-footer-left {
     flex: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
   }
 
+  .work-footer-num {
+    font-family: var(--f-display);
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .work-footer-label {
+    font-size: 14px;
+    color: var(--ink-muted);
+    max-width: 28ch;
+    line-height: 1.4;
+  }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 900px) {
-    .work-grid {
+    .work-row {
       grid-template-columns: 1fr;
+      min-height: unset;
+    }
+
+    .work-content {
+      border-right: none;
+      border-bottom: 1px solid rgba(15,20,25,0.08);
+    }
+
+    .work-visual {
+      min-height: 220px;
     }
   }
 
@@ -352,7 +476,11 @@ const cases = [
     .work-footer {
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+    }
+
+    .work-footer-left {
+      flex-direction: column;
+      gap: 4px;
     }
   }
 </style>
