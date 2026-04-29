@@ -42,8 +42,9 @@ const testimonials = [
     <div class="testi-grid">
       {testimonials.map((t) => (
         <blockquote class={`testi-card ${t.featured ? 'testi-card-featured' : ''}`}>
+          {t.featured && <span class="testi-big-quote" aria-hidden="true">&ldquo;</span>}
           <div class="testi-stars" aria-label={`${t.stars} out of 5 stars`} role="img">
-            {'★'.repeat(t.stars)}
+            &#9733;&#9733;&#9733;&#9733;&#9733;
           </div>
           <p class="testi-quote">{t.quote}</p>
           <footer class="testi-footer">
@@ -99,6 +100,24 @@ const testimonials = [
     border-color: rgba(244,239,230,0.1);
   }
 
+  .testi-big-quote {
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    font-family: var(--f-display);
+    font-size: 80px;
+    line-height: 1;
+    color: var(--amber);
+    opacity: 0.6;
+    font-weight: 300;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .testi-card-featured {
+    position: relative;
+  }
+
   .testi-stars {
     color: var(--amber);
     font-size: 16px;
@@ -130,17 +149,17 @@ const testimonials = [
   }
 
   .testi-avatar {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
-    background: var(--amber);
-    color: var(--ink);
+    background: var(--ink);
+    color: var(--cream);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: var(--f-mono);
-    font-size: 12px;
-    font-weight: 500;
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-weight: 400;
     flex-shrink: 0;
   }
 

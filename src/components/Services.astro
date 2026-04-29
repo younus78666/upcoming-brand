@@ -93,6 +93,9 @@ const services = [
               <a href="#contact" class="cta-btn-light cta-btn" set:html={svc.cta} />
             </div>
           )}
+          {!svc.cta && (
+            <a href="#contact" class="link-arrow svc-learn-more">Learn more &rarr;</a>
+          )}
         </div>
       ))}
     </div>
@@ -123,10 +126,20 @@ const services = [
     display: flex;
     flex-direction: column;
     gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .svc-learn-more {
+    margin-top: auto;
   }
 
   .service-card-dark {
-    grid-column: span 1;
+    grid-column: span 2;
   }
 
   .svc-header {
@@ -139,6 +152,8 @@ const services = [
   .svc-num {
     color: var(--amber);
     letter-spacing: 0.1em;
+    font-size: 13px;
+    font-weight: 500;
   }
 
   .service-card-dark .svc-num {
@@ -209,9 +224,19 @@ const services = [
     }
   }
 
+  @media (max-width: 900px) {
+    .service-card-dark {
+      grid-column: span 2;
+    }
+  }
+
   @media (max-width: 600px) {
     .services-grid {
       grid-template-columns: 1fr;
+    }
+
+    .service-card-dark {
+      grid-column: span 1;
     }
   }
 </style>

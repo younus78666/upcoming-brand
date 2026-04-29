@@ -77,6 +77,7 @@ const industries = [
           <span class="ind-cell" role="columnheader">MD searches/mo</span>
           <span class="ind-cell" role="columnheader">Avg. CPC</span>
           <span class="ind-cell ind-cell-note" role="columnheader">Notes</span>
+          <span class="ind-row-arrow" aria-hidden="true"></span>
         </div>
       </div>
       <div class="ind-tbody" role="rowgroup">
@@ -93,6 +94,7 @@ const industries = [
               <span class="ind-cpc">{ind.cpc}</span>
             </span>
             <span class="ind-cell ind-cell-note mono-xs" role="cell">{ind.note}</span>
+            <span class="ind-row-arrow" aria-hidden="true">&rarr;</span>
           </div>
         ))}
       </div>
@@ -126,10 +128,11 @@ const industries = [
 
   .ind-row {
     display: grid;
-    grid-template-columns: 48px 1fr 140px 100px 1fr;
+    grid-template-columns: 48px 1fr 140px 100px 1fr auto;
     border-bottom: 1px solid var(--line);
     align-items: center;
-    transition: background var(--transition);
+    transition: background var(--transition), border-left-color var(--transition);
+    border-left: 3px solid transparent;
   }
 
   .ind-row:last-child {
@@ -142,6 +145,22 @@ const industries = [
 
   .ind-tbody .ind-row:hover {
     background: var(--cream-soft);
+    border-left-color: var(--amber);
+  }
+
+  .ind-row-arrow {
+    padding: 14px 16px 14px 8px;
+    color: transparent;
+    font-size: 14px;
+    transition: color var(--transition);
+  }
+
+  .ind-tbody .ind-row:hover .ind-row-arrow {
+    color: var(--amber);
+  }
+
+  .ind-header-row .ind-row-arrow {
+    border-right: none;
   }
 
   .ind-cell {
@@ -198,7 +217,7 @@ const industries = [
 
   @media (max-width: 900px) {
     .ind-row {
-      grid-template-columns: 40px 1fr 110px 80px;
+      grid-template-columns: 40px 1fr 110px 80px auto;
     }
 
     .ind-cell-note {

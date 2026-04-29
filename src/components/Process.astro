@@ -58,6 +58,7 @@ const phases = [
               <h3 class="phase-name">{phase.name}</h3>
               <span class="phase-timing mono-xs">{phase.timing}</span>
             </div>
+            <p class="phase-deliverables-label">DELIVERABLES</p>
             <p class="phase-desc">{phase.desc}</p>
           </div>
         </div>
@@ -120,16 +121,20 @@ const phases = [
   }
 
   .phase-num {
-    width: 32px;
-    height: 32px;
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--amber);
+    background: var(--ink);
+    border: 2px solid var(--ink);
     border-radius: 50%;
     color: var(--amber);
-    font-size: 11px;
-    letter-spacing: 0.05em;
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
     flex-shrink: 0;
   }
 
@@ -159,6 +164,17 @@ const phases = [
     color: var(--amber);
     white-space: nowrap;
     letter-spacing: 0.06em;
+    text-align: right;
+  }
+
+  .phase-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
   }
 
   .phase-desc {

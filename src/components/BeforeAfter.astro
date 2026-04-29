@@ -33,7 +33,7 @@ const after = [
 
     <div class="ba-grid">
       <!-- Before Panel -->
-      <div class="ba-panel ba-before">
+      <div class="ba-panel ba-before" style="border: 1px solid rgba(176,74,62,0.15); border-left: 3px solid var(--red);">
         <div class="ba-panel-header">
           <span class="ba-badge ba-badge-before mono-xs">Before &middot; Template shop</span>
           <h3 class="ba-panel-title">The symptoms we keep being called to fix</h3>
@@ -53,8 +53,13 @@ const after = [
         </ul>
       </div>
 
+      <!-- VS Separator -->
+      <div class="ba-vs" aria-hidden="true">
+        <span class="ba-vs-circle">VS</span>
+      </div>
+
       <!-- After Panel -->
-      <div class="ba-panel ba-after">
+      <div class="ba-panel ba-after" style="border: 1px solid rgba(92,128,64,0.2); border-left: 3px solid var(--green);">
         <div class="ba-panel-header">
           <span class="ba-badge ba-badge-after mono-xs">After &middot; Upcoming Brand</span>
           <h3 class="ba-panel-title">What the site actually feels like with us</h3>
@@ -89,8 +94,32 @@ const after = [
 
   .ba-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto 1fr;
     gap: 24px;
+    align-items: start;
+  }
+
+  .ba-vs {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 40px;
+  }
+
+  .ba-vs-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
   }
 
   .ba-panel {
@@ -100,13 +129,16 @@ const after = [
   }
 
   .ba-before {
-    background: var(--paper);
+    background: rgba(176,74,62,0.04);
+    border-left: 3px solid var(--red);
+    border-color: rgba(176,74,62,0.15);
   }
 
   .ba-after {
-    background: var(--ink);
-    color: var(--cream);
-    border-color: rgba(244,239,230,0.1);
+    background: rgba(92,128,64,0.05);
+    border-left: 3px solid var(--green);
+    border-color: rgba(92,128,64,0.2);
+    color: var(--ink);
   }
 
   .ba-panel-header {
@@ -159,7 +191,7 @@ const after = [
   }
 
   .ba-item-after {
-    border-color: rgba(244,239,230,0.1);
+    border-color: rgba(92,128,64,0.15);
   }
 
   .ba-item:last-child {
@@ -187,6 +219,11 @@ const after = [
   @media (max-width: 900px) {
     .ba-grid {
       grid-template-columns: 1fr;
+    }
+
+    .ba-vs {
+      padding-top: 0;
+      padding-block: 8px;
     }
   }
 </style>

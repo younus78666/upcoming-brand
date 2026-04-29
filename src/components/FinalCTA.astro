@@ -48,6 +48,30 @@
     overflow: hidden;
   }
 
+  .final-cta::before {
+    content: "Ready.";
+    position: absolute;
+    bottom: -40px;
+    right: -20px;
+    font-family: var(--f-display);
+    font-size: clamp(80px, 15vw, 200px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.04;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .final-cta-inner {
+    position: relative;
+    z-index: 1;
+  }
+
   .final-cta-inner {
     display: grid;
     grid-template-columns: 1fr auto;

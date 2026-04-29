@@ -12,6 +12,7 @@ const cases = [
       { val: "48", label: "Pages rebuilt" },
     ],
     color: "#1C3A5C",
+    gradient: "linear-gradient(135deg, #1C232B 0%, #2C3E50 100%)",
   },
   {
     tag: "Dental",
@@ -25,6 +26,7 @@ const cases = [
       { val: "3", label: "Locations unified" },
     ],
     color: "#2A4A3E",
+    gradient: "linear-gradient(135deg, #F4EFE6 0%, #D4C5A9 100%)",
   },
   {
     tag: "Real Estate",
@@ -38,6 +40,7 @@ const cases = [
       { val: "+156%", label: "Qualified leads" },
     ],
     color: "#3A2A1C",
+    gradient: "linear-gradient(135deg, #0F1419 0%, #1C3A2D 100%)",
   },
   {
     tag: "E-commerce",
@@ -51,6 +54,7 @@ const cases = [
       { val: "+89%", label: "Average order value" },
     ],
     color: "#2E1E3A",
+    gradient: "linear-gradient(135deg, #2C1810 0%, #4A2818 100%)",
   },
 ];
 ---
@@ -65,7 +69,7 @@ const cases = [
       {cases.map((c) => (
         <article class="work-card" style={`--card-color: ${c.color}`}>
           <!-- Image placeholder -->
-          <div class="work-img" aria-hidden="true" style={`background: ${c.color}`}>
+          <div class="work-img" aria-hidden="true" style={`background: ${c.gradient}`}>
             <div class="work-img-inner">
               <span class="work-img-label mono-xs">{c.client}</span>
               <div class="work-img-decoration">
@@ -130,6 +134,7 @@ const cases = [
 
   .work-card {
     border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
     border-radius: var(--radius-md);
     overflow: hidden;
     background: var(--paper);
@@ -311,11 +316,13 @@ const cases = [
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1;
+    color: var(--amber);
   }
 
   .wstat-label {
     color: var(--ink-muted);
     letter-spacing: 0.06em;
+    font-family: var(--f-mono);
   }
 
   /* Footer */

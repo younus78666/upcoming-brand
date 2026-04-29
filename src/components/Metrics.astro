@@ -48,6 +48,33 @@ const metrics = [
   .metrics-section {
     background: var(--ink);
     color: var(--cream);
+    border-top: 3px solid var(--amber);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metrics-section::before {
+    content: "Results";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--f-display);
+    font-size: clamp(120px, 20vw, 280px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.04;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .metrics-section .container {
+    position: relative;
+    z-index: 1;
   }
 
   .metrics-section .eyebrow {
@@ -104,7 +131,7 @@ const metrics = [
     font-weight: 300;
     letter-spacing: -0.04em;
     line-height: 1;
-    color: var(--cream);
+    color: var(--amber);
   }
 
   .metric-label {

@@ -20,7 +20,7 @@ const allItems = [...items, ...items];
     <div class="marquee-track">
       {allItems.map((item) => (
         <span class="marquee-item">
-          <span class="marquee-dot"></span>
+          <span class="marquee-sep" aria-hidden="true">&middot;</span>
           {item}
         </span>
       ))}
@@ -50,8 +50,8 @@ const allItems = [...items, ...items];
 
   .marquee-track-wrap {
     overflow: hidden;
-    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    mask-image: linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 120px, black calc(100% - 120px), transparent);
   }
 
   .marquee-track {
@@ -84,11 +84,10 @@ const allItems = [...items, ...items];
     border-right: 1px solid rgba(244,239,230,0.1);
   }
 
-  .marquee-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--amber);
+  .marquee-sep {
+    color: var(--amber);
+    font-size: 1.2em;
     flex-shrink: 0;
+    line-height: 1;
   }
 </style>

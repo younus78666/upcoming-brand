@@ -17,7 +17,7 @@ const bullets = [
       <ul class="takeaways-list" role="list">
         {bullets.map((bullet, i) => (
           <li class="takeaway-item" role="listitem">
-            <span class="takeaway-num mono-xs" aria-hidden="true">0{i + 1}</span>
+            <span class="takeaway-check" aria-hidden="true">&#10003;</span>
             <span class="takeaway-text">{bullet}</span>
           </li>
         ))}
@@ -33,6 +33,7 @@ const bullets = [
 
   .takeaways-box {
     border: 1px solid var(--line);
+    border-left: 4px solid var(--amber);
     border-radius: var(--radius-lg);
     background: var(--paper);
     padding: clamp(32px, 4vw, 56px);
@@ -72,9 +73,12 @@ const bullets = [
     padding-top: 0;
   }
 
-  .takeaway-num {
+  .takeaway-check {
     color: var(--amber);
     flex-shrink: 0;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.6;
   }
 
   .takeaway-text {

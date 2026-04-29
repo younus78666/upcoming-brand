@@ -6,6 +6,7 @@ const articles = [
     title: "How much does a WordPress website actually cost in 2026?",
     desc: "Transparent breakdown from $3,500 to $50,000 based on 400+ projects.",
     href: "#",
+    imgGradient: "linear-gradient(135deg, #1C232B 0%, #2C3E50 100%)",
   },
   {
     tag: "Comparison",
@@ -13,6 +14,7 @@ const articles = [
     title: "WordPress vs Webflow: which one wins for Maryland businesses in 2026?",
     desc: "Honest comparison from an agency that's built on both.",
     href: "#",
+    imgGradient: "linear-gradient(135deg, #0F1419 0%, #2A3A28 100%)",
   },
   {
     tag: "Guide",
@@ -20,6 +22,7 @@ const articles = [
     title: "12 questions to ask every web designer before you hire them",
     desc: "Questions most Maryland business owners don't think to ask.",
     href: "#",
+    imgGradient: "linear-gradient(135deg, #2C1810 0%, #3A2A1C 100%)",
   },
 ];
 ---
@@ -36,7 +39,7 @@ const articles = [
         <article class="blog-card card">
           <a href={article.href} class="blog-card-link" aria-label={`Read: ${article.title}`}>
             <!-- Placeholder image area -->
-            <div class="blog-img" aria-hidden="true">
+            <div class="blog-img" aria-hidden="true" style={`background: ${article.imgGradient}`}>
               <div class="blog-img-pattern"></div>
               <div class="blog-img-tag-wrap">
                 <span class="blog-img-tag mono-xs">{article.tag}</span>
@@ -84,12 +87,14 @@ const articles = [
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transition: box-shadow var(--transition), transform var(--transition);
+    border-top: 3px solid transparent;
+    transition: box-shadow var(--transition), transform var(--transition), border-top-color var(--transition);
   }
 
   .blog-card:hover {
     box-shadow: var(--shadow-lg);
-    transform: translateY(-2px);
+    transform: translateY(-4px);
+    border-top-color: var(--amber);
   }
 
   .blog-card-link {
@@ -103,7 +108,6 @@ const articles = [
   /* Image placeholder */
   .blog-img {
     height: 180px;
-    background: var(--ink-soft);
     position: relative;
     overflow: hidden;
     display: flex;

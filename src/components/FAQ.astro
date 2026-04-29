@@ -74,6 +74,7 @@ const faqs = [
 <style>
   .faq-section {
     background: var(--paper);
+    border-top: 1px solid var(--line);
   }
 
   .faq-layout {
@@ -107,10 +108,16 @@ const faqs = [
 
   .faq-item {
     border-bottom: 1px solid var(--line);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition);
   }
 
   .faq-item:first-child {
     border-top: 1px solid var(--line);
+  }
+
+  .faq-item:has(.faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
   }
 
   .faq-trigger {
