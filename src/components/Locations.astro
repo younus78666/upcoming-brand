@@ -1,80 +1,140 @@
 ---
 const cities = [
-  "Baltimore", "Annapolis", "Frederick", "Bethesda",
-  "Rockville", "Silver Spring", "Columbia", "Gaithersburg",
-  "Towson", "Ellicott City", "Germantown", "Hagerstown",
+  { name: "Baltimore",      county: "Baltimore City" },
+  { name: "Annapolis",      county: "Anne Arundel Co." },
+  { name: "Frederick",      county: "Frederick Co." },
+  { name: "Bethesda",       county: "Montgomery Co." },
+  { name: "Rockville",      county: "Montgomery Co." },
+  { name: "Silver Spring",  county: "Montgomery Co." },
+  { name: "Columbia",       county: "Howard Co." },
+  { name: "Gaithersburg",   county: "Montgomery Co." },
+  { name: "Towson",         county: "Baltimore Co." },
+  { name: "Ellicott City",  county: "Howard Co." },
+  { name: "Germantown",     county: "Montgomery Co." },
+  { name: "Hagerstown",     county: "Washington Co." },
+  { name: "Bowie",          county: "Prince George's Co." },
+  { name: "Glen Burnie",    county: "Anne Arundel Co." },
+  { name: "Waldorf",        county: "Charles Co." },
+  { name: "Laurel",         county: "Prince George's Co." },
+];
+
+const contactDetails = [
+  { label: "Response time",    val: "Under 4 business hours",     icon: "⏱" },
+  { label: "Meeting options",  val: "In-person, Zoom, Google Meet", icon: "📍" },
+  { label: "Languages",        val: "English · Urdu",             icon: "💬" },
+  { label: "Working hours",    val: "Mon–Fri, 9 AM–6 PM EST",     icon: "🗓" },
 ];
 ---
 <section class="locations-section section-pad" id="locations">
   <div class="container">
-    <div class="locations-layout">
-      <div class="locations-main">
-        <p class="eyebrow">Serving all of Maryland</p>
-        <h2 class="h2-section">Which Maryland cities does Upcoming Brand serve?</h2>
-        <p class="lead">
-          20+ Maryland cities including Baltimore, Annapolis, Frederick, Bethesda, Rockville, Silver Spring, Columbia, Gaithersburg, Towson, Ellicott City, Germantown, and Hagerstown.
-        </p>
-        <p class="loc-sub">Baltimore to Bethesda. Frederick to Ocean City. If you're in the DMV metro, we can meet in person.</p>
 
+    <!-- Centered intro -->
+    <div class="loc-intro">
+      <p class="eyebrow loc-eyebrow">Serving all of Maryland</p>
+      <h2 class="h2-section">Which Maryland cities does Upcoming Brand serve?</h2>
+      <p class="lead">
+        Based in Maryland and serving 20+ cities across Baltimore, the DMV metro, and the Eastern Shore. Need an in-person meeting? We're within 90 minutes of any Maryland business.
+      </p>
+    </div>
+
+    <!-- Two-col layout -->
+    <div class="locations-layout">
+
+      <!-- LEFT: City grid -->
+      <div class="locations-main">
         <div class="city-grid" role="list" aria-label="Maryland cities we serve">
           {cities.map((city) => (
             <div class="city-tile" role="listitem">
-              <span class="city-name">{city}</span>
+              <span class="city-pin" aria-hidden="true">
+                <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                  <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" fill="currentColor"/>
+                  <circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/>
+                </svg>
+              </span>
+              <div class="city-text">
+                <span class="city-name">{city.name}</span>
+                <span class="city-county mono-xs">{city.county}</span>
+              </div>
             </div>
           ))}
         </div>
+        <p class="city-more mono-xs">+ Ocean City, Salisbury, Easton, Cumberland &amp; more across Maryland</p>
       </div>
 
+      <!-- RIGHT: Map + contact card -->
       <div class="locations-sidebar">
-        <!-- Map placeholder -->
-        <div class="map-placeholder" aria-label="Maryland service area map (decorative)">
-          <svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
-            <rect width="300" height="240" rx="12" fill="var(--cream-soft)"/>
-            <!-- Stylized Maryland outline -->
-            <path d="M20 80 L60 60 L100 55 L130 40 L160 38 L200 42 L240 50 L270 58 L280 80 L275 100 L265 130 L240 150 L210 160 L180 165 L150 168 L120 162 L90 155 L60 140 L35 120 L20 100 Z" fill="var(--amber-glow)" stroke="var(--amber)" stroke-width="1.5"/>
-            <!-- City dots -->
-            <circle cx="145" cy="90" r="5" fill="var(--amber)"/>
-            <text x="152" y="93" font-size="9" fill="var(--ink-muted)" font-family="monospace">Baltimore</text>
-            <circle cx="178" cy="118" r="3.5" fill="var(--amber)" opacity="0.7"/>
-            <text x="183" y="121" font-size="8" fill="var(--ink-muted)" font-family="monospace">Annapolis</text>
-            <circle cx="82" cy="75" r="3.5" fill="var(--amber)" opacity="0.7"/>
-            <text x="88" y="78" font-size="8" fill="var(--ink-muted)" font-family="monospace">Frederick</text>
-            <circle cx="200" cy="85" r="3" fill="var(--amber)" opacity="0.6"/>
-            <text x="205" y="88" font-size="8" fill="var(--ink-muted)" font-family="monospace">Bethesda</text>
-            <circle cx="110" cy="95" r="3" fill="var(--amber)" opacity="0.5"/>
-            <circle cx="160" cy="105" r="3" fill="var(--amber)" opacity="0.5"/>
-            <circle cx="130" cy="120" r="3" fill="var(--amber)" opacity="0.5"/>
-            <text x="20" y="210" font-size="10" fill="var(--ink-muted)" font-family="monospace" opacity="0.6">Maryland · DMV Metro</text>
+
+        <!-- Maryland map -->
+        <div class="map-card" aria-hidden="true">
+          <div class="map-label mono-xs">Maryland service area</div>
+          <svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- State fill -->
+            <path d="M18 78 L55 58 L95 52 L128 38 L162 36 L200 40 L238 48 L268 56 L282 76 L278 98 L268 128 L244 148 L215 158 L185 163 L155 166 L124 160 L92 153 L62 138 L36 118 L18 98 Z"
+              fill="rgba(212,147,46,0.08)" stroke="var(--amber)" stroke-width="1.5" stroke-linejoin="round"/>
+            <!-- Chesapeake Bay cutout suggestion -->
+            <path d="M210 80 Q218 95 215 120 Q212 140 208 158"
+              stroke="rgba(212,147,46,0.25)" stroke-width="4" stroke-linecap="round"/>
+
+            <!-- City dots with pulses -->
+            <!-- Baltimore -->
+            <circle cx="210" cy="82" r="6" fill="var(--amber)" opacity="0.15"/>
+            <circle cx="210" cy="82" r="4" fill="var(--amber)"/>
+            <text x="218" y="86" font-size="8.5" fill="var(--ink)" font-family="monospace" font-weight="600">Baltimore</text>
+
+            <!-- Annapolis -->
+            <circle cx="232" cy="112" r="3.5" fill="var(--amber)" opacity="0.85"/>
+            <text x="240" y="116" font-size="7.5" fill="var(--ink-muted)" font-family="monospace">Annapolis</text>
+
+            <!-- Frederick -->
+            <circle cx="105" cy="72" r="3.5" fill="var(--amber)" opacity="0.75"/>
+            <text x="113" y="76" font-size="7.5" fill="var(--ink-muted)" font-family="monospace">Frederick</text>
+
+            <!-- Bethesda -->
+            <circle cx="185" cy="100" r="3" fill="var(--amber)" opacity="0.65"/>
+            <text x="193" y="104" font-size="7" fill="var(--ink-muted)" font-family="monospace">Bethesda</text>
+
+            <!-- Columbia -->
+            <circle cx="195" cy="92" r="2.5" fill="var(--amber)" opacity="0.55"/>
+
+            <!-- Hagerstown -->
+            <circle cx="68" cy="68" r="2.5" fill="var(--amber)" opacity="0.5"/>
+            <text x="50" y="62" font-size="7" fill="var(--ink-muted)" font-family="monospace">Hagerstown</text>
+
+            <!-- Rockville / Silver Spring cluster -->
+            <circle cx="178" cy="94" r="2" fill="var(--amber)" opacity="0.5"/>
+            <circle cx="200" cy="96" r="2" fill="var(--amber)" opacity="0.5"/>
+
+            <!-- DMV label -->
+            <text x="14" y="188" font-size="9" fill="var(--amber)" font-family="monospace" opacity="0.7" letter-spacing="1">MD · DMV METRO · EASTERN SHORE</text>
           </svg>
         </div>
 
         <!-- Contact card -->
         <div class="contact-card">
-          <h3 class="contact-card-title">Get in touch</h3>
-          <div class="contact-details">
-            <div class="contact-detail">
-              <span class="cd-label mono-xs">Response time</span>
-              <span class="cd-val">Under 4 business hours</span>
+          <div class="contact-card-header">
+            <div class="contact-badge">
+              <span class="contact-badge-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Available now</span>
             </div>
-            <div class="contact-detail">
-              <span class="cd-label mono-xs">Meeting options</span>
-              <span class="cd-val">In-person, Zoom, Google Meet</span>
-            </div>
-            <div class="contact-detail">
-              <span class="cd-label mono-xs">Languages</span>
-              <span class="cd-val">English, Urdu</span>
-            </div>
-            <div class="contact-detail">
-              <span class="cd-label mono-xs">Hours</span>
-              <span class="cd-val">Mon&ndash;Fri, 9 AM to 6 PM EST</span>
-            </div>
+            <h3 class="contact-card-title">Let's talk about your project</h3>
           </div>
-          <a href="#contact" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 8px;">
-            Book a call &rarr;
+          <div class="contact-details">
+            {contactDetails.map((d) => (
+              <div class="contact-detail">
+                <span class="cd-label mono-xs">{d.label}</span>
+                <span class="cd-val">{d.val}</span>
+              </div>
+            ))}
+          </div>
+          <a href="#contact" class="cta-btn cta-btn-light loc-cta">
+            Book a free discovery call &rarr;
           </a>
+          <p class="contact-note mono-xs">No sales pitch · 45 minutes · Fixed-scope pricing only</p>
         </div>
+
       </div>
     </div>
+
   </div>
 </section>
 
@@ -83,49 +143,92 @@ const cities = [
     background: var(--paper);
   }
 
+  /* ── INTRO ── */
+  .loc-intro {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 56px;
+  }
+
+  .loc-eyebrow {
+    justify-content: center;
+  }
+
+  /* ── TWO-COL LAYOUT ── */
   .locations-layout {
     display: grid;
-    grid-template-columns: 1fr 340px;
+    grid-template-columns: 1fr 360px;
     gap: 48px;
     align-items: start;
   }
 
-  .loc-sub {
-    font-size: 15px;
-    color: var(--ink-muted);
-    margin-top: 12px;
-    margin-bottom: 32px;
-  }
-
+  /* ── CITY GRID ── */
   .city-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
+    margin-bottom: 16px;
   }
 
   .city-tile {
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 12px 14px;
-    border: 1px solid var(--line);
+    gap: 12px;
+    padding: 14px 16px;
+    border: 1.5px solid rgba(15,20,25,0.07);
     border-radius: var(--radius-sm);
     background: var(--cream-soft);
-    transition: border-color var(--transition), background var(--transition);
+    transition: border-color var(--transition), background var(--transition), transform var(--transition);
     cursor: default;
   }
 
   .city-tile:hover {
     border-color: var(--amber);
     background: var(--amber-glow);
+    transform: translateX(3px);
+  }
+
+  .city-pin {
+    color: var(--amber);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .city-tile:hover .city-pin {
+    color: var(--amber-deep);
+  }
+
+  .city-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
   }
 
   .city-name {
     font-size: 14px;
     font-weight: 500;
+    color: var(--ink);
+    line-height: 1.2;
   }
 
-  /* Sidebar */
+  .city-county {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .city-more {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    font-size: 11px;
+    padding: 12px 16px;
+    border: 1px dashed rgba(15,20,25,0.12);
+    border-radius: var(--radius-sm);
+    text-align: center;
+  }
+
+  /* ── SIDEBAR ── */
   .locations-sidebar {
     display: flex;
     flex-direction: column;
@@ -134,69 +237,142 @@ const cities = [
     top: 88px;
   }
 
-  .map-placeholder {
+  /* ── MAP ── */
+  .map-card {
+    border: 1.5px solid rgba(15,20,25,0.08);
     border-radius: var(--radius-md);
     overflow: hidden;
-    border: 1px solid var(--line);
+    background: var(--cream-soft);
+    padding: 16px 16px 8px;
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
   }
 
-  .map-placeholder svg {
+  .map-label {
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    font-size: 10px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    opacity: 0.7;
+  }
+
+  .map-card svg {
     width: 100%;
     height: auto;
     display: block;
   }
 
-  /* Contact card */
+  /* ── CONTACT CARD ── */
   .contact-card {
-    border: 1px solid var(--line);
-    border-left: 3px solid var(--amber);
+    background: var(--ink);
+    border: 1px solid rgba(244,239,230,0.08);
+    border-top: 3px solid var(--amber);
     border-radius: var(--radius-md);
-    padding: 24px;
-    background: var(--paper);
-    box-shadow: var(--shadow-sm);
+    padding: 28px 24px 24px;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+
+  .contact-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .contact-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.3);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.08);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .contact-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.35; }
   }
 
   .contact-card-title {
     font-family: var(--f-display);
-    font-size: 20px;
+    font-size: clamp(17px, 1.8vw, 20px);
     font-weight: 400;
     letter-spacing: -0.02em;
+    color: var(--cream);
+    line-height: 1.25;
   }
 
   .contact-details {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 0;
+    border: 1px solid rgba(244,239,230,0.08);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
   }
 
   .contact-detail {
     display: flex;
     flex-direction: column;
     gap: 3px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--line);
+    padding: 12px 14px;
+    border-bottom: 1px solid rgba(244,239,230,0.07);
+    transition: background var(--transition);
   }
 
   .contact-detail:last-child {
     border-bottom: none;
-    padding-bottom: 0;
+  }
+
+  .contact-detail:hover {
+    background: rgba(244,239,230,0.04);
   }
 
   .cd-label {
-    color: var(--ink-muted);
+    color: rgba(244,239,230,0.4);
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    font-size: 10px;
+    font-size: 9px;
   }
 
   .cd-val {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
+    color: rgba(244,239,230,0.85);
   }
 
+  .loc-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .contact-note {
+    text-align: center;
+    color: rgba(244,239,230,0.3);
+    letter-spacing: 0.06em;
+    font-size: 10px;
+    margin-top: -8px;
+  }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 1100px) {
     .locations-layout {
       grid-template-columns: 1fr;
@@ -208,9 +384,13 @@ const cities = [
       grid-template-columns: 1fr 1fr;
       gap: 20px;
     }
+
+    .city-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 768px) {
     .city-grid {
       grid-template-columns: repeat(2, 1fr);
     }
