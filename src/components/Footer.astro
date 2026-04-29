@@ -6,7 +6,7 @@ const nav = [
     heading: "Services",
     links: [
       { label: "Custom WordPress Design", href: "#services" },
-      { label: "WooCommerce Stores", href: "#services" },
+      { label: "WooCommerce Development", href: "#services" },
       { label: "Care Plans & Maintenance", href: "#services" },
       { label: "Speed Optimization", href: "#services" },
       { label: "SEO & Schema", href: "#services" },
@@ -17,17 +17,17 @@ const nav = [
   {
     heading: "Industries",
     links: [
-      { label: "Law Firms", href: "#industries" },
+      { label: "Law Firms & Attorneys", href: "#industries" },
       { label: "Dental Practices", href: "#industries" },
       { label: "Medical Clinics", href: "#industries" },
-      { label: "Real Estate", href: "#industries" },
-      { label: "Nonprofits", href: "#industries" },
-      { label: "Contractors", href: "#industries" },
+      { label: "Real Estate Brokers", href: "#industries" },
+      { label: "HVAC & Contractors", href: "#industries" },
+      { label: "Nonprofits & Churches", href: "#industries" },
       { label: "Restaurants", href: "#industries" },
     ],
   },
   {
-    heading: "Maryland",
+    heading: "Locations",
     links: [
       { label: "Baltimore", href: "#locations" },
       { label: "Annapolis", href: "#locations" },
@@ -35,7 +35,7 @@ const nav = [
       { label: "Bethesda", href: "#locations" },
       { label: "Rockville", href: "#locations" },
       { label: "Silver Spring", href: "#locations" },
-      { label: "See all 20+ cities →", href: "#locations" },
+      { label: "All 20+ Maryland cities →", href: "#locations" },
     ],
   },
   {
@@ -45,9 +45,8 @@ const nav = [
       { label: "Process", href: "#process" },
       { label: "Pricing", href: "#pricing" },
       { label: "Portfolio", href: "#work" },
-      { label: "Resources", href: "#blog" },
+      { label: "Blog", href: "#blog" },
       { label: "Contact", href: "#contact" },
-      { label: "Careers", href: "#" },
     ],
   },
 ];
@@ -69,7 +68,7 @@ const socials = [
           <span class="brand-mark-icon" aria-hidden="true"></span>
           <span class="brand-mark-text">Upcoming Brand</span>
         </a>
-        <p class="footer-tagline">A WordPress web design studio based in Maryland.</p>
+        <p class="footer-tagline">WordPress web design services based in Maryland — Baltimore, Annapolis, Frederick &amp; the DMV metro.</p>
         <div class="footer-socials" role="list" aria-label="Social media links">
           {socials.map((s) => (
             <a href={s.href} class="social-link" role="listitem" aria-label={s.label}>
@@ -101,7 +100,7 @@ const socials = [
     <!-- Bottom bar -->
     <div class="footer-bottom">
       <p class="footer-copy mono-xs">
-        &copy; {currentYear} Upcoming Brand &middot; All rights reserved
+        &copy; {currentYear} Upcoming Brand &middot; WordPress Web Design Services Maryland
       </p>
       <div class="footer-legal" role="list">
         <a href="#" class="footer-legal-link" role="listitem">Privacy</a>

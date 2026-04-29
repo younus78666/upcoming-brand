@@ -3,32 +3,42 @@ const metrics = [
   {
     num: "400+",
     label: "WordPress projects delivered",
-    sub: "Across 12 countries with Upwork Top Rated status",
+    sub: "From 1-page lead-gen sites to 80-page WooCommerce stores across 12 countries",
+  },
+  {
+    num: "90+",
+    label: "Average PageSpeed score at launch",
+    sub: "Every site ships with LCP under 2.5s and all Core Web Vitals passing in Search Console",
   },
   {
     num: "99%",
     label: "Upwork job success score",
-    sub: "Consistently in the top 3% of all WordPress specialists",
+    sub: "Across 100+ contracts — top 3% of all WordPress specialists on the platform",
   },
   {
     num: "4 hr",
-    label: "Average response time on support",
-    sub: "Not a ticket queue. Direct access to the founder on every care plan",
+    label: "Support SLA on care plans",
+    sub: "Direct access to the founder — not a help-desk ticket system",
   },
   {
-    num: "90+",
-    label: "Average mobile PageSpeed score",
-    sub: "Measured at launch on our last 20 client builds",
+    num: "$0",
+    label: "Hourly billing, ever",
+    sub: "Every project is fixed-scope — you know the number before you sign anything",
+  },
+  {
+    num: "7 yrs",
+    label: "Full-time WordPress",
+    sub: "No side hustles, no agency handoffs — this is the only thing we do",
   },
 ];
 ---
 <section class="metrics-section section-pad" id="metrics">
   <div class="container">
     <div class="metrics-intro">
-      <p class="eyebrow">Numbers we actually track</p>
-      <h2 class="h2-section">What results has Upcoming Brand delivered?</h2>
+      <p class="eyebrow">By the numbers</p>
+      <h2 class="h2-section">What a 7-year WordPress practice looks like</h2>
       <p class="lead">
-        Upcoming Brand has delivered 400+ WordPress projects across 12 countries with a 99% Upwork job success score, a 4-hour average support response time, and an average mobile PageSpeed score of 90+ across our last 20 builds.
+        These aren't agency-padded numbers. They're from real WordPress projects across Maryland, the DMV metro, and 12 countries — accumulated over seven years of full-time WordPress work with a $0 hourly billing policy.
       </p>
     </div>
 
@@ -100,7 +110,7 @@ const metrics = [
 
   .metrics-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 0;
     border: 1px solid rgba(244,239,230,0.1);
     border-radius: var(--radius-md);
@@ -113,12 +123,19 @@ const metrics = [
     gap: 8px;
     padding: clamp(28px, 3vw, 48px);
     border-right: 1px solid rgba(244,239,230,0.1);
+    border-bottom: 1px solid rgba(244,239,230,0.1);
     position: relative;
     transition: background var(--transition);
   }
 
-  .metric-card:last-child {
+  .metric-card:nth-child(3n) {
     border-right: none;
+  }
+
+  .metric-card:nth-child(4),
+  .metric-card:nth-child(5),
+  .metric-card:nth-child(6) {
+    border-bottom: none;
   }
 
   .metric-card:hover {
@@ -152,18 +169,15 @@ const metrics = [
       grid-template-columns: repeat(2, 1fr);
     }
 
-    .metric-card:nth-child(2) {
-      border-right: none;
+    .metric-card {
+      border-right: 1px solid rgba(244,239,230,0.1);
+      border-bottom: 1px solid rgba(244,239,230,0.1);
     }
 
-    .metric-card:nth-child(3) {
-      border-top: 1px solid rgba(244,239,230,0.1);
-    }
-
-    .metric-card:nth-child(4) {
-      border-top: 1px solid rgba(244,239,230,0.1);
-      border-right: none;
-    }
+    .metric-card:nth-child(3n) { border-right: 1px solid rgba(244,239,230,0.1); }
+    .metric-card:nth-child(2n) { border-right: none; }
+    .metric-card:nth-child(5),
+    .metric-card:nth-child(6) { border-bottom: none; }
   }
 
   @media (max-width: 600px) {
