@@ -66,9 +66,16 @@
           <p class="form-sub">We reply within 4 business hours. No sales pitch — just an honest conversation about what you need.</p>
         </div>
 
-        <form class="hero-form" name="hero-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+        <form class="hero-form" id="hero-inquiry-form" name="hero-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
           <input type="hidden" name="form-name" value="hero-inquiry" />
-          <p class="hidden" aria-hidden="true"><label>Don't fill this: <input name="bot-field" /></label></p>
+          <!-- Honeypot: bots fill this, humans don't see it -->
+          <div class="hp-field" aria-hidden="true">
+            <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <!-- Time trap: form submitted before 3s = bot -->
+          <input type="hidden" name="_timestamp" id="form-timestamp" value="" />
+          <!-- reCAPTCHA v3 token -->
+          <input type="hidden" name="g-recaptcha-response" id="recaptcha-token" />
 
           <div class="form-row">
             <label class="form-label" for="hero-name">Your name</label>
@@ -80,35 +87,49 @@
             <input class="form-input" type="email" id="hero-email" name="email" placeholder="jane@company.com" required autocomplete="email" />
           </div>
 
+          <!-- Custom themed dropdown: Business type -->
           <div class="form-row">
-            <label class="form-label" for="hero-biz">Business type</label>
-            <select class="form-input form-select" id="hero-biz" name="business_type">
-              <option value="" disabled selected>Select your industry</option>
-              <option>Law Firm / Attorney</option>
-              <option>Dental Practice</option>
-              <option>Medical Clinic</option>
-              <option>Real Estate</option>
-              <option>Nonprofit / Church</option>
-              <option>Contractor / Trades</option>
-              <option>Restaurant / Hospitality</option>
-              <option>Ecommerce / Retail</option>
-              <option>Small Business / Startup</option>
-              <option>Other</option>
-            </select>
+            <span class="form-label" id="lbl-biz">Business type</span>
+            <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-biz" data-name="business_type">
+              <button type="button" class="cs-trigger" aria-haspopup="listbox">
+                <span class="cs-val">Select your industry</span>
+                <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+              <ul class="cs-list" role="listbox" aria-label="Business type">
+                <li class="cs-opt" role="option" data-value="Law Firm / Attorney">Law Firm / Attorney</li>
+                <li class="cs-opt" role="option" data-value="Dental Practice">Dental Practice</li>
+                <li class="cs-opt" role="option" data-value="Medical Clinic">Medical Clinic</li>
+                <li class="cs-opt" role="option" data-value="Real Estate">Real Estate</li>
+                <li class="cs-opt" role="option" data-value="Nonprofit / Church">Nonprofit / Church</li>
+                <li class="cs-opt" role="option" data-value="Contractor / Trades">Contractor / Trades</li>
+                <li class="cs-opt" role="option" data-value="Restaurant / Hospitality">Restaurant / Hospitality</li>
+                <li class="cs-opt" role="option" data-value="Ecommerce / Retail">Ecommerce / Retail</li>
+                <li class="cs-opt" role="option" data-value="Small Business / Startup">Small Business / Startup</li>
+                <li class="cs-opt" role="option" data-value="Other">Other</li>
+              </ul>
+              <input type="hidden" name="business_type" class="cs-hidden" />
+            </div>
           </div>
 
+          <!-- Custom themed dropdown: Budget -->
           <div class="form-row">
-            <label class="form-label" for="hero-budget">Estimated budget</label>
-            <select class="form-input form-select" id="hero-budget" name="budget">
-              <option value="" disabled selected>Select a range</option>
-              <option>$3,500 – $7,500 (Starter)</option>
-              <option>$7,500 – $15,000 (Growth)</option>
-              <option>$15,000+ (Scale / Custom)</option>
-              <option>Not sure yet</option>
-            </select>
+            <span class="form-label" id="lbl-budget">Estimated budget</span>
+            <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-budget" data-name="budget">
+              <button type="button" class="cs-trigger" aria-haspopup="listbox">
+                <span class="cs-val">Select a range</span>
+                <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </button>
+              <ul class="cs-list" role="listbox" aria-label="Budget">
+                <li class="cs-opt" role="option" data-value="$1,500 – $3,500">$1,500 – $3,500 &nbsp;<span class="cs-badge">Starter</span></li>
+                <li class="cs-opt" role="option" data-value="$3,500 – $6,000">$3,500 – $6,000 &nbsp;<span class="cs-badge">Standard</span></li>
+                <li class="cs-opt" role="option" data-value="$6,000 – $10,000">$6,000 – $10,000 &nbsp;<span class="cs-badge">Custom</span></li>
+                <li class="cs-opt" role="option" data-value="Not sure yet">Not sure yet</li>
+              </ul>
+              <input type="hidden" name="budget" class="cs-hidden" />
+            </div>
           </div>
 
-          <button type="submit" class="form-submit">
+          <button type="submit" class="form-submit" id="form-submit-btn">
             Get a free quote
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
               <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -389,12 +410,23 @@
     gap: clamp(10px, 1.5vh, 14px);
   }
 
-  .hidden { display: none; }
+  /* honeypot — invisible to humans */
+  .hp-field {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    tabindex: -1;
+  }
 
   .form-row {
     display: flex;
     flex-direction: column;
     gap: 5px;
+    position: relative;
   }
 
   .form-label {
@@ -417,26 +449,87 @@
     transition: border-color 0.2s;
     width: 100%;
   }
-
   .form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .form-input:focus { border-color: var(--amber); }
 
-  .form-input:focus {
-    border-color: var(--amber);
+  /* ── CUSTOM DROPDOWN ── */
+  .cs-wrap {
+    position: relative;
   }
 
-  .form-select {
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='rgba(244,239,230,0.4)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-    padding-right: 36px;
+  .cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
     cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .cs-wrap[aria-expanded="true"] .cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .cs-wrap.has-value .cs-trigger { color: var(--cream); }
+
+  .cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .cs-wrap[aria-expanded="true"] .cs-chevron { transform: rotate(180deg); }
+
+  .cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .cs-wrap[aria-expanded="true"] .cs-list { display: block; }
+
+  .cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .cs-opt:hover,
+  .cs-opt:focus { background: rgba(212,147,46,0.15); color: var(--cream); outline: none; }
+  .cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+
+  .cs-badge {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.7;
+    margin-left: auto;
   }
 
-  .form-select option {
-    background: var(--ink-soft);
-    color: var(--cream);
-  }
+  .cs-hidden { display: none; }
 
   .form-submit {
     display: flex;
@@ -599,3 +692,110 @@
     }
   }
 </style>
+
+<script>
+  // ── CUSTOM DROPDOWNS ──────────────────────────────────────────
+  function initCustomSelects() {
+    document.querySelectorAll('.cs-wrap').forEach((wrap) => {
+      const trigger  = wrap.querySelector('.cs-trigger');
+      const list     = wrap.querySelector('.cs-list');
+      const valSpan  = wrap.querySelector('.cs-val');
+      const hidden   = wrap.querySelector('.cs-hidden');
+      const opts     = wrap.querySelectorAll('.cs-opt');
+
+      const open  = () => { wrap.setAttribute('aria-expanded', 'true');  };
+      const close = () => { wrap.setAttribute('aria-expanded', 'false'); };
+      const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+
+      trigger.addEventListener('click', (e) => {
+        e.stopPropagation();
+        isOpen() ? close() : open();
+      });
+
+      opts.forEach((opt) => {
+        opt.addEventListener('click', () => {
+          const val = opt.dataset.value;
+          // update display — strip badge text
+          valSpan.textContent = opt.querySelector('.cs-badge')
+            ? opt.childNodes[0].textContent.trim()
+            : opt.textContent.trim();
+          hidden.value = val;
+          opts.forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          wrap.classList.add('has-value');
+          close();
+          trigger.focus();
+        });
+        // keyboard
+        opt.setAttribute('tabindex', '0');
+        opt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); }
+        });
+      });
+
+      // close on outside click
+      document.addEventListener('click', (e) => {
+        if (!wrap.contains(e.target)) close();
+      });
+
+      // close on Escape
+      wrap.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') { close(); trigger.focus(); }
+      });
+    });
+  }
+
+  // ── SPAM PROTECTION ───────────────────────────────────────────
+  function initSpamProtection() {
+    const ts = document.getElementById('form-timestamp');
+    if (ts) ts.value = Date.now().toString();
+
+    const form = document.getElementById('hero-inquiry-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      // Time-trap: reject if submitted in under 2 seconds
+      const elapsed = Date.now() - parseInt(ts?.value || '0', 10);
+      if (elapsed < 2000) {
+        e.preventDefault();
+        return;
+      }
+      // Honeypot check
+      const bot = form.querySelector('[name="bot-field"]');
+      if (bot && bot.value !== '') {
+        e.preventDefault();
+        return;
+      }
+    });
+  }
+
+  // ── reCAPTCHA v3 ──────────────────────────────────────────────
+  // Replace YOUR_RECAPTCHA_SITE_KEY with your actual key from
+  // https://www.google.com/recaptcha/admin (select v3, add your domain)
+  function initRecaptcha() {
+    const SITE_KEY = 'YOUR_RECAPTCHA_SITE_KEY';
+    if (SITE_KEY === 'YOUR_RECAPTCHA_SITE_KEY') return; // skip until key is set
+
+    const form = document.getElementById('hero-inquiry-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (typeof grecaptcha === 'undefined') { form.submit(); return; }
+
+      grecaptcha.ready(function () {
+        grecaptcha.execute(SITE_KEY, { action: 'hero_form' }).then(function (token) {
+          const tokenInput = document.getElementById('recaptcha-token');
+          if (tokenInput) tokenInput.value = token;
+          form.submit();
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCustomSelects();
+    initSpamProtection();
+    initRecaptcha();
+  });
+</script>
