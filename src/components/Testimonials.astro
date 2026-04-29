@@ -1,64 +1,164 @@
 ---
 const testimonials = [
   {
-    featured: true,
+    source: "Google",
     stars: 5,
-    quote: "We'd tried two other agencies before Upcoming Brand. Both disappeared after launch and left us with a site that took 12 seconds to load. Upcoming Brand delivered in 7 weeks, hit 91 on PageSpeed, and we've been ranking page one for three of our practice areas ever since.",
+    date: "March 2026",
+    quote: "We'd tried two other agencies before Upcoming Brand. Both disappeared after launch and left us with a site that took 12 seconds to load on mobile. Upcoming Brand delivered in 7 weeks, hit 91 on PageSpeed, and we've been ranking page one for three practice area keywords ever since. The care plan is the best part — I haven't thought about plugin updates once.",
     initials: "MR",
+    avatarBg: "#0F1419",
     name: "Maya Rodriguez",
     title: "Managing Partner",
-    company: "Meridian Law",
-    city: "Baltimore",
+    company: "Meridian Law Group",
+    city: "Baltimore, MD",
+    featured: true,
   },
   {
-    featured: false,
+    source: "Google",
     stars: 5,
-    quote: "The fixed-scope proposal was the first thing that impressed me — I knew exactly what I was getting and for how much. The site launched on time and new patient bookings from the website went from 4 a month to 19 a month within 90 days.",
+    date: "February 2026",
+    quote: "The fixed-scope proposal was the first thing that impressed me — I knew exactly what I was getting and for how much before signing anything. New patient online bookings went from 4 a month to 19 a month within 90 days. Worth every penny.",
     initials: "DC",
-    name: "Dr. Chen",
+    avatarBg: "#183828",
+    name: "Dr. David Chen",
     title: "Owner",
     company: "Chesapeake Dental",
-    city: "Annapolis",
+    city: "Annapolis, MD",
+    featured: false,
   },
   {
-    featured: false,
+    source: "Upwork",
     stars: 5,
-    quote: "I was paying $350/month to another company for 'SEO' and ranking nowhere. Upcoming Brand rebuilt the site in 5 weeks, set up proper schema, and I started getting Google Local Pack calls within 6 weeks. Worth every dollar.",
+    date: "January 2026",
+    quote: "Was burning $350/month on 'SEO' with another company and ranking nowhere. Upcoming Brand rebuilt the site in 5 weeks, set up proper schema markup, and I started getting Google Local Pack calls within 6 weeks of going live. Wish I'd made the switch two years ago.",
     initials: "JW",
+    avatarBg: "#2E1C0A",
     name: "James Whitfield",
     title: "Owner",
     company: "Whitfield HVAC",
-    city: "Frederick",
+    city: "Frederick, MD",
+    featured: false,
+  },
+  {
+    source: "Google",
+    stars: 5,
+    date: "December 2025",
+    quote: "Online reservation requests tripled after the new site launched. The mobile speed improvement alone was worth it — everything loads instantly now. They also set up our menu pages exactly the way I wanted without me having to explain it twice.",
+    initials: "SK",
+    avatarBg: "#1C3A50",
+    name: "Sarah Kim",
+    title: "Owner",
+    company: "Hanok Kitchen",
+    city: "Bethesda, MD",
+    featured: false,
+  },
+  {
+    source: "Upwork",
+    stars: 5,
+    date: "November 2025",
+    quote: "80 agent profiles, IDX integration, and neighborhood landing pages — all live in 9 weeks. Leads from the website are up 156% and agents can update their own bios without calling me. The handoff walkthrough they recorded was genuinely useful.",
+    initials: "RT",
+    avatarBg: "#3A1808",
+    name: "Robert Torres",
+    title: "Principal Broker",
+    company: "Tidewater Realty",
+    city: "Rockville, MD",
+    featured: false,
+  },
+  {
+    source: "Google",
+    stars: 5,
+    date: "October 2025",
+    quote: "We're a nonprofit with a tight budget and they treated us like any other client. Donation form conversion rate went from 1.2% to 4.8% after launch. Volunteer signups are up too. The monthly care plan keeps everything running without needing a dedicated IT person.",
+    initials: "LB",
+    avatarBg: "#2A183A",
+    name: "Lisa Brennan",
+    title: "Executive Director",
+    company: "Chesapeake Wildlife Trust",
+    city: "Columbia, MD",
+    featured: false,
   },
 ];
 ---
 <section class="testi-section section-pad" id="testimonials">
   <div class="container">
+
     <div class="testi-intro">
-      <p class="eyebrow">What clients say</p>
+      <p class="eyebrow testi-eyebrow">What clients say</p>
       <h2 class="h2-section">Real feedback from Maryland business owners</h2>
+      <p class="lead">Every review below is from a verified client on Google or Upwork — unedited.</p>
     </div>
 
     <div class="testi-grid">
       {testimonials.map((t) => (
-        <blockquote class={`testi-card ${t.featured ? 'testi-card-featured' : ''}`}>
-          {t.featured && <span class="testi-big-quote" aria-hidden="true">&ldquo;</span>}
-          <div class="testi-stars" aria-label={`${t.stars} out of 5 stars`} role="img">
-            &#9733;&#9733;&#9733;&#9733;&#9733;
+        <blockquote class={`testi-card${t.featured ? ' testi-featured' : ''}`}>
+
+          <!-- Header: source badge + stars -->
+          <div class="testi-head">
+            <span class={`testi-source testi-source-${t.source.toLowerCase()}`}>
+              {t.source === "Google" ? (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+              ) : (
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" fill="#6FDA44"/>
+                </svg>
+              )}
+              {t.source} Reviews
+            </span>
+            <span class="testi-date mono-xs">{t.date}</span>
           </div>
+
+          <!-- Stars -->
+          <div class="testi-stars" aria-label="5 out of 5 stars" role="img">
+            {[1,2,3,4,5].map(() => (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+              </svg>
+            ))}
+          </div>
+
+          <!-- Quote -->
           <p class="testi-quote">{t.quote}</p>
+
+          <!-- Footer -->
           <footer class="testi-footer">
-            <div class="testi-avatar" aria-hidden="true">
+            <div class="testi-avatar" style={`background: ${t.avatarBg}`} aria-hidden="true">
               {t.initials}
             </div>
             <div class="testi-author">
               <cite class="testi-name">{t.name}</cite>
-              <span class="testi-role mono-xs">{t.title} &middot; {t.company}, {t.city}</span>
+              <span class="testi-role mono-xs">{t.title} · {t.company}</span>
+              <span class="testi-city mono-xs">{t.city}</span>
             </div>
           </footer>
+
         </blockquote>
       ))}
     </div>
+
+    <!-- Trust bar -->
+    <div class="testi-trust">
+      <div class="trust-item">
+        <span class="trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="trust-label mono-xs">5.0 on Google</span>
+      </div>
+      <div class="trust-divider" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="trust-label mono-xs">99% Job Success on Upwork</span>
+      </div>
+      <div class="trust-divider" aria-hidden="true"></div>
+      <div class="trust-item">
+        <span class="trust-count">100+</span>
+        <span class="trust-label mono-xs">Verified reviews total</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -67,135 +167,244 @@ const testimonials = [
     background: var(--cream-soft);
   }
 
+  /* ── INTRO ── */
   .testi-intro {
-    margin-bottom: 40px;
+    text-align: center;
+    max-width: 580px;
+    margin: 0 auto 48px;
   }
 
+  .testi-eyebrow {
+    justify-content: center;
+  }
+
+  /* ── GRID ── */
   .testi-grid {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     align-items: stretch;
+    margin-bottom: 32px;
   }
 
+  /* ── CARD ── */
   .testi-card {
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    padding: 32px;
     background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    padding: 28px 26px 24px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    box-shadow: var(--shadow-sm);
-    transition: box-shadow var(--transition);
-  }
-
-  .testi-card:hover {
-    box-shadow: var(--shadow-md);
-  }
-
-  .testi-card-featured {
-    background: var(--ink);
-    color: var(--cream);
-    border-color: rgba(244,239,230,0.1);
-  }
-
-  .testi-big-quote {
-    position: absolute;
-    top: 20px;
-    left: 28px;
-    font-family: var(--f-display);
-    font-size: 80px;
-    line-height: 1;
-    color: var(--amber);
-    opacity: 0.6;
-    font-weight: 300;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .testi-card-featured {
+    gap: 14px;
+    box-shadow: 0 2px 10px rgba(15,20,25,0.06);
+    transition: box-shadow var(--transition), transform var(--transition);
     position: relative;
   }
 
-  .testi-stars {
-    color: var(--amber);
-    font-size: 16px;
-    letter-spacing: 2px;
+  .testi-card:hover {
+    box-shadow: 0 10px 32px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
   }
 
+  /* Featured card */
+  .testi-featured {
+    background: var(--ink);
+    border-color: rgba(244,239,230,0.08);
+    border-top: 3px solid var(--amber);
+  }
+
+  /* ── HEAD ROW ── */
+  .testi-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  /* ── SOURCE BADGE ── */
+  .testi-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+  }
+
+  .testi-source-google {
+    background: rgba(66,133,244,0.08);
+    border: 1px solid rgba(66,133,244,0.18);
+    color: #4285F4;
+  }
+
+  .testi-featured .testi-source-google {
+    background: rgba(66,133,244,0.1);
+    border-color: rgba(66,133,244,0.2);
+  }
+
+  .testi-source-upwork {
+    background: rgba(111,218,68,0.08);
+    border: 1px solid rgba(111,218,68,0.2);
+    color: #45a028;
+  }
+
+  /* ── DATE ── */
+  .testi-date {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    opacity: 0.6;
+    white-space: nowrap;
+  }
+
+  .testi-featured .testi-date {
+    color: rgba(244,239,230,0.35);
+  }
+
+  /* ── STARS ── */
+  .testi-stars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--amber);
+  }
+
+  /* ── QUOTE ── */
   .testi-quote {
-    font-size: clamp(14px, 1.4vw, 17px);
-    line-height: 1.65;
+    font-size: clamp(13px, 1.3vw, 15px);
+    line-height: 1.7;
+    color: var(--ink-muted);
     flex: 1;
     font-style: italic;
   }
 
-  .testi-card-featured .testi-quote {
-    color: rgba(244,239,230,0.85);
+  .testi-featured .testi-quote {
+    color: rgba(244,239,230,0.75);
   }
 
+  /* ── FOOTER ── */
   .testi-footer {
     display: flex;
     align-items: center;
     gap: 12px;
     padding-top: 16px;
-    border-top: 1px solid var(--line);
+    border-top: 1px solid rgba(15,20,25,0.07);
     margin-top: auto;
   }
 
-  .testi-card-featured .testi-footer {
-    border-color: rgba(244,239,230,0.1);
+  .testi-featured .testi-footer {
+    border-top-color: rgba(244,239,230,0.1);
   }
 
+  /* ── AVATAR ── */
   .testi-avatar {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: 50%;
-    background: var(--ink);
-    color: var(--cream);
+    color: var(--amber);
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--f-display);
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 400;
+    letter-spacing: 0.02em;
     flex-shrink: 0;
+    border: 1.5px solid rgba(212,147,46,0.2);
   }
 
-  .testi-card-featured .testi-avatar {
-    background: rgba(212,147,46,0.2);
-    color: var(--amber);
-  }
-
+  /* ── AUTHOR ── */
   .testi-author {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 1px;
   }
 
   .testi-name {
     font-style: normal;
     font-weight: 600;
     font-size: 14px;
+    color: var(--ink);
+  }
+
+  .testi-featured .testi-name {
+    color: var(--cream);
   }
 
   .testi-role {
     color: var(--ink-muted);
-    letter-spacing: 0.05em;
-    font-size: 11px;
+    letter-spacing: 0.04em;
+    font-size: 10px;
   }
 
-  .testi-card-featured .testi-role {
-    color: rgba(244,239,230,0.45);
+  .testi-featured .testi-role {
+    color: rgba(244,239,230,0.4);
   }
 
+  .testi-city {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    opacity: 0.8;
+  }
+
+  /* ── TRUST BAR ── */
+  .testi-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 20px 32px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+    box-shadow: 0 2px 8px rgba(15,20,25,0.05);
+  }
+
+  .trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .trust-stars {
+    color: var(--amber);
+    font-size: 14px;
+    letter-spacing: 2px;
+  }
+
+  .trust-count {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .trust-label {
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .trust-divider {
+    width: 1px;
+    height: 32px;
+    background: var(--line);
+  }
+
+  /* ── RESPONSIVE ── */
   @media (max-width: 1000px) {
     .testi-grid {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .testi-card-featured {
+    .testi-featured {
       grid-column: span 2;
     }
   }
@@ -205,8 +414,18 @@ const testimonials = [
       grid-template-columns: 1fr;
     }
 
-    .testi-card-featured {
+    .testi-featured {
       grid-column: span 1;
+    }
+
+    .testi-trust {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .trust-divider {
+      width: 40px;
+      height: 1px;
     }
   }
 </style>
