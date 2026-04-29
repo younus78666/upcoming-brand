@@ -1,0 +1,217 @@
+---
+const services = [
+  {
+    num: "001",
+    title: "Custom WordPress Design",
+    summary: "Brand-first custom WordPress web design for Maryland businesses. We build on Elementor Pro with an Astra parent theme.",
+    bullets: ["Figma designs · 2 revision rounds", "Elementor Pro build · Astra parent theme", "Pixel-accurate responsive"],
+    dark: false,
+  },
+  {
+    num: "002",
+    title: "WooCommerce Stores",
+    summary: "Online stores that handle real inventory, real checkout flows, and real Stripe edge cases.",
+    bullets: ["Stripe, PayPal, and Authorize.net", "Product configurators, variations, subscriptions", "Abandoned cart recovery"],
+    dark: false,
+  },
+  {
+    num: "003",
+    title: "Care Plans & Maintenance",
+    summary: "Monthly retainers covering updates, off-site backups, security monitoring, uptime.",
+    bullets: ["Weekly plugin and WordPress core updates", "Off-site backups to S3 or Google Drive", "Uptime monitoring with 4-hour incident response"],
+    dark: false,
+  },
+  {
+    num: "004",
+    title: "Speed Optimization",
+    summary: "Core Web Vitals focused. Every project ships with LCP under 2s.",
+    bullets: ["WP Rocket and Seraphinite Accelerator", "Image optimization with WebP conversion", "Cloudflare CDN, CSS/JS minification"],
+    dark: false,
+  },
+  {
+    num: "005",
+    title: "SEO & Schema",
+    summary: "RankMath Pro, structured data, topical maps.",
+    bullets: ["Keyword research and topical map", "JSON-LD schema for 15+ page types", "Internal linking plan"],
+    dark: false,
+  },
+  {
+    num: "006",
+    title: "Migration & Redesign",
+    summary: "From Wix, Webflow, Squarespace to custom WordPress without losing rankings.",
+    bullets: ["301 redirect mapping", "Zero-downtime switchover", "Pre/post-launch rank parity check"],
+    dark: false,
+  },
+  {
+    num: "007",
+    title: "Security & Recovery",
+    summary: "Hardening, 2FA, firewall, malware recovery.",
+    bullets: ["Wordfence with 2FA", "Daily malware scanning", "Same-day hacked site recovery"],
+    dark: false,
+  },
+  {
+    num: "ALL",
+    title: "Bundled. Retained. Done.",
+    summary: "One monthly partnership: design, maintenance, SEO, support.",
+    bullets: ["Dedicated account manager", "Unlimited small changes", "Quarterly strategy reviews"],
+    dark: true,
+    cta: "Let's talk &rarr;",
+  },
+];
+---
+<section class="services-section section-pad" id="services">
+  <div class="container">
+    <div class="services-intro">
+      <p class="eyebrow">What we do</p>
+      <h2 class="h2-section">Which WordPress services does Upcoming Brand offer?</h2>
+      <p class="lead">
+        Upcoming Brand's WordPress web design services cover eight core areas: custom website design, WooCommerce development, monthly care plans, speed optimization, SEO and schema, website migration, security and recovery, and a bundled monthly partnership that covers everything above.
+      </p>
+      <p class="services-sub">
+        We don't sell everything to everyone. We sell the WordPress web design services Maryland businesses actually need to ship a site that ranks in Google and keeps working after launch day.
+      </p>
+    </div>
+
+    <div class="services-grid">
+      {services.map((svc) => (
+        <div class={`service-card card ${svc.dark ? 'card-dark service-card-dark' : ''}`}>
+          <div class="svc-header">
+            <span class="svc-num mono-xs">{svc.num}</span>
+          </div>
+          <h3 class="svc-title">{svc.title}</h3>
+          <p class="svc-summary">{svc.summary}</p>
+          <ul class="svc-bullets" role="list">
+            {svc.bullets.map((b) => (
+              <li class="svc-bullet" role="listitem">
+                <span class="svc-bullet-dot" aria-hidden="true"></span>
+                {b}
+              </li>
+            ))}
+          </ul>
+          {svc.cta && (
+            <div class="svc-cta-wrap">
+              <a href="#contact" class="cta-btn-light cta-btn" set:html={svc.cta} />
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .services-sub {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .service-card {
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .service-card-dark {
+    grid-column: span 1;
+  }
+
+  .svc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+  }
+
+  .svc-num {
+    color: var(--amber);
+    letter-spacing: 0.1em;
+  }
+
+  .service-card-dark .svc-num {
+    color: var(--amber);
+  }
+
+  .svc-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .svc-summary {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    flex: 1;
+  }
+
+  .service-card-dark .svc-summary {
+    color: rgba(244,239,230,0.65);
+  }
+
+  .svc-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-top: 4px;
+  }
+
+  .svc-bullet {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  .service-card-dark .svc-bullet {
+    color: rgba(244,239,230,0.5);
+  }
+
+  .svc-bullet-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .svc-cta-wrap {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 1200px) {
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

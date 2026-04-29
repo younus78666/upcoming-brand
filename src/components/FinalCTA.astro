@@ -1,0 +1,172 @@
+---
+---
+<section class="final-cta section-pad" id="contact" aria-labelledby="final-cta-heading">
+  <div class="container">
+    <div class="final-cta-inner">
+      <div class="final-cta-content">
+        <p class="eyebrow final-cta-eyebrow">Ready when you are</p>
+        <h2 class="display-lg final-cta-h2" id="final-cta-heading">
+          Let's build the last WordPress site you'll ever need.
+        </h2>
+        <div class="final-cta-buttons">
+          <a href="mailto:hello@upcomingbrand.com" class="cta-btn cta-btn-light">
+            Book a 45-min discovery call &rarr;
+          </a>
+          <a href="#contact-form" class="cta-outline cta-outline-light">
+            Get a written proposal &#8599;
+          </a>
+        </div>
+        <p class="final-cta-note mono-xs">
+          Response within 4 business hours. No sales pitch on the first call. Available for May 2026.
+        </p>
+      </div>
+
+      <!-- Decorative element -->
+      <div class="final-cta-deco" aria-hidden="true">
+        <div class="deco-circle-outer">
+          <div class="deco-circle-inner">
+            <div class="deco-mark">
+              <span class="deco-mark-dot"></span>
+            </div>
+          </div>
+        </div>
+        <div class="deco-lines">
+          <div class="deco-line"></div>
+          <div class="deco-line deco-line-2"></div>
+          <div class="deco-line deco-line-3"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .final-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .final-cta-eyebrow {
+    color: rgba(244,239,230,0.45);
+  }
+
+  .final-cta-eyebrow::before {
+    background: rgba(244,239,230,0.25);
+  }
+
+  .final-cta-h2 {
+    color: var(--cream);
+    margin-bottom: 32px;
+    max-width: 16ch;
+  }
+
+  .final-cta-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .final-cta-note {
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+  }
+
+  /* Decorative */
+  .final-cta-deco {
+    position: relative;
+    width: 280px;
+    height: 280px;
+    flex-shrink: 0;
+  }
+
+  .deco-circle-outer {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,239,230,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .deco-circle-inner {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 1px solid rgba(212,147,46,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.04);
+  }
+
+  .deco-mark {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--ink-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(244,239,230,0.1);
+  }
+
+  .deco-mark-dot {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--amber);
+  }
+
+  .deco-lines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .deco-line {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 1px;
+    width: 140px;
+    background: linear-gradient(to right, rgba(212,147,46,0.3), transparent);
+    transform-origin: left center;
+  }
+
+  .deco-line { transform: rotate(0deg); }
+  .deco-line-2 { transform: rotate(60deg); }
+  .deco-line-3 { transform: rotate(-60deg); }
+
+  @media (max-width: 900px) {
+    .final-cta-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .final-cta-deco {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .final-cta-buttons {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

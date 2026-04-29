@@ -1,0 +1,233 @@
+---
+const industries = [
+  {
+    num: "01",
+    name: "Law Firms & Attorneys",
+    searches: "2,900/mo",
+    cpc: "$27.82",
+    note: "Baltimore · Annapolis · DC metro",
+  },
+  {
+    num: "02",
+    name: "Dental Practices",
+    searches: "1,300/mo",
+    cpc: "$22.80",
+    note: "HIPAA-aware · online booking",
+  },
+  {
+    num: "03",
+    name: "Medical Clinics",
+    searches: "1,000/mo",
+    cpc: "$18.44",
+    note: "Multi-location · patient portals",
+  },
+  {
+    num: "04",
+    name: "Real Estate Brokerages",
+    searches: "1,300/mo",
+    cpc: "$8.00",
+    note: "IDX integration · agent rosters",
+  },
+  {
+    num: "05",
+    name: "Nonprofits & Churches",
+    searches: "2,180/mo",
+    cpc: "$9.99",
+    note: "Donations · events · volunteers",
+  },
+  {
+    num: "06",
+    name: "Contractors & Trades",
+    searches: "1,300/mo",
+    cpc: "$5.30",
+    note: "HVAC · plumbing · roofing",
+  },
+  {
+    num: "07",
+    name: "Restaurants & Hospitality",
+    searches: "1,000/mo",
+    cpc: "$4.96",
+    note: "Menus · reservations · POS",
+  },
+  {
+    num: "08",
+    name: "Small Business & Startups",
+    searches: "2,900/mo",
+    cpc: "$7.99",
+    note: "From MVP to scale-ready",
+  },
+];
+---
+<section class="industries-section section-pad" id="industries">
+  <div class="container">
+    <div class="industries-intro">
+      <p class="eyebrow">Industries we specialize in</p>
+      <h2 class="h2-section">Which Maryland industries do you build WordPress websites for?</h2>
+      <p class="lead">
+        10 Maryland industries: law firms, dental practices, medical clinics, real estate brokerages, nonprofits, churches, contractors, restaurants, accountants, and small businesses.
+      </p>
+      <p class="ind-sub">We've built enough sites in each industry to know the pitfalls before you hit them.</p>
+    </div>
+
+    <div class="ind-table" role="table" aria-label="Industries served">
+      <div class="ind-thead" role="rowgroup">
+        <div class="ind-row ind-header-row" role="row">
+          <span class="ind-cell ind-cell-num" role="columnheader">#</span>
+          <span class="ind-cell ind-cell-name" role="columnheader">Industry</span>
+          <span class="ind-cell" role="columnheader">MD searches/mo</span>
+          <span class="ind-cell" role="columnheader">Avg. CPC</span>
+          <span class="ind-cell ind-cell-note" role="columnheader">Notes</span>
+        </div>
+      </div>
+      <div class="ind-tbody" role="rowgroup">
+        {industries.map((ind) => (
+          <div class="ind-row" role="row">
+            <span class="ind-cell ind-cell-num mono-xs" role="cell" aria-label={`Row ${ind.num}`}>{ind.num}</span>
+            <span class="ind-cell ind-cell-name" role="cell">
+              <a href="#contact" class="ind-name-link">{ind.name}</a>
+            </span>
+            <span class="ind-cell" role="cell">
+              <span class="ind-searches">{ind.searches}</span>
+            </span>
+            <span class="ind-cell" role="cell">
+              <span class="ind-cpc">{ind.cpc}</span>
+            </span>
+            <span class="ind-cell ind-cell-note mono-xs" role="cell">{ind.note}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .industries-section {
+    background: var(--cream-soft);
+  }
+
+  .industries-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .ind-sub {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-top: 16px;
+  }
+
+  .ind-table {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .ind-row {
+    display: grid;
+    grid-template-columns: 48px 1fr 140px 100px 1fr;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+    transition: background var(--transition);
+  }
+
+  .ind-row:last-child {
+    border-bottom: none;
+  }
+
+  .ind-header-row {
+    background: var(--cream-soft);
+  }
+
+  .ind-tbody .ind-row:hover {
+    background: var(--cream-soft);
+  }
+
+  .ind-cell {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-right: 1px solid var(--line);
+  }
+
+  .ind-cell:last-child {
+    border-right: none;
+  }
+
+  .ind-header-row .ind-cell {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .ind-cell-num {
+    color: var(--amber);
+    text-align: center;
+    padding-inline: 12px;
+  }
+
+  .ind-name-link {
+    font-weight: 600;
+    font-size: 15px;
+    transition: color var(--transition);
+  }
+
+  .ind-name-link:hover {
+    color: var(--amber-deep);
+  }
+
+  .ind-searches {
+    font-family: var(--f-mono);
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  .ind-cpc {
+    font-family: var(--f-mono);
+    font-size: 13px;
+    color: var(--green);
+    font-weight: 500;
+  }
+
+  .ind-cell-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 900px) {
+    .ind-row {
+      grid-template-columns: 40px 1fr 110px 80px;
+    }
+
+    .ind-cell-note {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .ind-row {
+      grid-template-columns: 1fr;
+      padding: 16px;
+      gap: 6px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ind-cell {
+      padding: 0;
+      border-right: none;
+      font-size: 13px;
+    }
+
+    .ind-header-row { display: none; }
+
+    .ind-cell-num {
+      color: var(--amber);
+      order: -1;
+    }
+
+    .ind-cell-note { display: block; }
+  }
+</style>

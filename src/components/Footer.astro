@@ -1,0 +1,334 @@
+---
+const currentYear = new Date().getFullYear();
+
+const nav = [
+  {
+    heading: "Services",
+    links: [
+      { label: "Custom WordPress Design", href: "#services" },
+      { label: "WooCommerce Stores", href: "#services" },
+      { label: "Care Plans & Maintenance", href: "#services" },
+      { label: "Speed Optimization", href: "#services" },
+      { label: "SEO & Schema", href: "#services" },
+      { label: "Migration & Redesign", href: "#services" },
+      { label: "Security & Recovery", href: "#services" },
+    ],
+  },
+  {
+    heading: "Industries",
+    links: [
+      { label: "Law Firms", href: "#industries" },
+      { label: "Dental Practices", href: "#industries" },
+      { label: "Medical Clinics", href: "#industries" },
+      { label: "Real Estate", href: "#industries" },
+      { label: "Nonprofits", href: "#industries" },
+      { label: "Contractors", href: "#industries" },
+      { label: "Restaurants", href: "#industries" },
+    ],
+  },
+  {
+    heading: "Maryland",
+    links: [
+      { label: "Baltimore", href: "#locations" },
+      { label: "Annapolis", href: "#locations" },
+      { label: "Frederick", href: "#locations" },
+      { label: "Bethesda", href: "#locations" },
+      { label: "Rockville", href: "#locations" },
+      { label: "Silver Spring", href: "#locations" },
+      { label: "See all 20+ cities →", href: "#locations" },
+    ],
+  },
+  {
+    heading: "Company",
+    links: [
+      { label: "About", href: "#" },
+      { label: "Process", href: "#process" },
+      { label: "Pricing", href: "#pricing" },
+      { label: "Portfolio", href: "#work" },
+      { label: "Resources", href: "#blog" },
+      { label: "Contact", href: "#contact" },
+      { label: "Careers", href: "#" },
+    ],
+  },
+];
+
+const socials = [
+  { label: "LinkedIn", href: "#", icon: "in" },
+  { label: "X (Twitter)", href: "#", icon: "x" },
+  { label: "Instagram", href: "#", icon: "ig" },
+  { label: "Dribbble", href: "#", icon: "dr" },
+];
+---
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <!-- Top -->
+    <div class="footer-top">
+      <!-- Brand column -->
+      <div class="footer-brand">
+        <a href="/" class="brand-mark footer-brand-mark" aria-label="Upcoming Brand home">
+          <span class="brand-mark-icon" aria-hidden="true"></span>
+          <span class="brand-mark-text">Upcoming Brand</span>
+        </a>
+        <p class="footer-tagline">A WordPress web design studio based in Maryland.</p>
+        <div class="footer-socials" role="list" aria-label="Social media links">
+          {socials.map((s) => (
+            <a href={s.href} class="social-link" role="listitem" aria-label={s.label}>
+              <span class="social-icon mono-xs">{s.icon}</span>
+            </a>
+          ))}
+        </div>
+        <div class="footer-badge">
+          <span class="footer-badge-dot" aria-hidden="true"></span>
+          <span class="footer-badge-text mono-xs">Accepting May 2026 projects</span>
+        </div>
+      </div>
+
+      <!-- Nav columns -->
+      {nav.map((col) => (
+        <nav class="footer-nav-col" aria-label={`${col.heading} links`}>
+          <h3 class="footer-col-heading mono-xs">{col.heading}</h3>
+          <ul role="list">
+            {col.links.map((link) => (
+              <li role="listitem">
+                <a href={link.href} class="footer-link">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      ))}
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <p class="footer-copy mono-xs">
+        &copy; {currentYear} Upcoming Brand &middot; All rights reserved
+      </p>
+      <div class="footer-legal" role="list">
+        <a href="#" class="footer-legal-link" role="listitem">Privacy</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="#" class="footer-legal-link" role="listitem">Terms</a>
+        <span aria-hidden="true">&middot;</span>
+        <a href="#" class="footer-legal-link" role="listitem">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--ink-soft);
+    color: var(--cream);
+    padding-top: clamp(56px, 7vw, 96px);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.4fr repeat(4, 1fr);
+    gap: 40px;
+    padding-bottom: 56px;
+    border-bottom: 1px solid rgba(244,239,230,0.1);
+  }
+
+  /* Brand column */
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .footer-brand-mark {
+    display: inline-flex;
+  }
+
+  .footer-brand-mark .brand-mark-icon {
+    background: rgba(244,239,230,0.15);
+  }
+
+  .footer-brand-mark .brand-mark-icon::after {
+    background: var(--amber);
+  }
+
+  .footer-brand-mark .brand-mark-text {
+    color: var(--cream);
+  }
+
+  .footer-tagline {
+    font-size: 14px;
+    color: rgba(244,239,230,0.55);
+    line-height: 1.5;
+    max-width: 22ch;
+  }
+
+  .footer-socials {
+    display: flex;
+    gap: 8px;
+  }
+
+  .social-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(244,239,230,0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(244,239,230,0.5);
+    transition: border-color var(--transition), color var(--transition), background var(--transition);
+  }
+
+  .social-link:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+  }
+
+  .social-icon {
+    font-size: 11px;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  .footer-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border: 1px solid rgba(92,128,64,0.3);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.08);
+    width: fit-content;
+  }
+
+  .footer-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .footer-badge-text {
+    color: #8ab86a;
+    letter-spacing: 0.08em;
+    font-size: 11px;
+  }
+
+  /* Nav columns */
+  .footer-nav-col {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .footer-col-heading {
+    color: rgba(244,239,230,0.35);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 10px;
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+
+  .footer-nav-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .footer-link {
+    font-size: 14px;
+    color: rgba(244,239,230,0.6);
+    transition: color var(--transition);
+    line-height: 1.4;
+  }
+
+  .footer-link:hover {
+    color: var(--cream);
+  }
+
+  /* Bottom bar */
+  .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 20px;
+    gap: 16px;
+  }
+
+  .footer-copy {
+    color: rgba(244,239,230,0.3);
+    letter-spacing: 0.06em;
+  }
+
+  .footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.25);
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+
+  .footer-legal-link {
+    color: rgba(244,239,230,0.35);
+    transition: color var(--transition);
+  }
+
+  .footer-legal-link:hover {
+    color: var(--cream);
+  }
+
+  @media (max-width: 1100px) {
+    .footer-top {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .footer-brand {
+      grid-column: span 3;
+      display: grid;
+      grid-template-columns: auto 1fr 1fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .footer-tagline { grid-column: 2; }
+    .footer-socials { grid-column: 3; }
+    .footer-badge { grid-column: 2; margin-top: -8px; }
+  }
+
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+      grid-column: span 2;
+      grid-template-columns: 1fr;
+    }
+
+    .footer-tagline, .footer-socials, .footer-badge {
+      grid-column: auto;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+    }
+
+    .footer-brand { grid-column: span 1; }
+
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>

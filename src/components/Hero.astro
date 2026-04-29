@@ -1,0 +1,322 @@
+---
+---
+<section class="hero section-pad" id="hero">
+  <div class="container">
+
+    <!-- Top Tags -->
+    <div class="hero-tags">
+      <span class="hero-tag">WordPress Specialists &middot; Maryland</span>
+      <span class="hero-tag">A studio, not a factory</span>
+    </div>
+
+    <!-- H1 -->
+    <div class="hero-headline-wrap">
+      <h1 class="hero-h1">
+        <span class="h1-line1">WordPress web design</span>
+        <span class="h1-line2">services that <span class="amber-underline">rank, convert</span></span>
+        <span class="h1-line3"><em>&amp; don't break.</em></span>
+      </h1>
+
+      <!-- Credentials strip — positioned right of headline on desktop -->
+      <div class="hero-credentials" aria-label="Credentials">
+        <div class="cred-item">
+          <span class="cred-badge">Top Rated</span>
+          <span class="cred-label">Upwork</span>
+        </div>
+        <div class="cred-divider" aria-hidden="true"></div>
+        <div class="cred-item">
+          <span class="cred-badge">400+</span>
+          <span class="cred-label">projects &middot; 12 countries</span>
+        </div>
+        <div class="cred-divider" aria-hidden="true"></div>
+        <div class="cred-item">
+          <span class="cred-stack">
+            <span class="cred-chip">Elementor</span>
+            <span class="cred-chip">RankMath</span>
+            <span class="cred-chip">WooCommerce</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Opening Paragraph + CTAs -->
+    <div class="hero-body-row">
+      <div class="hero-body">
+        <p class="lead hero-lead">
+          Upcoming Brand is a WordPress web design studio based in Maryland. We've built our WordPress web design services around one principle: the website you ship today should still be working, ranking, and converting three years from now. We design and develop custom WordPress websites for law firms, dental practices, real estate brokerages, and small businesses across Baltimore, Annapolis, Frederick, Bethesda, and the broader DMV metro. Every WordPress project we deliver targets three outcomes: top-10 Google rankings, conversion rates that beat the industry average, and a WordPress codebase your team can actually maintain without calling a developer every week.
+        </p>
+        <div class="hero-ctas">
+          <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+          <a href="#work" class="cta-outline">See the work &#8599;</a>
+        </div>
+      </div>
+
+      <!-- Corner decorator -->
+      <div class="hero-corner" aria-hidden="true">
+        <span class="hero-corner-text mono-xs">01 / Maryland-based WordPress Studio</span>
+      </div>
+    </div>
+
+    <!-- Stats Strip -->
+    <div class="hero-stats" role="list" aria-label="Key statistics">
+      <div class="stat-item" role="listitem">
+        <span class="stat-num">400+</span>
+        <span class="stat-label">WordPress projects delivered</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item" role="listitem">
+        <span class="stat-num">99%</span>
+        <span class="stat-label">Upwork job success score</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item" role="listitem">
+        <span class="stat-num">7 yrs</span>
+        <span class="stat-label">Full-time on WordPress</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item" role="listitem">
+        <span class="stat-num">4 hr</span>
+        <span class="stat-label">Average support response time</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: clamp(48px, 6vw, 96px);
+    padding-bottom: clamp(64px, 8vw, 120px);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Top Tags */
+  .hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  .hero-tag {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    padding: 5px 14px;
+    background: var(--cream-soft);
+  }
+
+  /* Headline */
+  .hero-headline-wrap {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: end;
+    margin-bottom: 48px;
+  }
+
+  .hero-h1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    font-family: var(--f-display);
+    font-size: clamp(44px, 8vw, 130px);
+    line-height: 0.92;
+    letter-spacing: -0.04em;
+    font-weight: 300;
+  }
+
+  .h1-line1 { }
+  .h1-line2 { padding-left: clamp(24px, 4vw, 80px); }
+  .h1-line3 {
+    padding-left: clamp(48px, 8vw, 160px);
+    color: var(--amber);
+    font-style: italic;
+  }
+
+  /* Credentials */
+  .hero-credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--cream-soft);
+    min-width: 200px;
+    align-self: flex-end;
+    margin-bottom: 4px;
+  }
+
+  .cred-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .cred-badge {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .cred-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .cred-divider {
+    height: 1px;
+    background: var(--line);
+  }
+
+  .cred-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .cred-chip {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    color: var(--ink-muted);
+  }
+
+  /* Body Row */
+  .hero-body-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 64px;
+  }
+
+  .hero-lead {
+    margin-bottom: 32px;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Corner Decorator */
+  .hero-corner {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+    color: var(--ink-muted);
+    opacity: 0.5;
+    border-left: 1px solid var(--line);
+    padding-left: 12px;
+    align-self: stretch;
+  }
+
+  /* Stats Strip */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    align-items: center;
+    gap: 0;
+    padding: 32px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--cream-soft);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 clamp(16px, 3vw, 40px);
+    flex: 1;
+  }
+
+  .stat-item:first-child { padding-left: 0; }
+  .stat-item:last-child { padding-right: 0; }
+
+  .stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(28px, 3.5vw, 48px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    line-height: 1.3;
+  }
+
+  .stat-divider {
+    width: 1px;
+    height: 48px;
+    background: var(--line);
+    flex-shrink: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .hero-headline-wrap {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-credentials {
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .cred-divider {
+      width: 1px;
+      height: auto;
+      align-self: stretch;
+    }
+
+    .hero-body-row {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-corner {
+      display: none;
+    }
+
+    .hero-stats {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto auto;
+    }
+
+    .stat-divider { display: none; }
+    .stat-item { padding: 16px; }
+    .stat-item:first-child { padding-left: 16px; }
+  }
+
+  @media (max-width: 640px) {
+    .hero-stats {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero-h1 {
+      font-size: clamp(38px, 10vw, 80px);
+    }
+
+    .h1-line2 { padding-left: 20px; }
+    .h1-line3 { padding-left: 40px; }
+  }
+</style>

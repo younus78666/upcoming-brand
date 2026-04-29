@@ -1,0 +1,212 @@
+---
+const faqs = [
+  {
+    q: "How much does a WordPress website cost in Maryland in 2026?",
+    a: "Between $3,500 and $15,000. Starter sites start at $3,500, Growth sites at $7,500, and Scale sites at $15,000. All quotes are fixed-scope with no hourly billing surprises.",
+  },
+  {
+    q: "How long does a WordPress project take from start to launch?",
+    a: "4 to 16 weeks. Starter sites take 4–6 weeks. Growth sites take 6–10 weeks. Scale sites take 10–16 weeks. Timelines depend more on client feedback speed than build speed.",
+  },
+  {
+    q: "Do you only work with Maryland clients?",
+    a: "Maryland is our home market, but we've delivered 400+ projects in 12 countries. Clients outside Maryland work with us remotely without issue. We're fluent in async communication.",
+  },
+  {
+    q: "Why WordPress instead of Webflow, Squarespace, or Wix?",
+    a: "WordPress is open source: you own your data, there's no platform lock-in, and no monthly SaaS fee that scales with your revenue. 43% of all websites run on WordPress. The total cost of ownership over 5 years is consistently lower than any SaaS website platform.",
+  },
+  {
+    q: "What happens after my WordPress site launches?",
+    a: "You receive 30–90 days of free post-launch support depending on your tier. After that, optional care plans starting at $150/month cover plugin updates, off-site backups, security monitoring, uptime monitoring, and a 4-hour support SLA.",
+  },
+  {
+    q: "Do you guarantee specific Google rankings?",
+    a: "No ethical agency can guarantee rankings — anyone who does is lying to you. We guarantee clean schema markup, Core Web Vitals in the green, proper internal linking, and a full topical map. Clients on our SEO care plan typically see top-10 positions for 20–40 targeted keywords within 6–9 months.",
+  },
+];
+---
+<section class="faq-section section-pad" id="faq">
+  <div class="container">
+    <div class="faq-layout">
+      <div class="faq-sidebar">
+        <p class="eyebrow">Common questions</p>
+        <h2 class="h2-section">Frequently asked questions about WordPress web design in Maryland</h2>
+        <p class="faq-sidebar-text">
+          The questions we get on almost every discovery call, answered up front.
+        </p>
+        <a href="#contact" class="cta-outline faq-sidebar-cta">Ask your question &rarr;</a>
+      </div>
+
+      <div class="faq-list" id="faq-accordion">
+        {faqs.map((faq, i) => (
+          <div class="faq-item" data-faq-item>
+            <button
+              class="faq-trigger"
+              aria-expanded="false"
+              aria-controls={`faq-answer-${i}`}
+              id={`faq-btn-${i}`}
+            >
+              <span class="faq-q">{faq.q}</span>
+              <span class="faq-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path class="faq-plus-h" d="M4 10H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                  <path class="faq-plus-v" d="M10 4V16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </button>
+            <div
+              class="faq-answer"
+              id={`faq-answer-${i}`}
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+              hidden
+            >
+              <p class="faq-a">{faq.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-section {
+    background: var(--paper);
+  }
+
+  .faq-layout {
+    display: grid;
+    grid-template-columns: 360px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .faq-sidebar {
+    position: sticky;
+    top: 88px;
+  }
+
+  .faq-sidebar-text {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  .faq-sidebar-cta {
+    display: inline-flex;
+  }
+
+  /* Accordion */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq-trigger {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    width: 100%;
+    padding: 20px 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .faq-trigger:hover {
+    color: var(--amber-deep);
+  }
+
+  .faq-q {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .faq-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: var(--ink-muted);
+    transition: color var(--transition), transform var(--transition);
+    margin-top: 2px;
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-icon {
+    color: var(--amber);
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    overflow: hidden;
+  }
+
+  .faq-answer:not([hidden]) {
+    display: block;
+    animation: faq-open 200ms ease forwards;
+  }
+
+  @keyframes faq-open {
+    from { opacity: 0; transform: translateY(-6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .faq-a {
+    padding-bottom: 20px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 1000px) {
+    .faq-layout {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .faq-sidebar {
+      position: static;
+    }
+  }
+</style>
+
+<script>
+  const items = document.querySelectorAll('[data-faq-item]');
+
+  items.forEach((item) => {
+    const btn = item.querySelector('.faq-trigger');
+    const answer = item.querySelector('.faq-answer');
+
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+
+      // Close all
+      items.forEach((other) => {
+        const otherBtn = other.querySelector('.faq-trigger');
+        const otherAnswer = other.querySelector('.faq-answer');
+        otherBtn.setAttribute('aria-expanded', 'false');
+        otherAnswer.hidden = true;
+      });
+
+      // Open this one if it was closed
+      if (!expanded) {
+        btn.setAttribute('aria-expanded', 'true');
+        answer.hidden = false;
+      }
+    });
+  });
+</script>

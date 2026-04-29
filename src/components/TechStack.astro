@@ -1,0 +1,156 @@
+---
+const stack = [
+  { category: "Platform", tool: "WordPress", note: "43% of the web runs on WordPress for good reasons" },
+  { category: "Page Builder", tool: "Elementor Pro", note: "Flexible, client-friendly, battle-tested since 2016" },
+  { category: "Theme", tool: "Astra Pro", note: "Lightweight parent theme, accessibility-aware" },
+  { category: "Commerce", tool: "WooCommerce", note: "Native to WordPress, zero monthly transaction fees" },
+  { category: "SEO", tool: "RankMath Pro", note: "Schema, sitemaps, redirects, all in one plugin" },
+  { category: "Speed", tool: "Seraphinite", note: "Our specialty cache plugin, faster than WP Rocket" },
+  { category: "Hosting", tool: "Cloudways", note: "Managed WordPress hosting with published SLAs" },
+  { category: "Security", tool: "Wordfence", note: "Firewall, malware scanning, and 2FA built in" },
+  { category: "CDN", tool: "Cloudflare", note: "Global edge network with free DDoS protection" },
+  { category: "Analytics", tool: "GA4 and GSC", note: "Real performance metrics, not vanity dashboards" },
+];
+---
+<section class="stack-section section-pad" id="stack">
+  <div class="container">
+    <div class="stack-header">
+      <div>
+        <p class="eyebrow">The stack</p>
+        <h2 class="h2-section">What technology powers an Upcoming Brand WordPress website?</h2>
+        <p class="lead">Every project runs on: WordPress core with Elementor Pro page builder, Astra parent theme, RankMath Pro, WooCommerce, Wordfence, Cloudways, and Cloudflare.</p>
+        <p class="stack-sub">Every tool on this list has earned its place through years of production use across hundreds of projects.</p>
+      </div>
+    </div>
+
+    <div class="stack-table" role="table" aria-label="Technology stack">
+      <div class="stack-thead" role="rowgroup">
+        <div class="stack-row stack-header-row" role="row">
+          <span class="stack-cell" role="columnheader">Category</span>
+          <span class="stack-cell" role="columnheader">Tool</span>
+          <span class="stack-cell stack-cell-wide" role="columnheader">Why we use it</span>
+        </div>
+      </div>
+      <div class="stack-tbody" role="rowgroup">
+        {stack.map((item, i) => (
+          <div class="stack-row" role="row">
+            <span class="stack-cell stack-category mono-xs" role="cell">{item.category}</span>
+            <span class="stack-cell stack-tool" role="cell">{item.tool}</span>
+            <span class="stack-cell stack-cell-wide stack-note" role="cell">{item.note}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack-section {
+    background: var(--cream-soft);
+  }
+
+  .stack-header {
+    margin-bottom: 48px;
+    max-width: 640px;
+  }
+
+  .stack-sub {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-top: 16px;
+  }
+
+  .stack-table {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .stack-row {
+    display: grid;
+    grid-template-columns: 140px 200px 1fr;
+    border-bottom: 1px solid var(--line);
+    align-items: center;
+  }
+
+  .stack-row:last-child {
+    border-bottom: none;
+  }
+
+  .stack-header-row {
+    background: var(--cream-soft);
+  }
+
+  .stack-cell {
+    padding: 14px 20px;
+    font-size: 14px;
+    border-right: 1px solid var(--line);
+  }
+
+  .stack-cell:last-child {
+    border-right: none;
+  }
+
+  .stack-thead .stack-cell {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .stack-category {
+    color: var(--amber);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .stack-tool {
+    font-weight: 600;
+    font-size: 15px;
+  }
+
+  .stack-note {
+    color: var(--ink-muted);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .stack-tbody .stack-row:hover {
+    background: var(--cream-soft);
+  }
+
+  @media (max-width: 700px) {
+    .stack-row {
+      grid-template-columns: 1fr;
+    }
+
+    .stack-cell {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      padding: 10px 16px;
+    }
+
+    .stack-cell:last-child {
+      border-bottom: none;
+    }
+
+    .stack-header-row {
+      display: none;
+    }
+
+    .stack-row {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stack-cell {
+      padding: 0;
+      border-bottom: none;
+    }
+  }
+</style>

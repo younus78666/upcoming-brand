@@ -1,0 +1,192 @@
+---
+const before = [
+  "Core Web Vitals failing, PageSpeed scores stuck in the 40s on mobile",
+  "Basic text edits require a developer because the theme was never set up to be client-editable",
+  "The original agency went silent after launch; support tickets sit for 10 days",
+  "Schema markup is missing from most pages or was installed incorrectly",
+  "No topical architecture exists, so Google rankings stall on page 3",
+  "WooCommerce checkout abandonment rate above 75% with no analysis of why",
+  "The site crashes every 6 weeks and nobody can explain the root cause",
+  "Mobile design was clearly an afterthought; layout breaks on iPhone",
+];
+
+const after = [
+  "LCP under 2.5s, INP under 200ms, and all three Core Web Vitals green in Search Console",
+  "Point-and-click editing through Elementor Pro, so anyone on your team can update copy",
+  "Response within 4 business hours on our care plan, with direct access to the founder",
+  "RankMath Pro schema configured for every page type: Organization, Service, FAQ, Article",
+  "A 30-page topical map driving top-10 rankings for 20 to 40 targeted keywords within 9 months",
+  "WooCommerce checkout optimized to industry-benchmark 2.5-4% conversion rates",
+  "99.97% uptime with automated monitoring and off-site backups to S3",
+  "Mobile-first responsive design tested across iPhone, Android, and tablet at build time",
+];
+---
+<section class="ba-section section-pad" id="why-us">
+  <div class="container">
+    <div class="ba-intro">
+      <p class="eyebrow">Why business owners switch to us</p>
+      <h2 class="h2-section">What separates a template shop from a studio?</h2>
+      <p class="lead">
+        A template shop delivers a pre-built theme, collects final payment, and disappears. A WordPress web design studio ships a custom site, stays on as your technical partner, and owns the outcome for as long as you're in business. That's the gap we're filling.
+      </p>
+    </div>
+
+    <div class="ba-grid">
+      <!-- Before Panel -->
+      <div class="ba-panel ba-before">
+        <div class="ba-panel-header">
+          <span class="ba-badge ba-badge-before mono-xs">Before &middot; Template shop</span>
+          <h3 class="ba-panel-title">The symptoms we keep being called to fix</h3>
+        </div>
+        <ul class="ba-list" role="list">
+          {before.map((item) => (
+            <li class="ba-item ba-item-before" role="listitem">
+              <span class="ba-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/>
+                  <path d="M5.5 5.5L10.5 10.5M10.5 5.5L5.5 10.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- After Panel -->
+      <div class="ba-panel ba-after">
+        <div class="ba-panel-header">
+          <span class="ba-badge ba-badge-after mono-xs">After &middot; Upcoming Brand</span>
+          <h3 class="ba-panel-title">What the site actually feels like with us</h3>
+        </div>
+        <ul class="ba-list" role="list">
+          {after.map((item) => (
+            <li class="ba-item ba-item-after" role="listitem">
+              <span class="ba-icon" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="8" cy="8" r="7.5" stroke="currentColor" stroke-opacity="0.3"/>
+                  <path d="M5 8.5L7 10.5L11 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ba-section {
+    background: var(--cream-soft);
+  }
+
+  .ba-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .ba-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .ba-panel {
+    border-radius: var(--radius-md);
+    padding: clamp(24px, 3vw, 40px);
+    border: 1px solid var(--line);
+  }
+
+  .ba-before {
+    background: var(--paper);
+  }
+
+  .ba-after {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .ba-panel-header {
+    margin-bottom: 24px;
+  }
+
+  .ba-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+
+  .ba-badge-before {
+    background: rgba(176, 74, 62, 0.1);
+    color: var(--red);
+    border: 1px solid rgba(176, 74, 62, 0.2);
+  }
+
+  .ba-badge-after {
+    background: rgba(92, 128, 64, 0.15);
+    color: #8ab86a;
+    border: 1px solid rgba(92, 128, 64, 0.25);
+  }
+
+  .ba-panel-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .ba-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .ba-item {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  .ba-item-after {
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .ba-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .ba-item:first-child {
+    padding-top: 0;
+  }
+
+  .ba-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .ba-item-before .ba-icon {
+    color: var(--red);
+  }
+
+  .ba-item-after .ba-icon {
+    color: var(--green);
+  }
+
+  @media (max-width: 900px) {
+    .ba-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

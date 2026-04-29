@@ -1,0 +1,351 @@
+---
+const cases = [
+  {
+    tag: "Law Firm",
+    city: "Baltimore",
+    year: "2026",
+    client: "Meridian Law Group",
+    desc: "48-page rebuild for 40-year firm, 6 practice silos, intake routing.",
+    stats: [
+      { val: "+312%", label: "Organic leads" },
+      { val: "94", label: "PageSpeed mobile" },
+      { val: "48", label: "Pages rebuilt" },
+    ],
+    color: "#1C3A5C",
+  },
+  {
+    tag: "Dental",
+    city: "Annapolis",
+    year: "2025",
+    client: "Chesapeake Dental",
+    desc: "3-location practice, integrated booking, insurance verification.",
+    stats: [
+      { val: "+218%", label: "Online bookings" },
+      { val: "92", label: "PageSpeed mobile" },
+      { val: "3", label: "Locations unified" },
+    ],
+    color: "#2A4A3E",
+  },
+  {
+    tag: "Real Estate",
+    city: "Bethesda",
+    year: "2025",
+    client: "Tidewater Realty",
+    desc: "IDX-powered brokerage, 80+ agent profiles, MLS data sync.",
+    stats: [
+      { val: "80+", label: "Agent profiles" },
+      { val: "2.4s", label: "LCP" },
+      { val: "+156%", label: "Qualified leads" },
+    ],
+    color: "#3A2A1C",
+  },
+  {
+    tag: "E-commerce",
+    city: "Rockville",
+    year: "2025",
+    client: "Arden Interiors",
+    desc: "340 SKUs, custom product configurator, 3.8% conversion rate.",
+    stats: [
+      { val: "3.8%", label: "Conversion rate" },
+      { val: "340", label: "Products live" },
+      { val: "+89%", label: "Average order value" },
+    ],
+    color: "#2E1E3A",
+  },
+];
+---
+<section class="work-section section-pad" id="work">
+  <div class="container">
+    <div class="work-intro">
+      <p class="eyebrow">Selected work</p>
+      <h2 class="h2-section">Recent WordPress web design builds from the studio</h2>
+    </div>
+
+    <div class="work-grid">
+      {cases.map((c) => (
+        <article class="work-card" style={`--card-color: ${c.color}`}>
+          <!-- Image placeholder -->
+          <div class="work-img" aria-hidden="true" style={`background: ${c.color}`}>
+            <div class="work-img-inner">
+              <span class="work-img-label mono-xs">{c.client}</span>
+              <div class="work-img-decoration">
+                <div class="work-browser">
+                  <div class="browser-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <div class="browser-bar"></div>
+                  <div class="browser-content">
+                    <div class="bc-nav"></div>
+                    <div class="bc-hero"></div>
+                    <div class="bc-body">
+                      <div class="bc-line"></div>
+                      <div class="bc-line bc-line-short"></div>
+                      <div class="bc-line"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card body -->
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="work-tag mono-xs">{c.tag}</span>
+              <span class="work-loc mono-xs">{c.city} &middot; {c.year}</span>
+            </div>
+            <h3 class="work-client">{c.client}</h3>
+            <p class="work-desc">{c.desc}</p>
+            <div class="work-stats" role="list">
+              {c.stats.map((s) => (
+                <div class="work-stat" role="listitem">
+                  <span class="wstat-val">{s.val}</span>
+                  <span class="wstat-label mono-xs">{s.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="work-footer">
+      <p class="work-footer-text">40+ more case studies in the full portfolio.</p>
+      <a href="#portfolio" class="cta-outline">View all case studies &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .work-intro {
+    margin-bottom: 40px;
+  }
+
+  .work-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .work-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), transform var(--transition);
+  }
+
+  .work-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+  }
+
+  /* Image placeholder */
+  .work-img {
+    height: 220px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .work-img-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .work-img-label {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    color: rgba(255,255,255,0.5);
+    z-index: 2;
+  }
+
+  /* SVG browser mockup */
+  .work-img-decoration {
+    width: 75%;
+    max-width: 260px;
+  }
+
+  .work-browser {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .browser-dots {
+    display: flex;
+    gap: 4px;
+    padding: 8px 10px 6px;
+    background: rgba(0,0,0,0.2);
+  }
+
+  .browser-dots span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+  }
+
+  .browser-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.06);
+    margin: 4px 10px;
+    border-radius: 2px;
+  }
+
+  .browser-content {
+    padding: 8px 10px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .bc-nav {
+    height: 6px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    width: 60%;
+  }
+
+  .bc-hero {
+    height: 32px;
+    background: rgba(212,147,46,0.2);
+    border-radius: 4px;
+    margin-block: 3px;
+  }
+
+  .bc-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .bc-line {
+    height: 4px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+  }
+
+  .bc-line-short { width: 70%; }
+
+  /* Card body */
+  .work-body {
+    padding: 24px;
+  }
+
+  .work-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+
+  .work-tag {
+    background: var(--amber-glow);
+    color: var(--amber-deep);
+    border: 1px solid rgba(212,147,46,0.2);
+    padding: 3px 10px;
+    border-radius: var(--radius-pill);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .work-loc {
+    color: var(--ink-muted);
+  }
+
+  .work-client {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .work-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    margin-bottom: 20px;
+  }
+
+  .work-stats {
+    display: flex;
+    gap: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+
+  .work-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-right: 16px;
+    border-right: 1px solid var(--line);
+  }
+
+  .work-stat:last-child {
+    border-right: none;
+    padding-right: 0;
+    padding-left: 16px;
+  }
+
+  .work-stat:nth-child(2) {
+    padding-left: 16px;
+  }
+
+  .wstat-val {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .wstat-label {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* Footer */
+  .work-footer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--cream-soft);
+  }
+
+  .work-footer-text {
+    font-size: 15px;
+    color: var(--ink-muted);
+    flex: 1;
+  }
+
+  @media (max-width: 900px) {
+    .work-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .work-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+</style>

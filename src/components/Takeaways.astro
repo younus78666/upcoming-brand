@@ -1,0 +1,92 @@
+---
+const bullets = [
+  "A custom WordPress website from Upcoming Brand costs between $3,500 and $15,000 based on scope, with fixed quotes and no hourly billing.",
+  "Typical delivery timeline runs 4 to 10 weeks depending on tier, from discovery call to live launch.",
+  "Every site launches with Core Web Vitals in the green: LCP under 2.5 seconds, INP under 200 milliseconds.",
+  "We serve 20+ Maryland cities including Baltimore, Annapolis, Frederick, Bethesda, Rockville, and Silver Spring.",
+  "Monthly care plans start at $150 and cover updates, backups, security, and a 4-hour support SLA.",
+];
+---
+<section class="takeaways section-pad-sm" id="takeaways">
+  <div class="container">
+    <div class="takeaways-box">
+      <div class="takeaways-header">
+        <p class="eyebrow">Quick facts</p>
+        <h2 class="h2-section takeaways-h2">What Maryland businesses get from a WordPress project with us</h2>
+      </div>
+      <ul class="takeaways-list" role="list">
+        {bullets.map((bullet, i) => (
+          <li class="takeaway-item" role="listitem">
+            <span class="takeaway-num mono-xs" aria-hidden="true">0{i + 1}</span>
+            <span class="takeaway-text">{bullet}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .takeaways {
+    background: var(--cream-soft);
+  }
+
+  .takeaways-box {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--paper);
+    padding: clamp(32px, 4vw, 56px);
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 48px;
+    align-items: start;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .takeaways-h2 {
+    font-size: clamp(22px, 2.5vw, 32px);
+    margin-bottom: 0;
+  }
+
+  .takeaways-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .takeaway-item {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .takeaway-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .takeaway-item:first-child {
+    padding-top: 0;
+  }
+
+  .takeaway-num {
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .takeaway-text {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 900px) {
+    .takeaways-box {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>

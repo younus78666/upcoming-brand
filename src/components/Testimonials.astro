@@ -1,0 +1,193 @@
+---
+const testimonials = [
+  {
+    featured: true,
+    stars: 5,
+    quote: "We went through three agencies before Upcoming Brand. The difference wasn't just the design. It was having someone who actually answered the phone and understood why page speed and schema mattered, not just how a page looked.",
+    initials: "MR",
+    name: "Maya Rodriguez",
+    title: "Managing Partner",
+    company: "Meridian Law",
+    city: "Baltimore",
+  },
+  {
+    featured: false,
+    stars: 5,
+    quote: "The old site took 12 seconds to load on mobile. The new one loads in under 2. Our online bookings tripled in 90 days without changing anything about how we market the practice.",
+    initials: "DC",
+    name: "Dr. Chen",
+    title: "Owner",
+    company: "Chesapeake Dental",
+    city: "Annapolis",
+  },
+  {
+    featured: false,
+    stars: 5,
+    quote: "Most web designers disappear the day after launch. These folks actually showed up at month three with a performance report and specific recommendations. Rare.",
+    initials: "JW",
+    name: "James Whitfield",
+    title: "Broker",
+    company: "Tidewater Realty",
+    city: "Bethesda",
+  },
+];
+---
+<section class="testi-section section-pad" id="testimonials">
+  <div class="container">
+    <div class="testi-intro">
+      <p class="eyebrow">Client words</p>
+      <h2 class="h2-section">What Maryland business owners say about the work</h2>
+    </div>
+
+    <div class="testi-grid">
+      {testimonials.map((t) => (
+        <blockquote class={`testi-card ${t.featured ? 'testi-card-featured' : ''}`}>
+          <div class="testi-stars" aria-label={`${t.stars} out of 5 stars`} role="img">
+            {'★'.repeat(t.stars)}
+          </div>
+          <p class="testi-quote">{t.quote}</p>
+          <footer class="testi-footer">
+            <div class="testi-avatar" aria-hidden="true">
+              {t.initials}
+            </div>
+            <div class="testi-author">
+              <cite class="testi-name">{t.name}</cite>
+              <span class="testi-role mono-xs">{t.title} &middot; {t.company}, {t.city}</span>
+            </div>
+          </footer>
+        </blockquote>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testi-section {
+    background: var(--cream-soft);
+  }
+
+  .testi-intro {
+    margin-bottom: 40px;
+  }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+  }
+
+  .testi-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    background: var(--paper);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .testi-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .testi-card-featured {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .testi-stars {
+    color: var(--amber);
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+  .testi-quote {
+    font-size: clamp(14px, 1.4vw, 17px);
+    line-height: 1.65;
+    flex: 1;
+    font-style: italic;
+  }
+
+  .testi-card-featured .testi-quote {
+    color: rgba(244,239,230,0.85);
+  }
+
+  .testi-footer {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    margin-top: auto;
+  }
+
+  .testi-card-featured .testi-footer {
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .testi-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--amber);
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  .testi-card-featured .testi-avatar {
+    background: rgba(212,147,46,0.2);
+    color: var(--amber);
+  }
+
+  .testi-author {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .testi-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+  }
+
+  .testi-role {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+    font-size: 11px;
+  }
+
+  .testi-card-featured .testi-role {
+    color: rgba(244,239,230,0.45);
+  }
+
+  @media (max-width: 1000px) {
+    .testi-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .testi-card-featured {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .testi-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .testi-card-featured {
+      grid-column: span 1;
+    }
+  }
+</style>

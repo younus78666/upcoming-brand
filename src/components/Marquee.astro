@@ -1,0 +1,94 @@
+---
+const items = [
+  "Law Firms",
+  "Dental Practices",
+  "Real Estate Brokers",
+  "HVAC Contractors",
+  "Nonprofits",
+  "Medical Practices",
+  "Restaurants",
+  "Agencies",
+];
+// Duplicate for seamless loop
+const allItems = [...items, ...items];
+---
+<section class="marquee-section" aria-label="Trusted by Maryland operators">
+  <div class="marquee-label container">
+    <p class="eyebrow">Trusted by Maryland operators</p>
+  </div>
+  <div class="marquee-track-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      {allItems.map((item) => (
+        <span class="marquee-item">
+          <span class="marquee-dot"></span>
+          {item}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .marquee-section {
+    background: var(--ink);
+    padding-block: 32px;
+    overflow: hidden;
+  }
+
+  .marquee-label {
+    margin-bottom: 20px;
+  }
+
+  .marquee-label .eyebrow {
+    color: rgba(244, 239, 230, 0.45);
+    justify-content: flex-start;
+  }
+
+  .marquee-label .eyebrow::before {
+    background: rgba(244, 239, 230, 0.25);
+  }
+
+  .marquee-track-wrap {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    width: max-content;
+    animation: marquee-scroll 28s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marquee-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 32px;
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    white-space: nowrap;
+    border-right: 1px solid rgba(244,239,230,0.1);
+  }
+
+  .marquee-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+</style>

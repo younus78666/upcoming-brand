@@ -1,0 +1,208 @@
+---
+const phases = [
+  {
+    num: "01",
+    name: "Discovery",
+    timing: "Week 1",
+    desc: "45-min working call, written project brief with fixed-scope quote within 48 hours",
+  },
+  {
+    num: "02",
+    name: "Strategy & Architecture",
+    timing: "Weeks 1–2",
+    desc: "Topical map, sitemap, wireframes, content outlines, Figma blueprint",
+  },
+  {
+    num: "03",
+    name: "Design",
+    timing: "Weeks 2–4",
+    desc: "High-fidelity Figma designs desktop+mobile, component library, 2 revision rounds",
+  },
+  {
+    num: "04",
+    name: "Development",
+    timing: "Weeks 4–7",
+    desc: "WordPress on staging, Elementor Pro, RankMath Pro, weekly demo links",
+  },
+  {
+    num: "05",
+    name: "QA & Launch",
+    timing: "Week 8",
+    desc: "Accessibility, speed, schema, cross-browser testing, 301 redirects, coordinated launch",
+  },
+  {
+    num: "06",
+    name: "Handoff & Care",
+    timing: "Ongoing",
+    desc: "Training videos, documentation, 60 days free support, optional care plan from $150",
+  },
+];
+---
+<section class="process-section section-pad" id="process">
+  <div class="container">
+    <div class="process-intro">
+      <p class="eyebrow">How we work</p>
+      <h2 class="h2-section">How long does an Upcoming Brand WordPress web design project take?</h2>
+      <p class="lead">4 to 16 weeks from signed contract to live launch.</p>
+    </div>
+
+    <div class="process-timeline" role="list" aria-label="Project phases">
+      {phases.map((phase, i) => (
+        <div class="phase-item" role="listitem">
+          <div class="phase-marker" aria-hidden="true">
+            <span class="phase-num mono-xs">{phase.num}</span>
+            <div class="phase-line"></div>
+          </div>
+          <div class="phase-content">
+            <div class="phase-header">
+              <h3 class="phase-name">{phase.name}</h3>
+              <span class="phase-timing mono-xs">{phase.timing}</span>
+            </div>
+            <p class="phase-desc">{phase.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div class="process-cta">
+      <a href="#contact" class="cta-btn">Start with a discovery call &rarr;</a>
+      <p class="process-cta-note mono-xs">No sales pitch on the first call. Just a working conversation.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .process-section {
+    background: var(--paper);
+  }
+
+  .process-intro {
+    max-width: 600px;
+    margin-bottom: 56px;
+  }
+
+  .process-timeline {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .phase-item {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .phase-item:hover {
+    background: var(--cream-soft);
+  }
+
+  .phase-item:nth-child(3n) { border-right: none; }
+  .phase-item:nth-child(4),
+  .phase-item:nth-child(5),
+  .phase-item:nth-child(6) { border-bottom: none; }
+
+  .phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .phase-num {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--amber);
+    border-radius: 50%;
+    color: var(--amber);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+
+  .phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.8vw, 20px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+  }
+
+  .phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  @media (max-width: 900px) {
+    .process-timeline {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .phase-item:nth-child(3n) { border-right: 1px solid var(--line); }
+    .phase-item:nth-child(2n) { border-right: none; }
+    .phase-item:nth-child(5),
+    .phase-item:nth-child(6) { border-bottom: none; }
+    .phase-item:nth-child(4) { border-bottom: 1px solid var(--line); }
+  }
+
+  @media (max-width: 600px) {
+    .process-timeline {
+      grid-template-columns: 1fr;
+    }
+
+    .phase-item { border-right: none !important; }
+    .phase-item:last-child { border-bottom: none; }
+    .phase-item:nth-child(n) { border-bottom: 1px solid var(--line); }
+
+    .process-cta {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+  }
+</style>

@@ -1,0 +1,90 @@
+---
+import '../styles/global.css';
+
+export interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title = "WordPress Web Design Services Maryland | Upcoming Brand",
+  description = "WordPress web design services in Maryland. Fixed-scope builds, 6-10 week delivery, 90+ PageSpeed. Baltimore, Annapolis, Frederick. Book a 45-min discovery call.",
+  ogImage = "/og-image.jpg",
+  canonicalUrl = "https://upcomingbrand.com/",
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#FBF8F2" />
+
+  <!-- Primary Meta -->
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:site_name" content="Upcoming Brand" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Favicon placeholder -->
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400;1,9..144,500&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Schema.org Organization -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Upcoming Brand",
+      "description": "WordPress web design studio based in Maryland serving Baltimore, Annapolis, Frederick, and the DMV metro.",
+      "url": "https://upcomingbrand.com",
+      "areaServed": {
+        "@type": "State",
+        "name": "Maryland"
+      },
+      "serviceType": "WordPress Web Design",
+      "priceRange": "$3,500 - $15,000",
+      "telephone": "",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Maryland",
+        "addressRegion": "MD",
+        "addressCountry": "US"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/upcomingbrand",
+        "https://twitter.com/upcomingbrand"
+      ]
+    }
+  </script>
+</head>
+<body>
+  <slot />
+</body>
+</html>

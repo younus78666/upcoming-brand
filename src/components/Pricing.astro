@@ -1,0 +1,319 @@
+---
+const tiers = [
+  {
+    name: "Starter Site",
+    price: "from $3,500",
+    period: "one-time",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 8 fully designed pages",
+      "Mobile-responsive, accessibility-aware",
+      "RankMath Pro SEO setup",
+      "Contact form and Google Analytics 4",
+      "Basic schema markup on key pages",
+      "30 days of free post-launch support",
+    ],
+    cta: "Get a quote",
+    ctaHref: "#contact",
+  },
+  {
+    name: "Growth Site",
+    price: "from $7,500",
+    period: "one-time",
+    timeline: "6–10 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 25 pages with a full topical map",
+      "Custom Figma design with 2 revision rounds",
+      "Full schema markup and rich snippets",
+      "WooCommerce setup with up to 50 products",
+      "Speed optimization to 90+ PageSpeed",
+      "Migration from your existing site",
+      "60 days of free post-launch support",
+    ],
+    cta: "Book discovery call",
+    ctaHref: "#contact",
+  },
+  {
+    name: "Scale Site",
+    price: "from $15,000",
+    period: "one-time",
+    timeline: "10–16 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited pages, multi-silo architecture",
+      "Custom WooCommerce or LMS build",
+      "HubSpot, Salesforce, or Zapier integration",
+      "HIPAA-aware or ADA-compliant setup",
+      "Performance budget under 2s LCP",
+      "Dedicated project manager",
+      "90 days of free post-launch support",
+    ],
+    cta: "Start a conversation",
+    ctaHref: "#contact",
+  },
+];
+---
+<section class="pricing-section section-pad" id="pricing">
+  <div class="container">
+    <div class="pricing-intro">
+      <p class="eyebrow">Transparent pricing</p>
+      <h2 class="h2-section">How much does a WordPress website cost in Maryland in 2026?</h2>
+      <p class="lead">$3,500 to $15,000. Starter from $3,500. Growth from $7,500. Scale from $15,000.</p>
+      <p class="pricing-sub">Most competitors hide pricing behind a contact form. We don't. Fixed-scope quotes, no hourly billing.</p>
+    </div>
+
+    <div class="pricing-grid">
+      {tiers.map((tier) => (
+        <div class={`pricing-card ${tier.popular ? 'pricing-card-popular' : ''} ${tier.dark ? 'pricing-card-dark' : ''}`}>
+          {tier.popular && (
+            <div class="popular-badge mono-xs">Most Popular</div>
+          )}
+          <div class="pricing-header">
+            <h3 class="tier-name">{tier.name}</h3>
+            <div class="tier-price-wrap">
+              <span class="tier-price">{tier.price}</span>
+              <span class="tier-period mono-xs">{tier.period}</span>
+            </div>
+            <div class="tier-timeline">
+              <span class="mono-xs tier-timeline-label">Typical timeline:</span>
+              <span class="tier-timeline-val mono-xs">{tier.timeline}</span>
+            </div>
+          </div>
+
+          <ul class="pricing-features" role="list">
+            {tier.features.map((f) => (
+              <li class="pricing-feature" role="listitem">
+                <span class="feature-check" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                    <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <span>{f}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div class="pricing-footer">
+            <a
+              href={tier.ctaHref}
+              class={tier.dark ? 'cta-btn cta-btn-light' : 'cta-btn'}
+              style="width: 100%; justify-content: center;"
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <p class="pricing-footnote mono-xs">
+      All tiers available with monthly care plans from <strong>$150/month</strong> covering updates, backups, security, and support.
+    </p>
+  </div>
+</section>
+
+<style>
+  .pricing-section {
+    background: var(--paper);
+  }
+
+  .pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .pricing-sub {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-top: 16px;
+  }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 32px;
+  }
+
+  .pricing-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .pricing-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .pricing-card-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 1px var(--amber), var(--shadow-md);
+  }
+
+  .pricing-card-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    font-weight: 600;
+  }
+
+  .pricing-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .pricing-card-dark .pricing-header {
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .tier-price-wrap {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(28px, 3vw, 40px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .pricing-card-dark .tier-period {
+    color: rgba(244,239,230,0.5);
+  }
+
+  .tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .pricing-card-dark .tier-timeline {
+    background: rgba(244,239,230,0.08);
+  }
+
+  .tier-timeline-label {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .pricing-card-dark .tier-timeline-label {
+    color: rgba(244,239,230,0.4);
+  }
+
+  .tier-timeline-val {
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  .pricing-card-dark .tier-timeline-val {
+    color: var(--amber);
+  }
+
+  .pricing-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .pricing-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .feature-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .pricing-card-dark .feature-check {
+    color: #8ab86a;
+  }
+
+  .pricing-card-dark .pricing-feature {
+    color: rgba(244,239,230,0.8);
+  }
+
+  .pricing-footer {
+    padding-top: 8px;
+  }
+
+  .pricing-footnote {
+    color: var(--ink-muted);
+    text-align: center;
+    letter-spacing: 0.06em;
+    padding: 16px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  @media (max-width: 1000px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .pricing-grid {
+      max-width: 100%;
+    }
+  }
+</style>

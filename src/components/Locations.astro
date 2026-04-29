@@ -1,0 +1,239 @@
+---
+const cities = [
+  { name: "Baltimore", searches: "720/mo" },
+  { name: "Annapolis", searches: "390/mo" },
+  { name: "Frederick", searches: "210/mo" },
+  { name: "Bethesda", searches: null },
+  { name: "Rockville", searches: null },
+  { name: "Silver Spring", searches: null },
+  { name: "Columbia", searches: null },
+  { name: "Gaithersburg", searches: null },
+  { name: "Towson", searches: null },
+  { name: "Ellicott City", searches: null },
+  { name: "Germantown", searches: null },
+  { name: "Hagerstown", searches: null },
+];
+---
+<section class="locations-section section-pad" id="locations">
+  <div class="container">
+    <div class="locations-layout">
+      <div class="locations-main">
+        <p class="eyebrow">Serving all of Maryland</p>
+        <h2 class="h2-section">Which Maryland cities does Upcoming Brand serve?</h2>
+        <p class="lead">
+          20+ Maryland cities including Baltimore, Annapolis, Frederick, Bethesda, Rockville, Silver Spring, Columbia, Gaithersburg, Towson, Ellicott City, Germantown, and Hagerstown.
+        </p>
+        <p class="loc-sub">Baltimore to Bethesda. Frederick to Ocean City. If you're in the DMV metro, we can meet in person.</p>
+
+        <div class="city-grid" role="list" aria-label="Maryland cities we serve">
+          {cities.map((city) => (
+            <div class="city-tile" role="listitem">
+              <span class="city-name">{city.name}</span>
+              {city.searches && (
+                <span class="city-searches mono-xs">{city.searches}</span>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="locations-sidebar">
+        <!-- Map placeholder -->
+        <div class="map-placeholder" aria-label="Maryland service area map (decorative)">
+          <svg viewBox="0 0 300 240" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
+            <rect width="300" height="240" rx="12" fill="var(--cream-soft)"/>
+            <!-- Stylized Maryland outline -->
+            <path d="M20 80 L60 60 L100 55 L130 40 L160 38 L200 42 L240 50 L270 58 L280 80 L275 100 L265 130 L240 150 L210 160 L180 165 L150 168 L120 162 L90 155 L60 140 L35 120 L20 100 Z" fill="var(--amber-glow)" stroke="var(--amber)" stroke-width="1.5"/>
+            <!-- City dots -->
+            <circle cx="145" cy="90" r="5" fill="var(--amber)"/>
+            <text x="152" y="93" font-size="9" fill="var(--ink-muted)" font-family="monospace">Baltimore</text>
+            <circle cx="178" cy="118" r="3.5" fill="var(--amber)" opacity="0.7"/>
+            <text x="183" y="121" font-size="8" fill="var(--ink-muted)" font-family="monospace">Annapolis</text>
+            <circle cx="82" cy="75" r="3.5" fill="var(--amber)" opacity="0.7"/>
+            <text x="88" y="78" font-size="8" fill="var(--ink-muted)" font-family="monospace">Frederick</text>
+            <circle cx="200" cy="85" r="3" fill="var(--amber)" opacity="0.6"/>
+            <text x="205" y="88" font-size="8" fill="var(--ink-muted)" font-family="monospace">Bethesda</text>
+            <circle cx="110" cy="95" r="3" fill="var(--amber)" opacity="0.5"/>
+            <circle cx="160" cy="105" r="3" fill="var(--amber)" opacity="0.5"/>
+            <circle cx="130" cy="120" r="3" fill="var(--amber)" opacity="0.5"/>
+            <text x="20" y="210" font-size="10" fill="var(--ink-muted)" font-family="monospace" opacity="0.6">Maryland · DMV Metro</text>
+          </svg>
+        </div>
+
+        <!-- Contact card -->
+        <div class="contact-card">
+          <h3 class="contact-card-title">Get in touch</h3>
+          <div class="contact-details">
+            <div class="contact-detail">
+              <span class="cd-label mono-xs">Response time</span>
+              <span class="cd-val">Under 4 business hours</span>
+            </div>
+            <div class="contact-detail">
+              <span class="cd-label mono-xs">Meeting options</span>
+              <span class="cd-val">In-person, Zoom, Google Meet</span>
+            </div>
+            <div class="contact-detail">
+              <span class="cd-label mono-xs">Languages</span>
+              <span class="cd-val">English, Urdu</span>
+            </div>
+            <div class="contact-detail">
+              <span class="cd-label mono-xs">Hours</span>
+              <span class="cd-val">Mon&ndash;Fri, 9 AM to 6 PM EST</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn" style="width: 100%; justify-content: center; margin-top: 8px;">
+            Book a call &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .locations-section {
+    background: var(--paper);
+  }
+
+  .locations-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .loc-sub {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-top: 12px;
+    margin-bottom: 32px;
+  }
+
+  .city-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .city-tile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+    transition: border-color var(--transition), background var(--transition);
+    cursor: default;
+  }
+
+  .city-tile:hover {
+    border-color: var(--amber);
+    background: var(--amber-glow);
+  }
+
+  .city-name {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .city-searches {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  /* Sidebar */
+  .locations-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    position: sticky;
+    top: 88px;
+  }
+
+  .map-placeholder {
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+
+  .map-placeholder svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Contact card */
+  .contact-card {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .contact-card-title {
+    font-family: var(--f-display);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-details {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-detail:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .cd-label {
+    color: var(--ink-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 10px;
+  }
+
+  .cd-val {
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 1100px) {
+    .locations-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .locations-sidebar {
+      position: static;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .city-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .locations-sidebar {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

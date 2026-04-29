@@ -1,0 +1,156 @@
+---
+const metrics = [
+  {
+    num: "400+",
+    label: "WordPress projects delivered",
+    sub: "Across 12 countries with Upwork Top Rated status",
+  },
+  {
+    num: "99%",
+    label: "Upwork job success score",
+    sub: "Consistently in the top 3% of all WordPress specialists",
+  },
+  {
+    num: "4 hr",
+    label: "Average response time on support",
+    sub: "Not a ticket queue. Direct access to the founder on every care plan",
+  },
+  {
+    num: "90+",
+    label: "Average mobile PageSpeed score",
+    sub: "Measured at launch on our last 20 client builds",
+  },
+];
+---
+<section class="metrics-section section-pad" id="metrics">
+  <div class="container">
+    <div class="metrics-intro">
+      <p class="eyebrow">Numbers we actually track</p>
+      <h2 class="h2-section">What results has Upcoming Brand delivered?</h2>
+      <p class="lead">
+        Upcoming Brand has delivered 400+ WordPress projects across 12 countries with a 99% Upwork job success score, a 4-hour average support response time, and an average mobile PageSpeed score of 90+ across our last 20 builds.
+      </p>
+    </div>
+
+    <div class="metrics-grid" role="list" aria-label="Key performance metrics">
+      {metrics.map((m) => (
+        <div class="metric-card" role="listitem">
+          <span class="metric-num">{m.num}</span>
+          <span class="metric-label">{m.label}</span>
+          <span class="metric-sub mono-xs">{m.sub}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .metrics-section {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .metrics-section .eyebrow {
+    color: rgba(244,239,230,0.45);
+  }
+
+  .metrics-section .eyebrow::before {
+    background: rgba(244,239,230,0.25);
+  }
+
+  .metrics-section .h2-section {
+    color: var(--cream);
+  }
+
+  .metrics-section .lead {
+    color: rgba(244,239,230,0.65);
+    max-width: 60ch;
+  }
+
+  .metrics-intro {
+    margin-bottom: 56px;
+  }
+
+  .metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border: 1px solid rgba(244,239,230,0.1);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .metric-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: clamp(28px, 3vw, 48px);
+    border-right: 1px solid rgba(244,239,230,0.1);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .metric-card:last-child {
+    border-right: none;
+  }
+
+  .metric-card:hover {
+    background: rgba(244,239,230,0.04);
+  }
+
+  .metric-num {
+    font-family: var(--f-display);
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--cream);
+  }
+
+  .metric-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(244,239,230,0.85);
+    line-height: 1.3;
+  }
+
+  .metric-sub {
+    color: rgba(244,239,230,0.4);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+
+  @media (max-width: 1000px) {
+    .metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .metric-card:nth-child(2) {
+      border-right: none;
+    }
+
+    .metric-card:nth-child(3) {
+      border-top: 1px solid rgba(244,239,230,0.1);
+    }
+
+    .metric-card:nth-child(4) {
+      border-top: 1px solid rgba(244,239,230,0.1);
+      border-right: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .metrics-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .metric-card {
+      border-right: none;
+      border-bottom: 1px solid rgba(244,239,230,0.1);
+    }
+
+    .metric-card:last-child {
+      border-bottom: none;
+    }
+  }
+</style>

@@ -1,0 +1,60 @@
+---
+---
+<div class="ann-bar" role="banner" aria-label="Announcement">
+  <div class="ann-inner">
+    <span class="ann-dot" aria-hidden="true"></span>
+    <span class="ann-text">
+      Now booking May 2026. Two slots remaining this quarter.
+      <a href="#contact" class="ann-link">Secure yours &rarr;</a>
+    </span>
+  </div>
+</div>
+
+<style>
+  .ann-bar {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 10px var(--pad);
+    text-align: center;
+  }
+
+  .ann-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    max-width: var(--maxw);
+    margin-inline: auto;
+  }
+
+  .ann-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .ann-text {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--cream-soft);
+  }
+
+  .ann-link {
+    color: var(--amber);
+    margin-left: 6px;
+    transition: color var(--transition);
+  }
+
+  .ann-link:hover {
+    color: #fff;
+  }
+</style>
