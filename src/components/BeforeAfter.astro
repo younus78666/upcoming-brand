@@ -355,4 +355,24 @@ const after = [
     .ba-proof-item { border-right: none; border-bottom: 1px solid var(--line); width: 100%; }
     .ba-proof-note { border-top: none; }
   }
+
+  @media (max-width: 600px) {
+    .ba-panel-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .ba-panel-badge {
+      font-size: 9px;
+    }
+
+    .ba-list {
+      gap: 10px;
+    }
+
+    .ba-item {
+      font-size: 13px;
+    }
+  }
 </style>

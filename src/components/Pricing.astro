@@ -309,13 +309,18 @@ const tiers = [
   @media (max-width: 1000px) {
     .pricing-grid {
       grid-template-columns: 1fr;
-      max-width: 480px;
+      max-width: 520px;
+      margin-inline: auto;
     }
   }
 
   @media (max-width: 600px) {
     .pricing-grid {
       max-width: 100%;
+    }
+
+    .pricing-card {
+      padding: 24px 20px;
     }
   }
 </style>
