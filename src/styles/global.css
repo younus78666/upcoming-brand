@@ -50,8 +50,8 @@ ul, ol {
   --f-display: "Fraunces", "Times New Roman", serif;
   --f-body: "Instrument Sans", "Helvetica Neue", sans-serif;
   --f-mono: "JetBrains Mono", "Courier New", monospace;
-  --maxw: 1440px;
-  --pad: clamp(24px, 5vw, 80px);
+  --maxw: 1280px;
+  --pad: clamp(20px, 4vw, 64px);
   --radius-sm: 8px;
   --radius-md: 16px;
   --radius-lg: 24px;
@@ -101,11 +101,27 @@ body::before {
 }
 
 .section-pad {
-  padding-block: clamp(64px, 8vw, 120px);
+  padding-block: clamp(80px, 10vw, 140px);
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  scroll-margin-top: 106px;
 }
 
 .section-pad-sm {
   padding-block: clamp(48px, 6vw, 80px);
+  scroll-margin-top: 106px;
+}
+
+/* Sections that shouldn't be 90vh (marquee, announcement etc.) */
+.section-auto {
+  padding-block: clamp(40px, 5vw, 80px);
+  scroll-margin-top: 106px;
+}
+
+section[id] {
+  scroll-margin-top: 106px;
 }
 
 /* ============================================================

@@ -1,458 +1,996 @@
 ---
 ---
-<header class="nav-wrap" id="nav">
-  <nav class="nav-inner container" aria-label="Primary navigation">
+<!-- ========================= ANNOUNCEMENT BAR ========================= -->
+<div class="announce">
+  <span class="announce-dot"></span>
+  <span>Now booking May 2026 &mdash; 2 slots remaining this quarter.</span>
+  <a href="#contact" class="announce-link">Secure yours &rarr;</a>
+</div>
 
-    <!-- Brand Mark -->
-    <a href="/" class="brand-mark" aria-label="Upcoming Brand home">
-      <span class="brand-mark-icon" aria-hidden="true"></span>
-      <span class="brand-mark-text">Upcoming Brand</span>
-    </a>
+<!-- ========================= NAVIGATION ========================= -->
+<nav class="site-nav" id="nav">
+  <a href="/" class="brand" aria-label="Upcoming Brand home">
+    <span class="brand-mark" aria-hidden="true"></span>
+    Upcoming Brand
+  </a>
 
-    <!-- Desktop Nav Links -->
-    <ul class="nav-links" role="list">
+  <ul class="nav-links" role="list">
 
-      <!-- Services Mega Menu -->
-      <li class="nav-item has-dropdown">
-        <button class="nav-link" aria-expanded="false" aria-haspopup="true" aria-controls="mega-services">
-          Services <span class="nav-chevron" aria-hidden="true">&#8964;</span>
-        </button>
-        <div class="mega-menu" id="mega-services" role="region" aria-label="Services menu">
-          <div class="mega-inner">
-            <div class="mega-col mega-col-main">
-              <p class="mega-label">Core Services</p>
-              <ul class="mega-list" role="list">
-                <li><a href="#services" class="mega-link">
-                  <span class="mega-link-title">Custom WordPress Design</span>
-                  <span class="mega-link-sub">Brand-first builds for Maryland businesses</span>
-                </a></li>
-                <li><a href="#services" class="mega-link">
-                  <span class="mega-link-title">WooCommerce Stores</span>
-                  <span class="mega-link-sub">Online stores with real checkout flows</span>
-                </a></li>
-                <li><a href="#services" class="mega-link">
-                  <span class="mega-link-title">Care Plans &amp; Maintenance</span>
-                  <span class="mega-link-sub">Monthly retainers from $150/month</span>
-                </a></li>
-                <li><a href="#services" class="mega-link">
-                  <span class="mega-link-title">Speed Optimization</span>
-                  <span class="mega-link-sub">Core Web Vitals — LCP under 2s</span>
-                </a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <p class="mega-label">More Services</p>
-              <ul class="mega-list" role="list">
-                <li><a href="#services" class="mega-link">
-                  <span class="mega-link-title">SEO &amp; Schema</span>
-                  <span class="mega-link-sub">RankMath Pro, structured data</span>
-                </a></li>
-                <li><a href="#services" class="mega-link">
-                  <span class="mega-link-title">Migration &amp; Redesign</span>
-                  <span class="mega-link-sub">Wix, Webflow, Squarespace to WordPress</span>
-                </a></li>
-                <li><a href="#services" class="mega-link">
-                  <span class="mega-link-title">Security &amp; Recovery</span>
-                  <span class="mega-link-sub">Hardening, firewall, malware recovery</span>
-                </a></li>
-              </ul>
-            </div>
-            <div class="mega-col mega-col-cta">
-              <div class="mega-cta-box">
-                <p class="mega-cta-label mono-xs">Most popular</p>
-                <p class="mega-cta-title">Growth Site</p>
-                <p class="mega-cta-price">From $7,500</p>
-                <p class="mega-cta-sub">25 pages · Figma design · 90+ PageSpeed</p>
-                <a href="#pricing" class="cta-btn" style="font-size:13px;padding:10px 20px;margin-top:16px;">See pricing &rarr;</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <!-- Industries Mega Menu -->
-      <li class="nav-item has-dropdown">
-        <button class="nav-link" aria-expanded="false" aria-haspopup="true" aria-controls="mega-industries">
-          Industries <span class="nav-chevron" aria-hidden="true">&#8964;</span>
-        </button>
-        <div class="mega-menu" id="mega-industries" role="region" aria-label="Industries menu">
-          <div class="mega-inner">
-            <div class="mega-col">
-              <p class="mega-label">Industries We Serve</p>
-              <ul class="mega-list" role="list">
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Law Firms &amp; Attorneys</span></a></li>
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Dental Practices</span></a></li>
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Medical Clinics</span></a></li>
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Real Estate Brokerages</span></a></li>
-              </ul>
-            </div>
-            <div class="mega-col">
-              <p class="mega-label">&nbsp;</p>
-              <ul class="mega-list" role="list">
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Nonprofits &amp; Churches</span></a></li>
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Contractors &amp; Trades</span></a></li>
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Restaurants &amp; Hospitality</span></a></li>
-                <li><a href="#industries" class="mega-link"><span class="mega-link-title">Small Business &amp; Startups</span></a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="nav-item"><a href="#work" class="nav-link">Work</a></li>
-      <li class="nav-item"><a href="#pricing" class="nav-link">Pricing</a></li>
-      <li class="nav-item"><a href="#process" class="nav-link">Process</a></li>
-      <li class="nav-item"><a href="#blog" class="nav-link">Resources</a></li>
-    </ul>
-
-    <!-- Nav CTA -->
-    <div class="nav-actions">
-      <a href="#contact" class="nav-cta cta-btn">Book a call &rarr;</a>
-      <button class="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-        <span></span><span></span><span></span>
+    <!-- SERVICES MEGA MENU -->
+    <li class="nav-item" data-menu="services">
+      <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        Services
+        <span class="chev" aria-hidden="true">&#9660;</span>
       </button>
-    </div>
-  </nav>
+      <div class="mega mega-wide">
+        <div class="mega-header">
+          <div>
+            <h3>WordPress services, <em>done right.</em></h3>
+            <p>Seven core services that cover every stage of a WordPress site — from first sketch through ongoing care. Pick one or bundle them.</p>
+          </div>
+          <div class="mega-header-right">
+            <div class="label">Most requested</div>
+            <div class="value">Custom design + monthly care plan</div>
+          </div>
+        </div>
 
-  <!-- Mobile Nav -->
-  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-    <ul class="mobile-nav-links" role="list">
-      <li><a href="#services" class="mobile-link">Services</a></li>
-      <li><a href="#industries" class="mobile-link">Industries</a></li>
-      <li><a href="#work" class="mobile-link">Work</a></li>
-      <li><a href="#pricing" class="mobile-link">Pricing</a></li>
-      <li><a href="#process" class="mobile-link">Process</a></li>
-      <li><a href="#blog" class="mobile-link">Resources</a></li>
-      <li><a href="#contact" class="mobile-link mobile-link-cta">Book a discovery call &rarr;</a></li>
-    </ul>
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <h4>Design &amp; Build</h4>
+            <ul>
+              <li><a class="mega-link" href="/services/wordpress-web-design/">
+                <span class="mega-link-title">Custom WordPress Design <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Brand-first custom builds on Elementor Pro.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/woocommerce-development/">
+                <span class="mega-link-title">WooCommerce Stores <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Full ecommerce with Stripe, shipping, subs.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/wordpress-migration/">
+                <span class="mega-link-title">Website Migration <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">From Wix, Webflow, Squarespace, or older WP.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/wordpress-redesign/">
+                <span class="mega-link-title">Website Redesign <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Refresh an existing WordPress site.</span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Performance &amp; SEO</h4>
+            <ul>
+              <li><a class="mega-link" href="/services/wordpress-speed-optimization/">
+                <span class="mega-link-title">Speed Optimization <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Core Web Vitals in the green.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/wordpress-seo-services/">
+                <span class="mega-link-title">SEO &amp; Schema <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">RankMath Pro, topical maps, structured data.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/local-seo-maryland/">
+                <span class="mega-link-title">Local SEO <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Rank in Maryland's local pack.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/seo-audit/">
+                <span class="mega-link-title">SEO Audit <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">120-point audit with a fix-it plan.</span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Care &amp; Protection</h4>
+            <ul>
+              <li><a class="mega-link" href="/services/wordpress-care-plans/">
+                <span class="mega-link-title">WordPress Care Plans <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Monthly updates, backups, uptime.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/wordpress-security/">
+                <span class="mega-link-title">Security &amp; Hardening <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Firewall, 2FA, malware recovery.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/wordpress-hosting/">
+                <span class="mega-link-title">Managed Hosting <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Cloudways &amp; Kinsta partners.</span>
+              </a></li>
+              <li><a class="mega-link" href="/services/wordpress-support/">
+                <span class="mega-link-title">On-Demand Support <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Hourly WP help when you need it.</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mega-footer">
+          <a href="/services/" class="mega-footer-link">Browse all services <span>&rarr;</span></a>
+          <div class="mega-footer-meta">12 services &middot; Starting $500</div>
+        </div>
+      </div>
+    </li>
+
+    <!-- INDUSTRIES MEGA MENU -->
+    <li class="nav-item" data-menu="industries">
+      <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        Industries
+        <span class="chev" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="mega mega-wide">
+        <div class="mega-header">
+          <div>
+            <h3>Built for specific <em>verticals.</em></h3>
+            <p>Ten industries we've built enough sites in to know the pitfalls, plugins, and compliance quirks before you hit them.</p>
+          </div>
+          <div class="mega-header-right">
+            <div class="label">Highest demand</div>
+            <div class="value">Law firms &amp; dental practices</div>
+          </div>
+        </div>
+
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <h4>Professional Services</h4>
+            <ul>
+              <li><a class="mega-link" href="/industries/law-firm-website-design/">
+                <span class="mega-link-title">Law Firms &amp; Attorneys <span class="mega-volume">2,900/mo</span> <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Practice areas, attorney bios, intake forms.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/medical-website-design/">
+                <span class="mega-link-title">Medical Clinics <span class="mega-volume">1,000/mo</span> <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">HIPAA-aware, patient portals, appointments.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/dental-website-design/">
+                <span class="mega-link-title">Dental Practices <span class="mega-volume">1,300/mo</span> <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Insurance verification, online booking.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/accountant-website-design/">
+                <span class="mega-link-title">Accountants &amp; CPAs <span class="arrow">&rarr;</span></span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Local &amp; Trade</h4>
+            <ul>
+              <li><a class="mega-link" href="/industries/contractor-website-design/">
+                <span class="mega-link-title">Contractors &amp; Trades <span class="mega-volume">1,300/mo</span> <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">HVAC, plumbing, roofing, general contractors.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/restaurant-website-design/">
+                <span class="mega-link-title">Restaurants &amp; Hospitality <span class="mega-volume">1,000/mo</span> <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Menus, reservations, POS integration.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/real-estate-website-design/">
+                <span class="mega-link-title">Real Estate Brokerages <span class="mega-volume">1,300/mo</span> <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">IDX integration, agent rosters, lead routing.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/nonprofit-website-design/">
+                <span class="mega-link-title">Nonprofits &amp; Churches <span class="arrow">&rarr;</span></span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Growth &amp; Ecommerce</h4>
+            <ul>
+              <li><a class="mega-link" href="/industries/small-business-website-design/">
+                <span class="mega-link-title">Small Business &amp; Startups <span class="mega-volume">2,900/mo</span> <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">From MVP to scale-ready.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/ecommerce-website-design/">
+                <span class="mega-link-title">Ecommerce Stores <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">WooCommerce builds that convert.</span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/church-website-design/">
+                <span class="mega-link-title">Churches &amp; Faith <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/industries/gym-website-design/">
+                <span class="mega-link-title">Gyms &amp; Fitness <span class="arrow">&rarr;</span></span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mega-footer">
+          <a href="/industries/" class="mega-footer-link">See all industries <span>&rarr;</span></a>
+          <div class="mega-footer-meta">Don't see yours? <a href="#contact" style="color: var(--amber-deep);">Ask us.</a></div>
+        </div>
+      </div>
+    </li>
+
+    <!-- MARYLAND MEGA MENU -->
+    <li class="nav-item" data-menu="maryland">
+      <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        Maryland
+        <span class="chev" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="mega mega-wide">
+        <div class="mega-header">
+          <div>
+            <h3>Local to <em>every</em> corner of Maryland.</h3>
+            <p>Dedicated city pages for each Maryland market we serve, with local business schema and case studies.</p>
+          </div>
+          <div class="mega-header-right">
+            <div class="label">Our home base</div>
+            <div class="value">Baltimore &amp; DC metro</div>
+          </div>
+        </div>
+
+        <div class="mega-grid cols-4">
+          <div class="mega-col">
+            <h4>Tier 1 &mdash; Flagships</h4>
+            <ul>
+              <li><a class="mega-link" href="/locations/baltimore/">
+                <span class="mega-link-title">Baltimore <span class="mega-volume">720/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/annapolis/">
+                <span class="mega-link-title">Annapolis <span class="mega-volume">390/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/frederick/">
+                <span class="mega-link-title">Frederick <span class="mega-volume">210/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Tier 2 &mdash; DC Metro</h4>
+            <ul>
+              <li><a class="mega-link" href="/locations/bethesda/">
+                <span class="mega-link-title">Bethesda <span class="mega-volume">30/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/rockville/">
+                <span class="mega-link-title">Rockville <span class="mega-volume">40/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/silver-spring/">
+                <span class="mega-link-title">Silver Spring <span class="mega-volume">30/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/gaithersburg/">
+                <span class="mega-link-title">Gaithersburg <span class="mega-volume">20/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/germantown/">
+                <span class="mega-link-title">Germantown <span class="mega-volume">10/mo</span> <span class="arrow">&rarr;</span></span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Tier 3 &mdash; Suburbs</h4>
+            <ul>
+              <li><a class="mega-link" href="/locations/columbia/">
+                <span class="mega-link-title">Columbia <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/towson/">
+                <span class="mega-link-title">Towson <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/ellicott-city/">
+                <span class="mega-link-title">Ellicott City <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/catonsville/">
+                <span class="mega-link-title">Catonsville <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/dundalk/">
+                <span class="mega-link-title">Dundalk <span class="arrow">&rarr;</span></span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Tier 4 &mdash; Statewide</h4>
+            <ul>
+              <li><a class="mega-link" href="/locations/hagerstown/">
+                <span class="mega-link-title">Hagerstown <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/westminster/">
+                <span class="mega-link-title">Westminster <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/bowie/">
+                <span class="mega-link-title">Bowie <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/waldorf/">
+                <span class="mega-link-title">Waldorf <span class="arrow">&rarr;</span></span>
+              </a></li>
+              <li><a class="mega-link" href="/locations/salisbury/">
+                <span class="mega-link-title">Salisbury <span class="arrow">&rarr;</span></span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mega-footer">
+          <a href="/locations/" class="mega-footer-link">See all 20+ Maryland cities <span>&rarr;</span></a>
+          <div class="mega-footer-meta">On-site meetings within 90 min of DC beltway</div>
+        </div>
+      </div>
+    </li>
+
+    <!-- WORK MEGA MENU -->
+    <li class="nav-item" data-menu="work">
+      <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        Work
+        <span class="chev" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="mega">
+        <div class="mega-header">
+          <div>
+            <h3>Recent <em>builds</em> from the studio.</h3>
+            <p>A sample of what happens when Maryland operators stop settling for template shops.</p>
+          </div>
+          <div class="mega-header-right">
+            <div class="label">Projects delivered</div>
+            <div class="value">400+ across 12 countries</div>
+          </div>
+        </div>
+
+        <div class="mega-grid cols-2">
+          <div class="mega-col">
+            <h4>Featured Case Studies</h4>
+            <ul>
+              <li><a class="mega-link" href="/work/meridian-law-group/">
+                <span class="mega-link-title">Meridian Law Group <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Baltimore &middot; 48-page rebuild &middot; +312% organic leads</span>
+              </a></li>
+              <li><a class="mega-link" href="/work/chesapeake-dental/">
+                <span class="mega-link-title">Chesapeake Dental <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Annapolis &middot; Multi-location &middot; Online booking</span>
+              </a></li>
+              <li><a class="mega-link" href="/work/tidewater-realty/">
+                <span class="mega-link-title">Tidewater Realty <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Bethesda &middot; IDX integration &middot; 80+ agents</span>
+              </a></li>
+              <li><a class="mega-link" href="/work/arden-interiors/">
+                <span class="mega-link-title">Arden Interiors <span class="arrow">&rarr;</span></span>
+                <span class="mega-link-desc">Rockville &middot; WooCommerce &middot; 3.8% conversion</span>
+              </a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Browse by Industry</h4>
+            <ul>
+              <li><a class="mega-link" href="/work/?filter=law"><span class="mega-link-title">Law Firm Projects <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/work/?filter=medical"><span class="mega-link-title">Medical &amp; Dental Projects <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/work/?filter=ecommerce"><span class="mega-link-title">Ecommerce Projects <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/work/?filter=nonprofit"><span class="mega-link-title">Nonprofit Projects <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/work/?filter=redesign"><span class="mega-link-title">Redesigns &amp; Migrations <span class="arrow">&rarr;</span></span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mega-footer">
+          <a href="/work/" class="mega-footer-link">View full portfolio <span>&rarr;</span></a>
+          <div class="mega-footer-meta">40+ case studies available</div>
+        </div>
+      </div>
+    </li>
+
+    <!-- RESOURCES MEGA MENU -->
+    <li class="nav-item" data-menu="resources">
+      <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        Resources
+        <span class="chev" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="mega mega-wide">
+        <div class="mega-header">
+          <div>
+            <h3>Articles, guides &amp; <em>tools.</em></h3>
+            <p>Deep guides for business owners evaluating WordPress and for clients managing their own sites.</p>
+          </div>
+          <div class="mega-header-right">
+            <div class="label">New this month</div>
+            <div class="value">Core Web Vitals for 2026</div>
+          </div>
+        </div>
+
+        <div class="mega-grid cols-3">
+          <div class="mega-col">
+            <h4>Buying Guides</h4>
+            <ul>
+              <li><a class="mega-link" href="/blog/how-much-does-a-wordpress-website-cost/"><span class="mega-link-title">How much does a WordPress site cost? <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/wordpress-vs-wix/"><span class="mega-link-title">WordPress vs Wix <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/wordpress-vs-webflow/"><span class="mega-link-title">WordPress vs Webflow <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/wordpress-vs-squarespace/"><span class="mega-link-title">WordPress vs Squarespace <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/questions-to-ask-a-web-designer/"><span class="mega-link-title">Questions to ask a web designer <span class="arrow">&rarr;</span></span></a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Technical Guides</h4>
+            <ul>
+              <li><a class="mega-link" href="/blog/best-wordpress-hosting/"><span class="mega-link-title">Best WordPress hosting 2026 <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/how-to-speed-up-wordpress/"><span class="mega-link-title">How to speed up WordPress <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/wordpress-seo-best-practices/"><span class="mega-link-title">WordPress SEO best practices <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/wordpress-accessibility-plugins/"><span class="mega-link-title">Accessibility plugins <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/blog/elementor-vs-divi/"><span class="mega-link-title">Elementor vs Divi <span class="arrow">&rarr;</span></span></a></li>
+            </ul>
+          </div>
+
+          <div class="mega-col">
+            <h4>Free Tools</h4>
+            <ul>
+              <li><a class="mega-link" href="/tools/seo-audit/"><span class="mega-link-title">Free SEO audit <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/tools/website-cost-calculator/"><span class="mega-link-title">Website cost calculator <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/tools/speed-checker/"><span class="mega-link-title">Speed checker <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/tools/schema-validator/"><span class="mega-link-title">Schema validator <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/tools/discovery-questionnaire/"><span class="mega-link-title">Discovery questionnaire <span class="arrow">&rarr;</span></span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mega-footer">
+          <a href="/blog/" class="mega-footer-link">Browse all articles <span>&rarr;</span></a>
+          <div class="mega-footer-meta">New posts every Tuesday</div>
+        </div>
+      </div>
+    </li>
+
+    <!-- COMPANY MEGA MENU -->
+    <li class="nav-item" data-menu="company">
+      <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+        Company
+        <span class="chev" aria-hidden="true">&#9660;</span>
+      </button>
+      <div class="mega">
+        <div class="mega-header">
+          <div>
+            <h3>A <em>studio</em>, not a factory.</h3>
+            <p>Small team. High standards. Every project personally led by the founder.</p>
+          </div>
+          <div class="mega-header-right">
+            <div class="label">Based in</div>
+            <div class="value">Maryland, serving US &amp; UK</div>
+          </div>
+        </div>
+
+        <div class="mega-grid cols-2">
+          <div class="mega-col">
+            <h4>About</h4>
+            <ul>
+              <li><a class="mega-link" href="/about/"><span class="mega-link-title">About Upcoming Brand <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/about/team/"><span class="mega-link-title">The team <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/about/process/"><span class="mega-link-title">Our process <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/about/values/"><span class="mega-link-title">Values &amp; principles <span class="arrow">&rarr;</span></span></a></li>
+            </ul>
+          </div>
+          <div class="mega-col">
+            <h4>Work with us</h4>
+            <ul>
+              <li><a class="mega-link" href="/pricing/"><span class="mega-link-title">Pricing <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/contact/"><span class="mega-link-title">Contact <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="#contact"><span class="mega-link-title">Book a discovery call <span class="arrow">&rarr;</span></span></a></li>
+              <li><a class="mega-link" href="/careers/"><span class="mega-link-title">Careers <span class="arrow">&rarr;</span></span></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mega-footer">
+          <a href="/contact/" class="mega-footer-link">Say hello <span>&rarr;</span></a>
+          <div class="mega-footer-meta">Response within 4 business hours</div>
+        </div>
+      </div>
+    </li>
+
+  </ul>
+
+  <div class="nav-actions">
+    <a href="#contact" class="cta-btn nav-cta">
+      Start a project
+      <span class="arrow">&rarr;</span>
+    </a>
+    <button class="nav-burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
   </div>
-</header>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <ul class="mobile-nav-links" role="list">
+    <li><a href="#services" class="mobile-link">Services</a></li>
+    <li><a href="#industries" class="mobile-link">Industries</a></li>
+    <li><a href="#locations" class="mobile-link">Maryland</a></li>
+    <li><a href="#work" class="mobile-link">Work</a></li>
+    <li><a href="#blog" class="mobile-link">Resources</a></li>
+    <li><a href="/about/" class="mobile-link">Company</a></li>
+    <li><a href="#contact" class="mobile-link mobile-link-cta">Book a discovery call &rarr;</a></li>
+  </ul>
+</div>
 
 <style>
-  .nav-wrap {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background: rgba(251, 248, 242, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--line);
-    transition: box-shadow var(--transition);
+  /* ====================================================
+     ANNOUNCEMENT BAR
+     ==================================================== */
+  .announce {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 10px var(--pad);
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    position: relative;
+    z-index: 101;
+  }
+  .announce-dot {
+    width: 6px; height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: ann-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes ann-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.2); }
+  }
+  .announce-link {
+    color: var(--amber);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    white-space: nowrap;
   }
 
-  .nav-wrap.scrolled {
-    box-shadow: var(--shadow-md);
-  }
-
-  .nav-inner {
+  /* ====================================================
+     NAV SHELL
+     ==================================================== */
+  .site-nav {
+    padding: 0 var(--pad);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 32px;
+    gap: 24px;
     height: 68px;
+    position: sticky;
+    top: 0;
+    background: rgba(251, 248, 242, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    z-index: 100;
+    border-bottom: 1px solid var(--line);
+    transition: box-shadow 0.2s;
+  }
+  .site-nav.scrolled { box-shadow: var(--shadow-md); }
+
+  /* Brand */
+  .brand {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .brand-mark {
+    display: inline-block;
+    width: 28px; height: 28px;
+    background: var(--ink);
+    border-radius: 50%;
+    position: relative;
+    flex-shrink: 0;
+  }
+  .brand-mark::after {
+    content: "";
+    position: absolute;
+    top: 8px; left: 8px;
+    width: 12px; height: 12px;
+    background: var(--amber);
+    border-radius: 50%;
   }
 
-  /* Nav Links */
+  /* ====================================================
+     NAV LINKS
+     ==================================================== */
   .nav-links {
     display: flex;
     align-items: center;
     gap: 2px;
+    list-style: none;
     flex: 1;
     justify-content: center;
   }
 
-  .nav-item {
-    position: relative;
-  }
+  .nav-item { position: relative; }
 
-  .nav-link {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    padding: 8px 14px;
-    font-size: 14px;
+  .nav-trigger {
+    font-family: var(--f-body);
+    font-size: 15px;
     font-weight: 500;
-    color: var(--ink-muted);
-    border-radius: var(--radius-sm);
-    border: none;
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: var(--ink);
     background: none;
+    border: none;
     cursor: pointer;
-    transition: color var(--transition), background var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: background 0.2s, color 0.2s;
     white-space: nowrap;
   }
-
-  .nav-link:hover {
-    color: var(--ink);
-    background: var(--cream-soft);
+  .nav-trigger:hover,
+  .nav-item.open .nav-trigger {
+    background: var(--cream);
+    color: var(--amber-deep);
   }
-
-  .nav-chevron {
-    font-size: 16px;
-    transition: transform var(--transition);
+  .chev {
+    font-size: 9px;
+    transition: transform 0.3s;
+    color: var(--ink-muted);
   }
-
-  .has-dropdown:hover .nav-chevron,
-  .has-dropdown .nav-link[aria-expanded="true"] .nav-chevron {
+  .nav-item.open .chev {
     transform: rotate(180deg);
+    color: var(--amber-deep);
   }
 
-  /* Mega Menu */
-  .mega-menu {
+  /* ====================================================
+     MEGA MENU PANEL
+     ==================================================== */
+  .mega {
     position: absolute;
     top: calc(100% + 8px);
     left: 50%;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-8px);
     background: var(--paper);
     border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    box-shadow: var(--shadow-lg);
-    min-width: 640px;
+    border-radius: 16px;
+    padding: 32px;
+    min-width: 720px;
+    max-width: 1100px;
+    box-shadow: 0 24px 48px rgba(15,20,25,0.08), 0 6px 12px rgba(15,20,25,0.04);
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 180ms ease, visibility 180ms ease, transform 180ms ease;
-    transform: translateX(-50%) translateY(-8px);
+    transition: opacity 0.25s ease, visibility 0.25s ease, transform 0.25s ease;
+    z-index: 99;
   }
+  .mega-wide { min-width: 920px; }
 
-  .has-dropdown:hover .mega-menu,
-  .has-dropdown .nav-link[aria-expanded="true"] + .mega-menu,
-  .mega-menu.open {
+  .nav-item.open .mega {
     opacity: 1;
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
   }
 
-  .mega-inner {
+  /* First item: anchor from left edge */
+  .nav-item:first-child .mega {
+    left: 0;
+    transform: translateX(0) translateY(-8px);
+  }
+  .nav-item:first-child.open .mega {
+    transform: translateX(0) translateY(0);
+  }
+
+  /* Mega header */
+  .mega-header {
     display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 0;
-    padding: 24px;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .mega-header h3 {
+    font-family: var(--f-display);
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .mega-header h3 em {
+    font-style: italic;
+    color: var(--amber-deep);
+  }
+  .mega-header p {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+  }
+  .mega-header-right {
+    background: var(--cream);
+    padding: 20px 24px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .mega-header-right .label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 6px;
+  }
+  .mega-header-right .value {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  /* Mega grid */
+  .mega-grid {
+    display: grid;
     gap: 24px;
   }
+  .mega-grid.cols-2 { grid-template-columns: 1fr 1fr; }
+  .mega-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .mega-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
 
-  .mega-col-main { border-right: 1px solid var(--line); padding-right: 24px; }
-
-  .mega-label {
+  /* Mega columns */
+  .mega-col h4 {
     font-family: var(--f-mono);
     font-size: 10px;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--ink-muted);
-    margin-bottom: 12px;
+    color: var(--amber-deep);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--line);
   }
-
-  .mega-list { display: flex; flex-direction: column; gap: 4px; }
-
-  .mega-link {
+  .mega-col ul {
+    list-style: none;
     display: flex;
     flex-direction: column;
     gap: 2px;
-    padding: 8px 10px;
-    border-radius: var(--radius-sm);
-    transition: background var(--transition);
   }
 
-  .mega-link:hover { background: var(--cream-soft); }
+  /* Mega links */
+  .mega-link {
+    display: flex;
+    flex-direction: column;
+    padding: 8px 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .mega-link:hover { background: var(--cream); }
 
   .mega-link-title {
+    font-family: var(--f-body);
     font-size: 14px;
     font-weight: 500;
     color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .mega-link:hover .mega-link-title { color: var(--amber-deep); }
+
+  .mega-link-title .arrow {
+    opacity: 0;
+    color: var(--amber-deep);
+    transition: opacity 0.2s, transform 0.2s;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+  .mega-link:hover .mega-link-title .arrow {
+    opacity: 1;
+    transform: translateX(2px);
   }
 
-  .mega-link-sub {
+  .mega-link-desc {
     font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.4;
+    margin-top: 2px;
+  }
+
+  .mega-volume {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    font-weight: 400;
+  }
+
+  /* Mega footer */
+  .mega-footer {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .mega-footer-link {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: 999px;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .mega-footer-link:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+  }
+  .mega-footer-meta {
+    font-family: var(--f-mono);
+    font-size: 11px;
     color: var(--ink-muted);
   }
 
-  .mega-col-cta { min-width: 180px; }
-
-  .mega-cta-box {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 20px;
-    border-radius: var(--radius-sm);
-    height: 100%;
-  }
-
-  .mega-cta-label {
-    color: var(--amber);
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
-  }
-
-  .mega-cta-title {
-    font-family: var(--f-display);
-    font-size: 20px;
-    font-weight: 400;
-    margin-bottom: 4px;
-  }
-
-  .mega-cta-price {
-    font-size: 13px;
-    color: var(--amber);
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-
-  .mega-cta-sub {
-    font-size: 12px;
-    color: rgba(244,239,230,0.6);
-    line-height: 1.4;
-  }
-
-  /* Nav Actions */
+  /* ====================================================
+     NAV ACTIONS
+     ==================================================== */
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
+    flex-shrink: 0;
   }
-
   .nav-cta {
     font-size: 14px;
     padding: 10px 20px;
   }
+  .cta-btn .arrow { transition: transform 0.3s; }
+  .cta-btn:hover .arrow { transform: translateX(3px); }
 
-  /* Hamburger */
-  .hamburger {
+  /* ====================================================
+     HAMBURGER
+     ==================================================== */
+  .nav-burger {
     display: none;
     flex-direction: column;
     gap: 5px;
-    width: 36px;
-    height: 36px;
+    width: 36px; height: 36px;
     align-items: center;
     justify-content: center;
     border: 1px solid var(--line);
-    border-radius: var(--radius-sm);
+    border-radius: 8px;
     background: none;
     cursor: pointer;
   }
-
-  .hamburger span {
+  .nav-burger span {
     display: block;
-    width: 18px;
-    height: 1.5px;
+    width: 18px; height: 1.5px;
     background: var(--ink);
     border-radius: 2px;
-    transition: transform var(--transition), opacity var(--transition);
+    transition: transform 0.25s, opacity 0.25s;
   }
+  .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
-  .hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-  .hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
-  .hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
-
-  /* Mobile Nav */
+  /* ====================================================
+     MOBILE NAV
+     ==================================================== */
   .mobile-nav {
     display: none;
     background: var(--paper);
     border-top: 1px solid var(--line);
     padding: 16px var(--pad) 24px;
+    position: sticky;
+    top: 68px;
+    z-index: 99;
   }
-
-  .mobile-nav.open {
-    display: block;
-  }
-
+  .mobile-nav.open { display: block; }
   .mobile-nav-links {
     display: flex;
     flex-direction: column;
     gap: 4px;
+    list-style: none;
   }
-
   .mobile-link {
     display: block;
     padding: 12px 16px;
     font-size: 16px;
     font-weight: 500;
     color: var(--ink-muted);
-    border-radius: var(--radius-sm);
-    transition: background var(--transition), color var(--transition);
+    border-radius: 8px;
+    transition: background 0.2s, color 0.2s;
   }
-
   .mobile-link:hover {
     background: var(--cream-soft);
     color: var(--ink);
   }
-
   .mobile-link-cta {
     margin-top: 8px;
     background: var(--ink);
-    color: var(--cream);
+    color: var(--cream) !important;
     text-align: center;
-    border-radius: var(--radius-pill);
+    border-radius: 999px;
   }
+  .mobile-link-cta:hover { background: var(--amber-deep) !important; }
 
-  .mobile-link-cta:hover {
-    background: var(--amber-deep);
-    color: var(--cream);
-  }
-
-  /* Responsive */
+  /* ====================================================
+     RESPONSIVE
+     ==================================================== */
   @media (max-width: 1100px) {
     .nav-links { display: none; }
-    .hamburger { display: flex; }
+    .nav-burger { display: flex; }
     .nav-cta { display: none; }
   }
 </style>
 
 <script>
-  // Scroll shadow
-  const nav = document.getElementById('nav');
-  const onScroll = () => {
+  // Scroll shadow on nav
+  const nav = document.querySelector('.site-nav');
+  window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 10);
-  };
-  window.addEventListener('scroll', onScroll, { passive: true });
+  }, { passive: true });
+
+  // Mega menu — hover with delay + click for touch
+  const navItems = document.querySelectorAll('.nav-item');
+  navItems.forEach(item => {
+    let hoverTimeout;
+    item.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimeout);
+      navItems.forEach(i => i.classList.remove('open'));
+      item.classList.add('open');
+      const btn = item.querySelector('.nav-trigger');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    });
+    item.addEventListener('mouseleave', () => {
+      hoverTimeout = setTimeout(() => {
+        item.classList.remove('open');
+        const btn = item.querySelector('.nav-trigger');
+        if (btn) btn.setAttribute('aria-expanded', 'false');
+      }, 200);
+    });
+    // Click to toggle on touch
+    const trigger = item.querySelector('.nav-trigger');
+    if (trigger) {
+      trigger.addEventListener('click', (e) => {
+        const isOpen = item.classList.contains('open');
+        navItems.forEach(i => {
+          i.classList.remove('open');
+          const b = i.querySelector('.nav-trigger');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+        e.stopPropagation();
+      });
+    }
+  });
+  document.addEventListener('click', () => {
+    navItems.forEach(i => {
+      i.classList.remove('open');
+      const b = i.querySelector('.nav-trigger');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  });
 
   // Hamburger
-  const hamburger = document.querySelector('.hamburger');
+  const burger = document.querySelector('.nav-burger');
   const mobileNav = document.getElementById('mobile-nav');
-  hamburger.addEventListener('click', () => {
-    const open = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', String(!open));
+  burger.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
     mobileNav.setAttribute('aria-hidden', String(open));
     mobileNav.classList.toggle('open', !open);
   });
-
-  // Close mobile nav on link click
   mobileNav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
-      hamburger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
       mobileNav.classList.remove('open');
     });
   });
-
-  // Mega menu keyboard/click support
-  document.querySelectorAll('.has-dropdown > .nav-link').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      // Close all others
-      document.querySelectorAll('.has-dropdown > .nav-link').forEach(b => {
-        b.setAttribute('aria-expanded', 'false');
-        b.nextElementSibling?.classList.remove('open');
-      });
-      if (!expanded) {
-        btn.setAttribute('aria-expanded', 'true');
-        btn.nextElementSibling?.classList.add('open');
-      }
-      e.stopPropagation();
-    });
-  });
-
-  // Close mega menus on outside click
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.has-dropdown > .nav-link').forEach(btn => {
-      btn.setAttribute('aria-expanded', 'false');
-      btn.nextElementSibling?.classList.remove('open');
-    });
-  });
-
-  // Close mobile nav on resize
   window.addEventListener('resize', () => {
     if (window.innerWidth > 1100) {
-      hamburger.setAttribute('aria-expanded', 'false');
+      burger.setAttribute('aria-expanded', 'false');
       mobileNav.setAttribute('aria-hidden', 'true');
       mobileNav.classList.remove('open');
     }
