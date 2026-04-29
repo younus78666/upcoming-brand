@@ -1,36 +1,127 @@
 ---
 const industries = [
-  { num: "01", name: "Law Firms & Attorneys",      note: "Baltimore · Annapolis · DC metro",   href: "/industries/law-firm-website-design/" },
-  { num: "02", name: "Dental Practices",            note: "HIPAA-aware · online booking",       href: "/industries/dental-website-design/" },
-  { num: "03", name: "Medical Clinics",             note: "Multi-location · patient portals",   href: "/industries/medical-website-design/" },
-  { num: "04", name: "Real Estate Brokerages",      note: "IDX integration · agent rosters",    href: "/industries/real-estate-website-design/" },
-  { num: "05", name: "Nonprofits & Churches",       note: "Donations · events · volunteers",    href: "/industries/nonprofit-website-design/" },
-  { num: "06", name: "Contractors & Trades",        note: "HVAC · plumbing · roofing",          href: "/industries/contractor-website-design/" },
-  { num: "07", name: "Restaurants & Hospitality",   note: "Menus · reservations · POS",         href: "/industries/restaurant-website-design/" },
-  { num: "08", name: "Small Business & Startups",   note: "From MVP to scale-ready",            href: "/industries/small-business-website-design/" },
+  {
+    num: "01",
+    name: "Law Firms & Attorneys",
+    note: "Baltimore · Annapolis · DC metro",
+    tags: ["Intake forms", "Practice area pages", "Local SEO"],
+    href: "/industries/law-firm-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 3v18M8 7l-4 9h8L8 7zM16 7l-4 9h8L16 7z"/>
+      <path d="M4 20h16"/>
+    </svg>`,
+  },
+  {
+    num: "02",
+    name: "Dental Practices",
+    note: "HIPAA-aware · online booking",
+    tags: ["Appointment booking", "Insurance info", "Multi-location"],
+    href: "/industries/dental-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2C9 2 6 4.5 6 7.5c0 1.5.5 3 1 4.5L8 18c.5 2 1.5 4 4 4s3.5-2 4-4l1-6c.5-1.5 1-3 1-4.5C18 4.5 15 2 12 2z"/>
+    </svg>`,
+  },
+  {
+    num: "03",
+    name: "Medical Clinics",
+    note: "Multi-location · patient portals",
+    tags: ["Patient portal", "HIPAA forms", "Provider bios"],
+    href: "/industries/medical-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+    </svg>`,
+  },
+  {
+    num: "04",
+    name: "Real Estate Brokerages",
+    note: "IDX integration · agent rosters",
+    tags: ["IDX / MLS sync", "Agent profiles", "Neighborhood pages"],
+    href: "/industries/real-estate-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+      <path d="M9 22V12h6v10"/>
+    </svg>`,
+  },
+  {
+    num: "05",
+    name: "Nonprofits & Churches",
+    note: "Donations · events · volunteers",
+    tags: ["Donation forms", "Event calendar", "Volunteer signup"],
+    href: "/industries/nonprofit-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+    </svg>`,
+  },
+  {
+    num: "06",
+    name: "Contractors & Trades",
+    note: "HVAC · plumbing · roofing",
+    tags: ["Quote requests", "Service area map", "Google reviews"],
+    href: "/industries/contractor-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/>
+    </svg>`,
+  },
+  {
+    num: "07",
+    name: "Restaurants & Hospitality",
+    note: "Menus · reservations · POS",
+    tags: ["Online menu", "Reservation widget", "Location pages"],
+    href: "/industries/restaurant-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 8h1a4 4 0 010 8h-1"/>
+      <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+      <path d="M6 1v3M10 1v3M14 1v3"/>
+    </svg>`,
+  },
+  {
+    num: "08",
+    name: "Small Business & Startups",
+    note: "From MVP to scale-ready",
+    tags: ["Lead gen", "Fixed-scope", "Fast turnaround"],
+    href: "/industries/small-business-website-design/",
+    icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="7" width="20" height="14" rx="2"/>
+      <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+      <path d="M12 12v4M10 14h4"/>
+    </svg>`,
+  },
 ];
 ---
 <section class="industries-section section-pad" id="industries">
   <div class="container">
+
     <div class="industries-intro">
-      <p class="eyebrow">Who we build for</p>
+      <p class="eyebrow ind-eyebrow">Who we build for</p>
       <h2 class="h2-section">WordPress web design for Maryland's most competitive service industries</h2>
       <p class="lead">
-        Every industry has different conversion patterns, different compliance considerations, and different things a visitor needs to see before they pick up the phone. We build for the specific needs of your market — not a generic template.
+        Every industry has different conversion patterns, compliance requirements, and trust signals. We've built enough sites in each vertical to know the pitfalls before you hit them.
       </p>
-      <p class="ind-sub">We've built enough sites in each vertical to know the pitfalls before you hit them — the HIPAA gotchas, the IDX quirks, the intake form that doesn't work on Safari. You skip the learning curve.</p>
     </div>
 
-    <div class="ind-list" role="list">
+    <div class="ind-grid" role="list">
       {industries.map((ind) => (
-        <a href={ind.href} class="ind-row" role="listitem">
-          <span class="ind-num">{ind.num}</span>
-          <span class="ind-name">{ind.name}</span>
-          <span class="ind-note">{ind.note}</span>
-          <span class="ind-arrow" aria-hidden="true">&rarr;</span>
+        <a href={ind.href} class="ind-card" role="listitem">
+          <div class="ind-card-top">
+            <div class="ind-icon" aria-hidden="true" set:html={ind.icon} />
+            <span class="ind-num mono-xs">{ind.num}</span>
+          </div>
+          <h3 class="ind-name">{ind.name}</h3>
+          <p class="ind-note mono-xs">{ind.note}</p>
+          <div class="ind-tags" aria-hidden="true">
+            {ind.tags.map((t) => (
+              <span class="ind-tag">{t}</span>
+            ))}
+          </div>
+          <span class="ind-arrow" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
         </a>
       ))}
     </div>
+
   </div>
 </section>
 
@@ -39,92 +130,163 @@ const industries = [
     background: var(--paper);
   }
 
+  /* ── INTRO ── */
   .industries-intro {
     max-width: 640px;
-    margin-bottom: 56px;
+    margin: 0 auto 56px;
+    text-align: center;
   }
 
-  .ind-sub {
-    font-size: 15px;
-    color: var(--ink-muted);
-    margin-top: 16px;
-    line-height: 1.6;
+  .ind-eyebrow {
+    justify-content: center;
   }
 
-  .ind-list {
+  /* ── GRID ── */
+  .ind-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  /* ── CARD ── */
+  .ind-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
     display: flex;
     flex-direction: column;
-    border-top: 1px solid var(--line-strong);
-  }
-
-  .ind-row {
-    display: grid;
-    grid-template-columns: 56px 1fr auto auto;
-    align-items: center;
-    gap: 0;
-    padding: 20px 0;
-    border-bottom: 1px solid var(--line);
+    gap: 10px;
     text-decoration: none;
     color: inherit;
-    border-left: 3px solid transparent;
-    padding-left: 16px;
-    margin-left: -16px;
-    transition: background var(--transition), border-left-color var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+    transition: transform var(--transition), box-shadow var(--transition), border-top-color var(--transition), background var(--transition);
+    position: relative;
   }
 
-  .ind-row:hover {
-    background: rgba(212, 147, 46, 0.04);
-    border-left-color: var(--amber);
+  .ind-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(15,20,25,0.11);
+    border-top-color: var(--amber);
+    background: var(--paper);
   }
 
+  /* ── TOP ROW ── */
+  .ind-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2px;
+  }
+
+  /* ── ICON ── */
+  .ind-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* ── NUMBER ── */
   .ind-num {
-    font-family: var(--f-mono);
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: var(--amber-deep);
-    font-weight: 500;
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.65;
+    padding-top: 2px;
   }
 
+  /* ── NAME ── */
   .ind-name {
-    font-size: 18px;
-    font-weight: 500;
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
     color: var(--ink);
     transition: color var(--transition);
   }
 
-  .ind-row:hover .ind-name {
+  .ind-card:hover .ind-name {
     color: var(--amber-deep);
   }
 
+  /* ── NOTE ── */
   .ind-note {
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.06em;
     color: var(--ink-muted);
-    text-align: right;
-    padding-right: 24px;
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.4;
   }
 
-  .ind-arrow {
-    font-size: 16px;
-    color: transparent;
-    transition: color var(--transition), transform var(--transition);
-    flex-shrink: 0;
+  /* ── TAGS ── */
+  .ind-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+    flex: 1;
+    align-content: flex-start;
   }
 
-  .ind-row:hover .ind-arrow {
+  .ind-tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: rgba(15,20,25,0.05);
+    border: 1px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-pill);
+    color: var(--ink-muted);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  .ind-card:hover .ind-tag {
+    background: rgba(212,147,46,0.07);
+    border-color: rgba(212,147,46,0.2);
     color: var(--amber-deep);
-    transform: translateX(4px);
+  }
+
+  /* ── ARROW ── */
+  .ind-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--amber);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity var(--transition), transform var(--transition);
+    margin-top: 6px;
+  }
+
+  .ind-card:hover .ind-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .ind-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
   @media (max-width: 768px) {
-    .ind-row {
-      grid-template-columns: 44px 1fr auto;
+    .ind-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
-    .ind-note { display: none; }
   }
 
   @media (max-width: 480px) {
-    .ind-name { font-size: 16px; }
+    .ind-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
