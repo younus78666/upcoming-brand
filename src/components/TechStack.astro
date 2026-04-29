@@ -1,46 +1,96 @@
 ---
 const stack = [
-  { category: "Platform", tool: "WordPress", note: "43% of the web runs on WordPress for good reasons" },
-  { category: "Page Builder", tool: "Elementor Pro", note: "Flexible, client-friendly, battle-tested since 2016" },
-  { category: "Theme", tool: "Astra Pro", note: "Lightweight parent theme, accessibility-aware" },
-  { category: "Commerce", tool: "WooCommerce", note: "Native to WordPress, zero monthly transaction fees" },
-  { category: "SEO", tool: "RankMath Pro", note: "Schema, sitemaps, redirects, all in one plugin" },
-  { category: "Speed", tool: "WP Rocket", note: "Industry-standard caching, minification, and lazy load" },
-  { category: "Hosting", tool: "Cloudways", note: "Managed WordPress hosting with published SLAs" },
-  { category: "Security", tool: "Wordfence", note: "Firewall, malware scanning, and 2FA built in" },
-  { category: "CDN", tool: "Cloudflare", note: "Global edge network with free DDoS protection" },
-  { category: "Analytics", tool: "GA4 and GSC", note: "Real performance metrics, not vanity dashboards" },
+  {
+    category: "Platform",
+    tool: "WordPress",
+    abbr: "WP",
+    note: "43% of the web runs on WordPress — open source, flexible, and built to last.",
+  },
+  {
+    category: "Page Builder",
+    tool: "Elementor Pro",
+    abbr: "EP",
+    note: "Pixel-accurate design with a client-friendly editor and 2,500+ widget options.",
+  },
+  {
+    category: "Theme",
+    tool: "Astra Pro",
+    abbr: "AP",
+    note: "Lightweight, accessibility-aware parent theme — loads in under 50kb.",
+  },
+  {
+    category: "Commerce",
+    tool: "WooCommerce",
+    abbr: "WC",
+    note: "Native to WordPress, zero monthly transaction fees, scales to any catalog size.",
+  },
+  {
+    category: "SEO",
+    tool: "RankMath Pro",
+    abbr: "RM",
+    note: "Schema, sitemaps, redirects, and keyword tracking — all in one licensed plugin.",
+  },
+  {
+    category: "Speed",
+    tool: "WP Rocket",
+    abbr: "WR",
+    note: "Industry-standard caching, minification, and lazy load — no manual config needed.",
+  },
+  {
+    category: "Hosting",
+    tool: "Cloudways",
+    abbr: "CW",
+    note: "Managed WordPress hosting on DigitalOcean with published uptime SLAs.",
+  },
+  {
+    category: "Security",
+    tool: "Wordfence",
+    abbr: "WF",
+    note: "Web application firewall, malware scanning, and 2FA — updated daily.",
+  },
+  {
+    category: "CDN",
+    tool: "Cloudflare",
+    abbr: "CF",
+    note: "Global edge network serving assets from 300+ cities with free DDoS protection.",
+  },
+  {
+    category: "Analytics",
+    tool: "GA4 + GSC",
+    abbr: "GA",
+    note: "Real performance data in Google Analytics 4 and Search Console — not vanity metrics.",
+  },
 ];
 ---
 <section class="stack-section section-pad" id="stack">
   <div class="container">
-    <div class="stack-header">
-      <div>
-        <p class="eyebrow">Built on tools that work</p>
-        <h2 class="h2-section">The WordPress tech stack behind every Upcoming Brand site</h2>
-        <p class="lead">Every project runs on: WordPress.org, Elementor Pro, Astra Pro, RankMath Pro, WP Rocket, Cloudflare, Wordfence, and UpdraftPlus — fully licensed and updated weekly.</p>
-        <p class="stack-sub">We don't chase shiny new plugins. Every tool here was chosen because it performs reliably on live Maryland business sites — vetted across hundreds of real projects. All licenses included on active care plans.</p>
-      </div>
+
+    <div class="stack-intro">
+      <p class="eyebrow">Built on tools that work</p>
+      <h2 class="h2-section">The WordPress tech stack behind every Upcoming Brand site</h2>
+      <p class="lead">
+        We don't chase shiny new plugins. Every tool here was chosen because it performs reliably on live Maryland business sites — vetted across 400+ real projects. All licenses are included on active care plans.
+      </p>
     </div>
 
-    <div class="stack-table" role="table" aria-label="Technology stack">
-      <div class="stack-thead" role="rowgroup">
-        <div class="stack-row stack-header-row" role="row">
-          <span class="stack-cell" role="columnheader">Category</span>
-          <span class="stack-cell" role="columnheader">Tool</span>
-          <span class="stack-cell stack-cell-wide" role="columnheader">Why we use it</span>
-        </div>
-      </div>
-      <div class="stack-tbody" role="rowgroup">
-        {stack.map((item, i) => (
-          <div class="stack-row" role="row">
-            <span class="stack-cell stack-category mono-xs" role="cell">{item.category}</span>
-            <span class="stack-cell stack-tool" role="cell">{item.tool}</span>
-            <span class="stack-cell stack-cell-wide stack-note" role="cell">{item.note}</span>
+    <div class="stack-grid" role="list" aria-label="Technology stack">
+      {stack.map((item) => (
+        <div class="stack-card" role="listitem">
+          <div class="stack-card-top">
+            <span class="stack-abbr" aria-hidden="true">{item.abbr}</span>
+            <span class="stack-cat mono-xs">{item.category}</span>
           </div>
-        ))}
-      </div>
+          <h3 class="stack-tool">{item.tool}</h3>
+          <span class="stack-rule" aria-hidden="true"></span>
+          <p class="stack-note">{item.note}</p>
+        </div>
+      ))}
     </div>
+
+    <p class="stack-footnote mono-xs">
+      All plugins and themes fully licensed &middot; Updated weekly on every active care plan &middot; No shared licenses
+    </p>
+
   </div>
 </section>
 
@@ -49,116 +99,145 @@ const stack = [
     background: var(--cream-soft);
   }
 
-  .stack-header {
-    margin-bottom: 48px;
+  /* ── INTRO ── */
+  .stack-intro {
+    text-align: center;
     max-width: 640px;
+    margin: 0 auto 52px;
   }
 
-  .stack-sub {
-    font-size: 15px;
-    color: var(--ink-muted);
-    margin-top: 16px;
+  .stack-intro .eyebrow {
+    justify-content: center;
   }
 
-  .stack-table {
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    background: var(--paper);
-    box-shadow: var(--shadow-sm);
-  }
-
-  .stack-row {
+  /* ── GRID ── */
+  .stack-grid {
     display: grid;
-    grid-template-columns: 140px 200px 1fr;
-    border-bottom: 1px solid var(--line);
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+  }
+
+  /* ── CARD ── */
+  .stack-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0 2px 10px rgba(15,20,25,0.06);
+    transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .stack-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--amber), rgba(212,147,46,0.3));
+  }
+
+  .stack-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(15,20,25,0.11);
+    border-color: rgba(212,147,46,0.3);
+  }
+
+  /* ── TOP ROW ── */
+  .stack-card-top {
+    display: flex;
     align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2px;
   }
 
-  .stack-row:last-child {
-    border-bottom: none;
-  }
-
-  .stack-header-row {
-    background: var(--cream-soft);
-  }
-
-  .stack-cell {
-    padding: 14px 20px;
-    font-size: 14px;
-    border-right: 1px solid var(--line);
-  }
-
-  .stack-cell:last-child {
-    border-right: none;
-  }
-
-  .stack-thead .stack-cell {
-    font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--ink-muted);
-  }
-
-  .stack-category {
+  /* ── ABBR BADGE ── */
+  .stack-abbr {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: var(--ink);
     color: var(--amber);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .stack-tool {
+    font-family: var(--f-mono);
+    font-size: 11px;
     font-weight: 600;
-    font-size: 15px;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
 
+  /* ── CATEGORY ── */
+  .stack-cat {
+    color: var(--amber);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-align: right;
+    opacity: 0.8;
+    line-height: 1.3;
+  }
+
+  /* ── TOOL NAME ── */
+  .stack-tool {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  /* ── AMBER RULE ── */
+  .stack-rule {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: linear-gradient(to right, var(--amber), rgba(212,147,46,0.15));
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* ── NOTE ── */
   .stack-note {
+    font-size: 12px;
+    line-height: 1.6;
     color: var(--ink-muted);
-    font-size: 14px;
-    line-height: 1.4;
+    flex: 1;
   }
 
-  .stack-tbody .stack-row:nth-child(odd) {
-    background: rgba(15,20,25,0.025);
+  /* ── FOOTNOTE ── */
+  .stack-footnote {
+    text-align: center;
+    color: var(--ink-muted);
+    margin-top: 32px;
+    letter-spacing: 0.07em;
+    font-size: 11px;
+    opacity: 0.7;
   }
 
-  .stack-tbody .stack-row:nth-child(even) {
-    background: transparent;
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .stack-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
-  .stack-tbody .stack-row:hover {
-    background: var(--cream-soft);
+  @media (max-width: 800px) {
+    .stack-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
   }
 
-  @media (max-width: 700px) {
-    .stack-row {
-      grid-template-columns: 1fr;
-    }
-
-    .stack-cell {
-      border-right: none;
-      border-bottom: 1px solid var(--line);
-      padding: 10px 16px;
-    }
-
-    .stack-cell:last-child {
-      border-bottom: none;
-    }
-
-    .stack-header-row {
-      display: none;
-    }
-
-    .stack-row {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
-
-    .stack-cell {
-      padding: 0;
-      border-bottom: none;
+  @media (max-width: 560px) {
+    .stack-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 </style>
