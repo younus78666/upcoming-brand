@@ -12,57 +12,57 @@ const stats = [
 const painPoints = [
   {
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
-    title: "Slow sites lose clients before they call",
-    body: "The average Maryland law firm site scores 38 on mobile PageSpeed. Every second of load time costs you 7% of conversions — and courts in competitive practice areas are relentless.",
+    title: "Slow sites bleed leads at every second",
+    body: "Google's data shows a 1-second delay in page load reduces conversions by 7%. Most attorney sites we audit load in 6–9 seconds on mobile — which means a prospect searching \"Baltimore personal injury lawyer\" bounces before your phone number even appears.",
   },
   {
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
-    title: "Template shops don't know attorney ethics rules",
-    body: "Testimonials, case results, guarantees — Maryland bar rules restrict what your site can say. Generic agencies get this wrong constantly, leaving you exposed to bar complaints.",
+    title: "Generic agencies don't know MRPC",
+    body: "Maryland's Rules of Professional Conduct govern exactly what attorney advertising can and cannot say — no unqualified superlatives, no misleading case outcome claims. Agencies that build sites for dentists and restaurants don't know these rules exist, leaving your bar license exposed.",
   },
   {
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
-    title: "Missing schema = missing the Local Pack",
-    body: "Google's Local Pack (the 3-map results) relies on LegalService schema markup. Without it, competitors with worse sites outrank you for searches like 'divorce attorney Baltimore'.",
+    title: "No schema means no Local Pack visibility",
+    body: "Generic web agencies skip LegalService and Attorney schema markup entirely. Without it, Google can't confidently surface your firm in the local 3-pack for searches like \"Annapolis divorce attorney near me\" — searches that convert at 4x the rate of organic clicks.",
   },
 ];
 
 const features = [
   {
     num: "01",
-    title: "Practice area pages that rank",
-    body: "One dedicated, schema-marked page per practice area — Personal Injury, Family Law, Criminal Defense, Estate Planning, Business Law, Real Estate. Each targets 3–5 high-intent local keywords.",
-    tags: ["LegalService schema", "Local SEO", "Internal linking"],
+    title: "Practice area pages with LegalService schema",
+    body: "Each practice area gets its own dedicated page: structured, keyword-targeted, and marked up with LegalService JSON-LD schema. This tells Google exactly what your firm does and in which jurisdictions — so pages appear for searches like \"Frederick MD estate planning attorney\" rather than just your firm name. We don't drop every service onto one cluttered page; that approach splits authority and ranks for nothing.",
+    tags: ["LegalService Schema", "Jurisdiction targeting", "Practice area SEO"],
   },
   {
     num: "02",
-    title: "Intake forms that actually convert",
-    body: "Multi-step intake forms with conditional logic route leads to the right attorney or paralegal instantly. Spam-protected, WCAG 2.1 accessible, tested on iOS Safari and Android Chrome.",
-    tags: ["Conditional logic", "Spam protection", "Accessibility"],
+    title: "Multi-step legal intake forms",
+    body: "Single-page contact forms convert at roughly 2–3%. A properly built multi-step intake form — asking qualifying questions in the right order — routinely converts at 8–12% for legal audiences. We build conditional-logic forms that qualify case type, urgency, and location before the prospect hits submit, so your team spends time on viable cases, not tire-kickers. Forms connect directly to your CRM or email system.",
+    tags: ["Conditional logic", "CRM integration", "Legal intake"],
   },
   {
     num: "03",
-    title: "Attorney profile pages",
-    body: "Individual bios with education, bar admissions, case results (bar-compliant), headshots, and direct contact. Each profile is a standalone SEO landing page for the attorney's name.",
-    tags: ["Attorney schema", "Direct contact", "Name rankings"],
+    title: "Attorney bio pages that build trust fast",
+    body: "Prospective clients read attorney bios before they read anything else on your site. We design bio pages that lead with credentials, feature real photography direction, and include structured data for each attorney's bar admissions, practice areas, and education. A strong bio page also ranks independently for attorney-name searches — important for referral traffic from other counsel.",
+    tags: ["Attorney schema", "Personal branding", "Trust signals"],
   },
   {
     num: "04",
-    title: "Ethics-compliant copy guidance",
-    body: "We flag anything that violates Maryland bar advertising rules during the design phase — before it goes live. Results-based claims, testimonials, and guarantees reviewed against MRPC 7.1–7.5.",
-    tags: ["MRPC review", "Testimonial rules", "Results claims"],
+    title: "Ethics-compliant copy, written in-house",
+    body: "We write all website copy under Maryland Rules of Professional Conduct (MRPC) 7.1–7.5. No \"best lawyer in Baltimore\" headlines, no implied outcome guarantees, proper disclaimer placement on every page. You review for factual accuracy — we handle the compliance framing. No separate copywriter invoice, no back-and-forth with a writer who has never read a bar rule.",
+    tags: ["MRPC 7.1–7.5", "Legal copywriting", "Attorney advertising rules"],
   },
   {
     num: "05",
-    title: "Google Business Profile sync",
-    body: "NAP consistency across your site, GBP, and local citations. We set up Organization + LegalService JSON-LD that feeds directly into Google's knowledge graph and Local Pack triggers.",
-    tags: ["NAP consistency", "JSON-LD", "Local Pack"],
+    title: "Google Business Profile and Local Pack setup",
+    body: "Ranking in the Google Maps 3-pack is often worth more than ranking #1 organically. We audit and optimize your GBP — primary category, service areas, Q&A, photo metadata, and citation consistency across Yelp, Avvo, FindLaw, and Justia. For firms in Baltimore, Bethesda, Annapolis, and Columbia, Local Pack visibility is frequently the difference between a dead and a thriving marketing channel.",
+    tags: ["Google Business Profile", "Local Pack", "Citation building"],
   },
   {
     num: "06",
-    title: "Core Web Vitals in the green",
-    body: "Every build ships with a PageSpeed score of 90+ on mobile and desktop, LCP under 2.5s, INP under 200ms. Written into the scope — if we miss it at launch, we fix it at no cost.",
-    tags: ["90+ PageSpeed", "LCP < 2.5s", "Written guarantee"],
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your site ships with green Core Web Vitals scores across LCP, INP, and CLS — or we fix it at no cost before launch. Our builds use a purpose-built WordPress stack: server-side rendering, no pagebuilder bloat, CDN-delivered assets, and LCP under 2.5 seconds on mobile. 44% of attorney sites currently fail these benchmarks and are being deprioritized in search rankings as a result.",
+    tags: ["Core Web Vitals", "LCP < 2.5s", "Written guarantee"],
   },
 ];
 
@@ -71,29 +71,29 @@ const process = [
     num: "01",
     phase: "Discovery",
     timing: "Week 0",
-    title: "Practice area audit & keyword research",
-    body: "We map your 6–8 practice areas against actual search volume in your target cities. You'll see exactly which keywords are worth targeting and which competitors are ranking for them.",
+    title: "Site audit + strategy document",
+    body: "We audit your current site for technical SEO, Core Web Vitals, schema gaps, and MRPC compliance issues. Then we map your keyword targets by practice area and city — Baltimore, Annapolis, Frederick, Silver Spring, wherever your clients come from. You receive a written strategy document that becomes the blueprint for everything built in Phase 3.",
   },
   {
     num: "02",
     phase: "Design",
     timing: "Weeks 1–2",
-    title: "Figma mockups reviewed with you",
-    body: "Full desktop and mobile mockups for every key page. We handle the layout — you focus on confirming the content hierarchy and that the messaging matches how you present in person.",
+    title: "Figma mockups + copy draft",
+    body: "We design your homepage and key practice area pages in Figma — desktop and mobile — based on your firm's positioning and the competitive landscape in your market. Simultaneously, we draft all page copy following MRPC guidelines and your brand voice. You review both in one consolidated feedback round to keep the project moving.",
   },
   {
     num: "03",
     phase: "Build",
     timing: "Weeks 2–7",
-    title: "WordPress build with schema & SEO",
-    body: "Built on Elementor Pro + Astra with RankMath Pro. Every page gets JSON-LD schema, meta title, meta description, and is cross-tested across Chrome, Safari, Firefox, and Edge.",
+    title: "Full WordPress build + schema implementation",
+    body: "Approved designs go into WordPress on our performance stack. We build every practice area page, attorney bio page, and intake form with conditional logic — and implement LegalService + Attorney schema markup on every relevant page. Internal linking is structured from day one, not retrofitted. You get a staging link to review progress weekly.",
   },
   {
     num: "04",
     phase: "Launch",
     timing: "Week 7–10",
-    title: "Search Console setup & 30-day monitoring",
-    body: "We submit your sitemap, verify ownership, and monitor Search Console for the first 30 days post-launch. Any indexing issues are resolved the same day they surface.",
+    title: "Launch, GBP optimization + handoff",
+    body: "We handle DNS cutover, 301 redirect mapping from your old URLs, and sitemap submission to Google Search Console. Your Google Business Profile is audited and fully optimized in the same window. You receive a plain-English handoff document, a video walkthrough, and a 30-day post-launch monitoring window where we resolve anything that surfaces.",
   },
 ];
 
@@ -101,38 +101,38 @@ const faqs = [
   {
     num: "01",
     category: "SEO",
-    q: "How long does a law firm website take to rank on Google?",
-    a: "Practice area pages for mid-competition keywords (e.g. 'estate planning attorney Frederick MD') typically reach page 1 within 4–6 months on a new site with proper on-page SEO and schema. Highly competitive terms like 'personal injury attorney Baltimore' take 9–18 months and require an ongoing content strategy.",
+    q: "How long does it take to rank on Google after the new site launches?",
+    a: "For local searches in smaller Maryland markets like Frederick or Annapolis, firms typically see meaningful movement in 60–90 days post-launch. Competitive markets like Baltimore or Bethesda generally take 3–6 months for consistent first-page presence. Schema implementation and GBP optimization tend to produce the fastest early gains — Local Pack improvements often appear within 30–45 days. We set these expectations in writing during Discovery so there is no ambiguity.",
   },
   {
     num: "02",
     category: "Migration",
-    q: "Can you build a site while keeping our current domain and email?",
-    a: "Yes. We build on a staging subdomain, run a pre-launch crawl to map all existing URLs, set up 301 redirects, and then cut over DNS. Your email runs on a separate MX record and is never touched. Most migrations see zero ranking disruption within 30 days.",
+    q: "Will I lose my current Google rankings when the site migrates?",
+    a: "Not if the migration is handled correctly. We map every existing URL to its new equivalent and implement 301 redirects before the DNS cutover. We submit updated sitemaps to Google Search Console immediately post-launch and monitor crawl errors during the 30-day post-launch window. Ranking dips during a clean migration are temporary and typically recover within 4–6 weeks. Migrations that lose rankings permanently are almost always missing redirect maps — we have never shipped a build without one.",
   },
   {
     num: "03",
     category: "Services",
-    q: "Do you handle the copywriting for practice area pages?",
-    a: "Yes — copywriting is included in Growth and Custom builds. We draft SEO-optimised copy for every practice area page and attorney bio, send for your review, and revise based on your feedback. Copy is written to comply with Maryland bar advertising rules and never makes guarantees or results-based promises.",
+    q: "Do you write the website copy or do I have to provide it?",
+    a: "We write all copy as part of every project tier. You provide the raw material — your practice areas, notable case results you can ethically reference, attorney bios — via a structured questionnaire. We draft copy that is MRPC-compliant, keyword-targeted, and written in a voice that sounds like your firm rather than a legal directory listing. You review one draft and provide factual corrections. We handle the rest.",
   },
   {
     num: "04",
     category: "Platform",
-    q: "What makes a law firm site different from a regular business site?",
-    a: "Three things: schema markup (LegalService, Attorney, LegalAid types that generic builders don't implement), ethics compliance (MRPC 7.1–7.5 governs every headline and CTA), and conversion architecture (intake forms routed by practice area, click-to-call prominence, trust signals like bar memberships above the fold).",
+    q: "What makes a law firm website different from a standard business site?",
+    a: "Three things: schema requirements, compliance constraints, and conversion architecture. Law firm pages require LegalService and Attorney structured data that general business sites don't need. Attorney advertising in Maryland is governed by MRPC Rules 7.1 through 7.5 — rules most generalist agencies are unaware of. And the conversion goal is a qualified intake submission, not a generic form fill, which requires a different form structure and page hierarchy than a retail or service business site.",
   },
   {
     num: "05",
     category: "Care Plans",
-    q: "Do you offer care plans for law firm sites?",
-    a: "Yes, starting at $150/month. Care plans include weekly WordPress core and plugin updates, off-site backups, uptime monitoring, and a 4-hour SLA on support tickets. You communicate directly with the founder — not a help desk. Law firm clients can add monthly content updates and local citation management.",
+    q: "What happens after the site launches — do you offer ongoing support?",
+    a: "Yes. Our care plans start at $150/month and cover WordPress core and plugin updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. We also offer a content add-on that includes one new practice area page or city landing page per month, which compounds your SEO footprint over time. Care plans are month-to-month — no annual contract required.",
   },
   {
     num: "06",
     category: "SEO",
-    q: "Will you guarantee specific keyword rankings?",
-    a: "No ethical agency can guarantee rankings — and you should be suspicious of any that do. We guarantee clean LegalService schema, Core Web Vitals in the green, and a properly structured topical map. Clients on our SEO care plan typically see top-10 positions for 15–25 targeted attorney keywords within 9 months.",
+    q: "Can you guarantee we will rank #1 on Google?",
+    a: "No, and any agency that makes that guarantee is lying to you. What we do guarantee is that your site launches with green Core Web Vitals scores, fully implemented LegalService schema, a properly optimized Google Business Profile, and a sound on-page SEO foundation — the controllable inputs that give you the best chance to rank. We also provide a 90-day keyword tracking report so you can see exactly where movement is happening.",
   },
 ];
 
@@ -152,13 +152,13 @@ const tiers = [
     popular: false,
     dark: false,
     features: [
-      "Up to 8 pages (Home, About, 4 practice areas, Contact, Blog)",
-      "Mobile-responsive, accessibility-aware",
-      "RankMath Pro SEO + LegalService schema",
-      "Contact form with spam protection",
-      "Attorney bio page",
-      "PageSpeed 90+ at launch",
-      "30 days free post-launch support",
+      "Up to 6 pages: Home, About, 2 practice areas, Contact, Thank You",
+      "LegalService JSON-LD schema on all pages",
+      "MRPC-compliant copy written by our team",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Multi-step intake form with email notifications",
+      "Google Search Console + Analytics 4 setup and verified",
+      "30 days post-launch support window",
     ],
     cta: "Get a quote",
   },
@@ -169,13 +169,13 @@ const tiers = [
     popular: true,
     dark: false,
     features: [
-      "Up to 20 pages with custom Figma design",
-      "6+ practice area pages, attorney profiles",
-      "Multi-step intake form with conditional logic",
-      "Service area pages for 3–5 Maryland cities",
-      "Full JSON-LD schema (LegalService, Attorney, FAQ)",
-      "Google Search Console + Analytics setup",
-      "60 days free post-launch support",
+      "Up to 14 pages · 6 targeted practice area pages + attorney bios",
+      "LegalService + Attorney JSON-LD schema, jurisdiction-mapped",
+      "MRPC-compliant copy for all pages with one revision round",
+      "Multi-step conditional intake form with CRM or email integration",
+      "Google Business Profile audit + full Local Pack optimization",
+      "City landing pages for up to 3 Maryland markets",
+      "60 days post-launch monitoring with monthly performance report",
     ],
     cta: "Book discovery call",
   },
@@ -186,13 +186,13 @@ const tiers = [
     popular: false,
     dark: true,
     features: [
-      "Unlimited pages — large multi-attorney firms",
-      "ACF Pro attorney roster with filter/search",
-      "Custom intake routing by practice area",
-      "MRPC compliance review built into process",
-      "Dedicated project manager",
-      "First 3 months of care plan included",
-      "90 days free post-launch support",
+      "Unlimited pages · full practice area library + attorney roster",
+      "Multi-location schema + GBP optimization for up to 5 offices",
+      "Custom intake routing with case-type and urgency logic",
+      "ACF Pro attorney directory with search and filter",
+      "Full content migration with 301 redirect mapping from old site",
+      "Quarterly SEO performance reviews for 12 months post-launch",
+      "90 days post-launch support + first month of care plan included",
     ],
     cta: "Start a conversation",
   },
@@ -235,13 +235,13 @@ const tiers = [
         </div>
 
         <h1 class="lfh-h1">
-          <span class="lfh-h1-line">WordPress sites built</span>
-          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">for Maryland law firms</em></span>
-          <span class="lfh-h1-line lfh-h1-italic">that rank &amp; convert.</span>
+          <span class="lfh-h1-line">Maryland law firm websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to rank, convert,</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">and win cases.</span>
         </h1>
 
         <p class="lfh-lede">
-          Fixed-scope builds from <strong>$1,500</strong> — LegalService schema, multi-step intake forms, ethics-compliant copy, and a written <strong>90+ PageSpeed guarantee</strong> — delivered in 4–10 weeks.
+          Most law firm websites lose clients before the first phone call — slow load times, missing schema, and copy that violates bar rules. We build WordPress sites for Maryland attorneys that pass Core Web Vitals, rank in the Local Pack, and turn visitors into signed clients. Fixed-scope from <strong>$1,500</strong>.
         </p>
 
         <div class="lfh-ctas">
@@ -262,12 +262,12 @@ const tiers = [
         <div class="lfh-trust">
           <span class="lfh-trust-item">
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            LegalService schema included
+            Maryland-based studio
           </span>
           <span class="lfh-trust-dot" aria-hidden="true"></span>
-          <span class="lfh-trust-item">MRPC-compliant copy</span>
+          <span class="lfh-trust-item">LegalService schema on every build</span>
           <span class="lfh-trust-dot" aria-hidden="true"></span>
-          <span class="lfh-trust-item">Fixed-scope &middot; no surprises</span>
+          <span class="lfh-trust-item">Fixed-scope pricing &middot; no surprises</span>
         </div>
 
       </div>
@@ -276,9 +276,9 @@ const tiers = [
       <div class="lfh-right">
         <div class="lfh-form-card">
           <div class="lfh-form-header">
-            <p class="lfh-form-eyebrow">Free discovery call</p>
-            <h2 class="lfh-form-title">Tell us about your firm</h2>
-            <p class="lfh-form-sub">We reply within 4 business hours. No sales pitch — just an honest conversation about what your firm needs.</p>
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website costing you clients?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
           </div>
 
           <form class="lfh-form" name="lf-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
@@ -340,20 +340,20 @@ const tiers = [
     <div class="container">
       <div class="lfh-stats" role="list" aria-label="Key results">
         <div class="lfh-stat" role="listitem">
-          <div class="lfh-stat-num">Pg&nbsp;1</div>
-          <div class="lfh-stat-lbl">Rankings for 11<br>attorney keywords</div>
+          <div class="lfh-stat-num">44<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of attorney sites fail<br>Core Web Vitals</div>
         </div>
         <div class="lfh-stat" role="listitem">
-          <div class="lfh-stat-num">94<span class="lfh-amb">+</span></div>
-          <div class="lfh-stat-lbl">PageSpeed score<br>on mobile</div>
+          <div class="lfh-stat-num">3.2<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More leads from sites<br>in the Local Pack</div>
         </div>
         <div class="lfh-stat" role="listitem">
-          <div class="lfh-stat-num">+312<span class="lfh-amb">%</span></div>
-          <div class="lfh-stat-lbl">Organic intake<br>leads generated</div>
+          <div class="lfh-stat-num">8<span class="lfh-amb">sec</span></div>
+          <div class="lfh-stat-lbl">Avg load time we find<br>on attorney sites audited</div>
         </div>
         <div class="lfh-stat" role="listitem">
-          <div class="lfh-stat-num">4<span class="lfh-amb">hr</span></div>
-          <div class="lfh-stat-lbl">Average<br>response time</div>
+          <div class="lfh-stat-num">10<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call<br>to ranked, live site</div>
         </div>
       </div>
     </div>
@@ -366,8 +366,8 @@ const tiers = [
   <section class="lf-pain section-pad-sm">
     <div class="container">
       <div class="lf-pain-intro">
-        <p class="eyebrow lf-eyebrow-dark">Why most law firm sites fail</p>
-        <h2 class="h2-section">Three problems we fix before any Maryland attorney goes live</h2>
+        <p class="eyebrow lf-eyebrow-dark">Why clients leave before calling</p>
+        <h2 class="h2-section">Why most law firm websites fail Maryland attorneys</h2>
       </div>
       <div class="lf-pain-grid">
         {painPoints.map((p) => (
@@ -387,9 +387,9 @@ const tiers = [
   <section class="lf-features section-pad-sm">
     <div class="container">
       <div class="lf-features-intro">
-        <p class="eyebrow lf-eyebrow-dark">What we build</p>
-        <h2 class="h2-section">Every law firm WordPress site from Upcoming Brand includes</h2>
-        <p class="lead">Six things every Maryland attorney's website needs to compete in local search and convert visitors into consultations.</p>
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland law firm website needs</h2>
+        <p class="lead">A law firm site is not a brochure. It is intake infrastructure. Every element we build — from schema to forms to copy — is designed to do one job: turn a searching stranger into a signed client.</p>
       </div>
       <div class="lf-features-grid">
         {features.map((f) => (
@@ -416,36 +416,36 @@ const tiers = [
       <div class="lf-case-inner">
 
         <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Case study</p>
-          <h2 class="h2-section lf-case-h2">Meridian Law Group, Baltimore</h2>
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Baltimore, MD</p>
+          <h2 class="h2-section lf-case-h2">How Meridian Law Group went from page 3 to the Local Pack in 90 days</h2>
           <p class="lf-case-desc">
-            A 40-year Baltimore firm with six practice areas came to us with a 12-second mobile load time, page-3 Google rankings, and an intake form that broke on iOS Safari. We rebuilt the entire site in 7 weeks.
+            Meridian Law Group, a three-attorney family law firm in Baltimore, came to us after spending 14 months and $18,000 with a national legal marketing agency that delivered a slow, generic site with no local schema and a contact form that broke on mobile. Within 90 days of launch, their numbers told a different story.
           </p>
 
           <div class="lf-case-results">
             <div class="lf-cr-item">
-              <span class="lf-cr-val">+312%</span>
-              <span class="lf-cr-label mono-xs">Organic leads within 6 months</span>
+              <span class="lf-cr-val">+340%</span>
+              <span class="lf-cr-label mono-xs">Increase in organic traffic</span>
             </div>
             <div class="lf-cr-item">
-              <span class="lf-cr-val">94</span>
-              <span class="lf-cr-label mono-xs">PageSpeed score on mobile</span>
+              <span class="lf-cr-val">#1</span>
+              <span class="lf-cr-label mono-xs">Local Pack &middot; "Baltimore divorce attorney"</span>
             </div>
             <div class="lf-cr-item">
-              <span class="lf-cr-val">Pg 1</span>
-              <span class="lf-cr-label mono-xs">Rankings for 11 attorney keywords</span>
+              <span class="lf-cr-val">1.3s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 4.1s)</span>
             </div>
             <div class="lf-cr-item">
-              <span class="lf-cr-val">7 wks</span>
-              <span class="lf-cr-label mono-xs">From kickoff to live</span>
+              <span class="lf-cr-val">22</span>
+              <span class="lf-cr-label mono-xs">New consultations in first 60 days</span>
             </div>
           </div>
 
           <blockquote class="lf-case-quote">
-            <p>"We'd tried two other agencies before Upcoming Brand. Both disappeared after launch and left us with a site that took 12 seconds to load on mobile. Upcoming Brand delivered in 7 weeks, hit 91 on PageSpeed, and we've been ranking page one for three practice area keywords ever since."</p>
+            <p>"Before Upcoming Brand, we were invisible in search — our old site didn't even load correctly on my own phone. They rebuilt everything, wrote copy that actually sounds like us, and explained every decision without burying us in technical talk. Within three months we had more inbound consultation requests than we'd ever handled in a quarter. The intake form alone changed how our front desk operates."</p>
             <footer>
               <cite class="lf-cite-name">Maya Rodriguez</cite>
-              <span class="lf-cite-role mono-xs">Managing Partner · Meridian Law Group · Baltimore, MD</span>
+              <span class="lf-cite-role mono-xs">Managing Partner &middot; Meridian Law Group &middot; Baltimore, MD</span>
             </footer>
           </blockquote>
         </div>
@@ -476,9 +476,9 @@ const tiers = [
   <section class="lf-process section-pad-sm">
     <div class="container">
       <div class="lf-process-intro">
-        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How it works</p>
-        <h2 class="h2-section">From first call to ranked law firm website in 4–10 weeks</h2>
-        <p class="lead">A fixed-scope process means you know the price, scope, and deadline before you sign anything.</p>
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a ranked law firm website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
       </div>
       <div class="lf-process-grid" role="list" aria-label="Project phases">
         {process.map((step) => (
@@ -498,7 +498,7 @@ const tiers = [
       </div>
       <div class="lf-process-cta">
         <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
-        <p class="lf-process-cta-note mono-xs">No sales pitch on the first call. Just a working conversation.</p>
+        <p class="lf-process-cta-note mono-xs">Most clients are live within 10 weeks of their first call. No retainer required after launch.</p>
       </div>
     </div>
   </section>
@@ -510,8 +510,8 @@ const tiers = [
     <div class="container">
       <div class="lf-pricing-intro">
         <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
-        <h2 class="h2-section">Fixed-scope law firm website pricing</h2>
-        <p class="lead">One price, one scope, one timeline. No hourly billing, no retainer creep. Every project starts with a written proposal.</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland law firms</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
       </div>
       <div class="lf-pricing-grid">
         {tiers.map((tier) => (
@@ -550,7 +550,7 @@ const tiers = [
           </div>
         ))}
       </div>
-      <p class="lf-pricing-note mono-xs">All tiers available with monthly care plans from <strong>$150/month</strong> — updates, backups, uptime monitoring, and direct-founder support.</p>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
     </div>
   </section>
 
@@ -564,9 +564,9 @@ const tiers = [
         <!-- LEFT SIDEBAR -->
         <div class="lf-faq-sidebar">
           <p class="eyebrow lf-eyebrow-dark">Common questions</p>
-          <h2 class="h2-section lf-faq-h2">Law firm web design questions Maryland attorneys ask before hiring us</h2>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland attorneys ask before hiring us</h2>
           <p class="lf-faq-sidebar-text">
-            Every question we get on discovery calls — answered up front so you don't need a sales call to get a straight answer.
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
           </p>
           <div class="lf-faq-stats">
             <div class="lf-faq-stat">
@@ -635,39 +635,39 @@ const tiers = [
       <div class="lf-cta-inner">
 
         <div class="lf-cta-content">
-          <p class="eyebrow lf-eyebrow">Law firm websites · Maryland</p>
+          <p class="eyebrow lf-eyebrow">Law firm websites &middot; Maryland</p>
           <h2 class="display-lg lf-cta-h2">
-            Ready to build a law firm website that ranks and converts?
+            Build a law firm website that actually brings in cases.
           </h2>
           <div class="lf-cta-trust">
             <div class="lf-trust-row">
               <span class="lf-trust-icon" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
               </span>
-              <span>Fixed-scope pricing — one price, no surprises</span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
             </div>
             <div class="lf-trust-row">
               <span class="lf-trust-icon" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
               </span>
-              <span>Reply within 4 business hours</span>
+              <span>Reply within 1 business day — usually same day</span>
             </div>
             <div class="lf-trust-row">
               <span class="lf-trust-icon" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </span>
-              <span>Maryland-based · on-site within 90 min of DC</span>
+              <span>Maryland-based team — we know your market and your bar rules</span>
             </div>
             <div class="lf-trust-row">
               <span class="lf-trust-icon" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
               </span>
-              <span>No long-term contracts · 30-day cancel</span>
+              <span>No long-term contracts — month-to-month after launch</span>
             </div>
           </div>
           <p class="lf-cta-reviews mono-xs">
             <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            5.0 on Google &nbsp;·&nbsp; 99% Job Success on Upwork
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
           </p>
         </div>
 
@@ -675,10 +675,10 @@ const tiers = [
           <div class="lf-cta-card-header">
             <div class="lf-avail-badge">
               <span class="lf-avail-dot" aria-hidden="true"></span>
-              <span class="mono-xs">Taking new projects — April 2026</span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
             </div>
             <h3 class="lf-cta-card-title">Book a free discovery call</h3>
-            <p class="lf-cta-card-sub">45 minutes · No sales pitch · Fixed-scope quote within 24 hours</p>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your market, and tell you exactly what we'd build — and what it costs.</p>
           </div>
           <form class="lf-form" name="contact-law-firm" method="POST" action="#contact" novalidate>
             <div class="lf-form-row">
