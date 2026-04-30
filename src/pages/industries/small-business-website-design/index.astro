@@ -584,7 +584,50 @@ const tiers = [
         <h2 class="h2-section">Complete Guide to Small Business Website Design in Maryland</h2>
         <p class="lead">Everything Maryland small business owners need to know about building a website that works as a 24/7 sales tool, ranks in local search, and gives you a professional online presence without overpaying for features you don't need.</p>
       </div>
-      <div class="lf-guide-body">
+      <div class="lf-guide-layout">
+        <aside class="lf-guide-sidebar">
+
+          <div class="lf-gsb-block lf-gsb-dark">
+            <p class="lf-gsb-eyebrow mono-xs">Free offer</p>
+            <h4 class="lf-gsb-h4">Free Small Business Site Audit</h4>
+            <p class="lf-gsb-desc">We review your current small business website and show exactly what's hurting your Google rankings and customer conversions.</p>
+            <a href="#contact" class="cta-btn" style="width:100%;justify-content:center;margin-top:4px;">Book a call &rarr;</a>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">Quick estimate</p>
+            <h4 class="lf-gsb-h4">What Will Your Business Site Cost?</h4>
+            <form class="lf-gsb-form" data-netlify="true" name="guide-smallbusiness" method="POST">
+              <input type="hidden" name="form-name" value="guide-smallbusiness" />
+              <input type="text" name="name" placeholder="Your name" class="lf-gsb-input" required />
+              <input type="email" name="email" placeholder="Email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Send Request &rarr;</button>
+            </form>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">From the blog</p>
+            <h4 class="lf-gsb-h4">Related Reading</h4>
+            <ul class="lf-gsb-links">
+              <li><a href="/blog/small-business-seo-maryland" class="lf-gsb-link">Small Business SEO in Maryland: Where to Start</a></li>
+              <li><a href="/blog/wordpress-vs-squarespace-business" class="lf-gsb-link">WordPress vs. Squarespace for Small Business</a></li>
+              <li><a href="/blog/google-business-profile-optimization" class="lf-gsb-link">Optimizing Your Google Business Profile</a></li>
+            </ul>
+          </div>
+
+          <div class="lf-gsb-block lf-gsb-newsletter">
+            <p class="lf-gsb-eyebrow mono-xs">Weekly tips</p>
+            <h4 class="lf-gsb-h4">Maryland SEO Insights</h4>
+            <p class="lf-gsb-desc">Weekly tips on ranking your Maryland business higher in Google. No spam, unsubscribe any time.</p>
+            <form class="lf-gsb-form" data-netlify="true" name="newsletter-guide" method="POST">
+              <input type="hidden" name="form-name" value="newsletter-guide" />
+              <input type="email" name="email" placeholder="Your email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Subscribe &rarr;</button>
+            </form>
+          </div>
+
+        </aside>
+        <div class="lf-guide-body">
 
         <!-- 1 -->
         <div class="lf-guide-section">
@@ -612,21 +655,21 @@ const tiers = [
         <!-- 3 -->
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">LocalBusiness Schema — The Foundation of Small Business SEO</h3>
-          <p class="lf-guide-p">LocalBusiness schema is the most important technical element most Maryland small business websites are missing. It is also one of the least understood. Schema markup is structured data, written in a format called JSON-LD and placed in your page's HTML head, that communicates directly with Google's indexing systems. Rather than waiting for Google to infer what your business is from your page text, schema tells Google explicitly: this is the type of business, this is the address, these are the hours, this is the phone number, these are the services.</p>
+          <p class="lf-guide-p">LocalBusiness schema is the most important technical element most <strong>small business website design Maryland</strong> projects are missing. It is also one of the least understood. Schema markup is structured data, written in a format called <strong>JSON-LD schema</strong> and placed in your page's HTML head, that communicates directly with Google's indexing systems. Rather than waiting for Google to infer what your business is from your page text, schema tells Google explicitly: this is the type of business, this is the address, these are the hours, this is the phone number, these are the services.</p>
           <p class="lf-guide-p">Google uses this information to power rich results in search — the Business Panel that appears on the right side of desktop search results, the Local Pack listings that appear above organic results for local searches, and the structured data that populates voice search responses. Without schema, Google is guessing. With schema, Google is reading a structured document that leaves nothing to interpretation.</p>
           <p class="lf-guide-p">The key fields every Maryland small business schema implementation needs include: the business name, the @type (which tells Google what category of business you are), a structured PostalAddress object with your street, city, state, and zip, your telephone number, OpeningHoursSpecification for each day you're open, your website URL, a priceRange indicator, and an areaServed field that lists the Maryland cities and counties you serve. Getting all of these right transforms how Google understands and categorizes your business.</p>
           <p class="lf-guide-p">Choosing the right @type is more important than most guides acknowledge. Google recognizes over 200 subtypes of LocalBusiness. A general contractor should not just use "LocalBusiness" when "GeneralContractor" exists. A dentist should use "Dentist" under "MedicalBusiness." A restaurant should use "Restaurant" rather than "FoodEstablishment." The more specific the type, the more accurately Google can match your business to the right searches. Using the wrong type is like filing in the wrong category at the library — you exist in the system but you're almost impossible to find.</p>
-          <p class="lf-guide-p">In WordPress, RankMath Pro is the most straightforward way to implement LocalBusiness schema correctly. It provides a structured interface for entering your business details and generates valid JSON-LD automatically. Once implemented, verify your schema using Google's Rich Results Test at search.google.com/test/rich-results. Paste your homepage URL and confirm that Google can read all your structured data without errors or warnings.</p>
+          <p class="lf-guide-p">In <strong>WordPress</strong>, <strong>RankMath Pro</strong> is the most straightforward way to implement LocalBusiness schema correctly. It provides a structured interface for entering your business details and generates valid JSON-LD automatically. Once implemented, verify your schema using Google's Rich Results Test at search.google.com/test/rich-results. Paste your homepage URL and confirm that Google can read all your structured data without errors or warnings.</p>
           <p class="lf-guide-p">Schema markup is distinct from meta tags, which is a common point of confusion. Meta tags (title, description) influence how your page appears in search results. Schema communicates the categorical and factual nature of your business to Google's knowledge graph. Both matter, but for local businesses specifically, correctly implemented LocalBusiness schema has a more direct path to influencing Local Pack eligibility, which is where the highest-value local traffic comes from. A Maryland small business site without LocalBusiness schema is leaving significant local search visibility on the table.</p>
         </div>
 
         <!-- 4 -->
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Google Business Profile — The Most Important Marketing Asset You're Not Optimizing</h3>
-          <p class="lf-guide-p">For most Maryland small businesses, Google Business Profile (GBP) is the single highest-leverage marketing asset available, and the majority of small business owners have either not claimed it, set it up incompletely, or left it dormant after the initial setup. The Local Pack, the three business listings that appear in a map section above organic search results for local queries, is where the most valuable local search traffic lives. Those positions are not determined primarily by your website — they are determined primarily by your GBP signals, review volume, and the accuracy and completeness of your profile.</p>
+          <p class="lf-guide-p">For most Maryland small businesses, <strong>Google Business Profile</strong> (GBP) is the single highest-leverage marketing asset available, and the majority of small business owners have either not claimed it, set it up incompletely, or left it dormant after the initial setup. The <strong>Google Local Pack</strong>, the three business listings that appear in a map section above organic search results for local queries, is where the most valuable local search traffic lives. Those positions are not determined primarily by your website — they are determined primarily by your GBP signals, review volume, and the accuracy and completeness of your profile.</p>
           <p class="lf-guide-p">Setting up GBP correctly from the start prevents significant problems later. Start with your business name: use your real legal or trade name, with no keyword stuffing (adding "best plumber in Baltimore" to your business name violates Google's guidelines and can result in suspension). Category selection is the most consequential single decision in your GBP setup. Your primary category tells Google which searches to show you for, and choosing incorrectly means appearing for the wrong intent. A landscaper who selects "Lawn Care Service" instead of "Landscaper" will miss a significant portion of relevant local searches. Research which category your top competitors are using and what search queries each category tends to rank for.</p>
           <p class="lf-guide-p">If you serve customers at their location rather than at a physical storefront, configure your profile as a Service Area Business and list the Maryland cities, counties, or zip codes you serve. If you have a physical location customers visit, enter your full address and verify it with the postcard Google mails to your address. Get this right from the start — changing your address or category after verification can reset your ranking signals temporarily.</p>
-          <p class="lf-guide-p">Photos have a dramatic, documented impact on GBP performance. According to Google's own data, businesses with more than 100 photos receive 520% more calls and 2,717% more direction requests than businesses with only 10 photos. For a Maryland small business, this means uploading photos of your team, your work, your equipment, your storefront, before-and-after project photos, and community involvement. Add new photos consistently over time. GBP rewards active profiles.</p>
+          <p class="lf-guide-p">Photos have a dramatic, documented impact on GBP performance. According to Google's own data, businesses with more than 100 photos receive <em>520%</em> more calls and <em>2,717%</em> more direction requests than businesses with only 10 photos. For a Maryland small business, this means uploading photos of your team, your work, your equipment, your storefront, before-and-after project photos, and community involvement. Add new photos consistently over time. GBP rewards active profiles.</p>
           <p class="lf-guide-p">GBP Posts allow you to publish promotions, announcements, new services, and events directly to your profile. These appear in search results and in the Knowledge Panel. They expire after seven days for standard posts, so publishing weekly keeps your profile active and gives Google fresh signals. The Q&A section is another underused tool: you can ask and answer your own questions there, effectively planting the search queries your customers use and answering them publicly. This content is indexed and can appear in featured snippets.</p>
           <p class="lf-guide-p">Review management is not optional for competitive Maryland markets. Respond to every review, positive and negative, within 24 to 48 hours. Your response to a negative review is often more influential with potential customers than the review itself — a professional, non-defensive response signals that you take customer service seriously. Track your GBP Insights monthly to understand how customers are finding your profile (direct search vs. discovery search), what actions they take (website clicks, calls, direction requests), and how your photo views compare to businesses in your category. This data connects directly to your website traffic and helps you understand which GBP optimizations are actually moving the needle.</p>
         </div>
@@ -637,7 +680,7 @@ const tiers = [
           <p class="lf-guide-p">The question Maryland small business owners ask most often is also the one with the most misleading answers. Website pricing varies so dramatically, from $0 to $50,000, that the range itself is almost meaningless. What matters is understanding what you're actually buying at each price point and what the total cost of ownership looks like over three to five years, not just at launch.</p>
           <p class="lf-guide-p">DIY website builders like Squarespace ($23 to $65 per month) and Wix ($17 to $159 per month) advertise their subscription costs as the primary expense. They omit the most significant cost: your time. Building a small business website on a template platform, even with a template, takes most non-technical business owners between 20 and 40 hours. At even a modest estimate of your hourly value, that represents a real expense. Beyond the time cost, template platforms have meaningful limitations for local SEO: limited or no control over schema markup, restricted access to technical SEO settings, poor Core Web Vitals performance by default, and the long-term risk of being locked into a platform you can't migrate from without rebuilding from scratch.</p>
           <p class="lf-guide-p">A template-based WordPress site built by a freelancer typically costs between $500 and $1,500. At this price point you're getting the technical build but usually not copywriting, photography, SEO setup, or schema implementation. The site will look functional, but without those elements it will likely not rank competitively. You may also be working with someone who builds sites as a side project, which affects support availability and quality of output. Ask specifically what is and isn't included before signing anything.</p>
-          <p class="lf-guide-p">A custom WordPress build from an established agency ranges from $1,500 to $5,000 or more for a small business site. What drives cost upward: custom design (vs. using a premium theme), the number of pages, complexity of functionality (online booking, e-commerce, membership areas), copywriting, professional photography, SEO setup, and schema implementation. A well-scoped small business site, typically five to eight pages with copywriting and SEO setup, falls in the $2,500 to $4,000 range with a reputable Maryland-area agency.</p>
+          <p class="lf-guide-p">A <strong>custom WordPress</strong> build from an established agency ranges from <em>$1,500</em> to <em>$5,000</em> or more for a small business site. What drives cost upward: custom design (vs. using a premium theme), the number of pages, complexity of functionality (online booking, e-commerce, membership areas), copywriting, professional photography, SEO setup, and schema implementation. A well-scoped small business site, typically five to eight pages with copywriting and SEO setup, falls in the $2,500 to $4,000 range with a reputable Maryland-area agency.</p>
           <p class="lf-guide-p">Most agency quotes include the design and build but exclude several items that are essential for the site to perform. Confirm whether your quote includes: copywriting for all pages, SEO setup including keyword research and on-page optimization, LocalBusiness schema implementation, Google Analytics and Search Console configuration, and ongoing maintenance. These exclusions are not deceptive — they are genuine scope decisions — but not knowing about them leads to surprise costs after launch.</p>
           <p class="lf-guide-p">The most useful comparison is not $1,500 vs. $3,000 at launch — it's what each option costs over three years and what each one generates in return. A $500 template site that never ranks and never generates a lead costs effectively as much as the three years of hosting and domain you paid for it. A $3,000 custom site that ranks for competitive Maryland local searches and generates ten new customer inquiries per month has a return on investment that makes the upfront cost trivial within the first quarter. Evaluate proposals by what deliverables are included and what results are realistic, not by which number is lowest.</p>
         </div>
@@ -655,7 +698,7 @@ const tiers = [
         <!-- 7 -->
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Local SEO for Maryland Small Businesses — The Complete Picture</h3>
-          <p class="lf-guide-p">Local SEO is the set of practices that determine whether your business appears when Maryland customers search for what you offer in your area. It is distinct from general SEO in that it relies on three interconnected signals: what your website communicates, what your Google Business Profile communicates, and what the broader internet says about your business through citations and reviews.</p>
+          <p class="lf-guide-p"><strong>Local SEO</strong> is the set of practices that determine whether your business appears when Maryland customers search for what you offer in your area. It is distinct from general SEO in that it relies on three interconnected signals: what your website communicates, what your Google Business Profile communicates, and what the broader internet says about your business through citations and reviews.</p>
           <p class="lf-guide-p">The way Maryland customers find local businesses has shifted significantly. The most common pathways are Google Maps (where the Local Pack listings appear), "near me" searches (which are location-aware and return results based on the searcher's current position), and city-plus-service searches ("HVAC repair Rockville," "personal injury attorney Bethesda"). Each of these search types relies on different signals, which is why local SEO requires attention to multiple systems simultaneously rather than just optimizing your website in isolation.</p>
           <p class="lf-guide-p">On-page optimization for local businesses means including your city and service keywords in your page titles, meta descriptions, H1 headings, and body copy in a natural way. It means having location-specific content on your homepage and on dedicated city landing pages if you serve multiple Maryland markets. It means your NAP (Name, Address, Phone) matching exactly what appears on your Google Business Profile, because inconsistencies across the web confuse Google's local algorithm and dilute your ranking signals.</p>
           <p class="lf-guide-p">Local citations are mentions of your business name, address, and phone number on other websites. The most important citation sources for Maryland small businesses are Yelp, the Better Business Bureau, Facebook, your local chamber of commerce (the Maryland Chamber of Commerce and your county-level chamber), and any industry-specific directories relevant to your category. These citations act as corroborating evidence for Google that your business exists, is located where you say it is, and is active. The key requirement is consistency: your business name, address, and phone must appear in identical format across every citation source. Even minor variations ("St." vs. "Street," "(301) 555-0100" vs. "301-555-0100") can create duplicate listings that split your citation signals.</p>
@@ -677,12 +720,12 @@ const tiers = [
         <!-- 9 -->
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Mobile-First Design for Local Business Customers</h3>
-          <p class="lf-guide-p">Between 60% and 70% of local searches happen on mobile devices, and a significant portion of those searches happen in the moment of need — someone standing in a parking lot, sitting in their car, or walking down the street in downtown Annapolis trying to find a nearby service. This is the customer you are most likely to lose if your site doesn't perform perfectly on a phone. The urgency of local intent combined with the impatience of mobile users creates a brief, high-stakes window in which your website either earns the customer's contact or loses them to a competitor whose site loads faster and is easier to navigate.</p>
+          <p class="lf-guide-p">Between <em>60%</em> and <em>70%</em> of local searches happen on mobile devices, and a significant portion of those searches happen in the moment of need — someone standing in a parking lot, sitting in their car, or walking down the street in downtown Annapolis trying to find a nearby service. This is the customer you are most likely to lose if your site doesn't perform perfectly on a phone. The urgency of local intent combined with the impatience of mobile users creates a brief, high-stakes window in which your website either earns the customer's contact or loses them to a competitor whose site loads faster and is easier to navigate.</p>
           <p class="lf-guide-p">Mobile-first design is not the same as "mobile-friendly." Mobile-friendly means your site doesn't break on a phone. Mobile-first means the design process started with the smallest screen as the primary context, and the desktop version was built as a scaled-up adaptation of that mobile experience. The practical difference is significant: a mobile-first site has a clear visual hierarchy, large tap targets, readable font sizes without zooming, and a contact mechanism within one or two taps of landing. A merely mobile-friendly site is often a desktop design that has been compressed to fit a smaller screen, with the resulting font size and usability problems that come from that approach.</p>
           <p class="lf-guide-p">The most common mobile failures on Maryland small business sites are consistent and fixable. Text that is too small to read without pinching to zoom is a signal failure that drives immediate exits. Buttons that are too close together cause mis-taps, which is frustrating enough to end a session. Horizontal scrolling, where the page is wider than the screen, is almost always caused by an element (often an image or table) that has not been made responsive. Forms that don't scale correctly on iOS — particularly the zoom-in behavior that iOS triggers when a form field is smaller than 16px — interrupt the conversion flow at the worst possible moment.</p>
           <p class="lf-guide-p">Audit your current site's mobile experience using Google's Mobile-Friendly Test (search.google.com/test/mobile-friendly) and by actually testing on multiple real devices — both iOS and Android, in both portrait and landscape orientation. Emulators in Chrome DevTools are useful but not a substitute for real device testing. What looks fine in an emulator sometimes fails on an actual iPhone or Samsung Galaxy due to OS-level rendering differences.</p>
           <p class="lf-guide-p">Click-to-call functionality is not optional for local businesses. Every phone number on your mobile site should be wrapped in an anchor tag with href="tel:[your number]" so that tapping it immediately initiates a phone call. This seems like a small detail but it removes a friction point that many potential customers will not bother to work around. If they have to manually dial a number they read off your site, some percentage of them won't bother.</p>
-          <p class="lf-guide-p">Mobile performance directly affects your Local Pack ranking position. Google's algorithm uses Core Web Vitals as a ranking signal, and the Core Web Vitals measurements that matter are measured on mobile, not desktop. A slow-loading small business site is being penalized in local search regardless of how good its other signals are. Page speed, Largest Contentful Paint (how quickly the main content appears), and Cumulative Layout Shift (how much the page jumps around while loading) are all measurable and improvable. A properly built WordPress site on quality hosting should achieve green scores on all three without heroic effort.</p>
+          <p class="lf-guide-p">Mobile performance directly affects your Local Pack ranking position. Google's algorithm uses <strong>Core Web Vitals</strong> as a ranking signal, and the Core Web Vitals measurements that matter are measured on mobile, not desktop. A slow-loading small business site is being penalized in local search regardless of how good its other signals are. Page speed, Largest Contentful Paint (how quickly the main content appears), and Cumulative Layout Shift (how much the page jumps around while loading) are all measurable and improvable. A properly built WordPress site on quality hosting should achieve green scores on all three without heroic effort.</p>
         </div>
 
         <!-- 10 -->
@@ -718,6 +761,7 @@ const tiers = [
           <p class="lf-guide-p">Measuring whether your website is actually generating business requires more than checking your traffic numbers. Configure call tracking so you know which phone calls originated from your website (CallRail is the industry standard; a basic setup costs around $45/month and gives you a trackable number that forwards to your real line). Configure GA4 conversion events for form submissions, phone clicks, and map direction requests. Review these metrics monthly, not annually, so you can identify what's working and what needs adjustment before spending months on a strategy that isn't moving the needle. A properly optimized Maryland small business website, actively maintained and grown with consistent content, should show a meaningful increase in qualified leads within three to six months of launch, and that growth should accelerate through the first twelve months as content accumulates and your domain's local authority builds.</p>
         </div>
 
+      </div>
       </div>
     </div>
   </section>
@@ -2264,14 +2308,39 @@ const tiers = [
 ══════════════════════ */
 .lf-guide { background: var(--cream-soft); }
 .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
-.lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+.lf-guide-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+.lf-guide-body { display: flex; flex-direction: column; gap: 48px; }
 .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
 .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
 .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+.lf-guide-p strong { color: var(--ink); font-weight: 600; }
+.lf-guide-p em { color: var(--amber-deep); font-style: italic; }
+.lf-guide-li strong { color: var(--ink); font-weight: 600; }
+.lf-guide-li em { color: var(--amber-deep); font-style: italic; }
 .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
 .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
 .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
-@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+.lf-guide-sidebar { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 16px; }
+.lf-gsb-block { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--amber); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow-sm); }
+.lf-gsb-dark { background: var(--ink); border-color: rgba(244,239,230,0.08); }
+.lf-gsb-newsletter { background: var(--cream-soft); }
+.lf-gsb-eyebrow { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+.lf-gsb-h4 { font-family: var(--f-display); font-size: 17px; font-weight: 400; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
+.lf-gsb-dark .lf-gsb-h4 { color: var(--cream); }
+.lf-gsb-desc { font-size: 13px; line-height: 1.6; color: var(--ink-muted); }
+.lf-gsb-dark .lf-gsb-desc { color: rgba(244,239,230,0.55); }
+.lf-gsb-form { display: flex; flex-direction: column; gap: 8px; }
+.lf-gsb-input { padding: 9px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 13px; font-family: var(--f-body); background: var(--cream-soft); color: var(--ink); outline: none; width: 100%; transition: border-color var(--transition); box-sizing: border-box; }
+.lf-gsb-input:focus { border-color: var(--amber); }
+.lf-gsb-submit { padding: 9px 14px; background: var(--amber); color: var(--ink); border: none; border-radius: var(--radius-sm); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: opacity var(--transition); width: 100%; }
+.lf-gsb-submit:hover { opacity: 0.85; }
+.lf-gsb-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.lf-gsb-link { font-size: 13px; line-height: 1.45; color: var(--ink); text-decoration: none; padding-left: 16px; position: relative; display: block; transition: color var(--transition); }
+.lf-gsb-link::before { content: "→"; position: absolute; left: 0; color: var(--amber); font-family: var(--f-mono); font-size: 11px; top: 2px; }
+.lf-gsb-link:hover { color: var(--amber-deep); }
+@media (max-width: 1100px) { .lf-guide-layout { grid-template-columns: 240px 1fr; gap: 28px; } }
+@media (max-width: 900px) { .lf-guide-layout { grid-template-columns: 1fr; } .lf-guide-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } .lf-guide-sidebar { grid-template-columns: 1fr; } }
 
 </style>
 

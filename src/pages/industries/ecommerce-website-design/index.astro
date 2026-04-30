@@ -627,15 +627,58 @@ const tiers = [
         <h2 class="h2-section">The Maryland Business Owner's Complete Guide to E-Commerce Website Design</h2>
         <p class="lead">Everything you need to know before building or relaunching a WooCommerce store in Maryland &mdash; from product schema to payment gateways to post-launch conversion optimization.</p>
       </div>
-      <div class="lf-guide-body">
+      <div class="lf-guide-layout">
+        <aside class="lf-guide-sidebar">
+
+          <div class="lf-gsb-block lf-gsb-dark">
+            <p class="lf-gsb-eyebrow mono-xs">Free offer</p>
+            <h4 class="lf-gsb-h4">Free WooCommerce Site Audit</h4>
+            <p class="lf-gsb-desc">We review your current e-commerce store and show exactly what's hurting your product rankings and checkout conversion rate.</p>
+            <a href="#contact" class="cta-btn" style="width:100%;justify-content:center;margin-top:4px;">Book a call &rarr;</a>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">Quick estimate</p>
+            <h4 class="lf-gsb-h4">What Will Your Store Cost?</h4>
+            <form class="lf-gsb-form" data-netlify="true" name="guide-ecommerce" method="POST">
+              <input type="hidden" name="form-name" value="guide-ecommerce" />
+              <input type="text" name="name" placeholder="Your name" class="lf-gsb-input" required />
+              <input type="email" name="email" placeholder="Email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Send Request &rarr;</button>
+            </form>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">From the blog</p>
+            <h4 class="lf-gsb-h4">Related Reading</h4>
+            <ul class="lf-gsb-links">
+              <li><a href="/blog/woocommerce-seo-maryland" class="lf-gsb-link">WooCommerce SEO: A Maryland Seller's Guide</a></li>
+              <li><a href="/blog/ecommerce-conversion-rate-optimization" class="lf-gsb-link">Conversion Rate Optimization for WooCommerce</a></li>
+              <li><a href="/blog/abandoned-cart-recovery-guide" class="lf-gsb-link">The Complete Guide to Abandoned Cart Recovery</a></li>
+            </ul>
+          </div>
+
+          <div class="lf-gsb-block lf-gsb-newsletter">
+            <p class="lf-gsb-eyebrow mono-xs">Weekly tips</p>
+            <h4 class="lf-gsb-h4">Maryland SEO Insights</h4>
+            <p class="lf-gsb-desc">Weekly tips on ranking your Maryland business higher in Google. No spam, unsubscribe any time.</p>
+            <form class="lf-gsb-form" data-netlify="true" name="newsletter-guide" method="POST">
+              <input type="hidden" name="form-name" value="newsletter-guide" />
+              <input type="email" name="email" placeholder="Your email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Subscribe &rarr;</button>
+            </form>
+          </div>
+
+        </aside>
+        <div class="lf-guide-body">
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">What Maryland E-Commerce Stores Actually Need From Their Website</h3>
-          <p class="lf-guide-p">Most small Maryland retailers approach their first online store the same way: they pick a theme, upload product photos, and hope checkout works. That approach creates stores that look fine in demos but fail in production &mdash; cart abandonment above 70%, checkout errors on mobile, and product pages that Google ignores entirely. A properly built WooCommerce store is a system, not a theme. Every decision from your URL structure to your payment gateway affects your revenue.</p>
+          <p class="lf-guide-p">Most small Maryland retailers approach their first online store the same way: they pick a theme, upload product photos, and hope checkout works. That approach creates stores that look fine in demos but fail in production &mdash; cart abandonment above 70%, checkout errors on mobile, and product pages that Google ignores entirely. A properly built <strong>WooCommerce store</strong> is a system, not a theme. Every decision from your URL structure to your payment gateway affects your revenue.</p>
           <p class="lf-guide-p">Maryland businesses selling physical goods, digital downloads, or services online need five distinct capabilities working together: a product catalog structured for search discovery, a checkout flow optimized for mobile conversion, payment processing that handles real edge cases (declined cards, address verification mismatches, duplicate charges), an inventory system that reflects actual stock levels, and post-purchase automation that reduces manual customer service. None of these come out of the box from a basic WooCommerce install. They require deliberate configuration and, in many cases, premium extensions.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Product catalog architecture determines how Google crawls and ranks individual product pages &mdash; category depth, URL structure, and canonical tags all matter from day one</li>
-            <li class="lf-guide-li">Checkout flow design is the single biggest lever on conversion rate &mdash; every extra field, every redirect, every forced account creation costs you completed orders</li>
+            <li class="lf-guide-li">Checkout flow design is the single biggest lever on <strong>conversion rate</strong> &mdash; every extra field, every redirect, every forced account creation costs you completed orders</li>
             <li class="lf-guide-li">Payment gateway configuration needs to handle Maryland sales tax (6% state rate, plus county-level variations) correctly from the first transaction</li>
             <li class="lf-guide-li">Inventory sync becomes critical the moment you sell on multiple channels &mdash; your website, Amazon, Etsy, and in-store point of sale all need to read from one source of truth</li>
             <li class="lf-guide-li">Post-purchase email sequences &mdash; order confirmation, shipping notification, delivery confirmation, review request &mdash; drive repeat purchase rates by 20-30% when configured correctly</li>
@@ -660,8 +703,8 @@ const tiers = [
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">WooCommerce Product Schema and Structured Data</h3>
-          <p class="lf-guide-p">Google's product rich results &mdash; the star ratings, price ranges, and availability status that appear directly in search results &mdash; require Product schema markup on every product page. Without it, your products look identical to every other blue link in the results. With it, a shopper searching for "handmade soy candles Maryland" can see your price, your rating, and whether the item is in stock before they even click your listing. The click-through rate difference is significant: product listings with rich results receive 20-30% more clicks than equivalent listings without them.</p>
-          <p class="lf-guide-p">RankMath Pro handles basic Product schema for WooCommerce automatically, but full schema implementation requires manual configuration: AggregateRating pulls from your review system, Offer nodes need to include priceCurrency, availability, and condition attributes, and BreadcrumbList schema ties your category hierarchy together for Google's crawlers. For Maryland businesses with physical retail locations, LocalBusiness schema should run alongside Product schema to capture both e-commerce and local intent searches.</p>
+          <p class="lf-guide-p">Google's product rich results &mdash; the star ratings, price ranges, and availability status that appear directly in search results &mdash; require Product schema markup on every product page. Without it, your products look identical to every other blue link in the results. With it, a shopper searching for "handmade soy candles Maryland" can see your price, your rating, and whether the item is in stock before they even click your listing. The click-through rate difference is significant: product listings with rich results receive <em>20-30%</em> more clicks than equivalent listings without them.</p>
+          <p class="lf-guide-p"><strong>RankMath Pro</strong> handles basic <strong>Product schema</strong> for WooCommerce automatically, but full schema implementation requires manual configuration: AggregateRating pulls from your review system, Offer nodes need to include priceCurrency, availability, and condition attributes, and BreadcrumbList schema ties your category hierarchy together for Google's crawlers. For Maryland businesses with physical retail locations, LocalBusiness schema should run alongside Product schema to capture both e-commerce and local intent searches.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Product schema with name, description, image, sku, brand, and offers properties &mdash; all required for Google's product rich results eligibility</li>
             <li class="lf-guide-li">AggregateRating schema tied to your WooCommerce review system so star ratings appear in search results automatically</li>
@@ -702,7 +745,7 @@ const tiers = [
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Abandoned Cart Recovery Setup</h3>
-          <p class="lf-guide-p">The average WooCommerce store loses 68% of carts before checkout completion. For a Maryland business doing $20,000 per month in online sales, that abandoned revenue represents roughly $43,000 in potential monthly orders that never converted. Abandoned cart recovery is the highest-ROI email marketing channel available to e-commerce businesses, yet most small Maryland online stores either don't have it configured at all or rely on a single generic email sent 24 hours after abandonment.</p>
+          <p class="lf-guide-p">The average <strong>WooCommerce</strong> store loses <em>68%</em> of carts before checkout completion. For a Maryland business doing $20,000 per month in online sales, that abandoned revenue represents roughly $43,000 in potential monthly orders that never converted. <strong>Abandoned cart</strong> recovery is the highest-ROI email marketing channel available to e-commerce businesses, yet most small Maryland online stores either don't have it configured at all or rely on a single generic email sent 24 hours after abandonment.</p>
           <p class="lf-guide-p">A properly configured recovery sequence consists of three emails at specific intervals: a first email at 1 hour that simply reminds the shopper what they left behind (this alone recovers 5-8% of abandoned carts), a second at 24 hours that adds a mild incentive (free shipping or a 10% discount code), and a third at 72 hours that creates urgency with a low-stock signal or discount expiration. The sequence requires WooCommerce to capture the email address before cart abandonment &mdash; either through a pop-up email capture on exit intent, or by pre-filling the email field early in the checkout flow. Klaviyo and CartFlows are the preferred tools for this sequence on WooCommerce installations.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Email capture before checkout begins: use an exit-intent popup or require email on the first checkout step before showing payment fields</li>
@@ -744,7 +787,7 @@ const tiers = [
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Mobile E-Commerce UX for Maryland Shoppers</h3>
-          <p class="lf-guide-p">In 2025, more than 65% of e-commerce traffic in the Mid-Atlantic region comes from mobile devices, but only 38% of purchases complete on mobile. That gap &mdash; the mobile traffic to conversion ratio &mdash; is the biggest performance gap in most Maryland e-commerce stores. Shoppers browse on mobile and either abandon or switch to desktop to complete the purchase. Closing that gap requires intentional mobile-first design, not just a responsive layout that technically works on small screens.</p>
+          <p class="lf-guide-p">In 2025, more than <em>65%</em> of e-commerce traffic in the Mid-Atlantic region comes from mobile devices, but only 38% of purchases complete on mobile. That gap &mdash; the mobile traffic to conversion ratio &mdash; is the biggest performance gap in most Maryland e-commerce stores. Shoppers browse on mobile and either abandon or switch to desktop to complete the purchase. Closing that gap requires intentional mobile-first design, not just a responsive layout that technically works on small screens.</p>
           <p class="lf-guide-p">Mobile e-commerce UX problems are almost always the same across different stores: touch targets too small to tap accurately, product images that don't zoom on pinch, checkout forms with tiny input fields, address auto-fill that breaks the form validation, and add-to-cart buttons that scroll off-screen on product pages. Each of these is testable on a physical device in under 30 minutes and fixable with targeted CSS and JavaScript changes. The stores that close the mobile conversion gap do so through systematic device testing, not guesswork.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Touch targets: all buttons and interactive elements must be at least 44px tall with adequate spacing between adjacent targets to prevent mis-taps</li>
@@ -758,7 +801,7 @@ const tiers = [
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Performance Optimization for Product-Heavy WooCommerce Sites</h3>
-          <p class="lf-guide-p">WooCommerce stores with large catalogs face performance challenges that standard WordPress sites don't. Every product page query involves multiple database lookups: product meta, variation data, inventory counts, pricing rules, cross-sell relationships, and review aggregates. On a shared hosting environment with a catalog of 500+ products, page generation times of 3-6 seconds are common without optimization. Given that Google's Core Web Vitals require LCP under 2.5 seconds and FID under 100ms, this is both a user experience problem and a rankings problem.</p>
+          <p class="lf-guide-p">WooCommerce stores with large catalogs face performance challenges that standard WordPress sites don't. Every product page query involves multiple database lookups: product meta, variation data, inventory counts, pricing rules, cross-sell relationships, and review aggregates. On a shared hosting environment with a catalog of 500+ products, page generation times of 3-6 seconds are common without optimization. Given that Google's <strong>Core Web Vitals</strong> require LCP under <em>2.5 seconds</em> and FID under 100ms, this is both a user experience problem and a rankings problem.</p>
           <p class="lf-guide-p">Proper WooCommerce performance optimization requires server-level caching that understands the difference between cacheable pages (category archives, product pages for non-logged-in users) and non-cacheable pages (cart, checkout, account pages). WP Rocket handles this with its WooCommerce-specific configuration options, but the cache rules must be reviewed after every major plugin update to ensure cart and checkout functionality still works correctly. CDN configuration for product images &mdash; typically the heaviest assets on a WooCommerce site &mdash; has the largest single impact on Largest Contentful Paint scores.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Server-level object caching with Redis or Memcached for WooCommerce product queries &mdash; reduces database load by 60-80% on high-traffic product pages</li>
@@ -798,6 +841,7 @@ const tiers = [
           </ul>
         </div>
 
+      </div>
       </div>
     </div>
   </section>
@@ -2342,14 +2386,39 @@ const tiers = [
   /* ── GUIDE ── */
   .lf-guide { background: var(--cream-soft); }
   .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
-  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+  .lf-guide-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; }
   .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
   .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
   .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+  .lf-guide-p strong { color: var(--ink); font-weight: 600; }
+  .lf-guide-p em { color: var(--amber-deep); font-style: italic; }
+  .lf-guide-li strong { color: var(--ink); font-weight: 600; }
+  .lf-guide-li em { color: var(--amber-deep); font-style: italic; }
   .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
   .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
   .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
-  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+  .lf-guide-sidebar { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 16px; }
+  .lf-gsb-block { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--amber); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow-sm); }
+  .lf-gsb-dark { background: var(--ink); border-color: rgba(244,239,230,0.08); }
+  .lf-gsb-newsletter { background: var(--cream-soft); }
+  .lf-gsb-eyebrow { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+  .lf-gsb-h4 { font-family: var(--f-display); font-size: 17px; font-weight: 400; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
+  .lf-gsb-dark .lf-gsb-h4 { color: var(--cream); }
+  .lf-gsb-desc { font-size: 13px; line-height: 1.6; color: var(--ink-muted); }
+  .lf-gsb-dark .lf-gsb-desc { color: rgba(244,239,230,0.55); }
+  .lf-gsb-form { display: flex; flex-direction: column; gap: 8px; }
+  .lf-gsb-input { padding: 9px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 13px; font-family: var(--f-body); background: var(--cream-soft); color: var(--ink); outline: none; width: 100%; transition: border-color var(--transition); box-sizing: border-box; }
+  .lf-gsb-input:focus { border-color: var(--amber); }
+  .lf-gsb-submit { padding: 9px 14px; background: var(--amber); color: var(--ink); border: none; border-radius: var(--radius-sm); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: opacity var(--transition); width: 100%; }
+  .lf-gsb-submit:hover { opacity: 0.85; }
+  .lf-gsb-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .lf-gsb-link { font-size: 13px; line-height: 1.45; color: var(--ink); text-decoration: none; padding-left: 16px; position: relative; display: block; transition: color var(--transition); }
+  .lf-gsb-link::before { content: "→"; position: absolute; left: 0; color: var(--amber); font-family: var(--f-mono); font-size: 11px; top: 2px; }
+  .lf-gsb-link:hover { color: var(--amber-deep); }
+  @media (max-width: 1100px) { .lf-guide-layout { grid-template-columns: 240px 1fr; gap: 28px; } }
+  @media (max-width: 900px) { .lf-guide-layout { grid-template-columns: 1fr; } .lf-guide-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } .lf-guide-sidebar { grid-template-columns: 1fr; } }
 
 </style>
 

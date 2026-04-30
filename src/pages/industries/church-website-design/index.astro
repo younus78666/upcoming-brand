@@ -560,7 +560,50 @@ const tiers = [
         <h2 class="h2-section">The Maryland Church's Complete Guide to Website Design</h2>
         <p class="lead">Everything a congregation leader or church administrator needs to know before commissioning a new church website &mdash; from online giving integration to sermon archives to local SEO for faith-based organizations in Maryland.</p>
       </div>
-      <div class="lf-guide-body">
+      <div class="lf-guide-layout">
+        <aside class="lf-guide-sidebar">
+
+          <div class="lf-gsb-block lf-gsb-dark">
+            <p class="lf-gsb-eyebrow mono-xs">Free offer</p>
+            <h4 class="lf-gsb-h4">Free Church Site Audit</h4>
+            <p class="lf-gsb-desc">We review your current church website and show exactly what's limiting your local visibility and visitor engagement.</p>
+            <a href="#contact" class="cta-btn" style="width:100%;justify-content:center;margin-top:4px;">Book a call &rarr;</a>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">Quick estimate</p>
+            <h4 class="lf-gsb-h4">What Will Your Church Site Cost?</h4>
+            <form class="lf-gsb-form" data-netlify="true" name="guide-church" method="POST">
+              <input type="hidden" name="form-name" value="guide-church" />
+              <input type="text" name="name" placeholder="Your name" class="lf-gsb-input" required />
+              <input type="email" name="email" placeholder="Email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Send Request &rarr;</button>
+            </form>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">From the blog</p>
+            <h4 class="lf-gsb-h4">Related Reading</h4>
+            <ul class="lf-gsb-links">
+              <li><a href="/blog/church-website-design-tips" class="lf-gsb-link">10 Things Every Maryland Church Website Needs</a></li>
+              <li><a href="/blog/online-giving-platform-comparison" class="lf-gsb-link">Tithe.ly vs. Pushpay: Which Is Right for Your Church?</a></li>
+              <li><a href="/blog/church-local-seo-google" class="lf-gsb-link">Local SEO for Maryland Churches</a></li>
+            </ul>
+          </div>
+
+          <div class="lf-gsb-block lf-gsb-newsletter">
+            <p class="lf-gsb-eyebrow mono-xs">Weekly tips</p>
+            <h4 class="lf-gsb-h4">Maryland SEO Insights</h4>
+            <p class="lf-gsb-desc">Weekly tips on ranking your Maryland business higher in Google. No spam, unsubscribe any time.</p>
+            <form class="lf-gsb-form" data-netlify="true" name="newsletter-guide" method="POST">
+              <input type="hidden" name="form-name" value="newsletter-guide" />
+              <input type="email" name="email" placeholder="Your email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Subscribe &rarr;</button>
+            </form>
+          </div>
+
+        </aside>
+        <div class="lf-guide-body">
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">What Makes a Church Website Different From a Standard Business Site</h3>
@@ -593,7 +636,7 @@ const tiers = [
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Church and Local Business Structured Data Schema</h3>
-          <p class="lf-guide-p">Google's structured data guidelines include a specific schema type for churches: Church, which is a subtype of LocalBusiness. Implementing Church schema on your Maryland church website tells Google's knowledge graph that your organization is a religious institution with specific attributes &mdash; denomination, service times, languages spoken, and physical location &mdash; that are relevant to local search queries. Without this schema, Google must infer these attributes from your page text, which produces inconsistent results and often incorrect information in knowledge panels.</p>
+          <p class="lf-guide-p">Google's structured data guidelines include a specific schema type for churches: Church, which is a subtype of LocalBusiness. Implementing <strong>JSON-LD schema</strong> on your Maryland church website tells Google's knowledge graph that your organization is a religious institution with specific attributes &mdash; denomination, service times, languages spoken, and physical location &mdash; that are relevant to local search queries. Without this schema, Google must infer these attributes from your page text, which produces inconsistent results and often incorrect information in knowledge panels.</p>
           <p class="lf-guide-p">Church schema implementation for Maryland congregations should include the organization's legal name (as registered with Maryland's State Department of Assessments and Taxation), the denomination or affiliation, service schedule in OpeningHoursSpecification format, all contact methods, GPS coordinates, and a high-resolution exterior photo. For multi-campus churches in the Baltimore, Annapolis, or DC metro areas, each location needs its own Church schema node with its own address and service schedule, linked to a parent Organization entity representing the overall ministry.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Church schema with @type: Church, name, description, address, telephone, url, sameAs (linking to your Google Business Profile and social media), and openingHoursSpecification for each service</li>
@@ -607,8 +650,8 @@ const tiers = [
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Online Giving Platform Integration for Maryland Churches</h3>
-          <p class="lf-guide-p">Online giving represents the fastest-growing segment of church revenue for Maryland congregations, with the percentage of giving processed digitally increasing from 28% in 2019 to 61% in 2024 among churches with giving platform integrations. The platform choice matters because each has different fee structures, different features, and different levels of integration with WordPress. Getting this decision wrong means either losing a percentage of every donation to fees, dealing with a clunky giving experience that discourages use, or managing giving data in a system that doesn't connect to your church management software.</p>
-          <p class="lf-guide-p">Tithe.ly and Pushpay are the two dominant platforms for Maryland churches, covering the majority of evangelical and nondenominational congregations. Tithe.ly charges 2.9% + $0.30 per card transaction and has a WordPress plugin that embeds directly in any page. Pushpay targets larger congregations and includes church management software alongside the giving platform. For Catholic parishes and mainline Protestant churches, ParishSoft (now part of ACS Technologies) and Vanco are common choices because of their denominational integrations. For very small congregations, Stripe with GiveWP is the most cost-effective option.</p>
+          <p class="lf-guide-p">Online giving represents the fastest-growing segment of church revenue for Maryland congregations, with the percentage of <strong>online giving</strong> processed digitally increasing from <em>28%</em> in 2019 to <em>61%</em> in 2024 among churches with giving platform integrations. The platform choice matters because each has different fee structures, different features, and different levels of integration with WordPress. Getting this decision wrong means either losing a percentage of every donation to fees, dealing with a clunky giving experience that discourages use, or managing giving data in a system that doesn't connect to your church management software.</p>
+          <p class="lf-guide-p">Tithe.ly and Pushpay are the two dominant platforms for Maryland churches, covering the majority of evangelical and nondenominational congregations. <strong>Tithe.ly</strong> charges <em>2.9% + $0.30</em> per card transaction and has a WordPress plugin that embeds directly in any page. Pushpay targets larger congregations and includes church management software alongside the giving platform. For Catholic parishes and mainline Protestant churches, ParishSoft (now part of ACS Technologies) and Vanco are common choices because of their denominational integrations. For very small congregations, Stripe with GiveWP is the most cost-effective option.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Tithe.ly: best for evangelical and nondenominational Maryland churches &mdash; 2.9% + $0.30 per card transaction, native WordPress plugin, strong mobile app for givers</li>
             <li class="lf-guide-li">Pushpay: best for churches with 500+ regular attenders &mdash; higher monthly fee but includes donor management, text-to-give, and campus management for multi-site ministries</li>
@@ -621,7 +664,7 @@ const tiers = [
 
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Sermon Archive and Media Library Best Practices</h3>
-          <p class="lf-guide-p">The sermon archive is often the most visited section of a church website by members, yet it receives the least design attention of any major section. A well-designed sermon library serves three functions: it gives regular attenders a way to re-watch or share sermons they've heard, it provides a searchable resource for members who want to find teaching on specific topics or Bible passages, and it serves as the primary content marketing channel for churches seeking to attract new members through YouTube, podcast platforms, and social media. Churches that invest in their sermon archive typically see 30-45% of their online traffic coming directly to sermon pages, often from people who have never attended in person.</p>
+          <p class="lf-guide-p">The sermon archive is often the most visited section of a church website by members, yet it receives the least design attention of any major section. A well-designed sermon library serves three functions: it gives regular attenders a way to re-watch or share sermons they've heard, it provides a searchable resource for members who want to find teaching on specific topics or Bible passages, and it serves as the primary content marketing channel for churches seeking to attract new members through YouTube, podcast platforms, and social media. Churches that invest in their sermon archive typically see <em>30-45%</em> of their online traffic coming directly to sermon pages, often from people who have never attended in person.</p>
           <p class="lf-guide-p">Maryland churches that maintain strong sermon archives are also building significant content equity: a church with 10 years of weekly sermon content has thousands of pages of original theological teaching, each of which can attract search traffic on specific biblical and theological questions. The key is proper tagging and categorization from the beginning: by sermon series, by Scripture passage, by topic (marriage, finances, parenting, anxiety), and by speaker. Without this structure, the archive becomes a chronological list that only serves people looking for a specific date.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Custom post type for sermons: separate from blog posts, with custom taxonomy for series, speaker, topic, and Scripture reference &mdash; enables granular filtering and improves SEO for topical sermon searches</li>
@@ -692,7 +735,7 @@ const tiers = [
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Local SEO for Faith-Based Organizations in Maryland</h3>
           <p class="lf-guide-p">Local SEO for Maryland churches operates differently than for businesses because the primary search intent is community affiliation, not transactional. Someone searching "Baptist church near me in Annapolis" isn't comparison shopping on price &mdash; they're looking for a faith community that fits their beliefs, culture, and schedule. The local SEO work for churches therefore focuses on visibility (appearing in map results and local organic results), trust signals (reviews, active Google Business Profile, consistent NAP data), and differentiation (communicating your church's specific culture and theological position through content).</p>
-          <p class="lf-guide-p">Google Business Profile is the single highest-impact local SEO action for Maryland churches. A fully optimized GBP with your denomination, service schedule, photos of your sanctuary, congregation, and pastoral team, and 20+ Google Reviews will place you in the local map pack for "[denomination] church [city Maryland]" searches. The website supports this by providing consistent NAP (Name, Address, Phone) information on every page, Church schema markup, and location-specific content that mentions your Maryland city, county, and neighborhood naturally throughout the site copy.</p>
+          <p class="lf-guide-p"><strong>Google Business Profile</strong> is the single highest-impact <strong>local SEO</strong> action for Maryland churches. A fully optimized GBP with your denomination, service schedule, photos of your sanctuary, congregation, and pastoral team, and 20+ Google Reviews will place you in the local map pack for "[denomination] church [city Maryland]" searches. The website supports this by providing consistent NAP (Name, Address, Phone) information on every page, Church schema markup, and location-specific content that mentions your Maryland city, county, and neighborhood naturally throughout the site copy.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Google Business Profile optimization: complete every field including denomination, service schedule, description with Maryland location keywords, and at least 15 photos of the building, sanctuary, and community activities</li>
             <li class="lf-guide-li">Review generation: encourage satisfied members and visitors to leave Google Reviews after a positive experience &mdash; 25+ reviews with an average above 4.5 stars significantly improves local map pack visibility</li>
@@ -706,7 +749,7 @@ const tiers = [
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Accessibility and Inclusivity in Maryland Church Web Design</h3>
           <p class="lf-guide-p">Churches have a theological and practical reason to prioritize web accessibility that goes beyond legal compliance: their mission is to welcome everyone, and a website that is inaccessible to blind visitors, deaf visitors, or visitors with cognitive disabilities directly contradicts that mission. The practical reality is that ADA Title III accessibility requirements have been applied to websites in federal court, and nonprofits &mdash; including religious organizations &mdash; are not exempt from these requirements in digital contexts. A church website that fails basic WCAG 2.1 Level AA standards creates both a ministry failure and a legal exposure.</p>
-          <p class="lf-guide-p">Accessible church website design for Maryland congregations starts with the same WCAG fundamentals that apply to any website &mdash; sufficient color contrast, keyboard navigability, screen reader compatible markup &mdash; but also includes church-specific considerations: sermon video captions, audio descriptions for visual worship elements, accessible giving forms with clear error messages, and event registration forms that work with assistive technologies. Many Maryland churches are also serving multilingual communities; adding a Spanish-language version of at least the key visitor pages (service times, I'm New, Contact) dramatically expands accessibility for Maryland's significant Hispanic community.</p>
+          <p class="lf-guide-p">Accessible <strong>church website design</strong> for Maryland congregations starts with the same WCAG fundamentals that apply to any website &mdash; sufficient color contrast, keyboard navigability, screen reader compatible markup &mdash; but also includes church-specific considerations: sermon video captions, audio descriptions for visual worship elements, accessible giving forms with clear error messages, and event registration forms that work with assistive technologies. Many Maryland churches are also serving multilingual communities; adding a Spanish-language version of at least the key visitor pages (service times, I'm New, Contact) dramatically expands accessibility for Maryland's significant Hispanic community.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Color contrast compliance: all text must meet WCAG 2.1 AA contrast ratios (4.5:1 for normal text, 3:1 for large text) &mdash; use a contrast checker on every color combination in your design</li>
             <li class="lf-guide-li">Sermon video captions: closed captions on all sermon videos serve hearing-impaired members, non-native English speakers, and those watching in noisy environments without headphones</li>
@@ -720,7 +763,7 @@ const tiers = [
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">How to Choose a Church Website Designer in Maryland</h3>
           <p class="lf-guide-p">Church website design is a specialized niche within web design, and not every web designer who says they serve churches actually understands what makes a church website work. The most common mistake Maryland churches make when hiring a web designer is choosing based on portfolio aesthetics alone &mdash; a beautiful design doesn't help your congregation if it was built on a platform your office manager can't update, if it doesn't integrate with your giving platform, or if it has no sermon archive system. The right designer for a Maryland church needs to understand congregation lifecycle, content governance for volunteer-maintained sites, and the specific integrations your ministry operations require.</p>
-          <p class="lf-guide-p">The budget reality for Maryland churches: a professionally designed WordPress church website with all the essential functionality (giving integration, event calendar, sermon library, live stream embed, basic SEO setup) typically costs between $3,500 and $8,000 as a one-time build, plus hosting and a care plan for ongoing maintenance. Platforms like Squarespace Church and Wix offer lower initial costs but create long-term constraints on functionality and ownership that many growing Maryland churches regret within 3-5 years. WordPress built on your own hosting gives you full control of your content, your domain, and your data permanently.</p>
+          <p class="lf-guide-p">The budget reality for Maryland churches: a professionally designed WordPress church website with all the essential functionality (giving integration, event calendar, sermon library, live stream embed, basic SEO setup) typically costs between <em>$3,500 and $8,000</em> as a one-time build, plus hosting and a care plan for ongoing maintenance. Platforms like Squarespace Church and Wix offer lower initial costs but create long-term constraints on functionality and ownership that many growing Maryland churches regret within 3-5 years. WordPress built on your own hosting gives you full control of your content, your domain, and your data permanently.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Ask for church-specific portfolio examples: request URLs of church websites they've built, then test the giving integration, browse the sermon archive, and check the event calendar &mdash; not just admire the design</li>
             <li class="lf-guide-li">Verify WordPress expertise: your site needs to be maintainable by non-technical church staff after launch &mdash; ask how the site will be structured for the worship administrator who updates it weekly</li>
@@ -731,6 +774,7 @@ const tiers = [
           </ul>
         </div>
 
+      </div>
       </div>
     </div>
   </section>
@@ -2275,14 +2319,39 @@ const tiers = [
   /* ── GUIDE ── */
   .lf-guide { background: var(--cream-soft); }
   .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
-  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+  .lf-guide-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; }
   .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
   .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
   .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+  .lf-guide-p strong { color: var(--ink); font-weight: 600; }
+  .lf-guide-p em { color: var(--amber-deep); font-style: italic; }
+  .lf-guide-li strong { color: var(--ink); font-weight: 600; }
+  .lf-guide-li em { color: var(--amber-deep); font-style: italic; }
   .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
   .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
   .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
-  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+  .lf-guide-sidebar { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 16px; }
+  .lf-gsb-block { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--amber); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow-sm); }
+  .lf-gsb-dark { background: var(--ink); border-color: rgba(244,239,230,0.08); }
+  .lf-gsb-newsletter { background: var(--cream-soft); }
+  .lf-gsb-eyebrow { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+  .lf-gsb-h4 { font-family: var(--f-display); font-size: 17px; font-weight: 400; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
+  .lf-gsb-dark .lf-gsb-h4 { color: var(--cream); }
+  .lf-gsb-desc { font-size: 13px; line-height: 1.6; color: var(--ink-muted); }
+  .lf-gsb-dark .lf-gsb-desc { color: rgba(244,239,230,0.55); }
+  .lf-gsb-form { display: flex; flex-direction: column; gap: 8px; }
+  .lf-gsb-input { padding: 9px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 13px; font-family: var(--f-body); background: var(--cream-soft); color: var(--ink); outline: none; width: 100%; transition: border-color var(--transition); box-sizing: border-box; }
+  .lf-gsb-input:focus { border-color: var(--amber); }
+  .lf-gsb-submit { padding: 9px 14px; background: var(--amber); color: var(--ink); border: none; border-radius: var(--radius-sm); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: opacity var(--transition); width: 100%; }
+  .lf-gsb-submit:hover { opacity: 0.85; }
+  .lf-gsb-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+  .lf-gsb-link { font-size: 13px; line-height: 1.45; color: var(--ink); text-decoration: none; padding-left: 16px; position: relative; display: block; transition: color var(--transition); }
+  .lf-gsb-link::before { content: "→"; position: absolute; left: 0; color: var(--amber); font-family: var(--f-mono); font-size: 11px; top: 2px; }
+  .lf-gsb-link:hover { color: var(--amber-deep); }
+  @media (max-width: 1100px) { .lf-guide-layout { grid-template-columns: 240px 1fr; gap: 28px; } }
+  @media (max-width: 900px) { .lf-guide-layout { grid-template-columns: 1fr; } .lf-guide-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } .lf-guide-sidebar { grid-template-columns: 1fr; } }
 
 </style>
 

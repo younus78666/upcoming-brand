@@ -582,7 +582,50 @@ const tiers = [
         <h2 class="h2-section">Complete Guide to Restaurant Website Design in Maryland</h2>
         <p class="lead">Everything Maryland restaurants, bars, cafes, and hospitality businesses need to know about building a website that drives reservations, ranks in local dining searches, and gives guests the information they need before they arrive.</p>
       </div>
-      <div class="lf-guide-body">
+      <div class="lf-guide-layout">
+        <aside class="lf-guide-sidebar">
+
+          <div class="lf-gsb-block lf-gsb-dark">
+            <p class="lf-gsb-eyebrow mono-xs">Free offer</p>
+            <h4 class="lf-gsb-h4">Free Restaurant Site Audit</h4>
+            <p class="lf-gsb-desc">We review your current restaurant website and show you exactly what's hurting your local search visibility and online orders.</p>
+            <a href="#contact" class="cta-btn" style="width:100%;justify-content:center;margin-top:4px;">Book a call &rarr;</a>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">Quick estimate</p>
+            <h4 class="lf-gsb-h4">What Will Your Restaurant Site Cost?</h4>
+            <form class="lf-gsb-form" data-netlify="true" name="guide-restaurant" method="POST">
+              <input type="hidden" name="form-name" value="guide-restaurant" />
+              <input type="text" name="name" placeholder="Your name" class="lf-gsb-input" required />
+              <input type="email" name="email" placeholder="Email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Send Request &rarr;</button>
+            </form>
+          </div>
+
+          <div class="lf-gsb-block">
+            <p class="lf-gsb-eyebrow mono-xs">From the blog</p>
+            <h4 class="lf-gsb-h4">Related Reading</h4>
+            <ul class="lf-gsb-links">
+              <li><a href="/blog/restaurant-seo-maryland" class="lf-gsb-link">Restaurant SEO in Maryland: Rank Higher on Google</a></li>
+              <li><a href="/blog/google-ordering-restaurants" class="lf-gsb-link">How to Set Up Google Ordering for Your Restaurant</a></li>
+              <li><a href="/blog/restaurant-website-menu-seo" class="lf-gsb-link">Menu Page SEO: Rank for Local Food Searches</a></li>
+            </ul>
+          </div>
+
+          <div class="lf-gsb-block lf-gsb-newsletter">
+            <p class="lf-gsb-eyebrow mono-xs">Weekly tips</p>
+            <h4 class="lf-gsb-h4">Maryland SEO Insights</h4>
+            <p class="lf-gsb-desc">Weekly tips on ranking your Maryland business higher in Google. No spam, unsubscribe any time.</p>
+            <form class="lf-gsb-form" data-netlify="true" name="newsletter-guide" method="POST">
+              <input type="hidden" name="form-name" value="newsletter-guide" />
+              <input type="email" name="email" placeholder="Your email address" class="lf-gsb-input" required />
+              <button type="submit" class="lf-gsb-submit">Subscribe &rarr;</button>
+            </form>
+          </div>
+
+        </aside>
+        <div class="lf-guide-body">
 
         <!-- 1 -->
         <div class="lf-guide-section">
@@ -591,7 +634,7 @@ const tiers = [
           <p class="lf-guide-p">Every person who lands on a restaurant website is trying to answer one of three questions as quickly as possible: what do you serve, how much does it cost, and how do I get a table? If your homepage does not answer all three above the fold on a mobile screen, you are losing reservations before a visitor scrolls. The design priority for a restaurant site is information delivery, not storytelling. Storytelling has a place, but it comes after the essential data has been surfaced.</p>
           <p class="lf-guide-p">Menu PDFs are one of the most common and most damaging mistakes in restaurant web design. A PDF menu fails guests on mobile because it forces pinch-and-zoom navigation on a small screen, requires a separate application to open, and frequently renders in a way that was never intended for portrait orientation. It also fails the restaurant in search because Google cannot index the text inside a PDF the same way it indexes an HTML page. Every dish name, every ingredient, every cuisine term inside that PDF is invisible to search engines. An HTML menu page structured with proper headings and schema markup turns your menu into a search-ranking asset.</p>
           <p class="lf-guide-p">Food photography is not decoration. Multiple studies on restaurant conversion behavior show that pages with professional food photography produce significantly higher reservation and ordering intent than pages with no photography or amateur smartphone photos. The human brain processes images of food faster than text, and a compelling hero photo of your signature dish does more persuasive work in one second than three paragraphs of description. For restaurant websites specifically, the photography budget should be treated as a core production cost alongside the design and development budget.</p>
-          <p class="lf-guide-p">From a technical search perspective, restaurants require Restaurant schema markup, which is a subtype of FoodEstablishment in the schema.org vocabulary. Generic LocalBusiness schema leaves significant structured data opportunity on the table. Restaurant schema allows you to specify cuisine type, price range, accepted reservations, menu URL, and opening hours in a format that Google reads directly and surfaces in search results. When a diner searches for Italian restaurants in Annapolis and your competitor has Restaurant schema but you have generic LocalBusiness markup, that competitor gets a richer search result presentation.</p>
+          <p class="lf-guide-p">From a technical search perspective, restaurants require Restaurant schema markup, which is a subtype of FoodEstablishment in the schema.org vocabulary. Generic LocalBusiness schema leaves significant structured data opportunity on the table. A proper <strong>restaurant website design Maryland</strong> strategy starts here. Restaurant schema allows you to specify cuisine type, price range, accepted reservations, menu URL, and opening hours in a format that Google reads directly and surfaces in search results. When a diner searches for Italian restaurants in Annapolis and your competitor has Restaurant schema but you have generic LocalBusiness markup, that competitor gets a richer search result presentation.</p>
           <p class="lf-guide-p">Google evaluates restaurant sites through the lens of local search, which means proximity, relevance, and prominence all factor into your ranking position. Yelp and OpenTable give you listings on those platforms, but they do not give you an owned digital asset. A Yelp page ranks for your restaurant name. Your own website, built correctly, can rank for cuisine terms, neighborhood terms, occasion searches, and long-tail queries that Yelp cannot capture for your specific business. The restaurant that owns its web presence owns its reservation pipeline in a way that a Yelp-dependent business never can.</p>
         </div>
 
@@ -623,7 +666,7 @@ const tiers = [
           <p class="lf-guide-p">Review schema and AggregateRating markup allow star ratings to appear in search results when your site hosts reviews or displays a review aggregate. This requires either displaying reviews on your own site or pulling structured data from a review aggregator in a way that meets Google's guidelines. Star ratings in search results consistently increase click-through rates compared to listings without them.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Verify your schema implementation using Google's Rich Results Test tool, which will show which rich result types your page qualifies for and flag any missing required fields.</li>
-            <li class="lf-guide-li">Use JSON-LD format for schema implementation, which keeps the structured data separate from your visible HTML and is Google's preferred method.</li>
+            <li class="lf-guide-li">Use <strong>JSON-LD schema</strong> format for schema implementation, which keeps the structured data separate from your visible HTML and is Google's preferred method.</li>
             <li class="lf-guide-li">Update openingHoursSpecification immediately whenever your hours change — outdated hours in schema can result in Google displaying incorrect information in search results.</li>
             <li class="lf-guide-li">Include the geo property with latitude and longitude coordinates to reinforce your location data for proximity-based search queries.</li>
           </ul>
@@ -655,7 +698,7 @@ const tiers = [
           <p class="lf-guide-p">What information you collect at the time of reservation affects both the guest experience and your ability to reduce no-shows. At minimum, the reservation flow should capture party size, date and time, and contact information for confirmation. Optionally, you can collect special occasion notes (birthdays, anniversaries), dietary restrictions, seating preference (inside, outside, bar), and for larger parties, a deposit or credit card hold.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Automated confirmation emails should be sent immediately upon booking and should include the reservation details, your address, parking information, and a cancellation link.</li>
-            <li class="lf-guide-li">Reminder emails or SMS messages sent 24 hours before the reservation consistently reduce no-show rates by 20 to 30 percent compared to confirmation-only communication.</li>
+            <li class="lf-guide-li">Reminder emails or SMS messages sent 24 hours before the reservation consistently reduce no-show rates by <em>20 to 30 percent</em> compared to confirmation-only communication.</li>
             <li class="lf-guide-li">A native WordPress reservation plugin like Restaurant Reservations or Amelia is appropriate for simple booking needs without third-party platform fees, but lacks the consumer marketplace exposure of OpenTable or Resy.</li>
             <li class="lf-guide-li">Widget design matters: a reservation button that contrasts strongly against your page background and is placed in a fixed header on mobile captures significantly more bookings than a widget buried in the footer.</li>
           </ul>
@@ -667,7 +710,7 @@ const tiers = [
           <h3 class="lf-guide-h3">Local SEO for Maryland Restaurants</h3>
           <p class="lf-guide-p">Local search is the primary search channel for restaurant discovery, and the way diners search for restaurants is specific enough that a local SEO strategy built for a law firm or a retail store will not transfer directly to the hospitality context. Understanding how restaurant search queries are structured, how Google ranks local results, and what optimization actions have the highest impact is essential for any Maryland restaurant trying to grow through organic search.</p>
           <p class="lf-guide-p">Restaurant search queries follow predictable patterns. Cuisine-plus-location queries like "Italian restaurant Baltimore" or "seafood restaurant Annapolis" represent high-intent diners with a specific cuisine preference and a specific location in mind. Near-me queries like "restaurant near me" or "best brunch near me" are dominated by Google Business Profile proximity signals. Occasion queries like "romantic restaurant Baltimore" or "best birthday dinner Maryland" represent diners searching by experience type rather than cuisine, and these queries often have less competition than cuisine-specific terms.</p>
-          <p class="lf-guide-p">Google Business Profile (GBP) is the most important local SEO asset for a restaurant. Your GBP listing appears in Google Maps results and in the local pack (the three-listing block that appears in local search results). Optimizing your GBP listing means: selecting the most specific primary category (Restaurant, Italian Restaurant, Seafood Restaurant, etc.), adding all relevant secondary categories, uploading weekly photos of food and interior, keeping hours updated including holiday hours, adding attributes like "serves alcohol," "outdoor seating," "good for groups," and "accepts reservations," linking directly to your HTML menu page, and responding to every review professionally.</p>
+          <p class="lf-guide-p"><strong>Google Business Profile</strong> (GBP) is the most important <strong>local SEO</strong> asset for a restaurant. Your GBP listing appears in Google Maps results and in the local pack (the three-listing block that appears in local search results). Optimizing your GBP listing means: selecting the most specific primary category (Restaurant, Italian Restaurant, Seafood Restaurant, etc.), adding all relevant secondary categories, uploading weekly photos of food and interior, keeping hours updated including holiday hours, adding attributes like "serves alcohol," "outdoor seating," "good for groups," and "accepts reservations," linking directly to your HTML menu page, and responding to every review professionally.</p>
           <p class="lf-guide-p">Citation consistency across directories is a foundational local SEO requirement. Your restaurant's name, address, and phone number must be identical across Yelp, TripAdvisor, OpenTable, Zomato, the Maryland restaurant association directory, and any local Baltimore or Annapolis food blog listings where your restaurant appears. Inconsistencies — even minor ones like "St." vs "Street" in the address — can suppress your local search rankings.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Baltimore restaurant searches are competitive and often dominated by established venues with strong review counts; focus on cuisine specificity and neighborhood modifiers to find rankable positions.</li>
@@ -713,8 +756,8 @@ const tiers = [
         <!-- 9 -->
         <div class="lf-guide-section">
           <h3 class="lf-guide-h3">Online Ordering Integration — Delivery vs Pickup</h3>
-          <p class="lf-guide-p">The expansion of online ordering and delivery has permanently changed the revenue landscape for restaurants, and the infrastructure decisions a restaurant makes around online ordering have long-term implications for profitability, customer data ownership, and brand control. The core trade-off is between third-party delivery platforms and owned ordering systems, and understanding that trade-off is essential before integrating any ordering functionality into your WordPress restaurant site.</p>
-          <p class="lf-guide-p">Third-party delivery platforms — DoorDash, UberEats, Grubhub — offer restaurants immediate access to a large consumer-facing marketplace. A diner who has never heard of your restaurant can discover it through the DoorDash app, and the platform handles payment, delivery logistics, and customer communication. The cost of this convenience is a commission of 15 to 30 percent per order, depending on the platform and the service tier, plus the platform controls the customer relationship. The diner who orders from you on DoorDash is a DoorDash customer. You receive no email address, no phone number, and no ability to market to that customer directly.</p>
+          <p class="lf-guide-p">The expansion of <strong>online ordering</strong> and delivery has permanently changed the revenue landscape for restaurants, and the infrastructure decisions a restaurant makes around online ordering have long-term implications for profitability, customer data ownership, and brand control. The core trade-off is between third-party delivery platforms and owned ordering systems, and understanding that trade-off is essential before integrating any ordering functionality into your WordPress restaurant site.</p>
+          <p class="lf-guide-p">Third-party delivery platforms — DoorDash, UberEats, Grubhub — offer restaurants immediate access to a large consumer-facing marketplace. A diner who has never heard of your restaurant can discover it through the DoorDash app, and the platform handles payment, delivery logistics, and customer communication. The cost of this convenience is a commission of <em>15 to 30 percent</em> per order, depending on the platform and the service tier, plus the platform controls the customer relationship. The diner who orders from you on DoorDash is a DoorDash customer. You receive no email address, no phone number, and no ability to market to that customer directly.</p>
           <p class="lf-guide-p">Owned ordering systems — Toast Online Ordering, ChowNow, Square Online, and similar platforms — allow you to take orders directly through your website with significantly lower per-order costs, typically a flat monthly fee or a much smaller commission. More importantly, you own the customer data from every order: name, email, order history, and frequency. This data becomes the foundation for email marketing, loyalty programs, and personalized re-engagement campaigns that third-party platforms cannot provide.</p>
           <p class="lf-guide-p">The integration method for online ordering on a WordPress site follows the same principle as reservation widget integration: use facade loading to prevent the ordering script from impacting initial page load performance. An ordering page that loads the full ordering interface on demand rather than on page load will score significantly better on Core Web Vitals than one that loads all ordering JavaScript immediately.</p>
           <ul class="lf-guide-ul">
@@ -732,7 +775,7 @@ const tiers = [
           <p class="lf-guide-p">Website performance — meaning page load speed, responsiveness, and stability — matters for every type of business website. For restaurant websites specifically, it matters more than in almost any other local business category, and the reason is the specific context in which most restaurant searches happen. The person searching for a place to eat lunch is not sitting at a desktop computer with a high-speed connection in a calm environment. They are often on a mobile device, on a 4G or 5G connection that may be inconsistent, in a car, walking down a street, or standing in a lobby. They are making a time-sensitive decision, and they will not wait for a slow site.</p>
           <p class="lf-guide-p">Research on mobile web behavior consistently shows that visitor abandonment increases sharply with load time. A page that loads in one second retains most of its visitors. A page that loads in three seconds has lost a significant portion. A page that loads in five seconds has lost the majority of mobile visitors who arrived via search. For a restaurant where the visitor is making a same-day dining decision, a three-second load time does not just represent a failed visit — it represents a lost reservation that went to the competitor whose site loaded faster.</p>
           <p class="lf-guide-p">The most common causes of slow restaurant websites are predictable and preventable. Oversized food photography is the most frequent culprit — a 4MB JPEG uploaded directly from a camera without compression or resizing will alone push a page load over the performance threshold. Reservation widget scripts that load immediately on page render rather than on demand add significant JavaScript weight. Multiple social media feed embeds — Instagram galleries, Facebook page widgets — each add third-party script dependencies that execute before the page is usable. A restaurant site that has all three of these issues simultaneously will fail Core Web Vitals assessments comprehensively.</p>
-          <p class="lf-guide-p">Core Web Vitals are Google's official performance metrics and a confirmed ranking factor in local search. The three metrics are Largest Contentful Paint (how quickly the main visible content of the page loads, target under 2.5 seconds), Interaction to Next Paint (how quickly the page responds to user input, target under 200 milliseconds), and Cumulative Layout Shift (how much the page layout shifts during load, target under 0.1). Restaurant sites that pass Core Web Vitals assessments receive a performance signal boost in local search rankings compared to competitors with failing scores.</p>
+          <p class="lf-guide-p"><strong>Core Web Vitals</strong> are Google's official performance metrics and a confirmed ranking factor in local search. The three metrics are Largest Contentful Paint (how quickly the main visible content of the page loads, target under <em>2.5 seconds</em>), Interaction to Next Paint (how quickly the page responds to user input, target under 200 milliseconds), and Cumulative Layout Shift (how much the page layout shifts during load, target under 0.1). Restaurant sites that pass Core Web Vitals assessments receive a performance signal boost in local search rankings compared to competitors with failing scores.</p>
           <ul class="lf-guide-ul">
             <li class="lf-guide-li">Convert all food photography to WebP format and compress to under 150KB per image — this alone resolves the single most common performance issue on restaurant sites.</li>
             <li class="lf-guide-li">Implement facade loading for reservation widgets, online ordering embeds, and social media feeds so that third-party scripts load only when requested by the user.</li>
@@ -774,6 +817,7 @@ const tiers = [
           <p class="lf-guide-p">The agency relationship does not end at launch. The most effective restaurant websites are maintained actively: menu updates, new event pages, photography refreshes, schema updates when hours change, and ongoing GBP management. Ask prospective agencies what their ongoing support and maintenance options look like and what the process is for making updates between major redesigns. A restaurant website without a defined maintenance relationship tends to decay — broken links accumulate, outdated menus persist, and performance regressions go unaddressed until they become search ranking problems.</p>
         </div>
 
+      </div>
       </div>
     </div>
   </section>
@@ -2320,14 +2364,39 @@ const tiers = [
 ══════════════════════ */
 .lf-guide { background: var(--cream-soft); }
 .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
-.lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+.lf-guide-layout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; }
+.lf-guide-body { display: flex; flex-direction: column; gap: 48px; }
 .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
 .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
 .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+.lf-guide-p strong { color: var(--ink); font-weight: 600; }
+.lf-guide-p em { color: var(--amber-deep); font-style: italic; }
+.lf-guide-li strong { color: var(--ink); font-weight: 600; }
+.lf-guide-li em { color: var(--amber-deep); font-style: italic; }
 .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
 .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
 .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
-@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+.lf-guide-sidebar { position: sticky; top: 96px; display: flex; flex-direction: column; gap: 16px; }
+.lf-gsb-block { background: var(--paper); border: 1px solid var(--line); border-top: 3px solid var(--amber); border-radius: var(--radius-md); padding: 20px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow-sm); }
+.lf-gsb-dark { background: var(--ink); border-color: rgba(244,239,230,0.08); }
+.lf-gsb-newsletter { background: var(--cream-soft); }
+.lf-gsb-eyebrow { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); }
+.lf-gsb-h4 { font-family: var(--f-display); font-size: 17px; font-weight: 400; letter-spacing: -0.02em; line-height: 1.25; color: var(--ink); }
+.lf-gsb-dark .lf-gsb-h4 { color: var(--cream); }
+.lf-gsb-desc { font-size: 13px; line-height: 1.6; color: var(--ink-muted); }
+.lf-gsb-dark .lf-gsb-desc { color: rgba(244,239,230,0.55); }
+.lf-gsb-form { display: flex; flex-direction: column; gap: 8px; }
+.lf-gsb-input { padding: 9px 12px; border: 1px solid var(--line); border-radius: var(--radius-sm); font-size: 13px; font-family: var(--f-body); background: var(--cream-soft); color: var(--ink); outline: none; width: 100%; transition: border-color var(--transition); box-sizing: border-box; }
+.lf-gsb-input:focus { border-color: var(--amber); }
+.lf-gsb-submit { padding: 9px 14px; background: var(--amber); color: var(--ink); border: none; border-radius: var(--radius-sm); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: opacity var(--transition); width: 100%; }
+.lf-gsb-submit:hover { opacity: 0.85; }
+.lf-gsb-links { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.lf-gsb-link { font-size: 13px; line-height: 1.45; color: var(--ink); text-decoration: none; padding-left: 16px; position: relative; display: block; transition: color var(--transition); }
+.lf-gsb-link::before { content: "→"; position: absolute; left: 0; color: var(--amber); font-family: var(--f-mono); font-size: 11px; top: 2px; }
+.lf-gsb-link:hover { color: var(--amber-deep); }
+@media (max-width: 1100px) { .lf-guide-layout { grid-template-columns: 240px 1fr; gap: 28px; } }
+@media (max-width: 900px) { .lf-guide-layout { grid-template-columns: 1fr; } .lf-guide-sidebar { position: static; display: grid; grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } .lf-guide-sidebar { grid-template-columns: 1fr; } }
 
 </style>
 
