@@ -28,3 +28,5 @@ pnpm-debug.log*
 *.docx
 upcoming-brand-homepage-v2.html
 upcoming-brand-homepage-final-uc-v63.md
+
+.vercel
