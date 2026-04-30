@@ -1,0 +1,2346 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Slow sites get passed over for the next contractor",
+    body: "Homeowners searching 'roofing contractor Annapolis' or 'HVAC repair Baltimore' make a decision in seconds. A site that loads in 7 seconds on mobile — the average for contractor sites we audit — loses the lead before the prospect sees your phone number. Every second of load time above 1.5 seconds costs you booked jobs.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "No service area pages means no city-level rankings",
+    body: "If your website has one 'service area' paragraph buried on your About page, Google cannot rank you for 'contractor Bethesda' or 'roofer Frederick.' You need dedicated, keyword-targeted pages for every city you serve — each with HomeAndConstructionBusiness schema telling Google exactly what you do and where.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "Generic quote forms don't qualify leads",
+    body: "A contact form that asks for a name and email produces unqualified inquiries. A properly built estimate form — asking for project type, timeline, location, and scope — produces leads your team can act on. We build multi-step forms that qualify prospects before they hit submit, so your office handles fewer tire-kickers.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "HomeAndConstructionBusiness schema on every page",
+    body: "Every page receives HomeAndConstructionBusiness and LocalBusiness JSON-LD markup — trade categories, service areas, license numbers, and operating hours. This tells Google exactly what you build and where, enabling Local Pack visibility for searches like 'general contractor Annapolis' and 'roofer Baltimore.' Without this markup, Google cannot confidently surface you for trade-specific searches.",
+    tags: ["HomeAndConstructionBusiness", "LocalBusiness schema", "License markup"],
+  },
+  {
+    num: "02",
+    title: "Service area pages for every Maryland city",
+    body: "We build dedicated, keyword-targeted landing pages for every city and county you serve — Annapolis, Baltimore, Frederick, Bethesda, Columbia, Silver Spring, and beyond. Each page targets city-specific search queries, uses unique copy, and is internally linked to build topical authority across your service territory. This is how you dominate local search across a multi-city market.",
+    tags: ["City landing pages", "Service area SEO", "Multi-market targeting"],
+  },
+  {
+    num: "03",
+    title: "Project gallery with before/after photos",
+    body: "Homeowners want proof before they call. We build project galleries that showcase your best work — organized by project type and location — with proper image compression, lazy loading, and structured markup. A gallery page targeting 'kitchen remodel Annapolis before after' captures mid-funnel prospects who are ready to commit but need to see real work first.",
+    tags: ["Project gallery", "Before/after photos", "Portfolio SEO"],
+  },
+  {
+    num: "04",
+    title: "Multi-step estimate request forms",
+    body: "Single-page quote forms produce low-quality leads. We build multi-step estimate forms that ask for project type, location, approximate timeline, and project scope before the prospect submits. This pre-qualifies every lead before your team responds — and typically doubles form conversion rates compared to a generic 'contact us' form.",
+    tags: ["Multi-step forms", "Lead qualification", "Estimate requests"],
+  },
+  {
+    num: "05",
+    title: "Google Business Profile and Local Pack setup",
+    body: "Appearing in the Google Maps 3-pack for your trade and city is often the highest-ROI marketing you can do. We audit and optimize your GBP — correct trade categories, service areas, services, Q&A, and photo uploads. We also build citation consistency across HomeAdvisor, Angi, Houzz, and the BBB to strengthen your local ranking signal.",
+    tags: ["Google Business Profile", "Local Pack", "HomeAdvisor / Angi"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your site ships with green Core Web Vitals — LCP, INP, and CLS — or we fix it before launch at no cost. Contractor sites built on cheap WordPress themes with unoptimized images routinely fail these benchmarks. Our builds use a performance stack with CDN delivery, server-side rendering, and sub-2-second load times on mobile.",
+    tags: ["Core Web Vitals", "LCP < 2s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Site audit + territory map",
+    body: "We audit your current site for technical SEO, Core Web Vitals, and schema gaps. We map keyword targets by trade and city across your service territory. You receive a written strategy document: gaps, opportunities, page list, and the exact cities we'll target with landing pages.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1–2",
+    title: "AI-assisted design + copy draft",
+    body: "We generate your homepage and key service pages using AI-assisted design — desktop and mobile. We draft all copy: service descriptions, city landing page frameworks, and estimate form language. One consolidated feedback round keeps the project moving.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2–7",
+    title: "WordPress build + schema + city pages",
+    body: "Approved designs go into WordPress on our performance stack. Every service and city page gets HomeAndConstructionBusiness schema. Multi-step estimate forms are built and tested. You get a staging link to review weekly.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 7–10",
+    title: "Launch, GBP + directory optimization",
+    body: "We handle DNS cutover, 301 redirects, and sitemap submission. Your GBP and key directory listings are audited and optimized simultaneously. You receive a handoff video and 30-day post-launch monitoring.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "SEO",
+    q: "How long before a contractor website ranks for city searches?",
+    a: "For less competitive Maryland markets like Frederick or Annapolis, contractors typically see meaningful movement in 60–90 days. Baltimore and Bethesda take 3–6 months for consistent first-page presence. Local Pack and GBP optimization often produce the fastest early results — improvements can appear within 30–45 days.",
+  },
+  {
+    num: "02",
+    category: "Services",
+    q: "Do you build individual pages for every city we serve?",
+    a: "Yes — this is the core of our contractor SEO approach. We build dedicated, keyword-targeted landing pages for every city and county in your service territory. Each page has unique copy targeting city-specific search queries, proper HomeAndConstructionBusiness schema, and is internally linked to build authority. The number of city pages depends on your tier.",
+  },
+  {
+    num: "03",
+    category: "Services",
+    q: "Do you write all the website copy or do we provide it?",
+    a: "We write all copy as part of every tier. You fill out a questionnaire covering your trade specialties, service area, notable projects, license numbers, and any differentiators. We draft service descriptions, city page copy, and form language. One review round included. We do not outsource copywriting.",
+  },
+  {
+    num: "04",
+    category: "Migration",
+    q: "Will we lose Google rankings when we switch from our old site?",
+    a: "Not if the migration is handled correctly. We map every existing URL to its new equivalent and implement 301 redirects before DNS cutover. We monitor Search Console for 30 days post-launch and resolve any crawl errors. Clean migrations with full redirect maps recover within 4–6 weeks.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What ongoing support do you provide after launch?",
+    a: "Care plans start at $150/month — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours. We also offer a content add-on: one new city landing page or service page per month, compounding your geographic SEO footprint over time. Month-to-month, no annual contract.",
+  },
+  {
+    num: "06",
+    category: "Platform",
+    q: "Can the site handle online payments or deposit collection?",
+    a: "Yes — on Growth and Custom tiers we can integrate Stripe or PayPal for deposit collection at estimate confirmation. We also integrate with Jobber, ServiceTitan, or Housecall Pro if you use field service management software and want the web form to sync directly. We scope these integrations during Discovery.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Migration":  { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Care Plans": { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 6 pages: Home, About, 3 service pages, Contact",
+      "HomeAndConstructionBusiness JSON-LD schema on all pages",
+      "Multi-step estimate request form with project type fields",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Business Profile audit and optimization",
+      "Google Search Console + Analytics 4 setup",
+      "30 days post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 18 pages · 6 service pages + 8 city landing pages",
+      "HomeAndConstructionBusiness schema, trade and territory mapped",
+      "Project gallery with before/after photos and ImageObject markup",
+      "Multi-step estimate form with lead qualification and email routing",
+      "Google Business Profile full optimization + HomeAdvisor/Angi citations",
+      "60 days post-launch monitoring with monthly report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited service and city pages across full territory",
+      "Multi-location schema for multiple offices or yards",
+      "Jobber / ServiceTitan / Housecall Pro integration",
+      "Custom project portfolio with filter by trade and city",
+      "Full content migration with 301 redirect mapping",
+      "Quarterly SEO reviews for 12 months post-launch",
+      "90 days post-launch support + first month care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+---
+<BaseLayout
+  title="Contractor Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland contractors. HomeAndConstructionBusiness schema, service area pages, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick."
+  canonicalUrl="https://upcomingbrand.com/industries/contractor-website-design/"
+>
+  <Navigation />
+
+  <!-- Schema: HomeAndConstructionBusiness + LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["HomeAndConstructionBusiness", "LocalBusiness"],
+        "@id": "https://upcomingbrand.com/industries/contractor-website-design/",
+        "name": "Upcoming Brand — Contractor Website Design Maryland",
+        "description": "WordPress website design for Maryland contractors. HomeAndConstructionBusiness schema, service area pages, 90+ PageSpeed. Fixed-scope from $1,500.",
+        "url": "https://upcomingbrand.com/industries/contractor-website-design/",
+        "areaServed": [
+          { "@type": "State", "name": "Maryland" },
+          { "@type": "City", "name": "Baltimore" },
+          { "@type": "City", "name": "Annapolis" },
+          { "@type": "City", "name": "Frederick" },
+          { "@type": "City", "name": "Bethesda" },
+          { "@type": "City", "name": "Columbia" },
+          { "@type": "City", "name": "Silver Spring" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Contractor Website Design Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Contractor WordPress Website Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HomeAndConstructionBusiness Schema Implementation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Service Area Landing Pages" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Google Business Profile Optimization" } }
+          ]
+        }
+      }
+    ]
+  })} />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>Contractor Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            Contractor Web Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland contractor websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to generate leads</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">not just look good.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most contractor websites lose leads before the first call — slow load times, no service area pages, and quote forms that break on mobile. We build WordPress sites for Maryland contractors that rank across every city you serve, load fast, and turn visitors into booked estimates. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">HomeAndConstructionBusiness schema</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website costing you jobs?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="contractor-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="contractor-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ct-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="ct-name" name="name" placeholder="David Caruso" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ct-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="ct-email" name="email" placeholder="david@chesapeakehome.com" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ct-company">Company name</label>
+              <input class="lfh-form-input" type="text" id="ct-company" name="company" placeholder="Chesapeake Home Services" autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-trade">Trade / service type</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-trade" data-name="trade_type">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select trade / service type</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Trade type">
+                  <li class="lf-cs-opt" role="option" data-value="General Contractor">General Contractor</li>
+                  <li class="lf-cs-opt" role="option" data-value="Roofing">Roofing</li>
+                  <li class="lf-cs-opt" role="option" data-value="HVAC">HVAC</li>
+                  <li class="lf-cs-opt" role="option" data-value="Plumbing">Plumbing</li>
+                  <li class="lf-cs-opt" role="option" data-value="Electrical">Electrical</li>
+                  <li class="lf-cs-opt" role="option" data-value="Painting">Painting</li>
+                  <li class="lf-cs-opt" role="option" data-value="Landscaping">Landscaping</li>
+                  <li class="lf-cs-opt" role="option" data-value="Home Remodeling">Home Remodeling</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="trade_type" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key results">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">71<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of contractor sites fail<br>Core Web Vitals</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">5.1<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More leads from sites<br>ranking in local search</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">78<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">Of homeowners research<br>contractors online before calling</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">10<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call<br>to live, lead-generating site</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why leads walk before calling</p>
+        <h2 class="h2-section">Why most contractor websites fail Maryland tradespeople</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland contractor website needs</h2>
+        <p class="lead">A contractor site is not a digital business card. It is a lead generation system. Every element we build — from schema to city pages to estimate forms — is designed to do one job: turn a searching homeowner into a booked estimate.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
+          <h2 class="h2-section lf-case-h2">How Chesapeake Home Services doubled their monthly leads in 4 months</h2>
+          <p class="lf-case-desc">
+            Chesapeake Home Services, a general contractor in Annapolis serving Anne Arundel and Howard counties, came to us with a seven-year-old WordPress site — no schema, a 4.8-second mobile load time, and zero city-specific landing pages. Within 4 months of launch, the difference was clear.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+214%</span>
+              <span class="lf-cr-label mono-xs">Qualified estimate requests</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">Pg 1</span>
+              <span class="lf-cr-label mono-xs">For 14 city + service combinations</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.8s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 4.8s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">9</span>
+              <span class="lf-cr-label mono-xs">City landing pages live and ranking</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"We were spending $2,000 a month on ads because our organic visibility was essentially zero. Upcoming Brand built us city pages for every area we serve, fixed our site speed, and set up our GBP correctly. Within four months we cut our ad budget in half and were still getting more leads than before. The estimate form alone — where we can actually see what the job is before we call back — changed how our office operates."</p>
+            <footer>
+              <cite class="lf-cite-name">David Caruso</cite>
+              <span class="lf-cite-role mono-xs">Owner &middot; Chesapeake Home Services &middot; Annapolis, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/chesapeake-home-services.png"
+            alt="Chesapeake Home Services website redesign — Annapolis contractor"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site · Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a ranked contractor website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most clients are live within 10 weeks of their first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland contractors</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">Complete Guide to Contractor and Trades Website Design in Maryland</h2>
+        <p class="lead">Everything Maryland contractors, HVAC companies, plumbers, roofers, and trades businesses need to know about building a website that generates qualified estimate requests and ranks in the local markets where your trucks run.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <!-- 1 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">What Makes a Contractor Website Different from a General Business Site</h3>
+          <p class="lf-guide-p">A contractor website exists to do one thing above all else: produce estimate requests from homeowners who are ready to hire. That sounds obvious, but most contractor sites are built on general-purpose templates that treat a contact form as the primary conversion goal and treat all inquiries equally. For a trades business, a generic contact form is a liability. It lets prospects submit a message with no project details, no timeline, no sense of scope, and no location. Your dispatcher gets an email that says "I need a quote" with no way to know if the job is in your service area, if it matches your minimum project size, or if the person is even a homeowner. The estimate request form on a contractor site must be purpose-built for trades work, not borrowed from a general-purpose theme.</p>
+          <p class="lf-guide-p">Contractors operate a service-area business model, not a storefront model. A restaurant needs people to come to it. A contractor goes to the customer. This distinction shapes every SEO and content decision on your site. Google treats service-area businesses differently from storefront businesses, and your site structure must reflect that. You need dedicated pages for each city and county you serve, because "HVAC contractor Columbia MD" and "HVAC contractor Ellicott City MD" are different searches with different people behind them. A single homepage with a list of cities in the footer cannot rank for all of them.</p>
+          <p class="lf-guide-p">Lead aggregators like HomeAdvisor and Angi sell your contact information to multiple contractors simultaneously. The homeowner gets five calls in the first hour. You are competing on price and response speed with contractors who may not even serve the same quality standard you do. Owned-website leads are fundamentally different. When a homeowner finds your site through a Google search for your specific service in their specific area, visits your portfolio, reads your about page, sees your license number and insurance, and then fills out your estimate form, they have already qualified themselves. The conversion from estimate request to booked job is substantially higher because the prospect chose you specifically, not a lead marketplace that sold them to a pool of contractors.</p>
+          <p class="lf-guide-p">Trust signals matter on contractor sites more than on almost any other category of business website. A homeowner inviting a contractor into their home is making a decision under real uncertainty. Before picking up the phone, they want to see: license and insurance credentials, photos of actual completed work (not stock images), a physical service area that includes their neighborhood, real reviews from people in their city, and evidence that you are an established business rather than a transient operation. Your website must answer every one of these questions before the prospect ever has to ask.</p>
+          <p class="lf-guide-p">HomeAndConstructionBusiness schema is a specific type of structured data that Google uses to understand contractor sites. While any local business can use LocalBusiness schema, Google explicitly provides HomeAndConstructionBusiness as the correct type for contractors, home improvement companies, and trades businesses. Using the right schema type tells Google's systems that your site is relevant to searches in the home services category, increases the confidence Google has in surfacing your business for "near me" queries, and enables rich results that can display your ratings and service areas directly in search results.</p>
+          <p class="lf-guide-p">Google evaluates contractor sites through the lens of its Helpful Content guidelines and its E-E-A-T framework (Experience, Expertise, Authoritativeness, Trustworthiness). For a trades business, this means your site needs to demonstrate real field experience through project photos, real credentials through license and insurance documentation, and real local presence through area-specific content. A site built on a generic template with stock photos and no schema will lose ranking ground to a competitor whose site communicates genuine expertise and local service history.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Must-Have Pages for Maryland Contractor Websites</h3>
+          <p class="lf-guide-p">The page structure of a contractor website is not optional design. It is the architecture that determines whether you can rank for the searches that bring paying customers. Many trades businesses launch with a homepage, a contact page, and a generic "Services" page. That structure can work for a small local listing, but it cannot compete in Maryland's contractor market where established businesses have dozens or hundreds of indexed pages targeting specific searches. Here is the page structure a Maryland contractor site needs from day one, with room to expand as your service area grows.</p>
+          <p class="lf-guide-p">Your homepage must communicate three things above the fold, before a visitor scrolls: what you do, where you do it, and how to reach you. The primary headline should name your trade and your service area ("Maryland HVAC Service and Installation" or "Roofing Contractor Serving Howard and Montgomery County"). Your phone number must be in the header, clickable on mobile, and not buried below a hero image. Your primary estimate request CTA must be visible without scrolling on desktop and mobile. Everything below the fold supports that conversion goal through social proof, service summaries, gallery previews, and trust badges.</p>
+          <p class="lf-guide-p">Individual service pages are the backbone of a contractor site's SEO. Each distinct service you offer needs its own dedicated page with its own keyword focus, its own content, and its own conversion path. For an HVAC company this means separate pages for: HVAC installation, HVAC repair, AC installation, AC repair, furnace installation, furnace repair, heat pump service, ductwork, preventive maintenance contracts, and any other service you provide. For a roofing company this means: roofing replacement, roofing repair, gutters, siding, storm damage repair, commercial roofing, and so on. Every trade that tries to put all its services on one page leaves money on the table because Google cannot rank a single page for dozens of distinct searches simultaneously.</p>
+          <p class="lf-guide-p">Service area pages are covered in detail in a later section, but they must be named here as a non-negotiable structural requirement. Every Maryland city or county your trucks regularly serve needs a dedicated page that targets the combination of your service type and that location. A plumber serving five counties needs at minimum five area pages, and ideally one per major city within each county.</p>
+          <p class="lf-guide-p">A project gallery or portfolio page is the highest-trust page on a contractor site. This is where homeowners go to verify that your work is real and at the quality level they expect. It needs real photos from your actual jobs, not manufacturer stock images. An emergency service page for trades that offer 24/7 availability captures some of the highest-value searches in the contractor category. A licensing and insurance page answers the credibility question before the prospect even has to ask. A reviews and testimonials page aggregates your Google, Yelp, and direct customer feedback in one place. A contact page that sets clear expectations on response time and preferred contact method reduces the gap between form submission and first contact.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Homepage with above-the-fold phone number, service area, and estimate CTA</li>
+            <li class="lf-guide-li">One page per service type (not one combined Services page)</li>
+            <li class="lf-guide-li">One service area page per city or county served</li>
+            <li class="lf-guide-li">Project gallery organized by service type and project scope</li>
+            <li class="lf-guide-li">Licensing and insurance page with credential numbers displayed</li>
+            <li class="lf-guide-li">Reviews and testimonials page</li>
+            <li class="lf-guide-li">Emergency service page (for HVAC, plumbing, and electrical)</li>
+            <li class="lf-guide-li">Contact page with response time commitment</li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">HomeAndConstructionBusiness Schema for Contractor Sites</h3>
+          <p class="lf-guide-p">Structured data is machine-readable information embedded in your site's code that tells search engines what your business is, where it operates, what services it offers, and how customers have rated it. Google uses this data to increase the confidence of its search ranking systems and to generate rich results that appear directly in search. For contractors, the correct schema type is HomeAndConstructionBusiness, a specific subtype under the LocalBusiness hierarchy in the Schema.org vocabulary. Using the generic LocalBusiness type is not wrong, but it leaves specificity on the table. HomeAndConstructionBusiness signals to Google's systems that your site belongs in the home services category, which affects how your pages are evaluated against other contractors competing for the same searches.</p>
+          <p class="lf-guide-p">The key fields in a HomeAndConstructionBusiness schema block are: name (your business name exactly as it appears on your Google Business Profile), telephone (your primary contact number in E.164 format), address (using PostalAddress sub-schema with street, city, state, postal code, and country), areaServed (listing the cities, counties, or postal codes you serve), priceRange (the $ to $$$$ notation that appears in Google results), and hasOfferCatalog (listing your individual services). Each of these fields serves a purpose beyond just filling in schema — they are signals Google uses to determine whether your business is relevant to a specific local search query.</p>
+          <p class="lf-guide-p">Structuring areaServed for a multi-county Maryland contractor requires listing each served area as a separate City or AdministrativeArea object within the areaServed array. A business that serves Howard County, Anne Arundel County, Montgomery County, and Baltimore County should list each county as a separate object, along with the major cities within those counties. This level of specificity helps Google understand the full extent of your service territory without the ambiguity of a text description like "serving greater Baltimore area."</p>
+          <p class="lf-guide-p">Review schema aggregation allows you to display your average rating and total review count in search results as a rich snippet. This requires an AggregateRating sub-schema block that references your ratingValue, reviewCount, and bestRating. When implemented correctly, your Google search listing can display your star rating alongside your page title and description, which increases click-through rates significantly compared to listings with no rating displayed.</p>
+          <p class="lf-guide-p">In WordPress, HomeAndConstructionBusiness schema can be implemented without a plugin by adding a JSON-LD script block to your site's head section via your theme's functions.php file or a custom header injection. This gives you complete control over the schema output without relying on a plugin that may output generic schema or conflicting markup. After implementation, use Google's Rich Results Test tool (search.google.com/test/rich-results) to verify that your schema is valid and being read correctly. Common mistakes to avoid: using generic LocalBusiness instead of HomeAndConstructionBusiness, omitting areaServed entirely, listing a residential address when operating as a service-area business, and duplicating schema output from both a plugin and manual code.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Use HomeAndConstructionBusiness, not the generic LocalBusiness type</li>
+            <li class="lf-guide-li">List all served Maryland cities in areaServed as separate objects</li>
+            <li class="lf-guide-li">Include AggregateRating sub-schema to enable star rating rich results</li>
+            <li class="lf-guide-li">Implement via JSON-LD in the head section, not microdata in page HTML</li>
+            <li class="lf-guide-li">Validate using Google's Rich Results Test after each schema change</li>
+          </ul>
+        </div>
+
+        <!-- 4 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Service Area Pages — The Contractor's SEO Secret Weapon</h3>
+          <p class="lf-guide-p">When a homeowner in Columbia, Maryland searches for "HVAC repair Columbia MD" and a homeowner in Ellicott City searches for "HVAC repair Ellicott City MD," those are two different searches with two different people behind them. Google treats them as distinct queries and will rank the pages that best address each specific search. A single HVAC page on your homepage cannot rank for both simultaneously. This is the core reason why service area pages — individual pages targeting each city or county you serve — are the most powerful long-term SEO investment a contractor can make. Businesses with well-built service area page structures consistently outrank competitors with larger overall websites because they have targeted content for every local search variation their prospects use.</p>
+          <p class="lf-guide-p">The most common mistake contractors make with service area pages is treating them as template swaps. They create a base page, duplicate it twenty times, and replace the city name wherever it appears. Google has become adept at identifying thin, duplicate content, and will not rank pages that offer nothing beyond a name swap. What makes a service area page genuinely unique and genuinely rankable is content that only makes sense for that specific location. This means referencing the housing stock characteristic of that area (older homes in historic neighborhoods may have aging HVAC systems that require specific expertise), the local utility providers (BGE for much of central Maryland, Pepco for parts of Montgomery County), and specific considerations for that zip code or community.</p>
+          <p class="lf-guide-p">Content elements that add genuine value to a service area page include: a description of the areas within that city where you operate, local landmarks or neighborhoods that establish genuine familiarity with the area, a note about typical project types in that market (e.g., roofing replacement in coastal Anne Arundel County often involves wind-resistant materials due to Chesapeake exposure), and customer reviews from that specific city. When a homeowner in Bethesda sees a review from someone also in Bethesda on your Bethesda service area page, the credibility signal is much stronger than a generic reviews aggregation page.</p>
+          <p class="lf-guide-p">For a contractor launching their first optimized site, the right approach is to build service area pages for your five to ten most important markets at launch, then add pages over time as your business grows into new areas or as you want to strengthen ranking in secondary markets. Prioritize cities where you already have satisfied customers and existing reviews, because those social proof signals will support your new pages' ability to rank faster.</p>
+          <p class="lf-guide-p">Internal linking between your service area pages and your service type pages creates a content network that strengthens the authority of all pages in the cluster. Your Columbia HVAC repair page should link to your main HVAC repair page and to your Columbia service area hub page. Your main HVAC installation page should link to every city-specific HVAC installation page. This interlinking structure passes authority through the site and helps Google understand the relationship between your service types and your service geography.</p>
+          <p class="lf-guide-p">In Google Analytics 4, you can track which service area pages generate the most estimate form submissions by setting up a conversion event on your form thank-you page and then viewing conversions by landing page in the Engagement report. This data lets you invest more content and link-building effort into the areas already generating leads, and identify underperforming area pages that may need content improvement or stronger internal linking to reach their ranking potential.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Project Gallery and Portfolio Strategy for Trades Businesses</h3>
+          <p class="lf-guide-p">Before-and-after photos are the single most effective trust signal on a contractor website. When a homeowner is evaluating whether to invite a trades company into their home for a project that may cost hundreds or thousands of dollars, seeing the real outcome of previous work reduces uncertainty more than any marketing language can. A gallery page with genuine job site photos — not manufacturer product shots, not staged studio images, not stock photography of smiling contractors — communicates authenticity that no copywriter can replicate. Conversion rate data consistently shows that contractor sites with real project photos have higher estimate request submission rates than those relying on stock imagery, sometimes by wide margins.</p>
+          <p class="lf-guide-p">The photography strategy for a trades business starts on the job site. Before beginning any project, photograph the existing condition: the old HVAC unit, the damaged section of roof, the rusted pipe, the outdated electrical panel. During the project, capture progress photos that show the work being done. After completion, photograph the finished work from multiple angles, including close-up detail shots that show the quality of the craftsmanship. For exterior work like roofing or siding, photograph the whole house from the street to give context to the scope of the project. This before/during/after sequence tells a complete story that prospective customers can follow and evaluate.</p>
+          <p class="lf-guide-p">Photo captions serve dual purposes: they give context to the viewer and they give SEO signals to search engines. A caption that reads "Trane XR15 AC installation, Columbia MD — 2,400 sq ft home, single-zone system with new ductwork" provides location, brand, service type, and project scope. That information helps Google associate your gallery page with searches for AC installation in Columbia, and it helps the homeowner reading the caption understand whether this project is comparable to their own situation. Every gallery photo should have a descriptive caption, an alt text attribute, and a filename that reflects the service type and location rather than a generic string of numbers from your camera.</p>
+          <p class="lf-guide-p">Organizing your gallery by service type and by project scale makes it easier for prospects to find the most relevant examples of your work. An HVAC company's gallery might be organized into sections: AC Installation, Furnace Replacement, Heat Pump Systems, Ductwork, and Maintenance. Within each section, photos can be further sorted by project size or property type. This organization reduces the cognitive load on the visitor and keeps them engaged with the specific type of work they are researching.</p>
+          <p class="lf-guide-p">Image optimization is critical for contractor galleries, which tend to accumulate large files quickly. Every project photo should be converted to WebP format before uploading, which reduces file size by 25 to 35 percent compared to JPEG without visible quality loss. Lazy loading should be enabled so that images below the fold are only loaded as the user scrolls, reducing initial page load time. Images should be resized to the maximum display dimensions before upload — there is no reason to upload a 4MB camera original when the display size is 800 pixels wide.</p>
+          <p class="lf-guide-p">Gallery pages can function as SEO landing pages in their own right when structured correctly. A page titled "Roofing Replacement Projects in Anne Arundel County" with ten captioned before-and-after photo sets, a project description for each, and an estimate CTA at the bottom serves both as a trust-building portfolio page and as a rankable page targeting roofing project searches in that county. Building these gallery landing pages by service type and geography creates another layer of location-specific content that reinforces your service area page structure and your service type page structure.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Online Estimate Request Forms That Generate Qualified Leads</h3>
+          <p class="lf-guide-p">The gap between a lead and a qualified lead is the difference between a dispatcher spending twenty minutes on the phone to gather basic project information and a dispatcher receiving a form submission that already contains the service type, property type, project scope, timeline, and preferred contact method. Contractor estimate request forms must be designed to gather the information your office needs to prepare a preliminary estimate and route the job correctly, before you spend a single minute of phone time on a prospect. A generic contact form does not accomplish this. It creates work rather than reducing it, because every submission requires a follow-up call just to determine whether the lead is worth pursuing.</p>
+          <p class="lf-guide-p">The structure of a well-built contractor estimate form starts with service type selection. The prospect chooses the category of work they need (HVAC, roofing, plumbing, electrical, etc.), which should trigger conditional logic that shows the fields most relevant to that service. An HVAC request form needs different fields than a roofing form. For HVAC: system type (central air, heat pump, mini-split, furnace), whether it is a replacement or new installation, approximate age of existing system, and square footage of the space being conditioned. For roofing: type of project (replacement, repair, gutters), roofing material preference, and whether they have already obtained an insurance claim number if storm damage is involved.</p>
+          <p class="lf-guide-p">Property type is a critical qualification field that many contractor forms omit. Residential versus commercial affects pricing, licensing requirements, and crew allocation. Single-family home versus multi-unit building affects project complexity. Owned versus rented affects decision authority. These fields are not intrusive — homeowners expect a roofing or HVAC company to ask about their property before sending a crew.</p>
+          <p class="lf-guide-p">Multi-step forms consistently outperform single-page forms for contractor estimate requests. The reason is cognitive load: presenting fifteen fields on one screen feels like a commitment that many visitors abandon. Breaking the form into three steps of four to five fields each creates a sense of progress and reduces abandonment at each transition. Step one covers service type and location. Step two covers project details and property information. Step three covers contact information and timeline. When prospects reach step three, they have already invested effort into the process and are much less likely to abandon than they would be on a single-page form.</p>
+          <p class="lf-guide-p">Connecting your estimate form to your field service management software closes the gap between website lead and dispatched job. ServiceTitan, Jobber, and Housecall Pro all offer form integration or webhook capabilities that allow form submissions to create new customer records and job requests automatically. This eliminates manual data entry and ensures every lead is captured in your job management system rather than sitting in an email inbox. For businesses not yet using field service software, at minimum your form should send an immediate SMS notification to your dispatcher's mobile phone so that response time is measured in minutes, not hours.</p>
+          <p class="lf-guide-p">Lead response time is one of the strongest predictors of estimate conversion for contractors. Studies of home services lead behavior consistently show that response times over five minutes dramatically reduce the probability of converting that lead to a booked job, because the prospect has already called the next contractor on their search results page. An instant email or SMS notification to your dispatcher when a form is submitted, with all project details included in the notification, makes a sub-five-minute response achievable even for small operations.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Local SEO for Maryland Contractors — Getting in the Map Pack</h3>
+          <p class="lf-guide-p">The Google Map Pack — the block of three business listings that appears above organic search results for local service searches — is the most valuable piece of digital real estate for any Maryland contractor. Homeowners searching for contractors on mobile devices see the Map Pack before they see any organic website results, and the top three listings in the pack receive the majority of clicks. Ranking in the Map Pack requires a combination of Google Business Profile optimization, website authority signals, citation consistency, and review volume and recency. Understanding how each of these factors works and how they interact is essential for any contractor pursuing consistent local leads from Google.</p>
+          <p class="lf-guide-p">Homeowners search for contractors using predictable patterns: the service they need plus a location qualifier ("HVAC repair near me," "plumber Columbia MD," "emergency roofer Anne Arundel County") or the service plus an urgency signal ("furnace not working Baltimore," "roof leak repair today"). Your GBP and website need to be optimized for all of these search patterns across all of the cities you serve. This is not something you can accomplish with a single set-it-and-forget-it optimization — it requires ongoing attention to your GBP, consistent review acquisition, and a website structure that reinforces your geographic relevance for each service-area combination.</p>
+          <p class="lf-guide-p">Google Business Profile optimization for contractors starts with selecting the most specific primary category available for your trade. "HVAC contractor" is more specific than "contractor" and will rank for more relevant searches. If you offer multiple trades, you can add secondary categories, but your primary category should reflect your main revenue service. For service-area businesses, set up your GBP as a service-area business rather than displaying your address — this is appropriate for contractors who go to the customer's location rather than receiving customers at a business address, and it allows you to define a service radius rather than displaying a home address in public search results.</p>
+          <p class="lf-guide-p">Citation building for trades businesses means ensuring your business name, address (or service area), and phone number are consistent across the directories homeowners and Google use to verify local business information. Key citation sources for Maryland contractors include Angi, HomeAdvisor, Yelp, BBB, the MHIC (Maryland Home Improvement Commission) contractor license directory, and your local chamber of commerce. Inconsistencies in your business name spelling, phone number format, or address across these directories create uncertainty in Google's local ranking systems and can suppress your Map Pack ranking.</p>
+          <p class="lf-guide-p">Review acquisition is an ongoing operational priority, not a one-time marketing task. The timing of the review request matters enormously: ask within 24 hours of job completion, while the homeowner's satisfaction is at its peak and the experience is fresh. SMS review requests have significantly higher completion rates than email requests for trades customers. A simple text message with a direct link to your Google review page sent the day after job completion, referencing the specific job you completed, is the highest-conversion review acquisition method available to a small contractor. Negative reviews should be responded to professionally and promptly, acknowledging the concern and offering resolution.</p>
+          <p class="lf-guide-p">For contractors serving multiple Maryland counties from a single location, establishing Map Pack presence in each county requires dedicated service area page content on your website, consistent citation mentions of each county, and reviews that reference multiple service areas. Google uses proximity, prominence, and relevance as its three primary Map Pack ranking factors, and your website's content is one of the strongest signals available to you for the relevance factor across your full service geography.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Emergency Service Pages — Capturing High-Intent Searches</h3>
+          <p class="lf-guide-p">Of all the search types a contractor's website can target, emergency service searches carry the highest conversion intent. When a homeowner searches "emergency HVAC repair" at 11 PM in July because their air conditioning has failed, or "emergency plumber near me" on a Sunday morning because a pipe has burst, they are not comparison shopping. They have an active problem, they need a solution immediately, and they are ready to pay whatever it costs to fix it. These searches convert to booked jobs at far higher rates than standard service searches, and they often generate the highest-revenue single-call jobs in a contractor's pipeline. An emergency service page that is not properly optimized is leaving the highest-value leads in your market to competitors who understood this earlier.</p>
+          <p class="lf-guide-p">What an emergency service page must contain to convert at its potential: your phone number must appear above the fold, in large format, with a tap-to-call link on mobile. Not below a hero image, not in the header only — directly in the page body at the very top. The first line of body copy should state your availability hours explicitly ("24/7 Emergency HVAC Service — We Answer Every Call"). What counts as an emergency for your trade should be defined clearly: for HVAC, a system failure during extreme weather conditions, a gas leak, or a heat pump that has stopped producing heat during below-freezing temperatures. For plumbing: burst pipes, sewage backup, water heater failure, or any active leak that is causing property damage. Defining the emergency clearly helps the prospect self-qualify and increases the likelihood that the call they make is for a genuine emergency you can and should serve.</p>
+          <p class="lf-guide-p">Estimated response time must be stated explicitly on the page. "We aim to arrive within two hours" is a conversion element, not a commitment you will be held to legally — but it gives the prospect the information they need to decide whether to call you or continue searching. A page that says "emergency service available" without any indication of what that means in practical terms leaves too much uncertainty for a homeowner in an active emergency situation.</p>
+          <p class="lf-guide-p">Emergency service pages need their own URL structure rather than being a section on your main service page. A dedicated URL like /emergency-hvac-repair/ or /24-hour-plumber-maryland/ can rank independently for emergency-specific searches, where a page section cannot. The emergency page should also be linked from your homepage navigation and from all relevant service pages, because prospects may navigate to it from multiple entry points during an emergency situation.</p>
+          <p class="lf-guide-p">For Maryland contractors serving multiple counties, emergency service area pages compound the value of this strategy significantly. An /emergency-hvac-repair-howard-county/ page and an /emergency-hvac-repair-anne-arundel-county/ page each target a distinct geographic search that a single emergency page cannot capture. These pages need genuine location-specific content — not just the county name swapped into a template — to rank reliably. Reference your response radius for each county, your average response time for that geography, and any specific local context that is relevant to emergency service in that area.</p>
+          <p class="lf-guide-p">Bidding on emergency keywords in Google Ads as a complement to your organic emergency pages amplifies your coverage during the times when the highest-value prospects are searching. Emergency HVAC searches spike during heat waves and cold snaps in Maryland, which are predictable weather events you can plan your ad budget around. Combining an organically ranking emergency page with a paid ad for the same keyword means your business appears in both the paid and organic positions, maximizing your share of a search result page for queries that convert to revenue at the highest rate in your market.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Google Business Profile Optimization for Trades Businesses</h3>
+          <p class="lf-guide-p">Your Google Business Profile is often the first interaction a prospective customer has with your business. Before they visit your website, before they call your number, they see your GBP listing in the Map Pack: your business name, your rating, your review count, your photos, and your service area. A fully optimized GBP listing is not a one-time setup task — it is an ongoing marketing asset that requires regular attention to maintain and improve its performance. Contractors who treat GBP as a set-and-forget directory listing are consistently outranked by competitors who actively manage theirs.</p>
+          <p class="lf-guide-p">The complete GBP setup process for a Maryland contractor begins with category selection. Choose the most specific primary category that describes your main trade (HVAC Contractor, Roofing Contractor, Plumber, Electrician, General Contractor). Add secondary categories for any additional trades you offer. Next, configure your service area. Contractors should use the service-area business setting, which removes your physical address from public display and instead shows a service radius or list of served areas. This is appropriate for businesses that go to the customer rather than receiving customers at a fixed location, and it protects your privacy if your business address is your home. Define your service area using the cities and counties you regularly serve, being specific rather than drawing an overly large radius that includes areas where you cannot realistically respond.</p>
+          <p class="lf-guide-p">Your business description (750 characters maximum) should be written for both the human reader and Google's relevance systems. Include your primary trade, your service area geography, your years in business, your key differentiators (licensed and insured, 24/7 emergency service, free estimates), and a call to action. Avoid keyword stuffing — write naturally, but be deliberate about including the terms that connect your business to the searches you want to rank for. The description is indexed by Google and contributes to your relevance for search queries.</p>
+          <p class="lf-guide-p">The GBP Posts feature allows you to publish time-limited content that appears in your listing. For seasonal trades like HVAC, Posts are an opportunity to promote spring AC tune-up specials, fall furnace inspection deals, and winter heating emergency availability. A Post with a promotional offer and a booking link can drive direct calls and clicks from prospects who are already viewing your listing. Posts expire after seven days for offer-type posts and should be refreshed regularly to keep your profile active, which is itself a signal of a managed, legitimate business.</p>
+          <p class="lf-guide-p">The Products and Services section of GBP allows you to list individual services with descriptions and optional pricing information. For a contractor, this means listing each service type you offer (HVAC Installation, HVAC Repair, Furnace Service, etc.) with a brief description. This information feeds into Google's understanding of what searches your business is relevant for and can appear in your listing's knowledge panel. Services with price ranges help prospects self-qualify before calling, which reduces time spent on calls from prospects whose project budget is misaligned with your pricing.</p>
+          <p class="lf-guide-p">For contractors operating multiple trucks across a wide service area, GBP allows you to define a service area that covers all of your territory from a single profile, which is the appropriate configuration for most small to mid-size trades businesses. If you have genuinely separate business entities or offices with distinct addresses serving distinct territories, separate GBP listings may be appropriate, but this requires each listing to have a genuine, verifiable address and separate operational entity to comply with GBP guidelines. Attempting to create multiple listings for a single business location to improve coverage in multiple cities violates GBP policies and risks suspension of all listings.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Website Performance for Contractor Sites</h3>
+          <p class="lf-guide-p">A homeowner standing in their driveway on a hot August afternoon, searching from their phone for an HVAC contractor because their system just failed, will not wait five seconds for a page to load. They will hit the back button and call the next result. This is not a hypothetical — it is the documented behavior of mobile web users, and it is especially relevant for contractor searches, which have disproportionately high mobile search rates because homeowners often search from their property when a problem becomes apparent. Every second of additional load time reduces the probability that a visitor stays on your page long enough to submit an estimate request. Slow contractor sites do not just lose traffic; they lose jobs to faster competitors.</p>
+          <p class="lf-guide-p">The most common causes of poor performance on contractor websites are unoptimized project photo galleries, heavy page builder themes, and multiple third-party scripts loading on every page. Project galleries accumulate large files quickly when photos are uploaded directly from cameras or phones without resizing or compression. A gallery page with twenty unoptimized JPEG files can weigh 15 to 20 MB, making it effectively unusable on mobile connections. Page builder themes like Divi, Elementor, and WPBakery load substantial CSS and JavaScript payloads on every page, including pages that use none of the builder's advanced features. Third-party scripts for live chat, marketing pixels, review widgets, and appointment booking compound the load time problem by adding additional HTTP requests and blocking render time.</p>
+          <p class="lf-guide-p">Target performance benchmarks for a contractor site are: Largest Contentful Paint (LCP) under 2.5 seconds, Cumulative Layout Shift (CLS) under 0.1, Interaction to Next Paint (INP) under 200 milliseconds, and a mobile PageSpeed Insights score of 90 or above. These are the same benchmarks Google uses to evaluate Core Web Vitals, which are a confirmed ranking signal in Google's search algorithm. A contractor site that scores below 50 on mobile PageSpeed is operating at a structural disadvantage against competitors whose sites meet these thresholds.</p>
+          <p class="lf-guide-p">Auditing a contractor site's performance requires running Google's PageSpeed Insights on your homepage, your highest-traffic service pages, and your gallery page — not just the homepage. Performance problems often concentrate on specific pages. The PageSpeed Insights report shows exactly which issues are causing the most impact, sorted by their estimated time savings. Common actionable findings include: serve images in next-gen formats (WebP), eliminate render-blocking resources, reduce unused JavaScript, properly size images, and defer offscreen images.</p>
+          <p class="lf-guide-p">A well-performing WordPress stack for a contractor site consists of a lightweight, custom-coded or minimally-extended theme (not a multipurpose page builder theme), a caching plugin configured for your hosting environment, and an image optimization pipeline that converts uploads to WebP automatically. Hosting on a server with adequate resources for your traffic level is foundational. The cheapest shared hosting plans — often sold to small businesses at under $5 per month — are hosted on overloaded servers that cannot deliver consistent sub-2-second response times under normal traffic conditions. For a contractor site generating 30 or more estimate requests per month, the revenue impact of faster hosting far outweighs the cost difference between a $5 shared plan and a $30 managed WordPress plan.</p>
+          <p class="lf-guide-p">CDN delivery is particularly relevant for contractor sites with large project photo galleries. A content delivery network serves your static assets (images, CSS, JavaScript) from servers geographically close to the visitor, reducing the time it takes for those files to travel across the network. For a Maryland contractor whose visitors are primarily within a few hundred miles, a CDN may provide modest performance improvements for the site itself, but for a gallery page serving dozens of high-resolution project images, CDN delivery can meaningfully reduce gallery load time and improve the overall experience for mobile visitors on cellular connections.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Licensing, Insurance, and Trust Page Design</h3>
+          <p class="lf-guide-p">Displaying your license number is one of the most impactful trust signals a Maryland contractor can put on their website, and it is one that many contractors inexplicably omit. In Maryland, home improvement contractors are required to be licensed by the Maryland Home Improvement Commission (MHIC). Displaying your MHIC license number prominently on your website allows any prospect to verify your license status directly through the MHIC's public contractor lookup tool. The act of displaying the license number communicates that you have nothing to hide and that you are confident in your credentials. Contractors who omit this information leave prospects with an unresolved question that can prevent them from calling, because homeowners have been warned by consumer protection agencies to always verify contractor licensing before hiring.</p>
+          <p class="lf-guide-p">Maryland has trade-specific licensing requirements beyond the general MHIC home improvement contractor license. HVAC contractors must hold a license from the Maryland Department of Labor's HVACR Board. Electrical contractors require a master electrician license and a business license from the same department. Plumbers must hold a master plumber license. Each of these licenses should be displayed on your website with the license number and the issuing authority named. If you hold multiple licenses, list all of them. If you have employees with their own trade licenses, consider displaying the most senior or relevant ones as well to reinforce the depth of credentialed expertise on your team.</p>
+          <p class="lf-guide-p">A dedicated licensing and insurance page gives you a structured location to present all of your credentials without cluttering other pages. This page should include: each license you hold with its number and issuing authority, your general liability insurance carrier and coverage amount, your workers' compensation coverage, any manufacturer certifications or brand partnerships (Trane Comfort Specialist, GAF Master Elite, Kohler Certified Service Provider), and membership in professional associations (ACCA, NARI, PHCC). Each of these elements answers a question a careful homeowner has before calling.</p>
+          <p class="lf-guide-p">Where you display your credentials on the homepage matters significantly. A license number and insurance badge displayed in the page footer is better than nothing, but it requires the prospect to scroll to the bottom of the page to find it. Displaying these signals in the above-the-fold section of your homepage — ideally near your primary phone number and estimate CTA — ensures that the most conversion-anxious prospects see them immediately. A prospect who is evaluating two contractors and sees license number, insurance, and years in business immediately on your homepage is less likely to continue scrolling through the competitor's site that buries its credentials.</p>
+          <p class="lf-guide-p">Your About page is a trust-building opportunity that most contractor sites underutilize. A strong About page for a Maryland contractor should include: the year the business was founded, the owner's name and background (how many years they worked in the trade before starting the business, any certifications they hold personally), the number of jobs completed, the geographic history of the business, team photos that show real people rather than stock images of generic workers, and a statement of your business's service philosophy. Homeowners hiring a contractor are making a trust decision. Your About page is the place where you become a person rather than a faceless service provider.</p>
+          <p class="lf-guide-p">The "are you insured?" question is one of the first things a careful homeowner asks before hiring a contractor, and it should be answered on your website before they ever have to ask it. General liability insurance protects the homeowner's property in the event of accidental damage during the job. Workers' compensation protects the homeowner from liability if a worker is injured on their property. These are not just contractor protections — they are homeowner protections, and framing them as such on your website ("Our $2 million general liability policy protects your home throughout every project") converts the insurance disclosure from a checkbox item into a competitive advantage.</p>
+        </div>
+
+        <!-- 12 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Choosing a Web Design Agency as a Maryland Contractor</h3>
+          <p class="lf-guide-p">Selecting a web design agency as a Maryland contractor requires asking questions that go beyond aesthetics and pricing. A beautiful contractor website that ranks on page four of Google and produces three estimate requests per month is a poor investment regardless of how polished it looks. The questions that matter are operational: Does this agency understand service-area SEO? Have they built sites for trades businesses specifically, not just general small businesses? Can they integrate with your field service management software? Do they understand how estimate form routing works and why it matters for response time? How do they handle service area pages, schema implementation, and Google Business Profile optimization as part of the project? If an agency cannot answer these questions specifically and confidently, they are not the right agency for a trades business.</p>
+          <p class="lf-guide-p">The deliverables a contractor website project must include, beyond the design and development of the core site, are: individual service type pages for every service you offer, service area pages for every city or county you serve, HomeAndConstructionBusiness schema implemented and verified, Google Business Profile audit and optimization recommendations, a mobile performance audit with a clear target benchmark, estimate form setup with proper routing to your dispatcher or CRM, and a baseline keyword ranking report so you can measure progress over time. An agency that delivers a homepage and a contact form and calls it a contractor website is not delivering what a trades business needs to generate leads from organic search.</p>
+          <p class="lf-guide-p">National "home services marketing" companies have proliferated in the contractor marketing space, and many of them operate on a high-fee, long-contract, opaque-results model. They charge monthly retainer fees that accumulate to significant annual costs, often with performance guarantees that are difficult to verify or that define "performance" in terms of traffic rather than estimate requests. They frequently build sites on proprietary platforms that you do not own, meaning that if you cancel, your website, your content, and your local SEO work go with them. A local web design agency with documented trades experience builds on platforms you own (WordPress being the standard), delivers assets you keep, and does not require a multi-year contract to retain the work product you paid for.</p>
+          <p class="lf-guide-p">Evaluating an agency's portfolio for trades-specific experience requires looking beyond whether they have worked with a contractor before. Look at the sites they have built: do the service area pages contain genuine unique content or are they city-name swap templates? Do the sites have proper schema implementation (you can check this with Google's Rich Results Test on any page)? Are the mobile PageSpeed scores above 80? Are the estimate forms built for trades-specific information gathering or are they generic contact forms with a name and email field? Do the gallery pages use properly optimized images or do they load slowly? These are all things you can evaluate yourself before engaging an agency.</p>
+          <p class="lf-guide-p">Realistic ROI timelines for a properly built contractor website with local SEO implementation are something any reputable agency should be willing to discuss honestly. Most Maryland contractors who launch a properly structured site with service area pages, schema, and Google Business Profile optimization see a measurable increase in estimate requests within 60 to 90 days of launch. Map Pack ranking improvements in primary service areas typically develop within 90 to 120 days as Google indexes and evaluates the new site structure and as new reviews accumulate. Full return on investment — typically defined as the site generating enough incremental revenue to cover its cost — occurs for most contractor sites within the first year of operation. Agencies that promise first-page rankings within 30 days or guarantee specific keyword positions are making promises that no one in SEO can honestly make, and their claims should be treated skeptically.</p>
+          <p class="lf-guide-p">The best signal that a web design agency is the right fit for your trades business is that they ask good questions before proposing anything. They should want to know your primary and secondary service areas, your highest-margin services, your current lead volume and sources, your field service software, how your dispatcher handles inbound leads, what your current website's biggest failure point is, and what a successful outcome looks like in terms of estimate requests per month. An agency that goes straight to a proposal without understanding your operational context is building you a website, not a lead generation system. For a Maryland contractor, those are not the same thing.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland contractors ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">5</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`ct-faq-${i}`}
+                  id={`ct-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`ct-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`ct-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Contractor websites &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Build a contractor website that generates leads, not just traffic.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know your market and your trade</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts — month-to-month after launch</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your territory, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-contractor" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="ct-cta-name">Your name</label>
+                <input class="lf-form-input" type="text" id="ct-cta-name" name="name" placeholder="David Caruso" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="ct-cta-email">Email address</label>
+                <input class="lf-form-input" type="email" id="ct-cta-email" name="email" placeholder="david@chesapeakehome.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="ct-cta-firm">Company name &amp; trade</label>
+              <input class="lf-form-input" type="text" id="ct-cta-firm" name="firm" placeholder="Chesapeake Home Services &middot; General Contractor" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="ct-cta-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="ct-cta-message" name="message" rows="3" placeholder="Slow load times, not ranking for city searches, form not converting…"></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Contractor</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+  /* ══════════════════════
+     GUIDE
+  ══════════════════════ */
+  .lf-guide { background: var(--cream-soft); }
+  .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+  .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+  .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+  .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+  .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+  .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+  .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Trade type custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,2339 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Accounting firm sites that rank for nothing generate nothing",
+    body: "82% of potential accounting clients search online before contacting a firm, but most CPA websites rank for only their firm name — if that. A site without AccountingService schema, service-specific pages, and local targeting cannot compete for searches like 'CPA Annapolis' or 'small business tax preparer Baltimore.' You need to be findable before you can be hired.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "Generic agencies don't understand accounting service pages",
+    body: "There's a difference between 'tax preparation' and 'tax planning,' between 'bookkeeping' and 'CFO services.' Generic web agencies lump every service onto one page and target nothing specifically. Search-optimized accounting sites need individual pages for each service category, each targeting the specific vocabulary your ideal clients use.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "No client intake system means lost opportunities",
+    body: "When a prospect visits your site at 9pm during tax season and finds only a phone number to call during business hours, you've lost them. A properly built client intake form — asking for entity type, service needed, tax complexity level, and timeline — captures that lead and gives your team the context to respond intelligently.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "AccountingService and ProfessionalService schema",
+    body: "Every page receives AccountingService and ProfessionalService JSON-LD markup — service types, geographic service areas, credentials, and professional designations. This tells Google exactly what services your firm provides and in which Maryland markets — enabling Local Pack visibility for searches like 'CPA Annapolis' and 'bookkeeper Baltimore' that your competitors without schema cannot access.",
+    tags: ["AccountingService schema", "ProfessionalService", "CPA credentials"],
+  },
+  {
+    num: "02",
+    title: "Service pages for every offering",
+    body: "We build dedicated, keyword-targeted pages for each of your service lines — tax preparation, tax planning, bookkeeping, payroll, business advisory, and any specialties. Each page targets the specific vocabulary potential clients use when searching. A standalone 'small business tax preparation Annapolis' page outranks a generic 'services' page in local search every time.",
+    tags: ["Service-specific pages", "Keyword targeting", "Tax + bookkeeping SEO"],
+  },
+  {
+    num: "03",
+    title: "Client portal and secure intake integration",
+    body: "We integrate your preferred client portal — TaxDome, Canopy, Karbon, or a secure contact form — into your site. Prospects can submit tax questionnaires or engagement requests without calling during business hours. We build the intake form to capture entity type, prior year situation, service needed, and timeline before submission.",
+    tags: ["TaxDome / Canopy", "Secure intake forms", "Client portal"],
+  },
+  {
+    num: "04",
+    title: "Industry and niche-specific landing pages",
+    body: "The highest-converting accounting pages target specific client types: 'accountant for real estate investors Maryland,' 'nonprofit auditor Baltimore,' 'restaurant bookkeeper Annapolis.' We build niche landing pages for your ideal client industries — each with targeted copy, specific pain points, and AccountingService schema mapped to that client segment.",
+    tags: ["Niche landing pages", "Industry targeting", "Client segment SEO"],
+  },
+  {
+    num: "05",
+    title: "Google Business Profile and Local Pack setup",
+    body: "Appearing in the Google Maps 3-pack for 'CPA near me' or 'tax accountant Annapolis' drives high-intent inquiries — people who are actively looking for a firm to hire. We audit and optimize your GBP — correct accounting categories, service areas, Q&A, and review strategy. We ensure citation consistency across Yelp, BBB, and AICPA directories.",
+    tags: ["Google Business Profile", "Local Pack", "AICPA directory"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your site ships with green Core Web Vitals — or we fix it before launch at no cost. Accounting firm sites built on slow shared hosting plans routinely fail these benchmarks and are deprioritized in search rankings. Our builds use a performance-first WordPress stack with CDN delivery and sub-2-second mobile load times.",
+    tags: ["Core Web Vitals", "LCP < 2s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Site audit + service map",
+    body: "We audit your current site for technical SEO, Core Web Vitals, and schema gaps. We map your service lines and target client industries across your Maryland markets. You receive a written strategy document: keyword targets, page list, and client intake flow recommendations.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1–2",
+    title: "AI-assisted design + copy draft",
+    body: "We generate your homepage and key service pages using AI-assisted design — professional, credential-forward, and built around your firm's positioning. We draft all copy: service descriptions, team bios, and niche landing page frameworks. One consolidated feedback round.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2–7",
+    title: "WordPress build + schema + portal integration",
+    body: "Approved designs go into WordPress. Every service and niche page gets AccountingService schema. Your client portal or intake form is integrated and tested. Team bios and credential pages are built with structured data.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 7–10",
+    title: "Launch, GBP + directory optimization",
+    body: "We handle DNS cutover, 301 redirects, and sitemap submission. Your GBP and accounting directories are audited and optimized simultaneously. You receive a handoff video and 30-day post-launch monitoring window.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "SEO",
+    q: "How long before an accounting firm website generates new client inquiries?",
+    a: "For local searches in smaller Maryland markets, firms typically see meaningful ranking movement in 60–90 days. Baltimore and Bethesda take 3–6 months for consistent first-page presence. Service-specific pages — especially niche ones — often rank faster than broad 'accountant' pages because they target less competitive, more specific queries.",
+  },
+  {
+    num: "02",
+    category: "Services",
+    q: "Do you write all the copy or do we need to provide service descriptions?",
+    a: "We write all copy as part of every tier. You complete a questionnaire covering your services, client types, credentials, and any specializations. We draft service page descriptions, team bios, and niche landing page copy. One review round is included. We don't outsource copywriting.",
+  },
+  {
+    num: "03",
+    category: "Platform",
+    q: "Can you integrate with TaxDome, Canopy, or Karbon?",
+    a: "Yes — we integrate with TaxDome, Canopy, Karbon, and similar practice management platforms. We also build secure intake forms using Gravity Forms or WPForms with conditional logic, so clients can submit engagement questionnaires without a separate portal. We scope the specific integration during Discovery.",
+  },
+  {
+    num: "04",
+    category: "Migration",
+    q: "Will we lose rankings when switching from our current site?",
+    a: "Not if the migration is handled correctly. We map every existing URL, implement 301 redirects before DNS cutover, and monitor Search Console for 30 days post-launch. Clean migrations recover within 4–6 weeks. Most accounting firm sites have minimal organic rankings to protect — but we handle the migration carefully regardless.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What ongoing support do you offer after the site goes live?",
+    a: "Care plans start at $150/month — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours. Niche landing page add-ons (one new page per month) are available to expand your geographic and industry reach over time. Month-to-month, no annual contract.",
+  },
+  {
+    num: "06",
+    category: "SEO",
+    q: "Can you help us rank for both individual and business clients?",
+    a: "Yes — the key is separate pages targeting each audience. 'Personal tax preparation Annapolis' and 'small business accountant Annapolis' are different searches with different intent and different content needs. We build individual pages for each client segment, each with AccountingService schema mapped to the specific service type and client profile.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Migration":  { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Care Plans": { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 7 pages: Home, About, 3 service pages, Contact, Thank You",
+      "AccountingService + ProfessionalService JSON-LD schema",
+      "Client intake form with entity type, service, and timeline fields",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Business Profile audit and optimization",
+      "Google Search Console + Analytics 4 setup",
+      "30 days post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 16 pages · 6 service pages + 4 niche client industry pages",
+      "AccountingService schema mapped by service type and client segment",
+      "TaxDome, Canopy, or secure intake form integration",
+      "Team bio pages with CPA credentials and structured data",
+      "AICPA, Yelp, and BBB citation consistency audit",
+      "60 days post-launch monitoring with monthly performance report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited service and niche pages across full client portfolio",
+      "Multi-partner firm with individual partner profiles and specializations",
+      "Custom client intake workflow with conditional logic by entity type",
+      "Full content migration with 301 redirect mapping from old site",
+      "Quarterly SEO reviews for 12 months post-launch",
+      "90 days post-launch support + first month care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+
+const schemaData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["AccountingService", "ProfessionalService"],
+      "name": "Upcoming Brand — Accounting Firm Website Design",
+      "description": "WordPress website design for Maryland CPAs and accounting firms. AccountingService schema, client portal integration, 90+ PageSpeed. Fixed-scope from $1,500.",
+      "url": "https://upcomingbrand.com/industries/accountant-website-design/",
+      "areaServed": {
+        "@type": "State",
+        "name": "Maryland"
+      },
+      "serviceType": ["Accounting Firm Website Design", "CPA Website Design", "Bookkeeper Website Design"],
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "Upcoming Brand",
+        "url": "https://upcomingbrand.com"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((faq) => ({
+        "@type": "Question",
+        "name": faq.q,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.a
+        }
+      }))
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Accounting Firm Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland accountants and CPA firms. AccountingService schema, client portal integration, 90+ PageSpeed. Fixed-scope from $1,500."
+  canonicalUrl="https://upcomingbrand.com/industries/accountant-website-design/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schemaData)} slot="head" />
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>Accountant Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            CPA &amp; Accounting Web Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland accounting firm websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to attract clients</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">not just look professional.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most accounting firm websites don't generate a single new client — no AccountingService schema, no client intake forms, and copy that ranks for nothing. We build WordPress sites for Maryland CPAs and accounting firms that rank for tax and bookkeeping searches, integrate your client portal, and turn visitors into signed engagements. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">AccountingService schema on every build</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website generating new clients?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="accountant-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="accountant-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="acc-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="acc-name" name="name" placeholder="David Harrington, CPA" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="acc-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="acc-email" name="email" placeholder="david@chesapeaketax.com" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="acc-firm">Firm name</label>
+              <input class="lfh-form-input" type="text" id="acc-firm" name="firm" placeholder="Chesapeake Tax Partners" autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-service">Primary service focus</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-service" data-name="service_focus">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select primary service</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Primary service focus">
+                  <li class="lf-cs-opt" role="option" data-value="Tax Preparation">Tax Preparation</li>
+                  <li class="lf-cs-opt" role="option" data-value="Tax Planning">Tax Planning</li>
+                  <li class="lf-cs-opt" role="option" data-value="Bookkeeping / Accounting">Bookkeeping / Accounting</li>
+                  <li class="lf-cs-opt" role="option" data-value="Payroll Services">Payroll Services</li>
+                  <li class="lf-cs-opt" role="option" data-value="Business Advisory">Business Advisory</li>
+                  <li class="lf-cs-opt" role="option" data-value="Audit &amp; Assurance">Audit &amp; Assurance</li>
+                  <li class="lf-cs-opt" role="option" data-value="Nonprofit Accounting">Nonprofit Accounting</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="service_focus" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key results">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">66<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of accounting firm sites fail<br>Core Web Vitals</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">4.8<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More client inquiries from<br>firms in Local Pack</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">82<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">Of clients search for an<br>accountant online first</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">10<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call to live,<br>client-generating site</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why accounting firm sites don't generate clients</p>
+        <h2 class="h2-section">Why most accounting firm websites fail Maryland CPAs</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland accounting firm website needs</h2>
+        <p class="lead">An accounting firm site is not a digital business card. It is a client acquisition system. Every element we build — from schema to intake forms to service pages — is designed to do one job: turn a searching prospect into a signed engagement.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
+          <h2 class="h2-section lf-case-h2">How Chesapeake Tax Partners went from zero organic leads to 14 new clients in 6 months</h2>
+          <p class="lf-case-desc">
+            David Harrington CPA at Chesapeake Tax Partners had been relying on referrals for nine years — his website had no AccountingService schema, ranked for nothing except his firm name, and had no way to capture inquiries outside of business hours. Six months after launch, his marketing had fundamentally changed.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+380%</span>
+              <span class="lf-cr-label mono-xs">Organic client inquiries</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">Pg 1</span>
+              <span class="lf-cr-label mono-xs">For 7 tax + CPA searches in Annapolis</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.5s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 5.8s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">14</span>
+              <span class="lf-cr-label mono-xs">New client engagements in 6 months from organic search</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"I built my entire practice on referrals and never thought my website would generate real business. Upcoming Brand built me service pages for everything I do — tax planning, small business bookkeeping, real estate investor accounting — and each one is actually finding people who need exactly that service. The intake form alone saves me two hours a week in back-and-forth emails. I wish I'd done this years ago."</p>
+            <footer>
+              <cite class="lf-cite-name">David Harrington, CPA</cite>
+              <span class="lf-cite-role mono-xs">Managing Partner &middot; Chesapeake Tax Partners &middot; Annapolis, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/chesapeake-tax-partners.png"
+            alt="Chesapeake Tax Partners website redesign — Annapolis CPA firm"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site &middot; Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a client-generating accounting website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most clients are live within 10 weeks of their first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland accounting firms</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">Complete Guide to Accountant and CPA Website Design in Maryland</h2>
+        <p class="lead">Everything Maryland CPAs, bookkeepers, tax preparers, and accounting firms need to know about building a website that attracts the right clients, communicates expertise clearly, and drives inquiry submissions year-round.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <!-- 1 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">What Makes an Accounting Firm Website Different</h3>
+          <p class="lf-guide-p">An accounting website is not a portfolio. It is not a brochure. It is a trust document — and the primary job it performs is credential signaling. Visitors arriving at a CPA or bookkeeping firm site are in the process of deciding whether to hand over their most sensitive financial information to a stranger. Before they read a single word about your services, they are running an unconscious checklist: Does this look like a legitimate professional practice? Are credentials displayed prominently? Does this firm understand my situation? Every design and content decision on an accounting site must answer yes to those questions before it does anything else.</p>
+          <p class="lf-guide-p">The difference between a solo CPA practice site and a multi-partner firm site is significant and affects everything from navigation architecture to the tone of page copy. A solo practitioner site benefits from leading with the individual — the CPA's face, credentials, years in practice, and the relationship-based nature of the engagement. A multi-partner firm needs to establish the collective bench while ensuring each partner has a distinct profile that helps prospective clients self-select the right fit. Both must clearly segment their audience: individual tax clients have entirely different concerns than business owners seeking quarterly bookkeeping and payroll support, and a site that tries to speak to both without clear segmentation loses both.</p>
+          <p class="lf-guide-p">How accounting clients actually search reflects this segmentation. The dominant search patterns are service plus geography — "tax preparation Silver Spring," "CPA for small business Rockville," "bookkeeper near me," "business accounting Maryland." These are high-intent queries made by people who already know what they need and are in the process of selecting a provider. This means accounting sites compete primarily on trust signals and local relevance, not on explaining what a CPA does. The content that wins those searches is specific, credentialed, and locally anchored.</p>
+          <p class="lf-guide-p">Google classifies accounting websites under YMYL — Your Money or Your Life — a category of content held to higher quality and accuracy standards than general information sites. Financial advice, tax guidance, and accounting information fall squarely within YMYL because the consequences of inaccurate information are material. This classification means Google's quality raters scrutinize accounting sites more carefully for E-E-A-T signals: evidence of experience, demonstrated expertise, institutional or professional authority, and trustworthiness. A site that publishes tax content without displaying the author's CPA credentials, license number, and relevant experience is at a structural disadvantage in organic search regardless of how well-written the content is.</p>
+          <p class="lf-guide-p">Schema markup — specifically AccountingService and Accountant schema, both subtypes of LocalBusiness — is not optional for accounting firms competing in local search. Schema communicates directly to search engines what type of business this is, where it's located, what credentials it holds, and what services it provides. Without schema, a search engine must infer these facts from unstructured page text. With schema, you are declaring them explicitly, improving the accuracy of how your business appears in knowledge panels, map results, and rich snippets.</p>
+          <p class="lf-guide-p">The most powerful long-term differentiator for accounting firm websites is authority content — tax guides, financial explainers, Maryland-specific tax considerations, industry-specific accounting guides. This content compounds over time in a way that advertising cannot replicate. A guide published explaining Maryland pass-through entity tax elections accumulates backlinks from financial forums, accounting association sites, and local business publications. It ranks for queries that your service pages cannot target. It signals to Google's quality raters that this is a site authored by genuine experts. And it gives prospective clients a reason to return before they are ready to hire, so that when they are ready, your firm is already the trusted source they come back to.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Must-Have Pages for Maryland Accounting Firm Websites</h3>
+          <p class="lf-guide-p">Most accounting firm websites underinvest in their page architecture. They build a homepage, an "about" page, a generic "services" page, and a contact form — and wonder why organic traffic is flat and inquiry quality is poor. The firms that generate consistent, high-quality inbound leads have a deliberate page structure that mirrors the way their prospective clients think and search.</p>
+          <p class="lf-guide-p">The homepage must accomplish three things in the first four seconds: identify who the firm serves (individual tax clients, small businesses, or both), signal core credentials above the fold, and present a clear path to the most relevant service or contact point. Burying the CPA license or professional association membership at the bottom of a page-long scrolling homepage is a structural credentialing failure. The homepage should surface — at minimum — CPA credentials, years in practice, and a primary client-type signal before asking visitors to do anything else.</p>
+          <p class="lf-guide-p">Service pages should be individual pages, not accordion items on a single "services" page. Each service represents a distinct search intent and a distinct audience segment. The minimum set for a full-service Maryland accounting firm includes:</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Individual tax preparation — covering W-2 filers, self-employed individuals, rental property owners, and multi-state filers</li>
+            <li class="lf-guide-li">Business tax preparation — S-Corps, C-Corps, partnerships, LLCs, and sole proprietors each have distinct filing requirements worth addressing</li>
+            <li class="lf-guide-li">Bookkeeping — monthly versus quarterly options, software platforms supported (QuickBooks, Xero, Wave), and what's included</li>
+            <li class="lf-guide-li">Payroll services — employee count ranges, pay schedule options, tax filing included or separate</li>
+            <li class="lf-guide-li">Financial planning — retirement planning, tax-advantaged account strategy, business owner financial planning</li>
+            <li class="lf-guide-li">Business formation — entity selection, Maryland registration, EIN, initial accounting setup</li>
+            <li class="lf-guide-li">Audit support and IRS representation — a page that signals competence in a high-anxiety situation builds significant trust</li>
+          </ul>
+          <p class="lf-guide-p">Industry specialization pages are where many Maryland accounting firms leave the most lead generation potential untapped. A page titled "Accounting for Maryland Medical Practices" targets a specific searcher with specific pain points — HIPAA-compliant payroll, physician compensation structures, medical equipment depreciation — far more effectively than a generic services page. These niche pages rank for lower-volume but higher-intent queries, and the clients they attract arrive pre-qualified with an expectation that your firm understands their specific industry.</p>
+          <p class="lf-guide-p">CPA bio pages serve a dual function: they establish E-E-A-T for Google and they establish personal trust for prospective clients. A bio page should include a professional photograph, CPA license number and state, educational background, years in practice, professional association memberships, and the industries or client types the CPA specializes in. It should read like a professional introduction, not a resume bullet list.</p>
+          <p class="lf-guide-p">A client resources page — housing downloadable checklists, tax deadline guides, IRS link references, and Maryland-specific tax information — serves triple duty: it provides genuine value to existing clients, it attracts organic traffic from informational searches, and it signals to prospective clients that this firm is organized, client-focused, and generous with expertise. Seasonal landing pages for tax season (January through April), extension season (September through October), and year-end planning (November through December) capture high-intent traffic precisely when the commercial interest is highest.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Accountant Schema Markup and YMYL Credentialing</h3>
+          <p class="lf-guide-p">Schema markup is the structured data layer that communicates machine-readable facts about your business directly to search engines. For accounting firms, the relevant schema types are Accountant (a subtype of LocalBusiness in schema.org), FinancialService, and — for specific service offerings — FinancialProduct. Implementing these correctly separates accounting sites that appear with rich results, knowledge panels, and accurate map data from those that depend entirely on Google's ability to infer the same information from unstructured text.</p>
+          <p class="lf-guide-p">Accountant schema at the organization level should include the firm's legal name, physical address (street, city, state, postal code), telephone number, business URL, geographic area served, and price range indicator. The priceRange field — even a relative indicator like "$$" — signals to search engines that pricing information exists and helps filter for qualified searchers. The hasCredential field is where CPA license information should be declared explicitly, using EducationalOccupationalCredential schema nested within the parent Accountant object.</p>
+          <p class="lf-guide-p">Implementing CPA license credential schema requires declaring the credential name ("Certified Public Accountant"), the credentialCategory ("Professional License"), the issuing organization ("Maryland Board of Public Accountancy" or the appropriate state board), and the license identifier number. This structured declaration directly supports Google's ability to surface authoritative results for YMYL financial queries, because it provides machine-verifiable evidence of the professional qualification that underlies the content.</p>
+          <p class="lf-guide-p">YMYL status has concrete implications for content quality requirements that schema alone cannot satisfy. Google's quality rater guidelines explicitly identify financial advice content as subject to heightened accuracy scrutiny. This means that every piece of tax guidance, financial planning advice, or accounting information published on the site must meet a higher standard than general informational content. Specific requirements include: content authored or reviewed by a named, credentialed professional; accurate and current information that reflects current tax law (with publication and update dates visible); and no materially misleading claims about tax savings, financial outcomes, or guaranteed results.</p>
+          <p class="lf-guide-p">E-E-A-T signals that matter most for accounting sites span both the site level and the individual content level. At the site level: a physical address and verifiable business registration, professional association memberships displayed with links to the association directory listing, a Google Business Profile with consistent NAP data, and third-party reviews on Google and professional directories. At the content level: named CPA authorship on every article and guide, visible publication and update dates, citations to IRS publications and Maryland-specific tax authority sources, and clear disclosure when content is general information rather than specific advice.</p>
+          <p class="lf-guide-p">The compounding effect of schema plus credential content is significant. An accounting firm that implements proper Accountant schema, publishes CPA-authored guides with credential bylines, maintains consistent citations across professional directories, and earns reviews from actual clients is assembling a reinforcing web of trust signals. Each element strengthens the others: schema makes credentials machine-readable, credential content makes expertise visible to human readers, directory citations corroborate the schema data, and reviews validate the claimed expertise through third-party testimony. Together, they create the kind of authority profile that sustains ranking positions even when competitors increase their publishing frequency or ad spend.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Service Specialty Pages — Why Niche Content Wins</h3>
+          <p class="lf-guide-p">The single most common mistake Maryland accounting firms make with their websites is attempting to rank for broad service keywords. "Tax preparation" generates tens of thousands of monthly searches in the United States, which makes it sound like a valuable target — until you examine the competition, which includes TurboTax, H&R Block, national CPA association directories, and large regional firms with decade-long domain authority. A sole practitioner or small firm in Annapolis or Frederick has no realistic path to ranking meaningfully for "tax preparation" at a national or even statewide level.</p>
+          <p class="lf-guide-p">The keywords that are actually winnable — and that generate better client quality when won — are specific, qualified, and locally anchored. "S-Corp tax preparation for Maryland contractors" is a search made by a person who already has an S-Corp (or is seriously considering one), knows they need professional tax help, and is located in Maryland. The search volume is a fraction of "tax preparation," but the conversion rate is exponentially higher. These are prospects who arrive at your site pre-qualified by the specificity of their own search.</p>
+          <p class="lf-guide-p">Identifying the highest-value niches for your practice requires examining two factors: the industries you currently serve with the highest revenue per client, and the questions that prospective clients ask most frequently before engaging. If your practice has a concentration of real estate investor clients, a page on "accounting for Maryland real estate investors" — covering depreciation, cost segregation, 1031 exchanges, and Maryland-specific real estate tax considerations — is both achievable to rank and directly profitable when it converts. If you field constant questions about S-Corp election timing from LLC owners, a guide on that specific topic generates exactly the inquiries you want.</p>
+          <p class="lf-guide-p">Maryland offers several high-value accounting niches that are underserved in local search. Government contractors in the DC-Maryland-Virginia corridor deal with cost accounting standards, DCAA audit compliance, and indirect rate structures that most general CPAs cannot handle. Federal employees have TSP optimization, CSRS and FERS pension calculations, and buyback strategies that require specialized knowledge. Real estate investors — particularly active in Montgomery County, Prince George's County, and the Baltimore market — need ongoing rental income accounting, depreciation schedules, and exit strategy tax planning. Nonprofit organizations in Maryland face specific unrelated business income tax questions and Form 990 requirements. Military families at Fort Meade, Andrews, and Indian Head deal with state tax residency complexities and military pay exclusions.</p>
+          <p class="lf-guide-p">A well-structured specialization page follows a consistent architecture regardless of the niche. The opening section identifies exactly who the page is for — not vaguely, but specifically ("This page is for Maryland-based real estate investors who own rental properties and want a CPA who understands depreciation strategy, cost segregation studies, and 1031 exchange planning"). The middle section explains the specific tax and accounting considerations that make this industry different, demonstrating expertise rather than merely claiming it. The closing section describes what working with the firm looks like: the process, the deliverables, the expected timeline, and how to get started.</p>
+          <p class="lf-guide-p">The lead quality difference between specialization pages and generic service pages is measurable. When a medical practice owner contacts an accounting firm through a page titled "Accounting for Maryland Medical Practices," they arrive with a reasonable expectation that the firm understands physician compensation structures, medical group partnerships, and practice-specific tax considerations. The inquiry is self-selected for fit. When the same medical practice owner contacts a firm through a generic "Business Tax Preparation" page, the first several exchanges are spent establishing whether the firm has any relevant experience at all. Specialization pages do qualification work before the first conversation happens.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Secure Client Portal Integration</h3>
+          <p class="lf-guide-p">Business clients hiring a Maryland CPA or accounting firm in 2025 arrive with a baseline expectation: there will be a secure way to share documents electronically. They are not going to email their W-2s, bank statements, QuickBooks exports, and payroll records through an unencrypted Gmail thread. Firms that cannot offer a secure document sharing solution lose business clients to competitors who can — not because the competitor is more skilled, but because the infrastructure expectation was not met. For individual tax clients, portal availability is increasingly expected as well, particularly for younger filers who are accustomed to digital-first professional service experiences.</p>
+          <p class="lf-guide-p">The major client portal platforms serving accounting firms each have distinct positioning. TaxDome has become one of the dominant platforms for tax-focused practices, offering a branded client-facing portal, electronic signature, document storage, e-file authorization, and built-in CRM features. Canopy competes on workflow management and client experience. SmartVault is a document management platform used widely by established firms. Liscio is oriented toward mobile-first client communication with integrated messaging, document sharing, and task management. ShareFile (from Citrix) is an enterprise-grade secure file sharing solution used by larger firms. Practice management suites like Drake and Lacerte include portal functionality, though the client experience quality varies significantly.</p>
+          <p class="lf-guide-p">The important design principle for portal integration on a WordPress site is maintaining a clear separation between the firm's website and the portal software. The website should not be dependent on the portal provider's infrastructure for its core function. Portal access should be presented as a convenience — a login link in the navigation header and a dedicated "Client Portal" page — without the portal platform's branding, widgets, or scripts slowing down the primary site. If the portal vendor updates their login widget or changes their embed code, the main site should not be affected.</p>
+          <p class="lf-guide-p">Navigation placement for portal login is a common point of indecision. The most effective approach for business-focused accounting firms is a secondary button in the top navigation bar — visually distinct from the primary contact CTA but accessible without scrolling. A dedicated "Client Portal" page should also exist in the site's page architecture, both for direct navigation and to capture searches from existing clients looking for the login link. The portal page should include brief instructions for new clients on how to create their account, what documents to upload first, and who to contact if they have trouble accessing the portal.</p>
+          <p class="lf-guide-p">The client onboarding experience that bridges the website and the portal is a trust moment that many accounting firms underinvest in. When a new client submits an inquiry form on the website and receives an automated confirmation, that confirmation email should include a brief explanation of the next steps — including when and how they will receive their portal invitation. New clients who receive a portal invitation without context frequently abandon the onboarding process because the technical handoff feels abrupt. Firms that treat the portal signup as a guided step in a clearly communicated process — rather than a technical detail — see substantially higher portal adoption rates and faster document collection turnarounds.</p>
+          <p class="lf-guide-p">Portal integration has measurable effects on client retention and referral rates that justify the investment in a well-designed integration. Clients who successfully adopt a portal for document sharing are significantly less likely to switch to a competing firm, because the friction of moving — re-establishing portal access, re-uploading document history, re-educating a new CPA on their financial situation — outweighs the perceived benefit of switching. Clients who experience a smooth portal experience are also more likely to recommend the firm to peers, because the digital professionalism of the firm reflects on their own decision to hire them. The portal, in this context, is not just a document exchange tool — it is a retention and referral mechanism.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Tax Season Landing Pages and Seasonal Content Strategy</h3>
+          <p class="lf-guide-p">Accounting is one of the most seasonally concentrated professional services categories in existence. The traffic patterns that drive search behavior for accounting firms follow predictable, recurring annual cycles — and firms that build their content strategy around these cycles generate dramatically more inbound inquiries than those that maintain a single evergreen service page year-round. Understanding when to publish and what to publish for each seasonal window is the foundation of a content-driven accounting firm growth strategy.</p>
+          <p class="lf-guide-p">The primary seasonal windows for Maryland accounting firms are: individual tax season (January through April 15, with a surge in late January when W-2s arrive and a second surge in the two weeks before the filing deadline), business extension season (September through October 15 for calendar-year S-Corps, partnerships, and C-Corps that filed for extension), and year-end planning (November through December, when business owners and high-income individuals are still in a position to take action on tax-saving strategies before the fiscal year closes). Each window has distinct search behavior and a distinct prospective client profile.</p>
+          <p class="lf-guide-p">The critical strategic insight for seasonal landing pages is that they must be published well before the traffic spike, not during it. A tax season landing page published in January — when a firm is already in the middle of its busiest period — captures none of the traffic from prospective clients who searched in November and December while planning ahead. Search engines need time to crawl, index, and evaluate new content before ranking it competitively. Publishing a tax season landing page in November gives it two to three months of indexing time before the January traffic surge. Publishing it in January means it may begin ranking in March — after most prospective clients have already selected a preparer.</p>
+          <p class="lf-guide-p">A high-performing tax season landing page for a Maryland accounting firm covers: who the firm serves (individual filers, business owners, or both, with specifics about the complexity levels they handle), what is included in the engagement (consultation, preparation, e-file, audit protection, state return), a pricing signal (at minimum "individual returns starting at $X"), how to get started (the inquiry or scheduling process), and a deadline urgency element that is honest and specific rather than manufactured. The page should be mobile-optimized, because a significant portion of tax season search traffic comes from people who search on their phones during their commute or lunch break.</p>
+          <p class="lf-guide-p">Annual updates to seasonal pages should be made without changing the page URL, so that link equity and ranking signals built in prior years carry forward. The practice of creating a new URL for each year's tax season page — "/tax-preparation-2024," "/tax-preparation-2025" — discards the accumulated SEO authority of the prior year's page every single year. Instead, a single canonical URL like "/tax-season" should be updated annually with current-year references, deadline dates, and any changes to the firm's offerings, while retaining the core structure and content architecture that has performed historically.</p>
+          <p class="lf-guide-p">Google Business Profile posts are an underutilized seasonal promotion channel for accounting firms. Posts appear in the knowledge panel when someone searches directly for the firm by name, and they signal to Google that the business is actively managed. During tax season, GBP posts announcing new client availability, deadline reminders, and last-minute appointment scheduling options can drive direct inquiries from local searchers who are already aware of the firm. Off-season content — blog posts on quarterly estimated tax reminders, mid-year tax planning prompts, and retirement account contribution deadlines — keeps the firm's content presence active during periods when competitors go quiet, building a lead pipeline that converts when the next seasonal peak arrives.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Local SEO for Maryland Accounting Firms</h3>
+          <p class="lf-guide-p">The majority of accounting firm clients are acquired locally. Even in an era of video calls and electronic document sharing, most individuals and small business owners prefer a CPA they can meet in person — or at least one who is geographically proximate and familiar with state and local tax considerations. This means local SEO is not a supplementary channel for Maryland accounting firms; it is the primary organic acquisition channel. A firm that ranks well in local search in its target market generates a consistent, predictable stream of inbound inquiries that compound over time without ongoing advertising spend.</p>
+          <p class="lf-guide-p">The search queries that matter most for Maryland accounting firms are predictable and keyword-phrase consistent: "CPA near me," "tax preparer [city]," "small business accountant [city]," "bookkeeper Maryland," "CPA for self-employed [city]," and "tax preparation [county]." These queries trigger both organic results and the Google local pack — the map-driven results block that appears prominently for locally-oriented searches. Appearing in the local pack requires a well-optimized Google Business Profile, consistent citation data across authoritative directories, and a strong review base from actual clients.</p>
+          <p class="lf-guide-p">Google Business Profile optimization for a CPA or accounting firm should begin with category selection. The primary category should be "Accountant" — not the broader "Financial Service" or the more specific "Tax Preparation Service," unless the practice is exclusively focused on tax preparation. The services list within GBP should be comprehensive and specific, using the language that clients actually use when searching. The description field (750 characters) should include the firm's primary specialties, geographic service area, and a credential signal within the first 250 characters (visible without expanding). Professional headshots of the CPA or team — not stock photos — should be uploaded as the primary images.</p>
+          <p class="lf-guide-p">Citation consistency across professional and business directories is a foundational local SEO requirement. For accounting firms, the most authoritative citations come from: the AICPA member directory, the Maryland Society of CPAs member directory, Better Business Bureau, Yelp (used by individuals searching for local professional services), LinkedIn company page, and any professional association directories relevant to the firm's specialties. The NAP data — business name, address, and phone number — must be identical across all citations, including formatting details like whether "Suite" is abbreviated or spelled out. Inconsistent NAP data is a ranking signal that something is amiss with the business listing.</p>
+          <p class="lf-guide-p">Multi-office accounting firms face additional local SEO complexity. Each physical office should have its own Google Business Profile, its own set of directory citations, and its own location page on the website. The location pages should not be thin duplicates of each other — each should include locally relevant information, the team members based at that location, and any geographic specifics that differentiate the office's client base. A Rockville office serving Montgomery County business owners has different relevant content than a Baltimore office serving Inner Harbor hospitality businesses.</p>
+          <p class="lf-guide-p">Review strategy for accounting firms requires particular care because of client confidentiality norms. Clients should never be asked to mention specific financial details in a review. The timing of the review request matters significantly — the highest conversion rate for review requests comes immediately after a successful outcome moment: tax return delivered, refund confirmed, audit resolved favorably, business formation completed. At that moment, client satisfaction is at its peak and the emotional motivation to reciprocate is strongest. The most valuable review platforms for accounting searches are Google (by far the most impactful for local search), Yelp (used heavily for individual service searches), and any profession-specific platforms like Thumbtack or CPADirectory.com that surface in relevant searches.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Building Authority Through Financial Content</h3>
+          <p class="lf-guide-p">The data on content marketing in professional services is consistent and compelling: accounting firms that publish genuinely helpful, expert-level content acquire new clients at multiples of the rate of firms that do not. This is not because content marketing is a novelty that attracts attention — it is because authoritative content performs multiple acquisition and retention functions simultaneously. It ranks organically for queries that service pages cannot target. It demonstrates expertise in a way that a credential list cannot. It gives prospective clients a reason to engage with the firm before they are ready to hire, shortening the trust-building phase of the sales process. And it keeps the firm present and relevant to existing clients throughout the year, not just during engagement periods.</p>
+          <p class="lf-guide-p">The content types that generate the most organic traffic and qualified leads for accounting firms follow consistent patterns. Tax deadline guides — published annually and updated each year — rank persistently for queries like "Maryland tax deadlines 2025" and accumulate links from local business associations and financial planning sites that share them with their audiences. Tax law change explainers, published quickly when IRS guidance is issued or legislation passes, capture high-volume informational traffic during the period when people are searching for clarity on the change. Maryland-specific tax content — the Maryland pass-through entity tax election, Maryland homestead property tax credit, Baltimore City tax credits for small businesses — serves a geographic audience that national financial publishers do not prioritize, giving local accounting firms a realistic opportunity to rank.</p>
+          <p class="lf-guide-p">Long-form guides on high-value decision queries generate some of the most qualified inbound traffic of any content type. A comprehensive guide on "S-Corp vs LLC in Maryland" — covering the federal tax implications of each election, the Maryland-specific franchise tax treatment, the self-employment tax savings calculation, and the administrative requirements — addresses a question that hundreds of Maryland business owners search every month while in the process of forming or restructuring their business. A person who reads a 2,500-word guide on this topic and then submits an inquiry is not a casual visitor; they are a prospective client who has already self-identified as needing CPA guidance and has already evaluated the firm's expertise through the content they just consumed.</p>
+          <p class="lf-guide-p">Pillar pages and topic clusters are a content architecture strategy particularly well-suited to accounting firm websites. A pillar page on "Small Business Accounting in Maryland" provides a comprehensive overview of the accounting considerations for Maryland small businesses, with internal links to cluster pages that go deep on individual topics: payroll taxes, quarterly estimated taxes, entity selection, business deductions, and year-end close procedures. This architecture signals to search engines that the site has comprehensive coverage of the topic domain, which reinforces the authority of every page in the cluster.</p>
+          <p class="lf-guide-p">E-E-A-T compliance for accounting content requires specific authorship practices. Every article, guide, and explainer should carry a named CPA author byline — not a generic "Upcoming Brand Team" attribution. The author bio linked from that byline should include the CPA's license number, state of licensure, years of experience, and the specific topic areas they have expertise in. Publication dates and update dates should be visible on every content piece. Citations to IRS publications, Maryland Comptroller guidance, or specific code sections should be included where relevant, not as a formality but as genuine evidence that the content is grounded in authoritative sources. Financial content that lacks these signals is at structural risk of being downgraded by algorithm updates targeting YMYL content quality.</p>
+          <p class="lf-guide-p">The off-season content calendar — maintaining publishing activity from May through December — is where most accounting firms underinvest. The firms that generate consistent year-round leads publish content during periods when their competitors go quiet: Q3 tax planning posts in July, retirement contribution deadline reminders in October, year-end charitable giving strategies in November. These posts attract prospective clients who are thinking about their financial situation before the stress of tax season, giving the firm an opportunity to establish a relationship and begin onboarding before January arrives. The result is a more evenly distributed client acquisition pattern that is less dependent on the chaotic first quarter rush.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Client Intake and Inquiry Form Design for Accounting Firms</h3>
+          <p class="lf-guide-p">The inquiry form is the most business-critical element of an accounting firm website, and it is almost universally underdesigned. Most accounting firm contact forms ask for a name, email address, phone number, and a free-text "message" field. This generates inquiries that provide no qualification information, forcing the accounting firm to conduct an intake interview before it can evaluate whether the prospective client is a fit. For high-volume tax season inquiries, this creates a bottleneck of unqualified leads that consumes time that could be spent on existing clients. A well-designed inquiry form does the qualification work before the first call happens.</p>
+          <p class="lf-guide-p">The foundational structural decision for an accounting firm inquiry form is the individual versus business segmentation. These two client types have entirely different needs, different complexity levels, different price points, and should ideally be routed to different team members within the firm. The form should present this distinction clearly at the top — either as a radio button selection that conditionally reveals different question sets, or as two separate form entry points accessible from different pages (the individual tax preparation page and the business services page). Mixing individual and business inquiries into a single undifferentiated form makes routing and qualification slower for the firm.</p>
+          <p class="lf-guide-p">For individual tax clients, the most useful qualification questions beyond contact information are: the primary reason for seeking a new CPA (switching from current preparer, first time working with a CPA, specific situation like rental income or self-employment), the complexity level of their tax situation (W-2 only, freelance or 1099, rental property owner, business owner), their preferred communication method (phone, email, video call), and how they found the firm. This information allows the firm to assess fit before the first call and to personalize the initial outreach in a way that signals attentiveness.</p>
+          <p class="lf-guide-p">For business clients, the qualification questions should be more comprehensive: business entity type (S-Corp, C-Corp, LLC, partnership, sole proprietor), annual revenue range (helps assess complexity and pricing tier), current accounting software, whether they have a current bookkeeper or accountant (switching vs first-time), the services they are seeking (tax only, full bookkeeping, payroll, CFO advisory), and the urgency of their need. A business owner who provides this information in a form has already invested in the inquiry process — they are a more committed prospective client than one who submitted a two-line message.</p>
+          <p class="lf-guide-p">Conditional logic is the technical mechanism that makes sophisticated inquiry forms feasible without overwhelming every visitor with every possible question. When a visitor selects "Business" in the client type field, the form reveals business-specific fields. When they select "Individual," it reveals individual-specific fields. When they indicate they have rental properties, a field for the number of properties appears. Modern form tools — Gravity Forms, WPForms, and Formidable Forms for WordPress — all support conditional logic without requiring custom development. The result is a form that feels tailored and relevant rather than exhausting.</p>
+          <p class="lf-guide-p">CRM integration closes the loop between the website inquiry and the firm's client management workflow. For smaller accounting practices, a lightweight CRM like Zoho CRM or HubSpot's free tier can receive form submissions, trigger automated acknowledgment emails, and create tasks for the reviewing partner. Larger firms with more complex intake workflows may use Keap (formerly Infusionsoft) for more sophisticated automated follow-up sequences — a series of two or three emails over the 48 hours following form submission that provides intake instructions, portal setup guidance, and a scheduling link for the initial consultation. Firms that implement an automated follow-up sequence report significantly higher inquiry-to-engagement conversion rates than those that rely solely on manual follow-up, because the follow-up is immediate and consistent regardless of how busy the team is.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Website Performance for Accounting Firms</h3>
+          <p class="lf-guide-p">Professional services firms sometimes treat website performance as a secondary concern — reasoning that clients who are evaluating a CPA based on credentials and trust signals will wait an extra two or three seconds for a page to load. This reasoning is empirically wrong. Page load time affects bounce rate, session depth, and form completion rate across all site categories, including professional services. A prospective client who abandons a slow-loading accounting site during tax season does not come back — they click the next result. Performance is not a developer vanity metric; it is a conversion rate determinant.</p>
+          <p class="lf-guide-p">Accounting sites are susceptible to a specific set of performance problems that have nothing to do with the accounting content itself. The most common culprits are: over-featured WordPress themes that load animation libraries, parallax scrolling scripts, and visual effect JavaScript for design elements that add no conversion value; multiple chat widget scripts (live chat, chatbot, and scheduling widget all loading on the same page); unoptimized team and office photography that serves images at full resolution without compression or next-generation formats; and tax calculator tools built with poorly optimized JavaScript that block page rendering. Each of these elements can add hundreds of milliseconds to load time independently — combined, they can push a site into the 5+ second range that triggers significant abandonment.</p>
+          <p class="lf-guide-p">Core Web Vitals benchmarks for professional services sites should target: Largest Contentful Paint under 2.5 seconds (the time it takes for the primary content block to appear), Cumulative Layout Shift under 0.1 (elements should not move after they appear, which is particularly important for forms and CTAs), and Interaction to Next Paint under 200 milliseconds (the responsiveness of interactive elements like form fields and buttons). These are not aspirational targets — they are the thresholds that Google uses to classify a page as "Good" rather than "Needs Improvement," and they affect both ranking and user experience measurably.</p>
+          <p class="lf-guide-p">A counter-intuitive performance insight for accounting firm web design is that the large national accounting firm websites — the Big Four and large regional firms — are frequently poor technical examples to follow, despite their vast resources. These sites are built by enterprise digital teams optimizing for brand expression, accessibility compliance at scale, and internal content management workflows rather than Core Web Vitals performance. A solo practitioner or small firm that builds a clean, lightweight WordPress site with a performance-optimized theme will frequently outperform a Big Four microsite on every Core Web Vitals metric.</p>
+          <p class="lf-guide-p">A proper WordPress stack for a Maryland accounting firm prioritizes performance without sacrificing the functionality that drives conversions. The recommended configuration includes a lightweight base theme (or custom theme built without unnecessary script bloat), server-side caching (WP Rocket or similar), a content delivery network for static assets, next-generation image formats (WebP) served with size-appropriate dimensions, and a single carefully chosen form plugin rather than layering multiple form tools. Scheduling integrations (Calendly, Acuity) should be embedded as simple links rather than full widget embeds where possible, loading the scheduling interface on the vendor's domain rather than within the firm's page.</p>
+          <p class="lf-guide-p">Secure form handling is a performance consideration that accounting sites must balance carefully. Forms that collect sensitive information — particularly the intake forms on accounting sites that may ask about income ranges, business types, and financial situations — should be transmitted over HTTPS (non-negotiable for any professional site) and ideally processed by a form plugin that does not store sensitive data in the WordPress database. The intersection of security and performance is managed through form plugins that submit to external processing endpoints rather than storing locally, combined with SSL certificates and proper server configuration. This is not a complex configuration for an experienced WordPress developer, but it is a meaningful differentiator between an accounting site built by a generalist and one built by a studio that understands professional services requirements.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Pricing Transparency on Accounting Websites — What to Show</h3>
+          <p class="lf-guide-p">The debate about whether to display pricing on a professional services website is older than the web itself, and in accounting it is particularly charged. On one side: transparency attracts pre-qualified prospects and filters out budget-mismatched inquiries before they consume firm time. On the other side: accounting engagements are highly variable in complexity, and published prices invite comparison shopping against competitors who may not be offering the same scope of service. Both positions have merit. The evidence, however, consistently favors a middle path: providing pricing signals — starting points, package ranges, or relative indicators — rather than either full price lists or complete price opacity.</p>
+          <p class="lf-guide-p">What Maryland accounting clients actually want from a pricing signal is not necessarily a precise dollar figure — it is confirmation that the firm is within their range. A prospective individual tax client with a moderately complex return (W-2 income, mortgage interest, charitable deductions, one side business) is trying to determine whether this firm charges $300 or $3,000 for a return like theirs. Those are different tiers of client entirely. A pricing signal of "individual returns starting at $350" gives that client enough information to self-qualify without committing the firm to a fixed price for every complexity level. The client who sees "starting at $350" and still contacts you for a more complex situation is already signaling they understand pricing scales with complexity.</p>
+          <p class="lf-guide-p">Tiered service packages work well for the parts of an accounting practice that are genuinely packageable: monthly bookkeeping (often priced by transaction volume or revenue tier), payroll processing (priced by employee count), and business tax preparation for entities with similar complexity profiles. Presenting these as named tiers — Essential, Standard, Comprehensive — with a clear list of what is included in each, allows prospective clients to self-select without requiring an intake call just to understand the offering. The tier structure also creates a natural upsell pathway: a client who starts on an Essential bookkeeping package and grows their business has a clear upgrade path within the firm.</p>
+          <p class="lf-guide-p">The effect of pricing transparency on inquiry quality is well-documented in professional services research. Firms that display pricing signals receive fewer total inquiries than those that display no pricing — but the inquiries they receive convert to paying engagements at significantly higher rates, because the prospects who contact them have already cleared the affordability threshold in their own assessment. The time saved on unqualified inquiry handling more than compensates for the reduced inquiry volume in most practice contexts. The net effect is a higher ratio of engaged clients per hour of intake time invested.</p>
+          <p class="lf-guide-p">Handling pricing transparency honestly for complex engagements requires language that is specific about what drives variability without being evasive. "Pricing varies based on complexity" by itself is not a useful signal — every prospective client suspects their situation is complex. More useful is: "Business tax preparation pricing depends on entity type, number of states, revenue volume, and whether bookkeeping records are provided in a clean, organized format. Most S-Corp returns we prepare range from $1,200 to $2,800. Schedule a consultation to receive a specific quote based on your situation." This language is honest, informative, and sets a realistic expectation without committing to a figure that may not apply.</p>
+          <p class="lf-guide-p">Accounting firms that have added pricing transparency to their websites — even in the form of starting prices and package descriptions — consistently report a shift in the character of inbound inquiries: more business owners, fewer price-shopping calls, and a higher proportion of prospects who arrive at the first consultation having already reviewed the firm's services and pricing in detail. The initial consultation becomes a fit evaluation rather than a sales call, which is a better use of both the firm's and the client's time. Pricing transparency, done with context and qualification language, is not a race to the bottom — it is a signal of confidence in the value the firm delivers.</p>
+        </div>
+
+        <!-- 12 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Choosing a Web Design Agency for Your Maryland Accounting Firm</h3>
+          <p class="lf-guide-p">Most web design agencies can build a website. Fewer can build an accounting firm website that generates qualified leads, passes YMYL content quality standards, integrates correctly with client portal software, and performs well during the seasonal traffic spikes that define an accounting practice's growth trajectory. The difference between a generalist agency and one that understands professional services web design is not always visible in a portfolio screenshot — it becomes visible in the site's organic performance, its inquiry quality, and its ability to handle the specific technical and content requirements that accounting firm websites carry.</p>
+          <p class="lf-guide-p">The questions an accounting firm owner should ask any agency before engaging them for a website project span technical, strategic, and industry-specific dimensions. On the technical side: do they implement schema markup — specifically Accountant and LocalBusiness schema — as a standard part of their builds, or is it an add-on? Can they integrate with your client portal (TaxDome, Canopy, SmartVault) in a way that keeps the portal login accessible without creating site dependency on the portal infrastructure? Do they understand Core Web Vitals and can they provide benchmark performance data from comparable professional services sites they have built?</p>
+          <p class="lf-guide-p">On the content and strategy side: do they understand YMYL content requirements, and can they advise on E-E-A-T signal implementation for accounting content? Have they built CPA or financial services sites before, and can they show examples with the specific page architecture — service specialty pages, seasonal landing pages, CPA bio pages — that accounting firms need? Do they understand the seasonal traffic patterns for accounting sites well enough to advise on a content publishing calendar that builds authority before each traffic peak? Do they have experience structuring inquiry forms with conditional logic for client type segmentation?</p>
+          <p class="lf-guide-p">The deliverables that an accounting firm website project must include — regardless of which agency you engage — are non-negotiable for a site that will generate consistent qualified leads. Accountant schema markup implemented correctly on the homepage and relevant service pages. A minimum of four to six service specialty pages targeting distinct client segments and service types. Integration with the firm's client portal platform with a dedicated portal access page. A mobile-first design that performs well on smartphones, where a significant portion of accounting search traffic originates. Secure contact forms with conditional logic for client type segmentation. A Google Business Profile audit and optimization as part of the launch deliverables, not as an afterthought.</p>
+          <p class="lf-guide-p">Evaluating an agency's genuine understanding of YMYL content requirements is a filtering question that separates agencies with professional services experience from those who are learning on your engagement. Ask specifically: "How do you handle E-E-A-T signals for a CPA site given its YMYL classification?" An agency that knows what they are doing will discuss CPA authorship bylines, credential display, structured data for professional qualifications, and content accuracy standards. An agency that responds with a vague reference to "quality content" or has not heard of YMYL is not equipped to build a site that will perform in competitive accounting searches.</p>
+          <p class="lf-guide-p">The realistic timeline for a Maryland accounting firm website project — done properly — is five to seven weeks from signed agreement to launch. The first week covers discovery, site architecture planning, and content briefing. Weeks two and three cover design and content development in parallel. Week four covers development and content integration. Week five covers client review, revisions, and technical pre-launch checklist (schema validation, performance testing, form testing, mobile review). Week six or seven accommodates a second revision round and final launch preparation. Firms that are pitched a two-week turnaround for a full accounting website are being promised a site that will not include the specialty pages, schema markup, portal integration, or content architecture that drives actual client acquisition. Speed and quality are not the same deliverable, and in accounting web design, the difference is measurable in the inquiries you receive — or don't.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland CPAs ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">5</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`acc-faq-${i}`}
+                  id={`acc-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`acc-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`acc-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Accounting firm websites &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Build an accounting website that generates new client inquiries.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know your market and your clients</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts — month-to-month after launch</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your market, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-accountant" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="cta-name">Your name</label>
+                <input class="lf-form-input" type="text" id="cta-name" name="name" placeholder="David Harrington, CPA" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="cta-email">Email address</label>
+                <input class="lf-form-input" type="email" id="cta-email" name="email" placeholder="david@chesapeaketax.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="cta-firm">Firm name &amp; primary service</label>
+              <input class="lf-form-input" type="text" id="cta-firm" name="firm" placeholder="Chesapeake Tax Partners &middot; Tax + Bookkeeping" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="cta-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="cta-message" name="message" rows="3" placeholder="Not ranking, no client inquiries, outdated design, no intake form…"></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Accounting</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+/* ══════════════════════
+   GUIDE
+══════════════════════ */
+.lf-guide { background: var(--cream-soft); }
+.lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+.lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+.lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+.lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+.lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+.lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+.lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Service focus custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>

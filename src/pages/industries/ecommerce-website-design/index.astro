@@ -1,0 +1,2402 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Slow product pages cost you sales before checkout",
+    body: "A 1-second delay in page load time reduces ecommerce conversions by 7%. Most WooCommerce stores we audit load in 6–9 seconds on mobile — the channel where 65% of shopping sessions now happen. Every unoptimized product image and unnecessary plugin is a sale that doesn't complete.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "No Product schema means invisible product pages in Google",
+    body: "Without Product and Offer JSON-LD schema, Google cannot show your products in Shopping results, price rich snippets, or product carousels. You're competing in organic search without the rich results that grab clicks — while competitors with proper schema get the star ratings, price range, and availability displayed before a click happens.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>`,
+    title: "Mobile checkout abandonment kills your conversion rate",
+    body: "69% of shopping carts are abandoned — and most of that abandonment is friction: too many form fields, broken payment buttons on iOS Safari, forced account creation before checkout. A properly built WooCommerce store with a streamlined checkout, Apple Pay and Google Pay, and guest checkout converts at 2–4x the rate of a default WooCommerce installation.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "Product and Offer schema on every listing",
+    body: "Every product page receives Product, Offer, and AggregateRating JSON-LD markup — price, availability, condition, brand, and SKU. This is what enables your products to appear in Google Shopping results, price rich snippets, and product carousels with star ratings. Without this markup, your product pages compete in organic search without the visual advantage that drives clicks.",
+    tags: ["Product schema", "Offer markup", "Google Shopping"],
+  },
+  {
+    num: "02",
+    title: "Stripe, PayPal, and Apple/Google Pay",
+    body: "We configure WooCommerce with Stripe as primary payment gateway — supporting credit cards, Apple Pay, Google Pay, and ACH bank transfers — with PayPal as a backup. One-click checkout for returning customers, guest checkout enabled by default, and Stripe's fraud detection configured to protect your store. Authorize.net integration available for existing merchant accounts.",
+    tags: ["Stripe / PayPal", "Apple Pay / Google Pay", "ACH payments"],
+  },
+  {
+    num: "03",
+    title: "Conversion-optimized product and category pages",
+    body: "Default WooCommerce product pages are designed for functionality, not conversion. We redesign product pages to lead with your best product photography, position reviews prominently, add urgency signals (stock levels, shipping cutoffs), and structure the add-to-cart path to reduce decision friction. Category pages are rebuilt with filtering and sorting that helps customers find products fast.",
+    tags: ["Product page optimization", "Category page UX", "Conversion design"],
+  },
+  {
+    num: "04",
+    title: "Streamlined checkout with abandon recovery",
+    body: "We strip default WooCommerce checkout to the minimum fields, add real-time field validation, and configure abandoned cart recovery via Klaviyo or WooCommerce's native system. Abandoned cart emails recover 10–15% of abandoned sessions on average. Combined with a streamlined checkout, this is the highest-ROI optimization for most stores.",
+    tags: ["Streamlined checkout", "Abandoned cart recovery", "Klaviyo integration"],
+  },
+  {
+    num: "05",
+    title: "Category and collection SEO pages",
+    body: "Product-level SEO alone isn't enough. We build keyword-targeted category pages for your product collections — each with unique copy, proper Product schema in aggregate, and internal links to your best sellers. A 'handmade Maryland gifts' category page captures mid-funnel searchers who don't know your product names yet but are ready to buy.",
+    tags: ["Category SEO", "Collection pages", "Mid-funnel search"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your store ships with green Core Web Vitals — or we fix it before launch at no cost. WooCommerce stores with unoptimized product images, conflicting plugins, and slow hosting routinely fail these benchmarks. Our builds use a performance stack with CDN delivery, WebP image conversion, and sub-2-second product page load times.",
+    tags: ["Core Web Vitals", "LCP < 2s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Store audit + conversion map",
+    body: "We audit your current store for Core Web Vitals, schema gaps, checkout friction, and catalog structure. We map your top-selling products and highest-intent search queries. You receive a written strategy document: page list, schema plan, payment gateway recommendation, and checkout optimization targets.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1–2",
+    title: "AI-assisted design + product page framework",
+    body: "We generate your homepage, product pages, and checkout experience using AI-assisted design — built around your product catalog and brand. We structure category and collection page frameworks simultaneously. One consolidated feedback round.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2–7",
+    title: "WooCommerce build + schema + payment setup",
+    body: "Approved designs go into WooCommerce. Every product page gets Product and Offer schema. Stripe and PayPal are configured and tested across mobile, desktop, and Safari. Abandoned cart recovery is set up. You get a staging store to review weekly.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 7–10",
+    title: "Launch, product feed + Google Shopping setup",
+    body: "We handle DNS cutover, 301 redirects, and Google Merchant Center setup for Shopping ads eligibility. Search Console and GA4 e-commerce tracking are configured. You receive a handoff video and 30-day post-launch monitoring window.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "Platform",
+    q: "Why WooCommerce instead of Shopify or BigCommerce?",
+    a: "WooCommerce gives you full ownership of your store, your customer data, and your SEO infrastructure — no platform fees on transactions, no forced URL structures, and no limitations on schema implementation. For Maryland businesses that also have a physical presence or service component, WordPress + WooCommerce handles the full business website better than Shopify, which is optimized for pure retail.",
+  },
+  {
+    num: "02",
+    category: "SEO",
+    q: "How long before a WooCommerce store ranks for product searches?",
+    a: "Category and collection pages with proper Product schema typically see movement in 60–90 days for specific product searches. Broad category searches like 'handmade gifts Maryland' take 3–6 months. Product-level schema and Google Merchant Center submission can drive Shopping results faster — often within 30–45 days of launch.",
+  },
+  {
+    num: "03",
+    category: "Services",
+    q: "Do you migrate our existing products and content?",
+    a: "Yes — on Growth and Custom tiers we migrate your existing product catalog, customer data, and order history. We map all existing product URLs to their new equivalents and implement 301 redirects. We test the complete store — checkout, payment, email confirmations — before DNS cutover.",
+  },
+  {
+    num: "04",
+    category: "Platform",
+    q: "What shipping and inventory integrations do you support?",
+    a: "We integrate with ShipStation, EasyPost, WooCommerce Shipping (for USPS/UPS/FedEx label printing), and local pickup/delivery options. For inventory management, we work with WooCommerce's native system or sync with third-party tools like Linnworks or Veeqo. We scope specific integrations during Discovery.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What ongoing support do you provide after the store launches?",
+    a: "Care plans start at $150/month — WordPress and WooCommerce updates, weekly backups, uptime monitoring, and priority support within 4 business hours. WooCommerce requires more frequent plugin updates than a standard WordPress site — our care plan handles this so payment processing and checkout never break unexpectedly.",
+  },
+  {
+    num: "06",
+    category: "Platform",
+    q: "Can you set up subscriptions or recurring billing?",
+    a: "Yes — we configure WooCommerce Subscriptions with Stripe for recurring billing, including free trial periods, pause and cancel flows, and renewal reminder emails. Subscription products can be standalone or mixed with one-time purchase products in the same catalog. This is included in the Growth and Custom tiers.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Care Plans": { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "WooCommerce store up to 50 products with custom design",
+      "Product + Offer JSON-LD schema on all product pages",
+      "Stripe and PayPal checkout with Apple Pay and Google Pay",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Merchant Center setup for Shopping eligibility",
+      "Google Search Console + GA4 e-commerce tracking",
+      "30 days post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 200 products · full catalog migration from existing store",
+      "Category and collection SEO pages with Product schema",
+      "Streamlined checkout with abandoned cart recovery (Klaviyo or native)",
+      "Product page conversion optimization with reviews and trust signals",
+      "ShipStation or WooCommerce Shipping integration",
+      "60 days post-launch monitoring with monthly performance report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited products · WooCommerce Subscriptions or B2B wholesale",
+      "Custom product configurator or variation builder",
+      "Third-party inventory management sync (Linnworks, Veeqo, or similar)",
+      "Full order history and customer data migration",
+      "Quarterly SEO and conversion rate review for 12 months",
+      "90 days post-launch support + first month care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+---
+<BaseLayout
+  title="WooCommerce Website Design Maryland | Upcoming Brand"
+  description="WooCommerce store design for Maryland businesses. Product schema, Stripe/PayPal integration, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick."
+  canonicalUrl="https://upcomingbrand.com/industries/ecommerce-website-design/"
+>
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════════
+       SCHEMA
+  ══════════════════════════════════════════════ -->
+  <script type="application/ld+json" is:inline>{
+    JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://upcomingbrand.com/#business",
+          "name": "Upcoming Brand",
+          "url": "https://upcomingbrand.com",
+          "description": "WooCommerce store design for Maryland businesses. Product schema, Stripe/PayPal integration, 90+ PageSpeed.",
+          "areaServed": [
+            { "@type": "City", "name": "Baltimore" },
+            { "@type": "City", "name": "Annapolis" },
+            { "@type": "City", "name": "Frederick" },
+            { "@type": "State", "name": "Maryland" }
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "WooCommerce Website Design Services",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "WooCommerce Store Design — Starter",
+                  "description": "WooCommerce store up to 50 products with custom design, Product schema, Stripe/PayPal checkout, and Core Web Vitals green on delivery."
+                },
+                "priceRange": "$1,500–$3,500"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "WooCommerce Store Design — Growth",
+                  "description": "Up to 200 products, catalog migration, category SEO pages, abandoned cart recovery, and ShipStation integration."
+                },
+                "priceRange": "$3,500–$6,000"
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "WooCommerce Store Design — Custom",
+                  "description": "Unlimited products, WooCommerce Subscriptions, custom configurator, inventory sync, and 12-month SEO reviews."
+                },
+                "priceRange": "$6,000–$10,000+"
+              }
+            ]
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://upcomingbrand.com/industries/ecommerce-website-design/",
+          "url": "https://upcomingbrand.com/industries/ecommerce-website-design/",
+          "name": "WooCommerce Website Design Maryland | Upcoming Brand",
+          "description": "WooCommerce store design for Maryland businesses. Product schema, Stripe/PayPal integration, 90+ PageSpeed. Fixed-scope from $1,500.",
+          "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+              { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
+              { "@type": "ListItem", "position": 3, "name": "WooCommerce Website Design", "item": "https://upcomingbrand.com/industries/ecommerce-website-design/" }
+            ]
+          }
+        }
+      ]
+    })
+  }</script>
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>WooCommerce Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            WooCommerce Store Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland WooCommerce stores</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to convert browsers</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">into buyers.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most online stores leave money on the table — slow product pages, broken checkout flows on mobile, and no Product schema for search visibility. We build WooCommerce stores for Maryland businesses that load fast, rank for product searches, and convert visitors into customers. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Product schema on every listing</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free store audit</p>
+            <h2 class="lfh-form-title">Is your store losing sales?</h2>
+            <p class="lfh-form-sub">We review your current store and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="ec-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="ec-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ec-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="ec-name" name="name" placeholder="Dana Holloway" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ec-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="ec-email" name="email" placeholder="dana@chesapeakegoods.com" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ec-store">Store name</label>
+              <input class="lfh-form-input" type="text" id="ec-store" name="store" placeholder="Chesapeake Goods Co." autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-store-type">Store type</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-store-type" data-name="store_type">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select store type</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Store type">
+                  <li class="lf-cs-opt" role="option" data-value="Physical Products">Physical Products</li>
+                  <li class="lf-cs-opt" role="option" data-value="Digital Downloads">Digital Downloads</li>
+                  <li class="lf-cs-opt" role="option" data-value="Subscriptions">Subscriptions</li>
+                  <li class="lf-cs-opt" role="option" data-value="Handmade / Artisan">Handmade / Artisan</li>
+                  <li class="lf-cs-opt" role="option" data-value="Wholesale / B2B">Wholesale / B2B</li>
+                  <li class="lf-cs-opt" role="option" data-value="Local Pickup + Shipping">Local Pickup + Shipping</li>
+                  <li class="lf-cs-opt" role="option" data-value="Service + Products">Service + Products</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="store_type" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key ecommerce benchmarks">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">73<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of WooCommerce stores<br>fail Core Web Vitals</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">2.1<span class="lfh-amb">s</span></div>
+          <div class="lfh-stat-lbl">Average mobile load time<br>on high-converting stores</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">69<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">Of purchases abandoned<br>at checkout due to friction</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">10<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call to<br>live, selling store</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why stores fail before checkout</p>
+        <h2 class="h2-section">Why most WooCommerce stores underperform</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every store</p>
+        <h2 class="h2-section">Six things every Maryland WooCommerce store needs</h2>
+        <p class="lead">A WooCommerce store is not a product catalog. It is a revenue system. Every element we build — from schema to checkout to abandoned cart recovery — is designed to do one job: turn a browsing visitor into a completed order.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
+          <h2 class="h2-section lf-case-h2">How Chesapeake Goods Co. increased store revenue 156% in 5 months</h2>
+          <p class="lf-case-desc">
+            Dana Holloway at Chesapeake Goods Co., a maker of Maryland-inspired artisan goods, was running her online store on a default WooCommerce installation — 7.2-second mobile load time, no Product schema, and a checkout that required account creation. In 5 months, the store looked and performed like a different business.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+156%</span>
+              <span class="lf-cr-label mono-xs">Monthly store revenue</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">-44%</span>
+              <span class="lf-cr-label mono-xs">Checkout abandonment rate</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.7s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 7.2s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">Live</span>
+              <span class="lf-cr-label mono-xs">Google Shopping ads eligibility unlocked</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"My old store looked okay but it was bleeding customers at every step — slow to load, impossible to check out on mobile, and invisible in Google Shopping. Upcoming Brand rebuilt everything: the product pages, the checkout, the schema markup. Within five months my revenue had increased by more than half and I was finally showing up in Google Shopping. The site now works as hard as I do."</p>
+            <footer>
+              <cite class="lf-cite-name">Dana Holloway</cite>
+              <span class="lf-cite-role mono-xs">Founder &middot; Chesapeake Goods Co. &middot; Annapolis, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/chesapeake-goods-co.png"
+            alt="Chesapeake Goods Co. WooCommerce store redesign"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live store · Revenue verified
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a converting WooCommerce store</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most stores are live within 10 weeks of the first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland WooCommerce stores</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress and WooCommerce updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">The Maryland Business Owner's Complete Guide to E-Commerce Website Design</h2>
+        <p class="lead">Everything you need to know before building or relaunching a WooCommerce store in Maryland &mdash; from product schema to payment gateways to post-launch conversion optimization.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">What Maryland E-Commerce Stores Actually Need From Their Website</h3>
+          <p class="lf-guide-p">Most small Maryland retailers approach their first online store the same way: they pick a theme, upload product photos, and hope checkout works. That approach creates stores that look fine in demos but fail in production &mdash; cart abandonment above 70%, checkout errors on mobile, and product pages that Google ignores entirely. A properly built WooCommerce store is a system, not a theme. Every decision from your URL structure to your payment gateway affects your revenue.</p>
+          <p class="lf-guide-p">Maryland businesses selling physical goods, digital downloads, or services online need five distinct capabilities working together: a product catalog structured for search discovery, a checkout flow optimized for mobile conversion, payment processing that handles real edge cases (declined cards, address verification mismatches, duplicate charges), an inventory system that reflects actual stock levels, and post-purchase automation that reduces manual customer service. None of these come out of the box from a basic WooCommerce install. They require deliberate configuration and, in many cases, premium extensions.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Product catalog architecture determines how Google crawls and ranks individual product pages &mdash; category depth, URL structure, and canonical tags all matter from day one</li>
+            <li class="lf-guide-li">Checkout flow design is the single biggest lever on conversion rate &mdash; every extra field, every redirect, every forced account creation costs you completed orders</li>
+            <li class="lf-guide-li">Payment gateway configuration needs to handle Maryland sales tax (6% state rate, plus county-level variations) correctly from the first transaction</li>
+            <li class="lf-guide-li">Inventory sync becomes critical the moment you sell on multiple channels &mdash; your website, Amazon, Etsy, and in-store point of sale all need to read from one source of truth</li>
+            <li class="lf-guide-li">Post-purchase email sequences &mdash; order confirmation, shipping notification, delivery confirmation, review request &mdash; drive repeat purchase rates by 20-30% when configured correctly</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">The Must-Have Pages on Every WooCommerce Store</h3>
+          <p class="lf-guide-p">WooCommerce generates product pages and category archives automatically, but a complete store requires additional pages that most platforms treat as optional. Missing any of these creates both legal exposure and conversion problems. Maryland businesses selling online are subject to FTC disclosure requirements, Maryland Consumer Protection Act provisions, and &mdash; if selling to EU customers &mdash; GDPR consent obligations. Your page architecture needs to address all of these.</p>
+          <p class="lf-guide-p">Beyond compliance, your store architecture signals trust. A first-time customer visiting an unfamiliar Maryland brand will look for your physical address, your return policy, and your contact information before completing a purchase. Stores that make these hard to find see abandonment rates 15-25% higher than stores that surface them prominently in the footer, checkout page, and product descriptions.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Shop homepage with clear category navigation, featured products, and a search bar that works on the first keystroke</li>
+            <li class="lf-guide-li">Category pages with filtered navigation (by price, size, color, availability) and enough descriptive copy for Google to understand what the category contains</li>
+            <li class="lf-guide-li">Individual product pages with multiple images, size guides, material descriptions, customer reviews, and clear shipping time estimates</li>
+            <li class="lf-guide-li">Cart page with order summary, discount code field, and shipping estimate calculator before checkout begins</li>
+            <li class="lf-guide-li">Checkout page as a single-page flow: contact info, shipping address, shipping method, payment, and order review without unnecessary redirects</li>
+            <li class="lf-guide-li">Shipping and returns policy page with specific timeframes, carrier names, and the exact steps customers need to take to return an item</li>
+            <li class="lf-guide-li">Privacy policy and terms of service pages that reflect Maryland law and your actual data practices, not generic templates</li>
+            <li class="lf-guide-li">Contact page with a physical address, phone number, email, and response time commitment &mdash; trust signals for first-time buyers</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">WooCommerce Product Schema and Structured Data</h3>
+          <p class="lf-guide-p">Google's product rich results &mdash; the star ratings, price ranges, and availability status that appear directly in search results &mdash; require Product schema markup on every product page. Without it, your products look identical to every other blue link in the results. With it, a shopper searching for "handmade soy candles Maryland" can see your price, your rating, and whether the item is in stock before they even click your listing. The click-through rate difference is significant: product listings with rich results receive 20-30% more clicks than equivalent listings without them.</p>
+          <p class="lf-guide-p">RankMath Pro handles basic Product schema for WooCommerce automatically, but full schema implementation requires manual configuration: AggregateRating pulls from your review system, Offer nodes need to include priceCurrency, availability, and condition attributes, and BreadcrumbList schema ties your category hierarchy together for Google's crawlers. For Maryland businesses with physical retail locations, LocalBusiness schema should run alongside Product schema to capture both e-commerce and local intent searches.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Product schema with name, description, image, sku, brand, and offers properties &mdash; all required for Google's product rich results eligibility</li>
+            <li class="lf-guide-li">AggregateRating schema tied to your WooCommerce review system so star ratings appear in search results automatically</li>
+            <li class="lf-guide-li">Offer schema with price, priceCurrency (USD), availability (InStock/OutOfStock/PreOrder), and itemCondition properties</li>
+            <li class="lf-guide-li">BreadcrumbList schema on every product and category page to reinforce your site hierarchy in Google's knowledge graph</li>
+            <li class="lf-guide-li">Organization schema on your homepage with your Maryland business address, phone number, and logo for brand entity establishment</li>
+            <li class="lf-guide-li">WebSite schema with SearchAction markup to enable Google's sitelinks search box on branded queries</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Choosing and Integrating Payment Gateways for Maryland Stores</h3>
+          <p class="lf-guide-p">The most common e-commerce mistake Maryland business owners make is choosing a payment gateway based on brand recognition rather than fit. Stripe is excellent for software businesses and subscription billing. PayPal is familiar to buyers but introduces an off-site redirect that increases abandonment. Square works if you already process in-person sales through Square hardware. Authorize.net suits high-volume merchants with existing banking relationships. None of these is universally correct &mdash; the right choice depends on your average order value, your customer demographics, and your existing financial infrastructure.</p>
+          <p class="lf-guide-p">Beyond the primary gateway, most successful Maryland e-commerce stores add at least one buy-now-pay-later option (Afterpay, Klarna, or Affirm) for orders above $100, and a digital wallet option (Apple Pay, Google Pay) for mobile shoppers. These additions typically increase mobile conversion by 8-15% because they eliminate the friction of typing a 16-digit card number on a phone keyboard. The technical integration for all of these is handled at the gateway level; your WooCommerce build just needs the correct plugin and API keys configured.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Stripe: best for tech-forward Maryland businesses, subscription products, and international orders &mdash; 2.9% + $0.30 per transaction, no monthly fee</li>
+            <li class="lf-guide-li">PayPal: high buyer familiarity but off-site redirect increases abandonment &mdash; use as a secondary option, never as the primary gateway</li>
+            <li class="lf-guide-li">Square: ideal if you operate a physical Maryland retail location alongside your online store &mdash; unified inventory and reporting across both channels</li>
+            <li class="lf-guide-li">Afterpay/Klarna: essential for apparel, furniture, and specialty goods stores where orders frequently exceed $150 &mdash; BNPL adoption among Maryland shoppers aged 25-44 has grown 340% since 2021</li>
+            <li class="lf-guide-li">Apple Pay and Google Pay: one-tap checkout for mobile users &mdash; requires SSL, a compatible gateway, and domain verification through Stripe or Square's dashboard</li>
+            <li class="lf-guide-li">Maryland sales tax configuration: WooCommerce Tax or TaxJar automates Maryland's 6% state rate and handles nexus calculations if you sell to other states</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Product Page Optimization for Conversion</h3>
+          <p class="lf-guide-p">A product page has one job: convert a browsing shopper into a buyer. Everything on the page &mdash; the image gallery, the product description, the price display, the add-to-cart button placement, the review section &mdash; either supports or undermines that conversion. Most WooCommerce default product pages fail at this job because they were designed by developers, not conversion specialists. They put the product description below the fold on mobile, use single-image galleries, bury the add-to-cart button, and provide no social proof near the purchase decision point.</p>
+          <p class="lf-guide-p">High-converting product pages for Maryland businesses follow a specific structure: the hero image and add-to-cart appear above the fold on both desktop and mobile, the product name and price are immediately visible, trust signals (reviews, return policy, shipping time) appear within two scrolls, and the description follows a benefit-first structure rather than a spec-first list. For apparel and home goods businesses, lifestyle photography outperforms white-background product shots by 35-45% on conversion rate. For industrial and specialty goods, detailed specification tables improve conversion by reducing pre-purchase support tickets.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Image gallery with minimum 4 angles, zoom functionality, and a lifestyle shot showing the product in context &mdash; mobile swipe support is non-negotiable</li>
+            <li class="lf-guide-li">Price displayed prominently with sale price, original price, and savings amount when running promotions &mdash; avoid obscuring price behind a "get quote" form</li>
+            <li class="lf-guide-li">Variant selectors (size, color, material) that update the product image in real time and display out-of-stock options as greyed out rather than removed</li>
+            <li class="lf-guide-li">Social proof block within the hero area: aggregate rating, review count, and one featured review before the fold</li>
+            <li class="lf-guide-li">Shipping estimate calculator showing delivery date range based on the visitor's zip code &mdash; reduces the "when will I get it?" support question by 60%</li>
+            <li class="lf-guide-li">Related products section showing genuinely complementary items, not just random catalog entries &mdash; average order value increases of 12-18% when recommendations are relevant</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Abandoned Cart Recovery Setup</h3>
+          <p class="lf-guide-p">The average WooCommerce store loses 68% of carts before checkout completion. For a Maryland business doing $20,000 per month in online sales, that abandoned revenue represents roughly $43,000 in potential monthly orders that never converted. Abandoned cart recovery is the highest-ROI email marketing channel available to e-commerce businesses, yet most small Maryland online stores either don't have it configured at all or rely on a single generic email sent 24 hours after abandonment.</p>
+          <p class="lf-guide-p">A properly configured recovery sequence consists of three emails at specific intervals: a first email at 1 hour that simply reminds the shopper what they left behind (this alone recovers 5-8% of abandoned carts), a second at 24 hours that adds a mild incentive (free shipping or a 10% discount code), and a third at 72 hours that creates urgency with a low-stock signal or discount expiration. The sequence requires WooCommerce to capture the email address before cart abandonment &mdash; either through a pop-up email capture on exit intent, or by pre-filling the email field early in the checkout flow. Klaviyo and CartFlows are the preferred tools for this sequence on WooCommerce installations.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Email capture before checkout begins: use an exit-intent popup or require email on the first checkout step before showing payment fields</li>
+            <li class="lf-guide-li">One-hour recovery email: no discount, just a clear product image, the cart contents, and a single "Complete your order" button &mdash; 5-8% recovery rate</li>
+            <li class="lf-guide-li">24-hour email with incentive: free shipping threshold or 10% discount code with a 48-hour expiration &mdash; recovers an additional 3-5% of abandoned carts</li>
+            <li class="lf-guide-li">72-hour final email: use real inventory data to show genuine scarcity ("Only 3 left in stock") rather than manufactured urgency &mdash; authenticity matters to Maryland shoppers</li>
+            <li class="lf-guide-li">SMS recovery as a supplement for customers who opted in at checkout &mdash; SMS open rates of 95% vs. 20-25% for email make it worth adding for high-value carts</li>
+            <li class="lf-guide-li">Browse abandonment sequence for visitors who viewed products but never added to cart: a separate lighter-touch sequence with personalized product recommendations</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Conversion Rate Optimization for E-Commerce</h3>
+          <p class="lf-guide-p">Conversion rate optimization (CRO) for e-commerce is the practice of systematically improving the percentage of visitors who complete a purchase. The industry benchmark for WooCommerce stores is 1-3% conversion rate; high-performing stores in competitive niches achieve 4-6%. For a Maryland online store receiving 3,000 monthly visitors, the difference between a 1.5% and a 3% conversion rate is 45 additional orders per month &mdash; without spending a dollar more on traffic acquisition.</p>
+          <p class="lf-guide-p">CRO for Maryland e-commerce stores starts with identifying where shoppers are dropping off. Google Analytics 4's funnel exploration report, combined with heatmap data from Hotjar or Microsoft Clarity, reveals the specific pages and interactions that cause abandonment. Common friction points include: mandatory account creation before checkout, surprise shipping costs revealed late in the process, lack of guest checkout, confusing return policy language, and slow page load times on mobile. Each of these is solvable with specific WooCommerce configuration changes &mdash; no redesign required.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Guest checkout: mandatory account creation reduces conversion by 23% &mdash; WooCommerce allows guest checkout natively, but many themes disable it by default</li>
+            <li class="lf-guide-li">Shipping cost transparency: show shipping cost estimates on product pages and in the cart, not as a surprise on the final checkout step</li>
+            <li class="lf-guide-li">Trust badges at checkout: SSL lock icon, accepted payment method logos, and a "secure checkout" statement above the payment fields reduce abandonment by 12-18%</li>
+            <li class="lf-guide-li">Checkout field minimization: remove every field that isn't strictly required for fulfillment &mdash; a standard B2C order needs name, email, shipping address, and payment, nothing else</li>
+            <li class="lf-guide-li">Progress indicator on multi-step checkout: showing "Step 2 of 3" reduces abandonment by 10-15% because shoppers understand what's left to complete</li>
+            <li class="lf-guide-li">A/B testing: systematically test one element at a time (headline, button color, image, layout) using Google Optimize or a WooCommerce-compatible split testing tool</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Shipping and Returns Page Best Practices</h3>
+          <p class="lf-guide-p">Your shipping and returns policy is both a legal document and a conversion tool. As a legal document, it establishes the terms of your sale under Maryland's consumer protection laws and sets expectations that prevent chargebacks. As a conversion tool, it answers the two questions every first-time buyer asks before purchasing: "When will I get it?" and "What happens if I need to return it?" Stores with clear, specific answers to these questions convert at higher rates than stores with vague, lawyer-drafted policies full of exceptions and disclaimers.</p>
+          <p class="lf-guide-p">The most effective shipping pages for Maryland e-commerce businesses include carrier names, specific transit times by destination, cutoff times for same-day processing, and a clear table showing shipping cost by order total or weight tier. The most effective return policies specify the exact return window (30 days is the Maryland consumer expectation), the condition items must be in, who pays return shipping, and how refunds are issued (original payment method, store credit). Ambiguity in either document increases both pre-purchase abandonment and post-purchase support volume.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Shipping page structure: processing time (1-2 business days), carriers used (UPS, USPS, FedEx), transit times by destination zone, and a shipping cost table</li>
+            <li class="lf-guide-li">Free shipping threshold display: show visitors exactly how much more they need to add to qualify for free shipping &mdash; average order value increases of 15-25% when the threshold is visible</li>
+            <li class="lf-guide-li">Local pickup option for Maryland customers near your physical location &mdash; reduces shipping cost objections and builds local customer relationships</li>
+            <li class="lf-guide-li">Return window: 30-day return policy meets Maryland consumer expectations; extending to 60 or 90 days increases initial conversion without significantly increasing return rates</li>
+            <li class="lf-guide-li">Return process clarity: step-by-step instructions for initiating a return, the specific address items ship back to, and the timeline for processing refunds</li>
+            <li class="lf-guide-li">International shipping policy: if you ship outside the US, clearly state which countries you serve, that customs duties are the buyer's responsibility, and expected transit times</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Mobile E-Commerce UX for Maryland Shoppers</h3>
+          <p class="lf-guide-p">In 2025, more than 65% of e-commerce traffic in the Mid-Atlantic region comes from mobile devices, but only 38% of purchases complete on mobile. That gap &mdash; the mobile traffic to conversion ratio &mdash; is the biggest performance gap in most Maryland e-commerce stores. Shoppers browse on mobile and either abandon or switch to desktop to complete the purchase. Closing that gap requires intentional mobile-first design, not just a responsive layout that technically works on small screens.</p>
+          <p class="lf-guide-p">Mobile e-commerce UX problems are almost always the same across different stores: touch targets too small to tap accurately, product images that don't zoom on pinch, checkout forms with tiny input fields, address auto-fill that breaks the form validation, and add-to-cart buttons that scroll off-screen on product pages. Each of these is testable on a physical device in under 30 minutes and fixable with targeted CSS and JavaScript changes. The stores that close the mobile conversion gap do so through systematic device testing, not guesswork.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Touch targets: all buttons and interactive elements must be at least 44px tall with adequate spacing between adjacent targets to prevent mis-taps</li>
+            <li class="lf-guide-li">Product image swipe gallery: native-feeling swipe gesture support on product image galleries is expected by mobile shoppers and easily missed by desktop-first developers</li>
+            <li class="lf-guide-li">Mobile checkout keyboard optimization: input fields should trigger the correct keyboard type (numeric for zip codes, email keyboard for email fields, phone keyboard for phone numbers)</li>
+            <li class="lf-guide-li">Sticky add-to-cart bar: a fixed bar at the bottom of the screen showing product name, price, and add-to-cart button that persists as the shopper scrolls through the product description</li>
+            <li class="lf-guide-li">Address autocomplete: Google Places Autocomplete integrated into the shipping address field reduces mobile checkout time by 40-60 seconds per transaction</li>
+            <li class="lf-guide-li">One-tap payment: Apple Pay and Google Pay eliminate the mobile keyboard entirely for returning customers &mdash; the single highest-impact mobile conversion improvement available</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Performance Optimization for Product-Heavy WooCommerce Sites</h3>
+          <p class="lf-guide-p">WooCommerce stores with large catalogs face performance challenges that standard WordPress sites don't. Every product page query involves multiple database lookups: product meta, variation data, inventory counts, pricing rules, cross-sell relationships, and review aggregates. On a shared hosting environment with a catalog of 500+ products, page generation times of 3-6 seconds are common without optimization. Given that Google's Core Web Vitals require LCP under 2.5 seconds and FID under 100ms, this is both a user experience problem and a rankings problem.</p>
+          <p class="lf-guide-p">Proper WooCommerce performance optimization requires server-level caching that understands the difference between cacheable pages (category archives, product pages for non-logged-in users) and non-cacheable pages (cart, checkout, account pages). WP Rocket handles this with its WooCommerce-specific configuration options, but the cache rules must be reviewed after every major plugin update to ensure cart and checkout functionality still works correctly. CDN configuration for product images &mdash; typically the heaviest assets on a WooCommerce site &mdash; has the largest single impact on Largest Contentful Paint scores.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Server-level object caching with Redis or Memcached for WooCommerce product queries &mdash; reduces database load by 60-80% on high-traffic product pages</li>
+            <li class="lf-guide-li">WP Rocket WooCommerce settings: exclude cart, checkout, and account pages from cache; enable fragment caching for the cart widget in the header</li>
+            <li class="lf-guide-li">Image optimization pipeline: WebP conversion for all product images, lazy loading below the fold, and explicit width/height attributes to prevent Cumulative Layout Shift</li>
+            <li class="lf-guide-li">Cloudflare CDN with WooCommerce cache bypass rules: product page assets served from edge nodes near Maryland shoppers, dynamic cart content bypassed to origin</li>
+            <li class="lf-guide-li">Database optimization: automated cleanup of WooCommerce transients, order meta, and unused product revisions using WP-Optimize on a weekly schedule</li>
+            <li class="lf-guide-li">Hosting environment: WooCommerce stores need PHP 8.2+, at least 256MB memory limit, and a server stack (LiteSpeed or Nginx) optimized for WordPress database queries</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Security, SSL, and PCI Compliance for Maryland Online Stores</h3>
+          <p class="lf-guide-p">Maryland online retailers that process credit card payments are subject to PCI DSS (Payment Card Industry Data Security Standard) compliance requirements regardless of business size. Most small business owners assume that using Stripe or PayPal means they don't need to worry about PCI compliance. This is partially correct &mdash; using a hosted payment gateway significantly reduces your PCI scope &mdash; but it doesn't eliminate your compliance obligations entirely. Your WooCommerce store still needs to meet specific security requirements for the portions of the payment flow that touch your server.</p>
+          <p class="lf-guide-p">The practical security checklist for a Maryland WooCommerce store is manageable: SSL certificate on the entire site (not just checkout pages), Wordfence with 2FA for all administrator accounts, daily automated backups to an off-site location (S3 or Google Drive), login attempt limiting, file integrity monitoring, and a clear incident response plan for the scenario where you discover the site has been compromised. Wordfence's malware scanner catches most injection attacks within 24 hours of deployment. The backup system is your safety net when everything else fails.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">SSL certificate covering the entire domain, not just /checkout/ &mdash; Google treats mixed-content warnings as a trust signal failure that affects both rankings and conversion</li>
+            <li class="lf-guide-li">Wordfence Premium with real-time firewall rule updates and daily malware scanning &mdash; the free version's 30-day rule delay is not acceptable for an active e-commerce site</li>
+            <li class="lf-guide-li">Two-factor authentication for all admin and shop manager accounts using an authenticator app &mdash; 81% of data breaches involve stolen or weak passwords</li>
+            <li class="lf-guide-li">Daily automated backups with at least 30-day retention, stored off-site from your hosting environment &mdash; the same server failure that takes your site offline shouldn't also destroy your backup</li>
+            <li class="lf-guide-li">PCI DSS SAQ A compliance: complete the annual Self-Assessment Questionnaire A if you use a hosted payment gateway (Stripe, PayPal) with no card data touching your server</li>
+            <li class="lf-guide-li">Vulnerability disclosure policy and incident response plan: know who to call and what steps to take before you discover a breach, not after &mdash; Maryland data breach notification law requires timely disclosure</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">How to Choose a WooCommerce Development Agency in Maryland</h3>
+          <p class="lf-guide-p">The Maryland web development market includes dozens of agencies and freelancers offering WooCommerce development services. The range in quality, reliability, and pricing is enormous &mdash; from $500 template installations that will require complete rebuilds within 18 months, to $50,000+ custom platforms that deliver capabilities most small Maryland businesses will never use. Finding the right fit requires knowing what questions to ask and what red flags to look for before signing a contract.</p>
+          <p class="lf-guide-p">The most reliable predictor of a good WooCommerce engagement is a development agency's willingness to discuss technical specifics: which caching layer they use, how they handle staging environments, what their deployment process looks like, and how they test checkout flows before launch. Agencies that deflect these questions with vague assurances about "best practices" and "proven processes" typically lack the technical depth to solve the problems that inevitably arise on production WooCommerce stores. Ask for the names of the specific plugins they use, the hosting environments they recommend, and their policy for handling post-launch bugs.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Request a detailed written scope that lists every plugin, every integration, every page, and every post-launch deliverable &mdash; vague "WooCommerce store" proposals lead to scope disputes</li>
+            <li class="lf-guide-li">Ask how they handle the transition from development to production &mdash; a proper handoff includes staging environment, redirect mapping, Google Analytics verification, and search console submission</li>
+            <li class="lf-guide-li">Verify their WooCommerce experience with live store URLs, not just screenshots &mdash; add something to the cart and attempt checkout on a mobile device to assess real-world quality</li>
+            <li class="lf-guide-li">Understand their post-launch support terms: how long is the warranty period, what's covered, what's billable, and what's the response time for critical issues like checkout failures</li>
+            <li class="lf-guide-li">Avoid agencies that propose building a custom checkout from scratch &mdash; WooCommerce's native checkout with targeted modifications is more reliable than custom solutions for most Maryland businesses</li>
+            <li class="lf-guide-li">Choose an agency that can explain their SEO setup process for the store: Product schema implementation, category page optimization, and Google Search Console configuration should all be standard deliverables, not add-ons</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland store owners ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">4</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`ec-faq-${i}`}
+                  id={`ec-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`ec-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`ec-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">WooCommerce stores &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Build a WooCommerce store that converts browsers into buyers.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know the local market</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>Core Web Vitals guarantee — green on launch or we fix it free</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your store, your catalog, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-ecommerce" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="ec-cta-name">Your name</label>
+                <input class="lf-form-input" type="text" id="ec-cta-name" name="name" placeholder="Dana Holloway" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="ec-cta-email">Email address</label>
+                <input class="lf-form-input" type="email" id="ec-cta-email" name="email" placeholder="dana@chesapeakegoods.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="ec-cta-store">Store name &amp; type</label>
+              <input class="lf-form-input" type="text" id="ec-cta-store" name="store" placeholder="Chesapeake Goods Co. &middot; Handmade / Artisan" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="ec-cta-message">What's not working with your current store?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="ec-cta-message" name="message" rows="3" placeholder="Slow load times, not ranking, low conversion rate, checkout issues…"></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Ecommerce</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+  /* ── GUIDE ── */
+  .lf-guide { background: var(--cream-soft); }
+  .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+  .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+  .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+  .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+  .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+  .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+  .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Store type custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>

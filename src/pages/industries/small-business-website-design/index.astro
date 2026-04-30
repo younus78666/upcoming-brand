@@ -1,0 +1,2324 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Small business sites that aren't found aren't earning",
+    body: "88% of consumers research a local business online before visiting or calling. If your site loads in 7 seconds on mobile, lacks LocalBusiness schema, and ranks for nothing except your business name, your website is a digital business card — not a marketing tool. Every day it stays that way is revenue going to a competitor whose site actually shows up.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "Generic templates look like every other business in your category",
+    body: "Free WordPress themes and Wix templates produce sites that look identical to your competitors. There's no reason for a customer searching 'HVAC Frederick MD' to choose your site over the next one in search results unless your site loads faster, communicates value more clearly, and has the trust signals — reviews, credentials, service areas — that they're looking for.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "No contact or booking system means leads slip away",
+    body: "A phone number at the bottom of the page is not a lead capture system. A properly built contact or booking form — asking for the right information at the right moment — captures inquiries at 8-10pm when your office is closed. Without one, you're losing every after-hours customer to whoever picks up a live chat or has an online booking widget.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "LocalBusiness schema on every page",
+    body: "Every page receives LocalBusiness JSON-LD markup — business type, geographic service areas, operating hours, price range, and service categories. This is the technical foundation that enables Local Pack visibility for searches like 'HVAC repair Frederick' or 'plumber near me Annapolis.' Without this markup, Google treats your business as a generic listing rather than the specific local service you provide.",
+    tags: ["LocalBusiness schema", "Service area markup", "Google Local visibility"],
+  },
+  {
+    num: "02",
+    title: "Lead capture forms that qualify prospects",
+    body: "A contact form that asks only for a name and email produces unqualified inquiries. We build forms that capture service type, location, timeline, and project scope before submission — so your team can respond with context and your calendar stays filled with the right jobs. WPForms and Calendly integrations included in Growth and Custom tiers.",
+    tags: ["WPForms / Calendly", "Lead qualification", "After-hours capture"],
+  },
+  {
+    num: "03",
+    title: "Service area pages for every city you serve",
+    body: "If your site doesn't have dedicated pages for each city and county you serve, you don't rank for those city-specific searches. We build targeted landing pages for your full service territory — every city page uses unique copy, proper LocalBusiness schema with that city's coordinates, and is internally linked to build authority across your market.",
+    tags: ["City landing pages", "Service area SEO", "Multi-city targeting"],
+  },
+  {
+    num: "04",
+    title: "Reviews integration and trust signals",
+    body: "Trust is the conversion variable most small business sites ignore. We integrate your Google Reviews feed, display testimonials with ReviewRating schema, and structure your homepage to lead with credentials, years in business, and local market proof. These trust signals are often the deciding factor when a customer is choosing between two businesses in the same category.",
+    tags: ["Google Reviews feed", "ReviewRating schema", "Trust conversion"],
+  },
+  {
+    num: "05",
+    title: "Google Business Profile and Local Pack setup",
+    body: "The Google Maps 3-pack is the highest-ROI marketing channel for most Maryland small businesses — it's free visibility for every 'near me' search in your category. We audit and optimize your GBP — correct business category, service areas, products and services, Q&A, and photo uploads. We also ensure citation consistency across Yelp, BBB, and industry-specific directories.",
+    tags: ["Google Business Profile", "Local Pack", "Citation consistency"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your site ships with green Core Web Vitals — or we fix it before launch at no cost. Small business sites built on shared hosting with unoptimized images routinely fail these benchmarks and are deprioritized in search rankings. Our builds use a performance-first WordPress stack with CDN delivery and sub-2-second mobile load times.",
+    tags: ["Core Web Vitals", "LCP < 2s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Site audit + local competitor map",
+    body: "We audit your current site for technical SEO, Core Web Vitals, and schema gaps. We analyze your top 5 local competitors' online presence and identify the gaps you can exploit. You receive a written strategy document: keyword targets, GBP gaps, page list, and service territory map.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1-2",
+    title: "AI-assisted design + copy draft",
+    body: "We generate your homepage and key service pages using AI-assisted design — built around your business type and target customer. We draft all copy: service descriptions, service area frameworks, and trust copy. One consolidated feedback round.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2-6",
+    title: "WordPress build + schema + lead capture",
+    body: "Approved designs go into WordPress. Every service and city page gets LocalBusiness schema. Lead capture forms with conditional logic are built and tested. Google Reviews integration is configured. You get a staging link to review weekly.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 6-8",
+    title: "Launch, GBP + directory cleanup",
+    body: "We handle DNS cutover, 301 redirects, and sitemap submission. Your GBP and key directory listings are audited and made consistent. You receive a handoff video and 30-day post-launch monitoring window.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "SEO",
+    q: "How long before a small business website ranks in local search?",
+    a: "For specific service + city searches in smaller Maryland markets, businesses typically see meaningful movement in 45-90 days. Baltimore and Bethesda take 3-6 months for consistent first-page presence. GBP and Local Pack optimization often produce the fastest early results — improvements can appear within 30 days.",
+  },
+  {
+    num: "02",
+    category: "Services",
+    q: "Do you write all the website copy or do we provide it?",
+    a: "We write all copy as part of every tier. You fill out a questionnaire covering your services, service area, years in business, credentials, and differentiators. We draft service descriptions, city page frameworks, and trust copy. One review round is included. We don't outsource copywriting.",
+  },
+  {
+    num: "03",
+    category: "Platform",
+    q: "Can you add online booking or appointment scheduling?",
+    a: "Yes — we integrate Calendly, Acuity Scheduling, or a custom WPForms booking system on Growth and Custom tiers. Customers can request appointments or services without calling during business hours. We configure the booking flow to capture the information your team needs before responding.",
+  },
+  {
+    num: "04",
+    category: "Migration",
+    q: "We're on Wix or Squarespace — will we lose anything by switching?",
+    a: "Wix and Squarespace sites rarely have strong organic rankings — the platforms limit how effectively Google can crawl and index them. There's typically little organic traffic to protect. We still map all existing URLs and implement 301 redirects before DNS cutover, then monitor Search Console for 30 days post-launch.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What ongoing support do you provide after the site is live?",
+    a: "Care plans start at $150/month — WordPress core and plugin updates, weekly backups, uptime monitoring, and priority support within 4 business hours. City landing page content add-ons (one page per month) are available separately to expand your geographic SEO footprint. Month-to-month, no annual contract.",
+  },
+  {
+    num: "06",
+    category: "SEO",
+    q: "My competitor has a massive website — how can I compete with more pages?",
+    a: "More pages don't win — more targeted pages do. A competitor with 200 generic service pages often ranks below a competitor with 20 well-structured, schema-marked, internally-linked pages targeting the exact queries their customers use. We focus on building the pages that rank for the specific searches that bring you customers — quality over volume.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Migration":  { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Care Plans": { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500-$3,500",
+    timeline: "4-6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 6 pages: Home, About, Services, Service Areas, Contact, Thank You",
+      "LocalBusiness JSON-LD schema on all pages",
+      "Lead capture form with service type and timeline fields",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Business Profile audit and optimization",
+      "Google Search Console + Analytics 4 setup",
+      "30 days post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500-$6,000",
+    timeline: "6-8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 16 pages · 4 service pages + 8 city landing pages",
+      "LocalBusiness schema with service territory mapping",
+      "Calendly or WPForms booking integration",
+      "Google Reviews feed with ReviewRating schema",
+      "Yelp, BBB, and industry directory citation consistency audit",
+      "60 days post-launch monitoring with monthly report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000-$10,000+",
+    timeline: "8-10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited service and city pages across full territory",
+      "Multi-location schema for businesses with multiple offices",
+      "Custom quote or estimate workflow with conditional form logic",
+      "Full content migration with 301 redirect mapping from old site",
+      "Quarterly SEO reviews for 12 months post-launch",
+      "90 days post-launch support + first month care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+---
+<BaseLayout
+  title="Small Business Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland small businesses. LocalBusiness schema, lead generation forms, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Frederick, Annapolis."
+  canonicalUrl="https://upcomingbrand.com/industries/small-business-website-design/"
+>
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════════
+       SCHEMA
+  ══════════════════════════════════════════════ -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Upcoming Brand",
+    "description": "WordPress website design for Maryland small businesses. LocalBusiness schema, lead generation forms, 90+ PageSpeed. Fixed-scope from $1,500.",
+    "url": "https://upcomingbrand.com/industries/small-business-website-design/",
+    "areaServed": [
+      { "@type": "State", "name": "Maryland" },
+      { "@type": "City", "name": "Baltimore" },
+      { "@type": "City", "name": "Frederick" },
+      { "@type": "City", "name": "Annapolis" },
+      { "@type": "City", "name": "Bethesda" },
+      { "@type": "City", "name": "Columbia" }
+    ],
+    "priceRange": "$$",
+    "knowsAbout": [
+      "Small Business Website Design",
+      "WordPress Development",
+      "LocalBusiness Schema",
+      "Google Business Profile Optimization",
+      "Local SEO",
+      "Lead Generation"
+    ]
+  })} />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>Small Business Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            Small Business Web Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland small business websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to generate leads,</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">not just exist online.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most small business websites don't generate a single new customer — slow load times, no LocalBusiness schema, and contact forms that sit empty. We build WordPress sites for Maryland small businesses that rank in local search, load fast, and turn visitors into paying customers. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">LocalBusiness schema on every build</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website generating new business?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="sb-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="sb-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="sb-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="sb-name" name="name" placeholder="David Mercer" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="sb-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="sb-email" name="email" placeholder="david@mercerhvac.com" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="sb-business">Business name</label>
+              <input class="lfh-form-input" type="text" id="sb-business" name="business" placeholder="Mercer Heating &amp; Cooling" autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-business-type">Business type</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-business-type" data-name="business_type">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select business type</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Business type">
+                  <li class="lf-cs-opt" role="option" data-value="Home Services">Home Services</li>
+                  <li class="lf-cs-opt" role="option" data-value="Retail">Retail</li>
+                  <li class="lf-cs-opt" role="option" data-value="Professional Services">Professional Services</li>
+                  <li class="lf-cs-opt" role="option" data-value="Health &amp; Wellness">Health &amp; Wellness</li>
+                  <li class="lf-cs-opt" role="option" data-value="Auto Services">Auto Services</li>
+                  <li class="lf-cs-opt" role="option" data-value="Food &amp; Beverage">Food &amp; Beverage</li>
+                  <li class="lf-cs-opt" role="option" data-value="Personal Services">Personal Services</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="business_type" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key results">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">68<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of small business sites fail<br>Core Web Vitals</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">4.7<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More inquiries from businesses<br>in the Local Pack</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">88<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">Of customers research local<br>businesses online first</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">8<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call to live,<br>lead-generating site</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why customers leave before contacting</p>
+        <h2 class="h2-section">Why most small business websites fail to generate leads</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland small business website needs</h2>
+        <p class="lead">A small business site is not a brochure. It is a lead generation system. Every element we build — from schema to forms to city pages — is designed to do one job: turn a searching stranger into a paying customer.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Frederick, MD</p>
+          <h2 class="h2-section lf-case-h2">How Mercer Heating &amp; Cooling cut their ad spend by 60% while doubling their leads</h2>
+          <p class="lf-case-desc">
+            Mercer Heating &amp; Cooling, an HVAC company serving Frederick and Montgomery counties, came to us spending $3,500/month on Google Ads because their organic visibility was zero — no LocalBusiness schema, a 5.2-second mobile load time, and no city-specific pages for any of the 8 cities they served. Within 6 months of launch, their marketing economics had fundamentally changed.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+241%</span>
+              <span class="lf-cr-label mono-xs">Organic service inquiries</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">Pg 1</span>
+              <span class="lf-cr-label mono-xs">For 11 Frederick/Montgomery city searches</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.6s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 5.2s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">-60%</span>
+              <span class="lf-cr-label mono-xs">Ad spend cut from $3,500 to $1,400/month</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"I was spending $3,500 a month on Google Ads just to survive. Upcoming Brand built me city pages for every area I serve, fixed everything that was hurting my Google ranking, and set up my GBP properly for the first time. Six months later I cut my ad budget by 60% and I'm getting more calls than I was before. The website pays for itself every month."</p>
+            <footer>
+              <cite class="lf-cite-name">David Mercer</cite>
+              <span class="lf-cite-role mono-xs">Owner &middot; Mercer Heating &amp; Cooling &middot; Frederick, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/mercer-heating-cooling.png"
+            alt="Mercer Heating &amp; Cooling website redesign — Frederick HVAC"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site &middot; Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a lead-generating small business website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most clients are live within 8 weeks of their first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland small businesses</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">Complete Guide to Small Business Website Design in Maryland</h2>
+        <p class="lead">Everything Maryland small business owners need to know about building a website that works as a 24/7 sales tool, ranks in local search, and gives you a professional online presence without overpaying for features you don't need.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <!-- 1 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">What Small Maryland Businesses Actually Need from a Website</h3>
+          <p class="lf-guide-p">Most small business websites in Maryland fail at the same three fundamental jobs, not because the owners didn't try, but because the people who built the sites prioritized appearance over function. A website for a Maryland small business has to do exactly three things well, and if it misses any one of them, it becomes an expensive brochure that sits on the internet doing nothing.</p>
+          <p class="lf-guide-p">The first job is immediate clarity: a visitor who lands on your site should know within three seconds who you are, what you do, and what area of Maryland you serve. This sounds obvious, but the vast majority of small business sites bury this information. The owner knows their business so well they forget that a stranger arriving from a Google search has zero context. If your homepage doesn't state your service and your location in the first screen of content, you are losing customers before they ever read a word about you.</p>
+          <p class="lf-guide-p">The second job is conversion: giving customers a clear, frictionless way to contact you, request a quote, book an appointment, or make a purchase. A phone number that requires scrolling to find, a contact form buried on a separate page, or a site with no clear call-to-action at all will bleed leads. Local customers in Maryland are often ready to act when they search. They have a plumbing problem, they need a caterer, they need a landscaper before the weekend. If your site doesn't make it easy to reach you in the first thirty seconds, they move to the next result.</p>
+          <p class="lf-guide-p">The third job is discoverability: ranking in local search so new customers find you in the first place. This is where DIY website builders and Facebook Business Pages collapse under scrutiny. Wix and Squarespace templates are designed to look attractive, not to rank in local search. They offer limited control over the technical signals Google uses to evaluate local relevance, particularly LocalBusiness schema markup, which tells Google exactly what type of business you are, where you're located, and what hours you keep.</p>
+          <p class="lf-guide-p">Search behavior for local businesses is fundamentally different from national brand searches. When someone searches for a product from a national brand, they might be researching, comparing, or reading reviews over days or weeks. When someone searches "roof repair Annapolis" or "tax preparer Frederick MD," they are almost always ready to hire. The intent is high, the timeline is short, and the decision often comes down to who appears first and whose site builds the most trust in the shortest time.</p>
+          <p class="lf-guide-p">A Facebook Business Page cannot replace a website because you don't own it. Facebook controls the algorithm that determines whether your page appears in search, and that algorithm prioritizes Facebook's interests, not yours. Your page can be suspended, throttled, or buried behind paid posts at any time. More critically, a Facebook page cannot be indexed and ranked by Google the way a properly built website can. It cannot carry schema markup, it cannot be optimized for keyword-specific pages, and it cannot build domain authority over time.</p>
+          <p class="lf-guide-p">The difference between a website that looks good and one that generates business is measurable. A professionally built Maryland small business site with proper schema, a clear above-the-fold value proposition, mobile-first design, and a frictionless contact flow will consistently outperform a prettier site that lacks those fundamentals. Local customers are not judging your aesthetic taste. They are asking: "Is this business legitimate, do they serve my area, and can I reach them right now?" Your website needs to answer all three questions in under ten seconds.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Must-Have Pages for Maryland Small Business Websites</h3>
+          <p class="lf-guide-p">Every Maryland small business website needs a defined set of pages, each doing a specific job in the customer's journey from stranger to paying client. Getting the page structure right from the start saves significant rework later and builds a foundation that compounds in search visibility over time.</p>
+          <p class="lf-guide-p">The homepage is your most important page and your most visited. Above the fold, before any scrolling, it must communicate four things: what you do, who you serve, where you're located, and what the visitor should do next. The primary CTA — whether that's "Get a Free Quote," "Book a Consultation," or "Call Us Now" — needs to be visible without any action from the visitor. Everything else on the homepage exists to support that first conversion moment.</p>
+          <p class="lf-guide-p">Services pages carry significant SEO weight because they let you target specific keyword phrases. A landscaping company in Frederick, Maryland should have individual pages for "lawn maintenance," "hardscaping," and "tree trimming" rather than one combined services page, because each page can rank for its own set of searches. The rule of thumb: if a service has its own search demand, it earns its own page. If it's a minor add-on with no independent search volume, it lives on a parent services page.</p>
+          <p class="lf-guide-p">The about page is underestimated by small business owners and overvalued by designers. Its real job is trust. Local Maryland customers hire people they feel they know. An about page with a genuine photo of the owner or team, a real story about why you started the business, and specific mention of your Maryland roots consistently outperforms a generic "we are passionate about serving our clients" paragraph. People hire people.</p>
+          <p class="lf-guide-p">The contact page needs more than a form. It needs your phone number in large type, your email address, your physical address (if you have one), your operating hours, and an embedded Google Map. Every element that reduces uncertainty increases the likelihood of contact. Include a line about response time: "We reply within 4 business hours" removes the anxiety of not knowing whether you'll hear back.</p>
+          <p class="lf-guide-p">Additional pages that serve both users and SEO include a testimonials or reviews page (social proof at scale), an FAQ page (which directly intercepts search queries and reduces the pre-sale friction that kills leads), and a blog for publishing locally relevant content that accumulates search visibility over months and years. Don't overlook the thank-you page that appears after a form submission. It should confirm the submission, set a response time expectation, and offer a secondary action. A properly configured thank-you page also allows you to track form conversions in Google Analytics with precision. Finally, a 404 error page with clear navigation prevents visitors from hitting a dead end and leaving entirely.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">LocalBusiness Schema — The Foundation of Small Business SEO</h3>
+          <p class="lf-guide-p">LocalBusiness schema is the most important technical element most Maryland small business websites are missing. It is also one of the least understood. Schema markup is structured data, written in a format called JSON-LD and placed in your page's HTML head, that communicates directly with Google's indexing systems. Rather than waiting for Google to infer what your business is from your page text, schema tells Google explicitly: this is the type of business, this is the address, these are the hours, this is the phone number, these are the services.</p>
+          <p class="lf-guide-p">Google uses this information to power rich results in search — the Business Panel that appears on the right side of desktop search results, the Local Pack listings that appear above organic results for local searches, and the structured data that populates voice search responses. Without schema, Google is guessing. With schema, Google is reading a structured document that leaves nothing to interpretation.</p>
+          <p class="lf-guide-p">The key fields every Maryland small business schema implementation needs include: the business name, the @type (which tells Google what category of business you are), a structured PostalAddress object with your street, city, state, and zip, your telephone number, OpeningHoursSpecification for each day you're open, your website URL, a priceRange indicator, and an areaServed field that lists the Maryland cities and counties you serve. Getting all of these right transforms how Google understands and categorizes your business.</p>
+          <p class="lf-guide-p">Choosing the right @type is more important than most guides acknowledge. Google recognizes over 200 subtypes of LocalBusiness. A general contractor should not just use "LocalBusiness" when "GeneralContractor" exists. A dentist should use "Dentist" under "MedicalBusiness." A restaurant should use "Restaurant" rather than "FoodEstablishment." The more specific the type, the more accurately Google can match your business to the right searches. Using the wrong type is like filing in the wrong category at the library — you exist in the system but you're almost impossible to find.</p>
+          <p class="lf-guide-p">In WordPress, RankMath Pro is the most straightforward way to implement LocalBusiness schema correctly. It provides a structured interface for entering your business details and generates valid JSON-LD automatically. Once implemented, verify your schema using Google's Rich Results Test at search.google.com/test/rich-results. Paste your homepage URL and confirm that Google can read all your structured data without errors or warnings.</p>
+          <p class="lf-guide-p">Schema markup is distinct from meta tags, which is a common point of confusion. Meta tags (title, description) influence how your page appears in search results. Schema communicates the categorical and factual nature of your business to Google's knowledge graph. Both matter, but for local businesses specifically, correctly implemented LocalBusiness schema has a more direct path to influencing Local Pack eligibility, which is where the highest-value local traffic comes from. A Maryland small business site without LocalBusiness schema is leaving significant local search visibility on the table.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Google Business Profile — The Most Important Marketing Asset You're Not Optimizing</h3>
+          <p class="lf-guide-p">For most Maryland small businesses, Google Business Profile (GBP) is the single highest-leverage marketing asset available, and the majority of small business owners have either not claimed it, set it up incompletely, or left it dormant after the initial setup. The Local Pack, the three business listings that appear in a map section above organic search results for local queries, is where the most valuable local search traffic lives. Those positions are not determined primarily by your website — they are determined primarily by your GBP signals, review volume, and the accuracy and completeness of your profile.</p>
+          <p class="lf-guide-p">Setting up GBP correctly from the start prevents significant problems later. Start with your business name: use your real legal or trade name, with no keyword stuffing (adding "best plumber in Baltimore" to your business name violates Google's guidelines and can result in suspension). Category selection is the most consequential single decision in your GBP setup. Your primary category tells Google which searches to show you for, and choosing incorrectly means appearing for the wrong intent. A landscaper who selects "Lawn Care Service" instead of "Landscaper" will miss a significant portion of relevant local searches. Research which category your top competitors are using and what search queries each category tends to rank for.</p>
+          <p class="lf-guide-p">If you serve customers at their location rather than at a physical storefront, configure your profile as a Service Area Business and list the Maryland cities, counties, or zip codes you serve. If you have a physical location customers visit, enter your full address and verify it with the postcard Google mails to your address. Get this right from the start — changing your address or category after verification can reset your ranking signals temporarily.</p>
+          <p class="lf-guide-p">Photos have a dramatic, documented impact on GBP performance. According to Google's own data, businesses with more than 100 photos receive 520% more calls and 2,717% more direction requests than businesses with only 10 photos. For a Maryland small business, this means uploading photos of your team, your work, your equipment, your storefront, before-and-after project photos, and community involvement. Add new photos consistently over time. GBP rewards active profiles.</p>
+          <p class="lf-guide-p">GBP Posts allow you to publish promotions, announcements, new services, and events directly to your profile. These appear in search results and in the Knowledge Panel. They expire after seven days for standard posts, so publishing weekly keeps your profile active and gives Google fresh signals. The Q&A section is another underused tool: you can ask and answer your own questions there, effectively planting the search queries your customers use and answering them publicly. This content is indexed and can appear in featured snippets.</p>
+          <p class="lf-guide-p">Review management is not optional for competitive Maryland markets. Respond to every review, positive and negative, within 24 to 48 hours. Your response to a negative review is often more influential with potential customers than the review itself — a professional, non-defensive response signals that you take customer service seriously. Track your GBP Insights monthly to understand how customers are finding your profile (direct search vs. discovery search), what actions they take (website clicks, calls, direction requests), and how your photo views compare to businesses in your category. This data connects directly to your website traffic and helps you understand which GBP optimizations are actually moving the needle.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">How Much Should a Small Maryland Business Website Cost</h3>
+          <p class="lf-guide-p">The question Maryland small business owners ask most often is also the one with the most misleading answers. Website pricing varies so dramatically, from $0 to $50,000, that the range itself is almost meaningless. What matters is understanding what you're actually buying at each price point and what the total cost of ownership looks like over three to five years, not just at launch.</p>
+          <p class="lf-guide-p">DIY website builders like Squarespace ($23 to $65 per month) and Wix ($17 to $159 per month) advertise their subscription costs as the primary expense. They omit the most significant cost: your time. Building a small business website on a template platform, even with a template, takes most non-technical business owners between 20 and 40 hours. At even a modest estimate of your hourly value, that represents a real expense. Beyond the time cost, template platforms have meaningful limitations for local SEO: limited or no control over schema markup, restricted access to technical SEO settings, poor Core Web Vitals performance by default, and the long-term risk of being locked into a platform you can't migrate from without rebuilding from scratch.</p>
+          <p class="lf-guide-p">A template-based WordPress site built by a freelancer typically costs between $500 and $1,500. At this price point you're getting the technical build but usually not copywriting, photography, SEO setup, or schema implementation. The site will look functional, but without those elements it will likely not rank competitively. You may also be working with someone who builds sites as a side project, which affects support availability and quality of output. Ask specifically what is and isn't included before signing anything.</p>
+          <p class="lf-guide-p">A custom WordPress build from an established agency ranges from $1,500 to $5,000 or more for a small business site. What drives cost upward: custom design (vs. using a premium theme), the number of pages, complexity of functionality (online booking, e-commerce, membership areas), copywriting, professional photography, SEO setup, and schema implementation. A well-scoped small business site, typically five to eight pages with copywriting and SEO setup, falls in the $2,500 to $4,000 range with a reputable Maryland-area agency.</p>
+          <p class="lf-guide-p">Most agency quotes include the design and build but exclude several items that are essential for the site to perform. Confirm whether your quote includes: copywriting for all pages, SEO setup including keyword research and on-page optimization, LocalBusiness schema implementation, Google Analytics and Search Console configuration, and ongoing maintenance. These exclusions are not deceptive — they are genuine scope decisions — but not knowing about them leads to surprise costs after launch.</p>
+          <p class="lf-guide-p">The most useful comparison is not $1,500 vs. $3,000 at launch — it's what each option costs over three years and what each one generates in return. A $500 template site that never ranks and never generates a lead costs effectively as much as the three years of hosting and domain you paid for it. A $3,000 custom site that ranks for competitive Maryland local searches and generates ten new customer inquiries per month has a return on investment that makes the upfront cost trivial within the first quarter. Evaluate proposals by what deliverables are included and what results are realistic, not by which number is lowest.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">WordPress vs. Squarespace vs. Wix for Maryland Small Businesses</h3>
+          <p class="lf-guide-p">The platform debate is one of the most common conversations Maryland small business owners have before launching a site, and most of the advice online is written by people with a vested interest in one platform over another. Here is an honest assessment of each option as it applies specifically to a local small business competing in Maryland markets.</p>
+          <p class="lf-guide-p">WordPress powers roughly 43% of all websites on the internet, and for good reason. It offers complete control over every technical element that matters for local SEO: custom schema markup, full access to server configuration, a plugin ecosystem that includes every tool a local business could need (RankMath for SEO, Wordfence for security, WPForms for lead capture, and hundreds more), and no platform lock-in. When you build on WordPress, you own your site. You can move it to a different host, hand it off to a different developer, or customize it to any degree you need. The weaknesses are real: WordPress requires ongoing maintenance (core, theme, and plugin updates), it has a steeper learning curve for non-technical owners who want to make their own edits, and a poorly maintained WordPress site is the most common vector for small business website hacks.</p>
+          <p class="lf-guide-p">Squarespace produces genuinely beautiful templates and is legitimately easier to manage on an ongoing basis than WordPress. For a Maryland business where aesthetics are paramount, such as a photographer, event planner, or boutique retailer, Squarespace's visual templates can give you a polished online presence faster than any other option. The limitations matter, however: schema control is minimal, local SEO configuration is surface-level, and if you ever want to migrate off Squarespace to a platform with more capability, you are effectively rebuilding from scratch. Squarespace does not export in a format that transfers cleanly to WordPress.</p>
+          <p class="lf-guide-p">Wix is the easiest platform to use and the hardest to outgrow gracefully. Its drag-and-drop editor is genuinely accessible for non-technical users, and for a brand-new business testing a concept with no marketing budget, a Wix site is better than no site. The technical problems accumulate quickly, though: Wix sites consistently score poorly on Core Web Vitals, which directly affects both search ranking and user experience. Schema support is limited. The codebase it generates is bloated by design. And like Squarespace, migration off Wix is effectively a full rebuild.</p>
+          <p class="lf-guide-p">The right platform for a Maryland small business depends on your situation. If you're a new business with no competition and no budget, a Wix or Squarespace site gets you online quickly and cheaply. If you are actively competing for local keywords, have a physical location, take online leads seriously, or plan to invest in content marketing over time, WordPress is the correct choice. The platform lock-in risk of Squarespace and Wix is often underweighted in these decisions. Starting on a platform you'll eventually need to leave costs you twice: once for the original build, and again for the rebuild when you outgrow it.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Local SEO for Maryland Small Businesses — The Complete Picture</h3>
+          <p class="lf-guide-p">Local SEO is the set of practices that determine whether your business appears when Maryland customers search for what you offer in your area. It is distinct from general SEO in that it relies on three interconnected signals: what your website communicates, what your Google Business Profile communicates, and what the broader internet says about your business through citations and reviews.</p>
+          <p class="lf-guide-p">The way Maryland customers find local businesses has shifted significantly. The most common pathways are Google Maps (where the Local Pack listings appear), "near me" searches (which are location-aware and return results based on the searcher's current position), and city-plus-service searches ("HVAC repair Rockville," "personal injury attorney Bethesda"). Each of these search types relies on different signals, which is why local SEO requires attention to multiple systems simultaneously rather than just optimizing your website in isolation.</p>
+          <p class="lf-guide-p">On-page optimization for local businesses means including your city and service keywords in your page titles, meta descriptions, H1 headings, and body copy in a natural way. It means having location-specific content on your homepage and on dedicated city landing pages if you serve multiple Maryland markets. It means your NAP (Name, Address, Phone) matching exactly what appears on your Google Business Profile, because inconsistencies across the web confuse Google's local algorithm and dilute your ranking signals.</p>
+          <p class="lf-guide-p">Local citations are mentions of your business name, address, and phone number on other websites. The most important citation sources for Maryland small businesses are Yelp, the Better Business Bureau, Facebook, your local chamber of commerce (the Maryland Chamber of Commerce and your county-level chamber), and any industry-specific directories relevant to your category. These citations act as corroborating evidence for Google that your business exists, is located where you say it is, and is active. The key requirement is consistency: your business name, address, and phone must appear in identical format across every citation source. Even minor variations ("St." vs. "Street," "(301) 555-0100" vs. "301-555-0100") can create duplicate listings that split your citation signals.</p>
+          <p class="lf-guide-p">Review signals are among the most significant local ranking factors Google uses. Volume, recency, and your response rate all contribute. A Maryland business with 50 reviews averaging 4.7 stars, with consistent owner responses, will consistently outrank a business with 12 reviews and no responses, all else being equal. Building a review generation system — asking satisfied customers at the right moment, sending a follow-up text or email with a direct link to your GBP review form — is one of the highest-ROI activities a Maryland small business owner can invest twenty minutes a week in.</p>
+          <p class="lf-guide-p">Timeline expectations for local SEO in Maryland vary significantly by market size. In smaller Maryland markets, such as Cumberland, Hagerstown, or Easton, a properly optimized site can begin appearing in local search results within four to six weeks of launch. In Baltimore city and competitive suburban markets like Montgomery County, realistic expectations are three to six months for meaningful movement and six to twelve months for competitive keyword dominance. Tools like Google Search Console (free) track how your site is performing in search, and BrightLocal or Whitespark can help manage citation building and track local keyword rankings across Maryland zip codes.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Contact Page Design That Converts Visitors Into Customers</h3>
+          <p class="lf-guide-p">The contact page is the most consequential page on a small business website and the one most frequently treated as an afterthought. A poorly designed contact page is the final barrier between a motivated local customer and a new business relationship. Every friction point on that page — a phone number that requires scrolling to find, a form with eight required fields, no indication of when you'll respond — reduces conversions measurably. For a local business where each lead has real dollar value, the contact page deserves the same design attention as the homepage.</p>
+          <p class="lf-guide-p">The single most important element on a small business contact page is a large, visible phone number. Local customers, particularly those on mobile, prefer calling over filling out a form. The phone number should be in a large font size (24px minimum), positioned at the top of the page before any other content, and formatted as a tap-to-call link on mobile (using an href="tel:" attribute) so that tapping it on a smartphone immediately initiates a call. If your phone number requires scrolling, zooming, or searching to find, you are losing calls every day.</p>
+          <p class="lf-guide-p">Contact forms should be short. Three to four fields is the optimal length for a small business inquiry form: name, phone or email (choose one, not both as required fields), their service interest (a dropdown), and a brief message field. Each additional required field reduces form completion rate measurably. The research on form length is consistent across industries: cutting from seven fields to four fields can increase completions by 120%. If you need more information to properly qualify a lead, get it on the follow-up call, not on the form.</p>
+          <p class="lf-guide-p">Set a response time expectation clearly and honestly. "We respond within 4 business hours" or "We'll be in touch by the next business day" removes the anxiety of submitting a form into a void. This single line of text increases form submission rate because it answers the implicit question every visitor has: "Will anyone actually see this?" Pair it with a photo of a real team member to add a human face to the promise.</p>
+          <p class="lf-guide-p">Configure your form to send instant email and text notifications when a submission arrives. WPForms and Gravity Forms both support SMS notifications through integrations with Twilio or similar services. For local service businesses where speed to response is a competitive advantage, receiving an immediate text notification when a lead comes in and calling back within minutes dramatically increases close rates compared to responding hours later when the customer has already hired someone else.</p>
+          <p class="lf-guide-p">Connect your contact form submissions to a tracking system from day one. At minimum, configure a Google Analytics conversion event to fire on the thank-you page after form submission. For more robust lead management, integrate your form with a simple CRM or even a Google Sheet using Zapier. This gives you a complete record of every inquiry with date, time, and the referral source, so you can measure which marketing activities are actually generating leads and which are generating traffic that never converts. An embedded Google Map, your operating hours, and a brief "what to expect after you contact us" description round out a contact page that builds trust and converts at a high rate.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Mobile-First Design for Local Business Customers</h3>
+          <p class="lf-guide-p">Between 60% and 70% of local searches happen on mobile devices, and a significant portion of those searches happen in the moment of need — someone standing in a parking lot, sitting in their car, or walking down the street in downtown Annapolis trying to find a nearby service. This is the customer you are most likely to lose if your site doesn't perform perfectly on a phone. The urgency of local intent combined with the impatience of mobile users creates a brief, high-stakes window in which your website either earns the customer's contact or loses them to a competitor whose site loads faster and is easier to navigate.</p>
+          <p class="lf-guide-p">Mobile-first design is not the same as "mobile-friendly." Mobile-friendly means your site doesn't break on a phone. Mobile-first means the design process started with the smallest screen as the primary context, and the desktop version was built as a scaled-up adaptation of that mobile experience. The practical difference is significant: a mobile-first site has a clear visual hierarchy, large tap targets, readable font sizes without zooming, and a contact mechanism within one or two taps of landing. A merely mobile-friendly site is often a desktop design that has been compressed to fit a smaller screen, with the resulting font size and usability problems that come from that approach.</p>
+          <p class="lf-guide-p">The most common mobile failures on Maryland small business sites are consistent and fixable. Text that is too small to read without pinching to zoom is a signal failure that drives immediate exits. Buttons that are too close together cause mis-taps, which is frustrating enough to end a session. Horizontal scrolling, where the page is wider than the screen, is almost always caused by an element (often an image or table) that has not been made responsive. Forms that don't scale correctly on iOS — particularly the zoom-in behavior that iOS triggers when a form field is smaller than 16px — interrupt the conversion flow at the worst possible moment.</p>
+          <p class="lf-guide-p">Audit your current site's mobile experience using Google's Mobile-Friendly Test (search.google.com/test/mobile-friendly) and by actually testing on multiple real devices — both iOS and Android, in both portrait and landscape orientation. Emulators in Chrome DevTools are useful but not a substitute for real device testing. What looks fine in an emulator sometimes fails on an actual iPhone or Samsung Galaxy due to OS-level rendering differences.</p>
+          <p class="lf-guide-p">Click-to-call functionality is not optional for local businesses. Every phone number on your mobile site should be wrapped in an anchor tag with href="tel:[your number]" so that tapping it immediately initiates a phone call. This seems like a small detail but it removes a friction point that many potential customers will not bother to work around. If they have to manually dial a number they read off your site, some percentage of them won't bother.</p>
+          <p class="lf-guide-p">Mobile performance directly affects your Local Pack ranking position. Google's algorithm uses Core Web Vitals as a ranking signal, and the Core Web Vitals measurements that matter are measured on mobile, not desktop. A slow-loading small business site is being penalized in local search regardless of how good its other signals are. Page speed, Largest Contentful Paint (how quickly the main content appears), and Cumulative Layout Shift (how much the page jumps around while loading) are all measurable and improvable. A properly built WordPress site on quality hosting should achieve green scores on all three without heroic effort.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">DIY vs. Hiring a Professional — A Realistic Assessment</h3>
+          <p class="lf-guide-p">The honest answer to "should I build my own website or hire someone?" is: it depends on what your website needs to accomplish. The reflexive answer from any web design agency is that you should hire them. The reflexive answer from DIY platform marketing is that you can do it yourself in an afternoon. Both are selling you something. The realistic answer requires examining your specific situation against four variables: your budget, your competition, your technical comfort, and your time.</p>
+          <p class="lf-guide-p">DIY is genuinely the right choice in a limited set of circumstances. If you are launching a brand-new business with no revenue yet, building a temporary site while you validate your concept makes financial sense. If you serve a local niche with no meaningful online competition, a basic Squarespace or Wix site may rank simply because nothing better exists in that keyword space. If your business model doesn't rely on online lead generation — say, you operate entirely on referrals and have no intention of investing in local search — then a simple DIY site that functions as a digital business card is entirely adequate.</p>
+          <p class="lf-guide-p">Professional build is worth the investment when any of the following are true. You are competing for local keywords against established Maryland businesses that already have well-optimized sites. You have a physical storefront and local customers are your primary revenue source. You have tried DIY and your site is not appearing in search results after several months of being live. You take online leads seriously and the cost of a single good customer relationship exceeds the cost of professional web design. In any of these situations, the cost of a professionally built site is recovered quickly through incremental leads that a DIY site would not generate.</p>
+          <p class="lf-guide-p">The hidden cost of DIY is the most consistently underestimated factor in this decision. Building a credible small business website on a template platform, accounting for initial setup, writing all the copy, sourcing and editing photos, configuring the contact form, testing across devices, and setting up Google Analytics, takes most non-technical business owners between 20 and 40 hours for a basic site. That doesn't count the ongoing time for updates and maintenance. At $50 to $100 per hour of business owner time — a conservative estimate for most established entrepreneurs — that's $1,000 to $4,000 in time cost for a site that still may not rank competitively.</p>
+          <p class="lf-guide-p">When evaluating a professional web design proposal as a first-time buyer, focus on deliverables, not design samples. Ask specifically: what pages are included, who writes the copy, is SEO setup included, is schema markup implemented, what does support look like after launch, and what does the maintenance relationship look like after the first month? A good agency will answer these questions clearly and include them in the contract. A less careful one will be vague about scope and clear only about price.</p>
+          <p class="lf-guide-p">What a good agency will tell you that a bad one won't: your website alone won't generate business without a Google Business Profile that is properly configured, your site will need ongoing attention to maintain and grow its search visibility, realistic timelines for local SEO are months not weeks, and copywriting quality matters as much as design quality. If an agency promises page-one rankings in thirty days or tells you that a five-page site with a stock template will outrank your established competitors, those are warning signs, not selling points.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Website Security for Small Businesses</h3>
+          <p class="lf-guide-p">Small businesses are among the most frequently targeted victims of automated website attacks, and most small business owners don't discover there is a problem until significant damage has already occurred. The assumption that hackers only target large companies or high-profile sites is the most dangerous misconception in small business website ownership. Automated bots scan every publicly accessible WordPress installation on the internet around the clock, probing for known vulnerabilities in outdated plugins, weak passwords, and unpatched core software. The target is not you personally — it's any site that can be compromised and used as infrastructure for spam distribution, malware hosting, or further attacks.</p>
+          <p class="lf-guide-p">The consequences of a compromised small business website are serious and often disproportionate to the size of the business. Google will blacklist a site that is serving malware or spam links, removing it from search results entirely. This means not only does your site stop generating leads — it actively disappears from the internet until the infection is cleaned and the blacklisting is appealed, a process that can take days to weeks. If your site collects customer data through a contact form or e-commerce system, a breach creates potential liability. And the reputational damage of customers seeing a "this site may harm your computer" warning in their browser is difficult to recover from quickly.</p>
+          <p class="lf-guide-p">The WordPress security fundamentals every Maryland small business site needs are not complicated, but they must all be in place simultaneously to be effective. Strong, unique passwords for every admin account are the first line of defense. Two-factor authentication, available through plugins like WP 2FA, adds a second layer that stops credential-stuffing attacks even when a password is compromised. A limit on login attempts, which Wordfence or Limit Login Attempts Reloaded can provide, blocks brute-force attacks from trying thousands of password combinations automatically. Wordfence Free provides a web application firewall and malware scanner that catches the vast majority of common attack patterns.</p>
+          <p class="lf-guide-p">Outdated plugins are the single most common entry point for WordPress site compromises. Every plugin that hasn't been updated to patch a known security vulnerability is an open door. This is not theoretical — the WPScan vulnerability database lists thousands of known WordPress plugin vulnerabilities, and automated bots check for them continuously. Keeping every plugin, theme, and WordPress core installation updated is not optional maintenance — it is the primary security measure. Sites that go months without updates in a competitive plugin ecosystem are effectively running with unlocked doors.</p>
+          <p class="lf-guide-p">Automated backups to an off-site location are your recovery mechanism when everything else fails. The backup must be stored somewhere other than your hosting server, because if the server is compromised, an on-server backup is compromised along with it. UpdraftPlus is the most widely used WordPress backup plugin and supports automated daily backups to Google Drive, Dropbox, Amazon S3, or remote FTP servers. Configure backups to run daily and retain at least fourteen days of backup history. Test your restore process at least once — knowing theoretically that backups exist is not the same as knowing that your restore works.</p>
+          <p class="lf-guide-p">If your site is hacked, the recovery sequence matters. Restore from a clean backup taken before the compromise occurred. Identify the entry point by examining server logs and the WPScan report for the vulnerability that was exploited. Change all passwords immediately after restoration. Update everything — core, themes, plugins — to their current versions before bringing the site back online. Submit a review request to Google Search Console if the site was blacklisted. Then implement the hardening measures that would have prevented the attack in the first place. A monthly care plan that includes managed updates, automated backups, and active security monitoring prevents the vast majority of small business site hacks before they happen.</p>
+        </div>
+
+        <!-- 12 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Growing Your Small Business Website Over Time</h3>
+          <p class="lf-guide-p">The most persistent misconception Maryland small business owners carry into a web design project is that a website is a one-time purchase that, once launched, functions indefinitely on its own. The reality is more dynamic and more rewarding for businesses that understand it: a website is a compounding asset that grows in value proportionally to the ongoing attention it receives. The search algorithms that determine your visibility evolve. Your competitors are publishing content and acquiring links. New customers are asking new questions in search engines. The site you launched two years ago, left unchanged, is falling behind in all of these dimensions simultaneously.</p>
+          <p class="lf-guide-p">Content compounding is the most powerful growth mechanism available to a Maryland small business with a modest marketing budget. Every service page, local landing page, and blog post you publish adds permanently to your site's total search surface area. A blog post answering "how much does a deck cost in Maryland" written today may not generate significant traffic immediately, but six months from now it may be ranking on page one for that query and generating several new project inquiries per month. Multiply this effect across fifteen, twenty, or thirty pieces of well-researched local content and the cumulative impact on your lead flow becomes substantial. Unlike paid advertising, this traffic doesn't stop when you stop paying — it compounds.</p>
+          <p class="lf-guide-p">Google Search Console is the single most valuable free tool for growing a small business website, and most small business owners have it configured but never log in. The Performance report in Search Console shows you every search query for which your site appeared in Google results, how many times it appeared, and how many times someone clicked through to your site. The most actionable data is in the gap between high impressions and low clicks: these are queries where your site is already appearing but not compelling enough to click. Improving the page title and meta description for those pages, or publishing more comprehensive content targeting those queries, often generates meaningful traffic gains quickly because the underlying ranking is already partially established.</p>
+          <p class="lf-guide-p">As your Maryland service area expands, city-specific landing pages let you capture local search traffic in new markets without starting over. A home services business that begins in Rockville and expands into Gaithersburg, Silver Spring, and Bethesda should have a dedicated landing page for each city, each with genuinely localized content (mentioning local neighborhoods, referencing local knowledge, including the city in headings and schema areaServed fields). These pages, built correctly, can rank in their respective city's Local Pack and organic results within months of publication.</p>
+          <p class="lf-guide-p">The care plan model exists precisely to support this compounding growth. A monthly arrangement that includes WordPress core and plugin updates, weekly backups, uptime monitoring, and a monthly content piece — a blog post, a new service page, an updated testimonials section — is the operating model that separates small businesses whose websites grow in value from those whose sites stagnate. The monthly investment is modest relative to the value of a single new customer relationship in most Maryland service categories.</p>
+          <p class="lf-guide-p">Measuring whether your website is actually generating business requires more than checking your traffic numbers. Configure call tracking so you know which phone calls originated from your website (CallRail is the industry standard; a basic setup costs around $45/month and gives you a trackable number that forwards to your real line). Configure GA4 conversion events for form submissions, phone clicks, and map direction requests. Review these metrics monthly, not annually, so you can identify what's working and what needs adjustment before spending months on a strategy that isn't moving the needle. A properly optimized Maryland small business website, actively maintained and grown with consistent content, should show a meaningful increase in qualified leads within three to six months of launch, and that growth should accelerate through the first twelve months as content accumulates and your domain's local authority builds.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland small business owners ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">5</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`lf-faq-${i}`}
+                  id={`lf-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`lf-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`lf-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Small business websites &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Build a small business website that generates customers, not just traffic.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know your local market and your customers</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts — month-to-month after launch</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your market, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-small-business" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="cta-name">Your name</label>
+                <input class="lf-form-input" type="text" id="cta-name" name="name" placeholder="David Mercer" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="cta-email">Email address</label>
+                <input class="lf-form-input" type="email" id="cta-email" name="email" placeholder="david@mercerhvac.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="cta-business">Business name &amp; type</label>
+              <input class="lf-form-input" type="text" id="cta-business" name="business" placeholder="Mercer Heating &amp; Cooling &middot; HVAC" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="cta-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="cta-message" name="message" rows="3" placeholder="Slow load times, not ranking in local search, no contact form, outdated design..."></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Small Business</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+/* ══════════════════════
+   GUIDE
+══════════════════════ */
+.lf-guide { background: var(--cream-soft); }
+.lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+.lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+.lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+.lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+.lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+.lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+.lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Business type custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>

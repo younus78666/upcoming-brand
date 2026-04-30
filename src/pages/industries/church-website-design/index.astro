@@ -1,0 +1,2335 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "No one finds your service times when searching nearby.",
+    body: "When someone searches 'Baptist church near me in Columbia MD,' Google shows churches with complete local schema and optimized Google Business Profiles — not the church whose site has service times buried in a PDF. If your location, denomination, and worship schedule aren't structured for Google to read, you're invisible to the people actively looking for a new church home.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "Sermon archives nobody can find or navigate.",
+    body: "A sermon archive is one of the highest-traffic sections of a church website — and most are unusable. No search, no filter by series or speaker, videos that only work on one device, and pages that load in 8 seconds because of unoptimized video embeds. We build archives with properly tagged posts, fast YouTube/Vimeo embeds, and a filter UI that actually works on phones.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "Online giving that loses donations at checkout.",
+    body: "If your giving page is a confusing embedded form, redirects to a third-party site with no branding, or breaks on mobile — you're losing recurring givers at the moment of commitment. We integrate Tithe.ly, Pushpay, or Stripe-based giving directly into your WordPress site, with a mobile-optimized checkout that matches your brand and supports one-time and recurring gifts.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "Church and Place of Worship schema on every page",
+    body: "Every page receives Church, LocalBusiness, and Event JSON-LD schema markup — denomination, service times, address, contact, and upcoming events. This is what enables Google to show your church in the local 3-pack for searches like 'Sunday service Annapolis MD' and in Google Maps for people actively looking for a new church home. Without structured data, you're relying on Google to guess your service times from unstructured text.",
+    tags: ["Church schema", "LocalBusiness markup", "Event schema"],
+  },
+  {
+    num: "02",
+    title: "Online giving with Tithe.ly, Pushpay, or Stripe integration",
+    body: "We integrate your preferred giving platform — Tithe.ly, Pushpay, or a custom Stripe-powered form — directly into your WordPress site. The giving experience is fully branded, mobile-optimized, and supports one-time gifts, recurring tithing, and designated fund giving. No jarring redirects, no generic third-party forms. We test every payment flow on iOS Safari and Android Chrome before launch.",
+    tags: ["Tithe.ly integration", "Recurring giving", "Mobile checkout"],
+  },
+  {
+    num: "03",
+    title: "Sermon archive with search, filter, and fast video",
+    body: "We build sermon archives that people actually use: filter by series, speaker, scripture reference, or date. Sermons use WordPress custom post types with properly tagged taxonomy, so your archive scales to hundreds of messages without becoming a wall of links. Videos embed as lightweight facades — full YouTube or Vimeo quality, with load times that don't punish mobile visitors.",
+    tags: ["Custom post types", "Video optimization", "Sermon taxonomy"],
+  },
+  {
+    num: "04",
+    title: "Event calendars that sync with Google Calendar",
+    body: "Church calendars are complex: recurring events, multi-venue gatherings, registration links, and volunteer signups — all needing to stay current. We build event systems that sync bidirectionally with Google Calendar, support RSVP and registration, and display correctly on every screen. The calendar is editable by your staff without touching code.",
+    tags: ["Google Calendar sync", "Event registration", "Staff-editable"],
+  },
+  {
+    num: "05",
+    title: "Ministry and small group directory pages",
+    body: "First-time visitors want to know if there's a community for them — a men's group, a young adults ministry, a recovery program. We build ministry directory pages with consistent structure, photos, meeting times, and contact forms per ministry. Each page is independently SEO-optimized so they rank for specific ministry-type searches in your city.",
+    tags: ["Ministry pages", "Small group directory", "SEO-optimized"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals green on delivery — guaranteed",
+    body: "We guarantee your site launches with green Core Web Vitals scores across LCP, INP, and CLS — or we fix it at no cost before launch. Church sites frequently fail these metrics because of large hero images, unoptimized sermon video embeds, and heavy plugin stacks. Our builds use server-side rendering, WebP images, CDN-delivered assets, and LCP under 2.5 seconds on mobile.",
+    tags: ["Core Web Vitals", "LCP < 2.5s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Site audit + ministry mapping",
+    body: "We audit your current site for Core Web Vitals, schema gaps, and local SEO issues. We map your ministry structure — service times, campuses if applicable, key programs — and identify the queries people in your area are using to find a new church home. You receive a written strategy document covering page structure, local SEO priorities, and giving integration recommendations.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1–2",
+    title: "AI-assisted designs + content plan",
+    body: "We use AI-assisted design to generate and refine your homepage and key section pages — built around your congregation's identity and the local competitive landscape. Simultaneously, we map your ministry pages, sermon archive structure, and event calendar architecture. You review both in one consolidated feedback round.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2–7",
+    title: "Full WordPress build + giving integration",
+    body: "Approved designs go into WordPress on our performance stack. We build your giving integration, sermon archive with custom taxonomies, event calendar with Google Calendar sync, and ministry directory. Church and Event schema markup is implemented on every relevant page. Staff training documentation is written as we build.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 7–9",
+    title: "Launch, GBP optimization + staff handoff",
+    body: "We handle DNS cutover, 301 redirect mapping from your old URLs, and sitemap submission to Google Search Console. Your Google Business Profile is audited and fully optimized — denomination, service times, photo metadata, Q&A. You receive a video walkthrough and a 30-day post-launch monitoring window.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "SEO",
+    q: "How do we get our church to show up in Google Maps for local searches?",
+    a: "The primary lever is Church and LocalBusiness JSON-LD schema on your homepage and contact page, combined with a fully optimized Google Business Profile. Your GBP needs the correct primary category (Religious Organization or the specific denomination), complete service times in the 'Hours' section, a consistent NAP (Name, Address, Phone) matching your website, and at minimum 10+ photos with descriptive file names. We handle all of this as part of every project. Competitive markets like Baltimore may take 3–5 months for consistent Local Pack presence; smaller Maryland markets like Frederick or Salisbury often move in 60–90 days.",
+  },
+  {
+    num: "02",
+    category: "Giving",
+    q: "Which online giving platform do you recommend — Tithe.ly, Pushpay, or something else?",
+    a: "Tithe.ly is our default recommendation for most churches — it has the best WordPress integration, reasonable transaction fees (about 1% + standard payment processor fees), and supports text giving, recurring pledges, and designated funds out of the box. Pushpay is stronger for larger congregations with complex multi-campus giving or integration with ChMS platforms like Planning Center. If budget is the primary concern, we can build a Stripe-powered custom giving form that has no platform fee — just standard Stripe processing rates. We discuss your congregation size and giving volume during Discovery and recommend the right fit.",
+  },
+  {
+    num: "03",
+    category: "Platform",
+    q: "Can our staff update the site without knowing how to code?",
+    a: "Yes — that is a core design requirement for every church site we build. Your staff will manage the site through the WordPress admin interface, with Elementor's visual editor for design changes and a structured editorial workflow for sermon posts, event entries, and ministry pages. We provide a plain-English admin manual, a recorded walkthrough video, and a 30-minute live training call with your key staff members. Most church staff are comfortable managing their own content within a week.",
+  },
+  {
+    num: "04",
+    category: "Sermon Archive",
+    q: "How do you handle a sermon archive with hundreds of past messages?",
+    a: "We build sermon archives using WordPress custom post types with a taxonomy system covering series, speaker, scripture reference, topic, and date. Past sermons can be migrated from your existing site, a YouTube channel, or a spreadsheet — we handle the import and tagging. The archive includes a filter UI that works on every device and a search field scoped to sermons only. We optimize video embeds as lightweight facades so the archive loads fast regardless of how many entries it contains.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What happens after the site launches — do you offer ongoing support?",
+    a: "Yes. Our care plans start at $150/month and cover WordPress core and plugin updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. For churches, we also offer a content add-on that includes one new event series page, ministry page, or location page per month. This compounds your SEO footprint and keeps your site feeling current throughout the church calendar year. Plans are month-to-month — no annual contract required.",
+  },
+  {
+    num: "06",
+    category: "Migration",
+    q: "We're on Squarespace or a church-specific platform — how complex is moving to WordPress?",
+    a: "Straightforward in most cases. We map your current URL structure, implement 301 redirects for every existing page, and migrate your sermon archive if it's in a format we can export. Church-specific platforms like Clover Sites, Nucleus, or Church Community Builder vary in export quality — we assess your specific platform during Discovery and give you an honest estimate of migration complexity. The most common risk is sermon archive loss, which we mitigate with a content audit before any files are touched.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":            { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Giving":         { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":       { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Sermon Archive": { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Care Plans":     { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Migration":      { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 6 pages: Home, About, Sermons, Events, Ministries, Give",
+      "Church + LocalBusiness JSON-LD schema",
+      "Online giving integration (Tithe.ly, Pushpay, or Stripe)",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Calendar event sync",
+      "Google Search Console + Analytics 4 setup",
+      "30 days post-launch support window",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 16 pages · sermon archive + ministry directory",
+      "Church + Event JSON-LD schema, location-mapped",
+      "Sermon archive with custom taxonomies and filter UI",
+      "Full ministry and small group directory",
+      "Event calendar with RSVP and Google Calendar sync",
+      "Google Business Profile audit + Local Pack optimization",
+      "60 days post-launch monitoring with monthly performance report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Multi-campus schema + GBP for up to 4 locations",
+      "Custom ChMS integration (Planning Center, Breeze, etc.)",
+      "Live streaming page setup with chat and giving sidebar",
+      "Advanced sermon archive with member access areas",
+      "Full content migration from existing platform",
+      "Staff training for multiple roles (admin, content, events)",
+      "90 days post-launch support + first month of care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+---
+<BaseLayout
+  title="Church &amp; Faith Organization Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland churches and faith organizations. Sermon streaming, event calendars, online giving, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick."
+  canonicalUrl="https://upcomingbrand.com/industries/church-website-design/"
+>
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>Church Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            Church Web Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland church websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to welcome, connect,</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">and grow your congregation.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most church websites are outdated, hard to update, and invisible in local search. We build WordPress sites for Maryland faith organizations that load fast, rank for local worship searches, and make it easy for visitors to find service times, give online, and get involved. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Church schema on every build</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope pricing &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website welcoming new visitors?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="church-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="church-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ch-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="ch-name" name="name" placeholder="Pastor Johnson" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ch-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="ch-email" name="email" placeholder="pastor@mychurch.org" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="ch-org">Church name</label>
+              <input class="lfh-form-input" type="text" id="ch-org" name="church" placeholder="Grace Fellowship Church" autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-denomination">Denomination / tradition</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-denomination" data-name="denomination">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select denomination</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Denomination / tradition">
+                  <li class="lf-cs-opt" role="option" data-value="Non-Denominational">Non-Denominational</li>
+                  <li class="lf-cs-opt" role="option" data-value="Baptist">Baptist</li>
+                  <li class="lf-cs-opt" role="option" data-value="Methodist">Methodist</li>
+                  <li class="lf-cs-opt" role="option" data-value="Catholic">Catholic</li>
+                  <li class="lf-cs-opt" role="option" data-value="Episcopal">Episcopal</li>
+                  <li class="lf-cs-opt" role="option" data-value="Lutheran">Lutheran</li>
+                  <li class="lf-cs-opt" role="option" data-value="Presbyterian">Presbyterian</li>
+                  <li class="lf-cs-opt" role="option" data-value="Pentecostal / Charismatic">Pentecostal / Charismatic</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other / Multiple">Other / Multiple</li>
+                </ul>
+                <input type="hidden" name="denomination" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key results">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">68<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of church websites have<br>no local schema</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">3<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More first-time visitors from sites<br>with service times above the fold</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">6<span class="lfh-amb">sec</span></div>
+          <div class="lfh-stat-lbl">Avg load time on<br>church sites we audit</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">8<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call to a live,<br>optimized church website</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why visitors leave before visiting</p>
+        <h2 class="h2-section">Why most church websites fail Maryland congregations</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland church website needs</h2>
+        <p class="lead">A church website is not a bulletin. It is the first impression for every person searching for a new faith community. Every element we build — from schema to giving integration to sermon archives — is designed to do one job: turn a searching stranger into a first-time visitor.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Baltimore, MD</p>
+          <h2 class="h2-section lf-case-h2">How Grace Fellowship Church tripled first-time visitor contact forms in 60 days</h2>
+          <p class="lf-case-desc">
+            Grace Fellowship Church, a growing non-denominational congregation in Baltimore, came to us with a 7-year-old site that loaded in 9 seconds on mobile, had no local schema, and a giving form that redirected to a page with a completely different visual design. We rebuilt their site in 8 weeks.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+220%</span>
+              <span class="lf-cr-label mono-xs">Increase in organic search traffic</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">#1</span>
+              <span class="lf-cr-label mono-xs">Local Pack &middot; "non-denominational church Baltimore"</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.4s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 9.1s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">3x</span>
+              <span class="lf-cr-label mono-xs">Online giving signups month over month</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"Our old website was honestly embarrassing — we'd tell people our site address and then warn them it was 'a bit outdated.' Upcoming Brand rebuilt everything, set up our Tithe.ly integration properly for the first time, and actually helped us think through how new visitors move through the site. Within two months we had more first-time visitor connection cards than we'd ever received through the website. The sermon archive alone made a difference — people are listening before they even visit in person."</p>
+            <footer>
+              <cite class="lf-cite-name">Pastor David Kim</cite>
+              <span class="lf-cite-role mono-xs">Executive Pastor &middot; Grace Fellowship Church &middot; Baltimore, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/grace-fellowship-church.png"
+            alt="Grace Fellowship Church website redesign — Baltimore church"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site &middot; Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a live, optimized church website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most churches are live within 9 weeks of their first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland churches</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">The Maryland Church's Complete Guide to Website Design</h2>
+        <p class="lead">Everything a congregation leader or church administrator needs to know before commissioning a new church website &mdash; from online giving integration to sermon archives to local SEO for faith-based organizations in Maryland.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">What Makes a Church Website Different From a Standard Business Site</h3>
+          <p class="lf-guide-p">Churches face a web design challenge that no other organization type does: the same website must serve three completely different audiences simultaneously. Current members need practical tools &mdash; service times, event registrations, online giving, sermon replays, and ministry sign-ups. Prospective visitors are searching for a faith community and evaluating whether your congregation is a cultural fit before they ever walk through your doors. The broader Maryland community discovers your church through local search results when they search for food pantries, counseling resources, or community events. A single website must speak authentically to all three groups without diluting the message for any of them.</p>
+          <p class="lf-guide-p">This multi-audience requirement drives every design decision for church websites. Navigation must surface practical tools (give, events, watch online) while also providing the warm, community-oriented first impression that helps a searching family understand your church's personality. Content must be fresh enough to show an active congregation &mdash; a church website with 2023 event dates signals abandonment more powerfully than no website at all &mdash; while also providing timeless information about your beliefs, your history, and your ministries. And the technical foundation must support live streaming, media storage, and donation processing without requiring a full-time technical staff to maintain.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Three-audience architecture: structure navigation and homepage content to serve members (tools), visitors (community feel), and seekers (belief and belonging information) without forcing any group to search for what they need</li>
+            <li class="lf-guide-li">Content freshness signals: automated sermon uploads, event calendar integration, and blog/news section that reflects active congregational life &mdash; stale dates are the single most damaging trust signal on a church website</li>
+            <li class="lf-guide-li">Technical infrastructure appropriate for non-technical staff: the worship administrator or pastor's assistant who will maintain the site needs a WordPress backend simple enough to update without developer help</li>
+            <li class="lf-guide-li">Mobile-first design priority: 78% of church website visitors in Maryland access the site on a mobile device, typically while looking up service times in the car on a Sunday morning</li>
+            <li class="lf-guide-li">Denominational and theological alignment: your website's visual tone, language, and content structure should match your congregation's culture &mdash; an evangelical megachurch and a liturgical Episcopal parish need fundamentally different design approaches</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Must-Have Pages for Every Maryland Church Website</h3>
+          <p class="lf-guide-p">Church websites tend to accumulate pages over years of incremental additions without anyone auditing whether the overall structure still serves visitors effectively. The most common problem is a navigation menu with 15+ items, many of which lead to pages that haven't been updated since 2021. A complete church website needs a specific set of essential pages, each with a clear purpose, and a disciplined editorial approach to keep them current. Everything else &mdash; the ministry-specific subpages, the archive pages, the historical content &mdash; should be organized below the main navigation so it doesn't obscure the high-priority paths.</p>
+          <p class="lf-guide-p">For a Maryland church, the essential page set reflects both congregational life and local search behavior. "Churches near me" searches in Google return results based on your Google Business Profile and website content. "Christmas Eve services Baltimore" searches return results based on your events content and location pages. Your page architecture needs to support both the member who visits the site daily and the Google crawler that determines whether you appear in searches from people who have never heard of your congregation.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Homepage with service times, physical address, and a clear first-visit CTA above the fold &mdash; the most common use case for a church homepage is a prospective visitor deciding whether to attend on Sunday</li>
+            <li class="lf-guide-li">I'm New page: what to expect, how to dress, where to park, what happens with children, and answers to the unspoken questions first-time visitors carry but rarely ask</li>
+            <li class="lf-guide-li">Beliefs / About Us page with denomination affiliation, statement of faith, and pastoral staff bios with photos and brief personal narratives</li>
+            <li class="lf-guide-li">Sermons / Messages page with searchable archive, current series prominent, and multiple access formats (video, audio, transcript) to serve different consumption preferences</li>
+            <li class="lf-guide-li">Events / Calendar page with filtering by ministry area, RSVP or registration functionality, and integration with Google Calendar for one-tap event saving</li>
+            <li class="lf-guide-li">Ministries / Connect page with directory of active ministries, contact information, meeting times, and a clear path to get involved</li>
+            <li class="lf-guide-li">Give / Generosity page with online giving options, explanation of how funds are used, and recurring giving setup for tithe commitments</li>
+            <li class="lf-guide-li">Contact / Visit page with embedded Google Maps, parking instructions, and service schedule in machine-readable format for Google to extract</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Church and Local Business Structured Data Schema</h3>
+          <p class="lf-guide-p">Google's structured data guidelines include a specific schema type for churches: Church, which is a subtype of LocalBusiness. Implementing Church schema on your Maryland church website tells Google's knowledge graph that your organization is a religious institution with specific attributes &mdash; denomination, service times, languages spoken, and physical location &mdash; that are relevant to local search queries. Without this schema, Google must infer these attributes from your page text, which produces inconsistent results and often incorrect information in knowledge panels.</p>
+          <p class="lf-guide-p">Church schema implementation for Maryland congregations should include the organization's legal name (as registered with Maryland's State Department of Assessments and Taxation), the denomination or affiliation, service schedule in OpeningHoursSpecification format, all contact methods, GPS coordinates, and a high-resolution exterior photo. For multi-campus churches in the Baltimore, Annapolis, or DC metro areas, each location needs its own Church schema node with its own address and service schedule, linked to a parent Organization entity representing the overall ministry.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Church schema with @type: Church, name, description, address, telephone, url, sameAs (linking to your Google Business Profile and social media), and openingHoursSpecification for each service</li>
+            <li class="lf-guide-li">OpeningHoursSpecification for services: include dayOfWeek, opens (service start time), and closes (service end time) for each distinct service to enable Google to display service times in search results</li>
+            <li class="lf-guide-li">GeoCoordinates for precise map placement: latitude and longitude from Google Maps, not inferred from street address &mdash; important for "churches near me" results</li>
+            <li class="lf-guide-li">Event schema for recurring services and special events: recurring Sunday services structured as Event objects improve visibility in Google Events search results</li>
+            <li class="lf-guide-li">Organization schema for denominational affiliation: use the memberOf property to link to your denomination's official organization entity if it exists in Google's knowledge graph</li>
+            <li class="lf-guide-li">BreadcrumbList and WebSite schema for site-level signals: helps Google understand your site architecture and enables the sitelinks search box on branded queries for your church name</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Online Giving Platform Integration for Maryland Churches</h3>
+          <p class="lf-guide-p">Online giving represents the fastest-growing segment of church revenue for Maryland congregations, with the percentage of giving processed digitally increasing from 28% in 2019 to 61% in 2024 among churches with giving platform integrations. The platform choice matters because each has different fee structures, different features, and different levels of integration with WordPress. Getting this decision wrong means either losing a percentage of every donation to fees, dealing with a clunky giving experience that discourages use, or managing giving data in a system that doesn't connect to your church management software.</p>
+          <p class="lf-guide-p">Tithe.ly and Pushpay are the two dominant platforms for Maryland churches, covering the majority of evangelical and nondenominational congregations. Tithe.ly charges 2.9% + $0.30 per card transaction and has a WordPress plugin that embeds directly in any page. Pushpay targets larger congregations and includes church management software alongside the giving platform. For Catholic parishes and mainline Protestant churches, ParishSoft (now part of ACS Technologies) and Vanco are common choices because of their denominational integrations. For very small congregations, Stripe with GiveWP is the most cost-effective option.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Tithe.ly: best for evangelical and nondenominational Maryland churches &mdash; 2.9% + $0.30 per card transaction, native WordPress plugin, strong mobile app for givers</li>
+            <li class="lf-guide-li">Pushpay: best for churches with 500+ regular attenders &mdash; higher monthly fee but includes donor management, text-to-give, and campus management for multi-site ministries</li>
+            <li class="lf-guide-li">Vanco: strong choice for Catholic and mainline Protestant Maryland parishes &mdash; denominational relationships, robust recurring giving management, school tuition processing</li>
+            <li class="lf-guide-li">GiveWP + Stripe: most cost-effective option for small Maryland congregations with a limited budget &mdash; Stripe's 2.2% + $0.30 rate is lower than dedicated church platforms</li>
+            <li class="lf-guide-li">ACH/bank transfer option: critical for high-value donors who tithe regularly &mdash; bank transfers typically cost $0.25-$0.50 flat fee versus 2.9% on a $500 tithe</li>
+            <li class="lf-guide-li">Text-to-give integration: essential for spontaneous giving during services &mdash; display the text-to-give number prominently on your website and in your service bulletin</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Sermon Archive and Media Library Best Practices</h3>
+          <p class="lf-guide-p">The sermon archive is often the most visited section of a church website by members, yet it receives the least design attention of any major section. A well-designed sermon library serves three functions: it gives regular attenders a way to re-watch or share sermons they've heard, it provides a searchable resource for members who want to find teaching on specific topics or Bible passages, and it serves as the primary content marketing channel for churches seeking to attract new members through YouTube, podcast platforms, and social media. Churches that invest in their sermon archive typically see 30-45% of their online traffic coming directly to sermon pages, often from people who have never attended in person.</p>
+          <p class="lf-guide-p">Maryland churches that maintain strong sermon archives are also building significant content equity: a church with 10 years of weekly sermon content has thousands of pages of original theological teaching, each of which can attract search traffic on specific biblical and theological questions. The key is proper tagging and categorization from the beginning: by sermon series, by Scripture passage, by topic (marriage, finances, parenting, anxiety), and by speaker. Without this structure, the archive becomes a chronological list that only serves people looking for a specific date.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Custom post type for sermons: separate from blog posts, with custom taxonomy for series, speaker, topic, and Scripture reference &mdash; enables granular filtering and improves SEO for topical sermon searches</li>
+            <li class="lf-guide-li">Video hosting strategy: embed from YouTube or Vimeo rather than hosting video files on your server &mdash; self-hosted video destroys performance; your streaming platform handles the bandwidth</li>
+            <li class="lf-guide-li">Sermon transcript as page content: publishing a written transcript of each sermon creates thousands of words of indexed content per sermon and enables Google to understand the theological depth of your teaching</li>
+            <li class="lf-guide-li">Scripture reference tagging: tag each sermon with the specific Bible passage(s) covered so visitors can find all sermons on Romans, all sermons on the Sermon on the Mount, or all sermons on a particular theme</li>
+            <li class="lf-guide-li">Podcast RSS feed: automatically generate a podcast feed from your sermon archive to distribute to Apple Podcasts, Spotify, and Google Podcasts &mdash; this multiplies your reach without additional content creation</li>
+            <li class="lf-guide-li">Series landing pages: dedicated pages for each sermon series with a series description, the complete list of messages, and a featured image &mdash; these pages rank well for "sermon series on [topic]" searches</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Event Calendar Systems for Maryland Congregations</h3>
+          <p class="lf-guide-p">Church events calendars are notoriously difficult to maintain because they involve multiple stakeholders (youth ministry, women's ministry, men's ministry, facilities team) all adding events independently, often with inconsistent formatting and missing details. The technology problem is secondary to the process problem: most church calendars become messy not because the platform is wrong, but because there's no clear ownership and no standard template for event entries. The best calendar platform in the world becomes useless if half the events are missing their address, description, or registration link.</p>
+          <p class="lf-guide-p">For WordPress-based Maryland church websites, The Events Calendar (by Modern Tribe) is the dominant plugin choice, with over 900,000 active installations. Its free version handles recurring events, multiple categories, and basic calendar and list views. The Events Calendar Pro adds additional views (week, month, day), venue management, organizer profiles, and integration with event management platforms. For churches that host large community events &mdash; VBS, conferences, fundraisers &mdash; Eventbrite integration brings paid ticketing and RSVP management directly into the WordPress calendar display.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">The Events Calendar Pro: the standard WordPress church calendar solution &mdash; recurring events, custom categories, venue management, and Google Calendar sync for visitor convenience</li>
+            <li class="lf-guide-li">Event categories by ministry: filter events by youth, women, men, children, community, and whole-church so each ministry's members can see their relevant events without scrolling through everything</li>
+            <li class="lf-guide-li">Registration and RSVP integration: Gravity Forms or WPForms connected to event pages for events requiring headcounts &mdash; VBS registration, marriage conference, small group signups</li>
+            <li class="lf-guide-li">Eventbrite integration for large events: tickets sold through Eventbrite with the event displayed on your website calendar &mdash; avoids building a custom ticketing system while keeping visitors on your site</li>
+            <li class="lf-guide-li">Event schema markup: structured data on each event page enables Google Events Search results, which show events from local churches in the "Events near me" search feature</li>
+            <li class="lf-guide-li">Calendar embed for external audiences: a public-facing simplified calendar view that community organizations, local news sites, and partner ministries can embed to promote your community events</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Ministry Directory and Small Group Pages</h3>
+          <p class="lf-guide-p">The ministries section of a church website is where most congregation members go when they're looking to get more involved, and it's often where church websites fail most spectacularly. A list of ministries with generic descriptions and "contact the church office for more information" as the only call to action communicates that the congregation is insular and not actively seeking new participants. Effective ministry pages function as recruitment tools: they describe specifically who the ministry is for, what the time commitment looks like, what impact participation has on members' lives, and exactly how to take the next step toward joining.</p>
+          <p class="lf-guide-p">Small group systems deserve particular attention because small group participation is the strongest predictor of long-term church retention &mdash; members who are in a small group are 4x more likely to remain connected to the congregation over a 3-year period than those who only attend Sunday services. A small group finder that lets visitors filter by day, time, neighborhood, life stage, or topic significantly reduces the friction between "I want to connect" and "I'm in a group." Many Maryland churches lose potential small group members simply because the connection process is unclear or requires filling out a form and waiting for a call back.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Ministry directory with individual pages: each active ministry gets its own page with description, leadership contact, meeting schedule, and a clear "How to join" section</li>
+            <li class="lf-guide-li">Small group finder: filterable directory of active small groups by day, time, neighborhood (for Maryland geography), life stage (single, married, parents, seniors), and topic</li>
+            <li class="lf-guide-li">Ministry leader bios: photos and brief personal statements from ministry leaders humanize the connection process and reduce the social anxiety of contacting a stranger</li>
+            <li class="lf-guide-li">Intake forms for each ministry: specific forms that ask the right questions for each context rather than a generic "I'm interested" form that creates ambiguous follow-up conversations</li>
+            <li class="lf-guide-li">Ministry highlight content: regular blog posts, video testimonials, and social media content showcasing ministry activities keeps the ministries section fresh and communicates active congregational life</li>
+            <li class="lf-guide-li">Inactive ministry archive: clearly mark ministries that are paused or no longer active rather than leaving outdated pages that create false impressions about what's available</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Live Streaming Integration and Setup</h3>
+          <p class="lf-guide-p">Live streaming became a baseline expectation for Maryland churches during 2020 and has remained so. Members who travel frequently, those with mobility limitations, those caring for sick family members, and those visiting from out of state all rely on livestream access to remain connected to their church community. Beyond the existing congregation, live streaming is also the primary way prospective attenders preview a church before committing to an in-person visit &mdash; a reality that changes how you should think about the production quality and on-screen presentation of your services.</p>
+          <p class="lf-guide-p">The most common live streaming setup for Maryland churches in the 100-500 weekly attendance range involves YouTube Live as the primary streaming destination, embedded on the church website through a dedicated Watch Live page. YouTube Live is free, handles unlimited concurrent viewers, and automatically archives the stream as a YouTube video that becomes the source material for the sermon library. For churches that want more control over the viewing experience or need to restrict access, Vimeo Livestream and BoxCast are popular alternatives. The website integration requires a dedicated Watch Live page that shows the live video when a service is in progress and the most recent archived sermon when it isn't.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">YouTube Live as primary platform: free, unlimited viewers, automatic archiving, and YouTube's recommendation algorithm can surface your streams to new audiences in Maryland</li>
+            <li class="lf-guide-li">Watch Live page: always-on page that displays a live countdown when service isn't in progress, the live stream embed during service, and the most recent archived video after service ends</li>
+            <li class="lf-guide-li">Multi-camera setup recommendation: a minimum of two camera angles (wide room shot and center-stage close-up) significantly improves the production quality at minimal hardware cost</li>
+            <li class="lf-guide-li">Live chat integration: YouTube Live's built-in chat, moderated by a volunteer, gives online viewers a real-time community experience and reduces the isolation of watching alone</li>
+            <li class="lf-guide-li">Closed captioning: auto-generated captions on YouTube Live improve accessibility for hearing-impaired viewers and are increasingly expected &mdash; review and edit captions before they become the sermon archive transcript</li>
+            <li class="lf-guide-li">Stream schedule structured data: add Event schema to your Watch Live page with the scheduled start times for each service so Google can surface your livestream in "church live stream near me" searches</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Volunteer and Membership Management Tools</h3>
+          <p class="lf-guide-p">As Maryland congregations grow beyond 150 members, coordinating volunteers across multiple ministries with spreadsheets and email chains becomes unmanageable. The website's role in volunteer management is to be the front door of the volunteer pipeline: a Serve page that explains the ministry areas that need volunteers, forms that capture volunteer interests and availability, and a system that routes that information to the right ministry leaders without requiring the church office to manually forward every submission. The deeper volunteer management work &mdash; scheduling, tracking, communication &mdash; happens in a dedicated church management system (ChMS), but the website is where the volunteer journey begins.</p>
+          <p class="lf-guide-p">Planning Center is the dominant volunteer management and church management platform for evangelical and nondenominational Maryland churches, covering service scheduling, group management, donation tracking, and communication. Breeze ChMS is a popular budget-friendly alternative for smaller congregations. Both integrate with WordPress through form connections and embed codes that surface volunteer opportunities and team sign-ups directly on the church website. The key integration point is ensuring that a visitor who fills out a "I want to serve" form on your website ends up in the right place in your ChMS within 24 hours, without requiring manual data entry by staff.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Serve / Get Involved page: clearly organized list of volunteer areas with descriptions of the time commitment, skills needed, and impact of each role</li>
+            <li class="lf-guide-li">Volunteer interest form: ask for name, contact info, availability (days of week, morning/evening), and top 3 ministry interests &mdash; route submissions to relevant ministry leaders automatically</li>
+            <li class="lf-guide-li">Planning Center integration: embed Planning Center's public-facing volunteer sign-up forms on your website using their iframe embed or the Planning Center WordPress plugin</li>
+            <li class="lf-guide-li">New member pathway: a clearly documented process on the website for moving from first visit to membership, including what membership means at your church, membership class information, and how to sign up</li>
+            <li class="lf-guide-li">Member-only content: password-protected pages for member resources (budgets, meeting minutes, internal directories) using WordPress user roles rather than a separate member portal</li>
+            <li class="lf-guide-li">Automated welcome sequence: new contact form submissions trigger an email sequence via Mailchimp or Constant Contact that introduces your church, shares key resources, and extends a personal welcome from pastoral staff</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Local SEO for Faith-Based Organizations in Maryland</h3>
+          <p class="lf-guide-p">Local SEO for Maryland churches operates differently than for businesses because the primary search intent is community affiliation, not transactional. Someone searching "Baptist church near me in Annapolis" isn't comparison shopping on price &mdash; they're looking for a faith community that fits their beliefs, culture, and schedule. The local SEO work for churches therefore focuses on visibility (appearing in map results and local organic results), trust signals (reviews, active Google Business Profile, consistent NAP data), and differentiation (communicating your church's specific culture and theological position through content).</p>
+          <p class="lf-guide-p">Google Business Profile is the single highest-impact local SEO action for Maryland churches. A fully optimized GBP with your denomination, service schedule, photos of your sanctuary, congregation, and pastoral team, and 20+ Google Reviews will place you in the local map pack for "[denomination] church [city Maryland]" searches. The website supports this by providing consistent NAP (Name, Address, Phone) information on every page, Church schema markup, and location-specific content that mentions your Maryland city, county, and neighborhood naturally throughout the site copy.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Google Business Profile optimization: complete every field including denomination, service schedule, description with Maryland location keywords, and at least 15 photos of the building, sanctuary, and community activities</li>
+            <li class="lf-guide-li">Review generation: encourage satisfied members and visitors to leave Google Reviews after a positive experience &mdash; 25+ reviews with an average above 4.5 stars significantly improves local map pack visibility</li>
+            <li class="lf-guide-li">Denomination-specific directory listings: submit to your denomination's official church directory, LifeWay's church finder, and other faith-based directories that create authoritative backlinks to your website</li>
+            <li class="lf-guide-li">Location page content: a dedicated "Visit Us" page with your Maryland city name in the title, neighborhood description, parking instructions, and public transit directions signals local relevance to Google</li>
+            <li class="lf-guide-li">Community involvement content: blog posts about your church's food pantry, community service days, and local partnerships build local topical relevance and attract backlinks from Maryland news sites and community organizations</li>
+            <li class="lf-guide-li">Consistent NAP citations: your church's name, address, and phone number must be identical across your website, Google Business Profile, denomination directory, and any other directory listings &mdash; inconsistencies suppress local rankings</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Accessibility and Inclusivity in Maryland Church Web Design</h3>
+          <p class="lf-guide-p">Churches have a theological and practical reason to prioritize web accessibility that goes beyond legal compliance: their mission is to welcome everyone, and a website that is inaccessible to blind visitors, deaf visitors, or visitors with cognitive disabilities directly contradicts that mission. The practical reality is that ADA Title III accessibility requirements have been applied to websites in federal court, and nonprofits &mdash; including religious organizations &mdash; are not exempt from these requirements in digital contexts. A church website that fails basic WCAG 2.1 Level AA standards creates both a ministry failure and a legal exposure.</p>
+          <p class="lf-guide-p">Accessible church website design for Maryland congregations starts with the same WCAG fundamentals that apply to any website &mdash; sufficient color contrast, keyboard navigability, screen reader compatible markup &mdash; but also includes church-specific considerations: sermon video captions, audio descriptions for visual worship elements, accessible giving forms with clear error messages, and event registration forms that work with assistive technologies. Many Maryland churches are also serving multilingual communities; adding a Spanish-language version of at least the key visitor pages (service times, I'm New, Contact) dramatically expands accessibility for Maryland's significant Hispanic community.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Color contrast compliance: all text must meet WCAG 2.1 AA contrast ratios (4.5:1 for normal text, 3:1 for large text) &mdash; use a contrast checker on every color combination in your design</li>
+            <li class="lf-guide-li">Sermon video captions: closed captions on all sermon videos serve hearing-impaired members, non-native English speakers, and those watching in noisy environments without headphones</li>
+            <li class="lf-guide-li">Screen reader compatible forms: giving forms, event registrations, and contact forms must have proper labels, clear error messages, and logical tab order to work with JAWS and NVDA screen readers</li>
+            <li class="lf-guide-li">Keyboard navigation: every interactive element on the site must be reachable and operable with a keyboard alone, without requiring a mouse &mdash; critical for motor-impaired visitors</li>
+            <li class="lf-guide-li">Spanish language visitor pages: a translated version of service times, I'm New, and Contact pages serves Maryland's Spanish-speaking communities and signals genuine welcome to multilingual families</li>
+            <li class="lf-guide-li">Large print and font size controls: a simple font size toggle or clear body text default of at least 16px helps older congregation members and those with visual impairments navigate content comfortably</li>
+          </ul>
+        </div>
+
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">How to Choose a Church Website Designer in Maryland</h3>
+          <p class="lf-guide-p">Church website design is a specialized niche within web design, and not every web designer who says they serve churches actually understands what makes a church website work. The most common mistake Maryland churches make when hiring a web designer is choosing based on portfolio aesthetics alone &mdash; a beautiful design doesn't help your congregation if it was built on a platform your office manager can't update, if it doesn't integrate with your giving platform, or if it has no sermon archive system. The right designer for a Maryland church needs to understand congregation lifecycle, content governance for volunteer-maintained sites, and the specific integrations your ministry operations require.</p>
+          <p class="lf-guide-p">The budget reality for Maryland churches: a professionally designed WordPress church website with all the essential functionality (giving integration, event calendar, sermon library, live stream embed, basic SEO setup) typically costs between $3,500 and $8,000 as a one-time build, plus hosting and a care plan for ongoing maintenance. Platforms like Squarespace Church and Wix offer lower initial costs but create long-term constraints on functionality and ownership that many growing Maryland churches regret within 3-5 years. WordPress built on your own hosting gives you full control of your content, your domain, and your data permanently.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Ask for church-specific portfolio examples: request URLs of church websites they've built, then test the giving integration, browse the sermon archive, and check the event calendar &mdash; not just admire the design</li>
+            <li class="lf-guide-li">Verify WordPress expertise: your site needs to be maintainable by non-technical church staff after launch &mdash; ask how the site will be structured for the worship administrator who updates it weekly</li>
+            <li class="lf-guide-li">Confirm giving platform integration experience: your designer should have hands-on experience with Tithe.ly, Pushpay, or Vanco, not just generic payment processing knowledge</li>
+            <li class="lf-guide-li">Insist on a content training session: the best church website project includes a recorded walkthrough of how to add sermons, create events, update service times, and publish blog posts &mdash; without this, the site will go stale within 6 months</li>
+            <li class="lf-guide-li">Understand ownership and portability: confirm that you own the domain, own the WordPress installation, and can move to a different hosting provider or designer without losing any content</li>
+            <li class="lf-guide-li">Ask about SEO setup: your designer should configure Church schema, set up Google Search Console, submit your sitemap, and optimize your Google Business Profile as standard deliverables, not optional add-ons</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland churches ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`lf-faq-${i}`}
+                  id={`lf-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`lf-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`lf-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Church websites &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            A church website that welcomes people before they walk in the door.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know the local landscape</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts — month-to-month after launch</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your congregation's goals, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-church" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="ch-cta-name">Your name</label>
+                <input class="lf-form-input" type="text" id="ch-cta-name" name="name" placeholder="Pastor Johnson" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="ch-cta-email">Email address</label>
+                <input class="lf-form-input" type="email" id="ch-cta-email" name="email" placeholder="pastor@church.org" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="ch-cta-org">Church name &amp; denomination</label>
+              <input class="lf-form-input" type="text" id="ch-cta-org" name="church" placeholder="Grace Fellowship &middot; Non-Denominational" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="ch-cta-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="ch-cta-message" name="message" rows="3" placeholder="Old design, no giving integration, hard to find on Google, sermon archive problems…"></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Church</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+  /* ── GUIDE ── */
+  .lf-guide { background: var(--cream-soft); }
+  .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+  .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+  .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+  .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+  .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+  .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+  .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Denomination custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>

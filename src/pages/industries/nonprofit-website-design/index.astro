@@ -1,0 +1,2386 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Slow donation pages cost you gifts at the moment of intent",
+    body: "73% of donors research nonprofits online before making a gift, and a one-second delay in donation page load time reduces conversions by 7%. Most nonprofit websites we audit load in 6–9 seconds on mobile — which means a donor arriving from an email campaign abandons before they see your Give button. Every second of friction is a gift that doesn't happen.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "No NonprofitOrganization schema means no Google for Nonprofits visibility",
+    body: "Without NonprofitOrganization and Organization JSON-LD schema, Google cannot confidently surface your organization in Local Search, Knowledge Panels, or Google for Nonprofits discovery paths. Generic web agencies don't implement this markup — leaving your organization invisible to donors who are specifically searching for nonprofits in your cause area.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "Broken or inconvenient donation flows lose recurring givers",
+    body: "A PayPal button is not a donation system. Donors expect online giving with credit cards, ACH, and recurring gift options — with a tax receipt confirmation. If your donation process requires more than three clicks or redirects to a third-party site with no branding, you're losing first-time donors before they become recurring supporters.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "NonprofitOrganization and Organization schema",
+    body: "Every page receives NonprofitOrganization and Organization JSON-LD markup — mission statement, cause category, geographic service area, EIN, and donation links. This tells Google exactly what your organization does and who it serves — enabling visibility in cause-specific searches and Google's Nonprofit program pathways.",
+    tags: ["NonprofitOrganization schema", "Organization markup", "EIN + cause category"],
+  },
+  {
+    num: "02",
+    title: "GiveWP and Stripe donation integration",
+    body: "We integrate GiveWP, Stripe, or your preferred donation platform directly into your site. Donors can give one-time or set up recurring gifts without leaving your domain, in a form that matches your brand. We configure donation tiers with impact descriptions, set up automatic tax receipt emails, and ensure the giving flow works on mobile — where most impulse donations happen.",
+    tags: ["GiveWP / Stripe", "Recurring donations", "Tax receipt automation"],
+  },
+  {
+    num: "03",
+    title: "Impact storytelling pages that convert",
+    body: "Donors give to stories, not statistics. We build program impact pages that lead with specific outcomes — people helped, meals served, students funded — and support them with data, photography direction, and structured calls to action. Impact pages that tell specific, measurable stories convert at 2–3x the rate of generic 'about our mission' pages.",
+    tags: ["Impact storytelling", "Program pages", "Conversion copy"],
+  },
+  {
+    num: "04",
+    title: "Volunteer and event signup integration",
+    body: "Beyond donations, nonprofits need volunteers and event attendees. We integrate volunteer signup forms with Volunteer Local or a custom WPForms system, and build event pages with registration capability. Every signup is connected to your email list so volunteers and attendees stay engaged with your organization's work.",
+    tags: ["Volunteer signup", "Event registration", "Email list integration"],
+  },
+  {
+    num: "05",
+    title: "Google Business Profile and cause-search setup",
+    body: "Appearing in local search for your cause — 'food bank Baltimore,' 'scholarship foundation Annapolis' — drives awareness and donations from people actively searching for nonprofits to support. We audit and optimize your GBP with correct nonprofit categories, service areas, and program descriptions. We also set up your Google for Nonprofits account if you haven't enrolled.",
+    tags: ["Google Business Profile", "Google for Nonprofits", "Cause search SEO"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your site ships with green Core Web Vitals — or we fix it before launch at no cost. Nonprofit sites with large image files, embedded social feeds, and outdated themes routinely fail these benchmarks. Donation page performance directly impacts conversion rates — we optimize every page on the giving path.",
+    tags: ["Core Web Vitals", "Donation page speed", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Site audit + donor journey map",
+    body: "We audit your current site for technical SEO, Core Web Vitals, donation friction, and schema gaps. We map the complete donor journey: how people find you, what they read, and where they abandon before giving. You receive a written strategy document covering gaps, page recommendations, and giving flow improvements.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1–2",
+    title: "AI-assisted design + impact copy",
+    body: "We generate your homepage, program pages, and donation experience using AI-assisted design — mission-forward and built around your brand. We draft all copy: impact narratives, program descriptions, and giving tier descriptions. One consolidated feedback round.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2–6",
+    title: "WordPress build + donation platform + schema",
+    body: "Approved designs go into WordPress. GiveWP or Stripe donation integration is configured with recurring gift options and tax receipt automation. Every page gets NonprofitOrganization schema. Volunteer signup and event pages are built and tested.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 6–8",
+    title: "Launch, GBP + Google for Nonprofits setup",
+    body: "We handle DNS cutover, 301 redirects, and sitemap submission. Your GBP and Google for Nonprofits account are set up or audited simultaneously. You receive a handoff video and 30-day post-launch monitoring window.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "SEO",
+    q: "Can nonprofits actually rank in Google search for cause-related searches?",
+    a: "Yes — nonprofits with well-structured sites and NonprofitOrganization schema rank consistently for cause and location combinations. 'Food bank near Annapolis,' 'scholarship for Maryland students,' 'arts foundation Baltimore' — these are real search queries with low competition and high donor intent. A properly built nonprofit site can dominate these searches within 60–90 days.",
+  },
+  {
+    num: "02",
+    category: "Platform",
+    q: "What donation platforms do you integrate with?",
+    a: "We integrate with GiveWP, Stripe, PayPal Giving Fund, Blackbaud, DonorPerfect, and Funraise. We also build custom Stripe integrations if you need a specific giving flow. Recurring gift setup, donation tier configurations, and automatic tax receipt emails are all included in the integration. We test the complete giving flow across mobile and desktop before launch.",
+  },
+  {
+    num: "03",
+    category: "Services",
+    q: "Do you write the impact copy and program descriptions?",
+    a: "Yes — we write all copy as part of every tier. You provide raw material via a questionnaire: program descriptions, impact statistics, beneficiary stories (anonymized as needed), and organizational history. We draft copy that makes donors feel the impact of their gift rather than just describing your programs. One review round included.",
+  },
+  {
+    num: "04",
+    category: "Migration",
+    q: "We're moving from Squarespace or Wix — will we lose our donor traffic?",
+    a: "Not if the migration is handled correctly. We map every existing URL, implement 301 redirects before DNS cutover, and monitor Search Console post-launch. Squarespace and Wix sites rarely have strong organic rankings — there's usually little to protect — but we handle the migration carefully regardless.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What ongoing support do you offer after launch?",
+    a: "Care plans start at $150/month — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours. Program page content add-ons and seasonal campaign page updates are available separately. Month-to-month, no annual contract. We also offer discounted care plans for 501(c)(3) organizations — ask about our nonprofit rate.",
+  },
+  {
+    num: "06",
+    category: "Platform",
+    q: "Can you help us set up Google for Nonprofits?",
+    a: "Yes — Google for Nonprofits provides free access to Google Ad Grants ($10,000/month in search ads), Google Workspace, and YouTube for Nonprofits. We help you verify and enroll in the program, set up your Google Ad Grants account, and structure your site to comply with the program's landing page requirements. This is included in the Growth and Custom tiers.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Migration":  { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Care Plans": { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 7 pages: Home, About, Programs, Donate, Volunteer, Contact, Thank You",
+      "NonprofitOrganization + Organization JSON-LD schema",
+      "GiveWP or Stripe donation integration with recurring gift option",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Business Profile audit and Google for Nonprofits enrollment",
+      "30 days post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 14 pages · 4 program impact pages + event and volunteer pages",
+      "NonprofitOrganization schema with program and service area mapping",
+      "Full donation platform integration with giving tiers and impact descriptions",
+      "Volunteer signup and event registration with email list sync",
+      "Google Ad Grants setup and landing page compliance",
+      "60 days post-launch monitoring with monthly report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited pages · full program library + annual report pages",
+      "Multi-chapter or multi-program organization structure",
+      "Custom campaign donation pages for fundraising events and drives",
+      "Full content migration with 301 redirect mapping",
+      "Quarterly impact reporting page updates for 12 months post-launch",
+      "90 days post-launch support + first month care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+---
+<BaseLayout
+  title="Nonprofit Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500."
+  canonicalUrl="https://upcomingbrand.com/industries/nonprofit-website-design/"
+>
+  <Navigation />
+
+  <!-- Schema: NonprofitOrganization / Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["NonprofitOrganization", "Organization"],
+        "@id": "https://upcomingbrand.com/industries/nonprofit-website-design/#service",
+        "name": "Nonprofit Website Design Maryland",
+        "description": "WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500.",
+        "url": "https://upcomingbrand.com/industries/nonprofit-website-design/",
+        "areaServed": {
+          "@type": "State",
+          "name": "Maryland"
+        },
+        "provider": {
+          "@type": "ProfessionalService",
+          "@id": "https://upcomingbrand.com/#organization",
+          "name": "Upcoming Brand",
+          "url": "https://upcomingbrand.com"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://upcomingbrand.com/industries/nonprofit-website-design/#webpage",
+        "url": "https://upcomingbrand.com/industries/nonprofit-website-design/",
+        "name": "Nonprofit Website Design Maryland | Upcoming Brand",
+        "description": "WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+            { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
+            { "@type": "ListItem", "position": 3, "name": "Nonprofit Website Design", "item": "https://upcomingbrand.com/industries/nonprofit-website-design/" }
+          ]
+        }
+      }
+    ]
+  })} />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>Nonprofit Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            Nonprofit Web Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland nonprofit websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to drive donations</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">and grow your mission.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most nonprofit websites lose donors before the first gift — slow load times, broken donation forms, and copy that never explains the impact. We build WordPress sites for Maryland nonprofits that rank for cause-related searches, integrate with GiveWP or Stripe, and turn visitors into donors and volunteers. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">NonprofitOrganization schema on every build</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website converting visitors to donors?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="np-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="np-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="np-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="np-name" name="name" placeholder="Patricia Evans" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="np-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="np-email" name="email" placeholder="patricia@gbcf.org" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="np-org">Organization name</label>
+              <input class="lfh-form-input" type="text" id="np-org" name="organization" placeholder="Greater Baltimore Community Foundation" autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-orgtype">Organization type</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-orgtype" data-name="org_type">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select organization type</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Organization type">
+                  <li class="lf-cs-opt" role="option" data-value="Community Foundation">Community Foundation</li>
+                  <li class="lf-cs-opt" role="option" data-value="Social Services">Social Services</li>
+                  <li class="lf-cs-opt" role="option" data-value="Education / Scholarship">Education / Scholarship</li>
+                  <li class="lf-cs-opt" role="option" data-value="Health &amp; Wellness">Health &amp; Wellness</li>
+                  <li class="lf-cs-opt" role="option" data-value="Arts &amp; Culture">Arts &amp; Culture</li>
+                  <li class="lf-cs-opt" role="option" data-value="Environmental">Environmental</li>
+                  <li class="lf-cs-opt" role="option" data-value="Religious">Religious</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="org_type" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key results">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">61<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of nonprofit sites fail<br>Core Web Vitals</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">3.9<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More donations when giving<br>page loads under 2s</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">73<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">Of donors research nonprofits<br>online before giving</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">8<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call to live,<br>donation-ready site</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why donors leave before giving</p>
+        <h2 class="h2-section">Why most nonprofit websites fail Maryland organizations</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland nonprofit website needs</h2>
+        <p class="lead">A nonprofit site is not a brochure. It is your primary fundraising infrastructure. Every element we build — from schema to donation forms to impact copy — is designed to do one job: turn a visiting stranger into a donor, volunteer, or recurring supporter.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Baltimore, MD</p>
+          <h2 class="h2-section lf-case-h2">How Greater Baltimore Community Foundation tripled online donations in 4 months</h2>
+          <p class="lf-case-desc">
+            Greater Baltimore Community Foundation, a grantmaking foundation serving Baltimore City and County, came to us with a six-year-old Squarespace site — no NonprofitOrganization schema, a donation redirect to PayPal with no branding, and a PageSpeed score of 36. Within 4 months of launch, online giving had transformed.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+218%</span>
+              <span class="lf-cr-label mono-xs">Online donation completions</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">NPO</span>
+              <span class="lf-cr-label mono-xs">Enrolled in Google for Nonprofits</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.8s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 8.4s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">$10K</span>
+              <span class="lf-cr-label mono-xs">Google Ad Grants activated &middot; /month free ads</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"Our old donation experience was embarrassing — donors had to leave our site, go to a PayPal page, and hope they came back. Upcoming Brand built us a proper giving platform, wrote copy that explains what their gift actually does, and set us up with Google Ad Grants we didn't even know we qualified for. Online donations tripled in four months and we now have recurring donors who never would have found us through our old site."</p>
+            <footer>
+              <cite class="lf-cite-name">Patricia Evans</cite>
+              <span class="lf-cite-role mono-xs">Executive Director &middot; Greater Baltimore Community Foundation &middot; Baltimore, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/greater-baltimore-community-foundation.png"
+            alt="Greater Baltimore Community Foundation website redesign"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site · Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a donation-ready nonprofit website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most clients are live within 8 weeks of their first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland nonprofits</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items. You know exactly what you are buying and when your donation platform goes live.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours. Discounted rates available for 501(c)(3) organizations.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">Complete Guide to Nonprofit Website Design in Maryland</h2>
+        <p class="lead">Everything Maryland nonprofits, foundations, and mission-driven organizations need to know about building a website that drives donations, attracts volunteers, and communicates mission impact clearly to every audience.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <!-- 1 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">What Makes a Nonprofit Website Different from a Business Site</h3>
+          <p class="lf-guide-p">A commercial website exists to convert a single audience — a buyer — toward a single outcome: a purchase. A nonprofit website must serve five distinct audiences simultaneously, and each arrives with fundamentally different intentions. Donors want to understand whether their money will be used effectively. Volunteers want to know what the experience will be like and whether their time will matter. Program recipients need to find services and understand eligibility. Grant-makers are conducting due diligence on organizational credibility and program outcomes. Board members and community partners are assessing organizational stability. Designing a website that serves all five groups without diluting the message for any one of them is the central challenge that makes nonprofit web design a distinct discipline.</p>
+          <p class="lf-guide-p">Unlike a business site where every page ultimately funnels toward a transaction, a nonprofit site must balance three parallel conversion goals: donations, volunteer enrollment, and calls to action such as petition signatures, event registrations, or program intake forms. The homepage hierarchy must communicate mission before it ever asks for money — donors who feel emotionally connected to the mission before they see a donate button give at significantly higher rates than donors who are pushed toward a transaction the moment they land on the site.</p>
+          <p class="lf-guide-p">Impact storytelling is the mechanism that creates that emotional connection. The nonprofit sites that consistently outperform their sector peers in online fundraising are built around stories about real people whose lives changed because of the organization's work. Not statistics alone, not mission statements — stories. When a donor can picture a specific person helped by a specific program, the psychological distance between intention and action collapses. That is the architecture a nonprofit site must be built to support.</p>
+          <p class="lf-guide-p">Grant-makers evaluate nonprofit websites with extraordinary attention before recommending funding. Many foundations now require program officers to review an organization's website as part of the due diligence process. They are looking for mission clarity, evidence of program activity, financial transparency, governance structure, and professional credibility. A nonprofit that cannot communicate these qualities through its website is at a structural disadvantage in competitive grant cycles, regardless of the quality of its programs on the ground.</p>
+          <p class="lf-guide-p">The data on major gift donors is particularly striking. Research from Blackbaud and the Association of Fundraising Professionals consistently shows that a substantial majority of major gift donors — individuals making multi-year commitments in the five-figure range and above — visit a nonprofit's website before making that commitment. They are looking for proof that the organization is credible, transparent, and mission-aligned. A website that feels outdated, loads slowly, or buries financial accountability documents is quietly killing major gift relationships before the development team ever gets on the phone.</p>
+          <p class="lf-guide-p">The content hierarchy of a nonprofit site reflects this reality. Mission and impact should lead every page. Navigation should make it trivially easy to find programs, donate, volunteer, and learn about the organization's leadership. The donate button should be present but never predatory — it should feel like a natural invitation, not a commercial transaction. Schema markup for NonProfitOrganization signals organizational legitimacy to Google and helps mission-related searches surface the right results. Every structural decision on a nonprofit website should be evaluated through the lens of trust — and trust is built through clarity, transparency, and evidence of real-world impact.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Must-Have Pages for Maryland Nonprofit Websites</h3>
+          <p class="lf-guide-p">Most nonprofit websites grow organically over time — a board member adds a page here, a communications intern adds a page there — and the result is a site that has accumulated content without a deliberate architecture. Before any design work begins, every Maryland nonprofit should audit its site against a core page inventory that addresses every audience it needs to serve and every goal it needs to achieve online.</p>
+          <p class="lf-guide-p">The homepage carries more weight on a nonprofit site than on almost any other type of website. It must communicate mission within the first screenful of content, present a primary call to action (typically donate or get involved), and surface enough evidence of impact — program statistics, beneficiary numbers, years of service — to give a first-time visitor the confidence to explore further. Maryland nonprofits that hide their mission statement in the About section and lead their homepage with a rotating photo slider are losing donors in the first ten seconds of every visit.</p>
+          <p class="lf-guide-p">The About page is the second most visited page on most nonprofit sites, and it is doing significant work for multiple audiences simultaneously. For donors, it establishes organizational credibility. For grant-makers, it signals governance structure and institutional stability. For potential staff and volunteers, it communicates culture. A strong About page includes mission, vision, organizational history, a brief explanation of how the organization is governed, and links to leadership bios and financial transparency documents.</p>
+          <p class="lf-guide-p">Programs and services pages are among the most strategically underinvested areas of nonprofit web presence. Each program deserves its own dedicated page — not a collapsed section on a single programs overview. Individual program pages create searchable, indexable content that surfaces in both donor and beneficiary searches. They also provide the structured program description that grant applications frequently request, making a well-built programs section a genuine operational asset beyond its marketing function.</p>
+          <p class="lf-guide-p">The donation page deserves its own full design treatment, not a generic embed of a third-party form. The volunteer page should answer the questions a prospective volunteer actually has — what is the time commitment, what skills are needed, what will the experience be like — rather than simply saying "join us." The impact and annual report page functions as a year-round fundraising asset when structured correctly. The board of directors page is a transparency signal that both major donors and grant-makers evaluate closely. Contact pages should list specific staff contacts with actual email addresses rather than routing everything through a generic contact form.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Homepage: mission above the fold, primary CTA, impact numbers, featured programs</li>
+            <li class="lf-guide-li">About: mission, vision, history, governance structure, leadership</li>
+            <li class="lf-guide-li">Individual program pages: one URL per program, designed for both search and grant applications</li>
+            <li class="lf-guide-li">Donation page: custom-designed, not a generic third-party embed</li>
+            <li class="lf-guide-li">Volunteer page: specific opportunities, application process, what to expect</li>
+            <li class="lf-guide-li">Impact and annual report page: outcomes data, stories, downloadable report</li>
+            <li class="lf-guide-li">News and stories section: current program activity, beneficiary stories, organizational news</li>
+            <li class="lf-guide-li">Board of directors page: names, brief bios, governance transparency</li>
+            <li class="lf-guide-li">Contact page: specific staff contacts, not just a generic form</li>
+          </ul>
+        </div>
+
+        <!-- 3 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Nonprofit Schema — NonProfitOrganization and Beyond</h3>
+          <p class="lf-guide-p">Schema markup is structured data embedded in a website's HTML that tells search engines precisely what an organization is, what it does, and how to represent it accurately in search results. For nonprofits, implementing the correct schema is a technical SEO step with direct implications for donor trust, search visibility, and the accuracy of how the organization appears in Google's Knowledge Panel.</p>
+          <p class="lf-guide-p">The primary schema type for charitable organizations is NonProfitOrganization, which extends from the broader NGO type in the Schema.org vocabulary. The fields that matter most for Maryland nonprofits include the legal organization name exactly as it appears on the IRS determination letter, the physical address, telephone number, a clear description of the organization's mission and work, the founding date, the number of employees or full-time staff, the geographic area served, and the EIN (tax identification number). That last field — the EIN — is more important than most organizations realize. When a donor or grant-maker searches for a nonprofit's EIN to verify its status on Candid or the IRS Tax Exempt Organization Search, accurate schema ensures that search results for the EIN return the correct organization. In Maryland's nonprofit sector, where multiple organizations sometimes have similar names, EIN accuracy in schema prevents confusion that can redirect donor intent.</p>
+          <p class="lf-guide-p">Beyond the core organization schema, nonprofits should implement Event schema for every fundraiser, community event, and program activity that has a public-facing date and location. Event schema enables rich results in Google Search — the event date, location, and ticket information can appear directly in search results, increasing click-through rates for fundraising events significantly. Google also surfaces events in the dedicated Events tab in Search, which is a high-intent discovery channel for community-based organizations.</p>
+          <p class="lf-guide-p">Google's Knowledge Panel — the information card that appears on the right side of search results when someone searches for a specific organization — is populated primarily from structured data and Google's own data sources. For established nonprofits with consistent schema implementation and a verified Google Business Profile, the Knowledge Panel surfaces donation links, key staff contacts, hours of operation, and related news. Nonprofits that have not implemented schema or claimed their Knowledge Panel are missing a free, high-visibility channel for donor acquisition.</p>
+          <p class="lf-guide-p">Verifying schema implementation is straightforward: Google's Rich Results Test at search.google.com/test/rich-results accepts a URL and returns a complete audit of the structured data it detects, including any errors or warnings. Every nonprofit website build should include a schema verification step before launch, and schema accuracy should be reviewed annually as organizational details change. Staff turnover, address changes, and program evolution can all cause schema to drift out of alignment with actual organizational facts — and inaccurate schema erodes the donor trust it was designed to build.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Donation Page Design That Converts</h3>
+          <p class="lf-guide-p">The donation page is the most important conversion page on a nonprofit website, and it is also the page most frequently treated as an afterthought. A generic donation page — a single text field asking for an amount, no impact context, redirecting to a third-party platform with different branding and a URL the donor does not recognize — loses gifts at every stage of that experience. Donors who reach a donation page are already motivated to give; bad design is the reason they do not complete the transaction.</p>
+          <p class="lf-guide-p">High-converting donation pages are built around a specific set of design principles. Suggested giving amounts with concrete impact equivalents — "Give $25 / Provides one week of after-school meals for a student" — outperform open-amount fields because they eliminate the cognitive work of deciding what an appropriate gift is. When donors can see exactly what their money does, they are more likely to give and more likely to give at a higher level than they originally intended. The suggested amounts should be based on actual program costs, not round numbers that feel arbitrary.</p>
+          <p class="lf-guide-p">The recurring versus one-time giving toggle is one of the highest-leverage design elements on a donation page. Monthly recurring donors are the financial foundation of sustainable nonprofit operations — they have higher lifetime value, lower acquisition cost, and provide reliable revenue for program planning. Placing the recurring option as the default selection, or at minimum as the visually prominent option, consistently increases sustainer acquisition rates. Most donation platforms support this configuration natively.</p>
+          <p class="lf-guide-p">Maryland nonprofits have several solid donation platform options. Donorbox is widely used and integrates cleanly into WordPress with minimal branding disruption. Classy offers more sophisticated campaign management for organizations with complex fundraising operations. Bloomerang and Little Green Light are donor management platforms that include embedded donation forms and provide the added benefit of syncing donor records directly into the CRM. Stripe with a custom-built form offers the highest level of brand continuity but requires development investment. The right choice depends on budget, CRM integration needs, and the volume and complexity of fundraising activity.</p>
+          <p class="lf-guide-p">Friction reduction at the payment step is critical. Every additional required field costs conversions. Apple Pay and Google Pay integrations eliminate the need to enter card details on mobile devices — and since more than half of nonprofit donation traffic now arrives on mobile, removing that friction translates directly to higher completion rates. The post-donation experience — the thank-you page and the automated thank-you email — should be designed with the same care as the donation form itself. A well-designed thank-you sequence reinforces the donor's decision, provides a tax receipt, and plants the seed for the next gift.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Suggested amounts with specific impact equivalents tied to actual program costs</li>
+            <li class="lf-guide-li">Recurring giving toggle, ideally set as default selection</li>
+            <li class="lf-guide-li">Employer matching mention with a link to a matching gift database</li>
+            <li class="lf-guide-li">Campaign progress meter for time-limited fundraising drives</li>
+            <li class="lf-guide-li">Apple Pay and Google Pay for frictionless mobile checkout</li>
+            <li class="lf-guide-li">Minimal required fields — name, email, and payment are sufficient for most gifts</li>
+            <li class="lf-guide-li">Branded thank-you page and automated thank-you email with tax receipt</li>
+          </ul>
+        </div>
+
+        <!-- 5 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Volunteer Recruitment and Management Pages</h3>
+          <p class="lf-guide-p">Volunteer recruitment pages are among the most underinvested sections of most nonprofit websites. Many organizations treat the volunteer page as a single form — "Sign up to volunteer" followed by name and email fields — with no context about what volunteering actually involves, what impact it creates, or why someone should give their time to this organization rather than any other. That approach performs poorly because it asks for a significant commitment — a person's time — without providing the information that makes that commitment feel worthwhile and manageable.</p>
+          <p class="lf-guide-p">Prospective volunteers arrive at a volunteer page with very specific questions. What is the actual time commitment — is this a one-Saturday event or a recurring weekly obligation? What skills or qualifications are needed — can anyone help, or is specialized knowledge required? What will the experience actually be like — will I be doing meaningful work or stuffing envelopes? How do I apply, and what happens after I submit a form? How quickly will I hear back? A volunteer page that answers all of these questions honestly and specifically will out-recruit a page that vaguely invites people to "make a difference" every time.</p>
+          <p class="lf-guide-p">Individual volunteer opportunity pages — one page per distinct volunteer role or opportunity — significantly outperform a single generic volunteer page for organizations with multiple program areas. A volunteer opportunity page for a tutoring program targets a completely different person than one for a food pantry shift or a board committee opening. Separate pages allow for specific messaging tailored to each opportunity's actual requirements and appeal, and they create distinct URLs that can be shared in targeted outreach campaigns.</p>
+          <p class="lf-guide-p">Volunteer application forms should be structured to both qualify applicants and route them to the appropriate program coordinator. A form that collects availability, relevant skills, program interests, and any required background check consent saves significant staff time compared to a generic sign-up that requires a follow-up conversation to gather the same information. The form design should signal that the organization is organized and respectful of the volunteer's time from the very first interaction.</p>
+          <p class="lf-guide-p">Integration with volunteer management platforms enables organizations to move beyond spreadsheets and email threads. VolunteerHub, Galaxy Digital, Better Impact, and SignUpGenius each serve different organizational sizes and complexity levels. The website integration should feel seamless — the volunteer applies on a page that matches the nonprofit's branding, and the data flows directly into the management platform without the volunteer experiencing the handoff.</p>
+          <p class="lf-guide-p">Current volunteer testimonials are high-converting assets on recruitment pages. A specific, first-person account of what volunteering with the organization was like — the work itself, the relationships formed, the sense of contribution — is far more persuasive than any copy the organization writes about itself. Video testimonials perform particularly well when embedded natively or via an optimized Vimeo embed that does not slow down page load. The combination of an honest, specific description of the opportunity and an authentic volunteer story removes the two biggest barriers to signup: uncertainty and skepticism.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Google Ad Grants for Nonprofits — Making Your Website Eligible</h3>
+          <p class="lf-guide-p">Google Ad Grants provides eligible nonprofits with up to $10,000 per month in free Google Ads search advertising. For Maryland nonprofits with strong websites and well-structured campaigns, this represents a recurring annual advertising value of $120,000 — an extraordinary resource that most nonprofits use far below its potential or fail to maintain eligibility to use at all. The quality of a nonprofit's website is a direct determinant of how much value it can extract from Ad Grants.</p>
+          <p class="lf-guide-p">Eligibility requires 501(c)(3) status recognized by the IRS, enrollment in Google for Nonprofits, and a website that meets Google's quality requirements. Government entities, hospitals, healthcare organizations, and schools (K-12 and higher education) are not eligible regardless of nonprofit status. The website quality requirements are not arbitrary bureaucratic checkboxes — they are the same standards that determine organic search performance. A slow, thin-content website will fail Ad Grants quality requirements for the same reasons it fails to rank organically.</p>
+          <p class="lf-guide-p">The connection between website quality and Ad Grants performance is direct and consequential. Google's Ad Grants policy requires that all destination URLs lead to pages that are relevant to the ad content, load quickly, and provide genuine value to visitors. A donation page that loads in seven seconds on mobile, a volunteer page with three sentences of content, or a program page that simply names a program without describing it will all generate low Quality Scores in the Ad Grants system — and low Quality Scores reduce ad delivery, increase effective cost-per-click, and can trigger account suspension.</p>
+          <p class="lf-guide-p">Setting up Ad Grants requires connecting Google Ads to Google Search Console and GA4 with conversion tracking configured correctly. Without goal tracking — donation completions, volunteer form submissions, email signups — it is impossible to know whether Ad Grants traffic is achieving anything measurable, and Google's own policies require conversion tracking to be present. Campaign structures that work consistently well for Maryland nonprofits include donation campaigns targeting people searching for organizations doing specific types of work in specific Maryland communities, volunteer recruitment campaigns, event registration campaigns for annual fundraisers, and program awareness campaigns targeting potential beneficiaries.</p>
+          <p class="lf-guide-p">Maintaining Ad Grants eligibility requires sustained attention to two policy requirements that many organizations fail on. The minimum 5% click-through rate requirement across all campaigns means that ads with very broad or irrelevant targeting will drag the account out of compliance. Single-word keywords — "donate," "volunteer," "nonprofit" — are prohibited under Ad Grants policy because they lack specificity. Every campaign must use multi-word keyword phrases that reflect genuine search intent. A web design agency with Ad Grants experience can structure campaigns correctly from the outset and set up the monitoring needed to catch policy drift before it becomes a suspension.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Enroll in Google for Nonprofits before applying for Ad Grants</li>
+            <li class="lf-guide-li">Connect Ad Grants account to Search Console and GA4 with conversion tracking</li>
+            <li class="lf-guide-li">Build destination pages with substantive content and fast load times</li>
+            <li class="lf-guide-li">Use multi-word keyword phrases — no single-word keywords permitted</li>
+            <li class="lf-guide-li">Maintain 5% CTR across all campaigns to meet policy minimums</li>
+            <li class="lf-guide-li">Focus campaigns on donation, volunteer, event, and program awareness goals</li>
+          </ul>
+        </div>
+
+        <!-- 7 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Impact Storytelling and Program Pages</h3>
+          <p class="lf-guide-p">Impact storytelling is not a marketing technique applied to nonprofit communications — it is the mechanism through which donors connect to a mission viscerally enough to act on that connection. Decades of behavioral research in philanthropy and behavioral economics confirm the same finding: people give to people, not to organizations. A single, specific story about one person whose life changed because of a program will consistently outperform aggregate statistics in driving donor response. This is not a failure of rational decision-making; it is how human empathy and moral motivation actually work.</p>
+          <p class="lf-guide-p">Impact stories on a nonprofit website should follow a clear narrative structure. Introduce the person — not as a statistic or a category of beneficiary, but as a human being with a name, a context, and a challenge specific enough to feel real. Describe the challenge honestly and specifically. Explain how the organization's program entered the picture and what it provided. Show what changed — not in vague terms like "transformed his life," but in concrete, specific terms: finished high school, secured stable housing, obtained professional certification, reconnected with family. The specificity is the story's power. Generic language evacuates the emotional content that makes a story useful as a fundraising and awareness tool.</p>
+          <p class="lf-guide-p">Photo and video standards for impact content require particular attention in the Maryland nonprofit sector, where many organizations work with vulnerable populations — youth in foster care, adults in recovery, families experiencing homelessness. Written consent from every person photographed or filmed is a baseline legal and ethical requirement. Beyond legal compliance, the dignity of subjects should guide every editorial decision. Images that reduce beneficiaries to their circumstances — emphasizing suffering, poverty, or dependency — are both ethically problematic and increasingly counterproductive with modern donors who are attuned to the power dynamics embedded in nonprofit imagery. Authentic representation, in which subjects are shown as capable people in the process of a specific challenge, is both more ethical and more effective.</p>
+          <p class="lf-guide-p">Individual program pages serve a dual function: they are conversion pages for donors and beneficiaries, and they are SEO assets that surface the organization in the searches that people actually perform when looking for services or causes to support. A program page for a workforce training program in Baltimore should be optimized for the searches that both potential participants and potential donors use — not just "job training program" but "job training program Baltimore" and "workforce development for adults with barriers to employment Maryland." Program page content that mirrors real search language while honestly describing the program creates compounding organic visibility that a donation-focused homepage cannot achieve on its own.</p>
+          <p class="lf-guide-p">The annual impact report page is an underused fundraising asset on most nonprofit sites. Most organizations produce an annual report as a PDF and upload it to their site, missing the opportunity to create a living web page that functions as a fundraising tool year-round. A well-structured impact report page breaks the annual report into sections — program outcomes, beneficiary numbers, financial summary, donor recognition, stories — and presents them as readable, shareable web content rather than a downloadable document that most donors will never open. This page can anchor end-of-year fundraising email campaigns, grant application supplements, and major donor cultivation conversations throughout the year.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Grant Readiness — How Your Website Affects Funding Decisions</h3>
+          <p class="lf-guide-p">Foundation program officers and corporate giving directors are conducting website reviews as a routine part of grant due diligence. In Maryland's philanthropic community — which includes major foundations like the Abell Foundation, the Harry and Jeanette Weinberg Foundation, the Goldseker Foundation, and dozens of community foundations and corporate giving programs — the expectation that a grant applicant maintains a credible, current, and transparent online presence has moved from a preference to a standard. An outdated, incomplete, or unprofessional website is a disqualifying signal in competitive grant cycles even when the underlying program work is strong.</p>
+          <p class="lf-guide-p">Program officers are looking for specific signals when they review a nonprofit website in the context of a grant application. Mission clarity means that the organization can articulate what it does and for whom without jargon or institutional language that obscures the actual program work. Governance transparency means that board composition is visible and the organization appears to be functioning under appropriate oversight. Financial transparency means that audited financial statements, the most recent Form 990, and IRS determination letter are accessible — either publicly posted or available upon request with a clear mechanism for requesting them. Current program activity means that the news section, events calendar, and program pages reflect what the organization is actually doing in the current year, not three years ago.</p>
+          <p class="lf-guide-p">Some organizations benefit from creating a dedicated for-funders section or a grant-maker-focused page that consolidates the documents and information that foundation staff most frequently request. This page might include links to the IRS determination letter, the most recent 990, audited financials, the strategic plan, program evaluation reports, and a brief organizational capability statement. Making this information available without requiring a phone call or email request signals organizational maturity and respect for the funder's time.</p>
+          <p class="lf-guide-p">GuideStar (now Candid) profile alignment with the website is a frequently overlooked element of grant readiness. Program officers cross-reference Candid profiles as part of the due diligence process, and discrepancies between what an organization's website says about itself and what its Candid profile shows — different program descriptions, different financial figures, inconsistent leadership information — create red flags that require explanation. Keeping both the website and the Candid profile current and mutually consistent is a basic operational discipline that has a direct impact on grant outcomes.</p>
+          <p class="lf-guide-p">A foundation and grant opportunities page that actively signals openness to philanthropic partnership can also support a proactive cultivation strategy. Rather than simply waiting for grant cycles to open, a well-designed nonprofits page invites foundations to reach out about alignment between their giving priorities and the organization's program work. This is particularly useful for Maryland nonprofits whose program areas overlap with multiple foundation priorities — environmental justice organizations whose work also touches public health and workforce development, for example, can use their website to surface all of those connections to different funders simultaneously.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Post IRS determination letter, most recent 990, and audited financials — or provide a clear request mechanism</li>
+            <li class="lf-guide-li">Keep the board of directors page current with accurate names and brief bios</li>
+            <li class="lf-guide-li">Align website program descriptions with Candid profile and grant application language</li>
+            <li class="lf-guide-li">Create individual program pages with outcomes data, not just program descriptions</li>
+            <li class="lf-guide-li">Maintain a current news section that demonstrates active program operation</li>
+            <li class="lf-guide-li">Consider a dedicated for-funders page that consolidates due-diligence documents</li>
+          </ul>
+        </div>
+
+        <!-- 9 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Email List Building and Donor Retention Through Your Website</h3>
+          <p class="lf-guide-p">Email remains the highest-return fundraising channel available to nonprofits — higher than social media, higher than paid advertising, and higher than most direct mail programs when measured on a cost-per-dollar-raised basis. The reason is straightforward: an email list is an audience the organization owns, not one it rents from a platform that can change its algorithm or its terms at any time. A nonprofit with 5,000 engaged email subscribers has a more durable fundraising asset than one with 50,000 social media followers, because the email list will still exist and still function regardless of what any platform decides to do next month.</p>
+          <p class="lf-guide-p">The website is the primary mechanism for building that list, and most nonprofit websites do this poorly. A footer newsletter signup with no stated value proposition — "Subscribe to our newsletter" with a field for an email address — performs far below what a well-designed opt-in can achieve. Effective email list building on nonprofit websites requires giving prospective subscribers a clear reason to sign up and a clear sense of what they will receive. "Get our monthly impact report and invitations to exclusive donor events" is a proposition. "Join our newsletter" is not.</p>
+          <p class="lf-guide-p">Multiple opt-in points throughout the website — each tailored to the visitor's likely intent at that moment — outperform a single footer signup consistently. A donor who just completed a gift should be offered a signup for updates on how their donation is being used. A visitor on a program page might be invited to receive a resource guide related to the program area. An event attendee who registered through the website is already in the email system through the registration process and should receive a structured post-event welcome sequence. Each of these moments is an email acquisition opportunity that most nonprofits leave uncaptured.</p>
+          <p class="lf-guide-p">Platform selection matters. Mailchimp for Nonprofits offers discounted pricing and is well-suited for small to mid-size organizations with straightforward email needs. Constant Contact and Emma offer comparable functionality. Bloomerang's built-in email platform is worth serious consideration for organizations already using Bloomerang as their donor database, because it connects email engagement data directly to donor records — enabling development staff to see which donors are opening emails, clicking links, and engaging with content before they ever pick up the phone for a cultivation call.</p>
+          <p class="lf-guide-p">The donor welcome sequence triggered by a website donation is one of the highest-impact automation workflows a nonprofit can implement. The sequence should begin immediately after the donation is completed, with a personal-feeling thank-you email that acknowledges the specific gift and its impact. Subsequent emails in the sequence — sent over the following 30 to 60 days — introduce the donor to the organization's programs, share an impact story, invite them to a volunteer opportunity or event, and, at the appropriate moment, introduce the option of becoming a monthly recurring donor. This sequence, built once and automated, runs for every new donor regardless of staff capacity — and it consistently increases both donor retention rates and the percentage of one-time donors who convert to monthly sustainers.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Footer signup with a clear value proposition, not just "Subscribe to our newsletter"</li>
+            <li class="lf-guide-li">Post-donation email opt-in for impact updates</li>
+            <li class="lf-guide-li">Event RSVP as email capture with explicit opt-in to ongoing communications</li>
+            <li class="lf-guide-li">Resource download or major donor guide as a lead magnet for high-capacity prospects</li>
+            <li class="lf-guide-li">Automated donor welcome sequence triggered by website donation completion</li>
+            <li class="lf-guide-li">Monthly giving page with sustainer-specific messaging and dedicated URL</li>
+          </ul>
+        </div>
+
+        <!-- 10 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Events and Fundraiser Pages for Maryland Nonprofits</h3>
+          <p class="lf-guide-p">Events are among the most significant revenue streams for many Maryland nonprofits — galas, 5K races, golf tournaments, giving day campaigns, and cultivation dinners collectively generate hundreds of millions of dollars annually across the state's nonprofit sector. Yet most nonprofit event pages are built as afterthoughts — a paragraph describing the event, a date, and a link to an Eventbrite page with different branding — rather than as the dedicated conversion pages these high-stakes fundraising moments require.</p>
+          <p class="lf-guide-p">A well-designed event page functions simultaneously as a conversion page for ticket purchases or donations and as a search-visible promotional asset. Every event page must include the date, time, and location in a format that both humans and search engines can parse clearly. Event schema markup ensures that the date and location appear in Google search results, increasing click-through rates from event-related searches. Ticket tiers or giving levels with specific recognition benefits should be presented clearly and hierarchically. Sponsor recognition — a significant part of the event revenue model for many organizations — needs a prominent section that fulfills the sponsorship commitment and incentivizes future sponsorships.</p>
+          <p class="lf-guide-p">Ticketing integration options each have different tradeoffs. Eventbrite is widely recognized by donors and easy to use, but it routes attendees to a platform with Eventbrite's branding rather than the nonprofit's, and it extracts fees from each transaction. Classy Events offers a fully branded experience with more sophisticated donor management integration. For organizations with straightforward event ticket needs, a custom Stripe checkout embedded within the nonprofit's own site provides the highest brand continuity and lowest fee structure, though it requires more development effort to implement correctly.</p>
+          <p class="lf-guide-p">Campaign pages for specific fundraisers — giving day campaigns, matching gift campaigns, capital campaigns — should be treated as standalone conversion experiences with their own URL, design, and messaging. A Maryland Gives Day campaign page should have a dedicated URL that can be shared across all communication channels, a campaign goal and progress meter, specific impact statements for giving at different levels, and social sharing tools that make it easy for existing donors to recruit their networks. These elements, properly designed and implemented, can meaningfully increase a giving day campaign's performance over the results from a generic donate page.</p>
+          <p class="lf-guide-p">One structural decision with compounding long-term consequences is whether to create a new URL for each year's instance of a recurring event or to maintain a single evergreen URL that is updated annually. Creating a new URL — /gala-2023, /gala-2024, /gala-2025 — means starting with zero domain authority and zero backlinks each year, discarding whatever search equity the previous year's page accumulated. Maintaining a single URL — /gala — and updating it annually preserves accumulated search authority, maintains consistent backlinks from partner organizations and sponsors, and builds a page that ranks for the event's name year over year without requiring new link-building each year. This single decision, made correctly at the outset of a website build, saves meaningful promotional effort every year thereafter.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Implement Event schema markup on every event page for rich search results</li>
+            <li class="lf-guide-li">Use a single evergreen URL for recurring events, updated annually</li>
+            <li class="lf-guide-li">Include countdown elements and campaign progress meters for time-sensitive fundraisers</li>
+            <li class="lf-guide-li">Build giving day campaign pages with social sharing tools for peer-to-peer amplification</li>
+            <li class="lf-guide-li">Capture email addresses through event registration for post-event donor nurturing</li>
+            <li class="lf-guide-li">Structure ticket tiers with clear recognition benefits to encourage higher giving levels</li>
+          </ul>
+        </div>
+
+        <!-- 11 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Website Performance and Accessibility for Nonprofits</h3>
+          <p class="lf-guide-p">Nonprofit organizations sometimes treat website performance and accessibility as concerns that apply to commercial businesses more urgently than to mission-driven organizations. That assumption is incorrect, and it costs nonprofits donations, volunteer signups, and program participants every day. A mobile user who waits seven seconds for a nonprofit's donation page to load abandons at roughly the same rate as a retail shopper waiting for a product page — the charitable intent does not override the impatience that a slow website generates. Donation abandonment mirrors ecommerce abandonment closely enough that the performance standards developed for commercial sites apply with equal force to nonprofit fundraising pages.</p>
+          <p class="lf-guide-p">The most common causes of slow nonprofit websites are predictable and preventable. Oversized event photographs uploaded directly from a camera or phone — files in the 3MB to 8MB range that should be 80KB to 200KB — are the single most common performance culprit. Unoptimized video embeds, particularly social media embeds that load the entire social platform's JavaScript alongside the video, add significant load time to any page where they appear. Multiple social media feed widgets — Instagram feeds, Twitter timelines, Facebook page plugins — each make external API calls that can add seconds to page load time on slower mobile connections. Heavy donation platform embeds, particularly those that load significant third-party JavaScript, can substantially increase the Time to Interactive of donation pages specifically.</p>
+          <p class="lf-guide-p">Core Web Vitals — Google's performance measurement framework — provides specific, measurable targets for Largest Contentful Paint (how quickly the main content loads), Interaction to Next Paint (how responsive the page feels to user input), and Cumulative Layout Shift (whether page elements move around as the page loads). For nonprofit websites, particularly donation pages and program pages that are the targets of Ad Grants campaigns, achieving "Good" Core Web Vitals scores is both an SEO advantage and a direct conversion rate factor. Google's PageSpeed Insights and Search Console both provide free access to Core Web Vitals data.</p>
+          <p class="lf-guide-p">ADA accessibility compliance is both a legal requirement and a values statement that is particularly resonant for organizations whose missions involve serving communities that include people with disabilities. Section 508 of the Rehabilitation Act applies specifically to federally funded organizations and their digital communications — Maryland nonprofits that receive federal funding through grants, contracts, or pass-through awards have explicit accessibility obligations. ADA Title III, as interpreted by the Department of Justice, extends accessibility requirements to the public-facing websites of organizations that serve the public — which describes virtually every nonprofit operating programs in Maryland.</p>
+          <p class="lf-guide-p">Practical accessibility for nonprofit websites begins with the content that nonprofits generate most frequently: donation forms, event registration pages, impact reports, and program descriptions. Donation forms must be navigable by keyboard and compatible with screen readers, which means that every form field must have a properly associated label, error messages must be programmatically associated with the field they describe, and the tab order of the form must follow a logical sequence. Images must have descriptive alt text that communicates the content of the image to a user who cannot see it — and for the impact photography that nonprofit sites rely on heavily, that alt text should describe the context and emotional content of the image, not just its literal subject. Video content should include captions and, where possible, audio description tracks.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Optimize all images before upload — target under 200KB for most photographs</li>
+            <li class="lf-guide-li">Replace social media feed widgets with static recent-post displays or remove them</li>
+            <li class="lf-guide-li">Use Vimeo or YouTube embeds with lazy-loading enabled rather than auto-loading video</li>
+            <li class="lf-guide-li">Achieve "Good" Core Web Vitals scores on donation and program pages specifically</li>
+            <li class="lf-guide-li">Ensure all donation forms are keyboard-navigable and screen-reader compatible</li>
+            <li class="lf-guide-li">Write descriptive alt text for all images, including impact photography</li>
+            <li class="lf-guide-li">Caption all video content and provide transcripts for audio-heavy material</li>
+          </ul>
+        </div>
+
+        <!-- 12 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Choosing a Web Design Agency for Your Maryland Nonprofit</h3>
+          <p class="lf-guide-p">Selecting a web design agency for a nonprofit website build is a different process than selecting an agency for a commercial website, because a nonprofit website must accomplish a different set of objectives. An agency that builds excellent e-commerce sites or SaaS marketing pages may have no experience with donation platform integration, grant-maker expectations, volunteer intake design, or the particular ethical considerations that apply to beneficiary photography and program representation. The questions a nonprofit executive director or communications director should ask in an agency evaluation process are therefore different from the questions a retail brand would ask.</p>
+          <p class="lf-guide-p">The first questions should be about direct nonprofit experience. Has the agency built nonprofit sites that function as fundraising tools — not just websites that happen to belong to nonprofits? Can they show examples of donation pages they have designed and provide any performance data on conversion rates before and after? Have they integrated the specific donation platform your organization uses, or are they willing to learn it? Do they understand how grant-makers evaluate nonprofit websites, and can they speak specifically to what a program officer looks for when reviewing a site during due diligence? Do they offer nonprofit pricing, and if so, what does that pricing actually include versus what is considered an add-on?</p>
+          <p class="lf-guide-p">A nonprofit website project scope should include several components that a standard commercial website build would not. Donation page design — a custom-designed giving experience, not just a link to a third-party form — should be explicitly in scope. Volunteer intake form design and integration with a volunteer management platform, if the organization uses one, should be included. NonProfitOrganization schema implementation and verification should be a standard deliverable. Impact storytelling architecture — how the site will support the creation and display of beneficiary stories and program outcomes — should be designed into the site structure from the beginning, not added as an afterthought. GA4 configuration with conversion tracking for donations, form submissions, and email signups should be included and verified before launch.</p>
+          <p class="lf-guide-p">Nonprofit-specific considerations extend to content guidelines and operational context. An agency working with a nonprofit that serves survivors of domestic violence, youth in the justice system, or adults in recovery needs to understand the discretion required in how beneficiaries are represented in photographs and stories. An agency building a site for an organization with restricted fund programs needs to understand that messaging about specific programs may be tied to specific grants with specific communication requirements. These are not concerns that most commercial web agencies have experience navigating.</p>
+          <p class="lf-guide-p">TechSoup is the primary resource for nonprofits accessing discounted technology products and services. Through TechSoup, eligible nonprofits can access significantly discounted rates on WordPress hosting, security plugins, and a range of other tools that a web project may require. Google Workspace for Nonprofits provides eligible organizations with Google's suite of productivity and communication tools at no cost, which is relevant to website builds that integrate with Google Analytics, Google Search Console, and Google Ad Grants. Microsoft also offers Azure and Microsoft 365 for nonprofits at deep discounts through TechSoup. Knowing which of these programs apply to a specific organization's situation can meaningfully reduce the ongoing technology costs that follow a website launch.</p>
+          <p class="lf-guide-p">Realistic timeline expectations prevent the friction that often develops midway through nonprofit website projects. A Maryland nonprofit website build — from discovery and strategy through design, development, content migration, testing, and launch — typically requires six to eight weeks when both the agency and the client are well-organized and responsive. Organizations that are in the middle of a major fundraising campaign, a leadership transition, or a grant reporting cycle often find that they cannot commit the internal attention a website project requires during those periods. Scheduling the project for a period of relative organizational stability, and assigning a single internal point of contact with decision-making authority, are the two factors that most reliably keep a nonprofit website project on schedule and on budget.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland nonprofits ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">5</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`np-faq-${i}`}
+                  id={`np-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`np-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`np-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Nonprofit websites &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Build a nonprofit website that converts visitors into donors and volunteers.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know your donors and your cause ecosystem</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts — month-to-month after launch</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your donor journey, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-nonprofit" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="np-cta-name">Your name</label>
+                <input class="lf-form-input" type="text" id="np-cta-name" name="name" placeholder="Patricia Evans" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="np-cta-email">Email address</label>
+                <input class="lf-form-input" type="email" id="np-cta-email" name="email" placeholder="patricia@gbcf.org" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="np-cta-org">Organization name &amp; type</label>
+              <input class="lf-form-input" type="text" id="np-cta-org" name="organization" placeholder="Greater Baltimore Community Foundation &middot; Grantmaking" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="np-cta-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="np-cta-message" name="message" rows="3" placeholder="Donation form issues, slow site, no schema, not ranking for our cause..."></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Nonprofit</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+/* ══════════════════════
+   GUIDE
+══════════════════════ */
+.lf-guide { background: var(--cream-soft); }
+.lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+.lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+.lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+.lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+.lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+.lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+.lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Organization type custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>

@@ -1,0 +1,2341 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Slow sites lose buyers before they see a single listing",
+    body: "93% of buyers start their home search online, but 53% leave a site that loads in over 3 seconds. Most agent websites we audit load in 6–9 seconds on mobile — which means a buyer searching 'Annapolis waterfront homes' bounces to Zillow before your IDX feed even loads. Speed is not cosmetic; it is how you compete with the portals.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "No neighborhood pages means no organic buyer traffic",
+    body: "If your site has a single 'Search Listings' page, you rank for nothing. Buyers search for specific neighborhoods and price ranges: 'homes for sale Heritage Harbour Annapolis,' 'condos under $400k Baltimore.' Without dedicated neighborhood and search pages, that traffic goes to Zillow and Realtor.com instead of you.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "Generic agent sites look identical to every competitor",
+    body: "Most Maryland agents use the same brokerage-provided template site. There is no reason for a buyer or seller to choose your site over the next one in a search result. A custom WordPress site with your personal brand, local market expertise, and a neighborhood-specific content strategy is what differentiates you and keeps visitors on your site.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "RealEstateAgent schema and local market markup",
+    body: "Every page receives RealEstateAgent and LocalBusiness JSON-LD schema — geographic service areas, property types, license number, brokerage affiliation, and price ranges. This tells Google exactly who you are and what markets you cover, improving your visibility for neighborhood-specific and agent-name searches across Anne Arundel, Baltimore, and Howard counties.",
+    tags: ["RealEstateAgent schema", "LocalBusiness", "License markup"],
+  },
+  {
+    num: "02",
+    title: "IDX integration with Bright MLS",
+    body: "We integrate your IDX provider — IDX Broker, Showcase IDX, or iHomeFinder — directly with Bright MLS to show live Maryland listings on your site. Buyers can search by city, neighborhood, price, and property type without leaving your domain. IDX integration keeps buyer traffic on your site rather than surrendering it to the portals.",
+    tags: ["IDX / Bright MLS", "Live listings", "Buyer search"],
+  },
+  {
+    num: "03",
+    title: "Neighborhood and market pages that rank",
+    body: "We build dedicated pages for every neighborhood, community, and market area you serve — Annapolis waterfront, Historic District, Heritage Harbour, Baltimore Fells Point, Columbia, and beyond. Each page targets specific buyer and seller searches with local market data, community highlights, and listing widgets. These pages compound in authority over time.",
+    tags: ["Neighborhood pages", "Market area SEO", "Local search"],
+  },
+  {
+    num: "04",
+    title: "Seller valuation lead capture",
+    body: "Home seller leads are the highest-value conversions for most agents. We build seller valuation pages with integrated home value tools — or simple email-capture forms positioned around the question 'What is my home worth?' — that convert sellers at the research stage before they contact three agents for CMA presentations.",
+    tags: ["Seller lead capture", "Home valuation", "CMA funnel"],
+  },
+  {
+    num: "05",
+    title: "Google Business Profile and Local Pack setup",
+    body: "Appearing in the Local Pack for 'real estate agent Annapolis' or 'listing agent Baltimore' drives high-intent leads with no ongoing ad spend. We audit and optimize your GBP — correct agent category, service areas, reviews setup, and photo strategy. We also ensure your Zillow, Realtor.com, and Homes.com profiles are consistent with your site.",
+    tags: ["Google Business Profile", "Local Pack", "Zillow consistency"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your site ships with green Core Web Vitals — or we fix it before launch at no cost. Agent sites with unoptimized listing photos and third-party IDX widgets routinely fail these benchmarks. Our builds use a performance stack that handles IDX integration without sacrificing page speed.",
+    tags: ["Core Web Vitals", "LCP < 2.5s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Site audit + market analysis",
+    body: "We audit your current site for technical SEO, Core Web Vitals, and schema gaps. We map your target neighborhoods and price segments across your service territory. You receive a written strategy document: page list, IDX setup requirements, and neighborhood landing page targets.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1–2",
+    title: "AI-assisted design + copy draft",
+    body: "We generate your homepage, listing search experience, and neighborhood pages using AI-assisted design — desktop and mobile — built around your personal brand and market. We draft neighborhood page frameworks and bio copy simultaneously. One consolidated feedback round.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2–7",
+    title: "WordPress build + IDX + schema",
+    body: "Approved designs go into WordPress. IDX integration connects to Bright MLS and is tested across mobile and desktop. Every neighborhood and market page gets RealEstateAgent schema. Seller valuation pages and lead capture forms are built and tested.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 7–10",
+    title: "Launch, GBP + portal profile audit",
+    body: "We handle DNS cutover, 301 redirects, and sitemap submission. Your GBP and key portal profiles are audited simultaneously. You receive a handoff video and 30-day post-launch monitoring window.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "SEO",
+    q: "How long before an agent website ranks for neighborhood searches?",
+    a: "For specific neighborhood searches in smaller Maryland markets, agents often see first-page movement in 60–90 days. Baltimore and broader county-level searches take 3–6 months. Neighborhood landing pages with proper schema and local content tend to rank faster than generic agent pages — they're targeting less competitive, more specific queries.",
+  },
+  {
+    num: "02",
+    category: "Platform",
+    q: "What IDX providers do you work with?",
+    a: "We work with IDX Broker, Showcase IDX, iHomeFinder, and Flexmls. We connect whichever platform your brokerage supports or help you select one. We handle the Bright MLS data feed setup and test all search widgets across mobile and desktop. IDX integration is included in the Growth and Custom tiers.",
+  },
+  {
+    num: "03",
+    category: "Services",
+    q: "Do you write neighborhood page copy or do we provide it?",
+    a: "We write initial neighborhood page frameworks as part of every tier. You provide local knowledge — school district info, market trends, community highlights, lifestyle selling points — via a questionnaire. We draft the copy that ranks and converts. One review round included. You can add more neighborhoods over time with our content add-on.",
+  },
+  {
+    num: "04",
+    category: "Migration",
+    q: "Will we lose rankings when we move from our brokerage site?",
+    a: "Brokerage-provided sites rarely have meaningful organic rankings since they use the same template as thousands of agents. There's usually little to protect — but we still map all existing URLs and implement 301 redirects before DNS cutover. We monitor Search Console for 30 days post-launch.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What ongoing support do you offer after launch?",
+    a: "Care plans start at $150/month — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours. Neighborhood page content add-ons (one new page per month) are available separately, compounding your SEO footprint. Month-to-month, no annual contract.",
+  },
+  {
+    num: "06",
+    category: "SEO",
+    q: "Can you help me rank for luxury real estate searches?",
+    a: "Yes — luxury real estate SEO requires dedicated market pages targeting high-intent searches like 'waterfront homes Annapolis over $1M' or 'luxury condos Baltimore Harbor.' We build property-type and price-tier landing pages that capture these searches with proper RealEstateAgent schema and locally-specific market content.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Migration":  { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Care Plans": { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 7 pages: Home, About, Buyers, Sellers, Listings search, Contact, Thank You",
+      "RealEstateAgent + LocalBusiness JSON-LD schema",
+      "Seller home valuation lead capture page",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Business Profile audit and optimization",
+      "Google Search Console + Analytics 4 setup",
+      "30 days post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 18 pages · 8 neighborhood pages + buyer/seller funnels",
+      "IDX integration with Bright MLS (IDX Broker or Showcase IDX)",
+      "RealEstateAgent schema mapped by neighborhood and property type",
+      "Seller valuation funnel with CMA request form",
+      "Zillow, Realtor.com, Homes.com profile consistency audit",
+      "60 days post-launch monitoring with monthly report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited neighborhood and market pages across full territory",
+      "Team or multi-agent site with individual agent profiles and IDX",
+      "Custom listing alert and saved search functionality",
+      "Full content migration with 301 redirect mapping",
+      "Quarterly SEO reviews for 12 months post-launch",
+      "90 days post-launch support + first month care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": ["RealEstateAgent", "LocalBusiness"],
+      "@id": "https://upcomingbrand.com/industries/real-estate-website-design/#realestateagent",
+      "name": "Upcoming Brand — Real Estate Website Design Maryland",
+      "description": "WordPress website design for Maryland real estate agents. RealEstateAgent schema, IDX/Bright MLS integration, 90+ PageSpeed. Fixed-scope from $1,500.",
+      "url": "https://upcomingbrand.com/industries/real-estate-website-design/",
+      "areaServed": [
+        { "@type": "State", "name": "Maryland" },
+        { "@type": "City", "name": "Annapolis" },
+        { "@type": "City", "name": "Baltimore" },
+        { "@type": "City", "name": "Columbia" },
+        { "@type": "City", "name": "Bethesda" },
+        { "@type": "City", "name": "Frederick" }
+      ],
+      "knowsAbout": ["Real estate website design", "IDX integration", "Bright MLS", "RealEstateAgent schema", "Neighborhood SEO", "WordPress"],
+      "priceRange": "$1,500–$10,000+"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://upcomingbrand.com/industries/real-estate-website-design/#webpage",
+      "url": "https://upcomingbrand.com/industries/real-estate-website-design/",
+      "name": "Real Estate Website Design Maryland | Upcoming Brand",
+      "description": "WordPress website design for Maryland real estate agents. RealEstateAgent schema, IDX/Bright MLS integration, 90+ PageSpeed. Fixed-scope from $1,500.",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
+          { "@type": "ListItem", "position": 3, "name": "Real Estate Website Design", "item": "https://upcomingbrand.com/industries/real-estate-website-design/" }
+        ]
+      }
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Real Estate Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland real estate agents. RealEstateAgent schema, IDX/Bright MLS integration, 90+ PageSpeed. Fixed-scope from $1,500."
+  canonicalUrl="https://upcomingbrand.com/industries/real-estate-website-design/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} slot="head" />
+
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>Real Estate Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            Real Estate Web Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland real estate websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to capture leads</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">from every search.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most real estate agent websites lose buyers and sellers before the first showing — slow load times, no IDX search, and copy that ranks for nothing. We build WordPress sites for Maryland agents that rank for neighborhood searches, integrate Bright MLS listings, and turn visitors into signed clients. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">RealEstateAgent schema on every build</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website losing you listings?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="re-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="re-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="re-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="re-name" name="name" placeholder="David Kirwan" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="re-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="re-email" name="email" placeholder="david@chesapeakerealty.com" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="re-agency">Agency name</label>
+              <input class="lfh-form-input" type="text" id="re-agency" name="agency" placeholder="Chesapeake Realty Group" autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-specialty">Your specialty</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-specialty" data-name="specialty">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select your specialty</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Your specialty">
+                  <li class="lf-cs-opt" role="option" data-value="Buyer's Agent">Buyer's Agent</li>
+                  <li class="lf-cs-opt" role="option" data-value="Listing Agent">Listing Agent</li>
+                  <li class="lf-cs-opt" role="option" data-value="Both Buyers & Sellers">Both Buyers &amp; Sellers</li>
+                  <li class="lf-cs-opt" role="option" data-value="Luxury Real Estate">Luxury Real Estate</li>
+                  <li class="lf-cs-opt" role="option" data-value="Commercial">Commercial</li>
+                  <li class="lf-cs-opt" role="option" data-value="Property Management">Property Management</li>
+                  <li class="lf-cs-opt" role="option" data-value="New Construction">New Construction</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="specialty" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key statistics">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">69<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of agent sites fail<br>Core Web Vitals</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">6.1<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More leads from agents<br>ranking in local search</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">93<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">Of buyers start their<br>home search online</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">10<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call to live,<br>lead-generating site</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why clients leave before calling</p>
+        <h2 class="h2-section">Why most real estate agent websites fail Maryland agents</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland real estate website needs</h2>
+        <p class="lead">A real estate agent site is not a brochure. It is lead capture infrastructure. Every element we build — from schema to IDX to neighborhood pages — is designed to do one job: turn a searching buyer or seller into a signed client.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
+          <h2 class="h2-section lf-case-h2">How Chesapeake Realty Group tripled their organic lead volume in 5 months</h2>
+          <p class="lf-case-desc">
+            David Kirwan at Chesapeake Realty Group had been relying on his brokerage's template site for four years — no neighborhood pages, no IDX integration, and a PageSpeed score of 33. Within 5 months of launching a custom site, his business looked different.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+312%</span>
+              <span class="lf-cr-label mono-xs">Organic buyer and seller leads</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">Pg 1</span>
+              <span class="lf-cr-label mono-xs">For 9 Annapolis neighborhood searches</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.7s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 6.9s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">8</span>
+              <span class="lf-cr-label mono-xs">Neighborhood pages ranking in 60 days</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"I was competing against Zillow and Realtor.com with a brokerage template — it was never going to work. Upcoming Brand built me neighborhood pages for every community I specialize in, integrated my IDX feed so buyers actually stay on my site, and set up my GBP properly. Within five months I had more inbound leads than I'd had in the previous two years combined. This is now my best source of business."</p>
+            <footer>
+              <cite class="lf-cite-name">David Kirwan</cite>
+              <span class="lf-cite-role mono-xs">Realtor &middot; Chesapeake Realty Group &middot; Annapolis, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/chesapeake-realty-group.png"
+            alt="Chesapeake Realty Group website redesign — Annapolis real estate"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site &middot; Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a ranked real estate website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most clients are live within 10 weeks of their first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland real estate agents</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">Complete Guide to Real Estate Website Design in Maryland</h2>
+        <p class="lead">Everything Maryland real estate brokerages, agents, and teams need to know about building a website with IDX integration, agent rosters, and the local SEO foundation that turns property searches into signed clients.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <!-- 1 -->
+        <div class="lf-guide-section" id="guide-what-makes-different">
+          <h3 class="lf-guide-h3">What Makes a Real Estate Website Different</h3>
+          <p class="lf-guide-p">Real estate websites occupy a category of their own in local business web design. The gap between a real estate site and, say, a law firm site or a restaurant site is not merely stylistic — it is technical and operational. The single defining requirement that separates real estate from almost every other local business is IDX integration: the live feed of MLS listings that pulls active, pending, and recently sold properties directly into the website. No other local business category requires its website to function as a live real estate database, updated multiple times per day, displaying thousands of property records with photos, pricing, square footage, and legal disclosures. That requirement alone makes real estate websites the most technically complex local business sites built by any web design agency.</p>
+          <p class="lf-guide-p">The distinction between a brokerage site and an agent personal brand site matters enormously before a project begins. A brokerage site is the authoritative face of the entire company. It carries the brand, features an agent roster, displays office-wide listings, and targets both buyer and seller leads across a broad geographic market. An agent personal brand site is narrower and more personal. It functions as a direct extension of the agent's reputation, spotlighting their specialty, their service area, and their track record. Both types share the core IDX requirement but differ in architecture, content strategy, and conversion goals. Agencies that fail to ask which type a client needs from the beginning tend to deliver sites that serve neither purpose well.</p>
+          <p class="lf-guide-p">Home buyers and sellers search very differently, and a well-designed real estate site accounts for both patterns. Buyers search geographically and by property characteristics: "homes for sale in Canton Baltimore," "3 bedroom houses Columbia MD under 500k," "condos near Annapolis waterfront." Their search journey spans months. They revisit listings repeatedly, save favorites, and use the site as a research hub. Sellers search with intention and urgency: "what is my home worth in Bethesda," "listing agent Frederick MD," "how long does it take to sell a house in Maryland." Seller traffic is lower in volume but dramatically higher in conversion value. A site that optimizes only for buyer traffic misses the most profitable audience segment.</p>
+          <p class="lf-guide-p">Many agents assume that Zillow and Realtor.com replace the need for an owned website. They do not. Zillow and Realtor.com are aggregator platforms that generate leads and then sell those leads back to agents — often to multiple competing agents simultaneously. The brokerage has no control over the user experience, no ability to capture first-party data, and no brand differentiation on those platforms. An owned website is where the brokerage builds authority that compounds over time. Every blog post, neighborhood guide, and agent bio page is an asset that generates search traffic indefinitely. Zillow traffic disappears the moment you stop paying for leads. Owned website traffic from SEO appreciates.</p>
+          <p class="lf-guide-p">Schema markup requirements set real estate sites apart from general local business sites. Google's structured data vocabulary includes dedicated types for RealEstateAgent and RealEstateListing that, when implemented correctly, give Google explicit machine-readable signals about who the agent is, what geographic area they serve, which brokerage they belong to, and what properties they represent. Implementing this schema at the individual agent page level, not just the homepage, is one of the most overlooked competitive advantages in Maryland real estate SEO.</p>
+          <p class="lf-guide-p">Finally, real estate sites require more ongoing content maintenance than almost any other local business category. Listings expire, market conditions shift quarterly, neighborhood data changes as new developments open or school boundaries redraw. A real estate site that was accurate eighteen months ago may now carry stale median price data, outdated school ratings, and dead listing links. Ongoing content maintenance is not optional in this industry — it is the minimum requirement for keeping the site credible and performing.</p>
+        </div>
+
+        <!-- 2 -->
+        <div class="lf-guide-section" id="guide-idx-integration">
+          <h3 class="lf-guide-h3">IDX Integration — The Core of Any Real Estate Website</h3>
+          <p class="lf-guide-p">IDX stands for Internet Data Exchange. It is the agreement and technical infrastructure that allows real estate brokerages to display each other's MLS listings on their own websites. When a buyer searches for homes on your brokerage website and sees hundreds of active listings from across the market — not just your own brokerage's listings — that breadth is made possible by IDX. Without IDX, a brokerage site can only show its own listings, which makes the site far less useful to buyers and far less competitive as a search destination. IDX is not a nice-to-have feature. It is the engine that makes a real estate website function as a property search platform.</p>
+          <p class="lf-guide-p">Technically, IDX works through a data feed delivered by the MLS to an IDX provider, which then formats and serves the listing data to the brokerage's website via API or embed. The IDX provider handles the data agreement compliance, the refresh cadence (most feeds update every fifteen to thirty minutes), and the display rules mandated by the MLS. The brokerage's website interfaces with the IDX provider either through a WordPress plugin, a JavaScript embed, or a headless API integration that pulls listing data directly into custom-built templates.</p>
+          <p class="lf-guide-p">Major IDX providers used in Maryland markets include Showcase IDX, iHomeFinder, Realtyna, and IDX Broker. Each has trade-offs. Showcase IDX is popular for its modern UI and strong WordPress integration. iHomeFinder offers solid lead capture tools. Realtyna's WPL platform is a WordPress plugin that creates fully owned, indexed listing pages rather than iframed content. IDX Broker is one of the most widely deployed and has deep BrightMLS support. The choice of provider has significant downstream SEO consequences that most brokerages never consider when making the decision.</p>
+          <p class="lf-guide-p">The most important IDX decision for SEO is whether listings are embedded via iframe or rendered as indexed pages. Iframe embeds load the IDX search as a third-party frame — visually seamless to the user but completely invisible to Google's crawler. Google cannot index iframed content from an external domain. This means every property search page and individual listing page generates zero SEO value for the brokerage's own domain. In contrast, IDX providers that render listing content as native pages on the brokerage's domain — either through server-side rendering or a headless integration — allow Google to index those pages. The SEO difference between these two implementation approaches is enormous and compounding over time.</p>
+          <p class="lf-guide-p">IDX pages also require canonical tag strategy to prevent duplicate content conflicts with Zillow and Realtor.com. Many listings appear on dozens of sites simultaneously. Without a canonical tag telling Google which version to treat as authoritative, your brokerage's listing page competes against itself across the aggregator ecosystem. Properly configured canonical tags, combined with unique content added to each listing page (neighborhood context, agent commentary, local market data), signal to Google that your listing page is the authoritative version worth ranking.</p>
+          <p class="lf-guide-p">In Maryland specifically, IDX access requires BrightMLS participation. BrightMLS is the regional MLS serving Maryland, Virginia, DC, Delaware, Pennsylvania, and New Jersey. It is one of the largest MLSs in the country. BrightMLS has its own IDX data agreement requirements, display rules (attribution, listing age limits, required fields), and approved vendor relationships. An agency building a real estate website in Maryland must understand BrightMLS rules before specifying an IDX provider. Not all IDX providers are approved BrightMLS data licensees, and choosing an unapproved vendor creates compliance risk for the brokerage's MLS membership.</p>
+          <p class="lf-guide-p">Core Web Vitals performance is a real concern when IDX is involved. IDX scripts are often heavy, loading large property image sets, maps, and search filters that push page weight well above what a standard WordPress site carries. The solution is to implement IDX as a deferred or interaction-triggered load rather than blocking the initial page render. A facade pattern — where the IDX search interface is visually present but only fully initialized when the user engages — keeps Largest Contentful Paint scores fast while maintaining full IDX functionality.</p>
+        </div>
+
+        <!-- 3 -->
+        <div class="lf-guide-section" id="guide-schema-markup">
+          <h3 class="lf-guide-h3">Real Estate Schema Markup — RealEstateAgent and Beyond</h3>
+          <p class="lf-guide-p">Structured data is the layer of machine-readable code that tells Google not just what your page says, but what it means. For real estate websites, schema markup is not a minor technical enhancement — it is the difference between Google confidently surfacing the right agent for a local real estate search and Google treating your agent pages as generic contact pages with no special authority. Google's schema.org vocabulary includes dedicated types specifically built for real estate, and implementing them correctly gives your site a structural advantage over competing brokerages that skip this step.</p>
+          <p class="lf-guide-p">The RealEstateAgent schema type is the most important for individual agent pages. Its core fields include name (the agent's full legal name as it appears on their license), telephone, email, url, image (linking to the professional headshot), address (structured with streetAddress, addressLocality, addressRegion, postalCode), areaServed (listing the geographic areas the agent actively works), and memberOf (linking to the brokerage's own schema entity). The memberOf relationship is particularly valuable because it creates a machine-readable link between the individual agent and the brokerage brand, reinforcing organizational trust signals that Google uses when evaluating E-E-A-T (Experience, Expertise, Authoritativeness, Trustworthiness) for local search ranking.</p>
+          <p class="lf-guide-p">The areaServed field deserves more attention than most implementations give it. Rather than listing a single city, effective areaServed implementation lists the specific neighborhoods, zip codes, and counties the agent genuinely serves. This precision matters because Google uses areaServed to match agent pages against location-specific searches. An agent who lists "Baltimore" as their area served competes against every other agent who listed "Baltimore." An agent who lists "Canton," "Fells Point," "Harbor East," and "Federal Hill" specifically is far more likely to surface for neighborhood-level searches where buyer intent is highest.</p>
+          <p class="lf-guide-p">RealEstateListing schema applies to individual property pages where IDX content is rendered as native pages rather than iframes. Its fields include name (property address), offers (listing price), floorSize, numberOfRooms, address, and geo (latitude/longitude coordinates). When IDX listing pages carry RealEstateListing schema, Google can parse the listing data directly from the structured data layer rather than inferring it from page text — increasing the accuracy of how those pages appear in search results.</p>
+          <p class="lf-guide-p">The brokerage itself should carry LocalBusiness schema (or more specifically, RealEstateAgent schema at the organization level, since schema.org allows RealEstateAgent to apply to both persons and organizations). The brokerage schema should include the official business name, address, telephone, business hours, priceRange, and aggregateRating (populated from verified reviews). This brokerage-level schema is what powers the Knowledge Panel that appears in Google search results when someone searches your brokerage name directly.</p>
+          <p class="lf-guide-p">Scaling schema implementation across a large agent roster requires a systematic approach. For WordPress-based brokerage sites, Custom Post Types for agent profiles paired with a schema generation plugin (or custom PHP that reads agent profile fields and outputs JSON-LD) allows the team to maintain schema accuracy without manually coding each agent page. When an agent updates their service areas or certifications, the schema updates automatically from the same fields that power their public profile page.</p>
+          <p class="lf-guide-p">All schema implementations should be verified through Google's Rich Results Test before launch and re-verified any time agent profile templates are updated. Schema errors — mismatched field types, missing required properties, broken entity links — suppress rich result eligibility silently and often go undetected for months. A structured validation workflow as part of your website maintenance protocol prevents this category of SEO regression from accumulating unnoticed.</p>
+        </div>
+
+        <!-- 4 -->
+        <div class="lf-guide-section" id="guide-neighborhood-pages">
+          <h3 class="lf-guide-h3">Neighborhood and Community Guide Pages</h3>
+          <p class="lf-guide-p">Neighborhood pages are the most powerful long-term SEO asset a real estate website can build. Buyers do not search for homes in the abstract — they search by neighborhood, because neighborhood is the primary filter through which they imagine their daily life. They want to know what it feels like to live in Canton versus Federal Hill, whether the commute from Columbia to downtown Baltimore is manageable, what the school options look like in the Bethesda zip codes they are considering. A brokerage that publishes genuinely useful neighborhood guide pages captures this research traffic at the top of the buyer funnel, months before the buyer is ready to talk to an agent.</p>
+          <p class="lf-guide-p">The anatomy of a high-performing neighborhood guide page goes well beyond a few paragraphs of city description copy that could apply to any market. Effective neighborhood pages include school information (public school district, middle and high school assignments, GreatSchools ratings with the caveat that ratings change), walkability and transit scores, median home price ranges with historical context (not just a static number but a narrative about how prices have moved over the past two to three years), commute time estimates to major employment centers, community character (is it walkable and urban, quiet and suburban, artsy, family-focused?), local amenities (restaurants, parks, grocery stores, farmers markets), and community-specific information that cannot be found on a national aggregator — the kind of insider knowledge that signals the brokerage actually operates in this market.</p>
+          <p class="lf-guide-p">The trap most brokerage sites fall into is writing neighborhood pages that are entirely generic. A page that describes Canton, Baltimore as "a vibrant waterfront neighborhood with great restaurants and historic row homes" communicates nothing that Zillow or Wikipedia does not already say. Truly unique neighborhood pages include specific business names, specific street intersections, specific community events, specific development projects underway, and a clear point of view from agents who have closed deals there. This specificity is what Google rewards — and it is what convinces a prospective buyer that your agents actually know the neighborhood.</p>
+          <p class="lf-guide-p">Neighborhood pages must be maintained as market conditions evolve. A neighborhood guide last updated in 2022 that quotes median prices from that year actively misinforms buyers and signals to Google that the content is stale. Quarterly reviews of median price data, school ratings, and major neighborhood developments keep the pages accurate and give Google a reason to recrawl and re-evaluate the content. Each content refresh is an opportunity to add a paragraph or two of new context that extends the page's depth without requiring a full rewrite.</p>
+          <p class="lf-guide-p">Linking neighborhood guide pages to live IDX search results filtered by that neighborhood multiplies their conversion value. A buyer reading about Canton should be able to click directly to "See current homes for sale in Canton" and land on a pre-filtered IDX search showing only Canton listings. This link closes the loop between research content and property search, keeping the buyer on the brokerage's site rather than losing them back to Zillow when they are ready to browse listings.</p>
+          <p class="lf-guide-p">Maryland's real estate market is geographically diverse in ways that create natural neighborhood page inventory. Baltimore neighborhoods like Canton, Federal Hill, Fells Point, Roland Park, and Hampden each have distinct buyer profiles and price points. Annapolis's Historic District and waterfront communities attract a different demographic than Columbia's planned villages (Owen Brown, Kings Contrivance, River Hill). Bethesda and Chevy Chase zip codes (20814, 20815, 20816) serve luxury buyers with DC employment. Frederick's historic district is attracting buyers priced out of DC suburbs. Each of these markets warrants its own dedicated neighborhood guide page targeting the specific search terms buyers use for that location.</p>
+        </div>
+
+        <!-- 5 -->
+        <div class="lf-guide-section" id="guide-agent-roster">
+          <h3 class="lf-guide-h3">Agent Roster Pages — Building the Team Brand</h3>
+          <p class="lf-guide-p">Agent roster pages are among the most underleveraged SEO assets in brokerage website design. Most brokerages treat agent bio pages as a directory formality — headshot, phone number, email, done. The reality is that each agent page is an independent ranking opportunity. Buyers and sellers routinely search agent names when a referral sends them to a specific person. Sellers comparison-shop agents by name. Referrals from out-of-state relocation firms look agents up before passing along contact information. An agent bio page that ranks well for that agent's name, specialty, and service area generates inbound inquiries without any ongoing paid marketing spend.</p>
+          <p class="lf-guide-p">The structure of a high-performing agent bio page begins with a professional headshot. Photography standards matter more on real estate agent pages than on almost any other local business category because the agent's personal credibility is the product. A dark, low-resolution photo or an obviously outdated photo actively undermines trust. Professional headshots should be well-lit, recent (within two years), and show the agent in professional attire against a neutral or on-brand background. Candid lifestyle photos can supplement but should not replace the primary professional shot.</p>
+          <p class="lf-guide-p">Beyond the headshot, the bio page should communicate the agent's specialties (buyer's agent, listing agent, relocation specialist, luxury market, first-time buyers, investment properties), their specific service areas listed by neighborhood and city rather than just a county, any professional certifications (ABR, CRS, GRI, SRES, luxury designations), and a transaction history or production volume where the agent is comfortable sharing it. Production numbers — "closed 42 transactions in 2025" or "over $18 million in sales volume" — are among the most trust-building elements an agent page can include, and they are almost universally absent from brokerage sites that use generic bio templates.</p>
+          <p class="lf-guide-p">The personal story section of the bio is where the agent's human identity creates connection. A paragraph about why the agent got into real estate, what neighborhoods they live in, what they love about helping buyers find a home, or what their approach to a listing consultation looks like — this is content that no schema or SEO tactic can replace. Buyers and sellers hire the person before they hire the brokerage. The personal narrative section of the bio is the page's conversion engine.</p>
+          <p class="lf-guide-p">Handling agent pages when agents leave the brokerage requires a deliberate policy. If the page is simply deleted, any inbound links and accumulated SEO authority vanish. A better approach is to redirect the departed agent's URL to a general team page or to a page for another agent with similar specialties, preserving the link equity. Alternatively, if the departed agent was a significant producer, the page can be repurposed as a "legacy team member" archive or redirected to a service area page for the markets that agent served.</p>
+          <p class="lf-guide-p">Each agent page should carry full Person and RealEstateAgent schema, as described in the schema section of this guide. The combination of rich bio content, professional photography, schema markup, and internal links from neighborhood pages and listing pages creates a self-reinforcing authority signal. Google sees the agent mentioned in neighborhood content, linked from listing pages, and described in structured data — and treats that agent's page as a legitimate local authority rather than an orphaned directory entry.</p>
+          <p class="lf-guide-p">For large teams with twenty or more agents, the design of the roster index page matters for conversion. Filtering by specialty or service area helps buyers and sellers self-select the right agent without overwhelming them. Displaying a small sample of each agent's recent transactions or a single testimonial on the roster card humanizes the directory and gives visitors a reason to click through to individual bios rather than abandoning the page.</p>
+        </div>
+
+        <!-- 6 -->
+        <div class="lf-guide-section" id="guide-lead-capture">
+          <h3 class="lf-guide-h3">Lead Capture for Real Estate — Buyer and Seller Funnels</h3>
+          <p class="lf-guide-p">Lead capture is where real estate website design diverges most sharply from other local business categories. Buyers and sellers have fundamentally different conversion goals, different information needs, and different tolerances for what they are willing to give up in exchange for value. Building a single generic "contact us" form and expecting it to capture both audience types is one of the most common and costly mistakes brokerage sites make. Effective real estate lead capture requires separate, purpose-built funnels for each audience — and each funnel must deliver genuine value before asking for contact information.</p>
+          <p class="lf-guide-p">The buyer funnel's primary conversion tool is the property search itself. The moment a buyer saves a property, creates a saved search, or requests a showing from within the IDX interface, a lead is captured. This means the IDX platform's built-in lead capture — login walls, save functionality, showing request forms — is the most important buyer conversion mechanism on the site. The key design decision is how aggressively to gate the search. Requiring registration before any search results are shown generates more data but drives away casual browsers. Allowing several searches before asking for registration reduces friction and captures more qualified leads who have demonstrated real intent through repeated engagement.</p>
+          <p class="lf-guide-p">The seller funnel operates differently. Sellers do not come to the brokerage site to browse listings — they come to understand what their own home is worth. The highest-converting seller lead tool is the home valuation landing page, which offers a comparative market analysis or automated home value estimate in exchange for the seller's address and contact information. The offer must feel specific and credible, not like a generic "get your free estimate" widget. Positioning the CMA as a professional service — "We'll prepare a full market analysis with comparable sales from the past 90 days, specific to your street" — converts at dramatically higher rates than a generic value widget offer.</p>
+          <p class="lf-guide-p">Conditional form logic significantly improves lead quality without reducing volume. A buyer inquiry form that asks whether the prospect is pre-approved for financing, what their timeline to move is, and what price range they are targeting lets the CRM route high-intent leads directly to an agent while enrolling earlier-stage leads in a nurture sequence. A seller form that asks when the seller plans to list, whether they currently have an agent, and what their primary motivation for selling is enables the same intelligent routing. Conditional logic turns a generic contact form into a qualification engine.</p>
+          <p class="lf-guide-p">CRM integration is non-negotiable for any brokerage website with serious lead volume. The major real estate CRMs — Follow Up Boss, LionDesk, KVCore, and Chime — all offer webhook or API integrations that pull leads from the website the moment a form is submitted. Speed-to-response is one of the strongest predictors of lead conversion in real estate. Studies consistently show that response within five minutes produces dramatically higher contact rates than response within an hour. A CRM that routes leads to the right agent instantly, with pre-configured text message and email follow-up sequences, closes this gap automatically.</p>
+          <p class="lf-guide-p">Lead source attribution in GA4 allows the brokerage to understand which content, which pages, and which paid channels are generating the most valuable leads — not just the most traffic. Setting up GA4 conversion events for form submissions (with lead type differentiation between buyer and seller forms), IDX registration events, and home valuation tool engagements gives the brokerage the data infrastructure to make intelligent content and advertising investment decisions. Without attribution, marketing budget gets spent on whatever feels like it is working rather than what the data confirms is working.</p>
+        </div>
+
+        <!-- 7 -->
+        <div class="lf-guide-section" id="guide-local-seo">
+          <h3 class="lf-guide-h3">Local SEO for Maryland Real Estate</h3>
+          <p class="lf-guide-p">Real estate is one of the most competitive local SEO categories in existence. Every major market has dozens of brokerages and hundreds of individual agents competing for the same high-intent search terms. Winning in Maryland real estate SEO requires a comprehensive strategy that covers keyword targeting, Google Business Profile optimization, citation building, review acquisition, and ongoing content production — all executed consistently over months and years. There is no shortcut. But there is a clear strategic framework that well-resourced brokerages use to build durable search visibility.</p>
+          <p class="lf-guide-p">Understanding how buyers and sellers search is the foundation of everything else. Buyers use property-focused queries: "homes for sale Canton Baltimore," "townhouses Columbia MD 3 bedroom," "waterfront property Annapolis MD," "condos near BWI under 300k." These queries are high-volume but lower intent per individual visit, because buyers browse for months. Sellers use agent-focused and value-focused queries: "listing agent Bethesda MD," "what is my home worth Frederick Maryland," "sell my house fast Baltimore," "real estate agent near me top rated." Seller queries are lower volume but dramatically higher per-lead value. An effective SEO strategy targets both query types, with separate content assets and landing pages optimized for each.</p>
+          <p class="lf-guide-p">Google Business Profile (GBP) is the single most important local SEO asset for real estate brokerages. The brokerage GBP drives the local pack results — the map listings that appear at the top of the search results page for "real estate agent [city]" queries. Optimizing the brokerage GBP requires complete and accurate NAP (name, address, phone), the correct primary category ("Real Estate Agency"), a complete list of secondary categories, up-to-date business hours, a populated Q&A section with real answers to common seller and buyer questions, and regular Google Posts announcing market updates, new listings, and community content. Individual agents should also maintain their own GBP listings under the "Real Estate Agent" category, linked to the brokerage's organization page.</p>
+          <p class="lf-guide-p">Citation building for real estate extends beyond the standard local business directory landscape. In addition to general citations (Yelp, Bing Places, Apple Maps, Yellow Pages), real estate brokerages and agents need complete profiles on industry-specific platforms: Zillow (agent profile, with production stats and reviews), Realtor.com agent profile, Homes.com, Trulia, and LinkedIn (both personal agent profiles and a brokerage company page). These platform profiles function as citations and also as lead sources in their own right. Consistency of NAP information across all these platforms is essential — discrepancies in phone number format, address spelling, or business name suppress local ranking confidence.</p>
+          <p class="lf-guide-p">Review strategy is a component of local SEO that most real estate brokerages treat as an afterthought. Google reviews are one of the most heavily weighted factors in local pack ranking. A brokerage with forty reviews at a 4.8 average outranks a competitor with ten reviews at 5.0 in most competitive Maryland markets. The review acquisition process must be systematized: at closing, every agent should follow a standard script asking the client to leave a Google review. A follow-up email sent three days after closing with a direct link to the review form removes friction. For agents, Zillow reviews and Realtor.com reviews supplement GBP reviews and reinforce credibility across multiple platforms where sellers research agents before making contact.</p>
+          <p class="lf-guide-p">Geographic targeting across Maryland's distinct real estate markets requires separate content and SEO strategies for each major area. Baltimore city neighborhoods, Baltimore County suburbs (Towson, Catonsville, Pikesville), Annapolis and the surrounding Anne Arundel market, the Montgomery County luxury corridor (Bethesda, Chevy Chase, Potomac, Rockville), Howard County (Columbia, Ellicott City), and the Frederick and Western Maryland markets each have their own buyer profiles, price points, and competitive dynamics. A statewide Maryland brokerage needs location-specific landing pages, neighborhood guides, and GBP listings for each market it serves.</p>
+        </div>
+
+        <!-- 8 -->
+        <div class="lf-guide-section" id="guide-home-valuation">
+          <h3 class="lf-guide-h3">Home Valuation Pages and Seller Lead Generation</h3>
+          <p class="lf-guide-p">If there is a single page type that consistently outperforms every other seller lead generation tool in real estate digital marketing, it is the home valuation landing page. Sellers are a motivated, high-intent audience who know they want to sell — they just need to understand what their property is worth before they commit to the process. A well-designed home valuation page meets that exact need, offers clear value in exchange for contact information, and positions the brokerage as the credible local authority capable of delivering that value. The difference between a home valuation page that converts at three percent and one that converts at twelve percent is almost entirely in the design, the copy, and the credibility signals — not in the underlying offer.</p>
+          <p class="lf-guide-p">The above-the-fold section of the page must communicate the offer clearly and quickly. The headline should state the specific value proposition: not "Get a free home value estimate" but "Find Out What Your [City] Home Is Worth in 2026's Market." Below the headline, a brief subheadline establishes credibility: "Our agents have closed [X] transactions in [Market] in the past 12 months. We'll prepare a full comparable market analysis based on recent sales within one mile of your home." The form itself should be minimal above the fold — address, email, and phone number — with additional qualification questions (timeline, current mortgage status, reason for selling) appearing as a second step after the primary form is submitted.</p>
+          <p class="lf-guide-p">Tool integration options for home valuation pages range from fully automated AVM (Automated Valuation Model) widgets to agent-prepared CMA services. Automated tools like HomeBot and Cloud CMA generate instant value estimates that the seller receives by email, with the agent copied for follow-up. BoldLeads and similar platforms combine the valuation landing page with automated lead nurture sequences. The risk of fully automated AVMs is that they commoditize the agent's value proposition — when the seller gets an instant number without agent involvement, they may feel less need to engage with the agent directly. A hybrid approach — offering an instant automated estimate paired with a "get a more accurate agent CMA within 24 hours" follow-up offer — maintains urgency while positioning the agent as the superior resource.</p>
+          <p class="lf-guide-p">Trust signals on the valuation page should address the seller's primary anxieties: Will I be pressured into listing? Is my information safe? How accurate is this estimate? Addressing these concerns directly — with a clear privacy policy link, a statement that the CMA does not obligate the seller to list, and a brief explanation of how the analysis is prepared — reduces friction significantly. Testimonials from past sellers who describe the valuation process approvingly are among the most effective trust signals on this page type, because they show social proof at exactly the moment the prospect is deciding whether to trust the agent with their most valuable asset.</p>
+          <p class="lf-guide-p">Keyword targeting for seller landing pages in Maryland centers on "what is my home worth" queries modified by city or county: "what is my home worth in Rockville MD," "home value estimate Annapolis," "how much is my house worth Columbia Maryland 2026." These queries have clear commercial intent and relatively low competition compared to buyer-side property search terms. A dedicated landing page for each major market served by the brokerage, optimized for the local variant of this query, can generate consistent organic seller lead traffic without ongoing paid advertising spend.</p>
+          <p class="lf-guide-p">The follow-up sequence after a valuation lead is captured is where most brokerages lose the opportunity they created. Seller leads who submitted a valuation request are not ready to list on day one. They are often three to twelve months away from listing. An automated email and text nurture sequence that sends monthly market updates, relevant neighborhood sold data, and useful seller preparation content ("How to Stage Your Home for a Spring Listing") keeps the brokerage top of mind through the seller's entire decision journey. The agent who is remembered when the seller finally decides to list is the one who provided consistent, genuinely useful value during the research phase — not the one who called twice and then went silent.</p>
+          <p class="lf-guide-p">Seller leads are structurally more valuable than buyer leads for most brokerages. A listing generates a commission on the sale of the existing home plus a potential referral or buyer relationship if the seller purchases elsewhere with the same agent. The seller also controls the timeline and the listing price, giving the agent more influence over deal terms than a buyer-side transaction typically allows. Investing marketing budget disproportionately in seller lead generation — relative to the volume of seller traffic versus buyer traffic — reflects this commission math and typically improves the overall ROI of the brokerage's digital marketing spend.</p>
+        </div>
+
+        <!-- 9 -->
+        <div class="lf-guide-section" id="guide-performance">
+          <h3 class="lf-guide-h3">Real Estate Website Performance — Why Speed Wins Listings</h3>
+          <p class="lf-guide-p">Page speed matters for every local business website, but it matters with particular intensity in real estate. The reason is behavioral: buyers browse listings on their phones, often while commuting, standing in line, or sitting in a parked car outside a property they are about to tour. They are in a context of limited patience, limited connectivity, and high time sensitivity. A listing detail page that takes five seconds to load on a mobile connection loses that user to Zillow — and Zillow's mobile experience is heavily optimized. Beyond buyer behavior, performance also has direct SEO consequences. Google's Core Web Vitals scores (Largest Contentful Paint, Interaction to Next Paint, Cumulative Layout Shift) are confirmed ranking signals, and real estate sites are among the most technically vulnerable categories to poor Core Web Vitals scores because of the heavy assets IDX integration introduces.</p>
+          <p class="lf-guide-p">The primary performance threat in real estate website design is IDX integration implemented without performance architecture planning. A naively integrated IDX embed — loading all scripts, stylesheets, and map tiles on initial page load — can push Time to Interactive above eight seconds on mobile connections and generate CLS failures as the IDX interface renders and reflowing content pushes other page elements around. This is not a hypothetical concern. It is the default behavior of most WordPress-based IDX implementations when installed without explicit performance optimization.</p>
+          <p class="lf-guide-p">The solution is the facade pattern, applied specifically to the IDX interface. Instead of loading the full IDX script on page initialization, the page renders a static visual placeholder — a search bar, a property card grid with placeholder images — that is visually identical to the real IDX interface. The actual IDX scripts are only loaded when the user interacts with the search interface (clicks the search bar, taps a filter, scrolls into the listing grid). This approach keeps Largest Contentful Paint fast because the browser is not waiting for third-party IDX scripts before rendering the primary page content, while maintaining full IDX functionality for every user who actually engages with the search.</p>
+          <p class="lf-guide-p">Target performance benchmarks for real estate sites should be: Largest Contentful Paint under 2.5 seconds on a simulated 4G mobile connection (measured in Google Search Console's Core Web Vitals report, which uses real user data from Chrome), Cumulative Layout Shift under 0.1, and Interaction to Next Paint under 200 milliseconds. These are not aspirational benchmarks — they are the thresholds Google uses to classify pages as "Good" in Core Web Vitals, and they are achievable on a properly optimized WordPress real estate site with IDX integration.</p>
+          <p class="lf-guide-p">Property photography optimization is a consistently overlooked performance factor. A single listing detail page may include twelve to twenty property photos. If those photos are loaded as full-resolution JPEGs pulled directly from the MLS feed without resizing or format conversion, the page weight can exceed 8MB per listing page. Serving property images in WebP format (which Google specifically recommends and which is supported by all modern browsers), resizing images to appropriate display dimensions rather than loading oversized images that the browser scales down, and implementing proper lazy loading so only images visible in the viewport are loaded initially can reduce listing page image weight by sixty to eighty percent without any visible quality loss.</p>
+          <p class="lf-guide-p">The relationship between site performance and listing presentation also affects seller perception. When a seller is evaluating agents before choosing who to list with, they will visit the brokerage website. A slow, clunky website signals — subconsciously but powerfully — that this agency is behind the times, not technologically sophisticated, and possibly not attentive to the details that matter. A fast, visually refined, mobile-optimized site signals professionalism and investment. In a market where sellers have multiple agent choices, website quality is part of the agent's presentation of their own value — and it is a factor that a well-designed, well-performing site turns into a competitive advantage.</p>
+        </div>
+
+        <!-- 10 -->
+        <div class="lf-guide-section" id="guide-team-architecture">
+          <h3 class="lf-guide-h3">Multiple Agent / Team Website Architecture</h3>
+          <p class="lf-guide-p">Structuring a multi-agent brokerage website is an architectural challenge that has no single correct answer — but it has several clearly wrong answers. The most common architectural mistake is treating the brokerage site as a purely flat directory of agents with no strategic hierarchy. The second most common mistake is the opposite: a tightly controlled corporate site with no individual agent identity, forcing every agent to maintain an entirely separate personal site that fragments the brokerage's SEO authority. Effective multi-agent architecture finds the balance between centralized brand authority and individual agent visibility — giving the brokerage compound SEO benefit from all agent content while giving each agent enough personal presence to rank independently for their name and specialty.</p>
+          <p class="lf-guide-p">The recommended structure for most Maryland brokerages is a centralized brand architecture with deep individual agent sub-pages. The homepage and primary service pages establish the brokerage brand, market coverage, and value proposition. Individual agent pages live at paths like /team/agent-name/ and carry their own meta titles, structured data, and unique bio content. Listing pages and neighborhood guides are owned by the brokerage domain (not fragmented across individual agent sites), which means all link authority from external citations and referral sites flows to a single domain rather than being split across dozens of subdomain or separate-domain agent sites.</p>
+          <p class="lf-guide-p">Agent autonomy within this centralized structure should be carefully scoped. What agents can edit independently: their own bio content, their headshot, their service area description, their personal testimonials. What the brokerage controls centrally: the template design of agent pages, the brokerage branding elements that appear on every agent page, the schema markup implementation, and the IDX configuration. This division prevents agents from inadvertently breaking SEO structure or brand consistency while giving them enough control to keep their own pages accurate and personally authentic.</p>
+          <p class="lf-guide-p">The case for custom team sites versus all-in-one SaaS platforms like KVCore deserves direct analysis. KVCore and similar platforms offer a packaged solution: IDX, CRM, lead capture, agent management, and a website builder in a single monthly subscription. The trade-offs are significant for SEO. KVCore sites run on shared infrastructure with shared domain patterns, limited control over page templates and metadata, and restricted access to the underlying CMS. Custom WordPress sites give the brokerage complete control over site architecture, schema implementation, page templates, and content strategy. In competitive Maryland markets where organic search is a primary lead source, the SEO flexibility of a custom site typically produces better long-term results than the convenience of a SaaS platform — particularly for brokerages with ten or more agents where the compound benefit of well-optimized agent pages is substantial.</p>
+          <p class="lf-guide-p">WordPress user roles allow the brokerage to safely delegate content editing to individual agents without risking core site integrity. Agents can be assigned the Author or Contributor role, limiting their access to their own profile content and any blog posts assigned to them, while keeping theme settings, plugin configuration, and global site structure locked to Administrator-level access held only by the brokerage's marketing staff or agency partner. This role structure should be documented and enforced from launch, before agents begin requesting broader access.</p>
+          <p class="lf-guide-p">Attribution of listings to individual agents — both for SEO and for lead routing — requires deliberate CRM and IDX configuration. When a listing detail page ranks in Google and a buyer submits an inquiry, the CRM should automatically route that lead to the listing agent, not to a general brokerage inbox where it sits until someone manually assigns it. IDX platforms like Showcase IDX and iHomeFinder offer agent-specific lead routing rules that can be configured to match listing attribution. This ensures that the SEO value of ranking individual listing pages translates directly to agent-level lead benefit — reinforcing agent loyalty to the centralized brokerage site rather than creating incentives for agents to build competing personal sites.</p>
+        </div>
+
+        <!-- 11 -->
+        <div class="lf-guide-section" id="guide-content-marketing">
+          <h3 class="lf-guide-h3">Content Marketing for Real Estate Websites</h3>
+          <p class="lf-guide-p">Real estate content marketing has a structural advantage over almost every other local business category: the research cycle is extraordinarily long. A buyer considering a move to Maryland may spend four to eight months researching neighborhoods, school districts, commute options, and market conditions before contacting an agent. A homeowner considering selling may research local market trends and agent reputations for three to six months before requesting a CMA. This extended research phase means that a brokerage with a deep content library — neighborhood guides, market reports, buyer guides, relocation resources, school district comparisons — captures buyer and seller attention months before they are ready to transact, and builds the trust that converts them into clients when they finally make contact.</p>
+          <p class="lf-guide-p">The content types that drive the most real estate SEO traffic are predictable and manageable for a small team. Neighborhood guides are the highest-traffic category, as discussed earlier in this guide. Market reports — published quarterly or monthly, covering median sale price, days on market, list-to-sale price ratio, and inventory levels for each major market served — rank for "[city] real estate market [year]" queries that attract both buyers and sellers at high intent. First-time buyer guides targeting Maryland-specific programs (Maryland SmartBuy, Maryland Mortgage Program, Baltimore City's Live Near Your Work program) attract a defined audience segment with specific informational needs. Relocation guides targeting "moving to [city] Maryland" searches serve the significant population of buyers relocating to the DC and Baltimore metro areas from out of state.</p>
+          <p class="lf-guide-p">Market reports deserve particular attention because they combine strong SEO opportunity with authentic brokerage expertise. A well-structured market report for, say, the Annapolis real estate market for Q1 2026 should include data pulled from BrightMLS for that specific market (median sale price, median days on market, active inventory count, new listings, closed sales volume), context that explains what the numbers mean for buyers and sellers in plain language, a brief forward-looking commentary from the brokerage team on what conditions are likely in the coming quarter, and a call to action for both buyer and seller audiences. This report structure creates a genuinely useful resource that ranks for market-specific queries and also provides content for email newsletters and social media posts without requiring additional writing effort.</p>
+          <p class="lf-guide-p">Buyer and seller FAQ content serves double duty: it answers real questions that prospects ask before contacting an agent, and it captures voice search traffic from the increasingly large share of real estate queries conducted via smart speakers and voice assistants. Voice queries are conversational and question-format: "How long does it take to sell a house in Maryland?", "What credit score do I need to buy a house in Baltimore?", "What are closing costs for a buyer in Maryland?" Structuring FAQ content with clear question headlines and concise, direct answers in the paragraphs below optimizes for both voice search and Google's featured snippet results.</p>
+          <p class="lf-guide-p">Content repurposing is essential for a small team with limited writing capacity. A quarterly market report blog post can be reformatted into a one-page PDF for email newsletter attachment, broken into five or six social media data points for LinkedIn and Instagram posts, and condensed into a short script for a video market update posted to YouTube. A neighborhood guide blog post can generate a neighborhood spotlight email for the brokerage's buyer newsletter, a Pinterest pin linking back to the guide, and a carousel post for Instagram. This content multiplier approach means a single research and writing effort generates eight to twelve published content pieces across channels — dramatically improving the content ROI for a team without a dedicated content department.</p>
+          <p class="lf-guide-p">A realistic content publishing cadence for a brokerage without a full-time content person is two to four new pieces per month — but with a clear content type rotation that prioritizes high-impact assets. Month one: one neighborhood guide, one market report. Month two: one buyer or seller guide, one FAQ cluster page. Month three: one relocation guide, one market report. This rotation ensures that the content library grows in all the high-value categories rather than producing six neighborhood guides and then stalling. The cadence is sustainable, the topics are research-ready, and the SEO impact accumulates progressively as each new page indexes and begins generating organic traffic.</p>
+        </div>
+
+        <!-- 12 -->
+        <div class="lf-guide-section" id="guide-choosing-agency">
+          <h3 class="lf-guide-h3">Choosing a Web Design Agency for Your Maryland Brokerage</h3>
+          <p class="lf-guide-p">Selecting a web design agency for a real estate project is materially different from selecting one for a restaurant, a law firm, or a retail brand. The IDX integration requirement alone eliminates most generalist agencies who have never configured an MLS data feed, negotiated BrightMLS data licensing requirements, or implemented the canonical tag strategy necessary to prevent IDX listing pages from creating duplicate content penalties. The schema requirements, the lead capture architecture, the CRM integrations, and the performance optimization demands specific to IDX-heavy pages compound this technical specificity. A brokerage that chooses a generalist agency to save money on the project typically spends significantly more money later correcting IDX implementations that are destroying Core Web Vitals, or rebuilding lead capture systems that never actually connected to the CRM.</p>
+          <p class="lf-guide-p">The questions a brokerage should ask any agency before engagement begin with IDX experience specifics. Ask which IDX providers they have integrated previously, and ask to see live examples. Ask specifically whether they have worked with BrightMLS data feeds, since BrightMLS has specific display requirements and approved vendor relationships that differ from other regional MLSs. Ask whether their previous IDX implementations use iframe embeds or native indexed pages — an agency that does not immediately understand why this distinction matters for SEO is not the right partner for a brokerage that cares about organic search performance.</p>
+          <p class="lf-guide-p">Asking about schema implementation reveals a second layer of technical sophistication. Can they implement RealEstateAgent schema at scale across a team roster? Have they implemented RealEstateListing schema on IDX listing pages? Can they show you their schema output validated through Google's Rich Results Test? An agency that answers these questions confidently, with documented examples, has the technical depth to deliver a real estate site that performs structurally — not just visually.</p>
+          <p class="lf-guide-p">A professional real estate website engagement should include, at minimum: IDX integration with the correct provider for BrightMLS access, neighborhood guide pages for the brokerage's primary markets, agent roster pages with structured data, lead capture forms for both buyer and seller audiences with CRM integration, Google Business Profile optimization guidance, and site performance optimization that achieves Core Web Vitals "Good" status in Search Console. Proposals that omit any of these elements are incomplete. Proposals that include them but cannot explain the technical rationale for each are unqualified.</p>
+          <p class="lf-guide-p">Evaluating an agency's existing real estate client results is possible before signing any agreement. Ask the agency to show you Google Search Console data for one of their real estate clients — specifically, whether the IDX search pages and listing pages are indexed by Google, and what organic impressions those pages are generating. An agency with strong real estate SEO results can show you indexed IDX pages, ranking neighborhood guide pages, and agent bio pages appearing in search results for agent-name queries. An agency that cannot show you these results — or that deflects by showing you traffic dashboards without search ranking context — has likely not delivered the IDX SEO results they may be claiming.</p>
+          <p class="lf-guide-p">Realistic timeline expectations for a real estate website project depend on brokerage size and content scope. A brokerage site with fifteen agents, IDX integration, five neighborhood guides, and a complete lead capture system should budget ten to sixteen weeks from project kickoff to launch. The IDX data agreement and BrightMLS approval process alone typically adds two to three weeks that a generalist agency would not anticipate. Agent bio content — headshots, bios, specialty descriptions — is almost always the longest-lead content item and should be collected from agents in the first two weeks of the project to avoid compressing the launch timeline. Agencies that promise six-week delivery on a full real estate site with IDX are either skipping critical steps or have not fully scoped the project.</p>
+          <p class="lf-guide-p">For Maryland brokerages specifically, working with an agency that understands the regional market context — the geographic diversity of Maryland's real estate markets, the BrightMLS ecosystem, the competitive dynamics in Baltimore city versus Montgomery County versus the Eastern Shore — produces better content strategy and better SEO targeting than working with an out-of-state agency that will research these markets from scratch. Local market knowledge is not a nice-to-have in real estate content — it is a prerequisite for writing neighborhood guides, market reports, and agent specialty pages that actually reflect the market conditions buyers and sellers in Maryland are navigating.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland agents ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">5</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`re-faq-${i}`}
+                  id={`re-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`re-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`re-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Real estate websites &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Build a real estate website that captures leads from every neighborhood search.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know your neighborhoods and your market</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts — month-to-month after launch</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your market, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-real-estate" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="re-cta-name">Your name</label>
+                <input class="lf-form-input" type="text" id="re-cta-name" name="name" placeholder="David Kirwan" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="re-cta-email">Email address</label>
+                <input class="lf-form-input" type="email" id="re-cta-email" name="email" placeholder="david@chesapeakerealty.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="re-cta-agency">Agency name &amp; specialty</label>
+              <input class="lf-form-input" type="text" id="re-cta-agency" name="agency" placeholder="Chesapeake Realty Group &middot; Listing Agent" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="re-cta-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="re-cta-message" name="message" rows="3" placeholder="Slow load times, no IDX, not ranking for neighborhoods, brokerage template..."></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Real Estate</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+  /* ══════════════════════
+     GUIDE
+  ══════════════════════ */
+  .lf-guide { background: var(--cream-soft); }
+  .lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+  .lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+  .lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+  .lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+  .lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+  .lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+  .lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+  .lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+  @media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Specialty custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>

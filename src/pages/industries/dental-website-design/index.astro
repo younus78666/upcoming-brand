@@ -1,0 +1,2432 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const painPoints = [
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
+    title: "Slow sites drive patients to the next dentist",
+    body: "53% of mobile visitors abandon a site that takes over 3 seconds to load. Most dental websites we audit load in 6–9 seconds on mobile. A patient searching 'dentist near me Annapolis' will book the first practice whose site actually loads — and that's rarely yours if you're on a shared hosting plan with an outdated theme.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>`,
+    title: "Missing Dentist schema means no Local Pack",
+    body: "Without Dentist and MedicalOrganization JSON-LD schema, Google cannot confidently surface your practice for 'dentist near me' or 'teeth whitening Baltimore.' Generalist agencies that build sites for restaurants and retail shops don't implement this markup — leaving your Local Pack slot empty for a competitor to fill.",
+  },
+  {
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>`,
+    title: "No online booking means no after-hours appointments",
+    body: "67% of patients now prefer to book appointments online, and 42% of dental bookings happen outside of business hours. A contact form is not a booking system. If your site can't let patients schedule without calling, you are sending new patients to a practice that can.",
+  },
+];
+
+const features = [
+  {
+    num: "01",
+    title: "Dentist and MedicalOrganization schema",
+    body: "Every page on your dental site receives Dentist and MedicalOrganization JSON-LD markup — including dental specialties, insurance plans accepted, office hours, and service areas. This is the technical foundation that enables Local Pack visibility for searches like 'dentist Annapolis' and 'orthodontist Baltimore.' Without it, Google treats your practice as a generic local business rather than a dental provider.",
+    tags: ["Dentist schema", "MedicalOrganization", "Insurance networks"],
+  },
+  {
+    num: "02",
+    title: "Online appointment booking integration",
+    body: "We integrate your preferred booking platform — NexHealth, Zocdoc, Dentrix Online Booking, or Calendly — directly into your site. Patients can book appointments without calling during office hours. We build the scheduling flow to capture appointment type, preferred provider, and insurance before patients confirm, reducing front-desk burden.",
+    tags: ["NexHealth / Zocdoc", "Dentrix integration", "After-hours booking"],
+  },
+  {
+    num: "03",
+    title: "Service pages for every procedure",
+    body: "Generic dental sites list every procedure on one page and rank for nothing. We build dedicated pages for your highest-value procedures — teeth whitening, Invisalign, implants, emergency dental care — each targeting the specific search queries patients use. A standalone 'dental implants Annapolis' page outranks a generic 'services' page every time.",
+    tags: ["Procedure pages", "Keyword targeting", "Revenue procedures"],
+  },
+  {
+    num: "04",
+    title: "Before/after gallery with proper markup",
+    body: "Before/after galleries are one of the highest-converting elements on any dental website — but they're often built incorrectly. We structure galleries with proper image compression, lazy loading, and ImageObject schema so they load fast and appear in Google Image search. We also handle consent copy to ensure your gallery is ethically presented.",
+    tags: ["Before/after gallery", "ImageObject schema", "Image optimization"],
+  },
+  {
+    num: "05",
+    title: "Google Business Profile and Local Pack setup",
+    body: "Appearing in the Google Maps 3-pack for 'dentist near me' is worth more than any paid ad for most practices. We audit and optimize your GBP — dental category, services, accepted insurance, Q&A setup, and photo metadata. We also audit citation consistency across Healthgrades, ZocDoc, and Yelp to prevent ranking signal dilution.",
+    tags: ["Google Business Profile", "Local Pack", "Citation audit"],
+  },
+  {
+    num: "06",
+    title: "Core Web Vitals performance guarantee",
+    body: "We guarantee your site ships with green Core Web Vitals scores — LCP, INP, and CLS — or we fix it before launch at no cost. Dental sites built on bloated page builders with unoptimized images routinely fail these benchmarks and are deprioritized in search rankings. Our builds use a performance-first WordPress stack with CDN delivery and sub-2-second mobile load times.",
+    tags: ["Core Web Vitals", "LCP < 2s", "Written guarantee"],
+  },
+];
+
+const process = [
+  {
+    num: "01",
+    phase: "Discovery",
+    timing: "Week 0",
+    title: "Site audit + keyword map",
+    body: "We audit your current site for technical SEO, Core Web Vitals, schema gaps, and booking friction. We map keyword targets by procedure and city — Annapolis, Baltimore, Frederick, Bethesda. You receive a written strategy document covering gaps, opportunities, and exactly what we'll build.",
+  },
+  {
+    num: "02",
+    phase: "Design",
+    timing: "Weeks 1–2",
+    title: "AI-assisted design + copy draft",
+    body: "We generate your homepage and key procedure pages using AI-assisted design — desktop and mobile — tailored to your practice's positioning. We draft all copy including service page descriptions, physician bios, and FAQs. One consolidated feedback round keeps the project on track.",
+  },
+  {
+    num: "03",
+    phase: "Build",
+    timing: "Weeks 2–7",
+    title: "WordPress build + schema + booking",
+    body: "Approved designs go into WordPress on our performance stack. Every procedure page and location page gets Dentist and MedicalOrganization schema. Your booking platform integrates and is tested across all devices. You get a staging link to review weekly.",
+  },
+  {
+    num: "04",
+    phase: "Launch",
+    timing: "Week 7–10",
+    title: "Launch, GBP + citation optimization",
+    body: "We handle DNS cutover, 301 redirect mapping, and sitemap submission to Search Console. Your Google Business Profile and top citation sites are audited and optimized simultaneously. You receive a handoff video and a 30-day post-launch monitoring window.",
+  },
+];
+
+const faqs = [
+  {
+    num: "01",
+    category: "SEO",
+    q: "How long before a dental website ranks on Google?",
+    a: "For local searches in smaller Maryland markets, practices typically see movement in 60–90 days. Competitive markets like Baltimore take 3–6 months for consistent first-page presence. Google Business Profile and Local Pack optimization often show results fastest — improvement can appear within 30–45 days of launch.",
+  },
+  {
+    num: "02",
+    category: "Platform",
+    q: "Will the site work with our existing booking software?",
+    a: "Yes — we integrate with NexHealth, Dentrix Online Booking, Zocdoc, Open Dental's web scheduling, and Calendly. We connect whichever platform you already use or help you select one if you don't have a preference. The goal is patients booking without calling, not adding another software subscription.",
+  },
+  {
+    num: "03",
+    category: "Services",
+    q: "Do you write all the dental copy or do we provide it?",
+    a: "We write all copy as part of every project tier. You provide raw material — procedures offered, areas of focus, doctor credentials, any before/after cases you want highlighted — via a questionnaire. We draft procedure descriptions, doctor bios, and patient FAQs. One review round included.",
+  },
+  {
+    num: "04",
+    category: "Migration",
+    q: "Will we lose Google rankings when we switch from our old site?",
+    a: "Not with proper migration planning. We map every existing URL to its new equivalent and implement 301 redirects before DNS cutover. Clean migrations with full redirect maps recover within 4–6 weeks. We monitor Search Console for 30 days post-launch and resolve any crawl errors that appear.",
+  },
+  {
+    num: "05",
+    category: "Care Plans",
+    q: "What ongoing support do you offer after launch?",
+    a: "Care plans start at $150/month covering WordPress updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. We also offer a content add-on — one new procedure page or location landing page per month — that compounds your SEO footprint. Month-to-month, no annual contract.",
+  },
+  {
+    num: "06",
+    category: "SEO",
+    q: "Can you help us rank for multiple procedures in multiple Maryland cities?",
+    a: "Yes — this is exactly what the Growth and Custom tiers are designed for. We build dedicated procedure pages and city landing pages for each Maryland market you serve. Each page targets specific queries like 'dental implants Annapolis' or 'orthodontist Baltimore' with correct schema, targeted copy, and internal linking.",
+  },
+];
+
+const faqCategoryColors = {
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Migration":  { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Platform":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "Care Plans": { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+};
+
+const tiers = [
+  {
+    name: "Starter",
+    price: "$1,500–$3,500",
+    timeline: "4–6 weeks",
+    popular: false,
+    dark: false,
+    features: [
+      "Up to 6 pages: Home, About, 2 procedure pages, Contact, Thank You",
+      "Dentist + MedicalOrganization JSON-LD schema on all pages",
+      "Online appointment request form with procedure and insurance fields",
+      "Mobile-first build · Core Web Vitals green on delivery",
+      "Google Business Profile audit and optimization",
+      "Google Search Console + Analytics 4 setup",
+      "30 days post-launch support",
+    ],
+    cta: "Get a quote",
+  },
+  {
+    name: "Growth",
+    price: "$3,500–$6,000",
+    timeline: "6–8 weeks",
+    popular: true,
+    dark: false,
+    features: [
+      "Up to 16 pages · 6 procedure pages + doctor bios + location pages",
+      "Dentist + MedicalOrganization schema, procedure and insurance mapped",
+      "Booking platform integration (NexHealth, Zocdoc, or Dentrix)",
+      "Before/after gallery with ImageObject schema and lazy loading",
+      "City landing pages for up to 3 Maryland markets",
+      "Google Business Profile full optimization + citation audit",
+      "60 days post-launch monitoring with monthly performance report",
+    ],
+    cta: "Book discovery call",
+  },
+  {
+    name: "Custom",
+    price: "$6,000–$10,000+",
+    timeline: "8–10 weeks",
+    popular: false,
+    dark: true,
+    features: [
+      "Unlimited pages · full procedure library + multi-doctor roster",
+      "Multi-location schema + GBP for up to 5 practice locations",
+      "Custom patient routing by procedure type and provider preference",
+      "ACF Pro doctor directory with credentials and availability",
+      "Full content migration with 301 redirect mapping from old site",
+      "Quarterly SEO performance reviews for 12 months post-launch",
+      "90 days post-launch support + first month care plan included",
+    ],
+    cta: "Start a conversation",
+  },
+];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://upcomingbrand.com/industries/dental-website-design/#webpage",
+      "url": "https://upcomingbrand.com/industries/dental-website-design/",
+      "name": "Dental Practice Website Design Maryland | Upcoming Brand",
+      "description": "WordPress website design for Maryland dental practices. Dentist schema, online booking, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick.",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
+          { "@type": "ListItem", "position": 3, "name": "Dental Website Design", "item": "https://upcomingbrand.com/industries/dental-website-design/" }
+        ]
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://upcomingbrand.com/#organization",
+      "name": "Upcoming Brand",
+      "url": "https://upcomingbrand.com/",
+      "description": "Maryland WordPress web design studio specializing in dental practice websites with Dentist schema, online booking, and Local Pack optimization.",
+      "areaServed": [
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore" },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland" },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland" },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": ["Dentist", "MedicalOrganization", "Dental Website Design", "WordPress", "Local SEO", "Core Web Vitals"]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long before a dental website ranks on Google?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For local searches in smaller Maryland markets, practices typically see movement in 60–90 days. Competitive markets like Baltimore take 3–6 months for consistent first-page presence. Google Business Profile and Local Pack optimization often show results fastest — improvement can appear within 30–45 days of launch." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will the site work with our existing booking software?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — we integrate with NexHealth, Dentrix Online Booking, Zocdoc, Open Dental's web scheduling, and Calendly. We connect whichever platform you already use or help you select one if you don't have a preference." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you write all the dental copy or do we provide it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We write all copy as part of every project tier. You provide raw material via a questionnaire. We draft procedure descriptions, doctor bios, and patient FAQs. One review round included." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will we lose Google rankings when we switch from our old site?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not with proper migration planning. We map every existing URL to its new equivalent and implement 301 redirects before DNS cutover. Clean migrations with full redirect maps recover within 4–6 weeks." }
+        },
+        {
+          "@type": "Question",
+          "name": "What ongoing support do you offer after launch?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Care plans start at $150/month covering WordPress updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. Month-to-month, no annual contract." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help us rank for multiple procedures in multiple Maryland cities?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes — the Growth and Custom tiers are designed for this. We build dedicated procedure pages and city landing pages for each Maryland market you serve, targeting queries like 'dental implants Annapolis' or 'orthodontist Baltimore.'" }
+        }
+      ]
+    }
+  ]
+};
+---
+<BaseLayout
+  title="Dental Practice Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland dental practices. Dentist schema, online booking, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick."
+  canonicalUrl="https://upcomingbrand.com/industries/dental-website-design/"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════════ -->
+  <section class="lfh-hero">
+
+    <div class="container">
+      <nav class="lfh-breadcrumb mono-xs" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span aria-hidden="true">/</span>
+        <a href="/#industries">Industries</a>
+        <span aria-hidden="true">/</span>
+        <span>Dental Website Design</span>
+      </nav>
+    </div>
+
+    <div class="container lfh-wrap">
+
+      <!-- LEFT COLUMN -->
+      <div class="lfh-left">
+
+        <div class="lfh-tags">
+          <span class="lfh-pill">
+            <span class="lfh-dot" aria-hidden="true"></span>
+            Dental Practice Web Design &middot; Maryland
+          </span>
+          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
+        </div>
+
+        <h1 class="lfh-h1">
+          <span class="lfh-h1-line">Maryland dental websites</span>
+          <span class="lfh-h1-line lfh-h1-accent-line"><em class="lfh-h1-accent">built to fill chairs</em></span>
+          <span class="lfh-h1-line lfh-h1-italic">and grow practices.</span>
+        </h1>
+
+        <p class="lfh-lede">
+          Most dental practice websites lose patients before the first call — slow load times, no Dentist schema, and booking forms that break on mobile. We build WordPress sites for Maryland dentists that rank in the Local Pack, load fast, and turn visitors into booked appointments. Fixed-scope from <strong>$1,500</strong>.
+        </p>
+
+        <div class="lfh-ctas">
+          <a href="#contact" class="lfh-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a href="#pricing" class="lfh-btn-ghost">
+            See pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+        <div class="lfh-trust">
+          <span class="lfh-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Maryland-based studio
+          </span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Dentist schema on every build</span>
+          <span class="lfh-trust-dot" aria-hidden="true"></span>
+          <span class="lfh-trust-item">Fixed-scope pricing &middot; no surprises</span>
+        </div>
+
+      </div>
+
+      <!-- RIGHT COLUMN — FORM -->
+      <div class="lfh-right">
+        <div class="lfh-form-card">
+          <div class="lfh-form-header">
+            <p class="lfh-form-eyebrow">Free site audit</p>
+            <h2 class="lfh-form-title">Is your website losing you patients?</h2>
+            <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days — no sales call required.</p>
+          </div>
+
+          <form class="lfh-form" name="dental-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="dental-inquiry" />
+            <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="d-name">Your name</label>
+              <input class="lfh-form-input" type="text" id="d-name" name="name" placeholder="Dr. Rachel Okonkwo" required autocomplete="name" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="d-email">Email address</label>
+              <input class="lfh-form-input" type="email" id="d-email" name="email" placeholder="dr.okonkwo@dental.com" required autocomplete="email" />
+            </div>
+
+            <div class="lfh-form-row">
+              <label class="lfh-form-label" for="d-practice">Practice name</label>
+              <input class="lfh-form-input" type="text" id="d-practice" name="practice" placeholder="Chesapeake Family Dental" autocomplete="organization" />
+            </div>
+
+            <div class="lfh-form-row">
+              <span class="lfh-form-label" id="lbl-specialty">Primary dental specialty</span>
+              <div class="lf-cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-specialty" data-name="specialty">
+                <button type="button" class="lf-cs-trigger" aria-haspopup="listbox">
+                  <span class="lf-cs-val">Select specialty</span>
+                  <svg class="lf-cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="lf-cs-list" role="listbox" aria-label="Dental specialty">
+                  <li class="lf-cs-opt" role="option" data-value="General Dentistry">General Dentistry</li>
+                  <li class="lf-cs-opt" role="option" data-value="Orthodontics">Orthodontics</li>
+                  <li class="lf-cs-opt" role="option" data-value="Oral Surgery">Oral Surgery</li>
+                  <li class="lf-cs-opt" role="option" data-value="Pediatric Dentistry">Pediatric Dentistry</li>
+                  <li class="lf-cs-opt" role="option" data-value="Cosmetic Dentistry">Cosmetic Dentistry</li>
+                  <li class="lf-cs-opt" role="option" data-value="Periodontics">Periodontics</li>
+                  <li class="lf-cs-opt" role="option" data-value="Endodontics">Endodontics</li>
+                  <li class="lf-cs-opt" role="option" data-value="Other / Multi-specialty">Other / Multi-specialty</li>
+                </ul>
+                <input type="hidden" name="specialty" class="lf-cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lfh-submit">
+              Get a free audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="lfh-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="lfh-stats" role="list" aria-label="Key dental website statistics">
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">58<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">of dental sites fail<br>Core Web Vitals</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">3.8<span class="lfh-amb">x</span></div>
+          <div class="lfh-stat-lbl">More appointments<br>from Local Pack</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">67<span class="lfh-amb">%</span></div>
+          <div class="lfh-stat-lbl">Of patients research<br>dentist online first</div>
+        </div>
+        <div class="lfh-stat" role="listitem">
+          <div class="lfh-stat-num">10<span class="lfh-amb">wks</span></div>
+          <div class="lfh-stat-lbl">From first call<br>to live ranked site</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PAIN POINTS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pain section-pad-sm">
+    <div class="container">
+      <div class="lf-pain-intro">
+        <p class="eyebrow lf-eyebrow-dark">Why patients leave before booking</p>
+        <h2 class="h2-section">Why most dental websites fail Maryland practices</h2>
+      </div>
+      <div class="lf-pain-grid">
+        {painPoints.map((p) => (
+          <div class="lf-pain-card">
+            <span class="lf-pain-icon" aria-hidden="true" set:html={p.icon} />
+            <h3 class="lf-pain-title">{p.title}</h3>
+            <p class="lf-pain-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FEATURES
+  ══════════════════════════════════════════════ -->
+  <section class="lf-features section-pad-sm">
+    <div class="container">
+      <div class="lf-features-intro">
+        <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
+        <h2 class="h2-section">Six things every Maryland dental website needs</h2>
+        <p class="lead">A dental website is not a brochure. It is patient acquisition infrastructure. Every element we build — from Dentist schema to booking integrations to procedure pages — is designed to do one job: turn a searching patient into a booked appointment.</p>
+      </div>
+      <div class="lf-features-grid">
+        {features.map((f) => (
+          <div class="lf-feature-card">
+            <div class="lf-fc-top">
+              <span class="lf-fc-num mono-xs">{f.num}</span>
+            </div>
+            <h3 class="lf-fc-title">{f.title}</h3>
+            <p class="lf-fc-body">{f.body}</p>
+            <div class="lf-fc-tags">
+              {f.tags.map((t) => <span class="lf-tag mono-xs">{t}</span>)}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CASE STUDY
+  ══════════════════════════════════════════════ -->
+  <section class="lf-case section-pad-sm">
+    <div class="container">
+      <div class="lf-case-inner">
+
+        <div class="lf-case-content">
+          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
+          <h2 class="h2-section lf-case-h2">How Chesapeake Family Dental went from page 3 to the Local Pack in 75 days</h2>
+          <p class="lf-case-desc">
+            Chesapeake Family Dental, a two-dentist practice in Annapolis, came to us after their old generalist-built site had no Dentist schema, a PageSpeed score of 41, and no way for patients to book online without calling. Within 75 days of launch, their numbers told a different story.
+          </p>
+
+          <div class="lf-case-results">
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">+318%</span>
+              <span class="lf-cr-label mono-xs">Organic patient inquiries</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">#1</span>
+              <span class="lf-cr-label mono-xs">Local Pack &middot; "dentist Annapolis"</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">1.6s</span>
+              <span class="lf-cr-label mono-xs">Mobile load time (was 8.1s)</span>
+            </div>
+            <div class="lf-cr-item">
+              <span class="lf-cr-val">28</span>
+              <span class="lf-cr-label mono-xs">New patient bookings in first 60 days</span>
+            </div>
+          </div>
+
+          <blockquote class="lf-case-quote">
+            <p>"We'd been getting beat by practices half our size because our website simply didn't work. Upcoming Brand fixed the technical foundation, wrote copy that actually explains what we do, and built a booking flow that lets patients schedule at midnight. Within three months we had a waitlist for new patients for the first time in five years."</p>
+            <footer>
+              <cite class="lf-cite-name">Dr. Rachel Okonkwo</cite>
+              <span class="lf-cite-role mono-xs">General Dentist &middot; Chesapeake Family Dental &middot; Annapolis, MD</span>
+            </footer>
+          </blockquote>
+        </div>
+
+        <div class="lf-case-visual">
+          <img
+            src="/work/chesapeake-family-dental.png"
+            alt="Chesapeake Family Dental website redesign — Annapolis dental practice"
+            class="lf-case-img"
+            width="600"
+            height="420"
+            loading="lazy"
+            decoding="async"
+          />
+          <div class="lf-case-badge mono-xs">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Live site · Google verified results
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════════ -->
+  <section class="lf-process section-pad-sm">
+    <div class="container">
+      <div class="lf-process-intro">
+        <p class="eyebrow lf-eyebrow-dark" style="justify-content:center">How we work</p>
+        <h2 class="h2-section">From first call to a ranked dental website</h2>
+        <p class="lead">Every project follows the same four-phase process. You always know what week you are in, what is being delivered, and what we need from you. Fixed timeline, fixed price — in writing before we start.</p>
+      </div>
+      <div class="lf-process-grid" role="list" aria-label="Project phases">
+        {process.map((step) => (
+          <div class="lf-process-step" role="listitem">
+            <div class="lf-phase-marker" aria-hidden="true">
+              <span class="lf-phase-num">{step.num}</span>
+              <div class="lf-phase-line"></div>
+            </div>
+            <div class="lf-phase-header">
+              <h3 class="lf-phase-name">{step.phase}: {step.title}</h3>
+              <span class="lf-phase-timing mono-xs">{step.timing}</span>
+            </div>
+            <p class="lf-deliverables-label">DELIVERABLES</p>
+            <p class="lf-phase-desc">{step.body}</p>
+          </div>
+        ))}
+      </div>
+      <div class="lf-process-cta">
+        <a href="#contact" class="cta-btn">Book a discovery call &rarr;</a>
+        <p class="lf-process-cta-note mono-xs">Most practices are live within 10 weeks of their first call. No retainer required after launch.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       PRICING
+  ══════════════════════════════════════════════ -->
+  <section class="lf-pricing section-pad-sm" id="pricing">
+    <div class="container">
+      <div class="lf-pricing-intro">
+        <p class="eyebrow lf-eyebrow-dark">Transparent pricing</p>
+        <h2 class="h2-section">Fixed-scope pricing for Maryland dental practices</h2>
+        <p class="lead">Every tier is fixed price, fixed scope, fixed timeline — defined in a written statement of work before we invoice a dollar. No hourly billing. No surprise line items for additional revisions. You know exactly what you are buying and when it will be done.</p>
+      </div>
+      <div class="lf-pricing-grid">
+        {tiers.map((tier) => (
+          <div class={`lf-tier ${tier.popular ? 'lf-tier-popular' : ''} ${tier.dark ? 'lf-tier-dark' : ''}`}>
+            {tier.popular && <div class="lf-popular-badge mono-xs">Most popular</div>}
+            <div class="lf-tier-header">
+              <h3 class="lf-tier-name">{tier.name}</h3>
+              <div class="lf-tier-price-row">
+                <span class="lf-tier-price">{tier.price}</span>
+                <span class="lf-tier-period mono-xs">one-time</span>
+              </div>
+              <div class="lf-tier-timeline">
+                <span class="mono-xs lf-tl-label">Timeline:</span>
+                <span class="mono-xs lf-tl-val">{tier.timeline}</span>
+              </div>
+            </div>
+            <ul class="lf-tier-features" role="list">
+              {tier.features.map((f) => (
+                <li class="lf-tier-feature" role="listitem">
+                  <span class="lf-check" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                      <circle cx="7" cy="7" r="6.5" stroke="currentColor" stroke-opacity="0.25"/>
+                      <path d="M4.5 7.5L6 9L9.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="#contact"
+              class={tier.dark ? 'cta-btn cta-btn-light lf-tier-cta' : 'cta-btn lf-tier-cta'}
+            >
+              {tier.cta} &rarr;
+            </a>
+          </div>
+        ))}
+      </div>
+      <p class="lf-pricing-note mono-xs">All tiers available with a monthly care plan from <strong>$150/month</strong> — WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       GUIDE
+  ══════════════════════════════════════════════ -->
+  <section class="lf-guide section-pad-sm" id="guide">
+    <div class="container">
+      <div class="lf-guide-intro">
+        <p class="eyebrow lf-eyebrow-dark">Complete guide</p>
+        <h2 class="h2-section">Complete Guide to Dental Practice Website Design in Maryland</h2>
+        <p class="lead">Everything Maryland dentists and dental practices need to know about building a website that fills appointment slots, ranks in local search, and converts new patient searches into booked chairs.</p>
+      </div>
+      <div class="lf-guide-body">
+
+        <!-- SECTION 1 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">What Makes a Dental Practice Website Different</h3>
+          <p class="lf-guide-p">A dental practice website is not a general healthcare website with a different logo. The entire strategic architecture — from page structure to schema markup to the copy on the homepage — must be built around one specific goal: converting a new patient search into a booked appointment. That objective is distinct from most other healthcare verticals, and it shapes every decision a skilled dental web designer should make.</p>
+          <p class="lf-guide-p">Dental searches carry a level of urgency and purchase intent that most service industries never see. When someone searches "dentist near me accepting new patients" or "emergency dentist Baltimore," they are not researching options the way a consumer buying a mattress might browse for weeks. They either have a problem right now (pain, a broken tooth, a dental emergency) or they have finally decided to act on something they have been putting off. Either way, the window between search and decision is short. A dental website that fails to answer the three questions — can you help me, are you near me, how do I book — within the first few seconds of the visit loses that patient to the next result.</p>
+          <p class="lf-guide-p">Dental searches differ from general medical searches in one important structural way: they are almost always locally anchored. A patient searching for a cardiologist might look at specialists across a metropolitan region or even consider traveling to a center of excellence. A patient searching for a dentist is looking within a ten-minute drive. This means local SEO is not one part of a dental website strategy — it is the foundation everything else is built on.</p>
+          <p class="lf-guide-p">Schema markup for dental practices requires the Dentist type, which sits within the MedicalOrganization hierarchy in schema.org. Generic LocalBusiness schema is not wrong, but it fails to send the vertical-specific signals that help Google understand your practice category, your accepted insurance, your medical specialty, and the specific services you offer. Dental practices that implement Dentist schema correctly — including openingHoursSpecification, medicalSpecialty, areaServed, and acceptsInsurance fields — have a meaningful advantage in local pack eligibility over competitors who use a generic or incomplete schema type.</p>
+          <p class="lf-guide-p">Insurance acceptance is one of the most consequential pre-visit decisions a new patient makes. Before calling your office, a significant portion of prospective patients will check whether you accept their insurance carrier. If that information is not clearly visible on your website, you do not just lose the SEO opportunity — you lose the patient. A well-structured insurance page removes friction from the decision cycle and increases the likelihood that a patient who lands on your site actually picks up the phone or clicks the booking button.</p>
+          <p class="lf-guide-p">Before/after galleries are the single most powerful conversion asset on a dental website, and they are unique to this vertical. In almost no other healthcare specialty can a provider show prospective patients a visual transformation directly attributable to their work. A veneer case, a full-mouth reconstruction, a clear aligner result — these images answer the question "can this dentist actually deliver what I'm hoping for" more convincingly than any testimonial or credential. Practices that invest in professional clinical photography and build well-organized treatment galleries consistently outperform those relying on stock imagery.</p>
+          <p class="lf-guide-p">Dental practices compete in local search differently than other healthcare verticals because the patient acquisition model is almost entirely proximity-driven and repeat-visit-dependent. The initial new patient acquisition depends heavily on appearing in the local pack, maintaining strong review velocity, and having a high-converting website. That combination — local SEO strength plus conversion-optimized site design plus booking accessibility — is where dental practices win or lose in their market. Generic healthcare agencies that have not built dental-specific strategies, including proper Dentist schema, dental booking integrations, and treatment-specific landing pages, routinely underdeliver for dental clients because they apply a one-size healthcare template to a practice that requires specialized execution.</p>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Must-Have Pages for Maryland Dental Practice Websites</h3>
+          <p class="lf-guide-p">A dental practice website is not a brochure. It is an acquisition system, and every page in that system has a specific job to do. Maryland dental practices that treat their website as a passive information display lose new patients to competitors who have built their sites as active conversion tools. The following pages are not optional extras — they are the structural minimum for a dental site that performs.</p>
+          <p class="lf-guide-p">The homepage must accomplish four things above the fold, before any scrolling: communicate your specialty or differentiator, show your location (city at minimum, neighborhood if relevant), display a phone number that is click-to-call on mobile, and offer a direct path to online booking. Patients landing on a dental homepage after a local search are in a decision-making mode. The homepage must meet them there immediately — not bury the location in the footer or require three clicks to find a phone number.</p>
+          <p class="lf-guide-p">Individual service pages are not optional, and having a single "services" page that lists everything in one place is a significant SEO and conversion mistake. Each major service category needs its own URL. At minimum, Maryland dental practices should have dedicated pages for general dentistry, cosmetic dentistry, emergency dental care, orthodontics, dental implants, and pediatric dentistry if applicable. The reason is simple: when a patient searches "dental implants Columbia MD," Google will surface a page dedicated to that topic far more readily than a generic services page where implants are mentioned in a paragraph alongside cleanings and fillings.</p>
+          <p class="lf-guide-p">Dentist bio pages are underutilized on most dental sites. Patients are making a healthcare decision, not purchasing a commodity. They want to know who will be treating them — their training, their experience, what they specialize in, and something about their approach to patient care. A bio page that goes beyond a three-sentence resume builds trust before the first appointment and distinguishes the practice from competitors who present their doctors as interchangeable service providers.</p>
+          <p class="lf-guide-p">A dedicated new patient information page reduces pre-appointment anxiety and speeds up office intake. This page should include your patient forms available for download or online completion, your accepted insurance list, directions and parking information, what to expect at a first visit, and answers to the questions new patients most commonly ask before calling. Practices that provide this information online receive better-prepared patients and fewer pre-appointment cancellations.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Before/after gallery organized by treatment type, with compliant patient consent documentation for every image published</li>
+            <li class="lf-guide-li">Patient testimonials page pulling from verified review sources, with attribution and treatment context where patients have consented</li>
+            <li class="lf-guide-li">FAQ page specifically addressing dental anxiety, cost and financing questions, and common treatment concerns — not just generic office hours questions</li>
+            <li class="lf-guide-li">Location and contact page with an embedded Google Map, parking instructions, public transit directions if relevant, and hours displayed clearly rather than hidden in the footer</li>
+            <li class="lf-guide-li">Insurance and financing page that lists every accepted carrier, explains what to do if your insurance is not listed, and presents financing options without sounding like a sales pitch</li>
+          </ul>
+          <p class="lf-guide-p">Each of these pages serves double duty: it informs and reassures prospective patients, and it gives Google additional indexed content to rank for location-specific and treatment-specific queries. Dental practices in competitive Maryland markets — Baltimore metro, Montgomery County, Anne Arundel County — cannot afford to leave those ranking opportunities uncaptured.</p>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Dentist Schema Markup — Making Google Understand Your Practice</h3>
+          <p class="lf-guide-p">Schema markup is the structured data layer that sits beneath your website's visible content and communicates directly with search engines in a language they can parse without ambiguity. For dental practices, getting this right means the difference between appearing as a generic local business in search results and being recognized as a credentialed dental provider eligible for enhanced local search features including the local pack, rich results, and knowledge panel data.</p>
+          <p class="lf-guide-p">The correct schema type for a dental practice is Dentist, which is a subtype of MedicalOrganization in the schema.org hierarchy. Using generic LocalBusiness schema is a common mistake made by agencies that do not specialize in healthcare web design. While LocalBusiness schema is not penalized, it fails to communicate the specificity that Dentist schema provides. Google uses the @type field to determine category eligibility in local search — a practice marked as Dentist is immediately understood as a healthcare provider in a specific medical specialty, which affects which queries and features the listing is eligible for.</p>
+          <p class="lf-guide-p">The critical fields within Dentist schema that Maryland practices should implement include medicalSpecialty set to "Dentistry," which confirms the provider type to Google's medical knowledge graph. The availableService field should enumerate your major treatment categories as MedicalProcedure entities. The areaServed field should list the Maryland cities and counties your practice draws patients from, not just your office city. openingHoursSpecification should be implemented as structured data rather than only as visible text, because the structured version feeds directly into Google Business Profile data reconciliation.</p>
+          <p class="lf-guide-p">The priceRange field, while optional, signals to Google the general fee tier of the practice and can influence the type of patient your listing attracts from local search. For practices with clear pricing tiers — such as cosmetic or implant-focused practices — this is worth implementing. The acceptsInsurance field should reference the specific insurance plans you accept using defined vocabulary where available.</p>
+          <p class="lf-guide-p">Individual dentists in a group practice should be marked up using Physician schema (for MDs and DMDs) or Person schema with jobTitle set to "Dentist" or "Doctor of Dental Surgery" and worksFor referencing the practice's Dentist entity. This creates a relationship graph between the individual providers and the practice that improves how Google represents multi-dentist practices in search.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Use Event schema for new patient specials and limited-time promotions — this can generate rich result eligibility for promotional events in search</li>
+            <li class="lf-guide-li">Verify your implementation using Google's Rich Results Test before deploying to production</li>
+            <li class="lf-guide-li">Common errors include using the wrong @type entirely, missing the required address fields within PostalAddress, incorrect JSON-LD syntax, and duplicating schema in both the page head and body</li>
+            <li class="lf-guide-li">Dentist schema consistently outperforms generic LocalBusiness for dental searches because Google's local ranking algorithms use @type as a vertical classification signal</li>
+          </ul>
+          <p class="lf-guide-p">Schema implementation should be reviewed and updated when practice information changes — new hours, new services, insurance network additions, new providers joining the practice. Stale structured data creates inconsistencies between your schema and your Google Business Profile, which can suppress local pack eligibility. A dental web agency that builds your site should deliver schema as part of the foundational SEO work, not as an afterthought or upsell.</p>
+        </div>
+
+        <!-- SECTION 4 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Online Booking for Dental Practices — Integrations That Work</h3>
+          <p class="lf-guide-p">Patient behavior around scheduling has shifted permanently. Research consistently shows that more than 65% of new dental patients prefer to book online rather than call the office — a preference that increases among patients under 45 and those searching on mobile devices. Dental practices that offer only phone scheduling are structurally disadvantaged in new patient acquisition because they require patients to take an extra step that a significant portion of them will skip, especially outside of business hours when the search happens but the office is closed.</p>
+          <p class="lf-guide-p">The booking integration question is not just a technical decision — it is a practice management decision. Several major platforms serve the dental market, each with different integration characteristics, and the right choice depends on what practice management software the office already uses.</p>
+          <p class="lf-guide-p">Zocdoc offers a patient-facing marketplace as well as an embeddable widget and is a strong choice for practices that want new patient acquisition from the Zocdoc network in addition to their own site. Weave combines scheduling with communication tools (two-way texting, missed call auto-response, review requests) and offers a booking widget that can be embedded on WordPress sites. Lighthouse 360 is specifically built for dental practices and integrates with Dentrix, Eaglesoft, and other major dental software platforms. NexHealth offers deep two-way sync with practice management software and a clean, mobile-optimized booking interface. Dentrix Ascend and Eaglesoft both offer native web booking extensions that integrate tightly with the software if your practice already uses those systems.</p>
+          <p class="lf-guide-p">From a technical implementation standpoint, booking widget embeds must be handled carefully on WordPress sites. Third-party scripts loaded directly in the page body can severely impact Core Web Vitals scores, particularly Largest Contentful Paint and Total Blocking Time. The recommended approach is to implement booking widgets as lightweight facades — a styled button or inline placeholder that loads the full booking interface only when the user interacts with it. This keeps initial page load fast while still providing immediate booking access.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Collect reason for visit, insurance carrier, and new vs. existing patient status at booking — this allows the front desk to prepare and reduces check-in friction</li>
+            <li class="lf-guide-li">Connect automated SMS appointment reminders through your booking platform — practices using automated SMS reminders consistently report 20–35% reductions in no-show rates</li>
+            <li class="lf-guide-li">Ensure mobile booking flow works completely within two taps from the homepage — patients booking on mobile abandon flows with more than three steps before confirmation</li>
+            <li class="lf-guide-li">Display booking availability in real time rather than a "request an appointment" form — request forms introduce delay that reduces booking completion rates significantly</li>
+          </ul>
+          <p class="lf-guide-p">The ROI calculation for online booking implementation is straightforward: if your practice sees 30 new patients per month at an average lifetime patient value of $2,000, and an online booking system increases new patient acquisition by 20%, that is 6 additional patients per month — $12,000 in lifetime patient value added monthly from a system that costs a few hundred dollars. The question is not whether to implement online booking. The question is which platform integrates cleanest with your practice management software and your WordPress site.</p>
+        </div>
+
+        <!-- SECTION 5 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Insurance and Financing Pages That Convert</h3>
+          <p class="lf-guide-p">Ask any dental front desk coordinator what the single most common question from new patient callers is, and the answer is almost always some variation of: "Do you take my insurance?" This question is the primary gating decision for a significant portion of dental patients, and if your website cannot answer it before the patient picks up the phone, you are losing patients at the earliest stage of the funnel — the research phase, before any human contact has occurred.</p>
+          <p class="lf-guide-p">A well-structured insurance accepted page is one of the highest-ROI pages on a dental website, and it is chronically underdeveloped on most practice sites. The page should open with a clear affirmative statement — not "we work with many insurance providers" but a specific list of every carrier and plan you accept. Maryland dental patients commonly carry Delta Dental (including Delta Dental of Virginia and Delta Dental of Pennsylvania plans, both active in the Maryland market), CareFirst BlueCross BlueShield, Cigna Dental, Aetna Dental, MetLife, United Concordia, Humana, and Maryland Medicaid through the MCO plans. Each of these should be listed explicitly, not buried in a general statement.</p>
+          <p class="lf-guide-p">For out-of-network patients, the page should explain clearly what that means in practical terms: the patient pays at time of service, you provide a superbill they can submit to their insurer for reimbursement, and you can give an estimate of likely out-of-pocket costs for common procedures. Practices that explain the out-of-network process professionally convert a higher percentage of out-of-network patients than those that simply say "we are not in-network with your plan" and let the conversation end there.</p>
+          <p class="lf-guide-p">Financing options deserve their own section on the page, presented in a way that reduces the psychological barrier without sounding transactional. CareCredit is the most widely recognized dental financing option and should be presented with the specific terms available at your practice (12-month no-interest if paid in full is the standard promotional offer). Sunbit is gaining traction as a patient-friendly alternative with a simpler approval process and higher approval rates for patients with imperfect credit. In-house payment plans, if your practice offers them, should be described clearly: what the terms are, what treatments they apply to, and how to ask about them.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Patients who find insurance information on your site before calling are significantly more likely to complete the booking — they arrive at the call ready to schedule rather than still evaluating</li>
+            <li class="lf-guide-li">Include a clear CTA at the bottom of the insurance page: "Not sure if we take your plan? Call us and we'll verify your benefits before your visit" — this handles edge cases without sending uncertain patients away</li>
+            <li class="lf-guide-li">Address the "do you take my insurance?" question proactively in your FAQ section, linking to the full insurance page from the FAQ answer</li>
+            <li class="lf-guide-li">Update your insurance page whenever your network participation changes — stale insurance information is one of the fastest ways to destroy patient trust at first contact</li>
+          </ul>
+          <p class="lf-guide-p">The insurance and financing page is also an SEO asset. Queries like "dentist that takes Delta Dental near me" and "CareCredit dentist Baltimore" represent real search volume from high-intent patients. A dedicated, well-structured page targeting these queries can rank for them and deliver patients who have already passed the insurance verification hurdle before they even contact the office.</p>
+        </div>
+
+        <!-- SECTION 6 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Before/After Gallery Best Practices for Dental Websites</h3>
+          <p class="lf-guide-p">No piece of content on a dental website does more conversion work than a high-quality before/after gallery. This is the only healthcare specialty where the provider can show prospective patients a direct visual demonstration of clinical outcomes — a veneer smile transformation, a clear aligner case, a full-arch implant reconstruction — and that visual proof answers the patient's core question ("can this dentist actually do what I'm hoping for?") more completely than any combination of credentials, testimonials, or written descriptions.</p>
+          <p class="lf-guide-p">Before publishing any patient photograph, practices must have written authorization from the patient that specifically covers the use of their image on the practice website. A general treatment consent form is not sufficient. The photography release should specify that images may be used in digital marketing, name the specific platform (website), and be retained in the patient's file indefinitely. Practices should consult with their malpractice insurance carrier and attorney to ensure their release language complies with Maryland and HIPAA requirements. When in doubt, publish without any identifying information — cropped to the smile only, with no name or identifiable context in the caption or alt text.</p>
+          <p class="lf-guide-p">Clinical photography standards matter. Smartphone photos taken under operatory lighting do not build confidence — they undermine it. Consistent retraction technique, standard camera distance, neutral gray background when possible, and consistent lighting make the transformation visible and professional. The investment in a clinical photography protocol pays for itself in conversion rate improvements on the gallery page alone.</p>
+          <p class="lf-guide-p">Gallery organization should follow treatment type rather than date order. Patients searching for veneer results want to see veneer cases, not a mixed chronological feed of every case the practice has documented. Separate galleries for veneers and smile makeovers, teeth whitening, dental implants and implant-supported bridges, Invisalign and clear aligner cases, and full-mouth reconstruction allow each gallery to function as a treatment-specific landing page that can rank for queries like "veneer results Columbia MD" or "dental implant before after Annapolis."</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Optimize all gallery images as WebP format — typically 60–80% smaller than equivalent JPEG at comparable quality, critical for gallery pages with many images</li>
+            <li class="lf-guide-li">Implement lazy loading for images below the fold so the page LCP score is not dragged down by images the patient may never scroll to</li>
+            <li class="lf-guide-li">Size images appropriately for their display dimensions — a 4000px wide photo displayed at 400px wide is loading ten times more data than necessary</li>
+            <li class="lf-guide-li">Write descriptive alt text for each image using treatment and location context without including any patient-identifying information</li>
+            <li class="lf-guide-li">Stock dental photos are immediately identifiable and undermine trust — patients have seen the same stock smile on five competitor sites and understand they are looking at a model, not a real patient outcome</li>
+          </ul>
+          <p class="lf-guide-p">Practices that invest in building a genuine, well-organized, professionally photographed gallery consistently see higher time-on-site metrics for gallery pages, higher contact form completion rates from visitors who viewed the gallery, and stronger new patient acquisition for high-value cosmetic treatments where the visual proof is most critical to the purchase decision.</p>
+        </div>
+
+        <!-- SECTION 7 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Local SEO for Dental Practices in Maryland</h3>
+          <p class="lf-guide-p">Local search is where dental patient acquisition happens. The majority of new dental patient searches are variations on "dentist near me," "dentist [city name]," "emergency dentist [city name]," or "[specific treatment] dentist [city name]." Every one of those queries has local intent, and Google's response to local intent queries is the local pack — the map-based three-result cluster that appears at the top of the search results page and captures a disproportionate share of clicks. Getting your practice into the local pack, and keeping it there, is the central objective of dental local SEO.</p>
+          <p class="lf-guide-p">Google Business Profile is the most important single asset in local SEO for dental practices, more impactful than any on-site optimization alone. Your GBP category should be set to "Dentist" as the primary category, with relevant secondary categories (Dental Clinic, Cosmetic Dentist, Pediatric Dentist, Orthodontist, etc.) added based on your actual specialties. Key attributes to enable include "Accepts new patients," "Wheelchair accessible entrance," and "Online appointments" if you have booking enabled. Hours must be current and match your website exactly — inconsistencies between GBP hours and website hours are a trust signal degradation to Google.</p>
+          <p class="lf-guide-p">Citation consistency is the foundational requirement of dental local SEO. Your practice name, address, and phone number must be identical across every directory listing — Healthgrades, ZocDoc, Yelp, 1-800-Dentist, Vitals, US News Health, Yellowpages, and the dozens of secondary directories that aggregate healthcare provider information. Inconsistencies — even small ones like "St." vs. "Street" or suite number formatting — create signals that the NAP data is unreliable, which suppresses local pack eligibility.</p>
+          <p class="lf-guide-p">Patient reviews are a confirmed local ranking signal and a primary conversion factor for new patients reading your listing. Practices should implement a systematic review request process — a text message sent 24 hours after each appointment with a direct link to the Google review form is the highest-completion approach. When responding to negative reviews, respond calmly and professionally without disclosing any patient-specific information (HIPAA applies to review responses), and use the response to demonstrate how you handle concerns rather than to argue with the reviewer.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Practices with one physical location can target multiple nearby Maryland cities through service-area pages on the website — individual pages for "dentist in [city]" for each community within a reasonable drive of your office</li>
+            <li class="lf-guide-li">Each service-area page should include locally relevant content (references to landmarks, neighborhoods, specific zip codes) rather than being identical pages with only the city name swapped</li>
+            <li class="lf-guide-li">Embed your Google Map on your contact page and use the exact address format from your GBP listing — this creates a consistent entity signal between your site and your Google Business Profile</li>
+            <li class="lf-guide-li">Build local links through Maryland dental associations, chambers of commerce, and community organizations — locally relevant backlinks carry more weight in local pack rankings than generic directory links</li>
+          </ul>
+          <p class="lf-guide-p">Maryland's dental market is competitive in the Baltimore-Washington corridor, with practices in Columbia, Rockville, Annapolis, Towson, and Bethesda competing for patients in overlapping service areas. Practices that invest consistently in GBP optimization, citation hygiene, review velocity, and on-site local SEO maintain local pack visibility. Practices that treat local SEO as a one-time setup task lose ground steadily to competitors who treat it as an ongoing discipline.</p>
+        </div>
+
+        <!-- SECTION 8 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Emergency Dental Pages — The Highest-Intent Traffic</h3>
+          <p class="lf-guide-p">"Emergency dentist near me" is the highest-converting search query in dental. The person typing that search has pain, urgency, and a clear decision already made — they need a dentist today. They are not comparing options across weeks or reading blog posts about oral health. They are looking for a phone number and same-day availability right now. Capturing this traffic requires a dedicated emergency dental page built specifically around that intent, not a paragraph buried in a general services page.</p>
+          <p class="lf-guide-p">The emergency dental page must prioritize the phone number above everything else. On mobile — where the majority of emergency dental searches happen — the phone number should be a tap-to-call link positioned within the first visible screen, before any scrolling. A same-day or after-hours availability statement should appear alongside the phone number: "We offer same-day emergency appointments for existing and new patients. Call now." If your practice has extended hours or a dedicated emergency line, those details belong at the very top of the page, not in the body copy below the fold.</p>
+          <p class="lf-guide-p">The page should explain clearly what qualifies as a dental emergency — broken or cracked tooth, severe toothache, lost crown or filling, dental abscess, tooth knocked out, injured jaw — and what the patient should do while waiting for their appointment. For a knocked-out tooth, for example, the guidance to keep the tooth moist in milk or saliva and see a dentist within an hour is clinically important and demonstrates clinical credibility to the reader. This type of content also improves the page's topical authority for emergency-related queries.</p>
+          <p class="lf-guide-p">Emergency dental pages need their own URL — typically /emergency-dentist/ or /emergency-dental-care/ — rather than being a section on the homepage or a subsection of a services page. Google ranks pages, not sections. A dedicated URL can accumulate keyword relevance, backlinks, and click-through signals independently. A section buried in a longer page cannot compete for "emergency dentist [city]" queries the way a standalone, optimized page can.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Create city-specific emergency pages if you serve multiple Maryland communities — "emergency dentist Columbia MD" and "emergency dentist Ellicott City" are distinct queries with separate ranking opportunities</li>
+            <li class="lf-guide-li">Emergency dental keywords are among the most competitive in Google Ads dental campaigns — if you run SEM, emergency terms should have their own campaign with dedicated ad copy and the emergency page as the landing page</li>
+            <li class="lf-guide-li">Include your after-hours protocol on the emergency page — if patients call after hours, what happens? An answering service? A recorded message with emergency instructions? Transparency here reduces abandoned calls</li>
+            <li class="lf-guide-li">Add FAQ items specific to dental emergencies — "what should I do if my tooth gets knocked out," "is a cracked tooth a dental emergency," "how long can I wait with a toothache" — these capture informational emergency queries that convert</li>
+          </ul>
+          <p class="lf-guide-p">Practices that invest in a well-built emergency dental page consistently report it as one of their top-performing pages by both traffic and conversion rate. The searcher intent is as high as it gets in dental — the page's job is simply to not lose that patient with friction, slow loading, or a buried phone number.</p>
+        </div>
+
+        <!-- SECTION 9 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Pediatric Dentistry Websites — Building Parent Trust</h3>
+          <p class="lf-guide-p">Pediatric dental searches are made by parents, not by patients. That fundamental difference shapes everything about how a pediatric dental website should be designed, what content it should prioritize, and what emotional register its copy should strike. A parent searching "pediatric dentist near me" is not just evaluating clinical credentials — they are asking whether this practice will be patient with my anxious child, whether the office will feel welcoming and not frightening, and whether the dentists and hygienists here have real experience working with kids at different developmental stages.</p>
+          <p class="lf-guide-p">Parent search behavior for pediatric dental care differs from adult dental searches in one key way: it tends to involve more research. Parents are more likely to read the About page, look at office photos, and read reviews specifically mentioning children before making contact. This means the content investment on a pediatric dental site pays off more directly than on a general dental site — parents who do the research and choose your practice based on what they found online are more committed patients with lower no-show rates.</p>
+          <p class="lf-guide-p">The visual presentation of a pediatric dental website must work hard. Photos of the actual office — the waiting room, the operatories, the staff interacting with young patients — are among the most powerful trust builders on a pediatric site. Parents want to mentally walk their child through the visit before it happens. Stock photos of generic dental offices do not accomplish this. If the office has colorful murals, a themed waiting area, or child-sized furniture, those details belong prominently on the homepage and the dedicated pediatric page.</p>
+          <p class="lf-guide-p">Copy should address both the parent's practical concerns and their emotional concerns. Practically: when should my child first see a dentist, do you treat children with dental anxiety, what does a cleaning involve at this age, do you offer sedation dentistry for kids, what happens if my child needs a filling. Emotionally: we understand that bringing a nervous child to the dentist is stressful, our team is trained to work at your child's pace, we will never rush or force a procedure a child is not ready for.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Build a comprehensive FAQ page specifically for pediatric patients covering the first dental visit timing (the American Academy of Pediatric Dentistry recommends by age one or first tooth), what to expect at each developmental stage, baby teeth questions, and the transition from pediatric to adult dental care</li>
+            <li class="lf-guide-li">Address dental anxiety for both children and parents directly in your page copy — acknowledge that it is common and explain your specific approach to managing it, not just a generic "we make kids feel comfortable" statement</li>
+            <li class="lf-guide-li">Include information about orthodontic evaluation timing (typically age seven for first assessment) if your practice offers or refers for orthodontics — this addresses a question parents of school-age children commonly search</li>
+            <li class="lf-guide-li">Implement schema with medicalSpecialty set to "Pediatric Dentistry" and areaServed listing the specific Maryland communities you draw pediatric patients from</li>
+          </ul>
+          <p class="lf-guide-p">Maryland pediatric dental practices serving the Baltimore suburbs, Montgomery County, and the DC metropolitan corridor are competing with both general dentists who see children and specialized pediatric practices. The practices that win the parent research process are those whose websites communicate clinical competence and genuine child-centeredness in equal measure — not one at the expense of the other.</p>
+        </div>
+
+        <!-- SECTION 10 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Cosmetic Dentistry Websites — Converting High-Value Patients</h3>
+          <p class="lf-guide-p">Cosmetic dental patients represent the highest-value acquisition opportunity in the dental market, and they also have the longest consideration cycle of any dental patient type. A patient searching for a dentist because of tooth pain will book within hours. A patient considering veneers or a full smile makeover may research for weeks or months, visit multiple practice websites, read reviews, watch procedure videos, and compare before/after galleries across several providers before making contact. The cosmetic dental website must be built to support and win that extended research process.</p>
+          <p class="lf-guide-p">Cosmetic dental searches differ structurally from general dental searches in search intent and query specificity. General dentistry searches are proximity-driven ("dentist near me"). Cosmetic searches are often procedure-specific and less strictly proximity-bound — a patient in Howard County might drive to Baltimore or DC for a veneer provider with exceptional case documentation. This means cosmetic dental pages can rank and convert patients from a broader geographic radius than general dental service pages, but they must demonstrate clinical excellence at the level those patients are evaluating.</p>
+          <p class="lf-guide-p">What cosmetic dental patients look at before booking is predictable and consistent: before/after gallery quality is the primary evaluation criterion — not just the number of cases shown but the quality of the photography and the caliber of the outcomes; doctor credentials including where they trained in cosmetic dentistry, any post-doctoral cosmetic training, and aesthetic dentistry society memberships; and pricing transparency or at least financing options that make it possible to understand the investment range before committing to a consultation.</p>
+          <p class="lf-guide-p">Service pages for cosmetic procedures must be built with the extended consideration cycle in mind. A veneers page should explain the full treatment process, what candidacy looks like, how long results last, how the teeth are prepared, and what maintenance involves — not just a paragraph saying "we offer porcelain veneers." Similarly for dental implants (the research cycle for implants can extend for a year or more), Invisalign, teeth whitening, and smile makeovers. The more comprehensively your page answers the research questions, the more likely it is that a patient completes their research on your site rather than leaving to find the answers elsewhere.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Financing information is a conversion requirement for cosmetic dental pages — patients evaluating a $10,000 smile makeover need to understand how it can be structured financially before they will book a consultation</li>
+            <li class="lf-guide-li">Before/after gallery quality standards for cosmetic cases must be higher than general dentistry — consistent retraction, professional lighting, standardized camera distance, and color-accurate reproduction are baseline requirements</li>
+            <li class="lf-guide-li">Target high-value local queries like "cosmetic dentist Baltimore," "veneers dentist Columbia MD," "dental implants Annapolis" with dedicated service-area pages or location-specific content on your service pages</li>
+            <li class="lf-guide-li">Video content — a dentist walking through a cosmetic case, a patient testimonial filmed after treatment, an office tour — performs exceptionally well for cosmetic conversion because it builds the personal connection that drives consultation bookings</li>
+          </ul>
+          <p class="lf-guide-p">Cosmetic dental practices in Maryland competing for patients in the Baltimore-Washington corridor are operating in one of the most affluent and competitive cosmetic dental markets in the country. The practices capturing the high-value patients are those with exceptional before/after documentation, credentialed cosmetic training, and websites sophisticated enough to support the research process of a patient who may visit the site five times before picking up the phone.</p>
+        </div>
+
+        <!-- SECTION 11 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Dental Website Performance and Technical SEO</h3>
+          <p class="lf-guide-p">Dental websites are consistently among the worst-performing healthcare sites in terms of technical web performance, and the reasons are predictable: photo galleries with unoptimized high-resolution images, multiple third-party booking and chat widgets loaded synchronously, outdated WordPress installs running bloated page builders with accumulated plugin debt, and sites built by dental-specific SaaS companies on proprietary platforms that prioritize template convenience over performance optimization. The result is dental sites that score in the 20s and 30s on Google's PageSpeed Insights while their potential patients bounce because the page took six seconds to load on a 4G connection.</p>
+          <p class="lf-guide-p">Core Web Vitals are Google's performance measurement framework and a confirmed ranking signal. For dental sites, the benchmarks that matter most are Largest Contentful Paint (LCP) under 2.5 seconds, Cumulative Layout Shift (CLS) under 0.1, and Interaction to Next Paint (INP) under 200 milliseconds. The LCP benchmark is the most commonly failed on dental sites because the hero image — typically a large banner photo of the office or a smile — is the LCP element, and unoptimized hero images are the single most common cause of dental site performance failure.</p>
+          <p class="lf-guide-p">Auditing a dental site's performance starts with Google's PageSpeed Insights using a mobile simulation, which is the benchmark Google actually uses for ranking. Common findings on poorly performing dental sites include render-blocking JavaScript from booking widgets and chat tools, images served in legacy formats (JPEG, PNG) rather than modern formats (WebP, AVIF), missing width and height attributes causing layout shifts, no server-side caching, no CDN delivery, and WordPress running dozens of active plugins with redundant functionality.</p>
+          <p class="lf-guide-p">A properly architected dental WordPress site uses a lightweight theme framework (Astra or GeneratePress are the current standards for performance-first builds), a mature page builder like Elementor Pro configured for performance mode, WP Rocket or LiteSpeed Cache for server-side caching, and Cloudflare for CDN delivery and edge caching. Images are converted to WebP at upload using a plugin like ShortPixel or Imagify. Third-party scripts (booking widgets, chat tools, analytics) are loaded with defer or async attributes and, where possible, implemented as facades.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Dental SaaS website builders — ProSites, Sesame Communications, Dental Intelligence web products — trade SEO control and performance optimization for template convenience; practices on these platforms consistently underperform on both technical metrics and search rankings</li>
+            <li class="lf-guide-li">The hidden cost of proprietary dental website platforms is portability: when you switch practice management software or decide to move to a different marketing vendor, you often cannot take your website content, your URL structure, or your accumulated SEO equity with you</li>
+            <li class="lf-guide-li">WordPress sites require maintenance to stay secure and performant — plugins need updates, PHP versions need upgrades, and database optimization is ongoing; a monthly care plan covering these tasks is not optional for a site running in a healthcare context</li>
+            <li class="lf-guide-li">Run a mobile performance audit before your next website review — if your dental site scores below 60 on mobile PageSpeed Insights, the performance gap is actively costing you local pack rankings and conversion rate</li>
+          </ul>
+          <p class="lf-guide-p">Technical SEO for dental sites also includes crawlability fundamentals: a clean sitemap submitted to Google Search Console, proper canonical tags preventing duplicate content issues on service-area pages, hreflang tags if serving Spanish-speaking patient populations (a significant demographic consideration in many Maryland markets), and a robots.txt file that is not accidentally blocking critical pages from indexing — a surprisingly common error on sites migrated from SaaS platforms to WordPress.</p>
+        </div>
+
+        <!-- SECTION 12 -->
+        <div class="lf-guide-section">
+          <h3 class="lf-guide-h3">Choosing a Dental Web Design Agency in Maryland</h3>
+          <p class="lf-guide-p">Choosing a web design agency for your dental practice is a business decision with long consequences. The agency you hire will build the system that determines how many new patients find your practice, whether they trust what they find, and whether they convert into booked appointments. A poor agency choice does not just result in a website you dislike — it results in a website that fails to rank, fails to convert, and locks you into a platform or contract that makes switching expensive.</p>
+          <p class="lf-guide-p">The questions you should ask a web design agency before signing a contract are specific and non-negotiable. Do they know Dentist schema — not just LocalBusiness schema, but the specific Dentist type with medicalSpecialty, availableService, and acceptsInsurance fields? Have they built dental sites specifically, and can they show you live examples with traffic data? Can they integrate with your practice management software for online booking — and do they know the difference between a Dentrix integration and a Zocdoc embed? How do they handle HIPAA considerations for contact forms and booking data — and if they do not have a clear answer, that is a significant red flag for a healthcare context.</p>
+          <p class="lf-guide-p">Red flags in a dental agency evaluation are predictable. Any agency that guarantees first-page rankings or a specific position in the local pack is making a promise that is not within their control to keep — Google's local algorithm is not a contract. Agencies with no dental portfolio asking you to be their first dental client are not a risk worth taking when patient acquisition is at stake. Hourly billing without a project cap creates budget uncertainty on a project that should have a defined scope and a fixed price. Multi-year contracts with significant exit penalties are a structure that benefits the agency, not the practice — a good agency earns continued engagement through results, not contractual lock-in.</p>
+          <p class="lf-guide-p">What a dental website project should include at minimum: a discovery phase covering your practice, your patient demographics, your competitive landscape, and your goals; custom design (not a recycled template with your logo swapped in); mobile-first development with Core Web Vitals optimization; Dentist schema implementation; booking integration with your practice management software; on-page SEO for all primary service pages and location pages; Google Business Profile optimization; and a post-launch support plan that covers security updates, plugin maintenance, and performance monitoring.</p>
+          <ul class="lf-guide-ul">
+            <li class="lf-guide-li">Local Maryland agencies understand your patient market in a way national dental marketing companies do not — they know the difference between a Bethesda cosmetic dental market and an Annapolis family practice market, and they build accordingly</li>
+            <li class="lf-guide-li">Evaluate proposals on scope specificity — a proposal that lists "SEO" without specifying what SEO work will be done at what stage of the project is a vague deliverable that will not be held accountable</li>
+            <li class="lf-guide-li">A realistic timeline from signed engagement to live site for a properly built dental website is 8 to 12 weeks — agencies promising a fully custom dental site in two to three weeks are either delivering a template or cutting corners on the work that drives performance</li>
+            <li class="lf-guide-li">Ask for the agency's process for measuring success post-launch: what metrics do they track, how often do they report, and what does a typical 6-month performance review look like for a dental client</li>
+            <li class="lf-guide-li">Verify that you will own your domain, your hosting account, and all website files at the end of the engagement — practices that do not establish ownership upfront sometimes discover that the agency retains control of assets the practice depends on</li>
+          </ul>
+          <p class="lf-guide-p">The right dental web design agency is one that treats your website as a business asset rather than a design project — an agency that understands local search, dental-specific schema, booking integrations, conversion optimization, and the specific patient acquisition dynamics of your Maryland market. That combination of technical capability, dental industry knowledge, and local market understanding is what distinguishes agencies that deliver measurable new patient growth from those that deliver attractive sites that underperform in search.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════════ -->
+  <section class="lf-faq section-pad-sm">
+    <div class="container">
+      <div class="lf-faq-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <div class="lf-faq-sidebar">
+          <p class="eyebrow lf-eyebrow-dark">Common questions</p>
+          <h2 class="h2-section lf-faq-h2">Questions Maryland dentists ask before hiring us</h2>
+          <p class="lf-faq-sidebar-text">
+            Straight answers to the questions we hear on every discovery call — no sales spin, no vague promises.
+          </p>
+          <div class="lf-faq-stats">
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lf-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lf-faq-stat">
+              <span class="lf-faq-stat-num">5</span>
+              <span class="lf-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn lf-faq-sidebar-cta">Ask your own question &rarr;</a>
+          <p class="lf-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- RIGHT: ACCORDION -->
+        <div class="lf-faq-list" id="lf-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = faqCategoryColors[faq.category] || faqCategoryColors["Platform"];
+            return (
+              <div class="lf-faq-item" data-faq-item>
+                <button
+                  class="lf-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`lf-faq-${i}`}
+                  id={`lf-faq-btn-${i}`}
+                >
+                  <span class="lf-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lf-faq-q">{faq.q}</span>
+                  <span
+                    class="lf-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lf-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lf-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lf-faq-answer"
+                  id={`lf-faq-${i}`}
+                  role="region"
+                  aria-labelledby={`lf-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lf-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════════ -->
+  <section class="lf-cta section-pad" id="contact">
+    <div class="container">
+      <div class="lf-cta-inner">
+
+        <div class="lf-cta-content">
+          <p class="eyebrow lf-eyebrow">Dental websites &middot; Maryland</p>
+          <h2 class="display-lg lf-cta-h2">
+            Build a dental website that fills your schedule.
+          </h2>
+          <div class="lf-cta-trust">
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed price, written before we start — no invoice surprises</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 1 business day — usually same day</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based team — we know your market and your patients</span>
+            </div>
+            <div class="lf-trust-row">
+              <span class="lf-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts — month-to-month after launch</span>
+            </div>
+          </div>
+          <p class="lf-cta-reviews mono-xs">
+            <span class="lf-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="lf-cta-card">
+          <div class="lf-cta-card-header">
+            <div class="lf-avail-badge">
+              <span class="lf-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects — May 2026</span>
+            </div>
+            <h3 class="lf-cta-card-title">Book a free discovery call</h3>
+            <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your market, and tell you exactly what we'd build — and what it costs.</p>
+          </div>
+          <form class="lf-form" name="contact-dental" method="POST" action="#contact" novalidate>
+            <div class="lf-form-row">
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="dc-name">Your name</label>
+                <input class="lf-form-input" type="text" id="dc-name" name="name" placeholder="Dr. Rachel Okonkwo" autocomplete="name" />
+              </div>
+              <div class="lf-form-group">
+                <label class="lf-form-label mono-xs" for="dc-email">Email address</label>
+                <input class="lf-form-input" type="email" id="dc-email" name="email" placeholder="dr.okonkwo@dental.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="dc-practice">Practice name &amp; specialty</label>
+              <input class="lf-form-input" type="text" id="dc-practice" name="practice" placeholder="Chesapeake Family Dental · General Dentistry" />
+            </div>
+            <div class="lf-form-group">
+              <label class="lf-form-label mono-xs" for="dc-message">What's not working with your current site?</label>
+              <textarea class="lf-form-input lf-form-textarea" id="dc-message" name="message" rows="3" placeholder="Slow load times, not ranking, no online booking, outdated design…"></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light lf-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lf-cta-watermark" aria-hidden="true">Dental</div>
+  </section>
+
+  <Footer />
+
+</BaseLayout>
+
+<!-- ══════════════════════════════════════════════
+     STYLES
+══════════════════════════════════════════════ -->
+<style>
+
+  /* ── SHARED EYEBROW VARIANTS ── */
+  .lf-eyebrow-dark {
+    /* inherits .eyebrow from global */
+  }
+
+  /* ══════════════════════
+     HERO (homepage-style)
+  ══════════════════════ */
+  @keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lfh-hero {
+    padding-top: clamp(16px, 3vh, 40px);
+    padding-bottom: 0;
+    background: var(--cream-soft);
+    overflow: hidden;
+  }
+
+  /* breadcrumb */
+  .lfh-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink-muted);
+    font-size: 11px;
+    padding-bottom: 16px;
+  }
+  .lfh-breadcrumb a {
+    color: var(--ink-muted);
+    transition: color var(--transition);
+  }
+  .lfh-breadcrumb a:hover { color: var(--amber); }
+
+  /* two-column layout */
+  .lfh-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lfh-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  /* pill badge */
+  .lfh-tags { display: flex; align-items: center; gap: 12px; }
+  .lfh-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+  .lfh-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dot-pulse 2.4s ease-in-out infinite;
+  }
+  .lfh-hero-sep {
+    color: var(--line-strong);
+    font-size: 13px;
+  }
+  .lfh-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
+  .lfh-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+  .lfh-h1-line { display: block; color: var(--ink); }
+  .lfh-h1-accent-line { display: block; }
+  .lfh-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lfh-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .lfh-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .lfh-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lfh-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* cta buttons */
+  .lfh-ctas { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  .lfh-btn-primary,
+  .lfh-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lfh-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lfh-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lfh-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lfh-btn-primary svg, .lfh-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lfh-btn-primary:hover svg { transform: translateX(3px); }
+  .lfh-btn-ghost:hover svg  { transform: translate(2px, -2px); }
+
+  /* trust bar */
+  .lfh-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .lfh-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lfh-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lfh-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* form card */
+  .lfh-right { align-self: start; }
+  .lfh-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+  .lfh-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+  .lfh-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+  .lfh-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+  .lfh-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+  .lfh-form { display: flex; flex-direction: column; gap: clamp(10px, 1.5vh, 14px); }
+  .lfh-form-row { display: flex; flex-direction: column; gap: 5px; position: relative; }
+  .lfh-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+  .lfh-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lfh-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lfh-form-input:focus { border-color: var(--amber); }
+
+  /* custom dropdown */
+  .lf-cs-wrap { position: relative; }
+  .lf-cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .lf-cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .lf-cs-wrap.has-value .lf-cs-trigger { color: var(--cream); }
+  .lf-cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-chevron { transform: rotate(180deg); }
+  .lf-cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0; padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .lf-cs-wrap[aria-expanded="true"] .lf-cs-list { display: block; }
+  .lf-cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .lf-cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .lf-cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+  .lf-cs-hidden { display: none; }
+
+  /* submit */
+  .lfh-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lfh-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .lfh-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lfh-submit:hover svg { transform: translateX(3px); }
+  .lfh-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* stats strip */
+  .lfh-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+  .lfh-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lfh-stat:last-child { border-right: none; }
+  .lfh-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lfh-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+  .lfh-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* responsive */
+  @media (max-width: 1100px) {
+    .lfh-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lfh-form-sub { display: none; }
+  }
+  @media (max-height: 780px) and (min-width: 769px) {
+    .lfh-hero { padding-top: clamp(12px, 2vh, 28px); }
+    .lfh-wrap { padding-bottom: clamp(12px, 2vh, 28px); }
+    .lfh-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .lfh-lede { font-size: 13px; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+    .lfh-trust { display: none; }
+    .lfh-stats { padding-block: 16px; }
+    .lfh-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .lfh-form-title { font-size: 17px; }
+  }
+  @media (max-width: 768px) {
+    .lfh-hero { padding-top: clamp(20px, 5vw, 44px); }
+    .lfh-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lfh-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .lfh-hero-sep { display: none; }
+    .lfh-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lfh-stat:nth-child(2) { border-right: none; }
+    .lfh-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lfh-trust { gap: 8px; }
+    .lfh-trust-dot { display: none; }
+    .lfh-trust-item { display: block; }
+  }
+  @media (max-width: 480px) {
+    .lfh-ctas { flex-direction: column; width: 100%; }
+    .lfh-btn-primary, .lfh-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* ══════════════════════
+     PAIN POINTS
+  ══════════════════════ */
+  .lf-pain {
+    background: var(--paper);
+  }
+
+  .lf-pain-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pain-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lf-pain-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-pain-card:hover {
+    box-shadow: 0 8px 28px rgba(15,20,25,0.09);
+  }
+
+  .lf-pain-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(176,74,62,0.08);
+    border: 1px solid rgba(176,74,62,0.15);
+    border-radius: var(--radius-sm);
+    color: var(--red);
+    flex-shrink: 0;
+  }
+
+  .lf-pain-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-pain-body {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+  }
+
+  /* ══════════════════════
+     FEATURES
+  ══════════════════════ */
+  .lf-features {
+    background: var(--cream-soft);
+  }
+
+  .lf-features-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .lf-feature-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: box-shadow var(--transition), transform var(--transition);
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+  }
+
+  .lf-feature-card:hover {
+    box-shadow: 0 10px 30px rgba(15,20,25,0.1);
+    transform: translateY(-3px);
+  }
+
+  .lf-fc-top {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .lf-fc-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+  }
+
+  .lf-fc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .lf-fc-body {
+    font-size: 13.5px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    flex: 1;
+  }
+
+  .lf-fc-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+  }
+
+  .lf-tag {
+    font-size: 10px;
+    padding: 3px 8px;
+    background: var(--amber-glow);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+    white-space: nowrap;
+    letter-spacing: 0.04em;
+  }
+
+  /* ══════════════════════
+     CASE STUDY
+  ══════════════════════ */
+  .lf-case {
+    background: var(--paper);
+  }
+
+  .lf-case-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lf-case-content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .lf-case-h2 {
+    font-size: clamp(26px, 3vw, 40px);
+  }
+
+  .lf-case-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    line-height: 1.7;
+  }
+
+  .lf-case-results {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .lf-cr-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid var(--amber);
+    border-radius: var(--radius-sm);
+    padding: 14px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .lf-cr-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 32px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-cr-label {
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  .lf-case-quote {
+    background: var(--ink);
+    border-radius: var(--radius-md);
+    border-left: 3px solid var(--amber);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .lf-case-quote p {
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  .lf-case-quote footer {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .lf-cite-name {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--cream);
+  }
+
+  .lf-cite-role {
+    font-size: 10px;
+    color: rgba(244,239,230,0.4);
+    letter-spacing: 0.06em;
+  }
+
+  .lf-case-visual {
+    position: relative;
+  }
+
+  .lf-case-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: var(--radius-md);
+    box-shadow: 0 20px 60px rgba(15,20,25,0.15);
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lf-case-badge {
+    position: absolute;
+    bottom: -12px;
+    left: 20px;
+    background: var(--ink);
+    color: rgba(244,239,230,0.6);
+    padding: 8px 14px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid rgba(244,239,230,0.1);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+  }
+
+  /* ══════════════════════
+     PROCESS
+  ══════════════════════ */
+  .lf-process {
+    background: var(--cream-soft);
+  }
+
+  .lf-process-intro {
+    max-width: 600px;
+    margin: 0 auto 56px;
+    text-align: center;
+  }
+
+  .lf-process-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 48px;
+    background: var(--paper);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lf-process-step {
+    display: flex;
+    flex-direction: column;
+    padding: 28px 24px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    transition: background var(--transition);
+  }
+
+  .lf-process-step:nth-child(2n) { border-right: none; }
+  .lf-process-step:nth-child(3),
+  .lf-process-step:nth-child(4) { border-bottom: none; }
+
+  .lf-process-step:hover { background: var(--cream-soft); }
+
+  .lf-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .lf-phase-num {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    flex-shrink: 0;
+  }
+
+  .lf-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lf-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .lf-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .lf-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .lf-deliverables-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.8;
+  }
+
+  .lf-phase-desc {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lf-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lf-process-cta-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* ══════════════════════
+     PRICING
+  ══════════════════════ */
+  .lf-pricing {
+    background: var(--paper);
+  }
+
+  .lf-pricing-intro {
+    max-width: 640px;
+    margin-bottom: 48px;
+  }
+
+  .lf-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    align-items: stretch;
+    margin-bottom: 24px;
+  }
+
+  .lf-tier {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition);
+  }
+
+  .lf-tier:hover { box-shadow: var(--shadow-md); }
+
+  .lf-tier-popular {
+    border-color: var(--amber);
+    box-shadow: 0 0 0 2px var(--amber), 0 12px 40px rgba(212,147,46,0.15);
+  }
+
+  .lf-tier-dark {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(244,239,230,0.1);
+  }
+
+  .lf-popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--amber);
+    color: var(--ink);
+    padding: 4px 16px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .lf-tier-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lf-tier-dark .lf-tier-header { border-color: rgba(244,239,230,0.1); }
+
+  .lf-tier-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  .lf-tier-price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+  }
+
+  .lf-tier-price {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.5vw, 36px);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .lf-tier-period {
+    color: var(--ink-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .lf-tier-dark .lf-tier-period { color: rgba(244,239,230,0.5); }
+
+  .lf-tier-timeline {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 10px;
+    background: var(--cream-soft);
+    border-radius: var(--radius-sm);
+    width: fit-content;
+  }
+
+  .lf-tier-dark .lf-tier-timeline { background: rgba(244,239,230,0.08); }
+
+  .lf-tl-label { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.06em; }
+  .lf-tl-val   { color: var(--ink); font-size: 10px; font-weight: 500; letter-spacing: 0.06em; }
+  .lf-tier-dark .lf-tl-val { color: var(--amber); }
+
+  .lf-tier-features {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .lf-tier-feature {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+
+  .lf-check {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--green);
+  }
+
+  .lf-tier-dark .lf-tier-feature { color: rgba(244,239,230,0.8); }
+  .lf-tier-dark .lf-check { color: #8ab86a; }
+
+  .lf-tier-cta {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lf-pricing-note {
+    text-align: center;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  /* ══════════════════════
+     FAQ
+  ══════════════════════ */
+  .lf-faq {
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* Sidebar */
+  .lf-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .lf-faq-h2 {
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.2;
+  }
+
+  .lf-faq-sidebar-text {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lf-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+  }
+
+  .lf-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lf-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lf-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-faq-stat-divider {
+    width: 1px;
+    height: 36px;
+    background: var(--line);
+  }
+
+  .lf-faq-sidebar-cta {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lf-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lf-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+    background: var(--paper);
+  }
+
+  .lf-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+  }
+
+  .lf-faq-item:last-child { border-bottom: none; }
+
+  .lf-faq-item:has(.lf-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lf-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 20px 22px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition);
+  }
+
+  .lf-faq-trigger:hover .lf-faq-q { color: var(--amber-deep); }
+
+  .lf-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lf-faq-q {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lf-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .lf-faq-cat { display: inline-block; }
+  }
+
+  .lf-faq-icon {
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-muted);
+    transition: transform var(--transition), color var(--transition);
+  }
+
+  .lf-faq-trigger[aria-expanded="true"] .lf-faq-icon {
+    transform: rotate(45deg);
+    color: var(--amber);
+  }
+
+  .lf-plus-v { transition: opacity var(--transition); }
+  .lf-faq-trigger[aria-expanded="true"] .lf-plus-v { opacity: 0; }
+
+  .lf-faq-answer { overflow: hidden; }
+
+  .lf-faq-answer:not([hidden]) {
+    display: block;
+    animation: lf-faq-open 200ms ease forwards;
+  }
+
+  @keyframes lf-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lf-faq-a {
+    padding: 0 22px 22px 72px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ══════════════════════
+     FINAL CTA
+  ══════════════════════ */
+  .lf-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lf-cta-watermark {
+    position: absolute;
+    bottom: -32px;
+    right: -16px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lf-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 480px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .lf-cta-content {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .lf-cta-h2 { color: var(--cream); max-width: 18ch; margin: 0; }
+
+  .lf-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lf-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+  }
+
+  .lf-trust-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-sm);
+    color: var(--amber);
+  }
+
+  .lf-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lf-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
+
+  /* CTA card */
+  .lf-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lf-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lf-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lf-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lf-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lf-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .lf-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+  }
+
+  .lf-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.4);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  /* Form */
+  .lf-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lf-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lf-form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lf-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lf-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .lf-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lf-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .lf-form-textarea { resize: vertical; min-height: 80px; line-height: 1.5; }
+
+  .lf-form-submit { width: 100%; justify-content: center; }
+
+  /* ══════════════════════
+     RESPONSIVE
+  ══════════════════════ */
+  @media (max-width: 1100px) {
+    .lf-cta-inner  { grid-template-columns: 1fr 420px; gap: 48px; }
+  }
+
+  @media (max-width: 1000px) {
+    .lf-faq-layout   { grid-template-columns: 1fr; gap: 40px; }
+    .lf-faq-sidebar  { position: static; }
+  }
+
+  @media (max-width: 900px) {
+    .lf-pain-grid    { grid-template-columns: 1fr; }
+    .lf-features-grid{ grid-template-columns: repeat(2, 1fr); }
+    .lf-case-inner   { grid-template-columns: 1fr; }
+    .lf-pricing-grid { grid-template-columns: 1fr; max-width: 520px; margin-inline: auto; }
+    .lf-cta-inner    { grid-template-columns: 1fr; gap: 48px; }
+    .lf-cta-h2       { max-width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .lf-features-grid{ grid-template-columns: 1fr; }
+    .lf-case-results { grid-template-columns: 1fr 1fr; }
+    .lf-process-grid { grid-template-columns: 1fr; }
+    .lf-process-step { border-right: none; border-bottom: 1px solid var(--line); }
+    .lf-process-step:last-child { border-bottom: none; }
+    .lf-pricing-grid { max-width: 100%; }
+    .lf-faq-trigger  { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lf-faq-a        { padding: 0 16px 18px 54px; }
+    .lf-form-row     { grid-template-columns: 1fr; }
+    .lf-cta-card     { padding: 24px 20px 20px; }
+  }
+
+/* ══════════════════════
+   GUIDE
+══════════════════════ */
+.lf-guide { background: var(--cream-soft); }
+.lf-guide-intro { max-width: 700px; margin-bottom: 56px; }
+.lf-guide-body { display: flex; flex-direction: column; gap: 48px; max-width: 800px; }
+.lf-guide-section { display: flex; flex-direction: column; gap: 14px; }
+.lf-guide-h3 { font-family: var(--f-display); font-size: clamp(20px,2vw,26px); font-weight: 400; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+.lf-guide-p { font-size: 15px; line-height: 1.75; color: var(--ink-soft); }
+.lf-guide-ul { display: flex; flex-direction: column; gap: 8px; margin: 4px 0; padding: 0; list-style: none; }
+.lf-guide-li { display: flex; gap: 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.lf-guide-li::before { content: "→"; color: var(--amber); flex-shrink: 0; font-family: var(--f-mono); font-size: 13px; margin-top: 3px; }
+@media (max-width: 600px) { .lf-guide-body { gap: 36px; } .lf-guide-h3 { font-size: 20px; } .lf-guide-p { font-size: 14px; } }
+
+</style>
+
+<script>
+  // Specialty custom dropdown
+  document.querySelectorAll('.lf-cs-wrap').forEach((wrap) => {
+    const trigger = wrap.querySelector('.lf-cs-trigger');
+    const list    = wrap.querySelector('.lf-cs-list');
+    const valSpan = wrap.querySelector('.lf-cs-val');
+    const hidden  = wrap.querySelector('.lf-cs-hidden');
+    const opts    = wrap.querySelectorAll('.lf-cs-opt');
+    const open  = () => wrap.setAttribute('aria-expanded', 'true');
+    const close = () => wrap.setAttribute('aria-expanded', 'false');
+    const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+    trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+    opts.forEach((opt) => {
+      opt.addEventListener('click', () => {
+        valSpan.textContent = opt.textContent.trim();
+        hidden.value = opt.dataset.value;
+        opts.forEach(o => o.classList.remove('selected'));
+        opt.classList.add('selected');
+        wrap.classList.add('has-value');
+        close();
+        trigger.focus();
+      });
+      opt.setAttribute('tabindex', '0');
+      opt.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); } });
+    });
+    document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+    wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+  });
+
+  // FAQ accordion
+  const items = document.querySelectorAll('[data-faq-item]');
+  items.forEach((item) => {
+    const btn  = item.querySelector('.lf-faq-trigger');
+    const ans  = item.querySelector('.lf-faq-answer');
+    btn.addEventListener('click', () => {
+      const open = btn.getAttribute('aria-expanded') === 'true';
+      items.forEach((o) => {
+        o.querySelector('.lf-faq-trigger').setAttribute('aria-expanded', 'false');
+        o.querySelector('.lf-faq-answer').hidden = true;
+      });
+      if (!open) {
+        btn.setAttribute('aria-expanded', 'true');
+        ans.hidden = false;
+      }
+    });
+  });
+</script>
