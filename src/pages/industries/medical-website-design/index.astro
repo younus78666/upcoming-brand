@@ -201,10 +201,43 @@ const tiers = [
 
 <BaseLayout
   title="Medical Practice Website Design Maryland | Upcoming Brand"
-  description="WordPress website design for Maryland medical practices. Physician schema, online booking integration, 90+ PageSpeed. Fixed-scope pricing from $1,500. Baltimore, Annapolis, Frederick."
+  description="WordPress website design for Maryland medical practices. Physician schema, online booking, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis."
   canonicalUrl="https://upcomingbrand.com/industries/medical-website-design/"
 >
   <Navigation />
+
+  <!-- Schema: MedicalOrganization + LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["MedicalOrganization", "LocalBusiness"],
+        "@id": "https://upcomingbrand.com/industries/medical-website-design/",
+        "name": "Upcoming Brand — Medical Practice Website Design Maryland",
+        "description": "WordPress website design for Maryland medical practices. Physician schema, online booking integration, and HIPAA-aware design.",
+        "url": "https://upcomingbrand.com/industries/medical-website-design/",
+        "areaServed": [
+          { "@type": "State", "name": "Maryland" },
+          { "@type": "City", "name": "Baltimore" },
+          { "@type": "City", "name": "Annapolis" },
+          { "@type": "City", "name": "Frederick" },
+          { "@type": "City", "name": "Bethesda" },
+          { "@type": "City", "name": "Columbia" },
+          { "@type": "City", "name": "Silver Spring" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Medical Website Design Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Medical Practice WordPress Website Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Physician Schema Implementation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online Booking Integration" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "HIPAA-Aware Contact Forms" } }
+          ]
+        }
+      }
+    ]
+  })} />
 
   <!-- HERO -->
   <section class="lfh-hero">

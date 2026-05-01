@@ -200,10 +200,43 @@ const tiers = [
 ---
 <BaseLayout
   title="Law Firm Website Design Maryland | Upcoming Brand"
-  description="WordPress website design for Maryland law firms. Practice area pages, intake forms, LegalService schema, 90+ PageSpeed. Fixed-scope pricing from $1,500. Baltimore, Annapolis, Frederick."
+  description="WordPress website design for Maryland law firms. LegalService schema, intake forms, practice area pages, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore."
   canonicalUrl="https://upcomingbrand.com/industries/law-firm-website-design/"
 >
   <Navigation />
+
+  <!-- Schema: LegalService + LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LegalService", "LocalBusiness"],
+        "@id": "https://upcomingbrand.com/industries/law-firm-website-design/",
+        "name": "Upcoming Brand — Law Firm Website Design Maryland",
+        "description": "WordPress website design for Maryland law firms. LegalService schema, practice area pages, client intake forms, 90+ PageSpeed.",
+        "url": "https://upcomingbrand.com/industries/law-firm-website-design/",
+        "areaServed": [
+          { "@type": "State", "name": "Maryland" },
+          { "@type": "City", "name": "Baltimore" },
+          { "@type": "City", "name": "Annapolis" },
+          { "@type": "City", "name": "Frederick" },
+          { "@type": "City", "name": "Bethesda" },
+          { "@type": "City", "name": "Columbia" },
+          { "@type": "City", "name": "Silver Spring" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Law Firm Website Design Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Attorney WordPress Website Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "LegalService Schema Implementation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Practice Area Landing Pages" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Client Intake Form Integration" } }
+          ]
+        }
+      }
+    ]
+  })} />
 
   <!-- ══════════════════════════════════════════════
        HERO

@@ -194,11 +194,44 @@ const tiers = [
 ];
 ---
 <BaseLayout
-  title="Gym & Fitness Studio Website Design Maryland | Upcoming Brand"
-  description="WordPress website design for Maryland gyms, fitness studios, and personal trainers. Class booking, membership signup, trainer bios, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick."
+  title="Gym & Fitness Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland gyms and fitness studios. Class booking, membership signup, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis."
   canonicalUrl="https://upcomingbrand.com/industries/gym-website-design/"
 >
   <Navigation />
+
+  <!-- Schema: FitnessCenter + LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["FitnessCenter", "SportsActivityLocation", "LocalBusiness"],
+        "@id": "https://upcomingbrand.com/industries/gym-website-design/",
+        "name": "Upcoming Brand — Gym & Fitness Studio Website Design Maryland",
+        "description": "WordPress website design for Maryland gyms, fitness studios, and personal trainers. FitnessCenter schema, class booking, membership signup.",
+        "url": "https://upcomingbrand.com/industries/gym-website-design/",
+        "areaServed": [
+          { "@type": "State", "name": "Maryland" },
+          { "@type": "City", "name": "Baltimore" },
+          { "@type": "City", "name": "Annapolis" },
+          { "@type": "City", "name": "Frederick" },
+          { "@type": "City", "name": "Bethesda" },
+          { "@type": "City", "name": "Columbia" },
+          { "@type": "City", "name": "Silver Spring" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Gym Website Design Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gym WordPress Website Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "FitnessCenter Schema Implementation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Class Schedule Integration" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Membership Signup Form" } }
+          ]
+        }
+      }
+    ]
+  })} />
 
   <!-- ══════════════════════════════════════════════
        HERO

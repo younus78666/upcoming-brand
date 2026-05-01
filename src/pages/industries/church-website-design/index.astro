@@ -194,11 +194,44 @@ const tiers = [
 ];
 ---
 <BaseLayout
-  title="Church &amp; Faith Organization Website Design Maryland | Upcoming Brand"
-  description="WordPress website design for Maryland churches and faith organizations. Sermon streaming, event calendars, online giving, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick."
+  title="Church &amp; Faith Website Design Maryland | Upcoming Brand"
+  description="WordPress website design for Maryland churches. Sermon archives, event calendars, online giving, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis."
   canonicalUrl="https://upcomingbrand.com/industries/church-website-design/"
 >
   <Navigation />
+
+  <!-- Schema: Church + LocalBusiness -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["Church", "LocalBusiness"],
+        "@id": "https://upcomingbrand.com/industries/church-website-design/",
+        "name": "Upcoming Brand — Church Website Design Maryland",
+        "description": "WordPress website design for Maryland churches and faith organizations. Church schema, sermon archives, event calendars, online giving.",
+        "url": "https://upcomingbrand.com/industries/church-website-design/",
+        "areaServed": [
+          { "@type": "State", "name": "Maryland" },
+          { "@type": "City", "name": "Baltimore" },
+          { "@type": "City", "name": "Annapolis" },
+          { "@type": "City", "name": "Frederick" },
+          { "@type": "City", "name": "Bethesda" },
+          { "@type": "City", "name": "Columbia" },
+          { "@type": "City", "name": "Silver Spring" }
+        ],
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Church Website Design Services",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Church WordPress Website Design" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Church Schema Implementation" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sermon Archive with Video Embeds" } },
+            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online Giving Integration" } }
+          ]
+        }
+      }
+    ]
+  })} />
 
   <!-- ══════════════════════════════════════════════
        HERO
