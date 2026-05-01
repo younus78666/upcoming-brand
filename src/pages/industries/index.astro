@@ -1,0 +1,603 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const pageUrl  = "https://upcomingbrand.com/industries/";
+const pageTitle = "Industries We Serve | Web Design Maryland | Upcoming Brand";
+const pageDesc  = "WordPress web design for Maryland law firms, dental offices, medical clinics, contractors, restaurants, real estate, nonprofits, and ecommerce brands. Fixed scope.";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${pageUrl}#webpage`,
+      "url": pageUrl,
+      "name": pageTitle,
+      "description": pageDesc,
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": pageUrl }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${pageUrl}#itemlist`,
+      "name": "Industries served by Upcoming Brand",
+      "description": "Vertical-specific WordPress web design for 12 Maryland business industries",
+      "numberOfItems": 12,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1,  "url": "https://upcomingbrand.com/industries/law-firm-website-design/",      "name": "Law Firm Website Design Maryland" },
+        { "@type": "ListItem", "position": 2,  "url": "https://upcomingbrand.com/industries/dental-website-design/",        "name": "Dental Website Design Maryland" },
+        { "@type": "ListItem", "position": 3,  "url": "https://upcomingbrand.com/industries/medical-website-design/",       "name": "Medical Website Design Maryland" },
+        { "@type": "ListItem", "position": 4,  "url": "https://upcomingbrand.com/industries/accountant-website-design/",    "name": "Accountant Website Design Maryland" },
+        { "@type": "ListItem", "position": 5,  "url": "https://upcomingbrand.com/industries/contractor-website-design/",    "name": "Contractor Website Design Maryland" },
+        { "@type": "ListItem", "position": 6,  "url": "https://upcomingbrand.com/industries/restaurant-website-design/",    "name": "Restaurant Website Design Maryland" },
+        { "@type": "ListItem", "position": 7,  "url": "https://upcomingbrand.com/industries/real-estate-website-design/",   "name": "Real Estate Website Design Maryland" },
+        { "@type": "ListItem", "position": 8,  "url": "https://upcomingbrand.com/industries/nonprofit-website-design/",     "name": "Nonprofit Website Design Maryland" },
+        { "@type": "ListItem", "position": 9,  "url": "https://upcomingbrand.com/industries/small-business-website-design/","name": "Small Business Website Design Maryland" },
+        { "@type": "ListItem", "position": 10, "url": "https://upcomingbrand.com/industries/ecommerce-website-design/",     "name": "Ecommerce Website Design Maryland" },
+        { "@type": "ListItem", "position": 11, "url": "https://upcomingbrand.com/industries/church-website-design/",        "name": "Church Website Design Maryland" },
+        { "@type": "ListItem", "position": 12, "url": "https://upcomingbrand.com/industries/gym-website-design/",           "name": "Gym Website Design Maryland" }
+      ]
+    }
+  ]
+};
+
+const groups = [
+  {
+    label: "Professional Services",
+    desc: "Regulated industries where trust and compliance define the conversion.",
+    industries: [
+      {
+        num: "01",
+        name: "Law Firms & Attorneys",
+        note: "Baltimore · Annapolis · DC metro",
+        tags: ["Intake forms", "Practice area pages", "Local SEO"],
+        href: "/industries/law-firm-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7l-4 9h8L8 7zM16 7l-4 9h8L16 7z"/><path d="M4 20h16"/></svg>`,
+      },
+      {
+        num: "02",
+        name: "Dental Practices",
+        note: "HIPAA-aware · online booking",
+        tags: ["Appointment booking", "Insurance info", "Multi-location"],
+        href: "/industries/dental-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 2 6 4.5 6 7.5c0 1.5.5 3 1 4.5L8 18c.5 2 1.5 4 4 4s3.5-2 4-4l1-6c.5-1.5 1-3 1-4.5C18 4.5 15 2 12 2z"/></svg>`,
+      },
+      {
+        num: "03",
+        name: "Medical Clinics",
+        note: "Multi-location · patient portals",
+        tags: ["Patient portal", "HIPAA forms", "Provider bios"],
+        href: "/industries/medical-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+      },
+      {
+        num: "04",
+        name: "Accountants & CPAs",
+        note: "Tax season · client portals",
+        tags: ["Client portal", "Service pages", "Lead capture"],
+        href: "/industries/accountant-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+      },
+    ],
+  },
+  {
+    label: "Local & Trade",
+    desc: "Service-area businesses where speed, reviews, and local trust close jobs.",
+    industries: [
+      {
+        num: "05",
+        name: "Contractors & Trades",
+        note: "HVAC · plumbing · roofing",
+        tags: ["Quote requests", "Service area map", "Google reviews"],
+        href: "/industries/contractor-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+      },
+      {
+        num: "06",
+        name: "Restaurants & Hospitality",
+        note: "Menus · reservations · POS",
+        tags: ["Online menu", "Reservation widget", "Location pages"],
+        href: "/industries/restaurant-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>`,
+      },
+      {
+        num: "07",
+        name: "Real Estate Brokerages",
+        note: "IDX integration · agent rosters",
+        tags: ["IDX / MLS sync", "Agent profiles", "Neighborhood pages"],
+        href: "/industries/real-estate-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>`,
+      },
+      {
+        num: "08",
+        name: "Nonprofits",
+        note: "Donations · events · volunteers",
+        tags: ["Donation forms", "Event calendar", "Volunteer signup"],
+        href: "/industries/nonprofit-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+      },
+    ],
+  },
+  {
+    label: "Growth & Ecommerce",
+    desc: "Scale-first builds designed for traffic, revenue, and repeat buyers.",
+    industries: [
+      {
+        num: "09",
+        name: "Small Business & Startups",
+        note: "From MVP to scale-ready",
+        tags: ["Lead gen", "Fixed-scope", "Fast turnaround"],
+        href: "/industries/small-business-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4M10 14h4"/></svg>`,
+      },
+      {
+        num: "10",
+        name: "Ecommerce & DTC Brands",
+        note: "WooCommerce · product pages",
+        tags: ["Product pages", "Checkout flow", "Conversion CRO"],
+        href: "/industries/ecommerce-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67l1.38-7.33H6"/></svg>`,
+      },
+      {
+        num: "11",
+        name: "Churches & Ministries",
+        note: "Giving · events · sermons",
+        tags: ["Online giving", "Event calendar", "Sermon archive"],
+        href: "/industries/church-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="10" y1="4" x2="14" y2="4"/><path d="M5 10h14l1 10H4z"/><path d="M9 20v-5h6v5"/></svg>`,
+      },
+      {
+        num: "12",
+        name: "Gyms & Fitness Studios",
+        note: "Memberships · class schedules",
+        tags: ["Class schedule", "Member login", "Online signup"],
+        href: "/industries/gym-website-design/",
+        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M5 8H4a4 4 0 000 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg>`,
+      },
+    ],
+  },
+];
+---
+<BaseLayout
+  title={pageTitle}
+  description={pageDesc}
+  canonicalUrl={pageUrl}
+  ogImage="https://upcomingbrand.com/og-image.jpg"
+  ogImageAlt="Upcoming Brand - WordPress web design across 12 Maryland industries"
+>
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
+
+  <Navigation />
+
+  <!-- ── HERO ── -->
+  <section class="ind-hero section-pad">
+    <div class="container">
+      <p class="eyebrow" style="justify-content:center">Who we build for</p>
+      <h1 class="ind-hero-h1">WordPress web design built for your industry, not adapted to it</h1>
+      <p class="ind-hero-lead">
+        Every industry on this list has different conversion patterns, compliance requirements, and trust signals. We've built enough sites in each vertical to know the pitfalls before you hit them.
+      </p>
+      <div class="ind-stats" role="list">
+        <div class="ind-stat" role="listitem">
+          <span class="ind-stat-val">12</span>
+          <span class="ind-stat-label mono-xs">Industries served</span>
+        </div>
+        <div class="ind-stat" role="listitem">
+          <span class="ind-stat-val">400+</span>
+          <span class="ind-stat-label mono-xs">Projects delivered</span>
+        </div>
+        <div class="ind-stat" role="listitem">
+          <span class="ind-stat-val">90+</span>
+          <span class="ind-stat-label mono-xs">PageSpeed guarantee</span>
+        </div>
+        <div class="ind-stat" role="listitem">
+          <span class="ind-stat-val">6-10</span>
+          <span class="ind-stat-label mono-xs">Week delivery window</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── INDUSTRY GROUPS ── -->
+  {groups.map((group, gi) => (
+    <section class={`ind-group section-pad ${gi % 2 === 0 ? 'ind-group--light' : 'ind-group--cream'}`}>
+      <div class="container">
+        <div class="ind-group-intro">
+          <h2 class="ind-group-label">{group.label}</h2>
+          <p class="ind-group-desc mono-xs">{group.desc}</p>
+        </div>
+        <div class="ind-grid" role="list">
+          {group.industries.map((ind) => (
+            <a href={ind.href} class="ind-card" role="listitem">
+              <div class="ind-card-top">
+                <div class="ind-icon" aria-hidden="true" set:html={ind.icon} />
+                <span class="ind-num mono-xs">{ind.num}</span>
+              </div>
+              <h3 class="ind-name">{ind.name}</h3>
+              <p class="ind-note mono-xs">{ind.note}</p>
+              <div class="ind-tags" aria-hidden="true">
+                {ind.tags.map((t) => (
+                  <span class="ind-tag">{t}</span>
+                ))}
+              </div>
+              <span class="ind-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ── CTA ── -->
+  <section class="ind-cta section-pad">
+    <div class="container">
+      <div class="ind-cta-inner">
+        <p class="eyebrow" style="justify-content:center">Not sure which fits?</p>
+        <h2 class="ind-cta-h2">Tell us what you do. We'll build the site that fits.</h2>
+        <p class="ind-cta-lead">
+          Every project starts with a 45-minute discovery call. No pitch decks, no upsells. Just an honest conversation about what your site needs to do and whether we're the right fit to build it.
+        </p>
+        <a href="/contact/" class="cta-btn">Book a free discovery call &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ── HERO ── */
+  .ind-hero {
+    background: var(--paper);
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .ind-hero-h1 {
+    font-family: var(--f-display);
+    font-size: clamp(28px, 4.5vw, 52px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--ink);
+    max-width: 760px;
+    margin: 20px auto 24px;
+  }
+
+  .ind-hero-lead {
+    font-size: clamp(15px, 1.6vw, 18px);
+    color: var(--ink-muted);
+    line-height: 1.65;
+    max-width: 620px;
+    margin: 0 auto 48px;
+  }
+
+  /* ── STAT STRIP ── */
+  .ind-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .ind-stat {
+    flex: 1;
+    min-width: 120px;
+    padding: 20px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border-right: 1px solid var(--line);
+  }
+
+  .ind-stat:last-child {
+    border-right: none;
+  }
+
+  .ind-stat-val {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .ind-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1.3;
+  }
+
+  /* ── GROUP SECTIONS ── */
+  .ind-group--light {
+    background: var(--paper);
+  }
+
+  .ind-group--cream {
+    background: var(--cream-soft);
+  }
+
+  .ind-group-intro {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .ind-group-label {
+    font-family: var(--f-display);
+    font-size: clamp(20px, 2.5vw, 26px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .ind-group-desc {
+    color: var(--ink-muted);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    max-width: 340px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* ── GRID ── */
+  .ind-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  /* ── CARD ── */
+  .ind-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid transparent;
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
+    transition: transform var(--transition), box-shadow var(--transition), border-top-color var(--transition), background var(--transition);
+  }
+
+  .ind-group--cream .ind-card {
+    background: var(--paper);
+  }
+
+  .ind-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(15,20,25,0.11);
+    border-top-color: var(--amber);
+  }
+
+  .ind-group--light .ind-card:hover {
+    background: var(--cream-soft);
+  }
+
+  .ind-group--cream .ind-card:hover {
+    background: var(--paper);
+  }
+
+  /* ── TOP ROW ── */
+  .ind-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2px;
+  }
+
+  /* ── ICON ── */
+  .ind-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  /* ── NUMBER ── */
+  .ind-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.65;
+    padding-top: 2px;
+  }
+
+  /* ── NAME ── */
+  .ind-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .ind-card:hover .ind-name {
+    color: var(--amber-deep);
+  }
+
+  /* ── NOTE ── */
+  .ind-note {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ── TAGS ── */
+  .ind-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 4px;
+    flex: 1;
+    align-content: flex-start;
+  }
+
+  .ind-tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    padding: 3px 8px;
+    background: rgba(15,20,25,0.05);
+    border: 1px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-pill);
+    color: var(--ink-muted);
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+  }
+
+  .ind-card:hover .ind-tag {
+    background: rgba(212,147,46,0.07);
+    border-color: rgba(212,147,46,0.2);
+    color: var(--amber-deep);
+  }
+
+  /* ── ARROW ── */
+  .ind-arrow {
+    display: flex;
+    align-items: center;
+    color: var(--amber);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity var(--transition), transform var(--transition);
+    margin-top: 6px;
+  }
+
+  .ind-card:hover .ind-arrow {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* ── CTA ── */
+  .ind-cta {
+    background: var(--ink);
+    text-align: center;
+  }
+
+  .ind-cta-inner {
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .ind-cta .eyebrow {
+    color: rgba(255,255,255,0.5);
+    border-color: rgba(255,255,255,0.15);
+  }
+
+  .ind-cta .eyebrow::before {
+    background: rgba(255,255,255,0.3);
+  }
+
+  .ind-cta-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 3.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.15;
+    color: var(--cream-soft);
+    margin: 0;
+  }
+
+  .ind-cta-lead {
+    font-size: clamp(14px, 1.4vw, 16px);
+    color: rgba(255,255,255,0.6);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1100px) {
+    .ind-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .ind-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ind-group-intro {
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ind-group-desc {
+      text-align: left;
+      max-width: 100%;
+    }
+  }
+
+  @media (max-width: 540px) {
+    .ind-stats {
+      flex-direction: column;
+    }
+
+    .ind-stat {
+      border-right: none;
+      border-bottom: 1px solid var(--line);
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 14px 20px;
+    }
+
+    .ind-stat:last-child {
+      border-bottom: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ind-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
