@@ -3,6 +3,153 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+const PAGE_URL = "https://upcomingbrand.com/industries/ecommerce-website-design/";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${PAGE_URL}#webpage`,
+      "url": PAGE_URL,
+      "name": "Ecommerce Website Design Maryland | WooCommerce Experts",
+      "description": "Ecommerce website design for Maryland businesses. WooCommerce with product schema, Stripe/PayPal checkout, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "@id": `${PAGE_URL}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/industries/" },
+          { "@type": "ListItem", "position": 3, "name": "Ecommerce Website Design", "item": PAGE_URL }
+        ]
+      }
+    },
+    {
+      "@type": ["OnlineBusiness", "LocalBusiness"],
+      "@id": `${PAGE_URL}#service`,
+      "name": "Ecommerce Website Design Maryland",
+      "url": PAGE_URL,
+      "description": "Ecommerce website design for Maryland businesses. WooCommerce with product schema, Stripe/PayPal checkout, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore.",
+      "priceRange": "$1,500-$10,000+",
+      "areaServed": [
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9784, "longitude": -76.4922 } },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.4143, "longitude": -77.4105 } },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9807, "longitude": -77.1006 } },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.2037, "longitude": -76.8610 } },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9907, "longitude": -77.0261 } },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.0840, "longitude": -77.1528 } },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": [
+        "WooCommerce design Maryland",
+        "ecommerce website design Maryland",
+        "Product schema",
+        "Offer schema",
+        "Stripe WooCommerce",
+        "PayPal checkout",
+        "Google Merchant Center",
+        "abandoned cart recovery",
+        "ShipStation integration",
+        "WooCommerce Subscriptions",
+        "online store design Maryland",
+        "product page SEO"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Ecommerce Website Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "WooCommerce Store Design - Starter",
+              "description": "WooCommerce store up to 50 products with custom design, Product schema, Stripe/PayPal checkout, and Core Web Vitals green on delivery."
+            },
+            "priceRange": "$1,500-$3,500"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "WooCommerce Store Design - Growth",
+              "description": "Up to 200 products, catalog migration, category SEO pages, abandoned cart recovery, and ShipStation integration."
+            },
+            "priceRange": "$3,500-$6,000"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "WooCommerce Store Design - Custom",
+              "description": "Unlimited products, WooCommerce Subscriptions, custom configurator, inventory sync, and 12-month SEO reviews."
+            },
+            "priceRange": "$6,000-$10,000+"
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Why WooCommerce instead of Shopify or BigCommerce?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WooCommerce gives you full ownership of your store, your customer data, and your SEO infrastructure: no platform fees on transactions, no forced URL structures, and no limitations on schema implementation. For clients asking about Shopify SEO vs WooCommerce SEO, we recommend WooCommerce for Maryland businesses that also have a physical presence or service component, since WordPress and WooCommerce handles the full business website better than Shopify, which is optimized for pure retail."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long before a WooCommerce store ranks for product searches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Category and collection pages with proper Product schema typically see movement in 60-90 days for specific product searches. Broad category searches like 'handmade gifts Maryland' take 3-6 months. Product-level schema and Google Merchant Center submission can drive Shopping results faster, often within 30-45 days of launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you migrate our existing products and content?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. On Growth and Custom tiers we migrate your existing product catalog, customer data, and order history. We map all existing product URLs to their new equivalents and implement 301 redirects. We test the complete store: checkout, payment, and email confirmations before DNS cutover."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What shipping and inventory integrations do you support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We integrate with ShipStation, EasyPost, WooCommerce Shipping (for USPS/UPS/FedEx label printing), and local pickup/delivery options. For inventory management, we work with WooCommerce's native system or sync with third-party tools like Linnworks or Veeqo. We scope specific integrations during Discovery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What ongoing support do you provide after the store launches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Care plans start at $150/month: WordPress and WooCommerce updates, weekly backups, uptime monitoring, and priority support within 4 business hours. WooCommerce requires more frequent plugin updates than a standard WordPress site. Our care plan handles this so payment processing and checkout never break unexpectedly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you set up subscriptions or recurring billing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We configure WooCommerce Subscriptions with Stripe for recurring billing, including free trial periods, pause and cancel flows, and renewal reminder emails. Subscription products can be standalone or mixed with one-time purchase products in the same catalog. This is included in the Growth and Custom tiers."
+          }
+        }
+      ]
+    }
+  ]
+};
+
 const painPoints = [
   {
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
@@ -194,79 +341,8 @@ const tiers = [
   description="Ecommerce website design for Maryland businesses. WooCommerce with product schema, Stripe/PayPal checkout, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore."
   canonicalUrl="https://upcomingbrand.com/industries/ecommerce-website-design/"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
   <Navigation />
-
-  <!-- ══════════════════════════════════════════════
-       SCHEMA
-  ══════════════════════════════════════════════ -->
-  <script type="application/ld+json" is:inline>{
-    JSON.stringify({
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "LocalBusiness",
-          "@id": "https://upcomingbrand.com/#business",
-          "name": "Upcoming Brand",
-          "url": "https://upcomingbrand.com",
-          "description": "WooCommerce store design for Maryland businesses. Product schema, Stripe/PayPal integration, 90+ PageSpeed.",
-          "areaServed": [
-            { "@type": "City", "name": "Baltimore" },
-            { "@type": "City", "name": "Annapolis" },
-            { "@type": "City", "name": "Frederick" },
-            { "@type": "State", "name": "Maryland" }
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "WooCommerce Website Design Services",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "WooCommerce Store Design — Starter",
-                  "description": "WooCommerce store up to 50 products with custom design, Product schema, Stripe/PayPal checkout, and Core Web Vitals green on delivery."
-                },
-                "priceRange": "$1,500–$3,500"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "WooCommerce Store Design — Growth",
-                  "description": "Up to 200 products, catalog migration, category SEO pages, abandoned cart recovery, and ShipStation integration."
-                },
-                "priceRange": "$3,500–$6,000"
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Service",
-                  "name": "WooCommerce Store Design — Custom",
-                  "description": "Unlimited products, WooCommerce Subscriptions, custom configurator, inventory sync, and 12-month SEO reviews."
-                },
-                "priceRange": "$6,000–$10,000+"
-              }
-            ]
-          }
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://upcomingbrand.com/industries/ecommerce-website-design/",
-          "url": "https://upcomingbrand.com/industries/ecommerce-website-design/",
-          "name": "WooCommerce Website Design Maryland | Upcoming Brand",
-          "description": "WooCommerce store design for Maryland businesses. Product schema, Stripe/PayPal integration, 90+ PageSpeed. Fixed-scope from $1,500.",
-          "breadcrumb": {
-            "@type": "BreadcrumbList",
-            "itemListElement": [
-              { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
-              { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
-              { "@type": "ListItem", "position": 3, "name": "WooCommerce Website Design", "item": "https://upcomingbrand.com/industries/ecommerce-website-design/" }
-            ]
-          }
-        }
-      ]
-    })
-  }</script>
 
   <!-- ══════════════════════════════════════════════
        HERO

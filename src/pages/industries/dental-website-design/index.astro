@@ -201,7 +201,9 @@ const schema = {
       "url": "https://upcomingbrand.com/industries/dental-website-design/",
       "name": "Dental Practice Website Design Maryland | Upcoming Brand",
       "description": "WordPress website design for Maryland dental practices. Dentist schema, online booking, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick.",
+      "inLanguage": "en-US",
       "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -212,51 +214,80 @@ const schema = {
       }
     },
     {
-      "@type": "ProfessionalService",
-      "@id": "https://upcomingbrand.com/#organization",
-      "name": "Upcoming Brand",
-      "url": "https://upcomingbrand.com/",
-      "description": "Maryland WordPress web design studio specializing in dental practice websites with Dentist schema, online booking, and Local Pack optimization.",
+      "@type": ["Dentist", "MedicalOrganization", "LocalBusiness"],
+      "@id": "https://upcomingbrand.com/industries/dental-website-design/#service",
+      "name": "Upcoming Brand -- Dental Website Design Maryland",
+      "description": "WordPress website design for Maryland dental practices. Dentist schema, online booking, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick.",
+      "url": "https://upcomingbrand.com/industries/dental-website-design/",
+      "priceRange": "$1,500-$10,000+",
       "areaServed": [
-        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore" },
-        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland" },
-        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland" },
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9784, "longitude": -76.4922 } },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.4143, "longitude": -77.4105 } },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9807, "longitude": -77.1006 } },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.2037, "longitude": -76.8610 } },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9907, "longitude": -77.0261 } },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.0840, "longitude": -77.1528 } },
         { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
       ],
-      "knowsAbout": ["Dentist", "MedicalOrganization", "Dental Website Design", "WordPress", "Local SEO", "Core Web Vitals"]
+      "knowsAbout": [
+        "Dentist schema",
+        "MedicalOrganization schema",
+        "dental practice WordPress",
+        "dental website design Maryland",
+        "online appointment booking dentist",
+        "NexHealth integration",
+        "Zocdoc integration",
+        "Local Pack dentist",
+        "Core Web Vitals dental",
+        "teeth whitening website",
+        "dental implants SEO",
+        "orthodontist website Maryland"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Dental Website Design Services",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Starter", "priceRange": "$1,500-$3,500", "itemOffered": { "@type": "Service", "name": "Starter Dental Website Design" } },
+          { "@type": "Offer", "name": "Growth", "priceRange": "$3,500-$6,000", "itemOffered": { "@type": "Service", "name": "Growth Dental Website Design" } },
+          { "@type": "Offer", "name": "Custom", "priceRange": "$6,000-$10,000+", "itemOffered": { "@type": "Service", "name": "Custom Dental Website Design" } }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" }
     },
     {
       "@type": "FAQPage",
+      "@id": "https://upcomingbrand.com/industries/dental-website-design/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",
           "name": "How long before a dental website ranks on Google?",
-          "acceptedAnswer": { "@type": "Answer", "text": "For local searches in smaller Maryland markets, practices typically see movement in 60–90 days. Competitive markets like Baltimore take 3–6 months for consistent first-page presence. Google Business Profile and Local Pack optimization often show results fastest, with improvement appearing within 30–45 days of launch." }
+          "acceptedAnswer": { "@type": "Answer", "text": "For local searches in smaller Maryland markets, practices typically see movement in 60-90 days. Competitive markets like Baltimore take 3-6 months for consistent first-page presence. Google Business Profile and Local Pack optimization often show results fastest, with improvement appearing within 30-45 days of launch." }
         },
         {
           "@type": "Question",
           "name": "Will the site work with our existing booking software?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes, we integrate with NexHealth, Dentrix Online Booking, Zocdoc, Open Dental's web scheduling, and Calendly. We connect whichever platform you already use or help you select one if you don't have a preference." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, we integrate with NexHealth, Dentrix Online Booking, Zocdoc, Open Dental's web scheduling, and Calendly. We connect whichever platform you already use or help you select one if you don't have a preference. The goal is patients booking without calling, not adding another software subscription." }
         },
         {
           "@type": "Question",
           "name": "Do you write all the dental copy or do we provide it?",
-          "acceptedAnswer": { "@type": "Answer", "text": "We write all copy as part of every project tier. You provide raw material via a questionnaire. We draft procedure descriptions, doctor bios, and patient FAQs. One review round included." }
+          "acceptedAnswer": { "@type": "Answer", "text": "We write all copy as part of every project tier. You provide raw material via a questionnaire: procedures offered, areas of focus, doctor credentials, and any before/after cases you want highlighted. We draft procedure descriptions, doctor bios, and patient FAQs. One review round included." }
         },
         {
           "@type": "Question",
           "name": "Will we lose Google rankings when we switch from our old site?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Not with proper migration planning. We map every existing URL to its new equivalent and implement 301 redirects before DNS cutover. Clean migrations with full redirect maps recover within 4–6 weeks." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Not with proper migration planning. We map every existing URL to its new equivalent and implement 301 redirects before DNS cutover. Clean migrations with full redirect maps recover within 4-6 weeks. We monitor Search Console for 30 days post-launch and resolve any crawl errors that appear." }
         },
         {
           "@type": "Question",
           "name": "What ongoing support do you offer after launch?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Care plans start at $150/month covering WordPress updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. Month-to-month, no annual contract." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Care plans start at $150/month covering WordPress updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. We also offer a content add-on, one new procedure page or location landing page per month, that compounds your SEO footprint. Month-to-month, no annual contract." }
         },
         {
           "@type": "Question",
           "name": "Can you help us rank for multiple procedures in multiple Maryland cities?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes, the Growth and Custom tiers are designed for this. We build dedicated procedure pages and city landing pages for each Maryland market you serve, targeting queries like 'dental implants Annapolis' or 'orthodontist Baltimore.'" }
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes, this is exactly what the Growth and Custom tiers are designed for. We build dedicated procedure pages and city landing pages for each Maryland market you serve. Each page targets specific queries like 'dental implants Annapolis' or 'orthodontist Baltimore' with correct schema, targeted copy, and internal linking." }
         }
       ]
     }
@@ -339,7 +370,7 @@ const schema = {
 
       </div>
 
-      <!-- RIGHT COLUMN — FORM -->
+      <!-- RIGHT COLUMN - FORM -->
       <div class="lfh-right">
         <div class="lfh-form-card">
           <div class="lfh-form-header">

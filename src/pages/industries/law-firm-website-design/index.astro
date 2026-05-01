@@ -197,46 +197,117 @@ const tiers = [
     cta: "Start a conversation",
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://upcomingbrand.com/industries/law-firm-website-design/#webpage",
+      "url": "https://upcomingbrand.com/industries/law-firm-website-design/",
+      "name": "Law Firm Website Design Maryland | Upcoming Brand",
+      "description": "WordPress website design for Maryland law firms. LegalService schema, intake forms, practice area pages, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
+          { "@type": "ListItem", "position": 3, "name": "Law Firm Website Design", "item": "https://upcomingbrand.com/industries/law-firm-website-design/" }
+        ]
+      }
+    },
+    {
+      "@type": ["LegalService", "LocalBusiness"],
+      "@id": "https://upcomingbrand.com/industries/law-firm-website-design/#service",
+      "name": "Upcoming Brand -- Law Firm Website Design Maryland",
+      "description": "WordPress website design for Maryland law firms. LegalService schema, practice area pages, client intake forms, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore.",
+      "url": "https://upcomingbrand.com/industries/law-firm-website-design/",
+      "priceRange": "$1,500-$10,000+",
+      "areaServed": [
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9784, "longitude": -76.4922 } },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.4143, "longitude": -77.4105 } },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9807, "longitude": -77.1006 } },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.2037, "longitude": -76.8610 } },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9907, "longitude": -77.0261 } },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.0840, "longitude": -77.1528 } },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": [
+        "LegalService schema",
+        "Attorney schema",
+        "law firm website design Maryland",
+        "MRPC compliance",
+        "attorney WordPress website",
+        "legal intake form",
+        "practice area pages",
+        "Avvo profile",
+        "FindLaw directory",
+        "Justia listings",
+        "attorney advertising Maryland",
+        "Local Pack law firm"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Law Firm Website Design Services",
+        "itemListElement": [
+          { "@type": "Offer", "name": "Starter", "priceRange": "$1,500-$3,500", "itemOffered": { "@type": "Service", "name": "Starter Law Firm Website Design" } },
+          { "@type": "Offer", "name": "Growth", "priceRange": "$3,500-$6,000", "itemOffered": { "@type": "Service", "name": "Growth Law Firm Website Design" } },
+          { "@type": "Offer", "name": "Custom", "priceRange": "$6,000-$10,000+", "itemOffered": { "@type": "Service", "name": "Custom Law Firm Website Design" } }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://upcomingbrand.com/industries/law-firm-website-design/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long does it take to rank on Google after the new site launches?",
+          "acceptedAnswer": { "@type": "Answer", "text": "For local searches in smaller Maryland markets like Frederick or Annapolis, firms typically see meaningful movement in 60-90 days post-launch. Competitive markets like Baltimore or Bethesda generally take 3-6 months for consistent first-page presence. Schema implementation and GBP optimization tend to produce the fastest early gains. Local Pack improvements often appear within 30-45 days. We set these expectations in writing during Discovery so there is no ambiguity." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I lose my current Google rankings when the site migrates?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Not if the migration is handled correctly. We map every existing URL to its new equivalent and implement 301 redirects before the DNS cutover. We submit updated sitemaps to Google Search Console immediately post-launch and monitor crawl errors during the 30-day post-launch window. Ranking dips during a clean migration are temporary and typically recover within 4-6 weeks. Migrations that lose rankings permanently are almost always missing redirect maps. We have never shipped a build without one." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you write the website copy or do I have to provide it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "We write all copy as part of every project tier. You provide the raw material, including your practice areas, notable case results you can ethically reference, and attorney bios, via a structured questionnaire. We draft copy that is MRPC-compliant, keyword-targeted, and written in a voice that sounds like your firm rather than a legal directory listing. You review one draft and provide factual corrections. We handle the rest." }
+        },
+        {
+          "@type": "Question",
+          "name": "What makes a law firm website different from a standard business site?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Three things: schema requirements, compliance constraints, and conversion architecture. Law firm pages require LegalService and Attorney structured data that general business sites don't need. Attorney advertising in Maryland is governed by MRPC Rules 7.1 through 7.5, rules most generalist agencies are unaware of. And the conversion goal is a qualified intake submission, not a generic form fill, which requires a different form structure and page hierarchy than a retail or service business site." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after the site launches? Do you offer ongoing support?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Our care plans start at $150/month and cover WordPress core and plugin updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. We also offer a content add-on that includes one new practice area page or city landing page per month, which compounds your SEO footprint over time. Care plans are month-to-month, no annual contract required." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you guarantee we will rank #1 on Google?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No, and any agency that makes that guarantee is lying to you. What we do guarantee is that your site launches with green Core Web Vitals scores, fully implemented LegalService schema, a properly optimized Google Business Profile, and a sound on-page SEO foundation: the controllable inputs that give you the best chance to rank. We also provide a 90-day keyword tracking report so you can see exactly where movement is happening." }
+        }
+      ]
+    }
+  ]
+};
 ---
 <BaseLayout
   title="Law Firm Website Design Maryland | Upcoming Brand"
   description="WordPress website design for Maryland law firms. LegalService schema, intake forms, practice area pages, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore."
   canonicalUrl="https://upcomingbrand.com/industries/law-firm-website-design/"
 >
-  <Navigation />
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
 
-  <!-- Schema: LegalService + LocalBusiness -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["LegalService", "LocalBusiness"],
-        "@id": "https://upcomingbrand.com/industries/law-firm-website-design/",
-        "name": "Upcoming Brand — Law Firm Website Design Maryland",
-        "description": "WordPress website design for Maryland law firms. LegalService schema, practice area pages, client intake forms, 90+ PageSpeed.",
-        "url": "https://upcomingbrand.com/industries/law-firm-website-design/",
-        "areaServed": [
-          { "@type": "State", "name": "Maryland" },
-          { "@type": "City", "name": "Baltimore" },
-          { "@type": "City", "name": "Annapolis" },
-          { "@type": "City", "name": "Frederick" },
-          { "@type": "City", "name": "Bethesda" },
-          { "@type": "City", "name": "Columbia" },
-          { "@type": "City", "name": "Silver Spring" }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Law Firm Website Design Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Attorney WordPress Website Design" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "LegalService Schema Implementation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Practice Area Landing Pages" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Client Intake Form Integration" } }
-          ]
-        }
-      }
-    ]
-  })} />
+  <Navigation />
 
   <!-- ══════════════════════════════════════════════
        HERO
@@ -486,7 +557,7 @@ const tiers = [
         <div class="lf-case-visual">
           <img
             src="/work/meridian-law-group.png"
-            alt="Meridian Law Group website redesign — Baltimore law firm"
+            alt="Meridian Law Group website redesign - Baltimore law firm"
             class="lf-case-img"
             width="600"
             height="420"

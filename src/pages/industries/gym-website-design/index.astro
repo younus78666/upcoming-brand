@@ -192,46 +192,155 @@ const tiers = [
     cta: "Start a conversation",
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://upcomingbrand.com/industries/gym-website-design/#webpage",
+      "url": "https://upcomingbrand.com/industries/gym-website-design/",
+      "name": "Gym & Fitness Website Design Maryland | Upcoming Brand",
+      "description": "WordPress website design for Maryland gyms and fitness studios. Class booking, membership signup, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
+          { "@type": "ListItem", "position": 3, "name": "Gym & Fitness Website Design", "item": "https://upcomingbrand.com/industries/gym-website-design/" }
+        ]
+      }
+    },
+    {
+      "@type": ["FitnessCenter", "SportsActivityLocation", "LocalBusiness"],
+      "@id": "https://upcomingbrand.com/industries/gym-website-design/#service",
+      "name": "Upcoming Brand - Gym and Fitness Studio Website Design Maryland",
+      "url": "https://upcomingbrand.com/industries/gym-website-design/",
+      "description": "WordPress website design for Maryland gyms, fitness studios, and personal trainers. FitnessCenter schema, class booking, membership signup, and GBP optimization.",
+      "priceRange": "$1,500-$10,000+",
+      "areaServed": [
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9784, "longitude": -76.4922 } },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.4143, "longitude": -77.4105 } },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9807, "longitude": -77.1006 } },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.2037, "longitude": -76.8610 } },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9907, "longitude": -77.0261 } },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.0840, "longitude": -77.1528 } },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": [
+        "FitnessCenter schema",
+        "SportsActivityLocation schema",
+        "gym website design Maryland",
+        "Mindbody integration",
+        "Glofox booking",
+        "class schedule WordPress",
+        "personal trainer website",
+        "CrossFit gym website",
+        "yoga studio website Maryland",
+        "fitness membership signup",
+        "free trial landing page gym",
+        "fitness studio GBP optimization"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Gym and Fitness Website Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Gym WordPress Website Design",
+              "description": "Full WordPress website design for gyms and fitness studios with FitnessCenter and SportsActivityLocation schema."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Class Schedule Integration",
+              "description": "Mindbody, Glofox, or Pike13 integration with live class availability and filterable schedule display."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Membership and Free Trial Signup Pages",
+              "description": "Conversion-optimized membership pages and multi-step free trial forms integrated with your CRM or email platform."
+            }
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://upcomingbrand.com/industries/gym-website-design/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do we get our gym to show up in Google Maps for local searches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The primary lever is FitnessCenter and SportsActivityLocation JSON-LD schema on your homepage combined with a fully optimized Google Business Profile. Your GBP needs the correct primary category (Gym or the specific type, such as Yoga Studio or CrossFit Gym), complete hours, consistent NAP matching your website, and photos of your actual facility with descriptive file names. We handle all of this as part of every project. In competitive Maryland markets like Baltimore or Bethesda, expect 3-5 months for consistent Local Pack presence. Smaller markets like Frederick or Salisbury often move in 60-90 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which class booking system do you recommend for a gym our size?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For studios under 200 members, Glofox or Pike13 offer the best balance of features and cost: clean WordPress integrations, reasonable monthly fees, and solid mobile apps for members. For larger facilities or multi-location operations, Mindbody is the industry standard despite its complexity and higher cost. If you're an independent personal trainer or small studio and cost is the primary concern, we can build a booking flow using Calendly or Acuity integrated into your WordPress site at no platform fee beyond your subscription. We assess your situation during Discovery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can our staff update membership pricing, class schedules, and promotions without touching code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. That is a core design requirement for every gym site we build. Pricing tables, class schedules (if using a custom WordPress solution), promotional banners, and blog posts are all editable through the WordPress admin with no code required. If you're using Mindbody or Glofox, schedule updates happen in your booking system and sync to the site automatically. We provide a plain-English admin manual, a recorded walkthrough video, and a 30-minute live training call with your key staff members."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the best way to structure a free trial or intro offer on the website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The offer should appear on your homepage above the fold, on a dedicated trial landing page, and as a sticky banner or CTA on class schedule and pricing pages. The trial form should ask for 3-5 fields maximum: name, email, fitness goal, and preferred class time. Multi-step forms, where you split the form across two screens, consistently outperform single-page forms for fitness audiences. We build the form with instant email notification to your front desk and optional integration with your CRM or email marketing platform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after the site launches? Do you offer ongoing support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our care plans start at $150/month and cover WordPress core and plugin updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. For gyms, we also offer a content add-on that includes one new class landing page, trainer bio, or transformation results page per month, compounding your SEO footprint over time as your program offerings expand. Plans are month-to-month with no annual contract required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We're on Squarespace, Wix, or a fitness-specific site builder. How disruptive is moving to WordPress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Typically 8-9 weeks from first call to live site, with minimal disruption if the migration is handled correctly. We map your current URL structure, implement 301 redirects for every existing page, and migrate your blog content and testimonials. Class schedule data from your booking system is not migrated (that lives in Mindbody or Glofox), but the integration configuration is set up fresh. The most common concern is losing existing Google rankings. With a proper redirect map, any ranking dip from a clean migration recovers within 4-6 weeks."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 <BaseLayout
   title="Gym & Fitness Website Design Maryland | Upcoming Brand"
   description="WordPress website design for Maryland gyms and fitness studios. Class booking, membership signup, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis."
   canonicalUrl="https://upcomingbrand.com/industries/gym-website-design/"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
   <Navigation />
-
-  <!-- Schema: FitnessCenter + LocalBusiness -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["FitnessCenter", "SportsActivityLocation", "LocalBusiness"],
-        "@id": "https://upcomingbrand.com/industries/gym-website-design/",
-        "name": "Upcoming Brand — Gym & Fitness Studio Website Design Maryland",
-        "description": "WordPress website design for Maryland gyms, fitness studios, and personal trainers. FitnessCenter schema, class booking, membership signup.",
-        "url": "https://upcomingbrand.com/industries/gym-website-design/",
-        "areaServed": [
-          { "@type": "State", "name": "Maryland" },
-          { "@type": "City", "name": "Baltimore" },
-          { "@type": "City", "name": "Annapolis" },
-          { "@type": "City", "name": "Frederick" },
-          { "@type": "City", "name": "Bethesda" },
-          { "@type": "City", "name": "Columbia" },
-          { "@type": "City", "name": "Silver Spring" }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Gym Website Design Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Gym WordPress Website Design" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "FitnessCenter Schema Implementation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Class Schedule Integration" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Membership Signup Form" } }
-          ]
-        }
-      }
-    ]
-  })} />
 
   <!-- ══════════════════════════════════════════════
        HERO
@@ -258,7 +367,7 @@ const tiers = [
             <span class="lfh-dot" aria-hidden="true"></span>
             Gym &amp; Fitness Web Design &middot; Maryland
           </span>
-          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-sep" aria-hidden="true">&middot;</span>
           <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
         </div>
 
@@ -300,7 +409,7 @@ const tiers = [
 
       </div>
 
-      <!-- RIGHT COLUMN — FORM -->
+      <!-- RIGHT COLUMN - FORM -->
       <div class="lfh-right">
         <div class="lfh-form-card">
           <div class="lfh-form-header">

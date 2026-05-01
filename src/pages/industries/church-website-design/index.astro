@@ -192,46 +192,155 @@ const tiers = [
     cta: "Start a conversation",
   },
 ];
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://upcomingbrand.com/industries/church-website-design/#webpage",
+      "url": "https://upcomingbrand.com/industries/church-website-design/",
+      "name": "Church & Faith Website Design Maryland | Upcoming Brand",
+      "description": "WordPress website design for Maryland churches. Sermon archives, event calendars, online giving, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
+          { "@type": "ListItem", "position": 3, "name": "Church Website Design", "item": "https://upcomingbrand.com/industries/church-website-design/" }
+        ]
+      }
+    },
+    {
+      "@type": ["Church", "PlaceOfWorship", "LocalBusiness"],
+      "@id": "https://upcomingbrand.com/industries/church-website-design/#service",
+      "name": "Upcoming Brand - Church Website Design Maryland",
+      "url": "https://upcomingbrand.com/industries/church-website-design/",
+      "description": "WordPress website design for Maryland churches and faith organizations. Church schema, sermon archives, event calendars, and online giving integration.",
+      "priceRange": "$1,500-$10,000+",
+      "areaServed": [
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9784, "longitude": -76.4922 } },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.4143, "longitude": -77.4105 } },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9807, "longitude": -77.1006 } },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.2037, "longitude": -76.8610 } },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9907, "longitude": -77.0261 } },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.0840, "longitude": -77.1528 } },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": [
+        "Church schema",
+        "PlaceOfWorship schema",
+        "church website design Maryland",
+        "sermon archive WordPress",
+        "online giving Tithe.ly",
+        "Pushpay integration",
+        "Planning Center ChMS",
+        "event calendar church",
+        "ministry directory",
+        "church GBP optimization",
+        "faith organization website",
+        "nonprofit church website Maryland"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Church Website Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Church WordPress Website Design",
+              "description": "Full WordPress website design for churches with Church and PlaceOfWorship schema, sermon archives, and event calendars."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Online Giving Integration",
+              "description": "Tithe.ly, Pushpay, or Stripe-powered giving integration with mobile-optimized checkout and recurring gift support."
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Sermon Archive and Media Library",
+              "description": "Custom post type sermon archives with series, speaker, and scripture taxonomy, plus fast video embed facades."
+            }
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://upcomingbrand.com/industries/church-website-design/#faqpage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do we get our church to show up in Google Maps for local searches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The primary lever is Church and LocalBusiness JSON-LD schema on your homepage and contact page, combined with a fully optimized Google Business Profile. Your GBP needs the correct primary category (Religious Organization or the specific denomination), complete service times in the Hours section, a consistent NAP (Name, Address, Phone) matching your website, and at minimum 10 photos with descriptive file names. We handle all of this as part of every project. Competitive markets like Baltimore may take 3-5 months for consistent Local Pack presence; smaller Maryland markets like Frederick or Salisbury often move in 60-90 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which online giving platform do you recommend: Tithe.ly, Pushpay, or something else?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tithe.ly is our default recommendation for most churches. It has the best WordPress integration, reasonable transaction fees (about 1% plus standard payment processor fees), and supports text giving, recurring pledges, and designated funds out of the box. Pushpay is stronger for larger congregations with complex multi-campus giving or integration with ChMS platforms like Planning Center. If budget is the primary concern, we can build a Stripe-powered custom giving form that has no platform fee, just standard Stripe processing rates. We discuss your congregation size and giving volume during Discovery and recommend the right fit."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can our staff update the site without knowing how to code?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and that is a core design requirement for every church site we build. Your staff will manage the site through the WordPress admin interface, with Elementor's visual editor for design changes and a structured editorial workflow for sermon posts, event entries, and ministry pages. We provide a plain-English admin manual, a recorded walkthrough video, and a 30-minute live training call with your key staff members. Most church staff are comfortable managing their own content within a week."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you handle a sermon archive with hundreds of past messages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We build sermon archives using WordPress custom post types with a taxonomy system covering series, speaker, scripture reference, topic, and date. Past sermons can be migrated from your existing site, a YouTube channel, or a spreadsheet. We handle the import and tagging. The archive includes a filter UI that works on every device and a search field scoped to sermons only. We optimize video embeds as lightweight facades so the archive loads fast regardless of how many entries it contains."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens after the site launches? Do you offer ongoing support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Our care plans start at $150/month and cover WordPress core and plugin updates, weekly backups, uptime monitoring, and priority support with a 4-business-hour response window. For churches, we also offer a content add-on that includes one new event series page, ministry page, or location page per month. This compounds your SEO footprint and keeps your site feeling current throughout the church calendar year. Plans are month-to-month, with no annual contract required."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We're on Squarespace or a church-specific platform. How complex is moving to WordPress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Straightforward in most cases. We map your current URL structure, implement 301 redirects for every existing page, and migrate your sermon archive if it's in a format we can export. Church-specific platforms like Clover Sites, Nucleus, or Church Community Builder vary in export quality. We assess your specific platform during Discovery and give you an honest estimate of migration complexity. The most common risk is sermon archive loss, which we mitigate with a content audit before any files are touched."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 <BaseLayout
   title="Church &amp; Faith Website Design Maryland | Upcoming Brand"
   description="WordPress website design for Maryland churches. Sermon archives, event calendars, online giving, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis."
   canonicalUrl="https://upcomingbrand.com/industries/church-website-design/"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
   <Navigation />
-
-  <!-- Schema: Church + LocalBusiness -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["Church", "LocalBusiness"],
-        "@id": "https://upcomingbrand.com/industries/church-website-design/",
-        "name": "Upcoming Brand — Church Website Design Maryland",
-        "description": "WordPress website design for Maryland churches and faith organizations. Church schema, sermon archives, event calendars, online giving.",
-        "url": "https://upcomingbrand.com/industries/church-website-design/",
-        "areaServed": [
-          { "@type": "State", "name": "Maryland" },
-          { "@type": "City", "name": "Baltimore" },
-          { "@type": "City", "name": "Annapolis" },
-          { "@type": "City", "name": "Frederick" },
-          { "@type": "City", "name": "Bethesda" },
-          { "@type": "City", "name": "Columbia" },
-          { "@type": "City", "name": "Silver Spring" }
-        ],
-        "hasOfferCatalog": {
-          "@type": "OfferCatalog",
-          "name": "Church Website Design Services",
-          "itemListElement": [
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Church WordPress Website Design" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Church Schema Implementation" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sermon Archive with Video Embeds" } },
-            { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Online Giving Integration" } }
-          ]
-        }
-      }
-    ]
-  })} />
 
   <!-- ══════════════════════════════════════════════
        HERO
@@ -258,7 +367,7 @@ const tiers = [
             <span class="lfh-dot" aria-hidden="true"></span>
             Church Web Design &middot; Maryland
           </span>
-          <span class="lfh-hero-sep" aria-hidden="true">&mdash;</span>
+          <span class="lfh-hero-sep" aria-hidden="true">&middot;</span>
           <span class="lfh-hero-eyebrow">A specialist studio, not a template shop</span>
         </div>
 
@@ -300,7 +409,7 @@ const tiers = [
 
       </div>
 
-      <!-- RIGHT COLUMN — FORM -->
+      <!-- RIGHT COLUMN - FORM -->
       <div class="lfh-right">
         <div class="lfh-form-card">
           <div class="lfh-form-header">
@@ -482,7 +591,7 @@ const tiers = [
         <div class="lf-case-visual">
           <img
             src="/work/grace-fellowship-church.png"
-            alt="Grace Fellowship Church website redesign — Baltimore church"
+            alt="Grace Fellowship Church website redesign - Baltimore church"
             class="lf-case-img"
             width="600"
             height="420"

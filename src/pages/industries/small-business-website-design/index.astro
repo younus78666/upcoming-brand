@@ -3,6 +3,153 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+const PAGE_URL = "https://upcomingbrand.com/industries/small-business-website-design/";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${PAGE_URL}#webpage`,
+      "url": PAGE_URL,
+      "name": "Small Business Website Design Maryland | Upcoming Brand",
+      "description": "WordPress website design for Maryland small businesses. LocalBusiness schema, lead generation forms, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "@id": `${PAGE_URL}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/industries/" },
+          { "@type": "ListItem", "position": 3, "name": "Small Business Website Design", "item": PAGE_URL }
+        ]
+      }
+    },
+    {
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": `${PAGE_URL}#service`,
+      "name": "Small Business Website Design Maryland",
+      "url": PAGE_URL,
+      "description": "WordPress website design for Maryland small businesses. LocalBusiness schema, lead generation forms, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore.",
+      "priceRange": "$1,500-$10,000+",
+      "areaServed": [
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9784, "longitude": -76.4922 } },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.4143, "longitude": -77.4105 } },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9807, "longitude": -77.1006 } },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.2037, "longitude": -76.8610 } },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9907, "longitude": -77.0261 } },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.0840, "longitude": -77.1528 } },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": [
+        "LocalBusiness schema",
+        "small business website design Maryland",
+        "Google Business Profile optimization",
+        "lead generation form WordPress",
+        "Calendly scheduling",
+        "local SEO Maryland",
+        "service area business",
+        "BBB listing",
+        "Yelp profile",
+        "online appointment scheduling",
+        "small business WordPress theme",
+        "city landing pages Maryland"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Small Business Website Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Small Business Website Design - Starter",
+              "description": "5-8 page WordPress site with custom design, LocalBusiness schema, contact form, and Core Web Vitals green on delivery."
+            },
+            "priceRange": "$1,500-$3,500"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Small Business Website Design - Growth",
+              "description": "Up to 15 pages including city landing pages, Calendly or WPForms booking, Google Reviews integration, and lead qualification forms."
+            },
+            "priceRange": "$3,500-$6,000"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Small Business Website Design - Custom",
+              "description": "Full-scope build with unlimited city pages, content migration, 301 redirect mapping, and 12-month quarterly SEO reviews."
+            },
+            "priceRange": "$6,000-$10,000+"
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How long before a small business website ranks in local search?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For specific service and city searches in smaller Maryland markets, businesses typically see meaningful movement in 45-90 days. Baltimore and Bethesda take 3-6 months for consistent first-page presence. GBP and Local Pack optimization often produce the fastest early results, with improvements appearing within 30 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you write all the website copy or do we provide it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We write all copy as part of every tier. You fill out a questionnaire covering your services, service area, years in business, credentials, and differentiators. We draft service descriptions, city page frameworks, and trust copy. One review round is included. We don't outsource copywriting."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you add online booking or appointment scheduling?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We integrate Calendly, Acuity Scheduling, or a custom WPForms booking system on Growth and Custom tiers. Customers can request appointments or services without calling during business hours. We configure the booking flow to capture the information your team needs before responding."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We're on Wix or Squarespace. Will we lose anything by switching?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Wix and Squarespace sites rarely have strong organic rankings, because the platforms limit how effectively Google can crawl and index them. There's typically little organic traffic to protect. We still map all existing URLs and implement 301 redirects before DNS cutover, then monitor Search Console for 30 days post-launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What ongoing support do you provide after the site is live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Care plans start at $150/month and include WordPress core and plugin updates, weekly backups, uptime monitoring, and priority support within 4 business hours. City landing page content add-ons (one page per month) are available separately to expand your geographic SEO footprint. Month-to-month, no annual contract."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "My competitor has a massive website. How can I compete with more pages?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "More pages don't win. More targeted pages do. A competitor with 200 generic service pages often ranks below a competitor with 20 well-structured, schema-marked, internally-linked pages targeting the exact queries their customers use. We focus on building the pages that rank for the specific searches that bring you customers: quality over volume."
+          }
+        }
+      ]
+    }
+  ]
+};
+
 const painPoints = [
   {
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
@@ -195,35 +342,8 @@ const tiers = [
   description="WordPress website design for Maryland small businesses. LocalBusiness schema, lead generation forms, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore."
   canonicalUrl="https://upcomingbrand.com/industries/small-business-website-design/"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
   <Navigation />
-
-  <!-- ══════════════════════════════════════════════
-       SCHEMA
-  ══════════════════════════════════════════════ -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "Upcoming Brand",
-    "description": "WordPress website design for Maryland small businesses. LocalBusiness schema, lead generation forms, 90+ PageSpeed. Fixed-scope from $1,500.",
-    "url": "https://upcomingbrand.com/industries/small-business-website-design/",
-    "areaServed": [
-      { "@type": "State", "name": "Maryland" },
-      { "@type": "City", "name": "Baltimore" },
-      { "@type": "City", "name": "Frederick" },
-      { "@type": "City", "name": "Annapolis" },
-      { "@type": "City", "name": "Bethesda" },
-      { "@type": "City", "name": "Columbia" }
-    ],
-    "priceRange": "$$",
-    "knowsAbout": [
-      "Small Business Website Design",
-      "WordPress Development",
-      "LocalBusiness Schema",
-      "Google Business Profile Optimization",
-      "Local SEO",
-      "Lead Generation"
-    ]
-  })} />
 
   <!-- ══════════════════════════════════════════════
        HERO
@@ -292,7 +412,7 @@ const tiers = [
 
       </div>
 
-      <!-- RIGHT COLUMN — FORM -->
+      <!-- RIGHT COLUMN - FORM -->
       <div class="lfh-right">
         <div class="lfh-form-card">
           <div class="lfh-form-header">
@@ -473,7 +593,7 @@ const tiers = [
         <div class="lf-case-visual">
           <img
             src="/work/mercer-heating-cooling.png"
-            alt="Mercer Heating &amp; Cooling website redesign — Frederick HVAC"
+            alt="Mercer Heating and Cooling website redesign - Frederick HVAC"
             class="lf-case-img"
             width="600"
             height="420"

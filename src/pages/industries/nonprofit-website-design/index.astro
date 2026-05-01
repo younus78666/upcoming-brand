@@ -3,6 +3,153 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+const PAGE_URL = "https://upcomingbrand.com/industries/nonprofit-website-design/";
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${PAGE_URL}#webpage`,
+      "url": PAGE_URL,
+      "name": "Nonprofit Website Design Maryland | Upcoming Brand",
+      "description": "WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-01",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "@id": `${PAGE_URL}#breadcrumb`,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/industries/" },
+          { "@type": "ListItem", "position": 3, "name": "Nonprofit Website Design", "item": PAGE_URL }
+        ]
+      }
+    },
+    {
+      "@type": ["NonprofitOrganization", "LocalBusiness"],
+      "@id": `${PAGE_URL}#service`,
+      "name": "Nonprofit Website Design Maryland",
+      "url": PAGE_URL,
+      "description": "WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500.",
+      "priceRange": "$1,500-$10,000+",
+      "areaServed": [
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9784, "longitude": -76.4922 } },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.4143, "longitude": -77.4105 } },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9807, "longitude": -77.1006 } },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.2037, "longitude": -76.8610 } },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 38.9907, "longitude": -77.0261 } },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland", "geo": { "@type": "GeoCoordinates", "latitude": 39.0840, "longitude": -77.1528 } },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": [
+        "NonprofitOrganization schema",
+        "nonprofit website design Maryland",
+        "GiveWP integration",
+        "Stripe donations WordPress",
+        "Google for Nonprofits",
+        "Google Ad Grants",
+        "donation landing page",
+        "501c3 website",
+        "volunteer signup form",
+        "impact page design",
+        "charity website Maryland",
+        "fundraising campaign page"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Nonprofit Website Design Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Nonprofit Website Design - Starter",
+              "description": "5-8 page WordPress site with custom design, NonprofitOrganization schema, GiveWP donation integration, and Core Web Vitals green on delivery."
+            },
+            "priceRange": "$1,500-$3,500"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Nonprofit Website Design - Growth",
+              "description": "Up to 15 pages including program impact pages, volunteer signup, event registration, recurring donation setup, and tax receipt automation."
+            },
+            "priceRange": "$3,500-$6,000"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Nonprofit Website Design - Custom",
+              "description": "Full-scope build with Google for Nonprofits setup, Google Ad Grants structure, content migration, 301 redirects, and 12-month quarterly impact page updates."
+            },
+            "priceRange": "$6,000-$10,000+"
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${PAGE_URL}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Can nonprofits actually rank in Google search for cause-related searches?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Nonprofits with well-structured sites and NonprofitOrganization schema rank consistently for cause and location combinations. 'Food bank near Annapolis,' 'scholarship for Maryland students,' 'arts foundation Baltimore' are real search queries with low competition and high donor intent. A properly built nonprofit site can dominate these searches within 60-90 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What donation platforms do you integrate with?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We integrate with GiveWP, Stripe, PayPal Giving Fund, Blackbaud, DonorPerfect, and Funraise. We also build custom Stripe integrations if you need a specific giving flow. Recurring gift setup, donation tier configurations, and automatic tax receipt emails are all included in the integration. We test the complete giving flow across mobile and desktop before launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you write the impact copy and program descriptions?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We write all copy as part of every tier. You provide raw material via a questionnaire: program descriptions, impact statistics, beneficiary stories (anonymized as needed), and organizational history. We draft copy that makes donors feel the impact of their gift rather than just describing your programs. One review round included."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "We're moving from Squarespace or Wix. Will we lose our donor traffic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not if the migration is handled correctly. We map every existing URL, implement 301 redirects before DNS cutover, and monitor Search Console post-launch. Squarespace and Wix sites rarely have strong organic rankings, so there's usually little to protect, but we handle the migration carefully regardless."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What ongoing support do you offer after launch?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Care plans start at $150/month, covering WordPress updates, weekly backups, uptime monitoring, and priority support within 4 business hours. Program page content add-ons and seasonal campaign page updates are available separately. Month-to-month, no annual contract. We also offer discounted care plans for 501(c)(3) organizations. Ask about our nonprofit rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help us set up Google for Nonprofits?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Google for Nonprofits provides free access to Google Ad Grants ($10,000/month in search ads), Google Workspace, and YouTube for Nonprofits. We help you verify and enroll in the program, set up your Google Ad Grants account, and structure your site to comply with the program's landing page requirements. This is included in the Growth and Custom tiers."
+          }
+        }
+      ]
+    }
+  ]
+};
+
 const painPoints = [
   {
     icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
@@ -194,46 +341,8 @@ const tiers = [
   description="WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500."
   canonicalUrl="https://upcomingbrand.com/industries/nonprofit-website-design/"
 >
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
   <Navigation />
-
-  <!-- Schema: NonprofitOrganization / Organization -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": ["NonprofitOrganization", "Organization"],
-        "@id": "https://upcomingbrand.com/industries/nonprofit-website-design/#service",
-        "name": "Nonprofit Website Design Maryland",
-        "description": "WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500.",
-        "url": "https://upcomingbrand.com/industries/nonprofit-website-design/",
-        "areaServed": {
-          "@type": "State",
-          "name": "Maryland"
-        },
-        "provider": {
-          "@type": "ProfessionalService",
-          "@id": "https://upcomingbrand.com/#organization",
-          "name": "Upcoming Brand",
-          "url": "https://upcomingbrand.com"
-        }
-      },
-      {
-        "@type": "WebPage",
-        "@id": "https://upcomingbrand.com/industries/nonprofit-website-design/#webpage",
-        "url": "https://upcomingbrand.com/industries/nonprofit-website-design/",
-        "name": "Nonprofit Website Design Maryland | Upcoming Brand",
-        "description": "WordPress website design for Maryland nonprofits. NonprofitOrganization schema, GiveWP donation integration, volunteer signup. Fixed-scope from $1,500.",
-        "breadcrumb": {
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
-            { "@type": "ListItem", "position": 2, "name": "Industries", "item": "https://upcomingbrand.com/#industries" },
-            { "@type": "ListItem", "position": 3, "name": "Nonprofit Website Design", "item": "https://upcomingbrand.com/industries/nonprofit-website-design/" }
-          ]
-        }
-      }
-    ]
-  })} />
 
   <!-- ══════════════════════════════════════════════
        HERO
