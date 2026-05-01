@@ -31,7 +31,6 @@ const schema = {
       "@type": "ItemList",
       "@id": `${pageUrl}#itemlist`,
       "name": "Industries served by Upcoming Brand",
-      "description": "Vertical-specific WordPress web design for 12 Maryland business industries",
       "numberOfItems": 12,
       "itemListElement": [
         { "@type": "ListItem", "position": 1,  "url": "https://upcomingbrand.com/industries/law-firm-website-design/",       "name": "Law Firm Website Design Maryland" },
@@ -47,6 +46,18 @@ const schema = {
         { "@type": "ListItem", "position": 11, "url": "https://upcomingbrand.com/industries/church-website-design/",         "name": "Church Website Design Maryland" },
         { "@type": "ListItem", "position": 12, "url": "https://upcomingbrand.com/industries/gym-website-design/",            "name": "Gym Website Design Maryland" }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${pageUrl}#faqpage`,
+      "mainEntity": [
+        { "@type": "Question", "name": "Do you specialise in one industry or work across all 12?", "acceptedAnswer": { "@type": "Answer", "text": "We work across all 12 verticals listed on this page, but vertical-specific experience is the point. Each industry has distinct schema requirements, compliance constraints, and conversion patterns. We have built enough sites in each vertical to know the pitfalls before your project hits them." } },
+        { "@type": "Question", "name": "What does 'vertical-specific' web design actually mean?", "acceptedAnswer": { "@type": "Answer", "text": "It means three things change by industry: the schema type Google needs to classify your business correctly, the compliance rules that govern what you can say, and the conversion architecture that matches how your customer decides to act. A dental site needs Dentist schema and online booking. A law firm site needs LegalService schema and MRPC-compliant copy. A contractor site needs HomeAndConstructionBusiness schema and multi-step estimate forms." } },
+        { "@type": "Question", "name": "How long does it take to rank for industry-specific searches in Maryland?", "acceptedAnswer": { "@type": "Answer", "text": "For less competitive Maryland markets like Frederick or Annapolis, most industries see meaningful ranking movement in 60 to 90 days. Baltimore, Bethesda, and Columbia take 3 to 6 months for consistent first-page presence. Google Business Profile and Local Pack optimisation typically produce the fastest early results, with improvements appearing within 30 to 45 days of launch." } },
+        { "@type": "Question", "name": "Do you write the website copy for every industry?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Copy is included in every project tier. You provide raw material via a structured questionnaire and we draft everything: service pages, team bios, FAQs, and location pages. For regulated industries like law and healthcare, we handle the compliance framing. You review one draft for factual accuracy." } },
+        { "@type": "Question", "name": "Can you handle HIPAA, MRPC, and other compliance requirements?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Medical and dental sites receive HIPAA-aware form structures that collect only scheduling-necessary information without requesting protected health information. Law firm copy is written under Maryland Rules of Professional Conduct 7.1 through 7.5. Nonprofit donation flows are structured to avoid FEC gray areas. We flag compliance considerations at Discovery before a line of code is written." } },
+        { "@type": "Question", "name": "What is the starting price for an industry-specific site?", "acceptedAnswer": { "@type": "Answer", "text": "Starter builds begin at $1,500 for a 5 to 8 page site with custom design, vertical-specific schema, and Core Web Vitals green on delivery. Growth tier builds with 14 or more pages, city landing pages, and full Local Pack optimization run $3,500 to $6,000. Custom builds with IDX integration, WooCommerce, or multi-location schema start at $6,000. All pricing is fixed-scope. You know the full number before signing." } }
+      ]
     }
   ]
 };
@@ -56,19 +67,19 @@ const pillars = [
     num: "01",
     title: "Schema type determines discoverability",
     body: "A dental practice needs Dentist and MedicalOrganization schema. A law firm needs LegalService and Attorney markup. A restaurant needs FoodEstablishment. Generic agencies skip all of it, leaving your Local Pack slot empty for a competitor to fill.",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
   },
   {
     num: "02",
     title: "Compliance rules vary by industry",
-    body: "Maryland attorneys operate under MRPC 7.1-7.5. Medical and dental sites must handle HIPAA-aware form boundaries. Nonprofits need FEC-compliant donation flows. Agencies that build sites for everyone specialise in none of these constraints.",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+    body: "Maryland attorneys operate under MRPC 7.1-7.5. Medical and dental sites must handle HIPAA-aware form boundaries. Nonprofits need compliant donation flows. Agencies that build sites for everyone specialise in none of these constraints.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
   },
   {
     num: "03",
     title: "Conversion architecture follows your buyer",
-    body: "A patient books an appointment. A homeowner requests an estimate. A donor gives once, then monthly. An attorney prospect submits a multi-step intake. The form, the funnel, and the page hierarchy each need to match exactly how your customer decides to act.",
-    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>`,
+    body: "A patient books an appointment. A homeowner requests an estimate. A donor gives once, then monthly. An attorney prospect submits a multi-step intake. The form, funnel, and page hierarchy each need to match how your customer decides to act.",
+    icon: `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>`,
   },
 ];
 
@@ -76,8 +87,8 @@ const groups = [
   {
     label: "Professional Services",
     slug: "professional-services",
-    bg: "light",
-    desc: "Regulated industries where schema compliance, professional trust signals, and multi-step intake forms drive the conversion. Generic agencies routinely leave bar licenses exposed and Local Pack slots empty.",
+    bg: "paper",
+    desc: "Regulated industries where schema compliance, professional trust signals, and multi-step intake forms drive conversion. Generic agencies leave bar licenses exposed and Local Pack slots empty.",
     industries: [
       {
         num: "01",
@@ -89,19 +100,19 @@ const groups = [
         stat: "+312% organic intake leads",
         tags: ["Multi-step intake forms", "Practice area pages", "Local Pack setup"],
         cta: "Law firm web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7l-4 9h8L8 7zM16 7l-4 9h8L16 7z"/><path d="M4 20h16"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7l-4 9h8L8 7zM16 7l-4 9h8L16 7z"/><path d="M4 20h16"/></svg>`,
       },
       {
         num: "02",
         name: "Dental Practices",
         href: "/industries/dental-website-design/",
-        hook: "67% of patients prefer to book appointments online. 42% of dental bookings happen outside business hours. A contact form is not a booking system.",
+        hook: "67% of patients prefer online booking. 42% of dental bookings happen outside business hours. A contact form is not a booking system.",
         schema: "Dentist + MedicalOrganization schema",
         note: "HIPAA-aware form structure",
         stat: "4x Local Pack appointment rate",
         tags: ["Online appointment booking", "Before/after gallery", "Insurance info pages"],
         cta: "Dental web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 2 6 4.5 6 7.5c0 1.5.5 3 1 4.5L8 18c.5 2 1.5 4 4 4s3.5-2 4-4l1-6c.5-1.5 1-3 1-4.5C18 4.5 15 2 12 2z"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 2 6 4.5 6 7.5c0 1.5.5 3 1 4.5L8 18c.5 2 1.5 4 4 4s3.5-2 4-4l1-6c.5-1.5 1-3 1-4.5C18 4.5 15 2 12 2z"/></svg>`,
       },
       {
         num: "03",
@@ -113,19 +124,19 @@ const groups = [
         stat: "+284% organic patient inquiries",
         tags: ["Patient portal integration", "Provider bio pages", "Healthgrades/Vitals sync"],
         cta: "Medical web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
       },
       {
         num: "04",
         name: "Accountants & CPAs",
         href: "/industries/accountant-website-design/",
-        hook: "82% of accounting clients search online first, but most CPA websites rank only for their firm name. One generic 'services' page ranks for nothing.",
+        hook: "82% of accounting clients search online first, but most CPA websites rank only for their firm name. One generic services page ranks for nothing.",
         schema: "AccountingService + ProfessionalService schema",
         note: "Niche client segment landing pages",
         stat: "60-90 day ranking movement",
         tags: ["Service-specific pages", "Client portal integration", "Tax season lead capture"],
         cta: "Accountant web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
       },
     ],
   },
@@ -139,13 +150,13 @@ const groups = [
         num: "05",
         name: "Contractors & Trades",
         href: "/industries/contractor-website-design/",
-        hook: "The average contractor site we audit loads in 7 seconds on mobile. Every second above 1.5 seconds costs you booked jobs to whoever is ranking below you.",
+        hook: "The average contractor site we audit loads in 7 seconds on mobile. Every second above 1.5 seconds costs you booked jobs to whoever ranks below you.",
         schema: "HomeAndConstructionBusiness + LocalBusiness schema",
         note: "City landing pages per service area",
         stat: "3-6 month first-page timeline",
         tags: ["Multi-step estimate forms", "Service area pages", "HomeAdvisor/Angi sync"],
         cta: "Contractor web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
       },
       {
         num: "06",
@@ -157,7 +168,7 @@ const groups = [
         stat: "30-day Local Pack improvement",
         tags: ["Interactive menus", "Reservation widget", "TripAdvisor/Yelp sync"],
         cta: "Restaurant web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>`,
       },
       {
         num: "07",
@@ -166,10 +177,10 @@ const groups = [
         hook: "93% of buyers start their home search online (NAR 2024). Without neighborhood pages, that traffic goes to Zillow instead of you.",
         schema: "RealEstateAgent + LocalBusiness schema",
         note: "IDX integration with Bright MLS",
-        stat: "60-90 day neighborhood page ranking",
+        stat: "60-90 day neighborhood ranking",
         tags: ["IDX/MLS live listings", "Neighborhood pages", "Seller valuation forms"],
         cta: "Real estate web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>`,
       },
       {
         num: "08",
@@ -181,90 +192,122 @@ const groups = [
         stat: "GiveWP / Stripe recurring giving",
         tags: ["Donation integration", "Volunteer signup forms", "Impact pages"],
         cta: "Nonprofit web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
       },
     ],
   },
   {
     label: "Growth & Ecommerce",
     slug: "growth-ecommerce",
-    bg: "light",
-    desc: "Scale-first builds where product schema, class schedules, online giving, and conversion rate optimization determine revenue. Speed and checkout flow are not cosmetic choices.",
+    bg: "paper",
+    desc: "Scale-first builds where product schema, class schedules, online giving, and conversion rate optimisation determine revenue. Speed and checkout flow are not cosmetic choices.",
     industries: [
       {
         num: "09",
         name: "Small Business & Startups",
         href: "/industries/small-business-website-design/",
-        hook: "A site without LocalBusiness schema, city landing pages, and a Google Business Profile optimized for your trade cannot compete for 'near me' searches.",
+        hook: "A site without LocalBusiness schema, city landing pages, and an optimised GBP cannot compete for 'near me' searches in any Maryland market.",
         schema: "LocalBusiness + ProfessionalService schema",
         note: "City landing pages for every market",
         stat: "4-6 week Starter delivery",
-        tags: ["Lead generation forms", "GBP optimization", "Calendly scheduling"],
+        tags: ["Lead generation forms", "GBP optimisation", "Calendly scheduling"],
         cta: "Small business web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4M10 14h4"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4M10 14h4"/></svg>`,
       },
       {
         num: "10",
         name: "Ecommerce & DTC Brands",
         href: "/industries/ecommerce-website-design/",
-        hook: "WooCommerce stores with Product and Offer schema appear as rich results with pricing and availability. Stores without it are competing blind.",
-        schema: "Product + Offer schema · WooCommerce",
+        hook: "WooCommerce stores with Product and Offer schema appear as rich results with live pricing. Stores without it are competing blind against those that have it.",
+        schema: "Product + Offer schema via WooCommerce",
         note: "Google Merchant Center feed setup",
         stat: "Stripe/PayPal checkout built-in",
         tags: ["Product pages", "Abandoned cart recovery", "ShipStation integration"],
         cta: "Ecommerce web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67l1.38-7.33H6"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67l1.38-7.33H6"/></svg>`,
       },
       {
         num: "11",
         name: "Churches & Ministries",
         href: "/industries/church-website-design/",
-        hook: "When someone searches 'Baptist church near me Columbia MD,' Google shows churches with complete local schema, not the church whose service times are buried in a PDF.",
+        hook: "When someone searches 'Baptist church near me Columbia MD,' Google shows churches with complete local schema, not the one whose service times are buried in a PDF.",
         schema: "Church + PlaceOfWorship + Event schema",
         note: "Tithe.ly/Pushpay giving integration",
         stat: "Sermon archive with filter/search",
         tags: ["Online giving", "Event calendar", "Ministry directory pages"],
         cta: "Church web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="10" y1="4" x2="14" y2="4"/><path d="M5 10h14l1 10H4z"/><path d="M9 20v-5h6v5"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="10" y1="4" x2="14" y2="4"/><path d="M5 10h14l1 10H4z"/><path d="M9 20v-5h6v5"/></svg>`,
       },
       {
         num: "12",
         name: "Gyms & Fitness Studios",
         href: "/industries/gym-website-design/",
-        hook: "Multi-step trial signup forms with a progress indicator outperform single-page forms for fitness audiences by 40-60%. A generic contact form is losing you members daily.",
+        hook: "Multi-step trial signup forms outperform single-page forms for fitness audiences by 40-60%. A generic contact form is losing you members every day.",
         schema: "FitnessCenter + SportsActivityLocation schema",
         note: "Mindbody/Glofox class schedule integration",
         stat: "3-5x trial signup rate increase",
         tags: ["Live class schedule", "Free trial CTA", "Transformation gallery"],
         cta: "Gym web design guide",
-        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M5 8H4a4 4 0 000 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg>`,
+        icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M5 8H4a4 4 0 000 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg>`,
       },
     ],
   },
 ];
 
 const capabilities = [
+  { num: "90+",  label: "PageSpeed on delivery",      sub: "Core Web Vitals green across LCP, INP, and CLS, guaranteed before launch." },
+  { num: "$0",   label: "Hourly billing, ever",        sub: "Every project is fixed-scope. Full price agreed before you sign anything." },
+  { num: "6-10", label: "Week delivery window",        sub: "Discovery, design, build, and launch in one fixed-scope engagement." },
+  { num: "7 yrs",label: "Full-time WordPress",         sub: "No agency overhead, no handoffs. One studio, one point of contact." },
+];
+
+const faqs = [
   {
-    num: "90+",
-    label: "PageSpeed on delivery",
-    sub: "Every site ships with green Core Web Vitals across LCP, INP, and CLS, or we fix it before launch at no cost.",
+    num: "01",
+    category: "Approach",
+    q: "Do you specialise in one industry or work across all 12?",
+    a: "We work across all 12 verticals listed on this page, but vertical-specific experience is the point. Each industry has distinct schema requirements, compliance constraints, and conversion patterns. We have built enough sites in each vertical to know the pitfalls before your project hits them, whether that's MRPC rules for attorneys, Dentist schema for dental practices, or IDX integration for real estate brokerages.",
   },
   {
-    num: "$0",
-    label: "Hourly billing, ever",
-    sub: "Every project is fixed-scope. You know the full price before signing. No surprise invoices mid-build.",
+    num: "02",
+    category: "Strategy",
+    q: "What does 'vertical-specific' web design actually mean?",
+    a: "Three things change by industry: the schema type Google needs to classify your business correctly, the compliance rules that govern what you can say and how, and the conversion architecture that matches how your customer decides to act. A dental site needs Dentist schema and online booking. A law firm site needs LegalService schema and MRPC-compliant copy. A contractor site needs HomeAndConstructionBusiness schema and multi-step estimate forms. A generalist agency delivers none of these correctly.",
   },
   {
-    num: "6-10",
-    label: "Week delivery window",
-    sub: "Discovery, design, build, and launch in a single fixed-scope engagement. No retainers required.",
+    num: "03",
+    category: "SEO",
+    q: "How long does it take to rank for industry-specific searches in Maryland?",
+    a: "For less competitive Maryland markets like Frederick or Annapolis, most industries see meaningful ranking movement in 60 to 90 days post-launch. Baltimore, Bethesda, and Columbia take 3 to 6 months for consistent first-page presence. Google Business Profile and Local Pack optimisation produce the fastest early results, often appearing within 30 to 45 days. We set these expectations in writing during Discovery.",
   },
   {
-    num: "12",
-    label: "Industries, one studio",
-    sub: "Seven years full-time WordPress work across Maryland and 12 countries. No agency overhead, no handoffs.",
+    num: "04",
+    category: "Services",
+    q: "Do you write the website copy for every industry?",
+    a: "Yes. Copy is included at every project tier. You provide raw material via a structured questionnaire covering your services, team, and any differentiators. We draft everything: service pages, bios, FAQs, and location pages. For regulated industries like law and healthcare, we handle the compliance framing. You review one draft for factual accuracy and we handle the rest.",
+  },
+  {
+    num: "05",
+    category: "Compliance",
+    q: "Can you handle HIPAA, MRPC, and other compliance requirements?",
+    a: "Yes. Medical and dental sites receive HIPAA-aware form structures that collect only scheduling-necessary information without requesting protected health information. Law firm copy is written under Maryland Rules of Professional Conduct 7.1 through 7.5. Nonprofit donation flows are structured to avoid compliance gray areas. We flag all compliance considerations at Discovery before a line of code is written.",
+  },
+  {
+    num: "06",
+    category: "Pricing",
+    q: "What is the starting price for an industry-specific site?",
+    a: "Starter builds begin at $1,500 for a 5 to 8 page site with custom design, vertical-specific schema, and Core Web Vitals green on delivery. Growth tier builds with 14 or more pages, city landing pages, and full Local Pack optimisation run $3,500 to $6,000. Custom builds with IDX integration, WooCommerce, or multi-location schema start at $6,000. All pricing is fixed-scope. You know the full number before signing.",
   },
 ];
+
+const faqCategoryColors: Record<string, { bg: string; text: string; border: string }> = {
+  "Approach":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Strategy":   { bg: "rgba(15,20,25,0.06)",    text: "var(--ink-muted)",  border: "rgba(15,20,25,0.12)" },
+  "SEO":        { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+  "Services":   { bg: "rgba(212,147,46,0.1)",   text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)" },
+  "Compliance": { bg: "rgba(160,100,200,0.08)", text: "#7a40b0",           border: "rgba(160,100,200,0.2)" },
+  "Pricing":    { bg: "rgba(92,128,64,0.09)",   text: "#4a7a28",           border: "rgba(92,128,64,0.2)" },
+};
 ---
 <BaseLayout
   title={pageTitle}
@@ -278,45 +321,148 @@ const capabilities = [
   <Navigation />
 
   <!-- ── HERO ── -->
-  <section class="ih-hero section-pad">
-    <div class="container">
-      <div class="ih-hero-inner">
-        <p class="eyebrow" style="justify-content:center">Who we build for</p>
+  <section class="ih-hero">
+    <div class="container ih-hero-wrap">
+
+      <!-- LEFT -->
+      <div class="ih-hero-left">
+        <div class="ih-hero-tags">
+          <span class="ih-hero-pill">
+            <span class="ih-hero-dot" aria-hidden="true"></span>
+            WordPress Specialists &middot; Maryland
+          </span>
+          <span class="ih-hero-eyebrow mono-xs">12 industry verticals</span>
+        </div>
+
         <h1 class="ih-h1">
-          WordPress web design built for<br>
-          <em class="ih-h1-accent">your industry</em>, not adapted to it
+          <span class="ih-h1-line">Web design built</span>
+          <span class="ih-h1-line"><em class="ih-h1-accent">for your industry,</em></span>
+          <span class="ih-h1-line ih-h1-italic">not adapted to it.</span>
         </h1>
-        <p class="ih-lead">
-          We've audited enough generic-agency sites to know the pattern: missing schema, wrong conversion architecture, compliance problems nobody caught. Every industry on this page gets a build that starts from vertical-specific requirements, not from a theme.
+
+        <p class="ih-lede">
+          Every industry on this page has different schema requirements, compliance constraints, and conversion patterns. We've built enough sites in each vertical to know the pitfalls before you hit them, from <strong>MRPC-compliant law firm copy</strong> to <strong>HIPAA-aware dental forms</strong> to <strong>IDX-integrated real estate sites</strong>.
         </p>
+
         <div class="ih-ctas">
-          <a href="#contact" class="cta-btn">Book a discovery call</a>
+          <a href="#contact" class="cta-btn">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
           <a href="#professional-services" class="ih-btn-ghost">
             Browse industries
-            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-              <path d="M7 2v10M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
         </div>
-        <div class="ih-trust mono-xs">
-          <span>Top Rated &middot; Upwork</span>
+
+        <div class="ih-trust">
+          <span class="ih-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+              <circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/>
+              <path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Top Rated &middot; Upwork
+          </span>
           <span class="ih-trust-dot" aria-hidden="true"></span>
-          <span>400+ projects &middot; 12 countries</span>
+          <span class="ih-trust-item">400+ projects &middot; 12 countries</span>
           <span class="ih-trust-dot" aria-hidden="true"></span>
-          <span>7 yrs full-time WordPress</span>
+          <span class="ih-trust-item">Fixed-scope &middot; no hourly billing</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: form card -->
+      <div class="ih-hero-right">
+        <div class="ih-form-card">
+          <div class="ih-form-header">
+            <p class="ih-form-eyebrow">Free discovery call</p>
+            <h2 class="ih-form-title">Tell us about your project</h2>
+            <p class="ih-form-sub">We reply within 4 business hours. No sales pitch, just an honest conversation about what you need.</p>
+          </div>
+
+          <form class="ih-form" name="industries-hero" method="POST" action="/thank-you/" novalidate>
+            <div class="ih-form-row">
+              <label class="ih-form-label" for="ih-name">Your name</label>
+              <input class="ih-form-input" type="text" id="ih-name" name="name" placeholder="Jane Smith" autocomplete="name" />
+            </div>
+            <div class="ih-form-row">
+              <label class="ih-form-label" for="ih-email">Email address</label>
+              <input class="ih-form-input" type="email" id="ih-email" name="email" placeholder="jane@company.com" autocomplete="email" />
+            </div>
+            <div class="ih-form-row">
+              <label class="ih-form-label" for="ih-industry">Your industry</label>
+              <select class="ih-form-input ih-form-select" id="ih-industry" name="industry">
+                <option value="" disabled selected>Select your industry</option>
+                <option>Law Firm / Attorney</option>
+                <option>Dental Practice</option>
+                <option>Medical Clinic</option>
+                <option>Accountant / CPA</option>
+                <option>Contractor / Trades</option>
+                <option>Restaurant / Hospitality</option>
+                <option>Real Estate / Brokerage</option>
+                <option>Nonprofit / Church</option>
+                <option>Small Business / Startup</option>
+                <option>Ecommerce / DTC</option>
+                <option>Gym / Fitness Studio</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="ih-form-row">
+              <label class="ih-form-label" for="ih-budget">Estimated budget</label>
+              <select class="ih-form-input ih-form-select" id="ih-budget" name="budget">
+                <option value="" disabled selected>Select a range</option>
+                <option>$1,500 - $3,500</option>
+                <option>$3,500 - $6,000</option>
+                <option>$6,000 - $10,000</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+            <button type="submit" class="ih-form-submit">
+              Get a free quote
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <p class="ih-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- STATS STRIP -->
+    <div class="container">
+      <div class="ih-hero-stats" role="list" aria-label="Key statistics">
+        <div class="ih-hero-stat" role="listitem">
+          <div class="ih-stat-num">400<span class="ih-stat-amb">+</span></div>
+          <div class="ih-stat-lbl">WordPress projects<br>delivered</div>
+        </div>
+        <div class="ih-hero-stat" role="listitem">
+          <div class="ih-stat-num">12<span class="ih-stat-amb"> verticals</span></div>
+          <div class="ih-stat-lbl">Industry specialisms<br>covered</div>
+        </div>
+        <div class="ih-hero-stat" role="listitem">
+          <div class="ih-stat-num">90<span class="ih-stat-amb">+</span></div>
+          <div class="ih-stat-lbl">PageSpeed at launch,<br>guaranteed</div>
+        </div>
+        <div class="ih-hero-stat" role="listitem">
+          <div class="ih-stat-num">4<span class="ih-stat-amb">hr</span></div>
+          <div class="ih-stat-lbl">Average<br>response time</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ── WHY VERTICAL MATTERS ── -->
-  <section class="ih-pillars section-pad">
+  <section class="ih-pillars section-pad-sm">
     <div class="container">
-      <div class="ih-pillars-intro">
-        <p class="eyebrow" style="justify-content:center">Why vertical expertise matters</p>
-        <h2 class="h2-section ih-pillars-h2">
-          Three things that change completely by industry
-        </h2>
+      <div class="ih-pillars-head">
+        <p class="eyebrow">Why vertical expertise matters</p>
+        <h2 class="h2-section">Three things that change completely by industry</h2>
+        <p class="lead">Generic agencies deliver the same site to every business. We don't. Here's what changes every time we switch industries.</p>
       </div>
       <div class="ih-pillars-grid">
         {pillars.map((p) => (
@@ -333,19 +479,12 @@ const capabilities = [
 
   <!-- ── INDUSTRY GROUPS ── -->
   {groups.map((group) => (
-    <section
-      id={group.slug}
-      class={`ih-group section-pad ih-group--${group.bg}`}
-    >
+    <section id={group.slug} class={`ih-group section-pad-sm ih-group--${group.bg}`}>
       <div class="container">
-
         <div class="ih-group-header">
-          <div class="ih-group-title-block">
-            <h2 class="ih-group-label">{group.label}</h2>
-            <p class="ih-group-desc">{group.desc}</p>
-          </div>
+          <h2 class="ih-group-label">{group.label}</h2>
+          <p class="ih-group-desc">{group.desc}</p>
         </div>
-
         <div class="ih-cards" role="list">
           {group.industries.map((ind) => (
             <article class="ih-card" role="listitem">
@@ -365,7 +504,7 @@ const capabilities = [
 
               <div class="ih-schema-row">
                 <span class="ih-schema-badge">
-                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true">
                     <polyline points="1 6 4 9 11 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                   </svg>
                   {ind.schema}
@@ -387,26 +526,23 @@ const capabilities = [
             </article>
           ))}
         </div>
-
       </div>
     </section>
   ))}
 
-  <!-- ── CAPABILITIES ── -->
-  <section class="ih-cap section-pad">
+  <!-- ── CAPABILITIES ── (light bg, amber top border - distinct from dark CTA below) -->
+  <section class="ih-cap section-pad-sm">
     <div class="container">
       <div class="ih-cap-intro">
-        <p class="eyebrow ih-cap-eyebrow">What every build includes</p>
-        <h2 class="ih-cap-h2">The same foundation under every vertical</h2>
-        <p class="ih-cap-lead">Schema, speed, and fixed pricing don't change by industry. Here's what every project ships with.</p>
+        <p class="eyebrow">What every build includes</p>
+        <h2 class="h2-section">The same foundation under every vertical</h2>
+        <p class="lead">Schema, speed, and fixed pricing don't change by industry. Here's what ships with every project regardless of vertical.</p>
       </div>
       <div class="ih-cap-grid" role="list">
         {capabilities.map((c) => (
           <div class="ih-cap-card" role="listitem">
-            <div class="ih-cap-num-wrap">
-              <span class="ih-cap-num">{c.num}</span>
-              <span class="ih-cap-rule" aria-hidden="true"></span>
-            </div>
+            <span class="ih-cap-num">{c.num}</span>
+            <span class="ih-cap-rule" aria-hidden="true"></span>
             <span class="ih-cap-label">{c.label}</span>
             <p class="ih-cap-sub mono-xs">{c.sub}</p>
           </div>
@@ -415,14 +551,45 @@ const capabilities = [
     </div>
   </section>
 
-  <!-- ── CTA ── -->
-  <section class="ih-cta section-pad" id="contact">
+  <!-- ── FAQ ── -->
+  <section class="ih-faq section-pad-sm">
+    <div class="container">
+      <div class="ih-faq-head">
+        <p class="eyebrow">Common questions</p>
+        <h2 class="h2-section">What Maryland businesses ask before starting</h2>
+        <p class="lead">Questions about schema, compliance, timelines, and pricing, answered once so you don't have to ask twice.</p>
+      </div>
+      <div class="ih-faq-grid">
+        {faqs.map((f) => {
+          const col = faqCategoryColors[f.category] ?? faqCategoryColors["Approach"];
+          return (
+            <div class="ih-faq-item">
+              <div class="ih-faq-meta">
+                <span class="ih-faq-num mono-xs">{f.num}</span>
+                <span
+                  class="ih-faq-cat mono-xs"
+                  style={`background:${col.bg};color:${col.text};border-color:${col.border};`}
+                >{f.category}</span>
+              </div>
+              <h3 class="ih-faq-q">{f.q}</h3>
+              <p class="ih-faq-a">{f.a}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA (dark bg) ── -->
+  <section class="ih-cta section-pad-sm" id="contact" aria-labelledby="ih-cta-heading">
     <div class="container">
       <div class="ih-cta-inner">
 
         <div class="ih-cta-copy">
           <p class="eyebrow ih-cta-eyebrow">Ready to start?</p>
-          <h2 class="ih-cta-h2">Tell us what you do. We'll build the site that fits.</h2>
+          <h2 class="ih-cta-h2" id="ih-cta-heading">
+            Let's build the WordPress website your Maryland business actually needs.
+          </h2>
           <div class="ih-trust-rows">
             <div class="ih-trust-row">
               <span class="ih-trust-icon" aria-hidden="true">
@@ -446,7 +613,7 @@ const capabilities = [
               <span class="ih-trust-icon" aria-hidden="true">
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
               </span>
-              <span>No long-term contracts, 30-day cancel</span>
+              <span>No long-term contracts &middot; 30-day cancel</span>
             </div>
           </div>
           <p class="ih-cta-stars mono-xs">
@@ -456,7 +623,7 @@ const capabilities = [
         </div>
 
         <div class="ih-cta-card">
-          <div class="ih-cta-card-header">
+          <div class="ih-cta-card-head">
             <div class="ih-avail">
               <span class="ih-avail-dot" aria-hidden="true"></span>
               <span class="mono-xs">Taking new projects now</span>
@@ -464,20 +631,20 @@ const capabilities = [
             <h3 class="ih-cta-card-title">Book a free discovery call</h3>
             <p class="ih-cta-card-sub">45 minutes &middot; No sales pitch &middot; Fixed-scope quote within 24 hours</p>
           </div>
-          <form class="ih-form" name="industries-inquiry" method="POST" action="/thank-you/" novalidate>
-            <div class="ih-form-row">
-              <div class="ih-form-group">
-                <label class="ih-form-label mono-xs" for="ih-name">Your name</label>
-                <input class="ih-form-input" type="text" id="ih-name" name="name" placeholder="Jane Smith" autocomplete="name" />
+          <form class="ih-cta-form" name="industries-contact" method="POST" action="/thank-you/" novalidate>
+            <div class="ih-cta-form-row">
+              <div class="ih-cta-form-group">
+                <label class="ih-cta-label mono-xs" for="cta-name">Your name</label>
+                <input class="ih-cta-input" type="text" id="cta-name" name="name" placeholder="Jane Smith" autocomplete="name" />
               </div>
-              <div class="ih-form-group">
-                <label class="ih-form-label mono-xs" for="ih-email">Email address</label>
-                <input class="ih-form-input" type="email" id="ih-email" name="email" placeholder="jane@business.com" autocomplete="email" />
+              <div class="ih-cta-form-group">
+                <label class="ih-cta-label mono-xs" for="cta-email">Email address</label>
+                <input class="ih-cta-input" type="email" id="cta-email" name="email" placeholder="jane@business.com" autocomplete="email" />
               </div>
             </div>
-            <div class="ih-form-group">
-              <label class="ih-form-label mono-xs" for="ih-industry">Your industry</label>
-              <select class="ih-form-input ih-form-select" id="ih-industry" name="industry">
+            <div class="ih-cta-form-group">
+              <label class="ih-cta-label mono-xs" for="cta-biz">Business type</label>
+              <select class="ih-cta-input ih-cta-select" id="cta-biz" name="business">
                 <option value="" disabled selected>Select your industry</option>
                 <option>Law Firm / Attorney</option>
                 <option>Dental Practice</option>
@@ -493,11 +660,11 @@ const capabilities = [
                 <option>Other</option>
               </select>
             </div>
-            <div class="ih-form-group">
-              <label class="ih-form-label mono-xs" for="ih-message">About your project</label>
-              <textarea class="ih-form-input ih-form-textarea" id="ih-message" name="message" rows="3" placeholder="Current site issues, timeline, budget range?"></textarea>
+            <div class="ih-cta-form-group">
+              <label class="ih-cta-label mono-xs" for="cta-msg">About your project</label>
+              <textarea class="ih-cta-input ih-cta-textarea" id="cta-msg" name="message" rows="3" placeholder="Current site issues, timeline, budget?"></textarea>
             </div>
-            <button type="submit" class="cta-btn cta-btn-light ih-form-submit">
+            <button type="submit" class="cta-btn cta-btn-light ih-cta-submit">
               Send &amp; request a quote &rarr;
             </button>
           </form>
@@ -512,67 +679,147 @@ const capabilities = [
 </BaseLayout>
 
 <style>
-  /* ── HERO ── */
+  /* ════════════════════════════════════════════
+     HERO
+  ════════════════════════════════════════════ */
   .ih-hero {
+    padding-top: clamp(28px, 4vh, 80px);
+    padding-bottom: 0;
+    overflow: hidden;
     background: var(--paper);
-    text-align: center;
-    border-bottom: 1px solid var(--line);
   }
 
-  .ih-hero-inner {
-    max-width: 720px;
-    margin: 0 auto;
+  .ih-hero-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .ih-hero-left {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 24px;
+    gap: clamp(16px, 2.5vh, 28px);
   }
 
+  /* pill + eyebrow */
+  .ih-hero-tags {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .ih-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .ih-hero-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: ih-dot-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes ih-dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .ih-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* h1 */
   .ih-h1 {
     font-family: var(--f-display);
-    font-size: clamp(30px, 5vw, 58px);
     font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 62px);
+    line-height: 1.0;
     letter-spacing: -0.035em;
-    line-height: 1.06;
-    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
     margin: 0;
   }
+
+  .ih-h1-line { display: block; color: var(--ink); }
 
   .ih-h1-accent {
-    font-style: italic;
-    color: var(--amber-deep);
-    font-weight: 300;
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
   }
 
-  .ih-lead {
-    font-size: clamp(15px, 1.5vw, 18px);
+  .ih-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  .ih-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* lede */
+  .ih-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
     color: var(--ink-soft);
-    line-height: 1.65;
-    max-width: 600px;
+    max-width: 56ch;
     margin: 0;
   }
 
+  .ih-lede strong { font-weight: 600; color: var(--ink); }
+
+  /* CTAs */
   .ih-ctas {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
   }
 
   .ih-btn-ghost {
     display: inline-flex;
     align-items: center;
-    gap: 8px;
+    gap: 9px;
     font-family: var(--f-body);
     font-size: 15px;
     font-weight: 500;
-    padding: 13px 24px;
+    padding: 14px 26px;
     border-radius: var(--radius-pill);
     border: 1.5px solid var(--line-strong);
     color: var(--ink);
     text-decoration: none;
-    transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    white-space: nowrap;
+    transition: all 0.22s ease;
   }
 
   .ih-btn-ghost:hover {
@@ -582,17 +829,26 @@ const capabilities = [
     transform: translateY(-2px);
   }
 
+  /* trust bar */
   .ih-trust {
     display: flex;
     align-items: center;
     gap: 10px;
     flex-wrap: wrap;
-    justify-content: center;
-    color: var(--ink-muted);
+  }
+
+  .ih-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
     font-size: 10px;
     letter-spacing: 0.07em;
     text-transform: uppercase;
+    color: var(--ink-muted);
   }
+
+  .ih-trust-item svg { color: var(--amber); flex-shrink: 0; }
 
   .ih-trust-dot {
     width: 3px;
@@ -602,26 +858,175 @@ const capabilities = [
     flex-shrink: 0;
   }
 
-  /* ── PILLARS ── */
-  .ih-pillars {
-    background: var(--cream-soft);
-    border-bottom: 1px solid var(--line);
+  /* right: form card */
+  .ih-hero-right { align-self: start; }
+
+  .ih-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
   }
 
-  .ih-pillars-intro {
+  .ih-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+
+  .ih-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  .ih-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+
+  .ih-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+
+  .ih-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.5vh, 14px);
+  }
+
+  .ih-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .ih-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+
+  .ih-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+    -webkit-appearance: none;
+  }
+
+  .ih-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .ih-form-input:focus { border-color: var(--amber); }
+
+  .ih-form-select {
+    cursor: pointer;
+    color: rgba(244,239,230,0.5);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='rgba(244,239,230,0.4)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+
+  .ih-form-select option { background: #1C232B; color: var(--cream); }
+
+  .ih-form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+
+  .ih-form-submit:hover { background: var(--amber-deep); color: var(--cream); transform: translateY(-2px); }
+  .ih-form-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .ih-form-submit:hover svg { transform: translateX(3px); }
+
+  .ih-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
     text-align: center;
-    max-width: 560px;
-    margin: 0 auto 48px;
+    margin-top: -4px;
   }
 
-  .ih-pillars-h2 {
-    margin-top: 16px;
+  /* stats strip */
+  .ih-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
   }
+
+  .ih-hero-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+
+  .ih-hero-stat:last-child { border-right: none; }
+
+  .ih-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+
+  .ih-stat-amb { color: var(--amber-deep); font-style: italic; font-weight: 300; }
+
+  .ih-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* ════════════════════════════════════════════
+     PILLARS
+  ════════════════════════════════════════════ */
+  .ih-pillars { background: var(--cream-soft); }
+
+  .ih-pillars-head { max-width: 640px; margin-bottom: 40px; }
 
   .ih-pillars-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
+    gap: 18px;
   }
 
   .ih-pillar {
@@ -629,7 +1034,7 @@ const capabilities = [
     border: 1.5px solid rgba(15,20,25,0.07);
     border-top: 3px solid var(--amber);
     border-radius: var(--radius-md);
-    padding: clamp(24px, 2.5vw, 36px);
+    padding: 28px 24px;
     display: flex;
     flex-direction: column;
     gap: 12px;
@@ -648,35 +1053,28 @@ const capabilities = [
     flex-shrink: 0;
   }
 
-  .ih-pillar-num {
-    color: var(--amber);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    opacity: 0.65;
-  }
+  .ih-pillar-num { color: var(--amber); font-size: 10px; letter-spacing: 0.1em; opacity: 0.65; }
 
   .ih-pillar-title {
     font-family: var(--f-display);
-    font-size: clamp(16px, 1.5vw, 19px);
+    font-size: clamp(16px, 1.4vw, 19px);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.25;
     color: var(--ink);
   }
 
-  .ih-pillar-body {
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-  }
+  .ih-pillar-body { font-size: 14px; line-height: 1.65; color: var(--ink-soft); }
 
-  /* ── GROUP SECTIONS ── */
-  .ih-group--light { background: var(--paper); }
+  /* ════════════════════════════════════════════
+     GROUP SECTIONS
+  ════════════════════════════════════════════ */
+  .ih-group--paper { background: var(--paper); }
   .ih-group--cream { background: var(--cream-soft); }
 
   .ih-group-header {
-    margin-bottom: 36px;
-    padding-bottom: 24px;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
     border-bottom: 1px solid var(--line);
   }
 
@@ -686,41 +1084,36 @@ const capabilities = [
     font-weight: 400;
     letter-spacing: -0.025em;
     color: var(--ink);
-    line-height: 1.15;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
   }
 
   .ih-group-desc {
-    font-size: clamp(14px, 1.3vw, 16px);
+    font-size: clamp(14px, 1.2vw, 16px);
     color: var(--ink-soft);
     line-height: 1.6;
     max-width: 640px;
   }
 
-  /* ── CARDS GRID ── */
+  /* cards */
   .ih-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 18px;
   }
 
-  /* ── INDIVIDUAL CARD ── */
   .ih-card {
     background: var(--cream-soft);
     border: 1.5px solid rgba(15,20,25,0.07);
     border-top: 3px solid transparent;
     border-radius: var(--radius-md);
-    padding: 28px 26px 24px;
+    padding: 26px 24px 22px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 13px;
     transition: transform var(--transition), box-shadow var(--transition), border-top-color var(--transition);
-    position: relative;
   }
 
-  .ih-group--cream .ih-card {
-    background: var(--paper);
-  }
+  .ih-group--cream .ih-card { background: var(--paper); }
 
   .ih-card:hover {
     transform: translateY(-3px);
@@ -728,23 +1121,18 @@ const capabilities = [
     border-top-color: var(--amber);
   }
 
-  /* ── CARD TOP ROW ── */
   .ih-card-top {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 12px;
+    gap: 10px;
   }
 
-  .ih-card-meta {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-  }
+  .ih-card-meta { display: flex; align-items: flex-start; gap: 10px; }
 
   .ih-icon {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
     border-radius: var(--radius-sm);
     background: rgba(212,147,46,0.1);
     border: 1px solid rgba(212,147,46,0.2);
@@ -755,19 +1143,13 @@ const capabilities = [
     flex-shrink: 0;
   }
 
-  .ih-num {
-    color: var(--amber);
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    opacity: 0.6;
-    padding-top: 3px;
-  }
+  .ih-num { color: var(--amber); font-size: 10px; letter-spacing: 0.1em; opacity: 0.6; padding-top: 3px; }
 
   .ih-stat-badge {
-    font-size: 10px;
-    letter-spacing: 0.06em;
+    font-size: 9px;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 4px 10px;
+    padding: 3px 8px;
     background: rgba(92,128,64,0.08);
     border: 1px solid rgba(92,128,64,0.2);
     border-radius: var(--radius-pill);
@@ -776,80 +1158,47 @@ const capabilities = [
     flex-shrink: 0;
   }
 
-  /* ── CARD NAME ── */
   .ih-card-name {
     font-family: var(--f-display);
-    font-size: clamp(17px, 1.7vw, 21px);
+    font-size: clamp(17px, 1.6vw, 21px);
     font-weight: 400;
     letter-spacing: -0.02em;
     line-height: 1.2;
     margin: 0;
   }
 
-  .ih-card-link {
-    color: var(--ink);
-    text-decoration: none;
-    transition: color var(--transition);
-  }
+  .ih-card-link { color: var(--ink); text-decoration: none; transition: color var(--transition); }
+  .ih-card:hover .ih-card-link { color: var(--amber-deep); }
 
-  .ih-card-link:hover,
-  .ih-card:hover .ih-card-link {
-    color: var(--amber-deep);
-  }
-
-  /* ── HOOK ── */
   .ih-card-hook {
     font-size: 14px;
     line-height: 1.65;
     color: var(--ink-soft);
     margin: 0;
-    border-left: 2px solid rgba(212,147,46,0.3);
+    border-left: 2px solid rgba(212,147,46,0.35);
     padding-left: 12px;
   }
 
-  /* ── SCHEMA ROW ── */
-  .ih-schema-row {
-    display: flex;
-    align-items: center;
-  }
+  .ih-schema-row { display: flex; }
 
   .ih-schema-badge {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 5px;
     font-family: var(--f-mono);
     font-size: 10px;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    padding: 4px 10px;
+    padding: 3px 9px;
     background: rgba(212,147,46,0.08);
     border: 1px solid rgba(212,147,46,0.2);
     border-radius: var(--radius-pill);
     color: var(--amber-deep);
   }
 
-  .ih-schema-badge svg {
-    color: var(--amber);
-    flex-shrink: 0;
-  }
+  .ih-card-note { color: var(--ink-muted); font-size: 10px; letter-spacing: 0.07em; text-transform: uppercase; margin: 0; }
 
-  /* ── NOTE ── */
-  .ih-card-note {
-    color: var(--ink-muted);
-    font-size: 10px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    margin: 0;
-  }
-
-  /* ── TAGS ── */
-  .ih-card-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    flex: 1;
-    align-content: flex-start;
-  }
+  .ih-card-tags { display: flex; flex-wrap: wrap; gap: 5px; flex: 1; align-content: flex-start; }
 
   .ih-tag {
     font-family: var(--f-mono);
@@ -869,7 +1218,6 @@ const capabilities = [
     color: var(--amber-deep);
   }
 
-  /* ── CTA LINK ── */
   .ih-card-cta {
     display: inline-flex;
     align-items: center;
@@ -882,71 +1230,20 @@ const capabilities = [
     text-decoration: none;
     font-weight: 500;
     transition: gap var(--transition), color var(--transition);
-    margin-top: 4px;
+    margin-top: 2px;
   }
 
-  .ih-card-cta:hover {
-    gap: 10px;
-    color: var(--ink);
-  }
+  .ih-card-cta:hover { gap: 10px; color: var(--ink); }
 
-  /* ── CAPABILITIES ── */
+  /* ════════════════════════════════════════════
+     CAPABILITIES (light bg, amber border)
+  ════════════════════════════════════════════ */
   .ih-cap {
-    background: var(--ink);
-    color: var(--cream);
+    background: var(--cream-soft);
     border-top: 3px solid var(--amber);
-    position: relative;
-    overflow: hidden;
   }
 
-  .ih-cap::before {
-    content: "Consistent";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--f-display);
-    font-size: clamp(100px, 18vw, 240px);
-    font-weight: 300;
-    font-style: italic;
-    letter-spacing: -0.04em;
-    color: var(--cream);
-    opacity: 0.03;
-    white-space: nowrap;
-    pointer-events: none;
-    user-select: none;
-    z-index: 0;
-  }
-
-  .ih-cap .container { position: relative; z-index: 2; }
-
-  .ih-cap-intro {
-    text-align: center;
-    max-width: 560px;
-    margin: 0 auto 52px;
-  }
-
-  .ih-cap-eyebrow {
-    color: rgba(244,239,230,0.45);
-    justify-content: center;
-  }
-
-  .ih-cap-eyebrow::before { background: rgba(244,239,230,0.25); }
-
-  .ih-cap-h2 {
-    font-family: var(--f-display);
-    font-size: clamp(22px, 3vw, 34px);
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    color: var(--cream);
-    margin: 16px 0 12px;
-  }
-
-  .ih-cap-lead {
-    font-size: 15px;
-    color: rgba(244,239,230,0.55);
-    line-height: 1.6;
-  }
+  .ih-cap-intro { max-width: 640px; margin-bottom: 40px; }
 
   .ih-cap-grid {
     display: grid;
@@ -955,36 +1252,26 @@ const capabilities = [
   }
 
   .ih-cap-card {
-    background: rgba(244,239,230,0.04);
-    border: 1px solid rgba(244,239,230,0.09);
-    border-top: 3px solid rgba(212,147,46,0.55);
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.08);
     border-radius: var(--radius-md);
-    padding: clamp(24px, 2.5vw, 36px) clamp(20px, 2vw, 28px);
+    padding: 28px 22px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    transition: background var(--transition), border-top-color var(--transition), transform var(--transition);
+    transition: transform var(--transition), box-shadow var(--transition);
   }
 
-  .ih-cap-card:hover {
-    background: rgba(244,239,230,0.07);
-    border-top-color: var(--amber);
-    transform: translateY(-3px);
-  }
-
-  .ih-cap-num-wrap {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .ih-cap-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
 
   .ih-cap-num {
     font-family: var(--f-display);
-    font-size: clamp(38px, 4.5vw, 58px);
+    font-size: clamp(36px, 4vw, 54px);
     font-weight: 300;
     letter-spacing: -0.04em;
     line-height: 1;
-    color: var(--amber);
+    color: var(--amber-deep);
+    display: block;
   }
 
   .ih-cap-rule {
@@ -993,23 +1280,68 @@ const capabilities = [
     height: 2px;
     background: linear-gradient(to right, var(--amber), rgba(212,147,46,0.15));
     border-radius: 2px;
+    margin-top: 10px;
   }
 
   .ih-cap-label {
     font-size: 15px;
     font-weight: 500;
-    color: rgba(244,239,230,0.9);
+    color: var(--ink);
     line-height: 1.3;
   }
 
-  .ih-cap-sub {
-    color: rgba(244,239,230,0.35);
-    font-size: 11px;
-    letter-spacing: 0.04em;
-    line-height: 1.5;
+  .ih-cap-sub { color: var(--ink-muted); font-size: 11px; letter-spacing: 0.04em; line-height: 1.5; }
+
+  /* ════════════════════════════════════════════
+     FAQ
+  ════════════════════════════════════════════ */
+  .ih-faq { background: var(--paper); }
+
+  .ih-faq-head { max-width: 640px; margin-bottom: 40px; }
+
+  .ih-faq-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
   }
 
-  /* ── CTA SECTION ── */
+  .ih-faq-item {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    padding: 26px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ih-faq-meta { display: flex; align-items: center; gap: 10px; }
+
+  .ih-faq-num { color: var(--amber); font-size: 10px; letter-spacing: 0.1em; opacity: 0.65; }
+
+  .ih-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border: 1px solid;
+    border-radius: var(--radius-pill);
+  }
+
+  .ih-faq-q {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.4vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--ink);
+  }
+
+  .ih-faq-a { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+
+  /* ════════════════════════════════════════════
+     CTA (dark - distinct from light cap above)
+  ════════════════════════════════════════════ */
   .ih-cta {
     background: var(--ink);
     color: var(--cream);
@@ -1039,40 +1371,28 @@ const capabilities = [
     position: relative;
     z-index: 2;
     display: grid;
-    grid-template-columns: 1fr 460px;
+    grid-template-columns: 1fr 480px;
     gap: 72px;
     align-items: center;
   }
 
-  .ih-cta-copy {
-    display: flex;
-    flex-direction: column;
-    gap: 28px;
-  }
+  .ih-cta-copy { display: flex; flex-direction: column; gap: 28px; }
 
-  .ih-cta-eyebrow {
-    color: rgba(244,239,230,0.45);
-    margin-top: -8px;
-  }
-
+  .ih-cta-eyebrow { color: rgba(244,239,230,0.45); }
   .ih-cta-eyebrow::before { background: rgba(244,239,230,0.25); }
 
   .ih-cta-h2 {
     font-family: var(--f-display);
-    font-size: clamp(24px, 3vw, 38px);
-    font-weight: 400;
+    font-size: clamp(26px, 3.5vw, 46px);
+    font-weight: 300;
     letter-spacing: -0.03em;
-    line-height: 1.15;
+    line-height: 1.05;
     color: var(--cream);
     max-width: 18ch;
     margin: 0;
   }
 
-  .ih-trust-rows {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  .ih-trust-rows { display: flex; flex-direction: column; gap: 12px; }
 
   .ih-trust-row {
     display: flex;
@@ -1096,22 +1416,10 @@ const capabilities = [
     color: var(--amber);
   }
 
-  .ih-cta-stars {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(244,239,230,0.4);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-  }
+  .ih-cta-stars { display: flex; align-items: center; gap: 8px; color: rgba(244,239,230,0.4); font-size: 10px; letter-spacing: 0.06em; }
+  .ih-stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; }
 
-  .ih-stars {
-    color: var(--amber);
-    font-size: 12px;
-    letter-spacing: 1px;
-  }
-
-  /* ── CTA CARD ── */
+  /* cta card */
   .ih-cta-card {
     background: rgba(244,239,230,0.04);
     border: 1px solid rgba(244,239,230,0.1);
@@ -1125,11 +1433,7 @@ const capabilities = [
     box-shadow: 0 8px 40px rgba(0,0,0,0.25);
   }
 
-  .ih-cta-card-header {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+  .ih-cta-card-head { display: flex; flex-direction: column; gap: 10px; }
 
   .ih-avail {
     display: flex;
@@ -1156,10 +1460,7 @@ const capabilities = [
     animation: ih-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
   }
 
-  @keyframes ih-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
-  }
+  @keyframes ih-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
   .ih-cta-card-title {
     font-family: var(--f-display);
@@ -1170,41 +1471,17 @@ const capabilities = [
     line-height: 1.2;
   }
 
-  .ih-cta-card-sub {
-    font-size: 12px;
-    color: rgba(244,239,230,0.45);
-    line-height: 1.5;
-    font-family: var(--f-mono);
-    letter-spacing: 0.03em;
-  }
+  .ih-cta-card-sub { font-size: 12px; color: rgba(244,239,230,0.45); line-height: 1.5; font-family: var(--f-mono); letter-spacing: 0.03em; }
 
-  /* ── FORM ── */
-  .ih-form {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
+  .ih-cta-form { display: flex; flex-direction: column; gap: 14px; }
 
-  .ih-form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-  }
+  .ih-cta-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
-  .ih-form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
+  .ih-cta-form-group { display: flex; flex-direction: column; gap: 5px; }
 
-  .ih-form-label {
-    color: rgba(244,239,230,0.4);
-    font-size: 9px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
+  .ih-cta-label { color: rgba(244,239,230,0.4); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; }
 
-  .ih-form-input {
+  .ih-cta-input {
     background: rgba(244,239,230,0.05);
     border: 1px solid rgba(244,239,230,0.12);
     border-radius: var(--radius-sm);
@@ -1218,14 +1495,10 @@ const capabilities = [
     -webkit-appearance: none;
   }
 
-  .ih-form-input::placeholder { color: rgba(244,239,230,0.25); }
+  .ih-cta-input::placeholder { color: rgba(244,239,230,0.25); }
+  .ih-cta-input:focus { border-color: rgba(212,147,46,0.5); background: rgba(212,147,46,0.04); }
 
-  .ih-form-input:focus {
-    border-color: rgba(212,147,46,0.5);
-    background: rgba(212,147,46,0.04);
-  }
-
-  .ih-form-select {
+  .ih-cta-select {
     cursor: pointer;
     color: rgba(244,239,230,0.5);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='rgba(244,239,230,0.4)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
@@ -1234,44 +1507,58 @@ const capabilities = [
     padding-right: 32px;
   }
 
-  .ih-form-select option { background: #1a2030; color: var(--cream); }
+  .ih-cta-select option { background: #1a2030; color: var(--cream); }
 
-  .ih-form-textarea {
-    resize: vertical;
-    min-height: 76px;
-    line-height: 1.5;
-  }
+  .ih-cta-textarea { resize: vertical; min-height: 76px; line-height: 1.5; }
 
-  .ih-form-submit {
-    width: 100%;
-    justify-content: center;
-    margin-top: 2px;
-  }
+  .ih-cta-submit { width: 100%; justify-content: center; margin-top: 2px; }
 
-  /* ── RESPONSIVE ── */
+  /* ════════════════════════════════════════════
+     RESPONSIVE
+  ════════════════════════════════════════════ */
   @media (max-width: 1100px) {
-    .ih-cta-inner {
-      grid-template-columns: 1fr 400px;
-      gap: 48px;
-    }
+    .ih-hero-wrap { grid-template-columns: 1fr 360px; gap: 32px; }
+    .ih-form-sub { display: none; }
+    .ih-cta-inner { grid-template-columns: 1fr 420px; gap: 48px; }
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 900px) {
     .ih-pillars-grid { grid-template-columns: 1fr; }
     .ih-cap-grid { grid-template-columns: repeat(2, 1fr); }
-    .ih-cta-inner { grid-template-columns: 1fr; gap: 48px; }
+    .ih-cta-inner { grid-template-columns: 1fr; gap: 40px; }
     .ih-cta-h2 { max-width: 100%; }
   }
 
   @media (max-width: 768px) {
+    .ih-hero-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .ih-h1 { font-size: clamp(30px, 8vw, 48px); }
+    .ih-hero-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .ih-hero-stat:nth-child(2) { border-right: none; }
+    .ih-hero-stat:nth-child(3) { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .ih-hero-stat:nth-child(4) { border-top: 1px solid var(--line); padding-top: 20px; }
+    .ih-trust-dot { display: none; }
+    .ih-trust-item { display: block; }
     .ih-cards { grid-template-columns: 1fr; }
-    .ih-form-row { grid-template-columns: 1fr; }
+    .ih-faq-grid { grid-template-columns: 1fr; }
+    .ih-cta-form-row { grid-template-columns: 1fr; }
     .ih-cta-card { padding: 24px 20px 20px; }
   }
 
-  @media (max-width: 600px) {
-    .ih-cap-grid { grid-template-columns: 1fr; }
+  @media (max-width: 480px) {
     .ih-ctas { flex-direction: column; width: 100%; }
     .ih-btn-ghost { justify-content: center; width: 100%; }
+    .cta-btn { justify-content: center; width: 100%; }
+    .ih-cap-grid { grid-template-columns: 1fr; }
+    .ih-pillars-grid { gap: 12px; }
+  }
+
+  @media (max-height: 780px) and (min-width: 769px) {
+    .ih-hero { padding-top: clamp(16px, 2vh, 32px); }
+    .ih-hero-wrap { padding-bottom: clamp(16px, 2vh, 32px); }
+    .ih-h1 { font-size: clamp(24px, min(3.5vw, 5vh), 52px); }
+    .ih-lede { font-size: 13px; }
+    .ih-hero-stats { padding-block: 16px; }
+    .ih-stat-num { font-size: clamp(22px, 2vh, 32px); }
+    .ih-form-title { font-size: 17px; }
   }
 </style>
