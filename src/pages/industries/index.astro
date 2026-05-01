@@ -3,9 +3,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
-const pageUrl  = "https://upcomingbrand.com/industries/";
-const pageTitle = "Industries We Serve | Web Design Maryland | Upcoming Brand";
-const pageDesc  = "WordPress web design for Maryland law firms, dental offices, medical clinics, contractors, restaurants, real estate, nonprofits, and ecommerce brands. Fixed scope.";
+const pageUrl   = "https://upcomingbrand.com/industries/";
+const pageTitle = "Industry Web Design Maryland | 12 Verticals | Upcoming Brand";
+const pageDesc  = "Maryland web design for law firms, dental, medical, restaurants, contractors, real estate, nonprofits, and ecommerce. Schema-first. Fixed scope from $1,500.";
 
 const schema = {
   "@context": "https://schema.org",
@@ -34,137 +34,235 @@ const schema = {
       "description": "Vertical-specific WordPress web design for 12 Maryland business industries",
       "numberOfItems": 12,
       "itemListElement": [
-        { "@type": "ListItem", "position": 1,  "url": "https://upcomingbrand.com/industries/law-firm-website-design/",      "name": "Law Firm Website Design Maryland" },
-        { "@type": "ListItem", "position": 2,  "url": "https://upcomingbrand.com/industries/dental-website-design/",        "name": "Dental Website Design Maryland" },
-        { "@type": "ListItem", "position": 3,  "url": "https://upcomingbrand.com/industries/medical-website-design/",       "name": "Medical Website Design Maryland" },
-        { "@type": "ListItem", "position": 4,  "url": "https://upcomingbrand.com/industries/accountant-website-design/",    "name": "Accountant Website Design Maryland" },
-        { "@type": "ListItem", "position": 5,  "url": "https://upcomingbrand.com/industries/contractor-website-design/",    "name": "Contractor Website Design Maryland" },
-        { "@type": "ListItem", "position": 6,  "url": "https://upcomingbrand.com/industries/restaurant-website-design/",    "name": "Restaurant Website Design Maryland" },
-        { "@type": "ListItem", "position": 7,  "url": "https://upcomingbrand.com/industries/real-estate-website-design/",   "name": "Real Estate Website Design Maryland" },
-        { "@type": "ListItem", "position": 8,  "url": "https://upcomingbrand.com/industries/nonprofit-website-design/",     "name": "Nonprofit Website Design Maryland" },
-        { "@type": "ListItem", "position": 9,  "url": "https://upcomingbrand.com/industries/small-business-website-design/","name": "Small Business Website Design Maryland" },
-        { "@type": "ListItem", "position": 10, "url": "https://upcomingbrand.com/industries/ecommerce-website-design/",     "name": "Ecommerce Website Design Maryland" },
-        { "@type": "ListItem", "position": 11, "url": "https://upcomingbrand.com/industries/church-website-design/",        "name": "Church Website Design Maryland" },
-        { "@type": "ListItem", "position": 12, "url": "https://upcomingbrand.com/industries/gym-website-design/",           "name": "Gym Website Design Maryland" }
+        { "@type": "ListItem", "position": 1,  "url": "https://upcomingbrand.com/industries/law-firm-website-design/",       "name": "Law Firm Website Design Maryland" },
+        { "@type": "ListItem", "position": 2,  "url": "https://upcomingbrand.com/industries/dental-website-design/",         "name": "Dental Website Design Maryland" },
+        { "@type": "ListItem", "position": 3,  "url": "https://upcomingbrand.com/industries/medical-website-design/",        "name": "Medical Website Design Maryland" },
+        { "@type": "ListItem", "position": 4,  "url": "https://upcomingbrand.com/industries/accountant-website-design/",     "name": "Accountant Website Design Maryland" },
+        { "@type": "ListItem", "position": 5,  "url": "https://upcomingbrand.com/industries/contractor-website-design/",     "name": "Contractor Website Design Maryland" },
+        { "@type": "ListItem", "position": 6,  "url": "https://upcomingbrand.com/industries/restaurant-website-design/",     "name": "Restaurant Website Design Maryland" },
+        { "@type": "ListItem", "position": 7,  "url": "https://upcomingbrand.com/industries/real-estate-website-design/",    "name": "Real Estate Website Design Maryland" },
+        { "@type": "ListItem", "position": 8,  "url": "https://upcomingbrand.com/industries/nonprofit-website-design/",      "name": "Nonprofit Website Design Maryland" },
+        { "@type": "ListItem", "position": 9,  "url": "https://upcomingbrand.com/industries/small-business-website-design/", "name": "Small Business Website Design Maryland" },
+        { "@type": "ListItem", "position": 10, "url": "https://upcomingbrand.com/industries/ecommerce-website-design/",      "name": "Ecommerce Website Design Maryland" },
+        { "@type": "ListItem", "position": 11, "url": "https://upcomingbrand.com/industries/church-website-design/",         "name": "Church Website Design Maryland" },
+        { "@type": "ListItem", "position": 12, "url": "https://upcomingbrand.com/industries/gym-website-design/",            "name": "Gym Website Design Maryland" }
       ]
     }
   ]
 };
 
+const pillars = [
+  {
+    num: "01",
+    title: "Schema type determines discoverability",
+    body: "A dental practice needs Dentist and MedicalOrganization schema. A law firm needs LegalService and Attorney markup. A restaurant needs FoodEstablishment. Generic agencies skip all of it, leaving your Local Pack slot empty for a competitor to fill.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  },
+  {
+    num: "02",
+    title: "Compliance rules vary by industry",
+    body: "Maryland attorneys operate under MRPC 7.1-7.5. Medical and dental sites must handle HIPAA-aware form boundaries. Nonprofits need FEC-compliant donation flows. Agencies that build sites for everyone specialise in none of these constraints.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>`,
+  },
+  {
+    num: "03",
+    title: "Conversion architecture follows your buyer",
+    body: "A patient books an appointment. A homeowner requests an estimate. A donor gives once, then monthly. An attorney prospect submits a multi-step intake. The form, the funnel, and the page hierarchy each need to match exactly how your customer decides to act.",
+    icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>`,
+  },
+];
+
 const groups = [
   {
     label: "Professional Services",
-    desc: "Regulated industries where trust and compliance define the conversion.",
+    slug: "professional-services",
+    bg: "light",
+    desc: "Regulated industries where schema compliance, professional trust signals, and multi-step intake forms drive the conversion. Generic agencies routinely leave bar licenses exposed and Local Pack slots empty.",
     industries: [
       {
         num: "01",
         name: "Law Firms & Attorneys",
-        note: "Baltimore · Annapolis · DC metro",
-        tags: ["Intake forms", "Practice area pages", "Local SEO"],
         href: "/industries/law-firm-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7l-4 9h8L8 7zM16 7l-4 9h8L16 7z"/><path d="M4 20h16"/></svg>`,
+        hook: "Most attorney sites load in 6-9 seconds on mobile. Your prospect has already called the next firm before your phone number appears.",
+        schema: "LegalService + Attorney schema",
+        note: "MRPC 7.1-7.5 compliant copy",
+        stat: "+312% organic intake leads",
+        tags: ["Multi-step intake forms", "Practice area pages", "Local Pack setup"],
+        cta: "Law firm web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M8 7l-4 9h8L8 7zM16 7l-4 9h8L16 7z"/><path d="M4 20h16"/></svg>`,
       },
       {
         num: "02",
         name: "Dental Practices",
-        note: "HIPAA-aware · online booking",
-        tags: ["Appointment booking", "Insurance info", "Multi-location"],
         href: "/industries/dental-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 2 6 4.5 6 7.5c0 1.5.5 3 1 4.5L8 18c.5 2 1.5 4 4 4s3.5-2 4-4l1-6c.5-1.5 1-3 1-4.5C18 4.5 15 2 12 2z"/></svg>`,
+        hook: "67% of patients prefer to book appointments online. 42% of dental bookings happen outside business hours. A contact form is not a booking system.",
+        schema: "Dentist + MedicalOrganization schema",
+        note: "HIPAA-aware form structure",
+        stat: "4x Local Pack appointment rate",
+        tags: ["Online appointment booking", "Before/after gallery", "Insurance info pages"],
+        cta: "Dental web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 2 6 4.5 6 7.5c0 1.5.5 3 1 4.5L8 18c.5 2 1.5 4 4 4s3.5-2 4-4l1-6c.5-1.5 1-3 1-4.5C18 4.5 15 2 12 2z"/></svg>`,
       },
       {
         num: "03",
         name: "Medical Clinics",
-        note: "Multi-location · patient portals",
-        tags: ["Patient portal", "HIPAA forms", "Provider bios"],
         href: "/industries/medical-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
+        hook: "62% of medical sites fail Core Web Vitals. Patients searching 'internist near me Annapolis' leave sites that load in 7-10 seconds on mobile.",
+        schema: "Physician + MedicalOrganization schema",
+        note: "HIPAA-aware contact forms",
+        stat: "+284% organic patient inquiries",
+        tags: ["Patient portal integration", "Provider bio pages", "Healthgrades/Vitals sync"],
+        cta: "Medical web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>`,
       },
       {
         num: "04",
         name: "Accountants & CPAs",
-        note: "Tax season · client portals",
-        tags: ["Client portal", "Service pages", "Lead capture"],
         href: "/industries/accountant-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
+        hook: "82% of accounting clients search online first, but most CPA websites rank only for their firm name. One generic 'services' page ranks for nothing.",
+        schema: "AccountingService + ProfessionalService schema",
+        note: "Niche client segment landing pages",
+        stat: "60-90 day ranking movement",
+        tags: ["Service-specific pages", "Client portal integration", "Tax season lead capture"],
+        cta: "Accountant web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`,
       },
     ],
   },
   {
     label: "Local & Trade",
-    desc: "Service-area businesses where speed, reviews, and local trust close jobs.",
+    slug: "local-trade",
+    bg: "cream",
+    desc: "Service-area businesses where city-level search visibility, review authority, and multi-step quote forms determine whether the phone rings. Speed and Local Pack presence are table stakes.",
     industries: [
       {
         num: "05",
         name: "Contractors & Trades",
-        note: "HVAC · plumbing · roofing",
-        tags: ["Quote requests", "Service area map", "Google reviews"],
         href: "/industries/contractor-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
+        hook: "The average contractor site we audit loads in 7 seconds on mobile. Every second above 1.5 seconds costs you booked jobs to whoever is ranking below you.",
+        schema: "HomeAndConstructionBusiness + LocalBusiness schema",
+        note: "City landing pages per service area",
+        stat: "3-6 month first-page timeline",
+        tags: ["Multi-step estimate forms", "Service area pages", "HomeAdvisor/Angi sync"],
+        cta: "Contractor web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>`,
       },
       {
         num: "06",
         name: "Restaurants & Hospitality",
-        note: "Menus · reservations · POS",
-        tags: ["Online menu", "Reservation widget", "Location pages"],
         href: "/industries/restaurant-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>`,
+        hook: "89% of diners research restaurants online before visiting. Without Restaurant schema, your price range, hours, and cuisine type never appear in rich results.",
+        schema: "Restaurant + FoodEstablishment schema",
+        note: "OpenTable/Resy/Tock integration",
+        stat: "30-day Local Pack improvement",
+        tags: ["Interactive menus", "Reservation widget", "TripAdvisor/Yelp sync"],
+        cta: "Restaurant web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/><path d="M6 1v3M10 1v3M14 1v3"/></svg>`,
       },
       {
         num: "07",
         name: "Real Estate Brokerages",
-        note: "IDX integration · agent rosters",
-        tags: ["IDX / MLS sync", "Agent profiles", "Neighborhood pages"],
         href: "/industries/real-estate-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>`,
+        hook: "93% of buyers start their home search online (NAR 2024). Without neighborhood pages, that traffic goes to Zillow instead of you.",
+        schema: "RealEstateAgent + LocalBusiness schema",
+        note: "IDX integration with Bright MLS",
+        stat: "60-90 day neighborhood page ranking",
+        tags: ["IDX/MLS live listings", "Neighborhood pages", "Seller valuation forms"],
+        cta: "Real estate web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><path d="M9 22V12h6v10"/></svg>`,
       },
       {
         num: "08",
         name: "Nonprofits",
-        note: "Donations · events · volunteers",
-        tags: ["Donation forms", "Event calendar", "Volunteer signup"],
         href: "/industries/nonprofit-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
+        hook: "If your giving page redirects to a third-party site with no branding, you are losing recurring donors at the moment of commitment.",
+        schema: "NonprofitOrganization + LocalBusiness schema",
+        note: "Google Ad Grants setup included",
+        stat: "GiveWP / Stripe recurring giving",
+        tags: ["Donation integration", "Volunteer signup forms", "Impact pages"],
+        cta: "Nonprofit web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>`,
       },
     ],
   },
   {
     label: "Growth & Ecommerce",
-    desc: "Scale-first builds designed for traffic, revenue, and repeat buyers.",
+    slug: "growth-ecommerce",
+    bg: "light",
+    desc: "Scale-first builds where product schema, class schedules, online giving, and conversion rate optimization determine revenue. Speed and checkout flow are not cosmetic choices.",
     industries: [
       {
         num: "09",
         name: "Small Business & Startups",
-        note: "From MVP to scale-ready",
-        tags: ["Lead gen", "Fixed-scope", "Fast turnaround"],
         href: "/industries/small-business-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4M10 14h4"/></svg>`,
+        hook: "A site without LocalBusiness schema, city landing pages, and a Google Business Profile optimized for your trade cannot compete for 'near me' searches.",
+        schema: "LocalBusiness + ProfessionalService schema",
+        note: "City landing pages for every market",
+        stat: "4-6 week Starter delivery",
+        tags: ["Lead generation forms", "GBP optimization", "Calendly scheduling"],
+        cta: "Small business web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/><path d="M12 12v4M10 14h4"/></svg>`,
       },
       {
         num: "10",
         name: "Ecommerce & DTC Brands",
-        note: "WooCommerce · product pages",
-        tags: ["Product pages", "Checkout flow", "Conversion CRO"],
         href: "/industries/ecommerce-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67l1.38-7.33H6"/></svg>`,
+        hook: "WooCommerce stores with Product and Offer schema appear as rich results with pricing and availability. Stores without it are competing blind.",
+        schema: "Product + Offer schema · WooCommerce",
+        note: "Google Merchant Center feed setup",
+        stat: "Stripe/PayPal checkout built-in",
+        tags: ["Product pages", "Abandoned cart recovery", "ShipStation integration"],
+        cta: "Ecommerce web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 001.97-1.67l1.38-7.33H6"/></svg>`,
       },
       {
         num: "11",
         name: "Churches & Ministries",
-        note: "Giving · events · sermons",
-        tags: ["Online giving", "Event calendar", "Sermon archive"],
         href: "/industries/church-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="10" y1="4" x2="14" y2="4"/><path d="M5 10h14l1 10H4z"/><path d="M9 20v-5h6v5"/></svg>`,
+        hook: "When someone searches 'Baptist church near me Columbia MD,' Google shows churches with complete local schema, not the church whose service times are buried in a PDF.",
+        schema: "Church + PlaceOfWorship + Event schema",
+        note: "Tithe.ly/Pushpay giving integration",
+        stat: "Sermon archive with filter/search",
+        tags: ["Online giving", "Event calendar", "Ministry directory pages"],
+        cta: "Church web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"/><line x1="10" y1="4" x2="14" y2="4"/><path d="M5 10h14l1 10H4z"/><path d="M9 20v-5h6v5"/></svg>`,
       },
       {
         num: "12",
         name: "Gyms & Fitness Studios",
-        note: "Memberships · class schedules",
-        tags: ["Class schedule", "Member login", "Online signup"],
         href: "/industries/gym-website-design/",
-        icon: `<svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M5 8H4a4 4 0 000 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg>`,
+        hook: "Multi-step trial signup forms with a progress indicator outperform single-page forms for fitness audiences by 40-60%. A generic contact form is losing you members daily.",
+        schema: "FitnessCenter + SportsActivityLocation schema",
+        note: "Mindbody/Glofox class schedule integration",
+        stat: "3-5x trial signup rate increase",
+        tags: ["Live class schedule", "Free trial CTA", "Transformation gallery"],
+        cta: "Gym web design guide",
+        icon: `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 010 8h-1"/><path d="M5 8H4a4 4 0 000 8h1"/><line x1="6" y1="12" x2="18" y2="12"/><line x1="8" y1="8" x2="8" y2="16"/><line x1="16" y1="8" x2="16" y2="16"/></svg>`,
       },
     ],
+  },
+];
+
+const capabilities = [
+  {
+    num: "90+",
+    label: "PageSpeed on delivery",
+    sub: "Every site ships with green Core Web Vitals across LCP, INP, and CLS, or we fix it before launch at no cost.",
+  },
+  {
+    num: "$0",
+    label: "Hourly billing, ever",
+    sub: "Every project is fixed-scope. You know the full price before signing. No surprise invoices mid-build.",
+  },
+  {
+    num: "6-10",
+    label: "Week delivery window",
+    sub: "Discovery, design, build, and launch in a single fixed-scope engagement. No retainers required.",
+  },
+  {
+    num: "12",
+    label: "Industries, one studio",
+    sub: "Seven years full-time WordPress work across Maryland and 12 countries. No agency overhead, no handoffs.",
   },
 ];
 ---
@@ -173,87 +271,241 @@ const groups = [
   description={pageDesc}
   canonicalUrl={pageUrl}
   ogImage="https://upcomingbrand.com/og-image.jpg"
-  ogImageAlt="Upcoming Brand - WordPress web design across 12 Maryland industries"
+  ogImageAlt="Upcoming Brand - vertical-specific WordPress web design across 12 Maryland industries"
 >
   <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
 
   <Navigation />
 
   <!-- ── HERO ── -->
-  <section class="ind-hero section-pad">
+  <section class="ih-hero section-pad">
     <div class="container">
-      <p class="eyebrow" style="justify-content:center">Who we build for</p>
-      <h1 class="ind-hero-h1">WordPress web design built for your industry, not adapted to it</h1>
-      <p class="ind-hero-lead">
-        Every industry on this list has different conversion patterns, compliance requirements, and trust signals. We've built enough sites in each vertical to know the pitfalls before you hit them.
-      </p>
-      <div class="ind-stats" role="list">
-        <div class="ind-stat" role="listitem">
-          <span class="ind-stat-val">12</span>
-          <span class="ind-stat-label mono-xs">Industries served</span>
+      <div class="ih-hero-inner">
+        <p class="eyebrow" style="justify-content:center">Who we build for</p>
+        <h1 class="ih-h1">
+          WordPress web design built for<br>
+          <em class="ih-h1-accent">your industry</em>, not adapted to it
+        </h1>
+        <p class="ih-lead">
+          We've audited enough generic-agency sites to know the pattern: missing schema, wrong conversion architecture, compliance problems nobody caught. Every industry on this page gets a build that starts from vertical-specific requirements, not from a theme.
+        </p>
+        <div class="ih-ctas">
+          <a href="#contact" class="cta-btn">Book a discovery call</a>
+          <a href="#professional-services" class="ih-btn-ghost">
+            Browse industries
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M7 2v10M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
-        <div class="ind-stat" role="listitem">
-          <span class="ind-stat-val">400+</span>
-          <span class="ind-stat-label mono-xs">Projects delivered</span>
-        </div>
-        <div class="ind-stat" role="listitem">
-          <span class="ind-stat-val">90+</span>
-          <span class="ind-stat-label mono-xs">PageSpeed guarantee</span>
-        </div>
-        <div class="ind-stat" role="listitem">
-          <span class="ind-stat-val">6-10</span>
-          <span class="ind-stat-label mono-xs">Week delivery window</span>
+        <div class="ih-trust mono-xs">
+          <span>Top Rated &middot; Upwork</span>
+          <span class="ih-trust-dot" aria-hidden="true"></span>
+          <span>400+ projects &middot; 12 countries</span>
+          <span class="ih-trust-dot" aria-hidden="true"></span>
+          <span>7 yrs full-time WordPress</span>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ── WHY VERTICAL MATTERS ── -->
+  <section class="ih-pillars section-pad">
+    <div class="container">
+      <div class="ih-pillars-intro">
+        <p class="eyebrow" style="justify-content:center">Why vertical expertise matters</p>
+        <h2 class="h2-section ih-pillars-h2">
+          Three things that change completely by industry
+        </h2>
+      </div>
+      <div class="ih-pillars-grid">
+        {pillars.map((p) => (
+          <div class="ih-pillar">
+            <div class="ih-pillar-icon" aria-hidden="true" set:html={p.icon} />
+            <span class="ih-pillar-num mono-xs">{p.num}</span>
+            <h3 class="ih-pillar-title">{p.title}</h3>
+            <p class="ih-pillar-body">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <!-- ── INDUSTRY GROUPS ── -->
-  {groups.map((group, gi) => (
-    <section class={`ind-group section-pad ${gi % 2 === 0 ? 'ind-group--light' : 'ind-group--cream'}`}>
+  {groups.map((group) => (
+    <section
+      id={group.slug}
+      class={`ih-group section-pad ih-group--${group.bg}`}
+    >
       <div class="container">
-        <div class="ind-group-intro">
-          <h2 class="ind-group-label">{group.label}</h2>
-          <p class="ind-group-desc mono-xs">{group.desc}</p>
+
+        <div class="ih-group-header">
+          <div class="ih-group-title-block">
+            <h2 class="ih-group-label">{group.label}</h2>
+            <p class="ih-group-desc">{group.desc}</p>
+          </div>
         </div>
-        <div class="ind-grid" role="list">
+
+        <div class="ih-cards" role="list">
           {group.industries.map((ind) => (
-            <a href={ind.href} class="ind-card" role="listitem">
-              <div class="ind-card-top">
-                <div class="ind-icon" aria-hidden="true" set:html={ind.icon} />
-                <span class="ind-num mono-xs">{ind.num}</span>
+            <article class="ih-card" role="listitem">
+              <div class="ih-card-top">
+                <div class="ih-card-meta">
+                  <div class="ih-icon" aria-hidden="true" set:html={ind.icon} />
+                  <span class="ih-num mono-xs">{ind.num}</span>
+                </div>
+                <span class="ih-stat-badge mono-xs">{ind.stat}</span>
               </div>
-              <h3 class="ind-name">{ind.name}</h3>
-              <p class="ind-note mono-xs">{ind.note}</p>
-              <div class="ind-tags" aria-hidden="true">
-                {ind.tags.map((t) => (
-                  <span class="ind-tag">{t}</span>
-                ))}
+
+              <h3 class="ih-card-name">
+                <a href={ind.href} class="ih-card-link">{ind.name}</a>
+              </h3>
+
+              <p class="ih-card-hook">{ind.hook}</p>
+
+              <div class="ih-schema-row">
+                <span class="ih-schema-badge">
+                  <svg width="11" height="11" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <polyline points="1 6 4 9 11 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                  {ind.schema}
+                </span>
               </div>
-              <span class="ind-arrow" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+
+              <p class="ih-card-note mono-xs">{ind.note}</p>
+
+              <div class="ih-card-tags" aria-hidden="true">
+                {ind.tags.map((t) => <span class="ih-tag">{t}</span>)}
+              </div>
+
+              <a href={ind.href} class="ih-card-cta" aria-label={`Read the ${ind.name.toLowerCase()} web design guide`}>
+                {ind.cta}
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
                   <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-              </span>
-            </a>
+              </a>
+            </article>
           ))}
         </div>
+
       </div>
     </section>
   ))}
 
-  <!-- ── CTA ── -->
-  <section class="ind-cta section-pad">
+  <!-- ── CAPABILITIES ── -->
+  <section class="ih-cap section-pad">
     <div class="container">
-      <div class="ind-cta-inner">
-        <p class="eyebrow" style="justify-content:center">Not sure which fits?</p>
-        <h2 class="ind-cta-h2">Tell us what you do. We'll build the site that fits.</h2>
-        <p class="ind-cta-lead">
-          Every project starts with a 45-minute discovery call. No pitch decks, no upsells. Just an honest conversation about what your site needs to do and whether we're the right fit to build it.
-        </p>
-        <a href="/contact/" class="cta-btn">Book a free discovery call &rarr;</a>
+      <div class="ih-cap-intro">
+        <p class="eyebrow ih-cap-eyebrow">What every build includes</p>
+        <h2 class="ih-cap-h2">The same foundation under every vertical</h2>
+        <p class="ih-cap-lead">Schema, speed, and fixed pricing don't change by industry. Here's what every project ships with.</p>
+      </div>
+      <div class="ih-cap-grid" role="list">
+        {capabilities.map((c) => (
+          <div class="ih-cap-card" role="listitem">
+            <div class="ih-cap-num-wrap">
+              <span class="ih-cap-num">{c.num}</span>
+              <span class="ih-cap-rule" aria-hidden="true"></span>
+            </div>
+            <span class="ih-cap-label">{c.label}</span>
+            <p class="ih-cap-sub mono-xs">{c.sub}</p>
+          </div>
+        ))}
       </div>
     </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="ih-cta section-pad" id="contact">
+    <div class="container">
+      <div class="ih-cta-inner">
+
+        <div class="ih-cta-copy">
+          <p class="eyebrow ih-cta-eyebrow">Ready to start?</p>
+          <h2 class="ih-cta-h2">Tell us what you do. We'll build the site that fits.</h2>
+          <div class="ih-trust-rows">
+            <div class="ih-trust-row">
+              <span class="ih-trust-icon" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed-scope pricing, one price, no surprises</span>
+            </div>
+            <div class="ih-trust-row">
+              <span class="ih-trust-icon" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 4 business hours</span>
+            </div>
+            <div class="ih-trust-row">
+              <span class="ih-trust-icon" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Maryland-based, on-site within 90 min of DC</span>
+            </div>
+            <div class="ih-trust-row">
+              <span class="ih-trust-icon" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts, 30-day cancel</span>
+            </div>
+          </div>
+          <p class="ih-cta-stars mono-xs">
+            <span class="ih-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <div class="ih-cta-card">
+          <div class="ih-cta-card-header">
+            <div class="ih-avail">
+              <span class="ih-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects now</span>
+            </div>
+            <h3 class="ih-cta-card-title">Book a free discovery call</h3>
+            <p class="ih-cta-card-sub">45 minutes &middot; No sales pitch &middot; Fixed-scope quote within 24 hours</p>
+          </div>
+          <form class="ih-form" name="industries-inquiry" method="POST" action="/thank-you/" novalidate>
+            <div class="ih-form-row">
+              <div class="ih-form-group">
+                <label class="ih-form-label mono-xs" for="ih-name">Your name</label>
+                <input class="ih-form-input" type="text" id="ih-name" name="name" placeholder="Jane Smith" autocomplete="name" />
+              </div>
+              <div class="ih-form-group">
+                <label class="ih-form-label mono-xs" for="ih-email">Email address</label>
+                <input class="ih-form-input" type="email" id="ih-email" name="email" placeholder="jane@business.com" autocomplete="email" />
+              </div>
+            </div>
+            <div class="ih-form-group">
+              <label class="ih-form-label mono-xs" for="ih-industry">Your industry</label>
+              <select class="ih-form-input ih-form-select" id="ih-industry" name="industry">
+                <option value="" disabled selected>Select your industry</option>
+                <option>Law Firm / Attorney</option>
+                <option>Dental Practice</option>
+                <option>Medical Clinic</option>
+                <option>Accountant / CPA</option>
+                <option>Contractor / Trades</option>
+                <option>Restaurant / Hospitality</option>
+                <option>Real Estate / Brokerage</option>
+                <option>Nonprofit / Church</option>
+                <option>Small Business / Startup</option>
+                <option>Ecommerce / DTC</option>
+                <option>Gym / Fitness Studio</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="ih-form-group">
+              <label class="ih-form-label mono-xs" for="ih-message">About your project</label>
+              <textarea class="ih-form-input ih-form-textarea" id="ih-message" name="message" rows="3" placeholder="Current site issues, timeline, budget range?"></textarea>
+            </div>
+            <button type="submit" class="cta-btn cta-btn-light ih-form-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <div class="ih-cta-watermark" aria-hidden="true">Industries</div>
   </section>
 
   <Footer />
@@ -261,168 +513,236 @@ const groups = [
 
 <style>
   /* ── HERO ── */
-  .ind-hero {
+  .ih-hero {
     background: var(--paper);
     text-align: center;
     border-bottom: 1px solid var(--line);
   }
 
-  .ind-hero-h1 {
-    font-family: var(--f-display);
-    font-size: clamp(28px, 4.5vw, 52px);
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    line-height: 1.1;
-    color: var(--ink);
-    max-width: 760px;
-    margin: 20px auto 24px;
-  }
-
-  .ind-hero-lead {
-    font-size: clamp(15px, 1.6vw, 18px);
-    color: var(--ink-muted);
-    line-height: 1.65;
-    max-width: 620px;
-    margin: 0 auto 48px;
-  }
-
-  /* ── STAT STRIP ── */
-  .ind-stats {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    flex-wrap: wrap;
-    border: 1.5px solid var(--line);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    max-width: 640px;
+  .ih-hero-inner {
+    max-width: 720px;
     margin: 0 auto;
-  }
-
-  .ind-stat {
-    flex: 1;
-    min-width: 120px;
-    padding: 20px 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    border-right: 1px solid var(--line);
+    gap: 24px;
   }
 
-  .ind-stat:last-child {
-    border-right: none;
-  }
-
-  .ind-stat-val {
+  .ih-h1 {
     font-family: var(--f-display);
-    font-size: clamp(22px, 3vw, 30px);
+    font-size: clamp(30px, 5vw, 58px);
     font-weight: 400;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
+    line-height: 1.06;
     color: var(--ink);
-    line-height: 1;
+    margin: 0;
   }
 
-  .ind-stat-label {
+  .ih-h1-accent {
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 300;
+  }
+
+  .ih-lead {
+    font-size: clamp(15px, 1.5vw, 18px);
+    color: var(--ink-soft);
+    line-height: 1.65;
+    max-width: 600px;
+    margin: 0;
+  }
+
+  .ih-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .ih-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 13px 24px;
+    border-radius: var(--radius-pill);
+    border: 1.5px solid var(--line-strong);
+    color: var(--ink);
+    text-decoration: none;
+    transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+  }
+
+  .ih-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  .ih-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
     color: var(--ink-muted);
     font-size: 10px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
-    text-align: center;
-    line-height: 1.3;
   }
 
-  /* ── GROUP SECTIONS ── */
-  .ind-group--light {
-    background: var(--paper);
+  .ih-trust-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
   }
 
-  .ind-group--cream {
+  /* ── PILLARS ── */
+  .ih-pillars {
     background: var(--cream-soft);
-  }
-
-  .ind-group-intro {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-    margin-bottom: 32px;
-    flex-wrap: wrap;
-    padding-bottom: 20px;
     border-bottom: 1px solid var(--line);
   }
 
-  .ind-group-label {
+  .ih-pillars-intro {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 48px;
+  }
+
+  .ih-pillars-h2 {
+    margin-top: 16px;
+  }
+
+  .ih-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .ih-pillar {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: clamp(24px, 2.5vw, 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ih-pillar-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .ih-pillar-num {
+    color: var(--amber);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.65;
+  }
+
+  .ih-pillar-title {
     font-family: var(--f-display);
-    font-size: clamp(20px, 2.5vw, 26px);
+    font-size: clamp(16px, 1.5vw, 19px);
     font-weight: 400;
     letter-spacing: -0.02em;
+    line-height: 1.25;
     color: var(--ink);
-    line-height: 1.2;
   }
 
-  .ind-group-desc {
-    color: var(--ink-muted);
-    font-size: 11px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    max-width: 340px;
-    text-align: right;
-    line-height: 1.5;
+  .ih-pillar-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
   }
 
-  /* ── GRID ── */
-  .ind-grid {
+  /* ── GROUP SECTIONS ── */
+  .ih-group--light { background: var(--paper); }
+  .ih-group--cream { background: var(--cream-soft); }
+
+  .ih-group-header {
+    margin-bottom: 36px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .ih-group-label {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.8vw, 30px);
+    font-weight: 400;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+
+  .ih-group-desc {
+    font-size: clamp(14px, 1.3vw, 16px);
+    color: var(--ink-soft);
+    line-height: 1.6;
+    max-width: 640px;
+  }
+
+  /* ── CARDS GRID ── */
+  .ih-cards {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
   }
 
-  /* ── CARD ── */
-  .ind-card {
+  /* ── INDIVIDUAL CARD ── */
+  .ih-card {
     background: var(--cream-soft);
     border: 1.5px solid rgba(15,20,25,0.07);
     border-top: 3px solid transparent;
     border-radius: var(--radius-md);
-    padding: 28px 24px 22px;
+    padding: 28px 26px 24px;
     display: flex;
     flex-direction: column;
-    gap: 10px;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: 0 2px 10px rgba(15,20,25,0.05);
-    transition: transform var(--transition), box-shadow var(--transition), border-top-color var(--transition), background var(--transition);
+    gap: 14px;
+    transition: transform var(--transition), box-shadow var(--transition), border-top-color var(--transition);
+    position: relative;
   }
 
-  .ind-group--cream .ind-card {
+  .ih-group--cream .ih-card {
     background: var(--paper);
   }
 
-  .ind-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(15,20,25,0.11);
+  .ih-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 32px rgba(15,20,25,0.10);
     border-top-color: var(--amber);
   }
 
-  .ind-group--light .ind-card:hover {
-    background: var(--cream-soft);
-  }
-
-  .ind-group--cream .ind-card:hover {
-    background: var(--paper);
-  }
-
-  /* ── TOP ROW ── */
-  .ind-card-top {
+  /* ── CARD TOP ROW ── */
+  .ih-card-top {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 2px;
+    gap: 12px;
   }
 
-  /* ── ICON ── */
-  .ind-icon {
+  .ih-card-meta {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .ih-icon {
     width: 44px;
     height: 44px;
     border-radius: var(--radius-sm);
@@ -435,50 +755,103 @@ const groups = [
     flex-shrink: 0;
   }
 
-  /* ── NUMBER ── */
-  .ind-num {
+  .ih-num {
     color: var(--amber);
     font-size: 10px;
     letter-spacing: 0.1em;
-    opacity: 0.65;
-    padding-top: 2px;
+    opacity: 0.6;
+    padding-top: 3px;
   }
 
-  /* ── NAME ── */
-  .ind-name {
+  .ih-stat-badge {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(92,128,64,0.08);
+    border: 1px solid rgba(92,128,64,0.2);
+    border-radius: var(--radius-pill);
+    color: #4a7a28;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* ── CARD NAME ── */
+  .ih-card-name {
     font-family: var(--f-display);
-    font-size: clamp(15px, 1.5vw, 18px);
+    font-size: clamp(17px, 1.7vw, 21px);
     font-weight: 400;
     letter-spacing: -0.02em;
-    line-height: 1.25;
+    line-height: 1.2;
+    margin: 0;
+  }
+
+  .ih-card-link {
     color: var(--ink);
+    text-decoration: none;
     transition: color var(--transition);
   }
 
-  .ind-card:hover .ind-name {
+  .ih-card-link:hover,
+  .ih-card:hover .ih-card-link {
     color: var(--amber-deep);
   }
 
+  /* ── HOOK ── */
+  .ih-card-hook {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+    border-left: 2px solid rgba(212,147,46,0.3);
+    padding-left: 12px;
+  }
+
+  /* ── SCHEMA ROW ── */
+  .ih-schema-row {
+    display: flex;
+    align-items: center;
+  }
+
+  .ih-schema-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    color: var(--amber-deep);
+  }
+
+  .ih-schema-badge svg {
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
   /* ── NOTE ── */
-  .ind-note {
+  .ih-card-note {
     color: var(--ink-muted);
     font-size: 10px;
     letter-spacing: 0.07em;
     text-transform: uppercase;
-    line-height: 1.4;
+    margin: 0;
   }
 
   /* ── TAGS ── */
-  .ind-tags {
+  .ih-card-tags {
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    margin-top: 4px;
     flex: 1;
     align-content: flex-start;
   }
 
-  .ind-tag {
+  .ih-tag {
     font-family: var(--f-mono);
     font-size: 10px;
     padding: 3px 8px;
@@ -490,114 +863,415 @@ const groups = [
     letter-spacing: 0.03em;
   }
 
-  .ind-card:hover .ind-tag {
+  .ih-card:hover .ih-tag {
     background: rgba(212,147,46,0.07);
     border-color: rgba(212,147,46,0.2);
     color: var(--amber-deep);
   }
 
-  /* ── ARROW ── */
-  .ind-arrow {
-    display: flex;
+  /* ── CTA LINK ── */
+  .ih-card-cta {
+    display: inline-flex;
     align-items: center;
-    color: var(--amber);
-    opacity: 0;
-    transform: translateX(-4px);
-    transition: opacity var(--transition), transform var(--transition);
-    margin-top: 6px;
+    gap: 7px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    text-decoration: none;
+    font-weight: 500;
+    transition: gap var(--transition), color var(--transition);
+    margin-top: 4px;
   }
 
-  .ind-card:hover .ind-arrow {
-    opacity: 1;
-    transform: translateX(0);
+  .ih-card-cta:hover {
+    gap: 10px;
+    color: var(--ink);
   }
 
-  /* ── CTA ── */
-  .ind-cta {
+  /* ── CAPABILITIES ── */
+  .ih-cap {
     background: var(--ink);
-    text-align: center;
+    color: var(--cream);
+    border-top: 3px solid var(--amber);
+    position: relative;
+    overflow: hidden;
   }
 
-  .ind-cta-inner {
-    max-width: 600px;
-    margin: 0 auto;
+  .ih-cap::before {
+    content: "Consistent";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--f-display);
+    font-size: clamp(100px, 18vw, 240px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+  }
+
+  .ih-cap .container { position: relative; z-index: 2; }
+
+  .ih-cap-intro {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 52px;
+  }
+
+  .ih-cap-eyebrow {
+    color: rgba(244,239,230,0.45);
+    justify-content: center;
+  }
+
+  .ih-cap-eyebrow::before { background: rgba(244,239,230,0.25); }
+
+  .ih-cap-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    margin: 16px 0 12px;
+  }
+
+  .ih-cap-lead {
+    font-size: 15px;
+    color: rgba(244,239,230,0.55);
+    line-height: 1.6;
+  }
+
+  .ih-cap-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .ih-cap-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.09);
+    border-top: 3px solid rgba(212,147,46,0.55);
+    border-radius: var(--radius-md);
+    padding: clamp(24px, 2.5vw, 36px) clamp(20px, 2vw, 28px);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 20px;
+    gap: 10px;
+    transition: background var(--transition), border-top-color var(--transition), transform var(--transition);
   }
 
-  .ind-cta .eyebrow {
-    color: rgba(255,255,255,0.5);
-    border-color: rgba(255,255,255,0.15);
+  .ih-cap-card:hover {
+    background: rgba(244,239,230,0.07);
+    border-top-color: var(--amber);
+    transform: translateY(-3px);
   }
 
-  .ind-cta .eyebrow::before {
-    background: rgba(255,255,255,0.3);
+  .ih-cap-num-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .ind-cta-h2 {
+  .ih-cap-num {
     font-family: var(--f-display);
-    font-size: clamp(24px, 3.5vw, 38px);
+    font-size: clamp(38px, 4.5vw, 58px);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    color: var(--amber);
+  }
+
+  .ih-cap-rule {
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: linear-gradient(to right, var(--amber), rgba(212,147,46,0.15));
+    border-radius: 2px;
+  }
+
+  .ih-cap-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(244,239,230,0.9);
+    line-height: 1.3;
+  }
+
+  .ih-cap-sub {
+    color: rgba(244,239,230,0.35);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+
+  /* ── CTA SECTION ── */
+  .ih-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .ih-cta-watermark {
+    position: absolute;
+    bottom: -28px;
+    right: -12px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 12vw, 160px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .ih-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 72px;
+    align-items: center;
+  }
+
+  .ih-cta-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .ih-cta-eyebrow {
+    color: rgba(244,239,230,0.45);
+    margin-top: -8px;
+  }
+
+  .ih-cta-eyebrow::before { background: rgba(244,239,230,0.25); }
+
+  .ih-cta-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 3vw, 38px);
     font-weight: 400;
     letter-spacing: -0.03em;
     line-height: 1.15;
-    color: var(--cream-soft);
+    color: var(--cream);
+    max-width: 18ch;
     margin: 0;
   }
 
-  .ind-cta-lead {
-    font-size: clamp(14px, 1.4vw, 16px);
-    color: rgba(255,255,255,0.6);
-    line-height: 1.7;
-    margin: 0;
+  .ih-trust-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .ih-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+    line-height: 1.4;
+  }
+
+  .ih-trust-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber);
+  }
+
+  .ih-cta-stars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .ih-stars {
+    color: var(--amber);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* ── CTA CARD ── */
+  .ih-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 32px 28px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .ih-cta-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .ih-avail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .ih-avail-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: ih-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes ih-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .ih-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .ih-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.45);
+    line-height: 1.5;
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+  }
+
+  /* ── FORM ── */
+  .ih-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .ih-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .ih-form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .ih-form-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .ih-form-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 13px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition), background var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .ih-form-input::placeholder { color: rgba(244,239,230,0.25); }
+
+  .ih-form-input:focus {
+    border-color: rgba(212,147,46,0.5);
+    background: rgba(212,147,46,0.04);
+  }
+
+  .ih-form-select {
+    cursor: pointer;
+    color: rgba(244,239,230,0.5);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='rgba(244,239,230,0.4)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+
+  .ih-form-select option { background: #1a2030; color: var(--cream); }
+
+  .ih-form-textarea {
+    resize: vertical;
+    min-height: 76px;
+    line-height: 1.5;
+  }
+
+  .ih-form-submit {
+    width: 100%;
+    justify-content: center;
+    margin-top: 2px;
   }
 
   /* ── RESPONSIVE ── */
   @media (max-width: 1100px) {
-    .ind-grid {
-      grid-template-columns: repeat(3, 1fr);
+    .ih-cta-inner {
+      grid-template-columns: 1fr 400px;
+      gap: 48px;
     }
+  }
+
+  @media (max-width: 960px) {
+    .ih-pillars-grid { grid-template-columns: 1fr; }
+    .ih-cap-grid { grid-template-columns: repeat(2, 1fr); }
+    .ih-cta-inner { grid-template-columns: 1fr; gap: 48px; }
+    .ih-cta-h2 { max-width: 100%; }
   }
 
   @media (max-width: 768px) {
-    .ind-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .ind-group-intro {
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .ind-group-desc {
-      text-align: left;
-      max-width: 100%;
-    }
+    .ih-cards { grid-template-columns: 1fr; }
+    .ih-form-row { grid-template-columns: 1fr; }
+    .ih-cta-card { padding: 24px 20px 20px; }
   }
 
-  @media (max-width: 540px) {
-    .ind-stats {
-      flex-direction: column;
-    }
-
-    .ind-stat {
-      border-right: none;
-      border-bottom: 1px solid var(--line);
-      width: 100%;
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 14px 20px;
-    }
-
-    .ind-stat:last-child {
-      border-bottom: none;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .ind-grid {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 600px) {
+    .ih-cap-grid { grid-template-columns: 1fr; }
+    .ih-ctas { flex-direction: column; width: 100%; }
+    .ih-btn-ghost { justify-content: center; width: 100%; }
   }
 </style>
