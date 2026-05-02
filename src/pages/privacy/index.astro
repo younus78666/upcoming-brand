@@ -1,0 +1,1178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/privacy/";
+const lastUpdated = "May 2, 2026";
+const effectiveDate = "May 2, 2026";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Privacy Policy | Upcoming Brand",
+      "description": "How Upcoming Brand collects, uses, stores, and protects information from clients and visitors. GDPR and CCPA aligned. Last updated May 2026.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "dateModified": "2026-05-02",
+      "datePublished": "2024-01-01",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2"]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Privacy", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const sections = [
+  { id: "summary",        title: "Plain-language summary" },
+  { id: "scope",          title: "Scope of this policy" },
+  { id: "information",    title: "Information we collect" },
+  { id: "use",            title: "How we use information" },
+  { id: "cookies",        title: "Cookies and tracking" },
+  { id: "third-parties",  title: "Third-party services" },
+  { id: "sharing",        title: "How we share information" },
+  { id: "retention",      title: "Data retention" },
+  { id: "your-rights",    title: "Your rights (GDPR / CCPA)" },
+  { id: "security",       title: "Security" },
+  { id: "international",  title: "International transfers" },
+  { id: "children",       title: "Children's privacy" },
+  { id: "changes",        title: "Changes to this policy" },
+  { id: "contact",        title: "Contact us" },
+];
+---
+<BaseLayout
+  title="Privacy Policy | Upcoming Brand WordPress Studio Maryland"
+  description="How Upcoming Brand collects, uses, stores, and protects information from clients and visitors. GDPR and CCPA aligned. Last updated May 2026."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero legal-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">Privacy policy</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1 legal-h1">
+          <span class="page-h1-line">How we handle</span>
+          <span class="page-h1-line"><em class="page-h1-accent">your information.</em></span>
+        </h1>
+
+        <p class="page-lead">
+          What we collect, how we use it, who we share it with, and what rights you have over it. Written in plain language with the legal version available on request.
+        </p>
+
+        <div class="legal-meta">
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Last updated</span>
+            <span class="legal-meta-val">{lastUpdated}</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Effective</span>
+            <span class="legal-meta-val">{effectiveDate}</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Version</span>
+            <span class="legal-meta-val">2.0</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Jurisdiction</span>
+            <span class="legal-meta-val">Maryland, USA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BODY (TOC + content) ====== -->
+    <section class="legal-body">
+      <div class="container legal-body-grid">
+
+        <!-- TOC sidebar -->
+        <aside class="legal-toc">
+          <div class="legal-toc-inner">
+            <span class="legal-toc-label">On this page</span>
+            <nav aria-label="Privacy policy sections">
+              <ol class="legal-toc-list">
+                {sections.map((s, i) => (
+                  <li class="legal-toc-item">
+                    <a href={`#${s.id}`} class="legal-toc-link">
+                      <span class="legal-toc-num">{String(i + 1).padStart(2, '0')}</span>
+                      <span class="legal-toc-text">{s.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+            <div class="legal-toc-footer">
+              <a href="#contact" class="legal-toc-cta">
+                Privacy questions
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Content -->
+        <article class="legal-content">
+
+          <section id="summary" class="legal-section legal-section-callout">
+            <span class="legal-section-num">01</span>
+            <h2 class="legal-section-h2">Plain-language summary</h2>
+            <div class="legal-section-body">
+              <p>
+                We collect three things: contact information you give us when you reach out (name, email, business details), aggregate analytics about how the site is used, and project files clients hand over during the build. We use that information only to deliver work, communicate with you about the work, and improve the site. <strong>We don't sell your data, ever.</strong> We share it with a handful of named processors (hosting, email, analytics) listed below. You can ask us what we hold, request deletion, or opt out at any time.
+              </p>
+              <p>
+                The rest of this page is the long version of those four sentences.
+              </p>
+            </div>
+          </section>
+
+          <section id="scope" class="legal-section">
+            <span class="legal-section-num">02</span>
+            <h2 class="legal-section-h2">Scope of this policy</h2>
+            <div class="legal-section-body">
+              <p>
+                This Privacy Policy applies to <strong>upcomingbrand.com</strong> and all sub-domains, plus any direct interaction with Upcoming Brand by email, phone, video call, or messaging platform during a discovery, project, or care-plan engagement. It does not cover third-party sites we link to, even when those sites are operated by partners we recommend (hosts, plugins, payment processors).
+              </p>
+              <p>
+                "Upcoming Brand," "we," "us," and "our" refer to the studio operating at upcomingbrand.com. "You" refers to anyone visiting the site, contacting us, or engaged with us as a client.
+              </p>
+            </div>
+          </section>
+
+          <section id="information" class="legal-section">
+            <span class="legal-section-num">03</span>
+            <h2 class="legal-section-h2">Information we collect</h2>
+            <div class="legal-section-body">
+              <p>We collect information in three ways:</p>
+
+              <h3 class="legal-section-h3">Information you give us directly</h3>
+              <ul class="legal-list">
+                <li>Name, email, phone (optional), company name, and project details submitted through the contact or discovery forms</li>
+                <li>Anything you send via email or chat during discovery and engagement</li>
+                <li>Files, copy, brand assets, and credentials you provide for project work</li>
+                <li>Billing details (handled by Stripe — we never see card numbers)</li>
+              </ul>
+
+              <h3 class="legal-section-h3">Information collected automatically</h3>
+              <ul class="legal-list">
+                <li>Aggregate analytics about page visits, time on site, referral sources, and device type</li>
+                <li>Server logs (IP address, browser, timestamps) retained for security and debugging — typically 30-90 days</li>
+                <li>Cookie and similar identifiers — see the Cookies section below</li>
+              </ul>
+
+              <h3 class="legal-section-h3">Information from third parties</h3>
+              <ul class="legal-list">
+                <li>Public profile data when you mention or link a LinkedIn, Upwork, or social profile</li>
+                <li>Analytics aggregates from Google, Plausible, or similar services we use</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="use" class="legal-section">
+            <span class="legal-section-num">04</span>
+            <h2 class="legal-section-h2">How we use information</h2>
+            <div class="legal-section-body">
+              <p>We use the information we collect to:</p>
+              <ul class="legal-list">
+                <li>Respond to inquiries and schedule discovery calls</li>
+                <li>Deliver project work — design, development, schema, hosting setup, and care-plan support</li>
+                <li>Issue invoices, process payments through Stripe, and maintain financial records</li>
+                <li>Send transactional emails (project status, staging URLs, launch confirmations, care-plan reports)</li>
+                <li>Improve the site, identify usability issues, and prioritise content based on aggregate analytics</li>
+                <li>Comply with legal obligations including tax records, contractor agreements, and security investigations</li>
+              </ul>
+              <p>
+                We do <strong>not</strong> use your information to train AI models, build advertising profiles, or sell to third parties. We do not run retargeting ads.
+              </p>
+            </div>
+          </section>
+
+          <section id="cookies" class="legal-section">
+            <span class="legal-section-num">05</span>
+            <h2 class="legal-section-h2">Cookies and tracking</h2>
+            <div class="legal-section-body">
+              <p>
+                We use a small set of cookies and similar technologies for two reasons: keeping the site working and understanding aggregate traffic patterns. We do not use cookies for advertising, retargeting, or behavioural profiling.
+              </p>
+
+              <div class="legal-table-wrap">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Cookie type</th>
+                      <th>Purpose</th>
+                      <th>Duration</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Essential</td>
+                      <td>Form submissions, security tokens, session state</td>
+                      <td>Session only</td>
+                    </tr>
+                    <tr>
+                      <td>Analytics</td>
+                      <td>Aggregate page-view counts, referral sources</td>
+                      <td>1-13 months</td>
+                    </tr>
+                    <tr>
+                      <td>Preference</td>
+                      <td>Remember your consent choices</td>
+                      <td>1 year</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                Most browsers let you block or delete cookies. Doing so may break form submissions or other features. Where required by law, we ask for consent before non-essential cookies are set.
+              </p>
+            </div>
+          </section>
+
+          <section id="third-parties" class="legal-section">
+            <span class="legal-section-num">06</span>
+            <h2 class="legal-section-h2">Third-party services</h2>
+            <div class="legal-section-body">
+              <p>We use a small set of vetted third-party processors. Each one is listed here so you know exactly where your data may be stored.</p>
+
+              <div class="legal-table-wrap">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Processor</th>
+                      <th>Purpose</th>
+                      <th>Data handled</th>
+                      <th>Region</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Vercel</td>
+                      <td>Site hosting and CDN</td>
+                      <td>Server logs, page requests</td>
+                      <td>USA / global edge</td>
+                    </tr>
+                    <tr>
+                      <td>Netlify Forms</td>
+                      <td>Contact form processing</td>
+                      <td>Form submissions</td>
+                      <td>USA</td>
+                    </tr>
+                    <tr>
+                      <td>Stripe</td>
+                      <td>Invoice and payment processing</td>
+                      <td>Billing details, card data (we never see card numbers)</td>
+                      <td>USA / EU</td>
+                    </tr>
+                    <tr>
+                      <td>Google Workspace</td>
+                      <td>Email hosting</td>
+                      <td>Email content with you</td>
+                      <td>USA</td>
+                    </tr>
+                    <tr>
+                      <td>Google Analytics 4</td>
+                      <td>Aggregate site analytics</td>
+                      <td>Anonymised page-view data</td>
+                      <td>USA</td>
+                    </tr>
+                    <tr>
+                      <td>Zoom / Google Meet</td>
+                      <td>Discovery and design calls</td>
+                      <td>Call audio (recorded only with consent)</td>
+                      <td>USA</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <section id="sharing" class="legal-section">
+            <span class="legal-section-num">07</span>
+            <h2 class="legal-section-h2">How we share information</h2>
+            <div class="legal-section-body">
+              <p>We share your information only in these specific cases:</p>
+              <ul class="legal-list">
+                <li><strong>With processors</strong> listed above, strictly for the purpose described</li>
+                <li><strong>With specialists in our network</strong> (designers, developers, photographers) when a project requires their work, under the same confidentiality terms we operate under</li>
+                <li><strong>When legally required</strong> — court order, subpoena, or to investigate suspected fraud or violation of terms</li>
+                <li><strong>In a business transfer</strong> — if Upcoming Brand is acquired or merges, your information transfers with the project history</li>
+              </ul>
+              <p>
+                <strong>We do not sell, rent, or trade personal information.</strong> Ever. There is no marketing arrangement that would change this.
+              </p>
+            </div>
+          </section>
+
+          <section id="retention" class="legal-section">
+            <span class="legal-section-num">08</span>
+            <h2 class="legal-section-h2">Data retention</h2>
+            <div class="legal-section-body">
+              <p>We hold information only as long as we have a legitimate reason to:</p>
+              <ul class="legal-list">
+                <li><strong>Discovery inquiries that don't proceed</strong>: 12 months, then deleted</li>
+                <li><strong>Project files and communications</strong>: duration of the engagement plus 7 years for tax and legal records</li>
+                <li><strong>Server logs</strong>: 30-90 days, depending on the system</li>
+                <li><strong>Analytics aggregates</strong>: up to 26 months in Google Analytics 4, configurable</li>
+                <li><strong>Care plan client data</strong>: duration of the active care plan plus 1 year after cancellation</li>
+              </ul>
+              <p>You can request earlier deletion at any time — see Your Rights below.</p>
+            </div>
+          </section>
+
+          <section id="your-rights" class="legal-section">
+            <span class="legal-section-num">09</span>
+            <h2 class="legal-section-h2">Your rights (GDPR / CCPA)</h2>
+            <div class="legal-section-body">
+              <p>Depending on where you live, you have rights over the information we hold about you. We honour all of these regardless of jurisdiction:</p>
+              <ul class="legal-list">
+                <li><strong>Access</strong> — request a copy of the information we hold about you</li>
+                <li><strong>Correction</strong> — fix anything that's inaccurate</li>
+                <li><strong>Deletion</strong> — request we delete information we no longer need to keep</li>
+                <li><strong>Portability</strong> — receive your data in a portable format</li>
+                <li><strong>Restriction</strong> — limit how we process your data</li>
+                <li><strong>Objection</strong> — object to specific uses (e.g., analytics)</li>
+                <li><strong>Withdraw consent</strong> — withdraw consent at any time, without affecting prior processing</li>
+              </ul>
+              <p>
+                To exercise any of these rights, email <a href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>. We respond within 30 days. There's no fee unless the request is excessive or repeated.
+              </p>
+
+              <h3 class="legal-section-h3">For California residents (CCPA / CPRA)</h3>
+              <p>You have the right to know what we collect, how we use it, and the right to non-discrimination for exercising any privacy right. We don't sell or share personal information for cross-context behavioural advertising.</p>
+            </div>
+          </section>
+
+          <section id="security" class="legal-section">
+            <span class="legal-section-num">10</span>
+            <h2 class="legal-section-h2">Security</h2>
+            <div class="legal-section-body">
+              <p>
+                We use reasonable, current security practices to protect information in our control: TLS encryption in transit, encrypted storage where possible, two-factor authentication on every account that touches client data, principle-of-least-privilege access, and regular security review of our processors.
+              </p>
+              <p>
+                No system is fully secure. If we discover a breach affecting your information, we'll notify you and the appropriate authorities within 72 hours where required by law.
+              </p>
+            </div>
+          </section>
+
+          <section id="international" class="legal-section">
+            <span class="legal-section-num">11</span>
+            <h2 class="legal-section-h2">International transfers</h2>
+            <div class="legal-section-body">
+              <p>
+                Upcoming Brand operates from the United States. Most of our processors are also US-based. If you're located outside the US, your information may be transferred to and processed in countries with different data protection laws than your own — but always under safeguards including Standard Contractual Clauses where applicable.
+              </p>
+            </div>
+          </section>
+
+          <section id="children" class="legal-section">
+            <span class="legal-section-num">12</span>
+            <h2 class="legal-section-h2">Children's privacy</h2>
+            <div class="legal-section-body">
+              <p>
+                Upcoming Brand is a B2B service. We don't knowingly collect information from anyone under 16. If we discover we've collected information from a minor, we delete it. If you believe we have, contact us immediately.
+              </p>
+            </div>
+          </section>
+
+          <section id="changes" class="legal-section">
+            <span class="legal-section-num">13</span>
+            <h2 class="legal-section-h2">Changes to this policy</h2>
+            <div class="legal-section-body">
+              <p>
+                We may update this Privacy Policy as our practices, services, or applicable laws change. The "Last updated" date at the top reflects the most recent revision. For material changes, we'll notify active clients by email at least 30 days before the change takes effect.
+              </p>
+              <p>
+                Past versions are archived and available on request — we don't quietly replace policies and pretend the older version never existed.
+              </p>
+            </div>
+          </section>
+
+          <section id="contact" class="legal-section legal-section-contact">
+            <span class="legal-section-num">14</span>
+            <h2 class="legal-section-h2">Contact us</h2>
+            <div class="legal-section-body">
+              <p>
+                Privacy questions, data requests, or concerns about how we handle your information — reach out and we'll respond within 4 business hours during business days.
+              </p>
+
+              <div class="legal-contact-card">
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Email</span>
+                  <a class="legal-contact-val" href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Subject line</span>
+                  <span class="legal-contact-val">Privacy: [your topic]</span>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Response window</span>
+                  <span class="legal-contact-val">4 business hours, weekdays</span>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Mailing</span>
+                  <span class="legal-contact-val">Available on request via email</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to start</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Privacy questions answered.<br>
+            <em>Now let's talk about your project.</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. We map your competitive set, identify the schema and Local Pack gaps, and send a fixed quote within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/terms/" class="page-cta-ghost-light">
+              Read our terms
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===========================================
+     SHARED PAGE SYSTEM
+     =========================================== */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(56px, 8vh, 96px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .page-hero-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .page-eyebrow-line-amber { background: var(--amber); }
+
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+
+  .page-h1-line { display: block; color: var(--ink); }
+
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 16px 0 0;
+  }
+
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .lp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+
+  /* ===========================================
+     LEGAL HERO META
+     =========================================== */
+  .legal-h1 {
+    margin-bottom: 4px;
+  }
+
+  .legal-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 14px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    margin-top: 8px;
+  }
+
+  .legal-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  .legal-meta-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+
+  .legal-meta-val {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .legal-meta-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--line);
+  }
+
+  /* ===========================================
+     LEGAL BODY (TOC + content)
+     =========================================== */
+  .legal-body {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    position: relative;
+  }
+
+  .legal-body-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 72px;
+    align-items: flex-start;
+  }
+
+  /* TOC */
+  .legal-toc {
+    position: sticky;
+    top: 24px;
+  }
+
+  .legal-toc-inner {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 24px 22px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .legal-toc-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+
+  .legal-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    counter-reset: none;
+  }
+
+  .legal-toc-link {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    align-items: baseline;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+  }
+
+  .legal-toc-link:hover {
+    background: var(--paper);
+    color: var(--amber-deep);
+  }
+
+  .legal-toc-num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+
+  .legal-toc-link:hover .legal-toc-num {
+    color: var(--amber);
+  }
+
+  .legal-toc-text {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    transition: color var(--transition);
+  }
+
+  .legal-toc-link:hover .legal-toc-text {
+    color: var(--amber-deep);
+  }
+
+  .legal-toc-footer {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .legal-toc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    text-decoration: none;
+    transition: gap 0.3s ease, color var(--transition);
+    font-weight: 500;
+  }
+
+  .legal-toc-cta:hover {
+    gap: 10px;
+    color: var(--ink);
+  }
+
+  /* Content */
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  .legal-section {
+    position: relative;
+    scroll-margin-top: 24px;
+  }
+
+  .legal-section-callout {
+    background: var(--cream);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    position: relative;
+  }
+
+  .legal-section-callout::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+
+  .legal-section-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  .legal-section-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.8vw, 32px);
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+  }
+
+  .legal-section-h3 {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 28px 0 10px;
+  }
+
+  .legal-section-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+
+  .legal-section-body p {
+    margin: 0 0 14px;
+  }
+
+  .legal-section-body p:last-child {
+    margin-bottom: 0;
+  }
+
+  .legal-section-body strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .legal-section-body a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color var(--transition);
+  }
+
+  .legal-section-body a:hover {
+    color: var(--ink);
+  }
+
+  .legal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .legal-list li {
+    position: relative;
+    padding-left: 22px;
+    line-height: 1.6;
+  }
+
+  .legal-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  /* Tables */
+  .legal-table-wrap {
+    margin: 16px 0 18px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--cream);
+    font-size: 13px;
+  }
+
+  .legal-table th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--paper);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .legal-table td {
+    padding: 12px 16px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+
+  .legal-table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .legal-table tbody tr:hover td {
+    background: var(--paper);
+  }
+
+  /* Contact card */
+  .legal-section-contact {
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    border: 1px solid var(--line);
+  }
+
+  .legal-contact-card {
+    margin-top: 18px;
+    padding: 22px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .legal-contact-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    align-items: baseline;
+  }
+
+  .legal-contact-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+
+  .legal-contact-val {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .legal-contact-val[href] {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .legal-contact-divider {
+    height: 1px;
+    background: transparent;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* ===========================================
+     PAGE FINAL CTA
+     =========================================== */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .page-cta-h2 {
+    color: var(--cream);
+    margin-top: 8px;
+  }
+
+  .page-cta-h2 em { color: var(--amber); }
+
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* ===========================================
+     RESPONSIVE
+     =========================================== */
+  @media (max-width: 1024px) {
+    .legal-body-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+
+    .legal-toc {
+      position: static;
+    }
+
+    .legal-toc-inner {
+      max-width: none;
+    }
+
+    .legal-toc-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .legal-meta {
+      gap: 12px;
+      padding: 14px 18px;
+    }
+
+    .legal-meta-divider {
+      display: none;
+    }
+
+    .legal-toc-list {
+      grid-template-columns: 1fr;
+    }
+
+    .legal-section-callout,
+    .legal-section-contact {
+      padding: 22px 22px;
+    }
+
+    .legal-contact-row {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .legal-table {
+      font-size: 12px;
+    }
+
+    .legal-table th,
+    .legal-table td {
+      padding: 10px 12px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+  }
+</style>
