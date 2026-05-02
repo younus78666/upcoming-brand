@@ -205,6 +205,10 @@ const schema = {
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
       "dateModified": "2026-05-01",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".lp-hero-headline", ".lp-hero-sub"]
+      },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -220,6 +224,8 @@ const schema = {
       "name": "Upcoming Brand - Church Website Design Maryland",
       "url": "https://upcomingbrand.com/industries/church-website-design/",
       "description": "WordPress website design for Maryland churches and faith organizations. Church schema, sermon archives, event calendars, and online giving integration.",
+      "image": { "@id": "https://upcomingbrand.com/#logo" },
+      "logo": { "@id": "https://upcomingbrand.com/#logo" },
       "priceRange": "$1,500-$10,000+",
       "areaServed": [
         { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore", "geo": { "@type": "GeoCoordinates", "latitude": 39.2904, "longitude": -76.6122 } },
@@ -274,6 +280,21 @@ const schema = {
             }
           }
         ]
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "provider": { "@id": "https://upcomingbrand.com/#organization" }
     },

@@ -18,11 +18,127 @@ import FAQ from '../components/FAQ.astro';
 import BlogPreview from '../components/BlogPreview.astro';
 import FinalCTA from '../components/FinalCTA.astro';
 import Footer from '../components/Footer.astro';
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://upcomingbrand.com/#webpage",
+      "url": "https://upcomingbrand.com/",
+      "name": "WordPress Web Design Services Maryland | Upcoming Brand",
+      "description": "WordPress web design services in Maryland. Fixed-scope builds, 6-10 week delivery, 90+ PageSpeed. Baltimore, Annapolis, Frederick. Book a 45-min discovery call.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-01",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".hero-headline", ".hero-sub"]
+      },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" }
+        ]
+      }
+    },
+    {
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": "https://upcomingbrand.com/#service",
+      "name": "Upcoming Brand - WordPress Web Design Maryland",
+      "url": "https://upcomingbrand.com/",
+      "description": "WordPress web design studio based in Maryland. Fixed-scope builds, 90+ PageSpeed, 6-10 week delivery. Serving Baltimore, Annapolis, Frederick, and all of Maryland.",
+      "image": { "@id": "https://upcomingbrand.com/#logo" },
+      "logo": { "@id": "https://upcomingbrand.com/#logo" },
+      "priceRange": "$1,500-$15,000",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Credit Card, Bank Transfer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "MD",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" },
+        { "@type": "City", "name": "Baltimore", "sameAs": "https://en.wikipedia.org/wiki/Baltimore" },
+        { "@type": "City", "name": "Annapolis", "sameAs": "https://en.wikipedia.org/wiki/Annapolis,_Maryland" },
+        { "@type": "City", "name": "Frederick", "sameAs": "https://en.wikipedia.org/wiki/Frederick,_Maryland" },
+        { "@type": "City", "name": "Bethesda", "sameAs": "https://en.wikipedia.org/wiki/Bethesda,_Maryland" },
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland" },
+        { "@type": "City", "name": "Silver Spring", "sameAs": "https://en.wikipedia.org/wiki/Silver_Spring,_Maryland" },
+        { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland" },
+        { "@type": "City", "name": "Towson", "sameAs": "https://en.wikipedia.org/wiki/Towson,_Maryland" }
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "knowsAbout": [
+        "Custom WordPress design",
+        "WooCommerce development",
+        "WordPress SEO and schema",
+        "WordPress speed optimization",
+        "Core Web Vitals",
+        "WordPress migration",
+        "WordPress security and recovery",
+        "WordPress care plans",
+        "Local Pack ranking",
+        "LocalBusiness schema implementation"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "WordPress Web Design Services Maryland",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Starter WordPress Website", "serviceType": "WordPress Web Design" },
+            "name": "Starter Tier",
+            "description": "8-page custom WordPress build with LocalBusiness schema, custom design, and Core Web Vitals green on delivery.",
+            "price": "1500",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Growth WordPress Website", "serviceType": "WordPress Web Design + Local SEO" },
+            "name": "Growth Tier",
+            "description": "15-20 page site with city landing pages, custom design, and full Local Pack optimization.",
+            "price": "3500",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Custom WordPress Build", "serviceType": "WordPress + WooCommerce Development" },
+            "name": "Custom Tier",
+            "description": "WooCommerce, IDX integration, multi-location schema, or complex booking systems for established businesses.",
+            "price": "6000",
+            "priceCurrency": "USD"
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "parentOrganization": { "@id": "https://upcomingbrand.com/#organization" }
+    }
+  ]
+});
 ---
 <BaseLayout
   title="WordPress Web Design Services Maryland | Upcoming Brand"
   description="WordPress web design services in Maryland. Fixed-scope builds, 6-10 week delivery, 90+ PageSpeed. Baltimore, Annapolis, Frederick. Book a 45-min discovery call."
 >
+  <script slot="head" type="application/ld+json" set:html={jsonLd} />
   <!-- Section 1: Announcement Bar -->
   <AnnouncementBar />
 

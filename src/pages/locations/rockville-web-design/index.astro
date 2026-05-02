@@ -14,44 +14,118 @@ const jsonLd = JSON.stringify({
   "@graph": [
     {
       "@type": "WebPage",
-      "@id": `${canonical}#webpage`,
+      "@id": "https://upcomingbrand.com/locations/rockville-web-design/#webpage",
+      "url": "https://upcomingbrand.com/locations/rockville-web-design/",
       "name": `Web Design ${city} MD | WordPress & SEO | Upcoming Brand`,
-      "url": canonical,
       "description": `Web design ${city} businesses trust for real Google rankings. Custom WordPress builds, 90+ PageSpeed, fixed pricing. Serving Rockville, North Bethesda, Gaithersburg, and Montgomery County.`,
       "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/locations/rockville-web-design/#localbusiness" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-01",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".lp-hero-headline", ".lp-hero-sub"]
+      },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://upcomingbrand.com/" },
           { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://upcomingbrand.com/locations/" },
-          { "@type": "ListItem", "position": 3, "name": `${city} Web Design`, "item": canonical }
+          { "@type": "ListItem", "position": 3, "name": "Rockville Web Design", "item": "https://upcomingbrand.com/locations/rockville-web-design/" }
         ]
       }
     },
     {
-      "@type": "LocalBusiness",
-      "@id": "https://upcomingbrand.com/#localbusiness",
-      "name": "Upcoming Brand",
-      "description": "WordPress web design studio serving Rockville and Montgomery County, Maryland. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
-      "url": "https://upcomingbrand.com/",
-      "priceRange": "$$-$$$",
-      "areaServed": [
-        { "@type": "City", "name": "Rockville"       },
-        { "@type": "City", "name": "North Bethesda"  },
-        { "@type": "City", "name": "Gaithersburg"    },
-        { "@type": "City", "name": "Germantown"      },
-        { "@type": "City", "name": "Potomac"         },
-        { "@type": "City", "name": "Bethesda"        },
-        { "@type": "City", "name": "Olney"           },
-        { "@type": "City", "name": "Kensington"      }
-      ],
-      "serviceType": ["WordPress Web Design", "WooCommerce Development", "SEO", "Web Maintenance"],
+      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@id": "https://upcomingbrand.com/locations/rockville-web-design/#localbusiness",
+      "name": "Upcoming Brand - Web Design Rockville MD",
+      "url": "https://upcomingbrand.com/locations/rockville-web-design/",
+      "description": "WordPress web design for Rockville businesses. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
+      "image": { "@id": "https://upcomingbrand.com/#logo" },
+      "logo": { "@id": "https://upcomingbrand.com/#logo" },
+      "priceRange": "$1,500-$15,000",
       "currenciesAccepted": "USD",
-      "paymentAccepted": "Credit Card, Bank Transfer"
+      "paymentAccepted": "Credit Card, Bank Transfer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Rockville",
+        "addressRegion": "MD",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 39.084,
+        "longitude": -77.1528
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Rockville", "sameAs": "https://en.wikipedia.org/wiki/Rockville,_Maryland" },
+        { "@type": "City", "name": "Gaithersburg" },
+        { "@type": "City", "name": "Bethesda" },
+        { "@type": "City", "name": "Silver Spring" },
+        { "@type": "City", "name": "Germantown" },
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
+      ],
+      "knowsAbout": [
+        "WordPress web design Rockville",
+        "Custom WordPress development",
+        "WooCommerce Rockville",
+        "Local SEO Rockville MD",
+        "LocalBusiness schema",
+        "Core Web Vitals optimization",
+        "Google Local Pack ranking"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services Rockville",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Starter WordPress Website", "serviceType": "WordPress Web Design" },
+            "name": "Starter - Rockville Web Design",
+            "description": "8-page custom WordPress build for Rockville small businesses. LocalBusiness schema, Core Web Vitals green on delivery.",
+            "price": "1500",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Growth WordPress Website", "serviceType": "WordPress + Local SEO" },
+            "name": "Growth - Rockville Web Design",
+            "description": "15-20 page site with Rockville landing pages, custom design, and full Local Pack optimization.",
+            "price": "3500",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Custom WordPress Build", "serviceType": "WordPress + WooCommerce" },
+            "name": "Custom - Rockville Web Design",
+            "description": "WooCommerce, booking systems, IDX, or multi-location schema for established Rockville businesses.",
+            "price": "6000",
+            "priceCurrency": "USD"
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "parentOrganization": { "@id": "https://upcomingbrand.com/#organization" }
     },
     {
       "@type": "FAQPage",
-      "@id": `${canonical}#faqpage`,
+      "@id": "https://upcomingbrand.com/locations/rockville-web-design/#faqpage",
       "mainEntity": [
         {
           "@type": "Question",

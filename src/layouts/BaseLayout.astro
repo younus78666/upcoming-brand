@@ -69,33 +69,75 @@ const {
     rel="stylesheet"
   />
 
-  <!-- Schema.org Organization -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Upcoming Brand",
-      "description": "WordPress web design studio based in Maryland serving Baltimore, Annapolis, Frederick, and the DMV metro.",
-      "url": "https://upcomingbrand.com",
-      "areaServed": {
-        "@type": "State",
-        "name": "Maryland"
+  <!-- Schema.org Root: Organization + WebSite (referenced by @id on every page) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://upcomingbrand.com/#organization",
+        "name": "Upcoming Brand",
+        "alternateName": "Upcoming Brand WordPress Web Design",
+        "url": "https://upcomingbrand.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "@id": "https://upcomingbrand.com/#logo",
+          "url": "https://upcomingbrand.com/02-footer-logo-dark-edited.png",
+          "contentUrl": "https://upcomingbrand.com/02-footer-logo-dark-edited.png",
+          "width": 200,
+          "height": 52,
+          "caption": "Upcoming Brand"
+        },
+        "image": { "@id": "https://upcomingbrand.com/#logo" },
+        "description": "WordPress web design studio based in Maryland. Fixed-scope builds, 90+ PageSpeed, 6-10 week delivery serving Baltimore, Annapolis, Frederick, and the DMV metro.",
+        "foundingDate": "2024",
+        "areaServed": {
+          "@type": "State",
+          "name": "Maryland",
+          "sameAs": "https://en.wikipedia.org/wiki/Maryland"
+        },
+        "knowsAbout": [
+          "WordPress web design",
+          "WooCommerce development",
+          "WordPress SEO",
+          "Core Web Vitals optimization",
+          "LocalBusiness schema",
+          "WordPress care plans",
+          "WordPress migration",
+          "WordPress security"
+        ],
+        "slogan": "WordPress web design Maryland businesses trust for real Google rankings.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "MD",
+          "addressCountry": "US"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "availableLanguage": "English",
+          "areaServed": "US"
+        }
       },
-      "serviceType": "WordPress Web Design",
-      "priceRange": "$3,500 - $15,000",
-      "telephone": "",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Maryland",
-        "addressRegion": "MD",
-        "addressCountry": "US"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/upcomingbrand",
-        "https://twitter.com/upcomingbrand"
-      ]
-    }
-  </script>
+      {
+        "@type": "WebSite",
+        "@id": "https://upcomingbrand.com/#website",
+        "url": "https://upcomingbrand.com/",
+        "name": "Upcoming Brand",
+        "description": "WordPress web design services Maryland - fixed-scope, 90+ PageSpeed, 6-10 week delivery.",
+        "publisher": { "@id": "https://upcomingbrand.com/#organization" },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://upcomingbrand.com/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
+  })} />
   <slot name="head" />
 </head>
 <body>

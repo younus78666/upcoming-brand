@@ -210,6 +210,10 @@ const schema = {
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
       "dateModified": "2026-05-01",
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": ["h1", "h2", ".lp-hero-headline", ".lp-hero-sub"]
+      },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -224,6 +228,8 @@ const schema = {
       "@id": "https://upcomingbrand.com/industries/dental-website-design/#service",
       "name": "Upcoming Brand -- Dental Website Design Maryland",
       "description": "WordPress website design for Maryland dental practices. Dentist schema, online booking, 90+ PageSpeed. Fixed-scope from $1,500. Baltimore, Annapolis, Frederick.",
+      "image": { "@id": "https://upcomingbrand.com/#logo" },
+      "logo": { "@id": "https://upcomingbrand.com/#logo" },
       "url": "https://upcomingbrand.com/industries/dental-website-design/",
       "priceRange": "$1,500-$10,000+",
       "areaServed": [
@@ -258,6 +264,21 @@ const schema = {
           { "@type": "Offer", "name": "Growth", "priceRange": "$3,500-$6,000", "itemOffered": { "@type": "Service", "name": "Growth Dental Website Design" } },
           { "@type": "Offer", "name": "Custom", "priceRange": "$6,000-$10,000+", "itemOffered": { "@type": "Service", "name": "Custom Dental Website Design" } }
         ]
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        }
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
       },
       "provider": { "@id": "https://upcomingbrand.com/#organization" }
     },
