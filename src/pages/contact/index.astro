@@ -1,0 +1,1185 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/contact/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Contact Upcoming Brand | WordPress Web Design Maryland",
+      "description": "Book a free 45-minute discovery call or send a project brief. We respond within 4 business hours and send a fixed-scope quote within 48 hours.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "dateModified": "2026-05-02",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Contact", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const channels = [
+  {
+    name: "Email",
+    detail: "hello@upcomingbrand.com",
+    note: "4-hour response on weekdays",
+    icon: "mail",
+    href: "mailto:hello@upcomingbrand.com",
+  },
+  {
+    name: "Discovery call",
+    detail: "Free 45-minute Zoom",
+    note: "Schedule via the form",
+    icon: "video",
+    href: "/book-a-discovery-call/",
+  },
+  {
+    name: "Project brief",
+    detail: "Send the form below",
+    note: "Quote in 48 hours",
+    icon: "doc",
+    href: "#contact-form",
+  },
+];
+
+const expectations = [
+  {
+    num: "01",
+    when: "Within 4 hours",
+    what: "Initial reply",
+    detail: "Direct from the founder. We confirm we received your brief, ask any clarifying questions, and propose a discovery slot.",
+  },
+  {
+    num: "02",
+    when: "Within 24 hours",
+    what: "Discovery call",
+    detail: "A 45-minute Zoom session: competitive set audit, schema map, Local Pack gap analysis, conversion architecture review.",
+  },
+  {
+    num: "03",
+    when: "Within 48 hours",
+    what: "Fixed-scope quote",
+    detail: "PDF with full scope, milestones, deliverables, and one fixed price. Held at the stated price for 30 days.",
+  },
+  {
+    num: "04",
+    when: "Within 5 days",
+    what: "Project kickoff",
+    detail: "Once you sign and the deposit clears, we schedule kickoff and post the staging URL within the week.",
+  },
+];
+
+const businessTypes = [
+  "Law Firm / Attorney",
+  "Dental Practice",
+  "Medical Clinic",
+  "Real Estate",
+  "Restaurant / Hospitality",
+  "Contractor / Trades",
+  "Nonprofit / Church",
+  "Ecommerce / Retail",
+  "Accountant / CPA",
+  "Small Business / Startup",
+  "Other",
+];
+
+const budgets = [
+  "Under $1,500 (audit only)",
+  "$1,500 - $3,500 (Starter)",
+  "$3,500 - $6,000 (Growth)",
+  "$6,000 - $15,000 (Custom)",
+  "$15,000+ (Enterprise / multi-location)",
+  "Not sure yet — open to recommendation",
+];
+
+const timelines = [
+  "ASAP — within 4 weeks",
+  "Standard — 6-10 weeks",
+  "Flexible — 3+ months",
+  "Just exploring",
+];
+---
+<BaseLayout
+  title="Contact Upcoming Brand | WordPress Web Design Maryland"
+  description="Book a free 45-minute discovery call or send a project brief. We respond within 4 business hours and send a fixed-scope quote within 48 hours."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">Contact</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">A 45-minute call.</span>
+          <span class="page-h1-line"><em class="page-h1-accent">A 48-hour quote.</em></span>
+          <span class="page-h1-line page-h1-italic">No sales funnels in between.</span>
+        </h1>
+
+        <p class="page-lead">
+          Send a brief, book a discovery call, or just email — whichever feels right. <strong>You'll talk to the founder, not an account manager.</strong> No qualifying calls, no funnel hand-offs, no "let me get you on the calendar with a closer." One person. One reply. Within 4 business hours.
+        </p>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            4-hour reply SLA
+          </span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">48-hour fixed quote</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">Direct founder access</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CHANNELS ====== -->
+    <section class="contact-channels">
+      <div class="container">
+        <div class="contact-channels-grid">
+          {channels.map((c, i) => (
+            <a href={c.href} class="contact-channel">
+              <span class="contact-channel-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="contact-channel-icon" aria-hidden="true">
+                {c.icon === "mail" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                )}
+                {c.icon === "video" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+                )}
+                {c.icon === "doc" && (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                )}
+              </span>
+              <div class="contact-channel-content">
+                <h3 class="contact-channel-name">{c.name}</h3>
+                <p class="contact-channel-detail">{c.detail}</p>
+                <span class="contact-channel-note">{c.note}</span>
+              </div>
+              <span class="contact-channel-arrow" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FORM ====== -->
+    <section class="contact-form-section" id="contact-form">
+      <div class="container">
+        <div class="contact-form-grid">
+
+          <!-- Form -->
+          <div class="contact-form-card">
+            <div class="contact-form-head">
+              <p class="contact-form-eyebrow">Send a project brief</p>
+              <h2 class="page-h2 contact-form-h2">
+                Tell us about <em>your project.</em>
+              </h2>
+              <p class="contact-form-lead">We reply within 4 business hours. No sales pitch — just an honest conversation about what you need.</p>
+            </div>
+
+            <form
+              class="contact-form"
+              id="contact-inquiry-form"
+              name="contact-inquiry"
+              netlify-honeypot="bot-field"
+              data-netlify="true"
+              action="/thank-you/"
+              method="POST"
+            >
+              <input type="hidden" name="form-name" value="contact-inquiry" />
+              <div class="hp-field" aria-hidden="true">
+                <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+              </div>
+              <input type="hidden" name="_timestamp" id="contact-form-timestamp" value="" />
+
+              <div class="contact-form-row">
+                <label class="contact-form-label" for="contact-name">
+                  Your name
+                  <span class="contact-form-required">*</span>
+                </label>
+                <input class="contact-form-input" type="text" id="contact-name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+              </div>
+
+              <div class="contact-form-row-pair">
+                <div class="contact-form-row">
+                  <label class="contact-form-label" for="contact-email">
+                    Email
+                    <span class="contact-form-required">*</span>
+                  </label>
+                  <input class="contact-form-input" type="email" id="contact-email" name="email" placeholder="jane@company.com" required autocomplete="email" />
+                </div>
+
+                <div class="contact-form-row">
+                  <label class="contact-form-label" for="contact-company">Company / brand</label>
+                  <input class="contact-form-input" type="text" id="contact-company" name="company" placeholder="Smith &amp; Co." autocomplete="organization" />
+                </div>
+              </div>
+
+              <div class="contact-form-row">
+                <span class="contact-form-label" id="contact-biz-label">Business type</span>
+                <select class="contact-form-select" name="business_type" aria-labelledby="contact-biz-label">
+                  <option value="">Select your industry</option>
+                  {businessTypes.map((b) => <option value={b}>{b}</option>)}
+                </select>
+              </div>
+
+              <div class="contact-form-row">
+                <span class="contact-form-label" id="contact-budget-label">Budget range</span>
+                <select class="contact-form-select" name="budget" aria-labelledby="contact-budget-label">
+                  <option value="">Select your budget</option>
+                  {budgets.map((b) => <option value={b}>{b}</option>)}
+                </select>
+              </div>
+
+              <div class="contact-form-row">
+                <span class="contact-form-label" id="contact-timeline-label">Timeline</span>
+                <select class="contact-form-select" name="timeline" aria-labelledby="contact-timeline-label">
+                  <option value="">Select your timeline</option>
+                  {timelines.map((t) => <option value={t}>{t}</option>)}
+                </select>
+              </div>
+
+              <div class="contact-form-row">
+                <label class="contact-form-label" for="contact-message">
+                  Project details
+                  <span class="contact-form-required">*</span>
+                </label>
+                <textarea
+                  class="contact-form-textarea"
+                  id="contact-message"
+                  name="message"
+                  rows="5"
+                  placeholder="What are you trying to accomplish? Existing site URL? Industry context? Anything that helps us send back a useful first reply."
+                  required
+                ></textarea>
+                <span class="contact-form-hint">3 sentences is plenty. We'll ask anything else in our reply.</span>
+              </div>
+
+              <button class="contact-form-submit" type="submit">
+                <span>Send brief</span>
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+
+              <p class="contact-form-disclaimer">
+                By submitting this form you agree to our <a href="/privacy-policy/">Privacy Policy</a>. We never sell or share your information.
+              </p>
+            </form>
+          </div>
+
+          <!-- Side panel: what to expect -->
+          <aside class="contact-side">
+            <div class="contact-side-card">
+              <div class="contact-side-head">
+                <span class="contact-side-pulse" aria-hidden="true"></span>
+                <span class="contact-side-label">What happens next</span>
+              </div>
+
+              <ol class="contact-side-list">
+                {expectations.map((e) => (
+                  <li class="contact-side-item">
+                    <span class="contact-side-num">{e.num}</span>
+                    <div class="contact-side-content">
+                      <div class="contact-side-meta">
+                        <span class="contact-side-when">{e.when}</span>
+                        <span class="contact-side-divider" aria-hidden="true"></span>
+                        <span class="contact-side-what">{e.what}</span>
+                      </div>
+                      <p class="contact-side-detail">{e.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+
+              <div class="contact-side-foot">
+                <span class="contact-side-foot-label">Direct line</span>
+                <a class="contact-side-foot-val" href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>
+              </div>
+            </div>
+
+            <div class="contact-side-trust">
+              <span class="contact-side-trust-line">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Top Rated &middot; Upwork
+              </span>
+              <span class="contact-side-trust-line">400+ projects &middot; 12 countries</span>
+              <span class="contact-side-trust-line">Direct founder access</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== ALT PATHS ====== -->
+    <section class="contact-alt">
+      <div class="container">
+        <div class="contact-alt-grid">
+
+          <div class="contact-alt-card">
+            <span class="contact-alt-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </span>
+            <h3 class="contact-alt-title">Need an audit, not a build?</h3>
+            <p class="contact-alt-desc">A standalone $1,500 audit covers schema, performance, Core Web Vitals, and Local Pack analysis with a prioritised action list. Credited toward a build if you decide to come back.</p>
+            <a href="/contact/?type=audit" class="contact-alt-link">
+              Request an audit
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="contact-alt-card">
+            <span class="contact-alt-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <h3 class="contact-alt-title">Already a client?</h3>
+            <p class="contact-alt-desc">Care plan ticket, project question, or staging review? Email directly with the project name in the subject line — we route it the same business day.</p>
+            <a href="mailto:hello@upcomingbrand.com" class="contact-alt-link">
+              Email support
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="contact-alt-card">
+            <span class="contact-alt-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            </span>
+            <h3 class="contact-alt-title">Want to join the network?</h3>
+            <p class="contact-alt-desc">We collaborate with senior designers, front-end developers, and SEO specialists on a project basis. WordPress-deep + Core Web Vitals fluent.</p>
+            <a href="/careers/" class="contact-alt-link">
+              See open collaborations
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===========================================
+     SHARED PAGE SYSTEM
+     =========================================== */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .page-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .page-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .page-trust-dot {
+    width: 3px; height: 3px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 12px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* ===========================================
+     CHANNELS STRIP
+     =========================================== */
+  .contact-channels {
+    background: var(--paper);
+    padding: clamp(40px, 6vh, 72px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .contact-channels-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .contact-channel {
+    display: grid;
+    grid-template-columns: 28px 48px 1fr 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 22px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+  }
+
+  .contact-channel:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.12);
+  }
+
+  .contact-channel-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+
+  .contact-channel-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+
+  .contact-channel:hover .contact-channel-icon {
+    background: var(--amber);
+    color: var(--ink);
+    transform: scale(1.05);
+  }
+
+  .contact-channel-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+  }
+
+  .contact-channel-name {
+    font-family: var(--f-display);
+    font-size: 17px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 600;
+    margin: 0;
+    letter-spacing: -0.01em;
+  }
+
+  .contact-channel-detail {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0;
+    font-weight: 500;
+  }
+
+  .contact-channel-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    text-transform: uppercase;
+  }
+
+  .contact-channel-arrow {
+    color: var(--amber);
+    transition: transform var(--transition);
+  }
+
+  .contact-channel:hover .contact-channel-arrow {
+    transform: translateX(4px);
+    color: var(--amber-deep);
+  }
+
+  /* ===========================================
+     FORM SECTION
+     =========================================== */
+  .contact-form-section {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 24px;
+  }
+
+  .contact-form-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 48px;
+    align-items: flex-start;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Form card */
+  .contact-form-card {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 36px 36px 32px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+
+  .contact-form-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+  }
+
+  .contact-form-head {
+    margin-bottom: 24px;
+  }
+
+  .contact-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0 0 8px;
+    font-weight: 500;
+  }
+
+  .contact-form-h2 {
+    margin: 0 0 12px;
+  }
+
+  .contact-form-lead {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+  }
+
+  .contact-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-form-row-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .contact-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .contact-form-required {
+    color: var(--amber-deep);
+    font-weight: 600;
+  }
+
+  .contact-form-input,
+  .contact-form-select,
+  .contact-form-textarea {
+    width: 100%;
+    padding: 12px 14px;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--ink);
+    transition: border-color var(--transition), background var(--transition);
+    line-height: 1.5;
+  }
+
+  .contact-form-input:focus,
+  .contact-form-select:focus,
+  .contact-form-textarea:focus {
+    outline: none;
+    border-color: var(--amber);
+    background: var(--paper);
+    box-shadow: 0 0 0 3px rgba(212,147,46,0.12);
+  }
+
+  .contact-form-input::placeholder,
+  .contact-form-textarea::placeholder {
+    color: rgba(15,20,25,0.35);
+  }
+
+  .contact-form-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%234A5561' stroke-width='1.5' stroke-linecap='round' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 38px;
+    cursor: pointer;
+  }
+
+  .contact-form-textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: var(--f-body);
+  }
+
+  .contact-form-hint {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  .contact-form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    padding: 14px 22px;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    margin-top: 4px;
+  }
+
+  .contact-form-submit:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+
+  .contact-form-submit svg {
+    transition: transform 0.22s ease;
+  }
+
+  .contact-form-submit:hover svg {
+    transform: translateX(3px);
+  }
+
+  .contact-form-disclaimer {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin: 0;
+    text-align: center;
+    padding-top: 4px;
+  }
+
+  .contact-form-disclaimer a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ===========================================
+     SIDE CARD
+     =========================================== */
+  .contact-side {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 24px;
+  }
+
+  .contact-side-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 28px 28px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-side-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+  }
+
+  .contact-side-card::after {
+    content: "";
+    position: absolute;
+    top: -100px; right: -100px;
+    width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(212,147,46,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .contact-side-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed rgba(244,239,230,0.15);
+    margin-bottom: 18px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-side-pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: contact-pulse 2s ease-in-out infinite;
+    box-shadow: 0 0 0 4px rgba(92,128,64,0.2);
+  }
+
+  @keyframes contact-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .contact-side-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.7);
+    font-weight: 500;
+  }
+
+  .contact-side-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-side-item {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed rgba(244,239,230,0.08);
+  }
+
+  .contact-side-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .contact-side-num {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .contact-side-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .contact-side-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .contact-side-when {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+  }
+
+  .contact-side-divider {
+    width: 12px;
+    height: 1px;
+    background: rgba(244,239,230,0.2);
+  }
+
+  .contact-side-what {
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  .contact-side-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.65);
+    margin: 0;
+  }
+
+  .contact-side-foot {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(244,239,230,0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-side-foot-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.5);
+    font-weight: 500;
+  }
+
+  .contact-side-foot-val {
+    font-family: var(--f-display);
+    font-size: 16px;
+    color: var(--amber);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--transition);
+  }
+
+  .contact-side-foot-val:hover {
+    color: var(--cream);
+  }
+
+  .contact-side-trust {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 18px 22px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+
+  .contact-side-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+
+  /* ===========================================
+     ALT PATHS
+     =========================================== */
+  .contact-alt {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+  }
+
+  .contact-alt-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .contact-alt-card {
+    padding: 28px 26px 26px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-alt-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+
+  .contact-alt-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.12);
+  }
+
+  .contact-alt-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .contact-alt-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+    transition: all var(--transition);
+  }
+
+  .contact-alt-card:hover .contact-alt-icon {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .contact-alt-title {
+    font-family: var(--f-display);
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+  }
+
+  .contact-alt-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0 0 16px;
+  }
+
+  .contact-alt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    text-decoration: none;
+    transition: gap 0.3s ease, color var(--transition);
+    font-weight: 500;
+  }
+
+  .contact-alt-link:hover {
+    gap: 10px;
+    color: var(--ink);
+  }
+
+  /* ===========================================
+     RESPONSIVE
+     =========================================== */
+  @media (max-width: 1024px) {
+    .contact-form-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .contact-side {
+      position: static;
+    }
+    .contact-channels-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+    .contact-alt-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .contact-form-card {
+      padding: 28px 24px 26px;
+    }
+    .contact-form-row-pair {
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    .contact-channel {
+      grid-template-columns: 28px 44px 1fr 20px;
+      padding: 18px 18px;
+      gap: 12px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+  }
+</style>
+
+<script>
+  // Anti-spam timestamp for form
+  document.addEventListener('DOMContentLoaded', () => {
+    const timestamp = document.getElementById('contact-form-timestamp');
+    if (timestamp) {
+      (timestamp as HTMLInputElement).value = String(Date.now());
+    }
+  });
+</script>
