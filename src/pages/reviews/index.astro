@@ -1,0 +1,1512 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/reviews/";
+
+// NOTE: testimonials below are PLACEHOLDER copy with [Name] / [Company] tags.
+// Replace with real client testimonials before populating Review schema.
+// AggregateRating intentionally omitted from schema until real reviews exist.
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Client Reviews & Testimonials | Upcoming Brand",
+      "description": "What clients say about working with Upcoming Brand. Project reviews from Maryland law firms, dental practices, real estate, contractors, and ecommerce brands.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "dateModified": "2026-05-02",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Reviews", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const platforms = [
+  {
+    name: "Upwork",
+    rating: "5.0",
+    count: "Top Rated",
+    detail: "Top Rated talent badge, 100% job success score across all completed contracts.",
+    url: "#",
+    icon: "upwork",
+  },
+  {
+    name: "Google",
+    rating: "5.0",
+    count: "Verified reviews",
+    detail: "Google Business Profile reviews from Maryland clients across multiple verticals.",
+    url: "#",
+    icon: "google",
+  },
+  {
+    name: "Direct referrals",
+    rating: "70%+",
+    count: "of new projects",
+    detail: "Most new projects come from existing clients. The strongest review signal there is.",
+    url: "/contact/",
+    icon: "referral",
+  },
+];
+
+const featured = {
+  quote: "We'd been on the same Squarespace site for six years, ranking nowhere for the searches that mattered. Upcoming Brand rebuilt the practice site on WordPress with proper LegalService schema and city pages for the four counties we cover. We picked up Local Pack placement in two of the four within 90 days, and the new client inquiries through the site have roughly tripled. The thing that really stood out: I worked directly with the founder from discovery to launch. No account managers, no telephone game.",
+  attrName: "[Managing Partner]",
+  attrRole: "Managing Partner",
+  attrCompany: "[Law Firm Name]",
+  attrLocation: "Bethesda, MD",
+  rating: 5,
+  project: "Custom WordPress + city landing pages",
+  package: "Growth tier",
+  year: "2025",
+  industry: "Legal",
+  initials: "MP",
+};
+
+const reviews = [
+  {
+    quote: "We were quoted $14,000 by an agency in DC and $1,200 by a freelancer on Upwork. Upcoming Brand came in at $4,500, fixed-scope, with schema and Core Web Vitals built in. Site shipped at 96 Lighthouse and we've moved into the top 3 for 'dentist [city]' in our zip code.",
+    attrName: "[Practice Owner]",
+    attrRole: "Practice Owner",
+    attrCompany: "[Dental Practice]",
+    attrLocation: "Towson, MD",
+    rating: 5,
+    project: "Dental practice WordPress build",
+    package: "Growth tier",
+    industry: "Dental",
+    initials: "PO",
+  },
+  {
+    quote: "I'd been told 'WordPress can't do what you need' by three other agencies. Upcoming Brand spent the discovery call walking through exactly how to do it — IDX integration, multi-listing schema, the works. Site launched in 9 weeks, came in under quote, and the IDX feed has worked flawlessly since.",
+    attrName: "[Broker / Owner]",
+    attrRole: "Broker / Owner",
+    attrCompany: "[Real Estate Brokerage]",
+    attrLocation: "Annapolis, MD",
+    rating: 5,
+    project: "WordPress + IDX integration",
+    package: "Custom tier",
+    industry: "Real Estate",
+    initials: "BO",
+  },
+  {
+    quote: "Most contractor sites look identical because they're all built on the same templates. Ours doesn't. Upcoming Brand designed a custom WordPress site around the multi-step estimate form we wanted, and our cost-per-lead from organic search dropped about 40% in the first three months.",
+    attrName: "[Operations Director]",
+    attrRole: "Operations Director",
+    attrCompany: "[Contracting Co.]",
+    attrLocation: "Frederick, MD",
+    rating: 5,
+    project: "Contractor WordPress + estimate form",
+    package: "Growth tier",
+    industry: "Contractor",
+    initials: "OD",
+  },
+  {
+    quote: "Migrating 800 products from a slow Shopify store to WooCommerce had me anxious about losing rankings. Upcoming Brand built the redirect map, ran the cutover during a low-traffic window, and we recovered all top-10 rankings within 4 weeks. Performance jumped from 38 to 94 Lighthouse.",
+    attrName: "[Founder]",
+    attrRole: "Founder",
+    attrCompany: "[Ecommerce Brand]",
+    attrLocation: "Columbia, MD",
+    rating: 5,
+    project: "Shopify -> WooCommerce migration",
+    package: "Custom tier",
+    industry: "Ecommerce",
+    initials: "F",
+  },
+  {
+    quote: "What I appreciated most was the honest 'no' on a feature we wanted. They explained why a particular approach would hurt our schema and conversion architecture, and proposed something better. That kind of pushback is rare in agencies — usually it's just yes-and-invoice.",
+    attrName: "[Executive Director]",
+    attrRole: "Executive Director",
+    attrCompany: "[Nonprofit]",
+    attrLocation: "Silver Spring, MD",
+    rating: 5,
+    project: "Nonprofit redesign + donation flow",
+    package: "Growth tier",
+    industry: "Nonprofit",
+    initials: "ED",
+  },
+  {
+    quote: "Care plan has been a total non-event for two years — exactly what you want a care plan to be. Site has been up the whole time, plugins update without breaking anything, and when I had a concern about a Google Search Console alert, I got a reply within an hour from the founder directly. Worth every dollar.",
+    attrName: "[Owner]",
+    attrRole: "Owner",
+    attrCompany: "[Restaurant Group]",
+    attrLocation: "Baltimore, MD",
+    rating: 5,
+    project: "Care plan (ongoing)",
+    package: "Care plan",
+    industry: "Restaurant",
+    initials: "OW",
+  },
+];
+
+const metrics = [
+  { num: "5.0", label: "Average rating",    note: "Across all reviewed projects" },
+  { num: "98%", label: "Project completion", note: "On time, on scope, on budget" },
+  { num: "70%", label: "Repeat / referral", note: "Of new projects come from existing" },
+  { num: "100%", label: "Lighthouse 90+",   note: "Sites shipped in the green" },
+];
+
+const categories = [
+  "Legal",
+  "Dental",
+  "Real Estate",
+  "Contractor",
+  "Ecommerce",
+  "Nonprofit",
+  "Restaurant",
+  "All reviews",
+];
+---
+<BaseLayout
+  title="Client Reviews & Testimonials | Upcoming Brand WordPress Studio"
+  description="What clients say about working with Upcoming Brand. Project reviews from Maryland law firms, dental practices, real estate, contractors, and ecommerce brands."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">Client reviews</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">What clients say</span>
+          <span class="page-h1-line"><em class="page-h1-accent">about the work.</em></span>
+        </h1>
+
+        <p class="page-lead">
+          Real reviews from Maryland law firms, dental practices, contractors, real estate brokerages, and ecommerce brands. <strong>The strongest signal is that 70% of new projects come from existing clients</strong> — repeat work and referrals, not paid acquisition.
+        </p>
+
+        <div class="reviews-hero-stars" aria-label="5 star average rating">
+          <span class="reviews-hero-stars-row" aria-hidden="true">
+            {[1,2,3,4,5].map(() => (
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            ))}
+          </span>
+          <span class="reviews-hero-stars-text">5.0 average across reviewed projects</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== METRICS STRIP ====== -->
+    <section class="reviews-metrics">
+      <div class="container">
+        <div class="reviews-metrics-grid">
+          {metrics.map((m, i) => (
+            <div class="reviews-metric">
+              <span class="reviews-metric-num">{m.num}</span>
+              <span class="reviews-metric-label">{m.label}</span>
+              <span class="reviews-metric-note">{m.note}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PLATFORMS ====== -->
+    <section class="reviews-platforms">
+      <div class="container">
+        <div class="reviews-platforms-head">
+          <p class="reviews-section-eyebrow">
+            <span class="reviews-section-eyebrow-line"></span>
+            Where the reviews live
+          </p>
+          <h2 class="page-h2">
+            Three places <em>to read what clients said.</em>
+          </h2>
+          <p class="page-section-lead">Reviews on this page are excerpts. The full versions live on Upwork and Google Business Profile, and most new clients came referred by an existing one.</p>
+        </div>
+
+        <div class="reviews-platforms-grid">
+          {platforms.map((p) => (
+            <a href={p.url} class="reviews-platform">
+              <div class="reviews-platform-head">
+                <span class="reviews-platform-icon" aria-hidden="true">
+                  {p.icon === "upwork" && (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.561 13.158c-1.103 0-2.135-.467-3.074-1.226l.228-1.076.008-.04c.207-1.143.849-3.06 2.839-3.06 1.492 0 2.703 1.212 2.703 2.703-.001 1.489-1.212 2.699-2.704 2.699zm0-8.14c-2.539 0-4.51 1.649-5.31 4.366-1.22-1.834-2.148-4.036-2.687-5.892H7.828v7.112c-.002 1.406-1.141 2.546-2.547 2.548-1.405-.002-2.543-1.143-2.545-2.548V3.492H0v7.112c0 2.914 2.37 5.303 5.281 5.303 2.913 0 5.283-2.389 5.283-5.303v-1.19c.529 1.107 1.182 2.229 1.974 3.221l-1.673 7.873h2.797l1.213-5.71c1.063.679 2.285 1.109 3.686 1.109 3 0 5.439-2.452 5.439-5.45 0-3-2.439-5.439-5.439-5.439z"/></svg>
+                  )}
+                  {p.icon === "google" && (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" opacity=".82"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" opacity=".7"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" opacity=".55"/></svg>
+                  )}
+                  {p.icon === "referral" && (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  )}
+                </span>
+                <div class="reviews-platform-text">
+                  <h3 class="reviews-platform-name">{p.name}</h3>
+                  <span class="reviews-platform-detail">{p.detail}</span>
+                </div>
+              </div>
+              <div class="reviews-platform-stats">
+                <span class="reviews-platform-rating">{p.rating}</span>
+                <span class="reviews-platform-count">{p.count}</span>
+              </div>
+              <span class="reviews-platform-arrow" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FEATURED REVIEW ====== -->
+    <section class="reviews-featured">
+      <div class="container">
+        <div class="reviews-featured-head">
+          <p class="reviews-section-eyebrow">
+            <span class="reviews-section-eyebrow-line"></span>
+            Featured review
+          </p>
+          <h2 class="page-h2 reviews-featured-h2">
+            One project, <em>told in full.</em>
+          </h2>
+        </div>
+
+        <article class="reviews-featured-card">
+          <span class="reviews-featured-mark" aria-hidden="true">&ldquo;</span>
+
+          <div class="reviews-featured-meta">
+            <span class="reviews-featured-industry">{featured.industry}</span>
+            <span class="reviews-featured-meta-dot" aria-hidden="true"></span>
+            <span class="reviews-featured-package">{featured.package}</span>
+            <span class="reviews-featured-meta-dot" aria-hidden="true"></span>
+            <span class="reviews-featured-year">{featured.year}</span>
+          </div>
+
+          <blockquote class="reviews-featured-quote">
+            <p>{featured.quote}</p>
+          </blockquote>
+
+          <div class="reviews-featured-stars" aria-label={`${featured.rating} out of 5`}>
+            {Array.from({ length: featured.rating }).map(() => (
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            ))}
+          </div>
+
+          <footer class="reviews-featured-attr">
+            <div class="reviews-featured-avatar">
+              <span class="reviews-featured-avatar-initials">{featured.initials}</span>
+            </div>
+            <div class="reviews-featured-attr-text">
+              <span class="reviews-featured-name">{featured.attrName}</span>
+              <span class="reviews-featured-role">{featured.attrRole} &middot; {featured.attrCompany}</span>
+              <span class="reviews-featured-location">{featured.attrLocation}</span>
+            </div>
+            <div class="reviews-featured-project">
+              <span class="reviews-featured-project-label">Project</span>
+              <span class="reviews-featured-project-val">{featured.project}</span>
+            </div>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== ALL REVIEWS GRID ====== -->
+    <section class="reviews-grid-section">
+      <div class="container">
+        <div class="reviews-grid-head">
+          <p class="reviews-section-eyebrow">
+            <span class="reviews-section-eyebrow-line"></span>
+            More reviews
+          </p>
+          <h2 class="page-h2">
+            Six more <em>across six verticals.</em>
+          </h2>
+          <p class="page-section-lead">A cross-section of recent client reviews. Names anonymised at client request — full reviews with attribution available on request.</p>
+        </div>
+
+        <!-- Filter pills (visual only — labels) -->
+        <div class="reviews-filter-row">
+          {categories.map((c, i) => (
+            <span class={`reviews-filter-pill ${i === categories.length - 1 ? 'reviews-filter-pill-active' : ''}`}>
+              {c}
+            </span>
+          ))}
+        </div>
+
+        <div class="reviews-grid">
+          {reviews.map((r, i) => (
+            <article class="review-card">
+              <div class="review-card-head">
+                <span class="review-card-industry">{r.industry}</span>
+                <div class="review-card-stars" aria-label={`${r.rating} out of 5`}>
+                  {Array.from({ length: r.rating }).map(() => (
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  ))}
+                </div>
+              </div>
+
+              <p class="review-card-quote">{r.quote}</p>
+
+              <div class="review-card-meta">
+                <span class="review-card-meta-label">Project</span>
+                <span class="review-card-meta-val">{r.project}</span>
+              </div>
+
+              <footer class="review-card-attr">
+                <div class="review-card-avatar">
+                  <span>{r.initials}</span>
+                </div>
+                <div class="review-card-attr-text">
+                  <span class="review-card-name">{r.attrName}</span>
+                  <span class="review-card-role">{r.attrRole} &middot; {r.attrCompany}</span>
+                  <span class="review-card-location">{r.attrLocation} &middot; {r.package}</span>
+                </div>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== INVITE / CTA ====== -->
+    <section class="reviews-invite">
+      <div class="container">
+        <div class="reviews-invite-grid">
+
+          <div class="reviews-invite-card reviews-invite-write">
+            <span class="reviews-invite-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            </span>
+            <h3 class="reviews-invite-title">Worked with us before?</h3>
+            <p class="reviews-invite-desc">If you've been on a project, sprint, or care plan with us, we'd appreciate a public review. Upwork or Google Business Profile — both reach the audience that matters.</p>
+            <a href="mailto:hello@upcomingbrand.com?subject=Leave%20a%20review" class="reviews-invite-cta">
+              Leave a review
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="reviews-invite-card reviews-invite-start">
+            <span class="reviews-invite-icon reviews-invite-icon-amber" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </span>
+            <h3 class="reviews-invite-title">Be the next review.</h3>
+            <p class="reviews-invite-desc">A 45-minute discovery call. We map your competitive set, identify the schema and Local Pack gaps, and send a fixed quote within 48 hours.</p>
+            <a href="/contact/" class="reviews-invite-cta reviews-invite-cta-amber">
+              Book a discovery call
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to start</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Read the reviews.<br>
+            <em>Now write your own.</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. Same process every reviewer above went through. Audit, map, quote — within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/work/" class="page-cta-ghost-light">
+              See the work
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===========================================
+     SHARED PAGE SYSTEM
+     =========================================== */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 12px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-section-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 16px auto 0;
+  }
+
+  .lp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg { transition: transform 0.22s ease; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+
+  .reviews-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0;
+    font-weight: 500;
+  }
+  .reviews-section-eyebrow-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  /* Hero star row */
+  .reviews-hero-stars {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+  }
+  .reviews-hero-stars-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    color: var(--amber);
+  }
+  .reviews-hero-stars-text {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* ===========================================
+     METRICS STRIP
+     =========================================== */
+  .reviews-metrics {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 36px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reviews-metrics::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 80%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,147,46,0.5), transparent);
+    transform: translateX(-50%);
+  }
+
+  .reviews-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .reviews-metric {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 16px;
+    position: relative;
+  }
+
+  .reviews-metric:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, rgba(244,239,230,0.15), transparent);
+  }
+
+  .reviews-metric-num {
+    font-family: var(--f-display);
+    font-size: clamp(36px, 4vw, 52px);
+    line-height: 1;
+    color: var(--amber);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+  }
+
+  .reviews-metric-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--cream);
+    font-weight: 500;
+    margin-top: 4px;
+  }
+
+  .reviews-metric-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.55);
+  }
+
+  /* ===========================================
+     PLATFORMS
+     =========================================== */
+  .reviews-platforms {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .reviews-platforms-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .reviews-platforms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .reviews-platform {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    gap: 14px;
+    padding: 28px 26px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .reviews-platform::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+
+  .reviews-platform:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.12);
+  }
+
+  .reviews-platform:hover::before {
+    transform: scaleY(1);
+  }
+
+  .reviews-platform-head {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .reviews-platform-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all var(--transition);
+  }
+
+  .reviews-platform:hover .reviews-platform-icon {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .reviews-platform-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .reviews-platform-name {
+    font-family: var(--f-display);
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .reviews-platform-detail {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+  }
+
+  .reviews-platform-stats {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .reviews-platform-rating {
+    font-family: var(--f-display);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--amber-deep);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+
+  .reviews-platform-count {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .reviews-platform-arrow {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: center;
+    color: var(--amber);
+    transition: transform var(--transition);
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    padding-left: 14px;
+  }
+
+  .reviews-platform:hover .reviews-platform-arrow {
+    transform: translateX(4px);
+  }
+
+  /* ===========================================
+     FEATURED REVIEW
+     =========================================== */
+  .reviews-featured {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .reviews-featured-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .reviews-featured-h2 { text-align: center; }
+
+  .reviews-featured-card {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 48px 56px 40px;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    position: relative;
+    box-shadow: var(--shadow-md);
+  }
+
+  .reviews-featured-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), transparent);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .reviews-featured-mark {
+    position: absolute;
+    top: 20px;
+    left: 36px;
+    font-family: var(--f-display);
+    font-size: 96px;
+    line-height: 0.5;
+    color: var(--amber);
+    opacity: 0.18;
+    font-weight: 400;
+    pointer-events: none;
+  }
+
+  .reviews-featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+    font-weight: 500;
+  }
+
+  .reviews-featured-meta-dot {
+    width: 3px; height: 3px;
+    background: var(--amber);
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  .reviews-featured-quote {
+    margin: 0 0 24px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .reviews-featured-quote p {
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: clamp(20px, 2.4vw, 28px);
+    line-height: 1.45;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    font-weight: 400;
+    margin: 0;
+  }
+
+  .reviews-featured-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    color: var(--amber);
+    margin-bottom: 24px;
+  }
+
+  .reviews-featured-attr {
+    display: grid;
+    grid-template-columns: 56px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding-top: 24px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .reviews-featured-avatar {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber) 0%, var(--amber-deep) 100%);
+    color: var(--cream);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-display);
+    font-size: 19px;
+    font-weight: 500;
+    box-shadow: 0 4px 14px rgba(212,147,46,0.25);
+  }
+
+  .reviews-featured-attr-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .reviews-featured-name {
+    font-family: var(--f-display);
+    font-size: 17px;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .reviews-featured-role {
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  .reviews-featured-location {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+
+  .reviews-featured-project {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .reviews-featured-project-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .reviews-featured-project-val {
+    font-size: 12.5px;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+
+  /* ===========================================
+     REVIEWS GRID SECTION
+     =========================================== */
+  .reviews-grid-section {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .reviews-grid-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  /* Filter pills */
+  .reviews-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 36px;
+    padding: 16px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    max-width: 880px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .reviews-filter-pill {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-soft);
+    padding: 6px 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    cursor: default;
+    transition: all var(--transition);
+  }
+
+  .reviews-filter-pill:hover {
+    border-color: var(--amber);
+    color: var(--amber-deep);
+  }
+
+  .reviews-filter-pill-active {
+    background: var(--ink);
+    color: var(--amber);
+    border-color: var(--ink);
+  }
+
+  /* Grid */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .review-card {
+    padding: 28px 28px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .review-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+
+  .review-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+
+  .review-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .review-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .review-card-industry {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    padding: 4px 10px;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+  }
+
+  .review-card-stars {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    color: var(--amber);
+  }
+
+  .review-card-quote {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+    flex: 1;
+  }
+
+  .review-card-quote::before {
+    content: "\201C";
+    font-family: var(--f-display);
+    color: var(--amber);
+    font-size: 26px;
+    line-height: 0;
+    margin-right: 2px;
+    position: relative;
+    top: 5px;
+  }
+
+  .review-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: var(--paper);
+    border-radius: var(--radius-sm);
+  }
+
+  .review-card-meta-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+
+  .review-card-meta-val {
+    font-size: 12px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .review-card-attr {
+    display: grid;
+    grid-template-columns: 40px 1fr;
+    gap: 12px;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .review-card-avatar {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--amber) 0%, var(--amber-deep) 100%);
+    color: var(--cream);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-display);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .review-card-attr-text {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+  }
+
+  .review-card-name {
+    font-family: var(--f-display);
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .review-card-role {
+    font-size: 11.5px;
+    color: var(--ink-muted);
+  }
+
+  .review-card-location {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    opacity: 0.75;
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  /* ===========================================
+     INVITE / NEXT
+     =========================================== */
+  .reviews-invite {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .reviews-invite-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .reviews-invite-card {
+    padding: 32px 32px 30px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+  }
+
+  .reviews-invite-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+
+  .reviews-invite-write {
+    background: var(--paper);
+  }
+
+  .reviews-invite-start {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: rgba(212,147,46,0.3);
+  }
+
+  .reviews-invite-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 14px;
+  }
+
+  .reviews-invite-icon-amber {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+
+  .reviews-invite-title {
+    font-family: var(--f-display);
+    font-size: 24px;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 10px;
+  }
+
+  .reviews-invite-write .reviews-invite-title { color: var(--ink); }
+  .reviews-invite-start .reviews-invite-title { color: var(--cream); }
+
+  .reviews-invite-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0 0 18px;
+  }
+
+  .reviews-invite-write .reviews-invite-desc { color: var(--ink-muted); }
+  .reviews-invite-start .reviews-invite-desc { color: rgba(244,239,230,0.65); }
+
+  .reviews-invite-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all var(--transition);
+  }
+
+  .reviews-invite-cta:hover {
+    background: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+
+  .reviews-invite-cta-amber {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .reviews-invite-cta-amber:hover {
+    background: var(--cream);
+    color: var(--ink);
+  }
+
+  .reviews-invite-cta svg { transition: transform 0.22s ease; }
+  .reviews-invite-cta:hover svg { transform: translateX(3px); }
+
+  /* ===========================================
+     PAGE FINAL CTA
+     =========================================== */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* ===========================================
+     RESPONSIVE
+     =========================================== */
+  @media (max-width: 1024px) {
+    .reviews-metrics-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 32px 24px;
+    }
+    .reviews-metric:nth-child(2)::after { display: none; }
+    .reviews-platforms-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .reviews-invite-grid { grid-template-columns: 1fr; }
+    .reviews-featured-card {
+      padding: 40px 28px 32px;
+    }
+    .reviews-featured-mark {
+      left: 18px;
+      font-size: 72px;
+    }
+    .reviews-featured-attr {
+      grid-template-columns: 48px 1fr;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+    .reviews-featured-project {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      text-align: left;
+      padding-top: 12px;
+      border-top: 1px dashed var(--line);
+    }
+    .reviews-featured-project-val { color: var(--ink); }
+  }
+
+  @media (max-width: 768px) {
+    .reviews-metrics-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    .reviews-metric:not(:last-child)::after {
+      display: none;
+    }
+    .reviews-platform {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto;
+    }
+    .reviews-platform-arrow {
+      grid-column: 1;
+      grid-row: 3;
+      padding-left: 0;
+      justify-self: flex-end;
+      border-top: none;
+      padding-top: 0;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+    .reviews-featured-quote p { font-size: 18px; }
+    .review-card { padding: 22px 20px; }
+  }
+</style>
