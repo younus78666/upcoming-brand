@@ -1,0 +1,1512 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/services/woocommerce-development/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "WooCommerce Development Services & Hire WooCommerce Expert | Upcoming Brand",
+      "description": "WooCommerce development services from a senior WooCommerce expert. Custom builds, subscriptions, multi-vendor, Stripe integration. Schema-first, 90+ Lighthouse, fixed-scope from $4,500.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",                     "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services",                 "item": "https://upcomingbrand.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "WooCommerce Development", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      "name": "WooCommerce Development Services",
+      "description": "Senior WooCommerce development services covering custom builds, subscriptions, configurators, multi-vendor stores, payment integrations, and ongoing WooCommerce support. Fixed-scope projects from $4,500.",
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "serviceType": "WooCommerce development",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "offers": {
+        "@type": "Offer",
+        "price": "4500",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5"
+      },
+      "knowsAbout": [
+        "WooCommerce development",
+        "WooCommerce development services",
+        "WooCommerce developer",
+        "WooCommerce expert",
+        "Custom WooCommerce development",
+        "Hire WooCommerce developer",
+        "WooCommerce website development",
+        "WooCommerce customization",
+        "WooCommerce plugin development",
+        "WooCommerce subscriptions",
+        "WooCommerce multi-vendor",
+        "WooCommerce Stripe integration",
+        "WooCommerce support"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      "name": "How to build a WooCommerce store",
+      "description": "The five-phase process for building a custom WooCommerce store with schema, performance, and conversion architecture built in.",
+      "totalTime": "P8W",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Map products, schema, and checkout flow",   "text": "Catalog audit, product schema mapping (Product, Offer, AggregateRating), payment processor selection, and checkout flow design before any code is written." },
+        { "@type": "HowToStep", "position": 2, "name": "Custom theme and block development",        "text": "Custom WooCommerce theme with native Gutenberg block product layouts. No page builders, no $400/year theme licences." },
+        { "@type": "HowToStep", "position": 3, "name": "Integrations and payment gateways",         "text": "Stripe, Authorize.net, PayPal integration. Subscriptions, configurators, multi-vendor as scoped." },
+        { "@type": "HowToStep", "position": 4, "name": "Schema and performance optimization",        "text": "Product schema across catalog, image optimization, lazy loading, and Core Web Vitals tuning. 90+ Lighthouse on every product page." },
+        { "@type": "HowToStep", "position": 5, "name": "Launch and 30-day monitoring",                "text": "Pre-launch performance audit, redirect map (if migrating), DNS cutover, daily Search Console + sales monitoring for 30 days post-launch." }
+      ]
+    }
+  ]
+});
+
+const includes = [
+  "Custom WooCommerce theme on a performant base",
+  "Product, Offer, and Review schema across the catalog",
+  "Stripe, PayPal, and Authorize.net payment integration",
+  "Custom Gutenberg blocks for product layouts",
+  "Mobile-first responsive checkout flow",
+  "90+ Lighthouse on every product page (contractually)",
+  "Search Console and Bing Webmaster setup",
+  "30-day post-launch sales + ranking monitoring",
+];
+
+const tiers = [
+  {
+    name: "Setup",
+    price: "$4,500",
+    duration: "5-7 weeks",
+    summary: "WooCommerce setup on a custom theme with up to 50 products, basic configurations, and one payment gateway.",
+    fits: ["First-time stores", "Up to 50 products", "Single payment gateway"],
+    href: "/contact/?plan=woo-setup",
+  },
+  {
+    name: "Custom",
+    price: "$8,500",
+    duration: "8-10 weeks",
+    summary: "Custom WooCommerce build with subscriptions, configurators, multi-vendor support, or specialty integrations.",
+    fits: ["Subscriptions / memberships", "Product configurators", "Multi-vendor / marketplace"],
+    href: "/contact/?plan=woo-custom",
+    highlight: true,
+  },
+  {
+    name: "Enterprise",
+    price: "From $15,000",
+    duration: "10-14 weeks",
+    summary: "High-volume stores, custom plugin development, ERP / CRM sync, multi-currency, multi-language WooCommerce.",
+    fits: ["High-volume catalogs (500+)", "ERP / CRM integration", "Multi-region / multi-currency"],
+    href: "/contact/?plan=woo-enterprise",
+  },
+];
+
+const capabilities = [
+  { num: "01", area: "WooCommerce subscriptions",  detail: "Recurring billing, member-only products, payment retries, trial flows. Stripe Subscriptions or Authorize.net ARB." },
+  { num: "02", area: "Product configurators",       detail: "Variable products, conditional options, custom add-ons. Real-time price updates as customers configure." },
+  { num: "03", area: "Multi-vendor marketplaces",   detail: "WC Vendors or Dokan setup with vendor onboarding, payouts, commissions, and per-vendor analytics." },
+  { num: "04", area: "Payment integrations",         detail: "Stripe, PayPal, Authorize.net, Square. ACH for high-ticket orders. Currency conversion as needed." },
+  { num: "05", area: "Custom plugin development",    detail: "When the right plugin doesn't exist, we build it. Lightweight, documented, maintained." },
+  { num: "06", area: "Performance + product schema", detail: "Product, Offer, AggregateRating schema across the catalog. Image optimization. 90+ Lighthouse." },
+];
+
+const whenWoo = [
+  {
+    num: "01",
+    signal: "Selling more than 5 products online",
+    detail: "Below 5 products you can probably get away with a simple Stripe Checkout link. Above that, you need WooCommerce-level catalog management, search, filtering, and analytics.",
+  },
+  {
+    num: "02",
+    signal: "You need subscriptions or memberships",
+    detail: "Recurring billing, member-only content, or tiered pricing requires WooCommerce Subscriptions or a membership plugin. Shopify and Squarespace can't match the flexibility.",
+  },
+  {
+    num: "03",
+    signal: "Shopify monthly fees are eating margin",
+    detail: "Shopify charges $79-$299/month plus transaction fees. WooCommerce on your own hosting is $20-$100/month total. For high-volume stores, the savings pay for the build in 6-18 months.",
+  },
+  {
+    num: "04",
+    signal: "You need configurable / custom products",
+    detail: "Build-your-own-bundle, custom variations with conditional options, real-time pricing engines. WooCommerce + custom development handles cases Shopify won't.",
+  },
+  {
+    num: "05",
+    signal: "You're integrating with ERP or CRM",
+    detail: "Sync inventory with NetSuite, sync customers with HubSpot, sync orders with QuickBooks. WooCommerce has the open API to make these integrations clean.",
+  },
+  {
+    num: "06",
+    signal: "You want to own the platform",
+    detail: "Shopify can deplatform a store. WooCommerce on your own hosting is yours forever. For brands building long-term equity in the catalog, the platform ownership matters.",
+  },
+];
+
+const wooVsShopify = [
+  { factor: "Monthly fee",          shopify: "$79-$299/mo + transaction fees", woo: "Hosting only ($20-$100/mo)" },
+  { factor: "Custom checkout",     shopify: "Limited to Shopify Plus tier",   woo: "Fully customizable on any plan" },
+  { factor: "Subscriptions",       shopify: "Add-on apps, monthly fees",      woo: "WooCommerce Subscriptions one-time" },
+  { factor: "Schema control",      shopify: "Theme-bound, limited fields",    woo: "Full Product / Offer / Review control" },
+  { factor: "Plugin ecosystem",   shopify: "Apps with monthly subscriptions", woo: "Mostly one-time licences or free" },
+  { factor: "Platform ownership",  shopify: "Shopify hosts; can deplatform", woo: "You own the codebase and data" },
+];
+
+const faqs = [
+  {
+    q: "What is WooCommerce development?",
+    a: "WooCommerce development is the work of building, customizing, and maintaining ecommerce stores on the WooCommerce platform (a free WordPress plugin powering 28% of all online stores). WooCommerce development services range from basic store setup to custom plugin engineering, payment gateway integration, multi-vendor marketplace builds, and performance optimization for high-volume catalogs.",
+  },
+  {
+    q: "How much does WooCommerce development cost?",
+    a: "Quality WooCommerce development costs $4,500 to $25,000+ for most small-to-mid stores in 2026. Setup builds (50 products, single payment gateway) start at $4,500. Custom builds with subscriptions, configurators, or multi-vendor run $8,500-$15,000. Enterprise WooCommerce (high-volume, ERP integration, multi-currency) starts at $15,000 and can reach $80,000+. Hourly WooCommerce developer rates run $80-$200/hr; the higher-quality firms have moved to fixed-scope.",
+  },
+  {
+    q: "Should I hire a WooCommerce developer or use Shopify instead?",
+    a: "Use Shopify if you have under 50 simple products, don't need custom checkout flows, and accept the $79+/month platform fee. Hire a WooCommerce developer if you need subscriptions, configurators, multi-vendor, custom plugins, ERP integration, or platform ownership. The break-even point is roughly 12-18 months: above that, WooCommerce is almost always cheaper and more flexible. Below that, Shopify saves you the upfront build cost.",
+  },
+  {
+    q: "What's the difference between a WooCommerce developer and a WooCommerce expert?",
+    a: "In practice, none. 'Developer' implies engineering focus; 'expert' implies senior strategic capability across both engineering and architecture. Quality WooCommerce hires bridge both: they can ship custom code AND make architecture decisions about catalog structure, schema, payment flows, and performance. Don't hire someone who can only do one or the other.",
+  },
+  {
+    q: "Can you migrate my existing Shopify or BigCommerce store to WooCommerce?",
+    a: "Yes. Shopify-to-WooCommerce migrations are a common engagement. The process: catalog export with product images and metadata, schema mapping to WooCommerce custom fields, customer and order import, redirect mapping for SEO, and zero-downtime DNS cutover. Most Shopify migrations take 6-8 weeks and recover all top-10 rankings within 4 weeks of launch. Pricing starts at $4,500 for migrations under 200 products.",
+  },
+  {
+    q: "Do you offer ongoing WooCommerce support and maintenance?",
+    a: "Yes. Care plans from $150/month cover WooCommerce core + plugin updates tested on staging, daily off-site backups, security patching, performance monitoring, and a 4-hour SLA. Higher tiers include monthly performance audits, schema validation, and content / product updates. WooCommerce stores particularly benefit from active maintenance because plugin updates can break checkout flows in subtle ways.",
+  },
+  {
+    q: "How long does a WooCommerce development project take?",
+    a: "Standard timelines: Setup tier in 5-7 weeks, Custom in 8-10 weeks, Enterprise in 10-14 weeks. The biggest variables are catalog complexity (50 vs 5,000 products), integration scope (single gateway vs multi-region with ERP), and how quickly you provide product content. We keep the build moving on our end, but timelines pause if we're waiting on you for more than 5 business days.",
+  },
+];
+---
+<BaseLayout
+  title="WooCommerce Development Services | Hire a WooCommerce Expert | Upcoming Brand"
+  description="WooCommerce development services from a senior WooCommerce expert. Custom builds, subscriptions, multi-vendor, Stripe integration. Schema-first, 90+ Lighthouse, fixed-scope from $4,500."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">WooCommerce development</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">WooCommerce development</span>
+          <span class="page-h1-line"><em class="page-h1-accent">from a senior WooCommerce expert</em></span>
+          <span class="page-h1-line page-h1-italic">who actually ships.</span>
+        </h1>
+
+        <p class="page-lead">
+          <strong>WooCommerce development services</strong> covering custom store builds, subscriptions, configurators, multi-vendor, and payment integrations. Want to <strong>hire a WooCommerce developer</strong> who handles design, schema, and performance in one engagement? <strong>Fixed-scope from $4,500.</strong> 90+ Lighthouse on every product page. 5-14 week delivery.
+        </p>
+
+        <div class="page-hero-ctas">
+          <a href="/contact/" class="lp-btn-primary">
+            Hire the expert
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#tiers" class="lp-btn-ghost">
+            View tiers
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">From $4,500 fixed-scope</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">90+ Lighthouse on product pages</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">5-14 week delivery</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DEFINITION (Know intent + AI Overview citation) ====== -->
+    <section class="woo-define">
+      <div class="container">
+        <div class="woo-define-card">
+          <div class="woo-define-head">
+            <span class="woo-define-pulse" aria-hidden="true"></span>
+            <span class="woo-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 woo-define-h2">
+            What is WooCommerce development?
+          </h2>
+          <p class="woo-define-answer">
+            <strong>WooCommerce development is the work of building, customizing, and maintaining ecommerce stores on the WooCommerce platform.</strong> WooCommerce is a free WordPress plugin that powers 28% of all online stores. WooCommerce development services range from basic store setup to custom plugin engineering, payment gateway integration, multi-vendor marketplace builds, and performance optimization for high-volume catalogs.
+          </p>
+          <div class="woo-define-meta">
+            <div class="woo-define-meta-item">
+              <span class="woo-define-meta-label">Also known as</span>
+              <span class="woo-define-meta-val">WooCommerce design, custom WooCommerce build, WooCommerce store development</span>
+            </div>
+            <div class="woo-define-meta-item">
+              <span class="woo-define-meta-label">Typical investment</span>
+              <span class="woo-define-meta-val">$4,500 (Setup) to $25,000+ (Enterprise)</span>
+            </div>
+            <div class="woo-define-meta-item">
+              <span class="woo-define-meta-label">Market share</span>
+              <span class="woo-define-meta-val">28% of all online stores; 50%+ of WP-based stores</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== INCLUDES ====== -->
+    <section class="woo-includes">
+      <div class="container">
+        <div class="woo-includes-head">
+          <p class="woo-section-eyebrow">
+            <span class="woo-section-eyebrow-line"></span>
+            What's included
+          </p>
+          <h2 class="page-h2">
+            Eight things <em>every WooCommerce engagement ships with.</em>
+          </h2>
+          <p class="page-section-lead">Tier-independent. The Setup tier ships with the same engineering bar as Enterprise; only catalog size and integration complexity change.</p>
+        </div>
+
+        <div class="woo-includes-grid">
+          {includes.map((item, i) => (
+            <div class="woo-include">
+              <span class="woo-include-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="woo-include-check" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2.5 5.5l2 2 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="woo-include-text">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== TIERS ====== -->
+    <section class="woo-tiers" id="tiers">
+      <div class="container">
+        <div class="woo-tiers-head">
+          <p class="woo-section-eyebrow">
+            <span class="woo-section-eyebrow-line"></span>
+            Three tiers
+          </p>
+          <h2 class="page-h2">
+            Three <em>WooCommerce development packages.</em>
+          </h2>
+          <p class="page-section-lead">Each tier is fixed-scope, documented in a PDF, and held at the stated price for 30 days after the discovery call.</p>
+        </div>
+
+        <div class="woo-tiers-grid">
+          {tiers.map((t) => (
+            <a href={t.href} class={`woo-tier ${t.highlight ? 'woo-tier-highlight' : ''}`}>
+              {t.highlight && <span class="woo-tier-flag">Most chosen</span>}
+              <span class="woo-tier-name">{t.name}</span>
+              <span class="woo-tier-price">{t.price}</span>
+              <span class="woo-tier-duration">{t.duration}</span>
+              <p class="woo-tier-summary">{t.summary}</p>
+              <div class="woo-tier-fits">
+                <span class="woo-tier-fits-label">Fits</span>
+                <ul class="woo-tier-fits-list">
+                  {t.fits.map((f) => (<li>{f}</li>))}
+                </ul>
+              </div>
+              <span class="woo-tier-cta">
+                Start {t.name}
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CAPABILITIES (Component frame) ====== -->
+    <section class="woo-capabilities">
+      <div class="container">
+        <div class="woo-capabilities-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">What we build</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 woo-capabilities-h2">
+            Six WooCommerce capabilities <em>under one engagement.</em>
+          </h2>
+          <p class="woo-capabilities-lead">A real WooCommerce expert ships across all six. Not just a Shopify migrator with a WooCommerce theme.</p>
+        </div>
+
+        <div class="woo-capabilities-grid">
+          {capabilities.map((c) => (
+            <article class="woo-capability">
+              <span class="woo-capability-num">{c.num}</span>
+              <h3 class="woo-capability-area">{c.area}</h3>
+              <p class="woo-capability-detail">{c.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHEN YOU NEED IT (Causation frame) ====== -->
+    <section class="woo-when">
+      <div class="container">
+        <div class="woo-when-head">
+          <p class="woo-section-eyebrow">
+            <span class="woo-section-eyebrow-line"></span>
+            When you need it
+          </p>
+          <h2 class="page-h2">
+            Six signals <em>your store needs WooCommerce development.</em>
+          </h2>
+          <p class="page-section-lead">If two or more match, the right answer is custom WooCommerce development services, not another Shopify upgrade. <a href="/services/wordpress-web-design/">See how WooCommerce fits with WordPress web design</a>.</p>
+        </div>
+
+        <div class="woo-when-grid">
+          {whenWoo.map((w) => (
+            <article class="woo-when-card">
+              <span class="woo-when-num">{w.num}</span>
+              <h3 class="woo-when-signal">{w.signal}</h3>
+              <p class="woo-when-detail">{w.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WOO vs SHOPIFY (Comparison frame) ====== -->
+    <section class="woo-compare">
+      <div class="container">
+        <div class="woo-compare-head">
+          <p class="woo-section-eyebrow">
+            <span class="woo-section-eyebrow-line"></span>
+            WooCommerce vs Shopify
+          </p>
+          <h2 class="page-h2">
+            Why WooCommerce <em>over Shopify or BigCommerce.</em>
+          </h2>
+        </div>
+
+        <div class="woo-compare-table-wrap">
+          <table class="woo-compare-table">
+            <thead>
+              <tr>
+                <th class="woo-compare-th-factor">Factor</th>
+                <th class="woo-compare-th-shopify">Shopify</th>
+                <th class="woo-compare-th-woo">
+                  <span class="woo-compare-amber-pill">WooCommerce</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {wooVsShopify.map((c) => (
+                <tr>
+                  <td class="woo-compare-factor">{c.factor}</td>
+                  <td class="woo-compare-shopify">
+                    <span class="woo-compare-icon-no" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                    {c.shopify}
+                  </td>
+                  <td class="woo-compare-woo">
+                    <span class="woo-compare-icon-yes" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    {c.woo}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="woo-faq">
+      <div class="container">
+        <div class="woo-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">WooCommerce development FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 woo-faq-h2">
+            Seven questions <em>before you hire.</em>
+          </h2>
+        </div>
+
+        <div class="woo-faq-list">
+          {faqs.map((f, i) => (
+            <details class="woo-faq-item">
+              <summary class="woo-faq-q">
+                <span class="woo-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="woo-faq-q-text">{f.q}</span>
+                <span class="woo-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="woo-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to start</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Hire a senior<br>
+            <em>WooCommerce expert.</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. We map your catalog, payment requirements, integration scope, and send a fixed-scope quote within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Hire the expert
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/services/" class="page-cta-ghost-light">
+              View all services
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* SHARED */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .page-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .lp-btn-primary, .lp-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lp-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lp-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg, .lp-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover svg { transform: translate(2px, -2px); }
+
+  .page-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .page-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .page-trust-dot {
+    width: 3px; height: 3px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 12px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-section-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 16px auto 0;
+  }
+  .page-section-lead a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 2px; font-weight: 500; }
+
+  .woo-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0;
+    font-weight: 500;
+  }
+  .woo-section-eyebrow-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  /* DEFINITION CALLOUT */
+  .woo-define {
+    background: var(--paper);
+    padding: clamp(48px, 6vh, 80px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .woo-define-card {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--cream);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+  .woo-define-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .woo-define-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .woo-define-pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(212,147,46,0.18);
+    animation: woo-pulse 2s ease-in-out infinite;
+  }
+  @keyframes woo-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .woo-define-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+  .woo-define-h2 {
+    margin: 0 0 16px;
+    font-size: clamp(22px, 3vw, 32px);
+  }
+  .woo-define-answer {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+  .woo-define-answer strong { font-weight: 600; color: var(--ink); }
+  .woo-define-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+  }
+  .woo-define-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .woo-define-meta-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+  .woo-define-meta-val {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  /* INCLUDES */
+  .woo-includes {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .woo-includes-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .woo-includes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .woo-include {
+    display: grid;
+    grid-template-columns: 28px 22px 1fr;
+    gap: 14px;
+    align-items: flex-start;
+    padding: 16px 20px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+  }
+  .woo-include:hover {
+    border-color: var(--amber);
+    transform: translateX(3px);
+  }
+  .woo-include-num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    margin-top: 2px;
+  }
+  .woo-include-check {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(92,128,64,0.12);
+    color: var(--green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .woo-include-text {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+
+  /* TIERS */
+  .woo-tiers {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 24px;
+  }
+  .woo-tiers-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .woo-tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+  .woo-tier {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 32px 28px 28px;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .woo-tier:hover {
+    border-color: var(--amber);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(212,147,46,0.12);
+  }
+  .woo-tier-highlight {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--amber);
+    transform: translateY(-6px);
+  }
+  .woo-tier-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber));
+  }
+  .woo-tier-highlight:hover { transform: translateY(-10px); }
+  .woo-tier-flag {
+    position: absolute;
+    top: -10px; left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 14px;
+    background: var(--amber);
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .woo-tier-name {
+    font-family: var(--f-display);
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+    margin-top: 4px;
+  }
+  .woo-tier-highlight .woo-tier-name { color: var(--cream); }
+  .woo-tier-price {
+    font-family: var(--f-display);
+    font-size: 24px;
+    line-height: 1;
+    color: var(--amber-deep);
+    font-weight: 500;
+    margin-top: 8px;
+  }
+  .woo-tier-highlight .woo-tier-price { color: var(--amber); }
+  .woo-tier-duration {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .woo-tier-highlight .woo-tier-duration { color: rgba(244,239,230,0.5); }
+  .woo-tier-summary {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 12px 0 0;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+  }
+  .woo-tier-highlight .woo-tier-summary {
+    color: rgba(244,239,230,0.7);
+    border-color: rgba(244,239,230,0.15);
+  }
+  .woo-tier-fits {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    flex: 1;
+  }
+  .woo-tier-highlight .woo-tier-fits { border-color: rgba(244,239,230,0.15); }
+  .woo-tier-fits-label {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+  .woo-tier-highlight .woo-tier-fits-label { color: var(--amber); }
+  .woo-tier-fits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .woo-tier-fits-list li {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    padding-left: 14px;
+    position: relative;
+  }
+  .woo-tier-fits-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 8px;
+    width: 8px; height: 1px;
+    background: var(--amber);
+  }
+  .woo-tier-highlight .woo-tier-fits-list li {
+    color: rgba(244,239,230,0.75);
+  }
+  .woo-tier-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+  }
+  .woo-tier-highlight .woo-tier-cta {
+    color: var(--amber);
+    border-color: rgba(244,239,230,0.15);
+  }
+
+  /* CAPABILITIES (dark) */
+  .woo-capabilities {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(64px, 9vh, 112px) 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .woo-capabilities::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 60%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,147,46,0.5), transparent);
+    transform: translateX(-50%);
+  }
+  .woo-capabilities::after {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .woo-capabilities-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .woo-capabilities-h2 { color: var(--cream); }
+  .woo-capabilities-h2 em { color: var(--amber); }
+  .woo-capabilities-lead {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+  .woo-capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .woo-capability {
+    padding: 26px 24px 22px;
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.08);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .woo-capability:hover {
+    border-color: rgba(212,147,46,0.4);
+    background: rgba(244,239,230,0.06);
+    transform: translateY(-3px);
+  }
+  .woo-capability-num {
+    font-family: var(--f-display);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+  }
+  .woo-capability-area {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--cream);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 4px 0 4px;
+  }
+  .woo-capability-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.62);
+    margin: 0;
+  }
+
+  /* WHEN YOU NEED */
+  .woo-when {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .woo-when-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .woo-when-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .woo-when-card {
+    padding: 28px 26px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .woo-when-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .woo-when-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+  .woo-when-card:hover::before { transform: scaleY(1); }
+  .woo-when-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+  .woo-when-signal {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 10px 0 8px;
+  }
+  .woo-when-detail {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* COMPARE TABLE */
+  .woo-compare {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .woo-compare-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .woo-compare-table-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--paper);
+    box-shadow: var(--shadow-md);
+  }
+  .woo-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .woo-compare-table th {
+    padding: 18px 20px;
+    text-align: left;
+    background: var(--cream);
+    border-bottom: 2px solid var(--line);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .woo-compare-th-factor { color: var(--ink-muted); width: 22%; }
+  .woo-compare-th-shopify { color: var(--ink-muted); width: 39%; }
+  .woo-compare-th-woo { color: var(--amber-deep); width: 39%; }
+  .woo-compare-amber-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--amber);
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .woo-compare-table td {
+    padding: 14px 20px;
+    border-bottom: 1px dashed var(--line);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+  .woo-compare-table tbody tr:last-child td { border-bottom: none; }
+  .woo-compare-table tbody tr:hover td { background: var(--cream); }
+  .woo-compare-factor {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .woo-compare-shopify {
+    color: var(--ink-muted) !important;
+    text-decoration: line-through;
+    text-decoration-color: rgba(176,74,62,0.4);
+  }
+  .woo-compare-woo {
+    color: var(--ink) !important;
+    font-weight: 500;
+    background: rgba(212,147,46,0.04);
+  }
+  .woo-compare-icon-no, .woo-compare-icon-yes {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .woo-compare-icon-no {
+    background: rgba(176,74,62,0.1);
+    color: var(--red);
+  }
+  .woo-compare-icon-yes {
+    background: rgba(92,128,64,0.12);
+    color: var(--green);
+  }
+
+  /* FAQ */
+  .woo-faq {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .woo-faq-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .woo-faq-h2 { text-align: center; }
+  .woo-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .woo-faq-item {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+  .woo-faq-item[open] {
+    border-color: var(--amber);
+    box-shadow: 0 4px 14px rgba(212,147,46,0.08);
+  }
+  .woo-faq-q {
+    display: grid;
+    grid-template-columns: 36px 1fr 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .woo-faq-q::-webkit-details-marker { display: none; }
+  .woo-faq-item:hover .woo-faq-q {
+    background: rgba(212,147,46,0.04);
+  }
+  .woo-faq-num {
+    font-family: var(--f-display);
+    font-size: 13px;
+    color: var(--amber-deep);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .woo-faq-q-text {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  .woo-faq-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(15,20,25,0.06);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .woo-faq-item[open] .woo-faq-icon {
+    background: var(--amber);
+    color: var(--ink);
+    transform: rotate(180deg);
+  }
+  .woo-faq-a {
+    padding: 0 24px 22px 76px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    border-top: 1px dashed var(--line);
+    padding-top: 18px;
+  }
+
+  /* PAGE FINAL CTA */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .woo-define-meta { grid-template-columns: 1fr; gap: 12px; }
+    .woo-define-card { padding: 28px 24px; }
+    .woo-includes-grid { grid-template-columns: 1fr; }
+    .woo-tiers-grid { grid-template-columns: 1fr; }
+    .woo-tier-highlight { transform: none; }
+    .woo-tier-highlight:hover { transform: translateY(-4px); }
+    .woo-capabilities-grid { grid-template-columns: repeat(2, 1fr); }
+    .woo-when-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .woo-capabilities-grid { grid-template-columns: 1fr; }
+    .woo-when-grid { grid-template-columns: 1fr; }
+    .woo-compare-table { font-size: 12px; }
+    .woo-compare-table th, .woo-compare-table td { padding: 10px 12px; }
+    .woo-faq-q { grid-template-columns: 1fr 24px; gap: 12px; }
+    .woo-faq-num { display: none; }
+    .woo-faq-a { padding-left: 24px; }
+  }
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+  }
+</style>
