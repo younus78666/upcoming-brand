@@ -73,6 +73,45 @@ const jsonLd = JSON.stringify({
   ]
 });
 
+const costFactors = [
+  {
+    num: "01",
+    factor: "Number of pages",
+    detail: "Starter is 8 pages. Growth is 15-20. Custom can hit 50+ pages with city, service, and portfolio combinations.",
+    impact: "+$1,500 to +$3,000 between tiers",
+  },
+  {
+    num: "02",
+    factor: "Custom design vs template",
+    detail: "Custom design in Figma with bespoke Gutenberg blocks costs more than template-based work. We don't do templates.",
+    impact: "Always custom; baked into base price",
+  },
+  {
+    num: "03",
+    factor: "Schema + SEO scope",
+    detail: "Basic LocalBusiness vs vertical-specific (LegalService, Dentist, IDX, multi-location) drives complexity and price.",
+    impact: "+$500 to +$2,000 for advanced schema",
+  },
+  {
+    num: "04",
+    factor: "WooCommerce or integrations",
+    detail: "Adding WooCommerce, IDX feeds, booking systems, or custom plugin development pushes pricing into the Custom tier.",
+    impact: "From $4,500 (basic Woo) to $15,000+ (custom)",
+  },
+  {
+    num: "05",
+    factor: "Migration vs new build",
+    detail: "Migrating from Wix, Squarespace, or GoDaddy adds redirect mapping and content extraction work. Net new builds are simpler.",
+    impact: "+$750 to +$1,500 for migration",
+  },
+  {
+    num: "06",
+    factor: "Content production",
+    detail: "We write copy on every project. Photography or video production from outside specialists is scoped separately when needed.",
+    impact: "Copy included; media variable",
+  },
+];
+
 const tiers = [
   {
     id: "starter",
@@ -216,7 +255,7 @@ const faqs = [
   },
   {
     q: "Are there cheaper WordPress packages out there?",
-    a: "Yes — and they exist for a reason. $400 builds skip schema, ship without Core Web Vitals optimization, use generic Bootstrap themes, and often render in $99/month maintenance hostage situations. We're not the cheapest option in the market. We're the best fit for businesses that need their site to actually rank, convert, and stay maintainable for the next ten years.",
+    a: "Yes, and they exist for a reason. $400 builds skip schema, ship without Core Web Vitals optimization, use generic Bootstrap themes, and often render in $99/month maintenance hostage situations. We're not the cheapest option in the market. We're the best fit for businesses that need their site to actually rank, convert, and stay maintainable for the next ten years.",
   },
   {
     q: "Can I pay in installments?",
@@ -224,7 +263,7 @@ const faqs = [
   },
   {
     q: "What if I need ongoing changes after launch?",
-    a: "Care plans cover small content updates as part of the monthly fee. Larger ongoing work (new landing pages, feature additions, major redesigns) is quoted as a separate fixed-scope project. We don't bill hourly for post-launch work either — every change has a fixed price agreed before work begins.",
+    a: "Care plans cover small content updates as part of the monthly fee. Larger ongoing work (new landing pages, feature additions, major redesigns) is quoted as a separate fixed-scope project. We don't bill hourly for post-launch work either. Every change has a fixed price agreed before work begins.",
   },
   {
     q: "Do prices include hosting and domain?",
@@ -233,8 +272,8 @@ const faqs = [
 ];
 ---
 <BaseLayout
-  title="WordPress Website Cost & Design Packages | Upcoming Brand Maryland"
-  description="Fixed-scope WordPress website cost. Three packages from $1,500 (Starter, 8 pages) to $6,000+ (Custom WooCommerce / IDX). One number, agreed before code is written. No hourly billing."
+  title="How Much Does a WordPress Website Cost? | Pricing & Packages | Upcoming Brand"
+  description="How much does a WordPress website cost? Fixed-scope WordPress pricing from $1,500 (Starter, 8 pages) to $6,000+ (Custom). Small business website design packages, transparent pricing, no hourly billing."
   canonicalUrl={canonical}
 >
   <Fragment slot="head">
@@ -251,7 +290,7 @@ const faqs = [
       <div class="container page-hero-inner">
         <div class="page-eyebrow-strip">
           <span class="page-eyebrow-line"></span>
-          <span class="page-eyebrow-text">Pricing</span>
+          <span class="page-eyebrow-text">WordPress website cost &amp; pricing</span>
           <span class="page-eyebrow-line"></span>
         </div>
 
@@ -262,7 +301,7 @@ const faqs = [
         </h1>
 
         <p class="page-lead">
-          Three tiers — Starter, Growth, Custom — from <strong>$1,500 to $6,000+</strong>. Fixed-scope means one price agreed before code is written. No hourly billing. No surprise invoices. No quote that doubles between discovery and launch.
+          Three tiers (Starter, Growth, Custom) ranging <strong>$1,500 to $6,000+</strong>. Wondering <strong>how much a WordPress website costs</strong>? Fixed-scope means one price agreed before code is written. No hourly billing. No surprise invoices. No quote that doubles between discovery and launch.
         </p>
 
         <div class="page-hero-ctas">
@@ -282,6 +321,69 @@ const faqs = [
           <span class="page-trust-line">90+ PageSpeed guaranteed</span>
           <span class="page-trust-dot" aria-hidden="true"></span>
           <span class="page-trust-line">6-10 week delivery</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DEFINITION (Know intent + AI Overview citation) ====== -->
+    <section class="pricing-define">
+      <div class="container">
+        <div class="pricing-define-card">
+          <div class="pricing-define-head">
+            <span class="pricing-define-pulse" aria-hidden="true"></span>
+            <span class="pricing-define-label">The straight answer</span>
+          </div>
+          <h2 class="page-h2 pricing-define-h2">
+            How much does a WordPress website cost?
+          </h2>
+          <p class="pricing-define-answer">
+            <strong>A custom WordPress website costs $1,500 to $15,000 for most small-to-mid business projects in 2026, with enterprise builds reaching $20,000-$80,000+.</strong> The price depends on number of pages, design complexity, schema scope, integrations (WooCommerce, IDX, multi-location), and whether the engagement is a new build or migration. Hourly WordPress designer rates run $80-$200/hr; the higher-quality firms have moved to fixed-scope pricing instead.
+          </p>
+
+          <div class="pricing-define-ranges">
+            <div class="pricing-define-range">
+              <span class="pricing-define-range-label">DIY / freelance marketplace</span>
+              <span class="pricing-define-range-price">$200 - $2,000</span>
+              <span class="pricing-define-range-note">Theme-based, no schema, no performance guarantees</span>
+            </div>
+            <div class="pricing-define-range pricing-define-range-amber">
+              <span class="pricing-define-range-label">Mid-tier custom (Starter / Growth)</span>
+              <span class="pricing-define-range-price">$1,500 - $6,000</span>
+              <span class="pricing-define-range-note">Custom design, schema, 90+ Lighthouse, fixed-scope</span>
+            </div>
+            <div class="pricing-define-range">
+              <span class="pricing-define-range-label">Custom / enterprise</span>
+              <span class="pricing-define-range-price">$6,000 - $80,000+</span>
+              <span class="pricing-define-range-note">WooCommerce, IDX, multi-location, custom plugins</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== COST FACTORS (Component frame) ====== -->
+    <section class="pricing-factors">
+      <div class="container">
+        <div class="pricing-factors-head">
+          <p class="pricing-section-eyebrow">
+            <span class="pricing-section-eyebrow-line"></span>
+            What drives the price
+          </p>
+          <h2 class="page-h2">
+            Six factors <em>that move the WordPress website cost.</em>
+          </h2>
+          <p class="page-section-lead">A WordPress website cost calculator is rarely accurate because every project's mix is different. These six factors explain the actual variance between a $1,500 Starter and a $15,000 Custom build.</p>
+        </div>
+
+        <div class="pricing-factors-grid">
+          {costFactors.map((c) => (
+            <article class="pricing-factor-card">
+              <span class="pricing-factor-num">{c.num}</span>
+              <h3 class="pricing-factor-title">{c.factor}</h3>
+              <p class="pricing-factor-detail">{c.detail}</p>
+              <span class="pricing-factor-impact">{c.impact}</span>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -385,7 +487,7 @@ const faqs = [
             Eight things every project<br>
             <em>ships with.</em>
           </h2>
-          <p class="pricing-baseline-lead">Tier-independent. The Starter package gets the same engineering bar as a Custom build — only scope and complexity change.</p>
+          <p class="pricing-baseline-lead">Tier-independent. The Starter package gets the same engineering bar as a Custom build. Only scope and complexity change.</p>
         </div>
 
         <div class="pricing-baseline-grid">
@@ -724,6 +826,197 @@ const faqs = [
     width: 32px;
     height: 1px;
     background: var(--amber);
+  }
+
+  /* ===========================================
+     DEFINITION CALLOUT (PAA: How much does a WordPress website cost?)
+     =========================================== */
+  .pricing-define {
+    background: var(--cream);
+    padding: clamp(48px, 6vh, 80px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .pricing-define-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+  .pricing-define-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .pricing-define-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .pricing-define-pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(212,147,46,0.18);
+    animation: pricing-define-pulse 2s ease-in-out infinite;
+  }
+  @keyframes pricing-define-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .pricing-define-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+  .pricing-define-h2 {
+    margin: 0 0 16px;
+    font-size: clamp(22px, 3vw, 30px);
+  }
+  .pricing-define-answer {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 24px;
+    padding-bottom: 22px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .pricing-define-answer strong { font-weight: 600; color: var(--ink); }
+
+  .pricing-define-ranges {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .pricing-define-range {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 16px 18px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+  .pricing-define-range-amber {
+    background: rgba(212,147,46,0.06);
+    border-color: rgba(212,147,46,0.3);
+  }
+  .pricing-define-range-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+  .pricing-define-range-price {
+    font-family: var(--f-display);
+    font-size: 20px;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+  .pricing-define-range-note {
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--ink-muted);
+    margin-top: 4px;
+  }
+
+  /* COST FACTORS */
+  .pricing-factors {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .pricing-factors-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .pricing-factors-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .pricing-factor-card {
+    padding: 26px 24px 22px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-factor-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .pricing-factor-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+  .pricing-factor-card:hover::before { transform: scaleY(1); }
+  .pricing-factor-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+  .pricing-factor-title {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 4px 0 0;
+  }
+  .pricing-factor-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+    flex: 1;
+  }
+  .pricing-factor-impact {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px dashed var(--line);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: var(--amber-deep);
+    font-weight: 500;
   }
 
   /* ===========================================
@@ -1525,6 +1818,9 @@ const faqs = [
      RESPONSIVE
      =========================================== */
   @media (max-width: 1024px) {
+    .pricing-define-ranges { grid-template-columns: 1fr; }
+    .pricing-define-card { padding: 28px 24px; }
+    .pricing-factors-grid { grid-template-columns: repeat(2, 1fr); }
     .pricing-tiers-grid {
       grid-template-columns: 1fr;
       gap: 24px;
@@ -1550,6 +1846,7 @@ const faqs = [
     .pricing-addons-grid {
       grid-template-columns: 1fr;
     }
+    .pricing-factors-grid { grid-template-columns: 1fr; }
     .pricing-tiers-foot {
       flex-direction: column;
       align-items: flex-start;
