@@ -21,7 +21,7 @@ const jsonLd = JSON.stringify({
       "dateModified": "2026-05-01",
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", "h2"]
+        "cssSelector": ["h1", "h2", ".lp-h1", ".loc-region-intro"]
       },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -41,7 +41,9 @@ const featured = [
     region: "Baltimore Area",
     pop: "575K",
     income: "$54K",
-    blurb: "Maryland's largest city. Healthcare, legal, hospitality, and a fast-growing creative class along the harbor and Mt. Vernon corridor."
+    industry: "Healthcare · Legal · Hospitality",
+    blurb: "Maryland's largest city. Healthcare, legal, hospitality, and a fast-growing creative class along the harbor and Mt. Vernon corridor.",
+    accent: "01"
   },
   {
     name: "Bethesda",
@@ -49,7 +51,9 @@ const featured = [
     region: "DC Metro Corridor",
     pop: "68K",
     income: "$170K",
-    blurb: "NIH-anchored professional corridor. The highest-income market in Maryland — home to medical specialists, law firms, and consultancies."
+    industry: "Medical · Legal · Consulting",
+    blurb: "NIH-anchored professional corridor. The highest-income market in Maryland — home to medical specialists, law firms, and consultancies.",
+    accent: "02"
   },
   {
     name: "Frederick",
@@ -57,7 +61,9 @@ const featured = [
     region: "Western Maryland",
     pop: "80K",
     income: "$80K",
-    blurb: "I-70/I-270 crossroads with a historic downtown and the fastest-growing outer-suburb economy in Western Maryland."
+    industry: "Trades · Hospitality · Retail",
+    blurb: "I-70/I-270 crossroads with a historic downtown and the fastest-growing outer-suburb economy in Western Maryland.",
+    accent: "03"
   }
 ];
 
@@ -65,6 +71,7 @@ const regions = [
   {
     label: "Baltimore Area",
     anchor: "baltimore-area",
+    tag: "Urban core",
     intro: "Baltimore City and the I-695 beltway corridor — a 575K-population urban core wrapped by Towson, Catonsville, and Dundalk's Baltimore County submarkets.",
     cities: [
       { name: "Baltimore",    county: "Baltimore City",  slug: "baltimore-web-design",    pop: "575K", income: "$54K",  hook: "Baltimore City and the I-695 beltway corridor." },
@@ -76,6 +83,7 @@ const regions = [
   {
     label: "DC Metro Corridor",
     anchor: "dc-metro",
+    tag: "Highest-income",
     intro: "Maryland's wealthiest sub-region. Montgomery County's I-270 tech corridor plus the Prince George's and Charles County commuter markets.",
     cities: [
       { name: "Bethesda",      county: "Montgomery Co.",      slug: "bethesda-web-design",      pop: "68K",  income: "$170K", hook: "NIH campus, high-income professional corridor, Chevy Chase." },
@@ -90,6 +98,7 @@ const regions = [
   {
     label: "Howard County & Annapolis",
     anchor: "howard-annapolis",
+    tag: "Wealth corridor",
     intro: "Howard County's planned-community wealth corridor and the Annapolis maritime + state-government economy.",
     cities: [
       { name: "Columbia",       county: "Howard Co.",       slug: "columbia-web-design",       pop: "104K", income: "$125K", hook: "10-village planned community, Johns Hopkins HCGH, $120K+ HHI." },
@@ -100,6 +109,7 @@ const regions = [
   {
     label: "Western Maryland",
     anchor: "western-md",
+    tag: "I-70 / I-81",
     intro: "I-70 / I-81 corridor markets — Frederick's fast-growing suburban economy, Hagerstown's tri-state hub, and Westminster's Carroll County seat.",
     cities: [
       { name: "Frederick",    county: "Frederick Co.",  slug: "frederick-web-design",    pop: "80K", income: "$80K", hook: "I-70/I-270 crossroads, historic downtown, fast-growing outer suburb." },
@@ -110,6 +120,7 @@ const regions = [
   {
     label: "Eastern Shore",
     anchor: "eastern-shore",
+    tag: "Delmarva",
     intro: "The Delmarva peninsula's commercial and healthcare hub, anchored by TidalHealth and 30 minutes from Ocean City.",
     cities: [
       { name: "Salisbury",    county: "Wicomico Co.", slug: "salisbury-web-design",    pop: "33K", income: "$48K", hook: "Delmarva hub, TidalHealth Level II Trauma, Ocean City 30 min." },
@@ -133,150 +144,205 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 
   <main id="main-content">
 
-    <!-- ====== HERO ====== -->
-    <section class="loc-hero section-pad-sm">
-      <div class="container">
-        <div class="loc-hero-grid">
-          <div class="loc-hero-text">
-            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Maryland coverage</p>
-            <h1 class="h1-display">WordPress web design<br>for every Maryland market</h1>
-            <p class="lead">Based in Maryland. Serving {totalCities}+ cities across five regions. Every project runs entirely remote — Zoom discovery, async design reviews, weekly staging links. Fixed-scope pricing. 90+ PageSpeed guaranteed.</p>
-            <div class="loc-hero-ctas">
-              <a href="/contact/" class="cta-btn cta-btn-primary">Book a free discovery call &rarr;</a>
-              <a href="/pricing/" class="cta-btn cta-btn-ghost">View pricing</a>
-            </div>
+    <!-- ====== HERO (matched to city page H1 style) ====== -->
+    <section class="loc-hero">
+      <div class="container loc-hero-wrap">
+
+        <!-- LEFT -->
+        <div class="loc-hero-left">
+          <div class="loc-hero-tags">
+            <span class="loc-hero-pill">
+              <span class="loc-hero-dot" aria-hidden="true"></span>
+              WordPress Specialists &middot; Maryland
+            </span>
+            <span class="loc-hero-eyebrow">{totalCities} cities &middot; 5 regions</span>
           </div>
 
-          <!-- Coverage panel: stylized regional spread -->
-          <div class="loc-hero-panel" aria-hidden="true">
-            <div class="loc-panel-header">
-              <span class="loc-panel-label mono-xs">Maryland · Coverage map</span>
-              <span class="loc-panel-pulse"></span>
+          <h1 class="lp-h1">
+            <span class="lp-h1-line">Maryland</span>
+            <span class="lp-h1-line lp-h1-accent-line"><em class="lp-h1-accent">web design that ranks,</em></span>
+            <span class="lp-h1-line lp-h1-italic">city by city.</span>
+          </h1>
+
+          <p class="loc-hero-lede">
+            Based in Maryland and serving <strong>{totalCities}+ cities across five regions</strong> — from Baltimore's urban core to Bethesda's NIH corridor and the Eastern Shore. Every project runs entirely remote: Zoom discovery, async design reviews, weekly staging links. Fixed-scope pricing. 90+ PageSpeed guaranteed.
+          </p>
+
+          <div class="loc-hero-ctas">
+            <a href="/contact/" class="lp-btn-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/pricing/" class="lp-btn-ghost">
+              View pricing
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          <div class="loc-hero-trust">
+            <span class="loc-trust-line">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Top Rated &middot; Upwork
+            </span>
+            <span class="loc-trust-dot" aria-hidden="true"></span>
+            <span class="loc-trust-line">400+ projects &middot; 12 countries</span>
+            <span class="loc-trust-dot" aria-hidden="true"></span>
+            <span class="loc-trust-line">Remote-first &middot; Zoom &middot; Async</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Coverage map panel -->
+        <div class="loc-hero-panel" aria-hidden="true">
+          <div class="loc-panel-header">
+            <span class="loc-panel-label">Maryland · Coverage map</span>
+            <span class="loc-panel-pulse"></span>
+          </div>
+
+          <svg class="loc-panel-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized map of Maryland regions">
+            <!-- Stylized Maryland silhouette -->
+            <path d="M 30 110 L 90 100 L 160 92 L 230 88 L 290 90 L 320 100 L 348 118 L 364 142 L 360 168 L 350 192 L 332 216 L 300 230 L 270 232 L 244 226 L 224 214 L 212 200 L 220 180 L 230 162 L 224 148 L 206 142 L 186 152 L 162 162 L 134 168 L 106 168 L 80 162 L 56 150 L 38 134 Z"
+                  fill="rgba(212,147,46,0.06)"
+                  stroke="rgba(212,147,46,0.4)"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"/>
+
+            <!-- Subtle grid -->
+            <defs>
+              <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(15,20,25,0.04)" stroke-width="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="400" height="280" fill="url(#grid)" opacity="0.6"/>
+
+            <!-- Bay cutout suggestion -->
+            <path d="M 200 160 Q 210 175 215 195 Q 218 210 222 220" fill="none" stroke="rgba(15,20,25,0.18)" stroke-width="1" stroke-dasharray="2 3"/>
+
+            <!-- Region pins - approximate geographic positioning -->
+            <g class="loc-pin">
+              <circle cx="62" cy="130" r="3.5" fill="#D4932E"/>
+              <circle cx="62" cy="130" r="8" fill="rgba(212,147,46,0.18)" class="loc-pin-halo"/>
+            </g>
+            <g class="loc-pin">
+              <circle cx="118" cy="125" r="3.5" fill="#D4932E"/>
+              <circle cx="118" cy="125" r="8" fill="rgba(212,147,46,0.18)" class="loc-pin-halo"/>
+            </g>
+            <g class="loc-pin">
+              <circle cx="148" cy="155" r="4.5" fill="#D4932E"/>
+              <circle cx="148" cy="155" r="11" fill="rgba(212,147,46,0.22)" class="loc-pin-halo"/>
+            </g>
+            <g class="loc-pin">
+              <circle cx="182" cy="138" r="3.5" fill="#D4932E"/>
+              <circle cx="182" cy="138" r="8" fill="rgba(212,147,46,0.18)" class="loc-pin-halo"/>
+            </g>
+            <g class="loc-pin">
+              <circle cx="208" cy="125" r="5" fill="#D4932E"/>
+              <circle cx="208" cy="125" r="12" fill="rgba(212,147,46,0.22)" class="loc-pin-halo"/>
+            </g>
+            <g class="loc-pin">
+              <circle cx="218" cy="158" r="3.5" fill="#D4932E"/>
+              <circle cx="218" cy="158" r="8" fill="rgba(212,147,46,0.18)" class="loc-pin-halo"/>
+            </g>
+            <g class="loc-pin">
+              <circle cx="298" cy="195" r="3.5" fill="#D4932E"/>
+              <circle cx="298" cy="195" r="8" fill="rgba(212,147,46,0.18)" class="loc-pin-halo"/>
+            </g>
+
+            <!-- Region labels -->
+            <g class="loc-label-group">
+              <line x1="62" y1="130" x2="40" y2="80" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+              <text x="40" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.6)" text-anchor="start">Western MD</text>
+            </g>
+            <g class="loc-label-group">
+              <line x1="208" y1="125" x2="240" y2="62" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+              <text x="240" y="54" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.6)" text-anchor="start">Baltimore</text>
+            </g>
+            <g class="loc-label-group">
+              <line x1="148" y1="155" x2="80" y2="240" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+              <text x="80" y="252" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.6)" text-anchor="start">DC Metro</text>
+            </g>
+            <g class="loc-label-group">
+              <line x1="298" y1="195" x2="340" y2="252" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+              <text x="320" y="265" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.6)" text-anchor="start">Eastern Shore</text>
+            </g>
+          </svg>
+
+          <div class="loc-panel-footer">
+            <div class="loc-panel-stat">
+              <span class="loc-panel-stat-num">{totalCities}</span>
+              <span class="loc-panel-stat-label">Cities</span>
             </div>
-
-            <svg class="loc-panel-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized map of Maryland regions">
-              <!-- Stylized Maryland silhouette -->
-              <path d="M 30 110 L 90 100 L 160 92 L 230 88 L 290 90 L 320 100 L 348 118 L 364 142 L 360 168 L 350 192 L 332 216 L 300 230 L 270 232 L 244 226 L 224 214 L 212 200 L 220 180 L 230 162 L 224 148 L 206 142 L 186 152 L 162 162 L 134 168 L 106 168 L 80 162 L 56 150 L 38 134 Z" fill="rgba(212,147,46,0.06)" stroke="rgba(212,147,46,0.35)" stroke-width="1.5" stroke-linejoin="round"/>
-
-              <!-- Bay cutout suggestion -->
-              <path d="M 200 160 Q 210 175 215 195 Q 218 210 222 220" fill="none" stroke="rgba(15,20,25,0.18)" stroke-width="1" stroke-dasharray="2 3"/>
-
-              <!-- Region pins with labels - approximate geographic positioning -->
-              <!-- Western MD -->
-              <g class="loc-pin">
-                <circle cx="62" cy="130" r="3.5" fill="#D4932E"/>
-                <circle cx="62" cy="130" r="8" fill="rgba(212,147,46,0.18)"/>
-              </g>
-              <!-- Frederick -->
-              <g class="loc-pin">
-                <circle cx="118" cy="125" r="3.5" fill="#D4932E"/>
-                <circle cx="118" cy="125" r="8" fill="rgba(212,147,46,0.18)"/>
-              </g>
-              <!-- DC Metro cluster -->
-              <g class="loc-pin">
-                <circle cx="148" cy="155" r="4.5" fill="#D4932E"/>
-                <circle cx="148" cy="155" r="11" fill="rgba(212,147,46,0.22)"/>
-              </g>
-              <!-- Howard Co -->
-              <g class="loc-pin">
-                <circle cx="182" cy="138" r="3.5" fill="#D4932E"/>
-                <circle cx="182" cy="138" r="8" fill="rgba(212,147,46,0.18)"/>
-              </g>
-              <!-- Baltimore cluster -->
-              <g class="loc-pin">
-                <circle cx="208" cy="125" r="5" fill="#D4932E"/>
-                <circle cx="208" cy="125" r="12" fill="rgba(212,147,46,0.22)"/>
-              </g>
-              <!-- Annapolis -->
-              <g class="loc-pin">
-                <circle cx="218" cy="158" r="3.5" fill="#D4932E"/>
-                <circle cx="218" cy="158" r="8" fill="rgba(212,147,46,0.18)"/>
-              </g>
-              <!-- Eastern Shore / Salisbury -->
-              <g class="loc-pin">
-                <circle cx="298" cy="195" r="3.5" fill="#D4932E"/>
-                <circle cx="298" cy="195" r="8" fill="rgba(212,147,46,0.18)"/>
-              </g>
-
-              <!-- Region label lines -->
-              <g class="loc-label-group">
-                <line x1="62" y1="130" x2="40" y2="80" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
-                <text x="40" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">Western MD</text>
-              </g>
-              <g class="loc-label-group">
-                <line x1="208" y1="125" x2="240" y2="62" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
-                <text x="240" y="54" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">Baltimore</text>
-              </g>
-              <g class="loc-label-group">
-                <line x1="148" y1="155" x2="80" y2="240" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
-                <text x="80" y="252" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">DC Metro</text>
-              </g>
-              <g class="loc-label-group">
-                <line x1="298" y1="195" x2="340" y2="252" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
-                <text x="320" y="265" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">Eastern Shore</text>
-              </g>
-            </svg>
-
-            <div class="loc-panel-footer">
-              <div class="loc-panel-stat">
-                <span class="loc-panel-stat-num">{totalCities}</span>
-                <span class="loc-panel-stat-label mono-xs">Cities</span>
-              </div>
-              <div class="loc-panel-stat">
-                <span class="loc-panel-stat-num">5</span>
-                <span class="loc-panel-stat-label mono-xs">Regions</span>
-              </div>
-              <div class="loc-panel-stat">
-                <span class="loc-panel-stat-num">100%</span>
-                <span class="loc-panel-stat-label mono-xs">Remote</span>
-              </div>
+            <div class="loc-panel-stat">
+              <span class="loc-panel-stat-num">5</span>
+              <span class="loc-panel-stat-label">Regions</span>
+            </div>
+            <div class="loc-panel-stat">
+              <span class="loc-panel-stat-num">100%</span>
+              <span class="loc-panel-stat-label">Remote</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ====== TRUST STRIP ====== -->
+    <!-- ====== TRUST STRIP (dark) ====== -->
     <section class="loc-trust">
       <div class="container">
         <div class="loc-trust-grid">
           <div class="loc-trust-item">
+            <span class="loc-trust-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1l1.7 4.5L14 6l-3.5 3 1 4.5L8 11l-3.5 2.5L5.5 9 2 6l4.3-.5L8 1z" fill="currentColor"/></svg>
+            </span>
             <span class="loc-trust-num">{totalCities}+</span>
-            <span class="loc-trust-label mono-xs">MD cities served</span>
+            <span class="loc-trust-label">MD cities served</span>
           </div>
           <div class="loc-trust-divider" aria-hidden="true"></div>
           <div class="loc-trust-item">
+            <span class="loc-trust-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1v6l4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </span>
             <span class="loc-trust-num">90+</span>
-            <span class="loc-trust-label mono-xs">PageSpeed guaranteed</span>
+            <span class="loc-trust-label">PageSpeed</span>
           </div>
           <div class="loc-trust-divider" aria-hidden="true"></div>
           <div class="loc-trust-item">
+            <span class="loc-trust-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M2 6h12M5 1v3M11 1v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
             <span class="loc-trust-num">6&ndash;10</span>
-            <span class="loc-trust-label mono-xs">Week delivery</span>
+            <span class="loc-trust-label">Week delivery</span>
           </div>
           <div class="loc-trust-divider" aria-hidden="true"></div>
           <div class="loc-trust-item">
+            <span class="loc-trust-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 9.5l3-3 2 2 5-5M9 3.5h3v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
             <span class="loc-trust-num">$1.5K+</span>
-            <span class="loc-trust-label mono-xs">Fixed-scope pricing</span>
+            <span class="loc-trust-label">Fixed-scope</span>
           </div>
           <div class="loc-trust-divider" aria-hidden="true"></div>
           <div class="loc-trust-item">
+            <span class="loc-trust-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5"/><path d="M2 8h12M8 1.5c2 2 2 11 0 13M8 1.5c-2 2-2 11 0 13" stroke="currentColor" stroke-width="1.2"/></svg>
+            </span>
             <span class="loc-trust-num">100%</span>
-            <span class="loc-trust-label mono-xs">Async / remote</span>
+            <span class="loc-trust-label">Async / remote</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ====== JUMP NAV ====== -->
+    <!-- ====== JUMP NAV (sticky) ====== -->
     <nav class="loc-jumpnav" aria-label="Jump to region">
       <div class="container">
         <div class="loc-jumpnav-inner">
-          <span class="loc-jumpnav-label mono-xs">Jump to:</span>
+          <span class="loc-jumpnav-label">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Jump to region
+          </span>
           {regions.map((r) => (
             <a href={`#${r.anchor}`} class="loc-jumpnav-pill">
               {r.label}
-              <span class="loc-jumpnav-count mono-xs">{r.cities.length}</span>
+              <span class="loc-jumpnav-count">{r.cities.length}</span>
             </a>
           ))}
         </div>
@@ -284,34 +350,51 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     </nav>
 
     <!-- ====== FEATURED MARKETS ====== -->
-    <section class="loc-featured section-pad-sm">
+    <section class="loc-featured">
       <div class="container">
         <div class="loc-featured-head">
-          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Featured markets</p>
-          <h2 class="h2-section">Maryland's three highest-velocity markets</h2>
-          <p class="lead">Where most of our work happens — Baltimore's urban core, Bethesda's medical and professional corridor, and Frederick's fast-growing outer suburbs.</p>
+          <p class="loc-section-eyebrow"><span class="loc-section-eyebrow-line"></span>Featured markets</p>
+          <h2 class="loc-section-h2">
+            Maryland's three <em>highest-velocity</em> markets.
+          </h2>
+          <p class="loc-section-lead">Where most of our project volume lives — Baltimore's urban core, Bethesda's medical and professional corridor, and Frederick's fast-growing outer suburbs.</p>
         </div>
 
         <div class="loc-featured-grid">
           {featured.map((city) => (
             <a href={`/locations/${city.slug}/`} class="loc-featured-card">
               <div class="loc-featured-card-top">
-                <span class="loc-featured-region mono-xs">{city.region}</span>
-                <span class="loc-featured-arrow" aria-hidden="true">&rarr;</span>
+                <span class="loc-featured-num">{city.accent}</span>
+                <span class="loc-featured-region">{city.region}</span>
+                <span class="loc-featured-arrow" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
               </div>
+
               <h3 class="loc-featured-name">{city.name}</h3>
+
               <div class="loc-featured-stats">
                 <div class="loc-featured-stat">
                   <span class="loc-featured-stat-num">{city.pop}</span>
-                  <span class="loc-featured-stat-label mono-xs">Population</span>
+                  <span class="loc-featured-stat-label">Population</span>
                 </div>
                 <div class="loc-featured-stat">
                   <span class="loc-featured-stat-num">{city.income}</span>
-                  <span class="loc-featured-stat-label mono-xs">Median HHI</span>
+                  <span class="loc-featured-stat-label">Median HHI</span>
                 </div>
               </div>
+
+              <div class="loc-featured-industry">
+                <span class="loc-featured-industry-label">Top verticals</span>
+                <span class="loc-featured-industry-val">{city.industry}</span>
+              </div>
+
               <p class="loc-featured-blurb">{city.blurb}</p>
-              <span class="loc-featured-cta mono-xs">Web design for {city.name} &rarr;</span>
+
+              <span class="loc-featured-cta">
+                <span>Web design for {city.name}</span>
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M1 6h10M7 1l4 5-4 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
             </a>
           ))}
         </div>
@@ -320,23 +403,30 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 
     <!-- ====== REGION SECTIONS ====== -->
     {regions.map((region, idx) => (
-      <section class="loc-region section-pad-sm" id={region.anchor}>
+      <section class="loc-region" id={region.anchor}>
         <div class="container">
           <div class="loc-region-head">
             <div class="loc-region-head-left">
-              <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Region {String(idx + 1).padStart(2, '0')} / 05</p>
-              <h2 class="h2-section">{region.label}</h2>
+              <div class="loc-region-eyebrow-row">
+                <span class="loc-region-num mono-tag">Region {String(idx + 1).padStart(2, '0')} / 05</span>
+                <span class="loc-region-tag">{region.tag}</span>
+              </div>
+              <h2 class="loc-section-h2 loc-region-h2">{region.label}</h2>
               <p class="loc-region-intro">{region.intro}</p>
             </div>
             <div class="loc-region-head-right">
-              <span class="loc-region-count">{region.cities.length}</span>
-              <span class="loc-region-count-label mono-xs">{region.cities.length === 1 ? 'City' : 'Cities'}</span>
+              <div class="loc-region-count-block">
+                <span class="loc-region-count">{region.cities.length}</span>
+                <span class="loc-region-count-label">{region.cities.length === 1 ? 'City' : 'Cities'} served</span>
+              </div>
             </div>
           </div>
 
           <div class="loc-city-grid">
-            {region.cities.map((city) => (
+            {region.cities.map((city, cityIdx) => (
               <a href={`/locations/${city.slug}/`} class="loc-city-card">
+                <span class="loc-city-index mono-tag">{String(cityIdx + 1).padStart(2, '0')}</span>
+
                 <div class="loc-city-card-top">
                   <span class="loc-city-pin" aria-hidden="true">
                     <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
@@ -346,22 +436,31 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
                   </span>
                   <div class="loc-city-card-name-block">
                     <span class="loc-city-name">{city.name}</span>
-                    <span class="loc-city-county mono-xs">{city.county}</span>
+                    <span class="loc-city-county">{city.county}</span>
                   </div>
-                  <span class="loc-city-arrow" aria-hidden="true">&rarr;</span>
+                  <span class="loc-city-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
                 </div>
+
                 <p class="loc-city-hook">{city.hook}</p>
+
                 <div class="loc-city-stats">
                   <div class="loc-city-stat">
                     <span class="loc-city-stat-num">{city.pop}</span>
-                    <span class="loc-city-stat-label mono-xs">Pop</span>
+                    <span class="loc-city-stat-label">Pop</span>
                   </div>
+                  <div class="loc-city-stat-divider" aria-hidden="true"></div>
                   <div class="loc-city-stat">
                     <span class="loc-city-stat-num">{city.income}</span>
-                    <span class="loc-city-stat-label mono-xs">Median HHI</span>
+                    <span class="loc-city-stat-label">Median HHI</span>
                   </div>
                 </div>
-                <span class="loc-city-cta mono-xs">Web design for {city.name} &rarr;</span>
+
+                <span class="loc-city-cta">
+                  Web design for {city.name}
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
               </a>
             ))}
           </div>
@@ -370,22 +469,34 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     ))}
 
     <!-- ====== COVERAGE STATEMENT ====== -->
-    <section class="loc-coverage section-pad-sm">
+    <section class="loc-coverage">
       <div class="container">
         <div class="loc-coverage-grid">
           <div class="loc-coverage-text">
-            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Don't see your city?</p>
-            <h2 class="h2-section">We work everywhere in Maryland</h2>
-            <p class="lead">The 18 cities listed above are where our project volume is concentrated, but we work with businesses across all 24 Maryland counties. Laurel, College Park, Glen Burnie, Cumberland, Easton, Ocean City, Cambridge, Aberdeen — entirely remote means location is never a limitation.</p>
-            <a href="/contact/" class="cta-btn cta-btn-ghost">Tell us about your project &rarr;</a>
+            <p class="loc-section-eyebrow"><span class="loc-section-eyebrow-line"></span>Don't see your city?</p>
+            <h2 class="loc-section-h2">
+              We work <em>everywhere</em> in Maryland.
+            </h2>
+            <p class="loc-section-lead">The 18 cities listed above are where our project volume is concentrated, but we work with businesses across all 24 Maryland counties. Entirely remote means location is never a limitation.</p>
+            <a href="/contact/" class="lp-btn-ghost">
+              Tell us about your project
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
-          <ul class="loc-coverage-list" role="list">
-            <li>Laurel</li><li>College Park</li><li>Glen Burnie</li><li>Cumberland</li>
-            <li>Easton</li><li>Ocean City</li><li>Cambridge</li><li>Aberdeen</li>
-            <li>La Plata</li><li>Severna Park</li><li>Crofton</li><li>Eldersburg</li>
-            <li>Pikesville</li><li>Owings Mills</li><li>Timonium</li><li>Wheaton</li>
-            <li>Takoma Park</li><li>Greenbelt</li><li>Hyattsville</li><li>+ all 24 counties</li>
-          </ul>
+
+          <div class="loc-coverage-panel">
+            <div class="loc-coverage-panel-head">
+              <span class="loc-coverage-panel-label">Also serving</span>
+              <span class="loc-coverage-panel-count">+ 24 counties</span>
+            </div>
+            <ul class="loc-coverage-list" role="list">
+              <li>Laurel</li><li>College Park</li><li>Glen Burnie</li><li>Cumberland</li>
+              <li>Easton</li><li>Ocean City</li><li>Cambridge</li><li>Aberdeen</li>
+              <li>La Plata</li><li>Severna Park</li><li>Crofton</li><li>Eldersburg</li>
+              <li>Pikesville</li><li>Owings Mills</li><li>Timonium</li><li>Wheaton</li>
+              <li>Takoma Park</li><li>Greenbelt</li><li>Hyattsville</li><li>Chestertown</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
@@ -394,12 +505,24 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     <section class="loc-cta-section">
       <div class="container">
         <div class="loc-cta-inner">
-          <p class="eyebrow"><span class="eyebrow-dot eyebrow-dot-amber" aria-hidden="true"></span>Ready to start</p>
-          <h2 class="h2-section">Let's build the site Maryland keeps Googling for.</h2>
-          <p class="lead">A free 45-minute discovery call. We map your competitive set, identify the schema and Local Pack gaps, and give you a fixed quote within 48 hours.</p>
+          <p class="loc-section-eyebrow loc-section-eyebrow-light">
+            <span class="loc-section-eyebrow-line loc-section-eyebrow-line-amber"></span>
+            Ready to start
+          </p>
+          <h2 class="loc-section-h2 loc-cta-h2">
+            Let's build the site<br>
+            <em>Maryland keeps Googling for.</em>
+          </h2>
+          <p class="loc-section-lead loc-cta-lead">A free 45-minute discovery call. We map your competitive set, identify the schema and Local Pack gaps, and give you a fixed quote within 48 hours.</p>
           <div class="loc-cta-buttons">
-            <a href="/contact/" class="cta-btn cta-btn-primary">Book a discovery call &rarr;</a>
-            <a href="/pricing/" class="cta-btn cta-btn-ghost-light">View pricing</a>
+            <a href="/contact/" class="lp-btn-primary loc-cta-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/pricing/" class="loc-cta-ghost-light">
+              View pricing
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
           </div>
         </div>
       </div>
@@ -411,10 +534,25 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 </BaseLayout>
 
 <style>
-  /* ===== HERO ===== */
+  /* ===========================================
+     SHARED TOKENS / UTILITIES
+     =========================================== */
+  .mono-tag {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  /* ===========================================
+     HERO — matches city page H1 system
+     =========================================== */
   .loc-hero {
     background: var(--cream);
     border-bottom: 1px solid rgba(15,20,25,0.07);
+    padding-top: clamp(28px, 4vh, 80px);
+    padding-bottom: 0;
     position: relative;
     overflow: hidden;
   }
@@ -426,66 +564,248 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     right: -200px;
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 70%);
     pointer-events: none;
   }
 
-  .loc-hero-grid {
+  .loc-hero::after {
+    content: "";
+    position: absolute;
+    bottom: -150px;
+    left: -100px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(15,20,25,0.04) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .loc-hero-wrap {
     display: grid;
-    grid-template-columns: 1.05fr 1fr;
-    gap: 56px;
+    grid-template-columns: 1fr 440px;
+    gap: clamp(32px, 5vw, 72px);
     align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
     position: relative;
     z-index: 1;
   }
 
-  .loc-hero-text {
-    max-width: 580px;
+  .loc-hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(18px, 2.5vh, 28px);
   }
+
+  .loc-hero-tags {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .loc-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .loc-hero-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: loc-dot-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes loc-dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+
+  .loc-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  /* H1 — exact match to city page lp-h1 */
+  .lp-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+
+  .lp-h1-line         { display: block; color: var(--ink); }
+  .lp-h1-accent-line  { display: block; }
+
+  .lp-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lp-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  .lp-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .loc-hero-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .loc-hero-lede strong { font-weight: 600; color: var(--ink); }
 
   .loc-hero-ctas {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
-    margin-top: 24px;
+    align-items: center;
   }
 
-  /* Coverage panel */
+  .lp-btn-primary,
+  .lp-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lp-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lp-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg,
+  .lp-btn-ghost  svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover   svg { transform: translate(2px, -2px); }
+
+  .loc-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .loc-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .loc-trust-dot {
+    width: 3px;
+    height: 3px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  /* Coverage panel (right side of hero) */
   .loc-hero-panel {
     background: var(--paper);
-    border: 1.5px solid rgba(15,20,25,0.08);
-    border-radius: var(--radius-lg, 16px);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
     padding: 24px;
-    box-shadow: 0 6px 24px rgba(15,20,25,0.05);
+    box-shadow: var(--shadow-md);
     position: relative;
+  }
+
+  .loc-hero-panel::before {
+    content: "";
+    position: absolute;
+    top: -1px; left: 24px; right: 24px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--amber), transparent);
+    opacity: 0.5;
   }
 
   .loc-panel-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-bottom: 16px;
-    border-bottom: 1px dashed rgba(15,20,25,0.1);
-    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed var(--line);
+    margin-bottom: 12px;
   }
 
   .loc-panel-label {
-    color: rgba(15,20,25,0.55);
+    font-family: var(--f-mono);
+    font-size: 10px;
     letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
   }
 
   .loc-panel-pulse {
     width: 8px;
     height: 8px;
     border-radius: 50%;
-    background: var(--green, #5C8040);
-    animation: loc-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    background: var(--green);
+    animation: loc-pulse-glow 2s cubic-bezier(0.4,0,0.6,1) infinite;
     box-shadow: 0 0 0 4px rgba(92,128,64,0.15);
   }
 
-  @keyframes loc-pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+  @keyframes loc-pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 4px rgba(92,128,64,0.15); }
+    50%      { box-shadow: 0 0 0 8px rgba(92,128,64,0.05); }
   }
 
   .loc-panel-svg {
@@ -494,23 +814,23 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     display: block;
   }
 
-  .loc-pin circle:first-child {
+  .loc-pin-halo {
     animation: loc-pin-pulse 3s ease-in-out infinite;
     transform-origin: center;
+    transform-box: fill-box;
   }
 
   @keyframes loc-pin-pulse {
-    0%, 100% { opacity: 0.4; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.4); }
+    0%, 100% { opacity: 0.4; r: 8; }
+    50%      { opacity: 0.8; r: 11; }
   }
 
   .loc-panel-footer {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    padding-top: 16px;
-    border-top: 1px dashed rgba(15,20,25,0.1);
-    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
   }
 
   .loc-panel-stat {
@@ -521,7 +841,7 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   }
 
   .loc-panel-stat-num {
-    font-family: var(--f-display, 'Fraunces', serif);
+    font-family: var(--f-display);
     font-size: 28px;
     line-height: 1;
     color: var(--ink);
@@ -529,16 +849,31 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   }
 
   .loc-panel-stat-label {
-    color: rgba(15,20,25,0.5);
+    font-family: var(--f-mono);
+    color: var(--ink-muted);
     letter-spacing: 0.12em;
-    font-size: 10px;
+    text-transform: uppercase;
+    font-size: 9px;
   }
 
-  /* ===== TRUST STRIP ===== */
+  /* ===========================================
+     TRUST STRIP — dark band
+     =========================================== */
   .loc-trust {
     background: var(--ink);
     color: var(--cream);
-    padding: 20px 0;
+    padding: 24px 0;
+    position: relative;
+  }
+
+  .loc-trust::after {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,147,46,0.4), transparent);
+    transform: translateX(-50%);
   }
 
   .loc-trust-grid {
@@ -551,33 +886,44 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   .loc-trust-item {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 4px;
     text-align: center;
     flex: 1;
   }
 
+  .loc-trust-icon {
+    color: var(--amber);
+    margin-bottom: 4px;
+    opacity: 0.85;
+  }
+
   .loc-trust-num {
-    font-family: var(--f-display, 'Fraunces', serif);
-    font-size: 26px;
+    font-family: var(--f-display);
+    font-size: 28px;
     line-height: 1;
-    color: var(--amber, #D4932E);
+    color: var(--cream);
     font-weight: 500;
   }
 
   .loc-trust-label {
-    color: rgba(244,239,230,0.55);
+    font-family: var(--f-mono);
+    color: rgba(244,239,230,0.5);
     letter-spacing: 0.1em;
     font-size: 10px;
+    text-transform: uppercase;
   }
 
   .loc-trust-divider {
     width: 1px;
-    height: 32px;
-    background: rgba(244,239,230,0.12);
+    height: 56px;
+    background: linear-gradient(to bottom, transparent, rgba(244,239,230,0.15), transparent);
     flex-shrink: 0;
   }
 
-  /* ===== JUMP NAV ===== */
+  /* ===========================================
+     JUMP NAV — sticky pills
+     =========================================== */
   .loc-jumpnav {
     position: sticky;
     top: 0;
@@ -585,7 +931,7 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     background: rgba(251,248,242,0.92);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(15,20,25,0.08);
+    border-bottom: 1px solid var(--line);
     padding: 12px 0;
   }
 
@@ -597,10 +943,20 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   }
 
   .loc-jumpnav-label {
-    color: rgba(15,20,25,0.5);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
     letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
     margin-right: 4px;
     flex-shrink: 0;
+  }
+
+  .loc-jumpnav-label svg {
+    color: var(--amber);
   }
 
   .loc-jumpnav-pill {
@@ -608,8 +964,8 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     align-items: center;
     gap: 8px;
     padding: 7px 12px 7px 14px;
-    border: 1px solid rgba(15,20,25,0.1);
-    border-radius: var(--radius-pill, 999px);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
     background: var(--paper);
     color: var(--ink);
     font-size: 13px;
@@ -620,33 +976,95 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   }
 
   .loc-jumpnav-pill:hover {
-    border-color: var(--amber, #D4932E);
-    background: var(--amber-glow, rgba(212,147,46,0.08));
-    color: var(--amber-deep, #B07A1D);
+    border-color: var(--amber);
+    background: var(--amber-glow);
+    color: var(--amber-deep);
+    transform: translateY(-1px);
   }
 
   .loc-jumpnav-count {
+    font-family: var(--f-mono);
     background: rgba(15,20,25,0.06);
     padding: 2px 7px;
-    border-radius: var(--radius-pill, 999px);
+    border-radius: var(--radius-pill);
     font-size: 10px;
-    color: rgba(15,20,25,0.55);
+    color: var(--ink-muted);
     transition: all var(--transition);
+    min-width: 22px;
+    text-align: center;
   }
 
   .loc-jumpnav-pill:hover .loc-jumpnav-count {
-    background: rgba(212,147,46,0.15);
-    color: var(--amber-deep, #B07A1D);
+    background: rgba(212,147,46,0.18);
+    color: var(--amber-deep);
   }
 
-  /* ===== FEATURED MARKETS ===== */
+  /* ===========================================
+     SECTION HEADERS (shared)
+     =========================================== */
+  .loc-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0;
+    font-weight: 400;
+  }
+
+  .loc-section-eyebrow-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  .loc-section-eyebrow-light {
+    color: rgba(244,239,230,0.5);
+  }
+
+  .loc-section-eyebrow-line-amber {
+    background: var(--amber);
+  }
+
+  .loc-section-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 44px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 16px 0 0;
+  }
+
+  .loc-section-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .loc-section-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 16px 0 0;
+  }
+
+  /* ===========================================
+     FEATURED MARKETS
+     =========================================== */
   .loc-featured {
     background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
   }
 
   .loc-featured-head {
-    max-width: 680px;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
+    max-width: 720px;
   }
 
   .loc-featured-grid {
@@ -659,13 +1077,13 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     display: flex;
     flex-direction: column;
     gap: 18px;
-    padding: 28px;
+    padding: 32px 28px 28px;
     background: var(--cream);
-    border: 1.5px solid rgba(15,20,25,0.08);
-    border-radius: var(--radius-lg, 16px);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
     text-decoration: none;
     color: inherit;
-    transition: all var(--transition);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     overflow: hidden;
   }
@@ -673,22 +1091,35 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   .loc-featured-card::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+    top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--amber, #D4932E) 0%, transparent 100%);
+    background: linear-gradient(90deg, var(--amber), var(--amber-deep), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .loc-featured-card::after {
+    content: "";
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 70%);
     opacity: 0;
-    transition: opacity var(--transition);
+    transition: opacity 0.3s ease;
   }
 
   .loc-featured-card:hover {
-    border-color: var(--amber, #D4932E);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(212,147,46,0.15);
+    border-color: var(--amber);
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(212,147,46,0.18);
   }
 
   .loc-featured-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .loc-featured-card:hover::after {
     opacity: 1;
   }
 
@@ -696,27 +1127,47 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
+  }
+
+  .loc-featured-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    letter-spacing: 0.05em;
   }
 
   .loc-featured-region {
-    color: var(--amber-deep, #B07A1D);
-    letter-spacing: 0.12em;
+    flex: 1;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    text-align: center;
+    padding: 4px 10px;
+    background: rgba(15,20,25,0.04);
+    border-radius: var(--radius-pill);
   }
 
   .loc-featured-arrow {
-    color: var(--amber, #D4932E);
-    font-size: 18px;
-    transition: transform var(--transition);
+    color: var(--amber);
+    transition: transform 0.3s ease;
+    display: flex;
   }
 
   .loc-featured-card:hover .loc-featured-arrow {
     transform: translateX(4px);
+    color: var(--amber-deep);
   }
 
   .loc-featured-name {
-    font-family: var(--f-display, 'Fraunces', serif);
-    font-size: 36px;
-    line-height: 1.05;
+    font-family: var(--f-display);
+    font-size: clamp(36px, 4vw, 44px);
+    line-height: 1.0;
+    letter-spacing: -0.03em;
     color: var(--ink);
     font-weight: 500;
     margin: 0;
@@ -727,8 +1178,8 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     padding: 16px 0;
-    border-top: 1px dashed rgba(15,20,25,0.12);
-    border-bottom: 1px dashed rgba(15,20,25,0.12);
+    border-top: 1px dashed var(--line);
+    border-bottom: 1px dashed var(--line);
   }
 
   .loc-featured-stat {
@@ -738,126 +1189,261 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   }
 
   .loc-featured-stat-num {
-    font-family: var(--f-display, 'Fraunces', serif);
-    font-size: 22px;
+    font-family: var(--f-display);
+    font-size: 24px;
     line-height: 1;
     color: var(--ink);
     font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   .loc-featured-stat-label {
-    color: rgba(15,20,25,0.5);
+    font-family: var(--f-mono);
+    color: var(--ink-muted);
     letter-spacing: 0.1em;
     font-size: 10px;
+    text-transform: uppercase;
+  }
+
+  .loc-featured-industry {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .loc-featured-industry-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    opacity: 0.7;
+  }
+
+  .loc-featured-industry-val {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    font-weight: 500;
   }
 
   .loc-featured-blurb {
     font-size: 14px;
-    color: var(--ink-muted, rgba(15,20,25,0.65));
+    color: var(--ink-muted);
     line-height: 1.55;
     flex: 1;
     margin: 0;
   }
 
   .loc-featured-cta {
-    color: var(--amber-deep, #B07A1D);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--f-mono);
+    font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    font-size: 10px;
-    transition: color var(--transition);
+    color: var(--amber-deep);
+    padding-top: 4px;
+    transition: gap 0.3s ease;
   }
 
   .loc-featured-card:hover .loc-featured-cta {
+    gap: 12px;
     color: var(--ink);
   }
 
-  /* ===== REGION SECTIONS ===== */
+  .loc-featured-cta svg {
+    transition: transform 0.3s ease;
+  }
+
+  /* ===========================================
+     REGION SECTIONS
+     =========================================== */
   .loc-region {
     background: var(--paper);
-    border-bottom: 1px solid rgba(15,20,25,0.06);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(56px, 8vh, 96px) 0;
+    position: relative;
+    overflow: hidden;
   }
 
   .loc-region:nth-child(even) {
     background: var(--cream);
   }
 
+  .loc-region::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -200px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(212,147,46,0.04) 0%, transparent 70%);
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+
   .loc-region-head {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 32px;
-    margin-bottom: 32px;
-    padding-bottom: 24px;
-    border-bottom: 1px dashed rgba(15,20,25,0.12);
+    margin-bottom: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px dashed var(--line);
+    position: relative;
   }
 
   .loc-region-head-left {
-    max-width: 640px;
+    max-width: 720px;
+    flex: 1;
+  }
+
+  .loc-region-eyebrow-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .loc-region-num {
+    color: var(--amber-deep);
+  }
+
+  .loc-region-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .loc-region:nth-child(even) .loc-region-tag {
+    background: var(--paper);
+  }
+
+  .loc-region-h2 {
+    margin-top: 12px;
   }
 
   .loc-region-intro {
     font-size: 15px;
-    color: var(--ink-muted, rgba(15,20,25,0.65));
-    line-height: 1.6;
-    margin-top: 12px;
+    color: var(--ink-soft);
+    line-height: 1.65;
+    margin-top: 14px;
+    max-width: 64ch;
   }
 
   .loc-region-head-right {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 4px;
+    align-items: flex-start;
     flex-shrink: 0;
   }
 
+  .loc-region-count-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    padding: 16px 20px;
+    background: rgba(212,147,46,0.06);
+    border: 1px solid rgba(212,147,46,0.18);
+    border-radius: var(--radius-md);
+  }
+
   .loc-region-count {
-    font-family: var(--f-display, 'Fraunces', serif);
+    font-family: var(--f-display);
     font-size: 56px;
-    line-height: 1;
-    color: var(--amber, #D4932E);
+    line-height: 0.9;
+    color: var(--amber-deep);
     font-weight: 400;
+    letter-spacing: -0.04em;
   }
 
   .loc-region-count-label {
-    color: rgba(15,20,25,0.5);
-    letter-spacing: 0.12em;
+    font-family: var(--f-mono);
+    color: var(--ink-muted);
+    letter-spacing: 0.1em;
+    font-size: 10px;
+    text-transform: uppercase;
+    text-align: right;
   }
 
   /* City grid */
   .loc-city-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
     gap: 16px;
+    position: relative;
+    z-index: 1;
   }
 
   .loc-city-card {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    padding: 20px;
-    border: 1.5px solid rgba(15,20,25,0.08);
-    border-radius: var(--radius-md, 12px);
-    background: var(--cream-soft, var(--cream));
+    gap: 14px;
+    padding: 22px 20px 20px;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    background: var(--cream-soft);
     text-decoration: none;
     color: inherit;
-    transition: all var(--transition);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
   }
 
   .loc-region:nth-child(even) .loc-city-card {
     background: var(--paper);
   }
 
+  .loc-city-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, transparent 60%, rgba(212,147,46,0.08));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
   .loc-city-card:hover {
-    border-color: var(--amber, #D4932E);
-    background: var(--amber-glow, rgba(212,147,46,0.08));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(212,147,46,0.12);
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(212,147,46,0.15);
+  }
+
+  .loc-city-card:hover::before {
+    opacity: 1;
+  }
+
+  .loc-city-index {
+    position: absolute;
+    top: 14px;
+    right: 16px;
+    color: var(--ink-muted);
+    opacity: 0.4;
+    font-size: 10px;
+    transition: color var(--transition), opacity var(--transition);
+  }
+
+  .loc-city-card:hover .loc-city-index {
+    opacity: 1;
+    color: var(--amber-deep);
   }
 
   .loc-city-card-top {
     display: flex;
     align-items: center;
     gap: 10px;
+    padding-right: 28px;
   }
 
   .loc-city-card-name-block {
@@ -866,47 +1452,54 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   }
 
   .loc-city-pin {
-    color: var(--amber, #D4932E);
+    color: var(--amber);
     flex-shrink: 0;
     display: flex;
     align-items: center;
+    transition: transform 0.3s ease;
   }
 
   .loc-city-card:hover .loc-city-pin {
-    color: var(--amber-deep, #B07A1D);
+    color: var(--amber-deep);
+    transform: scale(1.15);
   }
 
   .loc-city-name {
     display: block;
-    font-size: 16px;
-    font-weight: 600;
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-weight: 500;
     color: var(--ink);
-    line-height: 1.2;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
   }
 
   .loc-city-county {
     display: block;
+    font-family: var(--f-mono);
     font-size: 10px;
-    color: var(--ink-muted, rgba(15,20,25,0.5));
+    color: var(--ink-muted);
     letter-spacing: 0.06em;
-    margin-top: 2px;
+    margin-top: 4px;
+    text-transform: uppercase;
   }
 
   .loc-city-arrow {
     margin-left: auto;
-    color: var(--amber, #D4932E);
-    font-size: 16px;
+    color: var(--amber);
     transition: transform var(--transition);
     flex-shrink: 0;
+    display: flex;
   }
 
   .loc-city-card:hover .loc-city-arrow {
     transform: translateX(4px);
+    color: var(--amber-deep);
   }
 
   .loc-city-hook {
     font-size: 13px;
-    color: var(--ink-muted, rgba(15,20,25,0.65));
+    color: var(--ink-muted);
     line-height: 1.5;
     flex: 1;
     margin: 0;
@@ -914,9 +1507,10 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 
   .loc-city-stats {
     display: flex;
+    align-items: center;
     gap: 16px;
-    padding: 10px 0;
-    border-top: 1px dashed rgba(15,20,25,0.1);
+    padding: 12px 0;
+    border-top: 1px dashed var(--line);
   }
 
   .loc-city-stat {
@@ -926,41 +1520,59 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   }
 
   .loc-city-stat-num {
-    font-family: var(--f-display, 'Fraunces', serif);
-    font-size: 16px;
+    font-family: var(--f-display);
+    font-size: 17px;
     line-height: 1;
     color: var(--ink);
     font-weight: 500;
+    letter-spacing: -0.01em;
   }
 
   .loc-city-stat-label {
-    color: rgba(15,20,25,0.45);
+    font-family: var(--f-mono);
+    color: var(--ink-muted);
     letter-spacing: 0.1em;
     font-size: 9px;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+
+  .loc-city-stat-divider {
+    width: 1px;
+    height: 22px;
+    background: var(--line);
   }
 
   .loc-city-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
     font-size: 10px;
-    color: var(--amber-deep, #B07A1D);
+    color: var(--amber-deep);
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    transition: color var(--transition);
+    transition: gap 0.3s ease, color var(--transition);
   }
 
   .loc-city-card:hover .loc-city-cta {
+    gap: 10px;
     color: var(--ink);
   }
 
-  /* ===== COVERAGE SECTION ===== */
+  /* ===========================================
+     COVERAGE SECTION
+     =========================================== */
   .loc-coverage {
-    background: var(--paper);
-    border-top: 1px solid rgba(15,20,25,0.06);
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-top: 1px solid var(--line);
   }
 
   .loc-coverage-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 56px;
+    gap: 64px;
     align-items: center;
   }
 
@@ -968,35 +1580,79 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     max-width: 520px;
   }
 
-  .loc-coverage-text .cta-btn {
-    margin-top: 16px;
+  .loc-coverage-text .lp-btn-ghost {
+    margin-top: 28px;
+  }
+
+  .loc-coverage-panel {
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .loc-coverage-panel-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed var(--line);
+    margin-bottom: 16px;
+  }
+
+  .loc-coverage-panel-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .loc-coverage-panel-count {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.08);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
   }
 
   .loc-coverage-list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px 16px;
+    gap: 6px;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
   .loc-coverage-list li {
-    font-family: var(--f-mono, 'JetBrains Mono', monospace);
-    font-size: 12px;
-    color: rgba(15,20,25,0.55);
-    padding: 8px 14px;
-    background: var(--cream-soft, var(--cream));
-    border: 1px solid rgba(15,20,25,0.06);
-    border-radius: var(--radius-pill, 999px);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    padding: 8px 12px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
     text-align: center;
     letter-spacing: 0.04em;
+    transition: all var(--transition);
   }
 
-  /* ===== FINAL CTA ===== */
+  .loc-coverage-list li:hover {
+    border-color: var(--amber);
+    color: var(--amber-deep);
+    background: var(--amber-glow);
+  }
+
+  /* ===========================================
+     FINAL CTA — dark
+     =========================================== */
   .loc-cta-section {
     background: var(--ink);
-    padding: 96px 0;
+    padding: clamp(72px, 10vh, 112px) 0;
     position: relative;
     overflow: hidden;
   }
@@ -1004,48 +1660,51 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
   .loc-cta-section::before {
     content: "";
     position: absolute;
-    top: -200px;
+    top: -300px;
     left: -200px;
-    width: 700px;
-    height: 700px;
-    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .loc-cta-section::after {
+    content: "";
+    position: absolute;
+    bottom: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
     pointer-events: none;
   }
 
   .loc-cta-inner {
-    max-width: 700px;
+    max-width: 720px;
     text-align: center;
     margin: 0 auto;
     position: relative;
+    z-index: 1;
   }
 
-  .loc-cta-section .eyebrow {
+  .loc-cta-inner .loc-section-eyebrow {
     justify-content: center;
-    color: rgba(244,239,230,0.5);
   }
 
-  .eyebrow-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--amber, #D4932E);
-    display: inline-block;
-    margin-right: 8px;
-  }
-
-  .eyebrow-dot-amber {
-    background: var(--amber, #D4932E);
-    box-shadow: 0 0 0 4px rgba(212,147,46,0.2);
-  }
-
-  .loc-cta-section .h2-section {
+  .loc-cta-h2 {
     color: var(--cream);
-    margin-top: 12px;
+    margin-top: 16px;
   }
 
-  .loc-cta-section .lead {
-    color: rgba(244,239,230,0.6);
-    margin-top: 16px;
+  .loc-cta-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber);
+  }
+
+  .loc-cta-lead {
+    color: rgba(244,239,230,0.65);
+    margin: 18px auto 0;
   }
 
   .loc-cta-buttons {
@@ -1053,33 +1712,56 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     gap: 12px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-top: 32px;
+    margin-top: 36px;
   }
 
-  .cta-btn-ghost-light {
-    border: 1px solid rgba(244,239,230,0.25);
-    color: var(--cream);
-    background: transparent;
-    padding: 14px 24px;
-    border-radius: var(--radius-pill, 999px);
-    text-decoration: none;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all var(--transition);
+  .loc-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+
+  .loc-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+
+  .loc-cta-ghost-light {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
   }
 
-  .cta-btn-ghost-light:hover {
-    border-color: var(--amber, #D4932E);
-    color: var(--amber, #D4932E);
+  .loc-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
     background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
   }
 
-  /* ===== RESPONSIVE ===== */
-  @media (max-width: 1024px) {
-    .loc-hero-grid {
+  .loc-cta-ghost-light svg {
+    transition: transform 0.22s ease;
+  }
+
+  .loc-cta-ghost-light:hover svg {
+    transform: translate(2px, -2px);
+  }
+
+  /* ===========================================
+     RESPONSIVE
+     =========================================== */
+  @media (max-width: 1100px) {
+    .loc-hero-wrap {
       grid-template-columns: 1fr;
       gap: 40px;
     }
@@ -1095,14 +1777,14 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 
     .loc-coverage-grid {
       grid-template-columns: 1fr;
-      gap: 32px;
+      gap: 40px;
     }
   }
 
   @media (max-width: 768px) {
     .loc-trust-grid {
       flex-wrap: wrap;
-      gap: 16px 8px;
+      gap: 20px 8px;
     }
 
     .loc-trust-item {
@@ -1117,17 +1799,22 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     .loc-region-head {
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      gap: 20px;
     }
 
-    .loc-region-head-right {
+    .loc-region-count-block {
       flex-direction: row;
-      align-items: baseline;
+      align-items: center;
       gap: 12px;
+      padding: 12px 16px;
     }
 
     .loc-region-count {
       font-size: 40px;
+    }
+
+    .loc-region-count-label {
+      text-align: left;
     }
 
     .loc-jumpnav-inner {
@@ -1152,7 +1839,11 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
     }
 
     .loc-featured-name {
-      font-size: 28px;
+      font-size: 32px;
+    }
+
+    .loc-featured-stat-num {
+      font-size: 20px;
     }
 
     .loc-cta-section {
