@@ -57,19 +57,39 @@ const jsonLd = JSON.stringify({
       "knowsAbout": [
         "WordPress web design",
         "Custom WordPress design",
+        "Custom WordPress development",
+        "Custom WordPress development services",
         "WordPress website design",
+        "WordPress website development",
+        "WordPress website development company",
         "WordPress designer",
+        "WordPress developer services",
         "Custom Gutenberg blocks",
         "WordPress theme development",
+        "Responsive website design services",
         "Schema.org architecture",
         "Core Web Vitals optimization"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      "name": "How to design a WordPress website",
+      "description": "The five-step process for designing and building a custom WordPress website with schema, performance, and conversion architecture built in.",
+      "totalTime": "P6W",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Map the schema and content architecture", "text": "Identify which schema types your business needs (LocalBusiness, FAQ, Service, vertical-specific). Map the content patterns that will become custom Gutenberg blocks." },
+        { "@type": "HowToStep", "position": 2, "name": "Design in Figma",                          "text": "Mobile-first responsive designs in Figma, mapped against the schema and conversion architecture decided in step one. Two structured review rounds." },
+        { "@type": "HowToStep", "position": 3, "name": "Build custom blocks and theme",            "text": "Custom Gutenberg blocks and a custom WordPress theme with modern PHP, ACF Pro, and performance-tuned markup. No page builders." },
+        { "@type": "HowToStep", "position": 4, "name": "Optimize for Core Web Vitals",             "text": "Image optimization, critical CSS, lazy loading, and server-level tuning. Target 90+ Lighthouse on every page before launch." },
+        { "@type": "HowToStep", "position": 5, "name": "Launch and monitor",                        "text": "Pre-launch performance audit, 301 redirect map, zero-downtime DNS cutover. Daily Search Console monitoring for the first 30 days post-launch." }
       ]
     }
   ]
 });
 
 const includes = [
-  "Custom design in Figma — mapped to your schema graph and conversion architecture",
+  "Custom design in Figma, mapped to your schema graph and conversion architecture",
   "Custom Gutenberg blocks (no page builders, no $400/year plugin licences)",
   "Mobile-first responsive design from phones up to wide desktop",
   "LocalBusiness + FAQ + vertical-specific schema architecture",
@@ -120,6 +140,72 @@ const process = [
   { num: "06", phase: "Monitoring",     duration: "30 days",   detail: "Daily Search Console checks for first 7 days, then weekly. Day-30 written launch report." },
 ];
 
+const customDev = [
+  {
+    num: "01",
+    area: "Custom Gutenberg blocks",
+    detail: "Block-based editing tied to your specific content patterns. Editors get on-brand layouts without page builders.",
+  },
+  {
+    num: "02",
+    area: "Custom WordPress themes",
+    detail: "Modern PHP, ACF Pro, semantic HTML, and accessible markup. Built for editors as much as for visitors.",
+  },
+  {
+    num: "03",
+    area: "Custom post types and taxonomies",
+    detail: "Properties, services, locations, case studies, testimonials. Each modeled with the right fields and schema.",
+  },
+  {
+    num: "04",
+    area: "Custom plugin development",
+    detail: "When the right plugin doesn't exist, we build it. Lightweight, documented, and maintained as part of the project.",
+  },
+  {
+    num: "05",
+    area: "Custom integrations",
+    detail: "CRM connections, IDX feeds, booking systems, payment gateways, multi-vendor commerce, subscription flows.",
+  },
+  {
+    num: "06",
+    area: "Responsive WordPress design",
+    detail: "Mobile-first builds tested across iOS Safari, Chrome Mobile, iPad, and full desktop. No hidden mobile breakpoints.",
+  },
+];
+
+const whenDesign = [
+  {
+    num: "01",
+    signal: "Generic theme that ships with no schema",
+    detail: "If your current site uses a stock theme bought from ThemeForest or Astra, schema is almost certainly missing or incomplete. A custom WordPress design rebuilds the foundation.",
+  },
+  {
+    num: "02",
+    signal: "Lighthouse score below 70",
+    detail: "Below 70 in Performance usually means plugin bloat, slow hosting, or missed image optimization. Custom WordPress development services targeting Core Web Vitals fix the underlying problem.",
+  },
+  {
+    num: "03",
+    signal: "Editing requires a developer for everything",
+    detail: "If you need to email a developer to change a hero image, your site is built wrong. Custom Gutenberg blocks let editors update content without breaking layouts.",
+  },
+  {
+    num: "04",
+    signal: "Locked into a $400/year page builder licence",
+    detail: "Elementor Pro, Divi, WPBakery: each charges per-site annually and breaks layouts on update. A custom WordPress website development engagement removes the dependency.",
+  },
+  {
+    num: "05",
+    signal: "Mobile experience is broken or slow",
+    detail: "70%+ of traffic comes from phones. If mobile pagespeed is below 60 or layouts break, responsive WordPress design with mobile-first methodology is the fix.",
+  },
+  {
+    num: "06",
+    signal: "You're scaling past simple website",
+    detail: "Adding WooCommerce, multi-language, multi-location schema, IDX, or booking takes you past template territory. Custom WordPress development services handle the complexity.",
+  },
+];
+
 const verticals = [
   { name: "Law firms",       href: "/industries/law-firm-website-design/" },
   { name: "Dental",          href: "/industries/dental-website-design/" },
@@ -139,15 +225,15 @@ const faqs = [
   },
   {
     q: "What's the difference between custom WordPress design and a theme?",
-    a: "A theme is a pre-built template you customize within its constraints. Custom WordPress design is built from scratch around your specific content patterns, schema needs, and conversion architecture. Themes look fast in a demo and become a maintenance tax for years (proprietary plugins, theme-locked features, design constraints). Custom WordPress is editable forever — you or any other developer can modify it without negotiating with a theme vendor.",
+    a: "A theme is a pre-built template you customize within its constraints. Custom WordPress design is built from scratch around your specific content patterns, schema needs, and conversion architecture. Themes look fast in a demo and become a maintenance tax for years (proprietary plugins, theme-locked features, design constraints). Custom WordPress is editable forever, by you or any other developer, without negotiating with a theme vendor.",
   },
   {
     q: "Why don't you use page builders like Elementor or Divi?",
-    a: "Page builders solve a different problem than custom WordPress web design. They make it easy for non-developers to drag-and-drop layouts, but the trade-off is bloated HTML, slow Core Web Vitals, and dependency on a $200-$400/year licence to keep editing. Custom Gutenberg blocks ship the design as native WordPress content, edit at half the page weight, and stay maintainable forever. The only place we'll use Elementor is when a client explicitly wants it — even then we'll explain the trade-offs first.",
+    a: "Page builders solve a different problem than custom WordPress web design. They make it easy for non-developers to drag-and-drop layouts, but the trade-off is bloated HTML, slow Core Web Vitals, and dependency on a $200-$400/year licence to keep editing. Custom Gutenberg blocks ship the design as native WordPress content, edit at half the page weight, and stay maintainable forever. The only place we'll use Elementor is when a client explicitly wants it. Even then we'll explain the trade-offs first.",
   },
   {
     q: "How long does a WordPress web design project take?",
-    a: "Standard delivery: Starter (8 pages) ships in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks. The biggest variable is how quickly you provide content and approve design rounds — we keep building on our end, but the timeline pauses if we're waiting on you for more than 5 business days.",
+    a: "Standard delivery: Starter (8 pages) ships in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks. The biggest variable is how quickly you provide content and approve design rounds. We keep building on our end, but the timeline pauses if we're waiting on you for more than 5 business days.",
   },
   {
     q: "Will the new site lose my Google rankings?",
@@ -155,21 +241,21 @@ const faqs = [
   },
   {
     q: "Do you write the website copy or do I provide it?",
-    a: "We write copy on every project tier. You complete a structured questionnaire after discovery — services, audiences, credentials, vertical context — and we draft service pages, team bios, FAQs, and city landing pages. One review round is included in every tier. For regulated industries (legal, medical, dental) we handle the compliance framing under MRPC, HIPAA-aware language, and ethics-board-safe testimonial framing.",
+    a: "We write copy on every project tier. You complete a structured questionnaire after discovery (services, audiences, credentials, vertical context) and we draft service pages, team bios, FAQs, and city landing pages. One review round is included in every tier. For regulated industries (legal, medical, dental) we handle the compliance framing under MRPC, HIPAA-aware language, and ethics-board-safe testimonial framing.",
   },
   {
     q: "What's included in the 90+ Lighthouse guarantee?",
-    a: "Every page on launch day must hit 90+ in all four Lighthouse categories: Performance, Accessibility, Best Practices, and SEO. If a page ships below the bar, we don't invoice the final launch milestone until it's green. The guarantee covers our build — not third-party embedded content (chat widgets, video embeds, marketing pixels) that you add post-launch. We document those exceptions in the launch report.",
+    a: "Every page on launch day must hit 90+ in all four Lighthouse categories: Performance, Accessibility, Best Practices, and SEO. If a page ships below the bar, we don't invoice the final launch milestone until it's green. The guarantee covers our build, not third-party embedded content (chat widgets, video embeds, marketing pixels) that you add post-launch. We document those exceptions in the launch report.",
   },
   {
     q: "Can you redesign my existing WordPress site without rebuilding it?",
-    a: "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. If the site has 40+ active plugins, broken schema, or Lighthouse scores in the 30s, redesign is the wrong tool — you need a rebuild. We audit the current state during discovery and recommend the right approach honestly. Redesigns start at $2,500.",
+    a: "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. If the site has 40+ active plugins, broken schema, or Lighthouse scores in the 30s, redesign is the wrong tool. You need a rebuild. We audit the current state during discovery and recommend the right approach honestly. Redesigns start at $2,500.",
   },
 ];
 ---
 <BaseLayout
-  title="WordPress Web Design Services Maryland | Custom WordPress Website Design | Upcoming Brand"
-  description="Custom WordPress web design services in Maryland. Custom Gutenberg blocks, schema architecture, 90+ Lighthouse, fixed-scope from $1,500. Built for businesses that need to rank, convert, and stay maintainable."
+  title="WordPress Web Design Services & Custom Development | Maryland | Upcoming Brand"
+  description="Custom WordPress web design and development services in Maryland. Responsive design, custom Gutenberg blocks, schema architecture, 90+ Lighthouse. Fixed-scope from $1,500. Built for businesses that need to rank, convert, and stay maintainable."
   canonicalUrl={canonical}
 >
   <Fragment slot="head">
@@ -197,7 +283,7 @@ const faqs = [
         </h1>
 
         <p class="page-lead">
-          <strong>WordPress web design services</strong> for Maryland businesses that need a site that ranks in Google, converts visitors, and stays maintainable for the next ten years. Custom Gutenberg blocks. Schema-first architecture. 90+ Lighthouse contractually. <strong>Fixed-scope from $1,500.</strong>
+          <strong>WordPress web design services</strong> and <strong>custom WordPress development</strong> for Maryland businesses that need a site that ranks in Google, converts visitors, and stays maintainable for the next ten years. Responsive website design with custom Gutenberg blocks. Schema-first architecture. 90+ Lighthouse contractually. <strong>Fixed-scope from $1,500.</strong>
         </p>
 
         <div class="page-hero-ctas">
@@ -232,7 +318,7 @@ const faqs = [
           <h2 class="page-h2">
             Twelve things <em>every project ships with.</em>
           </h2>
-          <p class="page-section-lead">Tier-independent. Starter projects ship with the same engineering bar as Custom builds — only scope and complexity change.</p>
+          <p class="page-section-lead">Tier-independent. Starter projects ship with the same engineering bar as Custom builds. Only scope and complexity change.</p>
         </div>
 
         <div class="svc-includes-grid">
@@ -244,6 +330,90 @@ const faqs = [
               </span>
               <span class="svc-include-text">{item}</span>
             </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DEFINITION BLOCK (Know intent + AI Overview citation) ====== -->
+    <section class="svc-define">
+      <div class="container">
+        <div class="svc-define-card">
+          <div class="svc-define-head">
+            <span class="svc-define-pulse" aria-hidden="true"></span>
+            <span class="svc-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 svc-define-h2">
+            What is custom WordPress web design?
+          </h2>
+          <p class="svc-define-answer">
+            <strong>Custom WordPress web design is a website built from scratch on the WordPress platform, tailored to your specific content patterns, schema needs, and conversion architecture.</strong> Unlike pre-built themes from marketplaces (ThemeForest, Astra) and unlike page-builder templates (Elementor, Divi), custom WordPress design gives you native Gutenberg blocks that match your exact business needs, perform better in Core Web Vitals, and stay maintainable for years without licence fees.
+          </p>
+          <div class="svc-define-meta">
+            <div class="svc-define-meta-item">
+              <span class="svc-define-meta-label">Also known as</span>
+              <span class="svc-define-meta-val">Custom WordPress development, bespoke WordPress design, custom WP theme</span>
+            </div>
+            <div class="svc-define-meta-item">
+              <span class="svc-define-meta-label">Typical scope</span>
+              <span class="svc-define-meta-val">8 to 50+ pages with vertical-specific schema and conversion architecture</span>
+            </div>
+            <div class="svc-define-meta-item">
+              <span class="svc-define-meta-label">Investment</span>
+              <span class="svc-define-meta-val">$1,500 (Starter) to $15,000+ (Custom WooCommerce / multi-location)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== CUSTOM DEVELOPMENT (targets 'custom wordpress development' KW) ====== -->
+    <section class="svc-customdev">
+      <div class="container">
+        <div class="svc-customdev-head">
+          <p class="svc-section-eyebrow">
+            <span class="svc-section-eyebrow-line"></span>
+            Custom WordPress development services
+          </p>
+          <h2 class="page-h2">
+            Six development capabilities <em>under one engagement.</em>
+          </h2>
+          <p class="page-section-lead">A WordPress web design service is only as deep as the development underneath. We bundle six custom development capabilities into every project, from custom blocks to multi-vendor commerce.</p>
+        </div>
+
+        <div class="svc-customdev-grid">
+          {customDev.map((c) => (
+            <article class="svc-customdev-card">
+              <span class="svc-customdev-num">{c.num}</span>
+              <h3 class="svc-customdev-area">{c.area}</h3>
+              <p class="svc-customdev-detail">{c.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHEN YOU NEED IT (Causation frame) ====== -->
+    <section class="svc-when">
+      <div class="container">
+        <div class="svc-when-head">
+          <p class="svc-section-eyebrow">
+            <span class="svc-section-eyebrow-line"></span>
+            When you need custom design
+          </p>
+          <h2 class="page-h2">
+            Six signals <em>your site needs a custom WordPress build.</em>
+          </h2>
+          <p class="page-section-lead">If two or more of these match, the right answer is custom WordPress web design and development services, not another theme. Move from template territory to a build that scales.</p>
+        </div>
+
+        <div class="svc-when-grid">
+          {whenDesign.map((w) => (
+            <article class="svc-when-card">
+              <span class="svc-when-num">{w.num}</span>
+              <h3 class="svc-when-signal">{w.signal}</h3>
+              <p class="svc-when-detail">{w.detail}</p>
+            </article>
           ))}
         </div>
       </div>
@@ -299,7 +469,7 @@ const faqs = [
           <h2 class="page-h2 svc-process-h2">
             Six phases <em>from email to launch.</em>
           </h2>
-          <p class="svc-process-lead">Every WordPress web design project moves through the same six phases — async by default, schema-led, Lighthouse 90+ as a deliverable.</p>
+          <p class="svc-process-lead">Every WordPress web design project moves through the same six phases. Async by default, schema-led, Lighthouse 90+ as a deliverable.</p>
         </div>
 
         <ol class="svc-process-list">
@@ -693,6 +863,220 @@ const faqs = [
     font-size: 13.5px;
     line-height: 1.55;
     color: var(--ink-soft);
+  }
+
+  /* DEFINITION CALLOUT */
+  .svc-define {
+    background: var(--cream);
+    padding: clamp(48px, 6vh, 80px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-define-card {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+  .svc-define-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .svc-define-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .svc-define-pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(212,147,46,0.18);
+    animation: svc-pulse 2s ease-in-out infinite;
+  }
+  @keyframes svc-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .svc-define-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+  .svc-define-h2 {
+    margin: 0 0 16px;
+    font-size: clamp(22px, 3vw, 32px);
+  }
+  .svc-define-answer {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+  .svc-define-answer strong { font-weight: 600; color: var(--ink); }
+  .svc-define-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+  }
+  .svc-define-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .svc-define-meta-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+  .svc-define-meta-val {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  /* CUSTOM DEV GRID */
+  .svc-customdev {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-customdev-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .svc-customdev-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .svc-customdev-card {
+    padding: 28px 26px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .svc-customdev-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .svc-customdev-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+  .svc-customdev-card:hover::before { transform: scaleY(1); }
+  .svc-customdev-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+  .svc-customdev-area {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 10px 0 8px;
+  }
+  .svc-customdev-detail {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* WHEN YOU NEED */
+  .svc-when {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-when-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .svc-when-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .svc-when-card {
+    padding: 28px 26px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+  .svc-when-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+  .svc-when-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+  .svc-when-signal {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 10px 0 8px;
+  }
+  .svc-when-detail {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
   }
 
   /* TIERS */
@@ -1292,11 +1676,17 @@ const faqs = [
     .svc-tier-highlight:hover { transform: translateY(-4px); }
     .svc-process-list { grid-template-columns: repeat(2, 1fr); }
     .svc-verticals-grid { grid-template-columns: repeat(2, 1fr); }
+    .svc-define-meta { grid-template-columns: 1fr; gap: 12px; }
+    .svc-define-card { padding: 28px 24px; }
+    .svc-customdev-grid { grid-template-columns: repeat(2, 1fr); }
+    .svc-when-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
     .svc-process-list { grid-template-columns: 1fr; }
     .svc-verticals-grid { grid-template-columns: 1fr; }
+    .svc-customdev-grid { grid-template-columns: 1fr; }
+    .svc-when-grid { grid-template-columns: 1fr; }
     .svc-faq-q {
       grid-template-columns: 1fr 24px;
       gap: 12px;
