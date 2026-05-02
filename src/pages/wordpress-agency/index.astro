@@ -1,0 +1,1543 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/wordpress-agency/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "WordPress Agency | Custom Web Design & Development | Upcoming Brand",
+      "description": "Upcoming Brand is a WordPress agency based in Maryland. Custom WordPress web design, development, schema architecture, and Core Web Vitals optimization. Fixed-scope, 90+ Lighthouse, 6-10 week delivery. From $1,500.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-02",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",             "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "WordPress agency", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": ["ProfessionalService", "LocalBusiness"],
+      "@id": `${canonical}#service`,
+      "name": "Upcoming Brand WordPress Agency",
+      "url": canonical,
+      "description": "WordPress agency offering custom WordPress web design, WooCommerce development, schema architecture, and Core Web Vitals optimization. Fixed-scope projects from $1,500.",
+      "image": { "@id": "https://upcomingbrand.com/#logo" },
+      "logo": { "@id": "https://upcomingbrand.com/#logo" },
+      "priceRange": "$1,500-$15,000",
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Credit Card, Bank Transfer",
+      "address": {
+        "@type": "PostalAddress",
+        "addressRegion": "MD",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" },
+        { "@type": "Country", "name": "United States" }
+      ],
+      "serviceType": ["WordPress web design", "WordPress development", "WooCommerce development", "WordPress SEO", "WordPress maintenance"],
+      "knowsAbout": [
+        "WordPress agency",
+        "WordPress web design agency",
+        "WordPress website design company",
+        "WordPress development agency",
+        "Custom WordPress development",
+        "Schema.org architecture",
+        "Core Web Vitals optimization",
+        "WooCommerce development",
+        "Local Pack ranking",
+        "Web design and development agency"
+      ],
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "WordPress Agency Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Starter WordPress Build" },
+            "name": "Starter",
+            "price": "1500",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Growth WordPress Build" },
+            "name": "Growth",
+            "price": "3500",
+            "priceCurrency": "USD"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "Custom WordPress Build" },
+            "name": "Custom",
+            "price": "6000",
+            "priceCurrency": "USD"
+          }
+        ]
+      },
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "parentOrganization": { "@id": "https://upcomingbrand.com/#organization" }
+    }
+  ]
+});
+
+const services = [
+  {
+    num: "01",
+    title: "Custom WordPress design",
+    detail: "Designed around your schema map and conversion architecture. Custom Gutenberg blocks, no page builders, no $400/year plugin licences. Editable forever by you or any developer.",
+    keyword: "WordPress design",
+  },
+  {
+    num: "02",
+    title: "WordPress development",
+    detail: "Senior WordPress development with modern PHP, ACF Pro, custom post types, and performant theme architecture. Built for editors as much as for visitors.",
+    keyword: "WordPress development",
+  },
+  {
+    num: "03",
+    title: "WooCommerce development",
+    detail: "Complete WooCommerce builds: subscriptions, configurators, multi-vendor, custom checkout flows, payment integrations. WooCommerce schema and Core Web Vitals shipped at launch.",
+    keyword: "WooCommerce agency",
+  },
+  {
+    num: "04",
+    title: "WordPress SEO + schema",
+    detail: "LocalBusiness, FAQ, Service, and vertical-specific schema mapped before design begins. RankMath configuration, internal linking strategy, Search Console + Bing Webmaster setup.",
+    keyword: "WordPress SEO agency",
+  },
+  {
+    num: "05",
+    title: "Core Web Vitals",
+    detail: "90+ Lighthouse on every page, contractually. Image optimization, critical CSS, lazy loading, and server-level tuning so the site ships green and stays green.",
+    keyword: "Web performance agency",
+  },
+  {
+    num: "06",
+    title: "Migrations + redesigns",
+    detail: "Wix, Squarespace, GoDaddy, or outdated WordPress to custom WordPress. Complete redirect map, zero-downtime DNS cutover, 30-day Search Console watch post-launch.",
+    keyword: "WordPress migration",
+  },
+  {
+    num: "07",
+    title: "WordPress maintenance",
+    detail: "Care plans from $150/month: weekly updates, off-site backups, uptime monitoring, security patching, 4-hour SLA. Direct founder access, not a help-desk queue.",
+    keyword: "WordPress maintenance services",
+  },
+  {
+    num: "08",
+    title: "Audits + sprints",
+    detail: "Standalone $1,500 audits (schema, performance, Local Pack, content gaps) and 2-week speed sprints to bring an existing site to 90+ Lighthouse.",
+    keyword: "WordPress audit",
+  },
+];
+
+const whyUs = [
+  {
+    num: "01",
+    title: "Fixed-scope, not hourly",
+    detail: "Every WordPress agency project is fixed-scope. One number agreed before code is written. No hourly billing, no scope-creep retainers, no surprise invoices.",
+  },
+  {
+    num: "02",
+    title: "Schema-first architecture",
+    detail: "Generic agencies skip schema because they don't understand it. We map LocalBusiness, FAQ, Service, and vertical-specific schema first — before a single block is designed.",
+  },
+  {
+    num: "03",
+    title: "Performance as a deliverable",
+    detail: "90+ Lighthouse on every page. Contractually. If a project ships below the bar, we don't invoice the final milestone.",
+  },
+  {
+    num: "04",
+    title: "Direct access, no relays",
+    detail: "The person you book the discovery call with is the same person who writes your schema, builds your blocks, and ships your launch. No account managers.",
+  },
+];
+
+const verticals = [
+  { name: "Law firms",          href: "/industries/law-firm-website-design/",       icon: "scales" },
+  { name: "Dental practices",   href: "/industries/dental-website-design/",         icon: "tooth" },
+  { name: "Medical clinics",    href: "/industries/medical-website-design/",        icon: "med" },
+  { name: "Real estate",        href: "/industries/real-estate-website-design/",    icon: "home" },
+  { name: "Restaurants",        href: "/industries/restaurant-website-design/",     icon: "fork" },
+  { name: "Contractors",        href: "/industries/contractor-website-design/",     icon: "tool" },
+  { name: "Nonprofits",         href: "/industries/nonprofit-website-design/",      icon: "heart" },
+  { name: "Ecommerce",          href: "/industries/ecommerce-website-design/",      icon: "cart" },
+  { name: "Accountants / CPAs", href: "/industries/accountant-website-design/",     icon: "calc" },
+];
+
+const comparison = [
+  { factor: "Pricing model",     freelancer: "Hourly, scope-creep risk",     agency: "Fixed-scope, one PDF, no surprises" },
+  { factor: "Schema architecture", freelancer: "Often skipped or generic",     agency: "Mapped first, vertical-specific" },
+  { factor: "Core Web Vitals",   freelancer: "Best-effort",                  agency: "Contractually 90+ Lighthouse" },
+  { factor: "Continuity",        freelancer: "Solo, hit by bus = project dies", agency: "Studio + vetted network" },
+  { factor: "Compliance",        freelancer: "DIY",                          agency: "HIPAA-aware forms, MRPC copy, FEC-safe donations" },
+  { factor: "Post-launch",       freelancer: "Often invisible",              agency: "30-day Search Console watch + care plans" },
+  { factor: "Communication",     freelancer: "Direct",                       agency: "Direct (with us, no account managers)" },
+];
+
+const faqs = [
+  {
+    q: "What does a WordPress agency actually do?",
+    a: "A WordPress agency designs, develops, optimises, and maintains WordPress websites — typically for businesses that need more than a freelancer can deliver and less overhead than a 50-person digital agency. The strongest WordPress agencies bundle four services in one engagement: custom design, custom development (no page builders), schema and SEO architecture, and Core Web Vitals optimisation. Upcoming Brand is structured exactly this way: every project ships with all four as a baseline, regardless of tier.",
+  },
+  {
+    q: "How much does a WordPress agency charge?",
+    a: "Quality WordPress agency pricing in the US runs $1,500 to $15,000 for most small-to-mid business projects, with enterprise builds (multi-location, multi-language, complex integrations) ranging $20,000-$80,000+. Hourly rates at WordPress agencies typically run $80-$200/hr, but the higher-quality firms have moved to fixed-scope pricing. Upcoming Brand is fixed-scope only — Starter at $1,500, Growth at $3,500, Custom from $6,000 — with the full scope documented before you sign.",
+  },
+  {
+    q: "WordPress agency vs freelancer — which is right?",
+    a: "Freelancers work well for very simple sites, MVPs, or projects with tight budgets where you accept the trade-offs (no schema, basic performance, single point of failure). A WordPress agency is the better fit when you need: schema-led architecture, contractual Core Web Vitals, compliance work (HIPAA, MRPC, FEC), continuity if a single developer leaves, and post-launch monitoring. We accept projects from $1,500 specifically so businesses don't have to choose between freelancer cheap and agency expensive.",
+  },
+  {
+    q: "What's the difference between a WordPress web design agency and a WordPress development agency?",
+    a: "In practice, none — most senior firms do both. A 'WordPress web design agency' implies the project is design-led; a 'WordPress development agency' implies it's engineering-led. Upcoming Brand is both: our designers know schema and our developers know conversion architecture. The same person who runs the discovery call writes the schema and ships the launch. There's no design-then-throw-over-the-wall-to-dev hand-off.",
+  },
+  {
+    q: "Do you work as a white-label WordPress agency for other agencies?",
+    a: "Selectively. We white-label WordPress development for marketing agencies and design studios that need a senior implementation partner. Pricing is the same as direct-client work; the agreement is project-by-project rather than retainer; and we don't talk to your client unless you bring us in. Email with the project brief and we'll respond within 4 business hours.",
+  },
+  {
+    q: "Are you a Maryland-based WordPress agency or do you work nationally?",
+    a: "Both. We're based in Maryland and have built sites for businesses across all US states, plus 12 countries internationally. Every project runs entirely remote — discovery on Zoom, async build with weekly staging links, written status updates. Maryland clients get the local schema and Local Pack expertise; out-of-state clients get the same engineering bar. Distance has zero effect on the work.",
+  },
+  {
+    q: "How fast can a WordPress agency project be delivered?",
+    a: "Standard delivery: Starter (8 pages) in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks. The biggest variable is how quickly you review and approve design rounds — we keep building on our end, but the timeline pauses if content or feedback is delayed beyond the SOW window.",
+  },
+];
+---
+<BaseLayout
+  title="WordPress Agency Maryland | Custom WordPress Web Design Company | Upcoming Brand"
+  description="Upcoming Brand is a WordPress agency in Maryland. Custom WordPress web design, development, schema architecture, and Core Web Vitals. Fixed-scope, 90+ Lighthouse, 6-10 week delivery. From $1,500."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">WordPress agency &middot; Maryland</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">A WordPress agency</span>
+          <span class="page-h1-line"><em class="page-h1-accent">that ships sites that rank.</em></span>
+          <span class="page-h1-line page-h1-italic">Schema-first. Fixed-scope.</span>
+        </h1>
+
+        <p class="page-lead">
+          Upcoming Brand is a Maryland-based <strong>WordPress agency</strong> for serious businesses. Custom WordPress web design, WooCommerce development, schema architecture, and Core Web Vitals optimization — bundled into every project. <strong>Fixed-scope from $1,500. 90+ Lighthouse guaranteed. 6-10 week delivery.</strong>
+        </p>
+
+        <div class="page-hero-ctas">
+          <a href="/contact/" class="lp-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/pricing/" class="lp-btn-ghost">
+            View agency pricing
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Top Rated &middot; Upwork
+          </span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">400+ projects &middot; 12 countries</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">5+ years &middot; 9 verticals</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHY US ====== -->
+    <section class="agency-why">
+      <div class="container">
+        <div class="agency-why-head">
+          <p class="agency-section-eyebrow">
+            <span class="agency-section-eyebrow-line"></span>
+            What makes us different
+          </p>
+          <h2 class="page-h2">
+            Why Maryland businesses pick <em>Upcoming Brand</em> over generic WordPress agencies.
+          </h2>
+          <p class="page-section-lead">Four things every WordPress agency claims. Four things we put in the contract.</p>
+        </div>
+
+        <div class="agency-why-grid">
+          {whyUs.map((w) => (
+            <article class="agency-why-card">
+              <span class="agency-why-num">{w.num}</span>
+              <h3 class="agency-why-title">{w.title}</h3>
+              <p class="agency-why-detail">{w.detail}</p>
+              <div class="agency-why-line" aria-hidden="true"></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SERVICES ====== -->
+    <section class="agency-services">
+      <div class="container">
+        <div class="agency-services-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-light"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Agency services</span>
+            <span class="page-eyebrow-line page-eyebrow-line-light"></span>
+          </div>
+          <h2 class="page-h2 agency-services-h2">
+            Eight WordPress services <em>under one roof.</em>
+          </h2>
+          <p class="agency-services-lead">A full WordPress agency stack — design, development, SEO, performance, maintenance, and audits — with no hand-offs between specialist silos.</p>
+        </div>
+
+        <div class="agency-services-grid">
+          {services.map((s) => (
+            <article class="agency-service-card">
+              <div class="agency-service-head">
+                <span class="agency-service-num">{s.num}</span>
+                <span class="agency-service-keyword">{s.keyword}</span>
+              </div>
+              <h3 class="agency-service-title">{s.title}</h3>
+              <p class="agency-service-detail">{s.detail}</p>
+              <div class="agency-service-bar" aria-hidden="true"></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== VERTICALS ====== -->
+    <section class="agency-verticals">
+      <div class="container">
+        <div class="agency-verticals-head">
+          <p class="agency-section-eyebrow">
+            <span class="agency-section-eyebrow-line"></span>
+            Verticals served
+          </p>
+          <h2 class="page-h2">
+            Nine industries. <em>Vertical-specific schema on every project.</em>
+          </h2>
+          <p class="page-section-lead">A generic WordPress agency builds for everyone the same way. We build differently per vertical — different schema, different compliance, different conversion architecture.</p>
+        </div>
+
+        <div class="agency-verticals-grid">
+          {verticals.map((v) => (
+            <a href={v.href} class="agency-vertical">
+              <span class="agency-vertical-icon" aria-hidden="true">
+                {v.icon === "scales" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M3 7h18M5 7l3 8h-6zM19 7l3 8h-6z"/></svg>)}
+                {v.icon === "tooth" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5.5C8 3 5 5 5 9c0 4 1 6 2 9.5.7 2.4 3 2.5 3.5 0 .3-2 .5-3.5 1.5-3.5s1.2 1.5 1.5 3.5c.5 2.5 2.8 2.4 3.5 0C18 15 19 13 19 9c0-4-3-6-7-3.5z"/></svg>)}
+                {v.icon === "med" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>)}
+                {v.icon === "home" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l9-9 9 9M5 10v10h14V10"/></svg>)}
+                {v.icon === "fork" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2v8a4 4 0 0 0 8 0V2M10 14v8M18 2v20M16 2v6h4V2"/></svg>)}
+                {v.icon === "tool" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>)}
+                {v.icon === "heart" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>)}
+                {v.icon === "cart" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>)}
+                {v.icon === "calc" && (<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="8" y2="10"/><line x1="12" y1="10" x2="12" y2="10"/><line x1="16" y1="10" x2="16" y2="10"/><line x1="8" y1="14" x2="8" y2="14"/><line x1="12" y1="14" x2="12" y2="14"/><line x1="16" y1="14" x2="16" y2="14"/><line x1="8" y1="18" x2="8" y2="18"/></svg>)}
+              </span>
+              <span class="agency-vertical-name">{v.name}</span>
+              <span class="agency-vertical-arrow" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== COMPARISON TABLE ====== -->
+    <section class="agency-compare">
+      <div class="container">
+        <div class="agency-compare-head">
+          <p class="agency-section-eyebrow">
+            <span class="agency-section-eyebrow-line"></span>
+            Agency vs freelancer
+          </p>
+          <h2 class="page-h2">
+            What you get from a WordPress agency<br>
+            <em>that you don't get from a $400 freelancer build.</em>
+          </h2>
+        </div>
+
+        <div class="agency-compare-table-wrap">
+          <table class="agency-compare-table">
+            <thead>
+              <tr>
+                <th class="agency-compare-th-factor">Factor</th>
+                <th class="agency-compare-th-freelancer">Cheap freelancer</th>
+                <th class="agency-compare-th-agency">
+                  <span class="agency-compare-amber-pill">Upcoming Brand</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {comparison.map((c) => (
+                <tr>
+                  <td class="agency-compare-factor">{c.factor}</td>
+                  <td class="agency-compare-freelancer">
+                    <span class="agency-compare-icon-no" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                    {c.freelancer}
+                  </td>
+                  <td class="agency-compare-agency">
+                    <span class="agency-compare-icon-yes" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    {c.agency}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PRICING SNAPSHOT ====== -->
+    <section class="agency-pricing">
+      <div class="container">
+        <div class="agency-pricing-head">
+          <p class="agency-section-eyebrow">
+            <span class="agency-section-eyebrow-line"></span>
+            Agency pricing
+          </p>
+          <h2 class="page-h2">
+            Three packages. <em>One fixed price.</em>
+          </h2>
+          <p class="page-section-lead">Real WordPress agency pricing — written down, fixed-scope, no hourly billing. The Growth tier is what most clients pick.</p>
+        </div>
+
+        <div class="agency-pricing-grid">
+          <a href="/pricing/#starter" class="agency-pricing-tier">
+            <span class="agency-pricing-tag">Starter</span>
+            <span class="agency-pricing-price">$1,500</span>
+            <span class="agency-pricing-note">8 pages &middot; 4-6 weeks</span>
+            <p class="agency-pricing-blurb">Custom WordPress build with LocalBusiness schema, Core Web Vitals green, and 30-day post-launch monitoring.</p>
+          </a>
+          <a href="/pricing/#growth" class="agency-pricing-tier agency-pricing-tier-highlight">
+            <span class="agency-pricing-flag">Most chosen</span>
+            <span class="agency-pricing-tag">Growth</span>
+            <span class="agency-pricing-price">$3,500</span>
+            <span class="agency-pricing-note">15-20 pages &middot; 6-8 weeks</span>
+            <p class="agency-pricing-blurb">Vertical-specific schema, city / service landing pages, and full Local Pack optimization stack.</p>
+          </a>
+          <a href="/pricing/#custom" class="agency-pricing-tier">
+            <span class="agency-pricing-tag">Custom</span>
+            <span class="agency-pricing-price">From $6,000</span>
+            <span class="agency-pricing-note">8-10 weeks</span>
+            <p class="agency-pricing-blurb">WooCommerce, IDX, multi-location schema, custom plugin development, or complex booking systems.</p>
+          </a>
+        </div>
+
+        <div class="agency-pricing-foot">
+          <a href="/pricing/" class="agency-pricing-foot-link">
+            See full pricing breakdown
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="agency-faq">
+      <div class="container">
+        <div class="agency-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">WordPress agency FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 agency-faq-h2">
+            Seven questions <em>before you hire a WordPress agency.</em>
+          </h2>
+        </div>
+
+        <div class="agency-faq-list">
+          {faqs.map((f, i) => (
+            <details class="agency-faq-item">
+              <summary class="agency-faq-q">
+                <span class="agency-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="agency-faq-q-text">{f.q}</span>
+                <span class="agency-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="agency-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Hire the agency</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            A WordPress agency<br>
+            <em>that ships sites that rank.</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. We map your competitive set, identify the schema and Local Pack gaps, and send a fixed-scope quote within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/work/" class="page-cta-ghost-light">
+              See agency portfolio
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===========================================
+     SHARED PAGE SYSTEM
+     =========================================== */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-light { background: rgba(212,147,46,0.5); }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .page-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .lp-btn-primary, .lp-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lp-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lp-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg, .lp-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover svg { transform: translate(2px, -2px); }
+
+  .page-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .page-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .page-trust-dot {
+    width: 3px; height: 3px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 12px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-section-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 16px auto 0;
+  }
+
+  .agency-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0;
+    font-weight: 500;
+  }
+  .agency-section-eyebrow-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  /* ===========================================
+     WHY US
+     =========================================== */
+  .agency-why {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agency-why-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .agency-why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .agency-why-card {
+    padding: 32px 28px 28px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+  .agency-why-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .agency-why-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.12);
+  }
+  .agency-why-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .agency-why-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+
+  .agency-why-title {
+    font-family: var(--f-display);
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 12px 0 10px;
+  }
+
+  .agency-why-detail {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .agency-why-line {
+    margin-top: 16px;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+    opacity: 0.4;
+    transition: width 0.3s ease, opacity 0.3s ease;
+  }
+
+  .agency-why-card:hover .agency-why-line {
+    width: 56px;
+    opacity: 1;
+  }
+
+  /* ===========================================
+     SERVICES (dark band)
+     =========================================== */
+  .agency-services {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(64px, 9vh, 112px) 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .agency-services::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 60%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,147,46,0.5), transparent);
+    transform: translateX(-50%);
+  }
+  .agency-services::after {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .agency-services-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+  .agency-services-h2 { color: var(--cream); }
+  .agency-services-h2 em { color: var(--amber); }
+  .agency-services-lead {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 60ch;
+    margin: 0 auto;
+  }
+
+  .agency-services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .agency-service-card {
+    padding: 24px 22px 22px;
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.08);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+  .agency-service-card:hover {
+    border-color: rgba(212,147,46,0.4);
+    background: rgba(244,239,230,0.06);
+    transform: translateY(-3px);
+  }
+
+  .agency-service-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .agency-service-num {
+    font-family: var(--f-display);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+  }
+
+  .agency-service-keyword {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.5);
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.08);
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+  }
+
+  .agency-service-title {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--cream);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 4px 0 4px;
+  }
+
+  .agency-service-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.62);
+    margin: 0;
+    flex: 1;
+  }
+
+  .agency-service-bar {
+    width: 24px;
+    height: 1px;
+    background: var(--amber);
+    opacity: 0;
+    transition: all 0.3s ease;
+    margin-top: 2px;
+  }
+
+  .agency-service-card:hover .agency-service-bar {
+    opacity: 1;
+    width: 48px;
+  }
+
+  /* ===========================================
+     VERTICALS
+     =========================================== */
+  .agency-verticals {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agency-verticals-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .agency-verticals-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .agency-vertical {
+    display: grid;
+    grid-template-columns: 44px 1fr 16px;
+    gap: 14px;
+    align-items: center;
+    padding: 18px 22px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+  }
+  .agency-vertical:hover {
+    border-color: var(--amber);
+    transform: translateX(4px);
+    box-shadow: -4px 4px 14px rgba(212,147,46,0.08);
+  }
+
+  .agency-vertical-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition);
+  }
+  .agency-vertical:hover .agency-vertical-icon {
+    background: var(--amber);
+    color: var(--ink);
+  }
+
+  .agency-vertical-name {
+    font-family: var(--f-display);
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  .agency-vertical-arrow {
+    color: var(--amber);
+    transition: transform var(--transition);
+  }
+  .agency-vertical:hover .agency-vertical-arrow {
+    transform: translateX(3px);
+  }
+
+  /* ===========================================
+     COMPARISON TABLE
+     =========================================== */
+  .agency-compare {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agency-compare-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .agency-compare-table-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--paper);
+    box-shadow: var(--shadow-md);
+  }
+
+  .agency-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .agency-compare-table th {
+    padding: 18px 20px;
+    text-align: left;
+    background: var(--cream);
+    border-bottom: 2px solid var(--line);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .agency-compare-th-factor { color: var(--ink-muted); width: 22%; }
+  .agency-compare-th-freelancer { color: var(--ink-muted); width: 39%; }
+  .agency-compare-th-agency { color: var(--amber-deep); width: 39%; }
+
+  .agency-compare-amber-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--amber);
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  .agency-compare-table td {
+    padding: 14px 20px;
+    border-bottom: 1px dashed var(--line);
+    line-height: 1.5;
+    color: var(--ink-soft);
+    vertical-align: top;
+  }
+
+  .agency-compare-table tbody tr:last-child td { border-bottom: none; }
+  .agency-compare-table tbody tr:hover td { background: var(--cream); }
+
+  .agency-compare-factor {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink) !important;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .agency-compare-freelancer {
+    color: var(--ink-muted) !important;
+    text-decoration: line-through;
+    text-decoration-color: rgba(176,74,62,0.4);
+  }
+
+  .agency-compare-agency {
+    color: var(--ink) !important;
+    font-weight: 500;
+    background: rgba(212,147,46,0.04);
+  }
+
+  .agency-compare-icon-no, .agency-compare-icon-yes {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+
+  .agency-compare-icon-no {
+    background: rgba(176,74,62,0.1);
+    color: var(--red);
+  }
+
+  .agency-compare-icon-yes {
+    background: rgba(92,128,64,0.12);
+    color: var(--green);
+  }
+
+  /* ===========================================
+     PRICING SNAPSHOT
+     =========================================== */
+  .agency-pricing {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agency-pricing-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .agency-pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .agency-pricing-tier {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 28px 26px 24px;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .agency-pricing-tier:hover {
+    border-color: var(--amber);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(212,147,46,0.12);
+  }
+
+  .agency-pricing-tier-highlight {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--amber);
+  }
+
+  .agency-pricing-tier-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber));
+  }
+
+  .agency-pricing-flag {
+    position: absolute;
+    top: -10px; left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 14px;
+    background: var(--amber);
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .agency-pricing-tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    align-self: flex-start;
+    font-weight: 500;
+  }
+
+  .agency-pricing-tier-highlight .agency-pricing-tag {
+    background: rgba(212,147,46,0.15);
+    color: var(--amber);
+    border-color: rgba(212,147,46,0.4);
+  }
+
+  .agency-pricing-price {
+    font-family: var(--f-display);
+    font-size: clamp(32px, 4vw, 44px);
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-top: 6px;
+  }
+
+  .agency-pricing-tier-highlight .agency-pricing-price {
+    color: var(--amber);
+  }
+
+  .agency-pricing-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .agency-pricing-tier-highlight .agency-pricing-note {
+    color: rgba(244,239,230,0.55);
+  }
+
+  .agency-pricing-blurb {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 8px 0 0;
+  }
+
+  .agency-pricing-tier-highlight .agency-pricing-blurb {
+    color: rgba(244,239,230,0.7);
+  }
+
+  .agency-pricing-foot {
+    text-align: center;
+    margin-top: 28px;
+  }
+
+  .agency-pricing-foot-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    text-decoration: none;
+    transition: gap 0.3s ease, color var(--transition);
+    font-weight: 500;
+  }
+  .agency-pricing-foot-link:hover {
+    gap: 12px;
+    color: var(--ink);
+  }
+
+  /* ===========================================
+     FAQ
+     =========================================== */
+  .agency-faq {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .agency-faq-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .agency-faq-h2 { text-align: center; }
+
+  .agency-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .agency-faq-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+  .agency-faq-item[open] {
+    border-color: var(--amber);
+    box-shadow: 0 4px 14px rgba(212,147,46,0.08);
+  }
+  .agency-faq-q {
+    display: grid;
+    grid-template-columns: 36px 1fr 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .agency-faq-q::-webkit-details-marker { display: none; }
+  .agency-faq-item:hover .agency-faq-q {
+    background: rgba(212,147,46,0.04);
+  }
+  .agency-faq-num {
+    font-family: var(--f-display);
+    font-size: 13px;
+    color: var(--amber-deep);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .agency-faq-q-text {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  .agency-faq-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(15,20,25,0.06);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .agency-faq-item[open] .agency-faq-icon {
+    background: var(--amber);
+    color: var(--ink);
+    transform: rotate(180deg);
+  }
+  .agency-faq-a {
+    padding: 0 24px 22px 76px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    border-top: 1px dashed var(--line);
+    padding-top: 18px;
+  }
+
+  /* ===========================================
+     PAGE FINAL CTA
+     =========================================== */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* ===========================================
+     RESPONSIVE
+     =========================================== */
+  @media (max-width: 1024px) {
+    .agency-why-grid { grid-template-columns: 1fr; }
+    .agency-services-grid { grid-template-columns: repeat(2, 1fr); }
+    .agency-verticals-grid { grid-template-columns: repeat(2, 1fr); }
+    .agency-pricing-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 768px) {
+    .agency-services-grid { grid-template-columns: 1fr; }
+    .agency-verticals-grid { grid-template-columns: 1fr; }
+    .agency-compare-table { font-size: 12px; }
+    .agency-compare-table th, .agency-compare-table td { padding: 10px 12px; }
+    .agency-faq-q {
+      grid-template-columns: 1fr 24px;
+      gap: 12px;
+    }
+    .agency-faq-num { display: none; }
+    .agency-faq-a { padding-left: 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+  }
+</style>
