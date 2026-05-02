@@ -1,0 +1,1225 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/accessibility/";
+const lastUpdated = "May 2, 2026";
+const lastAudited = "April 2026";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Accessibility Statement | Upcoming Brand",
+      "description": "Upcoming Brand's accessibility commitment, conformance status, what we've done on this site, known limitations, and how to report accessibility issues. WCAG 2.1 AA target.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "dateModified": "2026-05-02",
+      "datePublished": "2024-01-01",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",          "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Accessibility", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const sections = [
+  { id: "summary",       title: "Plain-language summary" },
+  { id: "commitment",    title: "Our commitment" },
+  { id: "conformance",   title: "Conformance status" },
+  { id: "implemented",   title: "What we've implemented" },
+  { id: "compatibility", title: "Browser & assistive tech" },
+  { id: "limitations",   title: "Known limitations" },
+  { id: "client-sites",  title: "Accessibility on client projects" },
+  { id: "feedback",      title: "Feedback & reporting" },
+  { id: "alternatives",  title: "Alternative formats" },
+  { id: "review",        title: "Review schedule" },
+  { id: "contact",       title: "Contact us" },
+];
+
+const implemented = [
+  { area: "Semantic HTML",         detail: "Header, nav, main, section, article, footer landmarks on every page" },
+  { area: "Heading hierarchy",     detail: "Single H1 per page, logical H2-H6 structure, no skipped levels" },
+  { area: "Keyboard navigation",   detail: "Every interactive element reachable and operable via keyboard alone" },
+  { area: "Focus indicators",      detail: "Visible 2px amber focus ring on all focusable elements, WCAG 2.4.7 compliant" },
+  { area: "Skip-to-content link",  detail: "First focusable element on every page jumps to <main id=\"main-content\">" },
+  { area: "Color contrast",        detail: "All text meets WCAG AA (4.5:1 body, 3:1 large text) measured against background" },
+  { area: "Image alt text",        detail: "Descriptive alt on every meaningful image, empty alt on decorative images" },
+  { area: "Form labels",           detail: "Every input has a visible label or aria-label, errors announced to screen readers" },
+  { area: "ARIA where needed",     detail: "aria-label, aria-expanded, aria-current, role attributes used sparingly and correctly" },
+  { area: "Reduced motion",        detail: "prefers-reduced-motion respected; animations disabled when user prefers" },
+  { area: "Responsive zoom",       detail: "Layout works at 200% zoom without horizontal scroll or content loss" },
+  { area: "Touch targets",         detail: "Minimum 44x44px on mobile per WCAG 2.5.5 Target Size" },
+];
+
+const compatibility = [
+  { name: "Chrome",        version: "120+",  status: "Fully tested" },
+  { name: "Firefox",       version: "118+",  status: "Fully tested" },
+  { name: "Safari",        version: "17+",   status: "Fully tested" },
+  { name: "Edge",          version: "120+",  status: "Fully tested" },
+  { name: "Mobile Safari", version: "iOS 16+", status: "Fully tested" },
+  { name: "Chrome Mobile", version: "120+",  status: "Fully tested" },
+  { name: "VoiceOver",     version: "macOS / iOS", status: "Tested April 2026" },
+  { name: "NVDA",          version: "2024.x", status: "Tested April 2026" },
+  { name: "JAWS",          version: "2024",  status: "Spot-tested" },
+];
+
+const limitations = [
+  {
+    item: "Third-party embeds",
+    detail: "Embedded forms, calendars, or video players from third-party services may not meet WCAG AA. We replace them with accessible alternatives where possible."
+  },
+  {
+    item: "PDF downloads",
+    detail: "Older PDF case studies and documents may not be fully tagged. We're remediating in priority order."
+  },
+  {
+    item: "Decorative animations",
+    detail: "Hero motion accents and pulse animations are decorative. We respect prefers-reduced-motion, but a few subtle effects continue to render and are kept at low intensity."
+  },
+];
+---
+<BaseLayout
+  title="Accessibility Statement | Upcoming Brand WordPress Studio"
+  description="Upcoming Brand's accessibility commitment, conformance status, what we've done on this site, known limitations, and how to report accessibility issues. WCAG 2.1 AA target."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero legal-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">Accessibility statement</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1 legal-h1">
+          <span class="page-h1-line">Built to be used</span>
+          <span class="page-h1-line"><em class="page-h1-accent">by everyone.</em></span>
+        </h1>
+
+        <p class="page-lead">
+          Our commitment to accessibility, what we've implemented, what we haven't, and how to tell us when something doesn't work for you. Targeted at <strong>WCAG 2.1 AA</strong> with a path toward AAA on the parts that matter most.
+        </p>
+
+        <div class="legal-meta a11y-meta">
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Standard</span>
+            <span class="legal-meta-val">WCAG 2.1 AA</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Last audited</span>
+            <span class="legal-meta-val">{lastAudited}</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Conformance</span>
+            <span class="legal-meta-val a11y-meta-conformance">
+              <span class="a11y-conformance-dot" aria-hidden="true"></span>
+              Partially conformant
+            </span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Last updated</span>
+            <span class="legal-meta-val">{lastUpdated}</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BODY ====== -->
+    <section class="legal-body">
+      <div class="container legal-body-grid">
+
+        <aside class="legal-toc">
+          <div class="legal-toc-inner">
+            <span class="legal-toc-label">On this page</span>
+            <nav aria-label="Accessibility statement sections">
+              <ol class="legal-toc-list">
+                {sections.map((s, i) => (
+                  <li class="legal-toc-item">
+                    <a href={`#${s.id}`} class="legal-toc-link">
+                      <span class="legal-toc-num">{String(i + 1).padStart(2, '0')}</span>
+                      <span class="legal-toc-text">{s.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+            <div class="legal-toc-footer">
+              <a href="#feedback" class="legal-toc-cta">
+                Report an issue
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <article class="legal-content">
+
+          <section id="summary" class="legal-section legal-section-callout">
+            <span class="legal-section-num">01</span>
+            <h2 class="legal-section-h2">Plain-language summary</h2>
+            <div class="legal-section-body">
+              <p>
+                We design and build websites that work for everyone — including people who use screen readers, keyboards instead of mice, voice control, or assistive technology. <strong>This site targets WCAG 2.1 AA.</strong> If something isn't working for you, email us and we'll fix it within 5 business days. We never charge for accessibility fixes on our own work.
+              </p>
+            </div>
+          </section>
+
+          <section id="commitment" class="legal-section">
+            <span class="legal-section-num">02</span>
+            <h2 class="legal-section-h2">Our commitment</h2>
+            <div class="legal-section-body">
+              <p>
+                Accessibility isn't a launch-day checklist for us. It's part of how we design and build, on every project. We commit to the following on this site and any work we deliver:
+              </p>
+              <ul class="legal-list">
+                <li>Target WCAG 2.1 AA on every page we publish</li>
+                <li>Test with keyboard navigation and screen readers before any launch</li>
+                <li>Respond to accessibility issues within 5 business days</li>
+                <li>Never charge for accessibility fixes on our own work</li>
+                <li>Remediate older content (PDFs, embedded media) in priority order</li>
+                <li>Re-audit the site once a year and after major redesigns</li>
+              </ul>
+            </div>
+          </section>
+
+          <section id="conformance" class="legal-section">
+            <span class="legal-section-num">03</span>
+            <h2 class="legal-section-h2">Conformance status</h2>
+            <div class="legal-section-body">
+              <p>
+                The Web Content Accessibility Guidelines (WCAG) define requirements for designers and developers to improve accessibility for people with disabilities. WCAG defines three levels of conformance: A, AA, and AAA.
+              </p>
+              <p>
+                <strong>upcomingbrand.com is partially conformant with WCAG 2.1 level AA.</strong> "Partially conformant" means that some parts of the content do not yet fully conform — see Known Limitations below for the specific items we're working on.
+              </p>
+
+              <div class="a11y-status-card">
+                <div class="a11y-status-row">
+                  <span class="a11y-status-label">Standard</span>
+                  <span class="a11y-status-val">WCAG 2.1 AA</span>
+                </div>
+                <div class="a11y-status-row">
+                  <span class="a11y-status-label">Status</span>
+                  <span class="a11y-status-val a11y-status-partial">
+                    <span class="a11y-conformance-dot" aria-hidden="true"></span>
+                    Partially conformant
+                  </span>
+                </div>
+                <div class="a11y-status-row">
+                  <span class="a11y-status-label">Audit method</span>
+                  <span class="a11y-status-val">Automated (axe DevTools, Lighthouse) + manual screen reader testing</span>
+                </div>
+                <div class="a11y-status-row">
+                  <span class="a11y-status-label">Audited by</span>
+                  <span class="a11y-status-val">Internal team, with external review every 12 months</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="implemented" class="legal-section">
+            <span class="legal-section-num">04</span>
+            <h2 class="legal-section-h2">What we've implemented</h2>
+            <div class="legal-section-body">
+              <p>The site is built on the following accessibility foundations:</p>
+
+              <div class="a11y-implemented-grid">
+                {implemented.map((item, i) => (
+                  <div class="a11y-implemented-card">
+                    <span class="a11y-implemented-num">{String(i + 1).padStart(2, '0')}</span>
+                    <div class="a11y-implemented-content">
+                      <h3 class="a11y-implemented-area">{item.area}</h3>
+                      <p class="a11y-implemented-detail">{item.detail}</p>
+                    </div>
+                    <span class="a11y-implemented-check" aria-hidden="true">
+                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 6.5l2.5 2.5L10 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="compatibility" class="legal-section">
+            <span class="legal-section-num">05</span>
+            <h2 class="legal-section-h2">Browser &amp; assistive technology</h2>
+            <div class="legal-section-body">
+              <p>The site is designed and tested with the following combinations:</p>
+
+              <div class="legal-table-wrap">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Software</th>
+                      <th>Version</th>
+                      <th>Test status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {compatibility.map((c) => (
+                      <tr>
+                        <td>{c.name}</td>
+                        <td>{c.version}</td>
+                        <td>{c.status}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+
+              <p>
+                If you use a different browser or assistive technology and run into problems, please report it — we'll add it to our test matrix.
+              </p>
+            </div>
+          </section>
+
+          <section id="limitations" class="legal-section">
+            <span class="legal-section-num">06</span>
+            <h2 class="legal-section-h2">Known limitations</h2>
+            <div class="legal-section-body">
+              <p>
+                We're transparent about the parts of the site that don't yet meet our target. Here's what we're aware of and working on:
+              </p>
+
+              <div class="a11y-limitations-list">
+                {limitations.map((l, i) => (
+                  <div class="a11y-limitation">
+                    <span class="a11y-limitation-num">{String(i + 1).padStart(2, '0')}</span>
+                    <div class="a11y-limitation-content">
+                      <h3 class="a11y-limitation-title">{l.item}</h3>
+                      <p class="a11y-limitation-detail">{l.detail}</p>
+                    </div>
+                    <span class="a11y-limitation-badge">In progress</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <section id="client-sites" class="legal-section">
+            <span class="legal-section-num">07</span>
+            <h2 class="legal-section-h2">Accessibility on client projects</h2>
+            <div class="legal-section-body">
+              <p>
+                Every site we build for clients ships with the same accessibility baseline as upcomingbrand.com:
+              </p>
+              <ul class="legal-list">
+                <li>Semantic HTML, landmark structure, logical heading hierarchy</li>
+                <li>Keyboard navigation tested before launch</li>
+                <li>Screen reader testing on at least one assistive technology</li>
+                <li>Color contrast verified against the brand palette</li>
+                <li>Focus indicators on every interactive element</li>
+                <li>Form labels, error messaging, and ARIA where it actually helps</li>
+                <li>Lighthouse Accessibility score of 95+ as a launch deliverable</li>
+              </ul>
+              <p>
+                We don't sell "accessibility overlay" plugins or third-party widgets. Those products often <strong>create more problems than they solve</strong> and have been the subject of multiple lawsuits. Real accessibility is built into the markup, not bolted onto it.
+              </p>
+            </div>
+          </section>
+
+          <section id="feedback" class="legal-section legal-section-callout">
+            <span class="legal-section-num">08</span>
+            <h2 class="legal-section-h2">Feedback &amp; reporting</h2>
+            <div class="legal-section-body">
+              <p>
+                If you experience an accessibility barrier on this site, or on any site we built, please tell us. We take every report seriously and respond within 5 business days.
+              </p>
+
+              <div class="a11y-feedback-card">
+                <div class="a11y-feedback-row">
+                  <span class="a11y-feedback-label">Email</span>
+                  <a class="a11y-feedback-val" href="mailto:hello@upcomingbrand.com?subject=Accessibility%20Feedback">hello@upcomingbrand.com</a>
+                </div>
+                <div class="a11y-feedback-divider" aria-hidden="true"></div>
+                <div class="a11y-feedback-row">
+                  <span class="a11y-feedback-label">Subject line</span>
+                  <span class="a11y-feedback-val">Accessibility: [page or feature]</span>
+                </div>
+                <div class="a11y-feedback-divider" aria-hidden="true"></div>
+                <div class="a11y-feedback-row">
+                  <span class="a11y-feedback-label">Response window</span>
+                  <span class="a11y-feedback-val">Within 5 business days</span>
+                </div>
+                <div class="a11y-feedback-divider" aria-hidden="true"></div>
+                <div class="a11y-feedback-row">
+                  <span class="a11y-feedback-label">Helpful to include</span>
+                  <span class="a11y-feedback-val">Page URL, browser/AT used, what didn't work</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="alternatives" class="legal-section">
+            <span class="legal-section-num">09</span>
+            <h2 class="legal-section-h2">Alternative formats</h2>
+            <div class="legal-section-body">
+              <p>
+                If you need information from this site in a different format — large print, plain text, audio description, or any other accommodation — email <a href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a> and we'll provide it within 5 business days at no charge.
+              </p>
+            </div>
+          </section>
+
+          <section id="review" class="legal-section">
+            <span class="legal-section-num">10</span>
+            <h2 class="legal-section-h2">Review schedule</h2>
+            <div class="legal-section-body">
+              <p>
+                This statement is reviewed and updated:
+              </p>
+              <ul class="legal-list">
+                <li><strong>After every major redesign</strong> or significant content overhaul</li>
+                <li><strong>At least once per year</strong>, regardless of changes</li>
+                <li><strong>When new WCAG guidance is published</strong>, to align with the latest standards</li>
+                <li><strong>When a reported issue surfaces a pattern</strong> that affects multiple parts of the site</li>
+              </ul>
+              <p>
+                The "Last audited" and "Last updated" dates at the top of this page reflect the most recent review.
+              </p>
+            </div>
+          </section>
+
+          <section id="contact" class="legal-section legal-section-contact">
+            <span class="legal-section-num">11</span>
+            <h2 class="legal-section-h2">Contact us</h2>
+            <div class="legal-section-body">
+              <p>
+                Beyond accessibility-specific feedback, you can reach us about anything related to this site or our work. We respond within 4 business hours during business days.
+              </p>
+
+              <div class="legal-contact-card">
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Email</span>
+                  <a class="legal-contact-val" href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Response window</span>
+                  <span class="legal-contact-val">4 business hours, weekdays</span>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Mailing</span>
+                  <span class="legal-contact-val">Available on request via email</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to start</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Need a site that's accessible<br>
+            <em>by design, not by overlay?</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. We map your competitive set, identify the schema, performance, and accessibility gaps, and send a fixed quote within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/process/" class="page-cta-ghost-light">
+              See our process
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===========================================
+     SHARED PAGE / LEGAL SYSTEM (mirrored from privacy-policy)
+     =========================================== */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(56px, 8vh, 96px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 16px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .lp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+
+  /* Legal hero meta */
+  .legal-h1 { margin-bottom: 4px; }
+  .legal-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 14px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    margin-top: 8px;
+  }
+  .legal-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .legal-meta-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .legal-meta-val {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .legal-meta-divider {
+    width: 1px; height: 28px;
+    background: var(--line);
+  }
+
+  /* A11y-specific: conformance pulse dot */
+  .a11y-meta-conformance {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--amber-deep);
+  }
+  .a11y-conformance-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 3px rgba(212,147,46,0.2);
+    animation: a11y-pulse 2.4s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes a11y-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  /* Body grid */
+  .legal-body {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    position: relative;
+  }
+  .legal-body-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 72px;
+    align-items: flex-start;
+  }
+
+  /* TOC */
+  .legal-toc { position: sticky; top: 24px; }
+  .legal-toc-inner {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 24px 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  .legal-toc-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .legal-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .legal-toc-link {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    align-items: baseline;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+  }
+  .legal-toc-link:hover {
+    background: var(--paper);
+    color: var(--amber-deep);
+  }
+  .legal-toc-num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .legal-toc-link:hover .legal-toc-num { color: var(--amber); }
+  .legal-toc-text {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    transition: color var(--transition);
+  }
+  .legal-toc-link:hover .legal-toc-text { color: var(--amber-deep); }
+  .legal-toc-footer {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+  .legal-toc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    text-decoration: none;
+    transition: gap 0.3s ease, color var(--transition);
+    font-weight: 500;
+  }
+  .legal-toc-cta:hover { gap: 10px; color: var(--ink); }
+
+  /* Content */
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .legal-section {
+    position: relative;
+    scroll-margin-top: 24px;
+  }
+  .legal-section-callout {
+    background: var(--cream);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    position: relative;
+  }
+  .legal-section-callout::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .legal-section-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .legal-section-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.8vw, 32px);
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+  }
+  .legal-section-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .legal-section-body p { margin: 0 0 14px; }
+  .legal-section-body p:last-child { margin-bottom: 0; }
+  .legal-section-body strong { color: var(--ink); font-weight: 600; }
+  .legal-section-body a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color var(--transition);
+  }
+  .legal-section-body a:hover { color: var(--ink); }
+
+  .legal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .legal-list li {
+    position: relative;
+    padding-left: 22px;
+    line-height: 1.6;
+  }
+  .legal-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 10px;
+    width: 8px; height: 1px;
+    background: var(--amber);
+  }
+
+  /* Tables */
+  .legal-table-wrap {
+    margin: 16px 0 18px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--cream);
+    font-size: 13px;
+  }
+  .legal-table th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--paper);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+  }
+  .legal-table td {
+    padding: 12px 16px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+  .legal-table tbody tr:last-child td { border-bottom: none; }
+  .legal-table tbody tr:hover td { background: var(--paper); }
+
+  /* Status card */
+  .a11y-status-card {
+    margin-top: 16px;
+    padding: 22px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .a11y-status-row {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 16px;
+    align-items: baseline;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .a11y-status-row:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .a11y-status-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .a11y-status-val {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .a11y-status-partial {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--amber-deep);
+  }
+
+  /* Implemented grid */
+  .a11y-implemented-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .a11y-implemented-card {
+    display: grid;
+    grid-template-columns: 36px 1fr 28px;
+    gap: 14px;
+    padding: 18px 20px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+    align-items: flex-start;
+  }
+  .a11y-implemented-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(212,147,46,0.1);
+  }
+  .a11y-implemented-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    line-height: 1.3;
+  }
+  .a11y-implemented-content { display: flex; flex-direction: column; gap: 4px; }
+  .a11y-implemented-area {
+    font-family: var(--f-display);
+    font-size: 16px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .a11y-implemented-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+  .a11y-implemented-check {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(92,128,64,0.12);
+    color: var(--green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* Limitations list */
+  .a11y-limitations-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .a11y-limitation {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 16px;
+    padding: 18px 22px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    align-items: center;
+    transition: all var(--transition);
+  }
+  .a11y-limitation:hover {
+    border-color: rgba(212,147,46,0.35);
+  }
+  .a11y-limitation-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+  .a11y-limitation-content { display: flex; flex-direction: column; gap: 4px; }
+  .a11y-limitation-title {
+    font-family: var(--f-display);
+    font-size: 16px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .a11y-limitation-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+  .a11y-limitation-badge {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.3);
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+    flex-shrink: 0;
+  }
+
+  /* Feedback card */
+  .a11y-feedback-card {
+    margin-top: 18px;
+    padding: 22px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+  }
+  .a11y-feedback-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    align-items: baseline;
+  }
+  .a11y-feedback-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .a11y-feedback-val {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .a11y-feedback-val[href] {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .a11y-feedback-divider {
+    height: 1px;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* Generic contact card (also used in section 11) */
+  .legal-section-contact {
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    border: 1px solid var(--line);
+  }
+  .legal-contact-card {
+    margin-top: 18px;
+    padding: 22px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+  }
+  .legal-contact-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    align-items: baseline;
+  }
+  .legal-contact-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .legal-contact-val {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .legal-contact-val[href] {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal-contact-divider {
+    height: 1px;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* Final CTA */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .legal-body-grid { grid-template-columns: 1fr; gap: 32px; }
+    .legal-toc { position: static; }
+    .legal-toc-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+    }
+    .a11y-implemented-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .legal-meta { gap: 12px; padding: 14px 18px; }
+    .legal-meta-divider { display: none; }
+    .legal-toc-list { grid-template-columns: 1fr; }
+    .legal-section-callout, .legal-section-contact { padding: 22px 22px; }
+    .legal-table { font-size: 12px; }
+    .legal-table th, .legal-table td { padding: 10px 12px; }
+    .a11y-status-row, .a11y-feedback-row, .legal-contact-row { grid-template-columns: 1fr; gap: 4px; }
+    .a11y-implemented-card { grid-template-columns: 28px 1fr 24px; padding: 16px; }
+    .a11y-limitation { grid-template-columns: 28px 1fr; }
+    .a11y-limitation-badge { grid-column: 2; align-self: flex-start; margin-top: 4px; }
+  }
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+  }
+</style>
