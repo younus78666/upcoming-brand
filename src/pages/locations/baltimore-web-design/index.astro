@@ -6,7 +6,7 @@ import Footer from '../../../components/Footer.astro';
 
 const city      = "Baltimore";
 const stateAbbr = "MD";
-const slug      = "baltimore-wordpress-web-design";
+const slug      = "baltimore-web-design";
 const canonical = `https://upcomingbrand.com/locations/${slug}/`;
 
 const jsonLd = JSON.stringify({
@@ -15,9 +15,9 @@ const jsonLd = JSON.stringify({
     {
       "@type": "WebPage",
       "@id": `${canonical}#webpage`,
-      "name": `WordPress Web Design ${city} ${stateAbbr} | Upcoming Brand`,
+      "name": `Web Design ${city} MD | WordPress & SEO | Upcoming Brand`,
       "url": canonical,
-      "description": `Custom WordPress web design in ${city}, Maryland. 90+ PageSpeed, fixed-scope pricing, 6-10 week delivery. Serving Baltimore City, Towson, Columbia, and the DMV metro.`,
+      "description": `Web design ${city} businesses trust for real Google rankings. Custom WordPress builds, 90+ PageSpeed, fixed pricing. Serving Baltimore City, Towson, Columbia, and the DMV metro.`,
       "inLanguage": "en-US",
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -254,8 +254,8 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
 };
 ---
 <BaseLayout
-  title={`WordPress Web Design ${city} MD | Upcoming Brand`}
-  description={`Custom WordPress web design in ${city}, Maryland. 90+ PageSpeed, fixed-scope pricing, 6-10 week delivery. Serving Baltimore City, Towson, Columbia, and the DMV metro.`}
+  title={`Web Design ${city} MD | WordPress & SEO | Upcoming Brand`}
+  description={`Web design ${city} businesses trust for real Google rankings. Custom WordPress builds, 90+ PageSpeed, fixed pricing. Serving Baltimore City, Towson, Columbia, and the DMV metro.`}
   canonicalUrl={canonical}
 >
   <!-- JSON-LD in head slot -->
@@ -281,7 +281,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
         </div>
 
         <h1 class="lp-h1">
-          <span class="lp-h1-line">{city} WordPress</span>
+          <span class="lp-h1-line">{city}</span>
           <span class="lp-h1-line lp-h1-accent-line"><em class="lp-h1-accent">web design that ranks,</em></span>
           <span class="lp-h1-line lp-h1-italic">converts &amp; keeps working.</span>
         </h1>
@@ -428,7 +428,13 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
       <div class="lp-section-intro">
         <p class="eyebrow">Why local matters</p>
         <h2 class="h2-section" id="pillars-heading">What a {city}-based WordPress studio does differently</h2>
-        <p class="lead">Most web design agencies are remote-only marketplaces. We're a Maryland studio that can walk through your door, knows your competitors' sites, and builds to rank in the searches your customers actually run.</p>
+        <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever is available. We are a Maryland studio - remote-first by design, but built entirely around the Baltimore market. We know which suburbs are growing, which industries are competitive, and which search terms your customers run before they call anyone.</p>
+      </div>
+
+      <!-- Definition block -->
+      <div class="lp-def-callout">
+        <span class="lp-def-tag mono-xs">What is custom WordPress web design?</span>
+        <p class="lp-def-text">Custom WordPress web design means building your site on WordPress CMS from a blank canvas - not a pre-built theme already installed on 50,000 other businesses. The design is built around your brand and audience, the page structure targets the specific search terms your Baltimore customers actually run, and you own the code outright with no recurring platform fee locked to a third party. Every Upcoming Brand build ships with 90+ PageSpeed, JSON-LD schema matched to your business type, and all three Core Web Vitals in the green before launch day.</p>
       </div>
 
       <div class="lp-pillars-grid">
@@ -477,11 +483,12 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">001</span>
           </div>
           <h3 class="lp-svc-title">Custom WordPress Design</h3>
-          <p class="lp-svc-desc">Brand-first custom WordPress builds. AI-assisted design to live site - responsive, pixel-accurate, and fast.</p>
+          <p class="lp-svc-desc">Baltimore businesses get a design built around their audience and their Baltimore competitors' weak points - not a theme draped with a logo. Design rounds happen on a live staging URL so you can see exactly how it looks on mobile before we finalize a single pixel. We build on Elementor Pro and Astra because they are fast, extensible, and allow full design freedom without locking you into a proprietary system. Every build ships 90+ PageSpeed and gets a full responsive pass on real devices before launch.</p>
           <ul class="lp-svc-bullets">
-            <li><span class="lp-bullet-dot"></span>AI-generated designs &middot; 2 revision rounds</li>
-            <li><span class="lp-bullet-dot"></span>Elementor Pro &middot; Astra parent theme</li>
-            <li><span class="lp-bullet-dot"></span>Pixel-accurate responsive build</li>
+            <li><span class="lp-bullet-dot"></span>AI-assisted custom design built to your brand</li>
+            <li><span class="lp-bullet-dot"></span>Elementor Pro on Astra - fast, flexible, yours</li>
+            <li><span class="lp-bullet-dot"></span>2 design rounds on a live staging URL</li>
+            <li><span class="lp-bullet-dot"></span>Mobile-first, tested on real devices before launch</li>
           </ul>
         </div>
 
@@ -493,11 +500,11 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">002</span>
           </div>
           <h3 class="lp-svc-title">WooCommerce Stores</h3>
-          <p class="lp-svc-desc">Online stores built for real inventory, real checkout flows, and real Stripe edge cases - not demo data.</p>
+          <p class="lp-svc-desc">Maryland retail and service businesses need stores that hold up under real conditions - variable pricing, partial inventory, and payment gateway edge cases that only show up after a customer reports a failed transaction. We build WooCommerce on a production-tested foundation. Checkout flows are optimized for mobile conversion from day one. Abandoned cart recovery, subscription billing, and gateway-specific quirks are tested before you go live - not after your first real customer hits a wall.</p>
           <ul class="lp-svc-bullets">
-            <li><span class="lp-bullet-dot"></span>Stripe, PayPal, and Authorize.net</li>
-            <li><span class="lp-bullet-dot"></span>Product configurators, subscriptions</li>
-            <li><span class="lp-bullet-dot"></span>Abandoned cart recovery</li>
+            <li><span class="lp-bullet-dot"></span>Stripe, PayPal, Authorize.net - tested end to end</li>
+            <li><span class="lp-bullet-dot"></span>Subscriptions, variable pricing, product configurators</li>
+            <li><span class="lp-bullet-dot"></span>Abandoned cart recovery wired up at launch</li>
           </ul>
         </div>
 
@@ -509,11 +516,11 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">003</span>
           </div>
           <h3 class="lp-svc-title">Care Plans &amp; Maintenance</h3>
-          <p class="lp-svc-desc">Monthly retainers covering updates, off-site backups, security monitoring, and uptime with a 4-hour SLA.</p>
+          <p class="lp-svc-desc">Most Baltimore business owners do not have time to track plugin changelogs, monitor uptime, or debug a white-screen-of-death at 11 PM. Care plans handle the maintenance layer so you never have to. Every week: WordPress core updates, plugin updates, off-site backup to S3 or Google Drive, and an uptime check. If something breaks, the 4-hour SLA means a real fix the same day - not a ticket number and a queue. Plans start at $150/month.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>Weekly core and plugin updates</li>
             <li><span class="lp-bullet-dot"></span>Off-site backups to S3 or Google Drive</li>
-            <li><span class="lp-bullet-dot"></span>Uptime monitoring &middot; 4-hr incident SLA</li>
+            <li><span class="lp-bullet-dot"></span>4-hour incident response SLA</li>
           </ul>
         </div>
 
@@ -525,11 +532,12 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">004</span>
           </div>
           <h3 class="lp-svc-title">Speed Optimization</h3>
-          <p class="lp-svc-desc">Core Web Vitals focused. Every project ships with LCP under 2.5s and all three vitals green in Search Console.</p>
+          <p class="lp-svc-desc">A slow site costs Baltimore businesses real revenue. Every extra second of load time drops conversions by 7%, and Google's Core Web Vitals now directly affect how pages rank. We run a full audit before launch: LCP under 2.5 seconds, zero layout shift, fast interaction. WP Rocket handles server caching, WebP handles images, and Cloudflare CDN puts your assets closer to every Maryland visitor. PageSpeed is measured on both mobile and desktop. If it is not 90+, we do not push the DNS over.</p>
           <ul class="lp-svc-bullets">
-            <li><span class="lp-bullet-dot"></span>WP Rocket &middot; WebP conversion</li>
-            <li><span class="lp-bullet-dot"></span>Cloudflare CDN &middot; CSS/JS minification</li>
-            <li><span class="lp-bullet-dot"></span>Post-launch PageSpeed verification</li>
+            <li><span class="lp-bullet-dot"></span>WP Rocket caching</li>
+            <li><span class="lp-bullet-dot"></span>WebP image conversion</li>
+            <li><span class="lp-bullet-dot"></span>Cloudflare CDN setup</li>
+            <li><span class="lp-bullet-dot"></span>90+ PageSpeed guaranteed before launch</li>
           </ul>
         </div>
 
@@ -541,11 +549,11 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">005</span>
           </div>
           <h3 class="lp-svc-title">SEO &amp; Schema</h3>
-          <p class="lp-svc-desc">RankMath Pro, structured data, and topical maps built to rank for the keywords that bring paying clients.</p>
+          <p class="lp-svc-desc">A fast site that nobody finds is an expensive placeholder. Baltimore search is genuinely competitive - law firms, dental practices, and contractors all have agencies actively working their rankings. We set up RankMath Pro, build a keyword map for every page, write the JSON-LD schema Google uses to serve rich results, and lay out the internal link structure that builds topical authority month after month. This is what separates a site that exists from one that generates consistent leads.</p>
           <ul class="lp-svc-bullets">
-            <li><span class="lp-bullet-dot"></span>Keyword research &middot; topical map</li>
-            <li><span class="lp-bullet-dot"></span>JSON-LD schema for 15+ page types</li>
-            <li><span class="lp-bullet-dot"></span>Internal linking plan included</li>
+            <li><span class="lp-bullet-dot"></span>Keyword research and topical map</li>
+            <li><span class="lp-bullet-dot"></span>JSON-LD schema for 15+ business types</li>
+            <li><span class="lp-bullet-dot"></span>Internal linking plan built in from day one</li>
           </ul>
         </div>
 
@@ -557,15 +565,66 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">006</span>
           </div>
           <h3 class="lp-svc-title">Migration &amp; Redesign</h3>
-          <p class="lp-svc-desc">From Wix, Webflow, or Squarespace to custom WordPress without losing your Google rankings.</p>
+          <p class="lp-svc-desc">If you are on Wix, Squarespace, or an aging WordPress theme, migrating to a custom build is the highest-ROI move most Baltimore businesses can make. The risk is dropping your Google rankings in the transition - we eliminate that risk. Before touching anything, we benchmark your current rankings page by page. We build a complete 301 redirect map covering every URL. Launch is a zero-downtime DNS cutover. Then we monitor Search Console for 30 days to catch any ranking slippage early and fix it before it compounds.</p>
           <ul class="lp-svc-bullets">
-            <li><span class="lp-bullet-dot"></span>301 redirect mapping</li>
-            <li><span class="lp-bullet-dot"></span>Zero-downtime switchover</li>
-            <li><span class="lp-bullet-dot"></span>Pre/post-launch rank parity check</li>
+            <li><span class="lp-bullet-dot"></span>Full 301 redirect map before launch</li>
+            <li><span class="lp-bullet-dot"></span>Zero-downtime DNS cutover</li>
+            <li><span class="lp-bullet-dot"></span>30-day post-launch Search Console monitoring</li>
           </ul>
           <a href="#contact" class="lp-svc-cta">Start a migration project &rarr;</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PLATFORM COMPARISON
+  ══════════════════════════════════════════ -->
+  <section class="lp-compare section-pad-sm" aria-labelledby="compare-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Platform comparison</p>
+        <h2 class="h2-section" id="compare-heading">WordPress vs Wix, Squarespace, and page builders for Baltimore businesses</h2>
+        <p class="lead">The platform decision matters more than most owners realize. For Baltimore businesses competing on local search, there is a real performance ceiling on rented platforms - and it shows up in your rankings.</p>
+      </div>
+
+      <div class="lp-compare-cols">
+
+        <div class="lp-compare-col lp-compare-col-wp">
+          <div class="lp-compare-col-head">
+            <span class="lp-compare-badge lp-compare-badge-wp mono-xs">Custom WordPress</span>
+            <p class="lp-compare-col-sub">Built from scratch, owned by you</p>
+          </div>
+          <ul class="lp-compare-list">
+            <li class="lp-ci lp-ci-good">You own the code outright - no platform can raise prices or shut you down</li>
+            <li class="lp-ci lp-ci-good">PageSpeed 90+ is achievable with correct setup - Core Web Vitals consistently pass</li>
+            <li class="lp-ci lp-ci-good">Full JSON-LD schema support for Local Pack and rich results</li>
+            <li class="lp-ci lp-ci-good">Any plugin, any integration, any custom function - no artificial limits</li>
+            <li class="lp-ci lp-ci-good">No monthly platform fee after launch - only hosting and optional care plan</li>
+            <li class="lp-ci lp-ci-neutral">Significant changes require a developer - not a drag-and-drop interface</li>
+          </ul>
+        </div>
+
+        <div class="lp-compare-col lp-compare-col-diy">
+          <div class="lp-compare-col-head">
+            <span class="lp-compare-badge lp-compare-badge-diy mono-xs">Wix / Squarespace / GoDaddy</span>
+            <p class="lp-compare-col-sub">Rented platform, shared infrastructure</p>
+          </div>
+          <ul class="lp-compare-list">
+            <li class="lp-ci lp-ci-neutral">Fast to get started - drag and drop, no developer needed initially</li>
+            <li class="lp-ci lp-ci-bad">PageSpeed typically 50-70 - Core Web Vitals frequently fail on mobile</li>
+            <li class="lp-ci lp-ci-bad">Limited schema markup - Local Pack ranking is harder without full JSON-LD control</li>
+            <li class="lp-ci lp-ci-bad">You rent the site - the platform controls your data, your URL structure, your export options</li>
+            <li class="lp-ci lp-ci-bad">Monthly fees scale with traffic, ecommerce features, and storage</li>
+            <li class="lp-ci lp-ci-bad">Migrating away costs time and risks ranking loss without a proper redirect strategy</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="lp-compare-note">
+        Wix and Squarespace are workable starting points for small businesses with minimal search ambitions. For Baltimore businesses competing for Local Pack positions against established law firms, dental practices, and contractors running optimized WordPress sites - the platform gap becomes a ranking gap.
+      </p>
     </div>
   </section>
 
@@ -2545,6 +2604,167 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
   .lp-cta-submit { width: 100%; justify-content: center; margin-top: 4px; }
 
   /* ════════════════════════════════════════════
+     DEFINITION CALLOUT
+  ════════════════════════════════════════════ */
+  .lp-def-callout {
+    border-left: 3px solid var(--amber);
+    background: var(--amber-glow);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 18px 24px;
+    margin-bottom: 48px;
+    max-width: 800px;
+  }
+
+  .lp-def-tag {
+    display: block;
+    color: var(--amber-deep);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .lp-def-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════
+     PLATFORM COMPARISON
+  ════════════════════════════════════════════ */
+  .lp-compare {
+    background: var(--cream-soft);
+  }
+
+  .lp-compare-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .lp-compare-col {
+    border-radius: var(--radius-md);
+    padding: 28px;
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lp-compare-col-wp {
+    background: var(--paper);
+    border-color: rgba(212,147,46,0.2);
+  }
+
+  .lp-compare-col-diy {
+    background: rgba(15,20,25,0.03);
+  }
+
+  .lp-compare-col-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(15,20,25,0.08);
+  }
+
+  .lp-compare-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .lp-compare-badge-wp {
+    background: rgba(212,147,46,0.12);
+    color: var(--amber-deep);
+    border: 1px solid rgba(212,147,46,0.25);
+  }
+
+  .lp-compare-badge-diy {
+    background: rgba(15,20,25,0.06);
+    color: var(--ink-muted);
+    border: 1px solid rgba(15,20,25,0.1);
+  }
+
+  .lp-compare-col-sub {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  .lp-compare-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lp-ci {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .lp-ci::before {
+    content: "";
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-top: 1px;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .lp-ci-good {
+    background: rgba(92,128,64,0.06);
+  }
+  .lp-ci-good::before {
+    background-color: rgba(92,128,64,0.15);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2 5l2 2 4-4' stroke='%234a7a28' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  .lp-ci-bad {
+    background: rgba(176,74,62,0.05);
+  }
+  .lp-ci-bad::before {
+    background-color: rgba(176,74,62,0.12);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M3 3l4 4M7 3L3 7' stroke='%23b04a3e' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+
+  .lp-ci-neutral {
+    background: rgba(15,20,25,0.04);
+  }
+  .lp-ci-neutral::before {
+    background-color: rgba(15,20,25,0.1);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2 5h6' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+
+  .lp-compare-note {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    padding: 16px 20px;
+    border: 1px dashed rgba(15,20,25,0.15);
+    border-radius: var(--radius-sm);
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════
      RESPONSIVE
   ════════════════════════════════════════════ */
   @media (max-width: 1100px) {
@@ -2588,6 +2808,8 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     .lp-faq-sidebar        { position: static; }
     .lp-pillars-grid       { grid-template-columns: 1fr; }
     .lp-ind-grid           { grid-template-columns: 1fr; }
+    .lp-compare-cols       { grid-template-columns: 1fr; }
+    .lp-def-callout        { margin-bottom: 32px; }
   }
 
   @media (max-width: 600px) {
