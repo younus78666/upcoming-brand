@@ -14,7 +14,7 @@ const jsonLd = JSON.stringify({
       "@id": `${canonical}#webpage`,
       "url": canonical,
       "name": "WordPress Care Plans & Maintenance Services Maryland | Upcoming Brand",
-      "description": "WordPress care plans from $150/month. Weekly updates, off-site backups, uptime monitoring, security patching, and a 4-hour SLA — direct to the founder. Month-to-month, no annual contracts.",
+      "description": "WordPress care plans from $150/month. Weekly updates, off-site backups, uptime monitoring, security patching, and a 4-hour SLA direct to the founder. Month-to-month, no annual contracts.",
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
       "about": { "@id": "https://upcomingbrand.com/#organization" },
@@ -41,10 +41,18 @@ const jsonLd = JSON.stringify({
       "knowsAbout": [
         "WordPress maintenance services",
         "WordPress care plans",
+        "WordPress care plan",
+        "WordPress maintenance plan",
+        "WordPress website maintenance",
+        "WordPress site maintenance",
         "WordPress support",
+        "WordPress support services",
+        "Website maintenance services",
         "WordPress updates",
         "WordPress backups",
-        "WordPress security monitoring"
+        "WordPress security monitoring",
+        "Ongoing WordPress maintenance",
+        "WordPress maintenance retainer"
       ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
@@ -61,9 +69,73 @@ const jsonLd = JSON.stringify({
         "reviewCount": "12",
         "bestRating": "5"
       }
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      "name": "How to maintain a WordPress website",
+      "description": "The four-week WordPress maintenance schedule that protects performance, security, and rankings between major releases.",
+      "totalTime": "P1M",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Test plugin and core updates on staging",   "text": "Before pushing any update to production, test on a staging clone. If anything breaks, roll back. Document each update for the monthly report." },
+        { "@type": "HowToStep", "position": 2, "name": "Run an off-site encrypted backup",          "text": "Full database plus uploads to encrypted off-site storage (S3 or Google Drive). Verified weekly with a restore test." },
+        { "@type": "HowToStep", "position": 3, "name": "Monitor uptime and security",                "text": "5-minute interval uptime monitoring with email alerts. Wordfence security scan plus manual review of changed files and access patterns." },
+        { "@type": "HowToStep", "position": 4, "name": "Audit performance and schema",                "text": "Lighthouse plus PageSpeed Insights. Flag any page that drops below 90. Verify LocalBusiness, FAQ, Service schemas still render. Check Search Console for warnings." }
+      ]
     }
   ]
 });
+
+const definitionRoles = [
+  {
+    type: "WordPress care plan",
+    summary: "Recurring monthly engagement covering technical maintenance, monitoring, security, and limited content updates.",
+    typical: "$150 - $400/month, month-to-month",
+  },
+  {
+    type: "WordPress maintenance services",
+    summary: "Broader category that covers care plans plus one-off engagements (recovery, audits, specific updates).",
+    typical: "Plans monthly, projects quoted per scope",
+  },
+  {
+    type: "WordPress support",
+    summary: "Reactive break/fix engagement, hourly or block-of-hours, no proactive maintenance schedule.",
+    typical: "$150/hr or $1,500 / 10-hour block",
+  },
+];
+
+const whenCare = [
+  {
+    num: "01",
+    signal: "You need updates but no in-house WordPress person",
+    detail: "If nobody on your team logs into wp-admin weekly to test plugin updates and run backups, your site is already drifting toward a security incident or a broken update. A WordPress maintenance plan stops the drift.",
+  },
+  {
+    num: "02",
+    signal: "Your last DIY update broke the site",
+    detail: "WooCommerce or Elementor pushed an update, you clicked update, the homepage broke. Now you're paying a freelancer $300 to roll back. A care plan tests every update on staging first, no production breakage.",
+  },
+  {
+    num: "03",
+    signal: "You don't have working backups",
+    detail: "If your hosting provider's daily backup is your only safety net, you're one ransomware attack away from rebuilding from scratch. Off-site encrypted backups are the foundation of every legitimate WordPress maintenance service.",
+  },
+  {
+    num: "04",
+    signal: "You can't reach a human when something breaks",
+    detail: "$99/month bot plans don't have a human you can email at 11 PM when checkout breaks. A real care plan has a 1-4 hour human SLA, including weekends on Pro tier.",
+  },
+  {
+    num: "05",
+    signal: "Site speed has slowly degraded",
+    detail: "Lighthouse was 92 at launch, now it's 67. Plugin bloat, image optimization drift, server config changes. A monthly Core Web Vitals audit catches it before rankings drop.",
+  },
+  {
+    num: "06",
+    signal: "You're paying $300/hour every time something breaks",
+    detail: "Ad-hoc emergency support is the most expensive way to maintain a site. A predictable $150-$400/month care plan replaces $1,000+ emergency invoices with proactive prevention.",
+  },
+];
 
 const tiers = [
   {
@@ -147,19 +219,19 @@ const slaBreakdown = [
 const faqs = [
   {
     q: "Do I have to be locked into an annual contract?",
-    a: "No. All Upcoming Brand WordPress care plans are month-to-month with no minimum term. Cancel any time with no penalty or fee. We don't believe in trapping clients with annual commitments — if the plan isn't worth it, you should be able to leave. About 90% of clients who start a care plan stay on it indefinitely; the few who cancel typically do so because they sold the business or shut down the site.",
+    a: "No. All Upcoming Brand WordPress care plans are month-to-month with no minimum term. Cancel any time with no penalty or fee. We don't believe in trapping clients with annual commitments. If the plan isn't worth it, you should be able to leave. About 90% of clients who start a care plan stay on it indefinitely; the few who cancel typically do so because they sold the business or shut down the site.",
   },
   {
     q: "What's the difference between a $99/month plan and a $150 care plan?",
-    a: "$99/month plans are typically automated — a bot updates plugins on a schedule with no testing, no backups before changes, no manual review, and no human you can actually email when something breaks. Our care plans involve a person testing every update on staging first, rolling back if anything breaks, monitoring uptime live, and personally responding to your emails within hours. The $51 difference buys real human accountability instead of automation that fails silently.",
+    a: "$99/month plans are typically automated. A bot updates plugins on a schedule with no testing, no backups before changes, no manual review, and no human you can actually email when something breaks. Our care plans involve a person testing every update on staging first, rolling back if anything breaks, monitoring uptime live, and personally responding to your emails within hours. The $51 difference buys real human accountability instead of automation that fails silently.",
   },
   {
     q: "What does the 4-hour SLA actually cover?",
-    a: "The 4-hour SLA on Essential (2-hour on Growth, 1-hour on Pro) covers our response to your email or ticket — not necessarily resolution. We respond within the SLA window, diagnose the issue, and either fix it immediately (usually) or give you a written ETA for resolution. For critical issues (site down, security breach), we begin work immediately regardless of SLA. We've never let a critical incident sit unaddressed past 30 minutes.",
+    a: "The 4-hour SLA on Essential (2-hour on Growth, 1-hour on Pro) covers our response to your email or ticket, not necessarily resolution. We respond within the SLA window, diagnose the issue, and either fix it immediately (usually) or give you a written ETA for resolution. For critical issues (site down, security breach), we begin work immediately regardless of SLA. We've never let a critical incident sit unaddressed past 30 minutes.",
   },
   {
     q: "Can I include content changes in the plan, or is that extra?",
-    a: "Essential covers technical maintenance only — no content edits. Growth includes 1 hour of content updates per month (rolls over up to 3 months unused). Pro includes 3 hours per month. Any content work beyond your plan's allotment is billed at $150/hr in 30-minute increments, with a written estimate before work begins. Most clients on Growth or Pro never exceed their monthly content allotment.",
+    a: "Essential covers technical maintenance only, no content edits. Growth includes 1 hour of content updates per month (rolls over up to 3 months unused). Pro includes 3 hours per month. Any content work beyond your plan's allotment is billed at $150/hr in 30-minute increments, with a written estimate before work begins. Most clients on Growth or Pro never exceed their monthly content allotment.",
   },
   {
     q: "What happens if my site gets hacked?",
@@ -167,17 +239,17 @@ const faqs = [
   },
   {
     q: "Do care plans cover the hosting bill?",
-    a: "No. You pay your own hosting (we recommend specific hosts at three price points: Cloudways for budget, Kinsta for mid-tier, WP Engine for enterprise). Care plans cover the maintenance, monitoring, and support — not the server. We chose this structure so you keep ownership of the hosting account; if you ever cancel the care plan, you don't lose your server.",
+    a: "No. You pay your own hosting (we recommend specific hosts at three price points: Cloudways for budget, Kinsta for mid-tier, WP Engine for enterprise). Care plans cover the maintenance, monitoring, and support, not the server. We chose this structure so you keep ownership of the hosting account; if you ever cancel the care plan, you don't lose your server.",
   },
   {
     q: "Can I add a care plan later, after the project launches?",
-    a: "Yes. Care plans can start at any time — at launch, three months later, or three years later. Most projects start their care plan at launch because the 30-day post-launch monitoring is included in the build engagement, and clients tend to want continuity. But there's no cliff — you can pause the relationship at launch and pick up a care plan later when it makes sense.",
+    a: "Yes. Care plans can start at any time: at launch, three months later, or three years later. Most projects start their care plan at launch because the 30-day post-launch monitoring is included in the build engagement, and clients tend to want continuity. But there's no cliff. You can pause the relationship at launch and pick up a care plan later when it makes sense.",
   },
 ];
 ---
 <BaseLayout
-  title="WordPress Care Plans & Maintenance Services | From $150/mo | Upcoming Brand"
-  description="WordPress care plans from $150/month. Weekly updates, off-site backups, uptime monitoring, security patching, 4-hour SLA — direct to the founder. Month-to-month, no annual contracts."
+  title="WordPress Maintenance Services & Care Plans | Website Maintenance from $150/mo | Upcoming Brand"
+  description="WordPress maintenance services and care plans from $150/month. Website maintenance, weekly updates, off-site backups, uptime monitoring, security patching, 4-hour SLA direct to the founder. Month-to-month, no annual contracts."
   canonicalUrl={canonical}
 >
   <Fragment slot="head">
@@ -194,7 +266,7 @@ const faqs = [
       <div class="container page-hero-inner">
         <div class="page-eyebrow-strip">
           <span class="page-eyebrow-line"></span>
-          <span class="page-eyebrow-text">WordPress care plans</span>
+          <span class="page-eyebrow-text">WordPress maintenance &amp; care plans</span>
           <span class="page-eyebrow-line"></span>
         </div>
 
@@ -205,7 +277,7 @@ const faqs = [
         </h1>
 
         <p class="page-lead">
-          <strong>WordPress care plans from $150/month.</strong> Weekly core + plugin updates tested on staging, daily off-site backups, uptime monitoring, security patching, and a written monthly report. <strong>4-hour SLA direct to the founder. Month-to-month, no annual contract.</strong>
+          <strong>WordPress maintenance services and care plans from $150/month.</strong> A real <strong>WordPress website maintenance plan</strong> with weekly core + plugin updates tested on staging, daily off-site backups, uptime monitoring, security patching, and a written monthly report. <strong>4-hour SLA direct to the founder. Month-to-month, no annual contract.</strong>
         </p>
 
         <div class="page-hero-ctas">
@@ -225,6 +297,60 @@ const faqs = [
           <span class="page-trust-line">Month-to-month</span>
           <span class="page-trust-dot" aria-hidden="true"></span>
           <span class="page-trust-line">4-hour SLA &middot; Direct to founder</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DEFINITION (Know intent + AI Overview citation) ====== -->
+    <section class="care-define">
+      <div class="container">
+        <div class="care-define-card">
+          <div class="care-define-head">
+            <span class="care-define-pulse" aria-hidden="true"></span>
+            <span class="care-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 care-define-h2">
+            What is a WordPress maintenance plan?
+          </h2>
+          <p class="care-define-answer">
+            <strong>A WordPress maintenance plan is a recurring monthly service that keeps a WordPress website updated, secure, monitored, and performant.</strong> The strongest WordPress website maintenance services include weekly core and plugin updates tested on staging, daily off-site backups, uptime monitoring, security patching, and a defined SLA for support. Care plans are sometimes called WordPress site maintenance, WordPress support services, or website maintenance services depending on the agency.
+          </p>
+
+          <div class="care-define-roles">
+            {definitionRoles.map((r) => (
+              <div class="care-define-role">
+                <span class="care-define-role-type">{r.type}</span>
+                <p class="care-define-role-summary">{r.summary}</p>
+                <span class="care-define-role-typical">{r.typical}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHEN YOU NEED ONE (Causation frame) ====== -->
+    <section class="care-when">
+      <div class="container">
+        <div class="care-when-head">
+          <p class="care-section-eyebrow">
+            <span class="care-section-eyebrow-line"></span>
+            When you need one
+          </p>
+          <h2 class="page-h2">
+            Six signals <em>you need a WordPress maintenance service.</em>
+          </h2>
+          <p class="page-section-lead">If two or more match, the right answer is a real WordPress care plan, not a bot or a $99/month "managed hosting" upsell. Predictable monthly maintenance prevents most of the issues clients pay emergency rates to fix.</p>
+        </div>
+
+        <div class="care-when-grid">
+          {whenCare.map((w) => (
+            <article class="care-when-card">
+              <span class="care-when-num">{w.num}</span>
+              <h3 class="care-when-signal">{w.signal}</h3>
+              <p class="care-when-detail">{w.detail}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -352,7 +478,7 @@ const faqs = [
           <h2 class="page-h2">
             Response times <em>by plan tier.</em>
           </h2>
-          <p class="page-section-lead">SLA covers our first response (diagnosis + ETA). Critical issues — site down, security breach — get worked on immediately regardless of plan tier.</p>
+          <p class="page-section-lead">SLA covers our first response (diagnosis + ETA). Critical issues like site down or a security breach get worked on immediately regardless of plan tier.</p>
         </div>
 
         <div class="care-sla-table-wrap">
@@ -431,7 +557,7 @@ const faqs = [
             Real maintenance.<br>
             <em>Real human accountability.</em>
           </h2>
-          <p class="page-cta-lead">A free 15-minute call to scope which plan tier matches your traffic, complexity, and risk tolerance. We'll recommend Essential if it's the right fit — we don't upsell.</p>
+          <p class="page-cta-lead">A free 15-minute call to scope which plan tier matches your traffic, complexity, and risk tolerance. We'll recommend Essential if it's the right fit. We don't upsell.</p>
           <div class="page-cta-buttons">
             <a href="/contact/" class="lp-btn-primary page-cta-primary">
               Start a care plan
@@ -659,6 +785,179 @@ const faqs = [
     width: 32px;
     height: 1px;
     background: var(--amber);
+  }
+
+  /* DEFINITION CALLOUT */
+  .care-define {
+    background: var(--cream);
+    padding: clamp(48px, 6vh, 80px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .care-define-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+  .care-define-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .care-define-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .care-define-pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(212,147,46,0.18);
+    animation: care-define-pulse 2s ease-in-out infinite;
+  }
+  @keyframes care-define-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+  .care-define-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+  .care-define-h2 {
+    margin: 0 0 16px;
+    font-size: clamp(22px, 3vw, 30px);
+  }
+  .care-define-answer {
+    font-size: 16.5px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 24px;
+    padding-bottom: 22px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .care-define-answer strong { font-weight: 600; color: var(--ink); }
+
+  .care-define-roles {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .care-define-role {
+    padding: 18px 20px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .care-define-role-type {
+    font-family: var(--f-display);
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .care-define-role-summary {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    flex: 1;
+  }
+  .care-define-role-typical {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--amber-deep);
+    padding-top: 8px;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* WHEN YOU NEED */
+  .care-when {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .care-when-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .care-when-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .care-when-card {
+    padding: 28px 26px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .care-when-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .care-when-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+  .care-when-card:hover::before { transform: scaleY(1); }
+  .care-when-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+  .care-when-signal {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 10px 0 8px;
+  }
+  .care-when-detail {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
   }
 
   /* TIERS */
@@ -1361,11 +1660,15 @@ const faqs = [
     .care-tier-highlight:hover { transform: translateY(-4px); }
     .care-tasks-list { grid-template-columns: 1fr; }
     .care-tiers-foot { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .care-define-roles { grid-template-columns: 1fr; }
+    .care-define-card { padding: 28px 24px; }
+    .care-when-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
     .care-tier { padding: 28px 24px; }
     .care-tier-price { font-size: 40px; }
+    .care-when-grid { grid-template-columns: 1fr; }
     .care-sla-table { font-size: 12px; }
     .care-sla-table th, .care-sla-table td { padding: 10px 12px; }
     .care-sla-foot { flex-direction: column; align-items: flex-start; }
