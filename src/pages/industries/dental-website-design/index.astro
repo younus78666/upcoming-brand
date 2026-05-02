@@ -128,6 +128,12 @@ const faqs = [
     q: "Can you help us rank for multiple procedures in multiple Maryland cities?",
     a: "Yes, this is exactly what the Growth and Custom tiers are designed for. We build dedicated procedure pages and city landing pages for each Maryland market you serve. Each page targets specific queries like 'dental implants Annapolis' or 'orthodontist Baltimore' with correct schema, targeted copy, and internal linking.",
   },
+  {
+    num: "07",
+    category: "Platform",
+    q: "Should I build my dental practice website on WordPress or Wix?",
+    a: "WordPress is the stronger platform for dental practices competing in local search. Wix and Squarespace cap your PageSpeed at 50-70 and limit the structured data you can implement - both hurt Local Pack rankings. A custom WordPress build gives you full Dentist and MedicalOrganization schema control, a PageSpeed score above 90, and Core Web Vitals in the green before launch. If you plan to rank for competitive terms like 'dentist [city]' against established practices, the platform gap becomes a ranking gap.",
+  },
 ];
 
 const faqCategoryColors = {
@@ -288,6 +294,11 @@ const schema = {
           "@type": "Question",
           "name": "Can you help us rank for multiple procedures in multiple Maryland cities?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes, this is exactly what the Growth and Custom tiers are designed for. We build dedicated procedure pages and city landing pages for each Maryland market you serve. Each page targets specific queries like 'dental implants Annapolis' or 'orthodontist Baltimore' with correct schema, targeted copy, and internal linking." }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I build my dental practice website on WordPress or Wix?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WordPress is the stronger platform for dental practices competing in local search. Wix and Squarespace cap your PageSpeed at 50-70 and limit the structured data you can implement - both hurt Local Pack rankings. A custom WordPress build gives you full Dentist and MedicalOrganization schema control, a PageSpeed score above 90, and Core Web Vitals in the green before launch. If you plan to rank for competitive terms like 'dentist [city]' against established practices, the platform gap becomes a ranking gap." }
         }
       ]
     }
@@ -465,7 +476,7 @@ const schema = {
     <div class="container">
       <div class="lf-pain-intro">
         <p class="eyebrow lf-eyebrow-dark">Why patients leave before booking</p>
-        <h2 class="h2-section">Why most dental websites fail Maryland practices</h2>
+        <h2 class="h2-section">Why do most dental websites fail Maryland practices?</h2>
       </div>
       <div class="lf-pain-grid">
         {painPoints.map((p) => (
@@ -486,7 +497,7 @@ const schema = {
     <div class="container">
       <div class="lf-features-intro">
         <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
-        <h2 class="h2-section">Six things every Maryland dental website needs</h2>
+        <h2 class="h2-section">What does every Maryland dental website need to rank?</h2>
         <p class="lead">A dental website is not a brochure. It is patient acquisition infrastructure. Every element we build, from Dentist schema to booking integrations to procedure pages, is designed to do one job: turn a searching patient into a booked appointment.</p>
       </div>
       <div class="lf-features-grid">
@@ -921,7 +932,7 @@ const schema = {
           </p>
           <div class="lf-faq-stats">
             <div class="lf-faq-stat">
-              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-num">7</span>
               <span class="lf-faq-stat-label mono-xs">Questions answered</span>
             </div>
             <div class="lf-faq-stat-divider" aria-hidden="true"></div>

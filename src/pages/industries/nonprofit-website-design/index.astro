@@ -144,6 +144,14 @@ const schema = {
             "@type": "Answer",
             "text": "Yes. Google for Nonprofits provides free access to Google Ad Grants ($10,000/month in search ads), Google Workspace, and YouTube for Nonprofits. We help you verify and enroll in the program, set up your Google Ad Grants account, and structure your site to comply with the program's landing page requirements. This is included in the Growth and Custom tiers."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Should my nonprofit use WordPress or a platform like Squarespace?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress is the stronger platform for nonprofits that want to rank in local search and run a reliable donation operation. Squarespace and Wix limit the NonprofitOrganization schema and GiveWP donation integration options available to you. A WordPress build lets you implement Google for Nonprofits, Ad Grants, and GiveWP with Stripe - the combination that maximizes both organic visibility and donation conversion. Platform fees on Squarespace also compound over time; with WordPress you own the code outright after launch."
+          }
         }
       ]
     }
@@ -274,6 +282,12 @@ const faqs = [
     category: "Platform",
     q: "Can you help us set up Google for Nonprofits?",
     a: "Yes. Google for Nonprofits provides free access to Google Ad Grants ($10,000/month in search ads), Google Workspace, and YouTube for Nonprofits. We help you verify and enroll in the program, set up your Google Ad Grants account, and structure your site to comply with the program's landing page requirements. This is included in the Growth and Custom tiers.",
+  },
+  {
+    num: "07",
+    category: "Platform",
+    q: "Should my nonprofit use WordPress or a platform like Squarespace?",
+    a: "WordPress is the stronger platform for nonprofits that want to rank in local search and run a reliable donation operation. Squarespace and Wix limit the NonprofitOrganization schema and GiveWP donation integration options available to you. A WordPress build lets you implement Google for Nonprofits, Ad Grants, and GiveWP with Stripe - the combination that maximizes both organic visibility and donation conversion. Platform fees on Squarespace also compound over time; with WordPress you own the code outright after launch.",
   },
 ];
 
@@ -506,7 +520,7 @@ const tiers = [
     <div class="container">
       <div class="lf-pain-intro">
         <p class="eyebrow lf-eyebrow-dark">Why donors leave before giving</p>
-        <h2 class="h2-section">Why most nonprofit websites fail Maryland organizations</h2>
+        <h2 class="h2-section">Why do most nonprofit websites fail Maryland organizations?</h2>
       </div>
       <div class="lf-pain-grid">
         {painPoints.map((p) => (
@@ -527,7 +541,7 @@ const tiers = [
     <div class="container">
       <div class="lf-features-intro">
         <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
-        <h2 class="h2-section">Six things every Maryland nonprofit website needs</h2>
+        <h2 class="h2-section">What does every Maryland nonprofit website need to rank?</h2>
         <p class="lead">A nonprofit site is not a brochure. It is your primary fundraising infrastructure. Every element we build, from schema to donation forms to impact copy, is designed to do one job: turn a visiting stranger into a donor, volunteer, or recurring supporter.</p>
       </div>
       <div class="lf-features-grid">
@@ -953,7 +967,7 @@ const tiers = [
           </p>
           <div class="lf-faq-stats">
             <div class="lf-faq-stat">
-              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-num">7</span>
               <span class="lf-faq-stat-label mono-xs">Questions answered</span>
             </div>
             <div class="lf-faq-stat-divider" aria-hidden="true"></div>

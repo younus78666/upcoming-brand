@@ -128,6 +128,12 @@ const faqs = [
     q: "Can you help us rank for both individual and business clients?",
     a: "Yes. The key is separate pages targeting each audience. 'Personal tax preparation Annapolis' and 'small business accountant Annapolis' are different searches with different intent and different content needs. We build individual pages for each client segment, each with AccountingService schema mapped to the specific service type and client profile.",
   },
+  {
+    num: "07",
+    category: "Platform",
+    q: "Should I build my accounting firm website on WordPress or a platform like Wix?",
+    a: "WordPress is the better platform for accounting firms competing in local search. Wix and Squarespace limit your ability to implement AccountingService and ProfessionalService schema - the markup that helps Google surface your firm for queries like 'CPA near me' or 'tax preparer [city]'. A custom WordPress build ships with correct schema, 90+ PageSpeed, and Core Web Vitals in the green. For a profession where trust signals drive conversion, a fast, professionally built site is part of your credentials.",
+  },
 ];
 
 const faqCategoryColors = {
@@ -322,6 +328,14 @@ const schemaData = {
             "@type": "Answer",
             "text": "Yes. The key is separate pages targeting each audience. 'Personal tax preparation Annapolis' and 'small business accountant Annapolis' are different searches with different intent and different content needs. We build individual pages for each client segment, each with AccountingService schema mapped to the specific service type and client profile."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I build my accounting firm website on WordPress or a platform like Wix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress is the better platform for accounting firms competing in local search. Wix and Squarespace limit your ability to implement AccountingService and ProfessionalService schema - the markup that helps Google surface your firm for queries like 'CPA near me' or 'tax preparer [city]'. A custom WordPress build ships with correct schema, 90+ PageSpeed, and Core Web Vitals in the green. For a profession where trust signals drive conversion, a fast, professionally built site is part of your credentials."
+          }
         }
       ]
     }
@@ -498,7 +512,7 @@ const schemaData = {
     <div class="container">
       <div class="lf-pain-intro">
         <p class="eyebrow lf-eyebrow-dark">Why accounting firm sites don't generate clients</p>
-        <h2 class="h2-section">Why most accounting firm websites fail Maryland CPAs</h2>
+        <h2 class="h2-section">Why do most accounting firm websites fail Maryland CPAs?</h2>
       </div>
       <div class="lf-pain-grid">
         {painPoints.map((p) => (
@@ -519,7 +533,7 @@ const schemaData = {
     <div class="container">
       <div class="lf-features-intro">
         <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
-        <h2 class="h2-section">Six things every Maryland accounting firm website needs</h2>
+        <h2 class="h2-section">What does every Maryland accounting firm website need to rank?</h2>
         <p class="lead">An accounting firm site is not a digital business card. It is a client acquisition system. Every element we build, from schema to intake forms to service pages, is designed to do one job: turn a searching prospect into a signed engagement.</p>
       </div>
       <div class="lf-features-grid">
@@ -902,7 +916,7 @@ const schemaData = {
           </p>
           <div class="lf-faq-stats">
             <div class="lf-faq-stat">
-              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-num">7</span>
               <span class="lf-faq-stat-label mono-xs">Questions answered</span>
             </div>
             <div class="lf-faq-stat-divider" aria-hidden="true"></div>

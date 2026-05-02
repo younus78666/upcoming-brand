@@ -134,6 +134,12 @@ const faqs = [
     q: "Can you help us rank for multiple physician specialties in multiple cities?",
     a: "Yes, this is exactly what the Growth and Custom tiers are built for. We create dedicated service pages for each specialty and location landing pages for each Maryland city you serve. Each page targets specific search queries like 'pediatrician Annapolis' or 'cardiologist Baltimore' with proper schema, copy, and internal linking to build topical authority across your full market area.",
   },
+  {
+    num: "07",
+    category: "Platform",
+    q: "Should I build my medical practice website on WordPress or Wix?",
+    a: "WordPress is the right platform for medical practices that want to rank in local search. Wix and Squarespace cannot fully implement Physician and MedicalOrganization schema - the structured data Google uses to surface practices in health searches and Knowledge Panels. A custom WordPress build ships with 90+ PageSpeed, passing Core Web Vitals, and the complete schema stack your competitors on generic platforms cannot match.",
+  },
 ];
 
 const faqCategoryColors = {
@@ -294,6 +300,11 @@ const schema = {
           "@type": "Question",
           "name": "Can you help us rank for multiple physician specialties in multiple cities?",
           "acceptedAnswer": { "@type": "Answer", "text": "Yes, this is exactly what the Growth and Custom tiers are built for. We create dedicated service pages for each specialty and location landing pages for each Maryland city you serve. Each page targets specific search queries like 'pediatrician Annapolis' or 'cardiologist Baltimore' with proper schema, copy, and internal linking to build topical authority across your full market area." }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I build my medical practice website on WordPress or Wix?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WordPress is the right platform for medical practices that want to rank in local search. Wix and Squarespace cannot fully implement Physician and MedicalOrganization schema - the structured data Google uses to surface practices in health searches and Knowledge Panels. A custom WordPress build ships with 90+ PageSpeed, passing Core Web Vitals, and the complete schema stack your competitors on generic platforms cannot match." }
         }
       ]
     }
@@ -453,7 +464,7 @@ const schema = {
     <div class="container">
       <div class="lf-pain-intro">
         <p class="eyebrow lf-eyebrow-dark">Why patients leave before calling</p>
-        <h2 class="h2-section">Why most medical practice websites fail Maryland physicians</h2>
+        <h2 class="h2-section">Why do most medical practice websites fail Maryland physicians?</h2>
       </div>
       <div class="lf-pain-grid">
         {painPoints.map((p) => (
@@ -472,7 +483,7 @@ const schema = {
     <div class="container">
       <div class="lf-features-intro">
         <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
-        <h2 class="h2-section">Six things every Maryland medical website needs</h2>
+        <h2 class="h2-section">What does every Maryland medical website need to rank?</h2>
         <p class="lead">A medical practice website is not a brochure. It is patient acquisition infrastructure. Every element we build is designed to do one thing: turn a searching patient into a booked appointment.</p>
       </div>
       <div class="lf-features-grid">
@@ -875,7 +886,7 @@ const schema = {
           <p class="lf-faq-sidebar-text">Straight answers to the questions we hear on every discovery call, with no sales spin.</p>
           <div class="lf-faq-stats">
             <div class="lf-faq-stat">
-              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-num">7</span>
               <span class="lf-faq-stat-label mono-xs">Questions answered</span>
             </div>
             <div class="lf-faq-stat-divider" aria-hidden="true"></div>

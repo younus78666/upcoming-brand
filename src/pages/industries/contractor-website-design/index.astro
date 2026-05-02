@@ -128,6 +128,12 @@ const faqs = [
     q: "Can the site handle online payments or deposit collection?",
     a: "Yes. On Growth and Custom tiers we can integrate Stripe or PayPal for deposit collection at estimate confirmation. We also integrate with Jobber, ServiceTitan, or Housecall Pro if you use field service management software and want the web form to sync directly. We scope these integrations during Discovery.",
   },
+  {
+    num: "07",
+    category: "Platform",
+    q: "Should I build my contracting business website on WordPress or Wix?",
+    a: "WordPress outperforms Wix and Squarespace for contractors competing on local search. Contractor sites need HomeAndConstructionBusiness schema, fast mobile load times for homeowners searching on the job site, and city-specific service pages - none of which work as well on rented platforms. Core Web Vitals failures are significantly more common on Wix and Squarespace builds, and Google uses those scores as a local ranking signal. A custom WordPress build ships with 90+ PageSpeed and the full schema stack before launch day.",
+  },
 ];
 
 const faqCategoryColors = {
@@ -328,6 +334,14 @@ const schema = {
             "@type": "Answer",
             "text": "Yes. On Growth and Custom tiers we can integrate Stripe or PayPal for deposit collection at estimate confirmation. We also integrate with Jobber, ServiceTitan, or Housecall Pro if you use field service management software and want the web form to sync directly. We scope these integrations during Discovery."
           }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I build my contracting business website on WordPress or Wix?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress outperforms Wix and Squarespace for contractors competing on local search. Contractor sites need HomeAndConstructionBusiness schema, fast mobile load times for homeowners searching on the job site, and city-specific service pages - none of which work as well on rented platforms. Core Web Vitals failures are significantly more common on Wix and Squarespace builds, and Google uses those scores as a local ranking signal. A custom WordPress build ships with 90+ PageSpeed and the full schema stack before launch day."
+          }
         }
       ]
     }
@@ -505,7 +519,7 @@ const schema = {
     <div class="container">
       <div class="lf-pain-intro">
         <p class="eyebrow lf-eyebrow-dark">Why leads walk before calling</p>
-        <h2 class="h2-section">Why most contractor websites fail Maryland tradespeople</h2>
+        <h2 class="h2-section">Why do most contractor websites fail Maryland tradespeople?</h2>
       </div>
       <div class="lf-pain-grid">
         {painPoints.map((p) => (
@@ -526,7 +540,7 @@ const schema = {
     <div class="container">
       <div class="lf-features-intro">
         <p class="eyebrow lf-eyebrow-dark">What we build into every site</p>
-        <h2 class="h2-section">Six things every Maryland contractor website needs</h2>
+        <h2 class="h2-section">What does every Maryland contractor website need to rank?</h2>
         <p class="lead">A contractor site is not a digital business card. It is a lead generation system. Every element we build, from schema to city pages to estimate forms, is designed to do one job: turn a searching homeowner into a booked estimate.</p>
       </div>
       <div class="lf-features-grid">
@@ -918,7 +932,7 @@ const schema = {
           </p>
           <div class="lf-faq-stats">
             <div class="lf-faq-stat">
-              <span class="lf-faq-stat-num">6</span>
+              <span class="lf-faq-stat-num">7</span>
               <span class="lf-faq-stat-label mono-xs">Questions answered</span>
             </div>
             <div class="lf-faq-stat-divider" aria-hidden="true"></div>
