@@ -67,12 +67,42 @@ const numbers = [
 ];
 
 const antiPatterns = [
-  { wrong: "Hourly billing",          right: "Fixed-scope quotes" },
-  { wrong: "Generic Bootstrap themes", right: "Custom WordPress design" },
-  { wrong: "$99/month maintenance",    right: "$150 - $400 care plans" },
-  { wrong: "In-person meetings",       right: "Zoom + async staging" },
-  { wrong: "Skipping schema",          right: "Schema-first architecture" },
-  { wrong: "Hiding behind designers",  right: "You talk to the builder" },
+  {
+    wrong: "Hourly billing",
+    wrongWhy: "Punishes you for asking questions and lets scope creep silently bill the project.",
+    right: "Fixed-scope quotes",
+    rightWhy: "One number agreed before code is written. Discovery, design, build, launch, monitoring."
+  },
+  {
+    wrong: "Generic Bootstrap themes",
+    wrongWhy: "Looks like 10,000 other sites and doesn't ship LocalBusiness or industry schema.",
+    right: "Custom WordPress design",
+    rightWhy: "Designed around your schema map, conversion architecture, and Local Pack strategy."
+  },
+  {
+    wrong: "$99/month maintenance",
+    wrongWhy: "A bot updates plugins. No backups, no monitoring, no Search Console eyes on rankings.",
+    right: "$150 - $400 care plans",
+    rightWhy: "Weekly backups, uptime monitoring, ranking watch, security patching, monthly report."
+  },
+  {
+    wrong: "In-person meetings",
+    wrongWhy: "Two hours of travel and a coffee shop discovery for 30 minutes of useful conversation.",
+    right: "Zoom + async staging",
+    rightWhy: "45-min discovery call, then async design rounds via private staging URL with comments."
+  },
+  {
+    wrong: "Skipping schema",
+    wrongWhy: "Generic agencies don't understand structured data, so they leave it off the project entirely.",
+    right: "Schema-first architecture",
+    rightWhy: "The schema map is the FIRST artifact in discovery. LocalBusiness, FAQ, Service, Industry types."
+  },
+  {
+    wrong: "Hiding behind designers",
+    wrongWhy: "Account managers relay messages between you and a designer who has never opened your stack.",
+    right: "You talk to the builder",
+    rightWhy: "The person who ran your discovery call writes your schema and ships your code. One channel."
+  },
 ];
 ---
 <BaseLayout
@@ -236,40 +266,88 @@ const antiPatterns = [
       </div>
     </section>
 
-    <!-- ====== WHAT WE DON'T DO ====== -->
+    <!-- ====== WHAT WE DON'T DO (split-panel comparison) ====== -->
     <section class="about-anti">
       <div class="container">
         <div class="about-anti-head">
-          <div class="page-eyebrow-strip page-eyebrow-strip-left">
+          <div class="page-eyebrow-strip">
             <span class="page-eyebrow-line"></span>
             <span class="page-eyebrow-text">What we don't do</span>
+            <span class="page-eyebrow-line"></span>
           </div>
-          <h2 class="page-h2">
-            The shortcuts <em>we say no to.</em>
+          <h2 class="page-h2 about-anti-h2">
+            Six shortcuts <em>we say no to.</em>
           </h2>
-          <p class="page-section-lead">
-            Six things every other agency in our price range will say yes to. We don't, because they're the same six things that lock you into a site that can't rank.
+          <p class="page-section-lead about-anti-lead">
+            Every other agency in our price range will say yes to all six. We don't. They're the same six things that quietly lock you into a site that ranks for nothing and converts at half the rate it should.
           </p>
         </div>
 
-        <div class="about-anti-grid">
-          {antiPatterns.map((a) => (
-            <div class="about-anti-row">
-              <div class="about-anti-wrong">
-                <span class="about-anti-icon about-anti-icon-no" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                </span>
-                <span>{a.wrong}</span>
-              </div>
-              <div class="about-anti-arrow" aria-hidden="true">&rarr;</div>
-              <div class="about-anti-right">
-                <span class="about-anti-icon about-anti-icon-yes" aria-hidden="true">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </span>
-                <span>{a.right}</span>
-              </div>
+        <!-- Comparison panel -->
+        <div class="anti-panel">
+          <!-- Header row -->
+          <div class="anti-panel-headers">
+            <div class="anti-col-head anti-col-head-wrong">
+              <span class="anti-col-tag">Industry standard</span>
+              <h3 class="anti-col-title">Most agencies say <em>yes</em></h3>
+              <p class="anti-col-sub">Six practices that quietly damage your project before launch.</p>
             </div>
-          ))}
+            <div class="anti-col-divider" aria-hidden="true">
+              <span class="anti-col-divider-label">VS</span>
+            </div>
+            <div class="anti-col-head anti-col-head-right">
+              <span class="anti-col-tag anti-col-tag-amber">Upcoming Brand</span>
+              <h3 class="anti-col-title">We say <em>no</em></h3>
+              <p class="anti-col-sub">And here's exactly what we do instead, on every project.</p>
+            </div>
+          </div>
+
+          <!-- Rows -->
+          <div class="anti-rows">
+            {antiPatterns.map((a, i) => (
+              <div class="anti-row">
+                <span class="anti-row-num">{String(i + 1).padStart(2, '0')}</span>
+
+                <div class="anti-side anti-side-wrong">
+                  <div class="anti-side-headline">
+                    <span class="anti-side-icon anti-side-icon-no" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                    <span class="anti-side-text">{a.wrong}</span>
+                  </div>
+                  <p class="anti-side-why">{a.wrongWhy}</p>
+                </div>
+
+                <div class="anti-row-arrow" aria-hidden="true">
+                  <svg width="20" height="14" viewBox="0 0 20 14" fill="none"><path d="M1 7h17M13 1l5 6-5 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+
+                <div class="anti-side anti-side-right">
+                  <div class="anti-side-headline">
+                    <span class="anti-side-icon anti-side-icon-yes" aria-hidden="true">
+                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="anti-side-text">{a.right}</span>
+                  </div>
+                  <p class="anti-side-why">{a.rightWhy}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <!-- Footer -->
+          <div class="anti-panel-footer">
+            <div class="anti-footer-left">
+              <span class="anti-footer-label">Bottom line</span>
+              <p class="anti-footer-text">
+                If a brief asks us to break one of these six rules, we politely decline the project. <strong>It's saved more launches than any feature ever has.</strong>
+              </p>
+            </div>
+            <a href="/contact/" class="anti-footer-cta">
+              Start a project that respects these rules
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
@@ -933,64 +1011,263 @@ const antiPatterns = [
     color: rgba(244,239,230,0.55);
   }
 
-  /* Anti-patterns (what we don't do) */
+  /* ===========================================
+     ANTI-PATTERNS — split-panel comparison
+     =========================================== */
   .about-anti {
     background: var(--paper);
     padding: clamp(56px, 8vh, 96px) 0;
     border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-anti::before {
+    content: "";
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translateX(-50%);
+    width: 700px; height: 400px;
+    background: radial-gradient(ellipse, rgba(212,147,46,0.05) 0%, transparent 60%);
+    pointer-events: none;
   }
 
   .about-anti-head {
-    max-width: 720px;
-    margin-bottom: 48px;
-  }
-
-  .about-anti-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 12px;
-    max-width: 880px;
-  }
-
-  .about-anti-row {
-    display: grid;
-    grid-template-columns: 1fr 32px 1fr;
-    gap: 16px;
-    align-items: center;
-    padding: 18px 22px;
-    background: var(--cream);
-    border: 1px solid var(--line);
-    border-radius: var(--radius-md);
-    transition: all var(--transition);
-  }
-
-  .about-anti-row:hover {
-    border-color: var(--amber);
-    transform: translateX(4px);
-  }
-
-  .about-anti-wrong,
-  .about-anti-right {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto clamp(40px, 6vh, 64px);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 12px;
-    font-size: 15px;
+    gap: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .about-anti-h2 {
+    text-align: center;
+  }
+
+  .about-anti-lead {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Panel */
+  .anti-panel {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    position: relative;
+    z-index: 1;
+  }
+
+  .anti-panel::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(176,74,62,0.4) 0%, var(--amber) 50%, rgba(92,128,64,0.5) 100%);
+  }
+
+  /* Header row */
+  .anti-panel-headers {
+    display: grid;
+    grid-template-columns: 1fr 60px 1fr;
+    gap: 0;
+    padding: 32px 36px 28px;
+    border-bottom: 1px dashed var(--line);
+    background: linear-gradient(180deg, var(--paper) 0%, transparent 100%);
+  }
+
+  .anti-col-head {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .anti-col-head-wrong {
+    padding-right: 20px;
+  }
+
+  .anti-col-head-right {
+    padding-left: 20px;
+  }
+
+  .anti-col-tag {
+    display: inline-flex;
+    align-self: flex-start;
+    padding: 4px 12px;
+    background: rgba(15,20,25,0.06);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
     font-weight: 500;
   }
 
-  .about-anti-wrong {
-    color: var(--ink-muted);
-    text-decoration: line-through;
-    text-decoration-color: rgba(176,74,62,0.5);
+  .anti-col-tag-amber {
+    background: rgba(212,147,46,0.12);
+    color: var(--amber-deep);
   }
 
-  .about-anti-right {
+  .anti-col-title {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.5vw, 30px);
+    line-height: 1.1;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .anti-col-title em {
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  .anti-col-head-wrong .anti-col-title em {
+    color: var(--red);
+    opacity: 0.85;
+  }
+
+  .anti-col-head-right .anti-col-title em {
+    color: var(--amber-deep);
+  }
+
+  .anti-col-sub {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin: 4px 0 0;
+  }
+
+  .anti-col-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .anti-col-divider::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line), transparent);
+    transform: translateX(-50%);
+  }
+
+  .anti-col-divider-label {
+    position: relative;
+    z-index: 1;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--ink-muted);
+  }
+
+  /* Rows */
+  .anti-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .anti-row {
+    display: grid;
+    grid-template-columns: 36px 1fr 60px 1fr;
+    gap: 0;
+    padding: 22px 24px;
+    border-bottom: 1px dashed var(--line);
+    align-items: stretch;
+    position: relative;
+    transition: background 0.2s ease;
+  }
+
+  .anti-row:last-child {
+    border-bottom: none;
+  }
+
+  .anti-row:hover {
+    background: var(--paper);
+  }
+
+  .anti-row::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    width: 1px;
+    background: var(--line);
+    transform: translateX(-50%);
+    opacity: 0.5;
+  }
+
+  .anti-row-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--ink-muted);
+    opacity: 0.5;
+    align-self: center;
+    text-align: center;
+    transition: color 0.2s ease, opacity 0.2s ease;
+  }
+
+  .anti-row:hover .anti-row-num {
+    color: var(--amber-deep);
+    opacity: 1;
+  }
+
+  .anti-side {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 0 20px;
+  }
+
+  .anti-side-headline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .anti-side-wrong .anti-side-headline {
+    color: var(--ink-muted);
+  }
+
+  .anti-side-wrong .anti-side-text {
+    text-decoration: line-through;
+    text-decoration-color: rgba(176,74,62,0.45);
+    text-decoration-thickness: 1.5px;
+  }
+
+  .anti-side-right .anti-side-headline {
     color: var(--ink);
   }
 
-  .about-anti-icon {
-    width: 24px;
-    height: 24px;
+  .anti-side-icon {
+    width: 22px;
+    height: 22px;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
@@ -998,21 +1275,114 @@ const antiPatterns = [
     flex-shrink: 0;
   }
 
-  .about-anti-icon-no {
+  .anti-side-icon-no {
     background: rgba(176,74,62,0.1);
     color: var(--red);
   }
 
-  .about-anti-icon-yes {
+  .anti-side-icon-yes {
     background: rgba(92,128,64,0.12);
     color: var(--green);
   }
 
-  .about-anti-arrow {
+  .anti-side-why {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+    padding-left: 32px;
+  }
+
+  .anti-side-right .anti-side-why {
+    color: var(--ink-soft);
+  }
+
+  .anti-row-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--amber);
-    text-align: center;
-    font-size: 18px;
+    opacity: 0.45;
+    transition: all 0.3s ease;
+  }
+
+  .anti-row:hover .anti-row-arrow {
+    opacity: 1;
+    color: var(--amber-deep);
+    transform: translateX(2px);
+  }
+
+  /* Panel footer */
+  .anti-panel-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    padding: 28px 36px;
+    background: linear-gradient(180deg, transparent 0%, var(--paper) 100%);
+    border-top: 1px dashed var(--line);
+  }
+
+  .anti-footer-left {
+    flex: 1;
+    max-width: 560px;
+  }
+
+  .anti-footer-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .anti-footer-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .anti-footer-text strong {
     font-weight: 600;
+    color: var(--ink);
+  }
+
+  .anti-footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    text-decoration: none;
+    padding: 12px 18px;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.25);
+    border-radius: var(--radius-pill);
+    transition: all var(--transition);
+    flex-shrink: 0;
+    font-weight: 500;
+  }
+
+  .anti-footer-cta:hover {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+    transform: translateY(-2px);
+  }
+
+  .anti-footer-cta svg {
+    transition: transform 0.22s ease;
+  }
+
+  .anti-footer-cta:hover svg {
+    transform: translateX(3px);
   }
 
   /* How we work */
@@ -1324,14 +1694,65 @@ const antiPatterns = [
       border-right: none !important;
     }
 
-    .about-anti-row {
+    .anti-panel-headers {
       grid-template-columns: 1fr;
-      gap: 8px;
+      gap: 24px;
+      padding: 24px;
+    }
+
+    .anti-col-head-wrong,
+    .anti-col-head-right {
+      padding: 0;
+    }
+
+    .anti-col-divider {
+      display: none;
+    }
+
+    .anti-row {
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 20px;
+    }
+
+    .anti-row-num {
+      align-self: flex-start;
       text-align: left;
     }
 
-    .about-anti-arrow {
+    .anti-row::before {
+      display: none;
+    }
+
+    .anti-side {
+      padding: 0;
+    }
+
+    .anti-row-arrow {
       transform: rotate(90deg);
+      padding: 4px 0;
+      align-self: center;
+    }
+
+    .anti-row:hover .anti-row-arrow {
+      transform: rotate(90deg) translateX(2px);
+    }
+
+    .anti-panel-footer {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      padding: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .anti-row {
+      padding: 18px 16px;
+    }
+
+    .anti-side-why {
+      padding-left: 0;
     }
   }
 </style>
