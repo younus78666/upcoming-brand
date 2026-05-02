@@ -1,0 +1,1042 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/terms-and-conditions/";
+const lastUpdated = "May 2, 2026";
+const effectiveDate = "May 2, 2026";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Terms & Conditions | Upcoming Brand",
+      "description": "Terms governing engagements with Upcoming Brand. Fixed-scope billing, project timelines, revisions, IP ownership, warranties, and dispute resolution. Maryland jurisdiction.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "dateModified": "2026-05-02",
+      "datePublished": "2024-01-01",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Terms & Conditions", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const sections = [
+  { id: "summary",          title: "Plain-language summary" },
+  { id: "acceptance",       title: "Acceptance of terms" },
+  { id: "services",         title: "Services we provide" },
+  { id: "engagement",       title: "Engagement and quotes" },
+  { id: "payment",          title: "Payment terms" },
+  { id: "timeline",         title: "Project timeline and delays" },
+  { id: "revisions",        title: "Revisions and change orders" },
+  { id: "client-duties",    title: "Client responsibilities" },
+  { id: "ip",               title: "Intellectual property" },
+  { id: "warranties",       title: "Warranties and disclaimers" },
+  { id: "liability",        title: "Limitation of liability" },
+  { id: "termination",      title: "Termination" },
+  { id: "confidentiality",  title: "Confidentiality" },
+  { id: "governing-law",    title: "Governing law" },
+  { id: "changes",          title: "Changes to these terms" },
+  { id: "contact",          title: "Contact us" },
+];
+---
+<BaseLayout
+  title="Terms & Conditions | Upcoming Brand WordPress Studio Maryland"
+  description="Terms governing engagements with Upcoming Brand. Fixed-scope billing, project timelines, revisions, IP ownership, warranties, and dispute resolution. Maryland jurisdiction."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero legal-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">Terms &amp; conditions</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1 legal-h1">
+          <span class="page-h1-line">The terms</span>
+          <span class="page-h1-line"><em class="page-h1-accent">we work under.</em></span>
+        </h1>
+
+        <p class="page-lead">
+          Fixed-scope billing, project timelines, revisions, IP ownership, and what happens if either side needs to walk away. Written so you can read them before you sign — not buried in a PDF after.
+        </p>
+
+        <div class="legal-meta">
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Last updated</span>
+            <span class="legal-meta-val">{lastUpdated}</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Effective</span>
+            <span class="legal-meta-val">{effectiveDate}</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Version</span>
+            <span class="legal-meta-val">2.0</span>
+          </div>
+          <div class="legal-meta-divider" aria-hidden="true"></div>
+          <div class="legal-meta-item">
+            <span class="legal-meta-label">Jurisdiction</span>
+            <span class="legal-meta-val">Maryland, USA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BODY ====== -->
+    <section class="legal-body">
+      <div class="container legal-body-grid">
+
+        <aside class="legal-toc">
+          <div class="legal-toc-inner">
+            <span class="legal-toc-label">On this page</span>
+            <nav aria-label="Terms sections">
+              <ol class="legal-toc-list">
+                {sections.map((s, i) => (
+                  <li class="legal-toc-item">
+                    <a href={`#${s.id}`} class="legal-toc-link">
+                      <span class="legal-toc-num">{String(i + 1).padStart(2, '0')}</span>
+                      <span class="legal-toc-text">{s.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+            <div class="legal-toc-footer">
+              <a href="#contact" class="legal-toc-cta">
+                Contract questions
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          </div>
+        </aside>
+
+        <article class="legal-content">
+
+          <section id="summary" class="legal-section legal-section-callout">
+            <span class="legal-section-num">01</span>
+            <h2 class="legal-section-h2">Plain-language summary</h2>
+            <div class="legal-section-body">
+              <p>
+                You hire us, we send a fixed-scope quote, you sign it, we build the site. <strong>One price, agreed up front.</strong> No hourly billing. No surprise invoices. We deliver the deliverables in the quote. You provide content and feedback when scheduled. If either side needs to walk away, the terms below explain what happens. Maryland law governs the agreement.
+              </p>
+              <p>The rest of this page is the long version — written in normal English, not lawyer-English.</p>
+            </div>
+          </section>
+
+          <section id="acceptance" class="legal-section">
+            <span class="legal-section-num">02</span>
+            <h2 class="legal-section-h2">Acceptance of terms</h2>
+            <div class="legal-section-body">
+              <p>
+                By engaging Upcoming Brand for any service — discovery call, audit, project, or care plan — you agree to these Terms &amp; Conditions and to the project-specific Statement of Work (SOW) we attach to your quote. The SOW takes precedence where it differs from these general terms.
+              </p>
+              <p>
+                These terms apply to anyone who engages us, including individuals, partnerships, and corporate entities, in any country.
+              </p>
+            </div>
+          </section>
+
+          <section id="services" class="legal-section">
+            <span class="legal-section-num">03</span>
+            <h2 class="legal-section-h2">Services we provide</h2>
+            <div class="legal-section-body">
+              <p>Upcoming Brand provides:</p>
+              <ul class="legal-list">
+                <li>Custom WordPress design and development</li>
+                <li>WooCommerce setup, configuration, and customisation</li>
+                <li>Schema architecture and on-page SEO implementation</li>
+                <li>Core Web Vitals and performance optimisation</li>
+                <li>Site migrations and redesigns</li>
+                <li>Care plans (ongoing maintenance, monitoring, and support)</li>
+                <li>Audits (technical SEO, schema, performance, security)</li>
+              </ul>
+              <p>
+                We don't provide: hosting, domain registration, paid advertising management, generic content marketing, or services unrelated to WordPress and the surrounding stack.
+              </p>
+            </div>
+          </section>
+
+          <section id="engagement" class="legal-section">
+            <span class="legal-section-num">04</span>
+            <h2 class="legal-section-h2">Engagement and quotes</h2>
+            <div class="legal-section-body">
+              <p>Every engagement follows the same path:</p>
+              <ul class="legal-list">
+                <li>You complete the discovery form or send a project brief</li>
+                <li>We schedule a free 45-minute discovery call within 4 business hours</li>
+                <li>If we're a good fit, we send a fixed-scope quote (PDF) within 48 hours</li>
+                <li>The quote is held at the stated price for 30 days</li>
+                <li>You sign the quote; we invoice the deposit; project kickoff scheduled within 5 business days</li>
+              </ul>
+              <p>
+                We reserve the right to decline any engagement that violates our operating principles or that we cannot deliver to our standard. We'll explain why if asked.
+              </p>
+            </div>
+          </section>
+
+          <section id="payment" class="legal-section">
+            <span class="legal-section-num">05</span>
+            <h2 class="legal-section-h2">Payment terms</h2>
+            <div class="legal-section-body">
+              <p>
+                All projects are <strong>fixed-scope</strong>. The total project price is documented in the SOW. There is no hourly billing. Scope changes are handled as written change orders (see Revisions below).
+              </p>
+
+              <h3 class="legal-section-h3">Milestone schedule</h3>
+              <div class="legal-table-wrap">
+                <table class="legal-table">
+                  <thead>
+                    <tr>
+                      <th>Milestone</th>
+                      <th>% of total</th>
+                      <th>Triggered by</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Project deposit</td>
+                      <td>40%</td>
+                      <td>Signed SOW, before kickoff</td>
+                    </tr>
+                    <tr>
+                      <td>Design approval</td>
+                      <td>30%</td>
+                      <td>Final design sign-off on staging</td>
+                    </tr>
+                    <tr>
+                      <td>Launch</td>
+                      <td>30%</td>
+                      <td>Live site delivered with 90+ Lighthouse</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 class="legal-section-h3">Methods, currency, and timing</h3>
+              <ul class="legal-list">
+                <li>Payments processed by Stripe in USD</li>
+                <li>Wire transfer or ACH available for projects over $10,000</li>
+                <li>Invoices due within 7 days of issue</li>
+                <li>Late payments accrue 1.5% per month after 30 days</li>
+                <li>Care plans billed monthly in advance, month-to-month, no annual contract</li>
+              </ul>
+
+              <h3 class="legal-section-h3">Refunds</h3>
+              <p>
+                The discovery call and pre-signature quote are free. After deposit, refunds are pro-rated based on completed milestones. The deposit itself is non-refundable once design work has begun, except where we cancel the project on our end.
+              </p>
+            </div>
+          </section>
+
+          <section id="timeline" class="legal-section">
+            <span class="legal-section-num">06</span>
+            <h2 class="legal-section-h2">Project timeline and delays</h2>
+            <div class="legal-section-body">
+              <p>
+                Project timelines are documented in the SOW and depend on both sides hitting milestones on time. The standard delivery windows are:
+              </p>
+              <ul class="legal-list">
+                <li><strong>Starter (8 pages)</strong> — 4-6 weeks from kickoff</li>
+                <li><strong>Growth (15-20 pages)</strong> — 6-8 weeks</li>
+                <li><strong>Custom (WooCommerce, IDX, multi-location)</strong> — 8-10 weeks or as scoped</li>
+              </ul>
+              <p>
+                If client-side delays push the timeline past the SOW completion date by more than 30 days, we may pause the project and re-scope or re-quote at then-current rates. We'll always notify you in writing before doing so and never invoice retroactively.
+              </p>
+              <p>
+                If we miss a contractual milestone for reasons within our control, we credit 1% of the project total per business day of delay, capped at 10%.
+              </p>
+            </div>
+          </section>
+
+          <section id="revisions" class="legal-section">
+            <span class="legal-section-num">07</span>
+            <h2 class="legal-section-h2">Revisions and change orders</h2>
+            <div class="legal-section-body">
+              <p>
+                Each project tier includes <strong>two structured design rounds</strong>. Small content tweaks during the build phase are part of the project. Larger design or scope changes after final approval are handled as written change orders.
+              </p>
+
+              <h3 class="legal-section-h3">What counts as a change order</h3>
+              <ul class="legal-list">
+                <li>Adding, removing, or significantly restructuring pages after design approval</li>
+                <li>Switching design direction after the second review round</li>
+                <li>Adding integrations, plugins, or features not in the original SOW</li>
+                <li>Migrating to a different host, theme framework, or CMS mid-project</li>
+              </ul>
+
+              <p>
+                Change orders are quoted as fixed prices, sent in writing, and require your signature before work resumes. They are billed on launch with the final milestone unless they exceed 25% of the original project value, in which case they may be billed on signature.
+              </p>
+            </div>
+          </section>
+
+          <section id="client-duties" class="legal-section">
+            <span class="legal-section-num">08</span>
+            <h2 class="legal-section-h2">Client responsibilities</h2>
+            <div class="legal-section-body">
+              <p>For projects to ship on time and on budget, we ask that you:</p>
+              <ul class="legal-list">
+                <li>Provide content (text, images, brand assets) within the agreed window — typically week 2 of the build</li>
+                <li>Provide timely access to existing accounts (hosting, domain, Google Workspace, current site) when scoped</li>
+                <li>Designate one primary point of contact authorised to approve designs and content</li>
+                <li>Respond to design and content reviews within 5 business days</li>
+                <li>Pay invoices within the 7-day window</li>
+                <li>Inform us immediately of any change in business circumstances that affects the project</li>
+              </ul>
+              <p>
+                If we don't have what we need to keep building, we pause the project and notify you. Pause periods don't count against our timeline.
+              </p>
+            </div>
+          </section>
+
+          <section id="ip" class="legal-section">
+            <span class="legal-section-num">09</span>
+            <h2 class="legal-section-h2">Intellectual property</h2>
+            <div class="legal-section-body">
+              <p>
+                <strong>You own your site.</strong> On final payment, all custom design, custom code, custom blocks, content, and configuration produced for your project become your property. You can move it, modify it, hire other developers to work on it, or take it down — without our permission.
+              </p>
+
+              <h3 class="legal-section-h3">What stays ours</h3>
+              <ul class="legal-list">
+                <li>Internal tools, libraries, and frameworks we use across projects</li>
+                <li>The right to display the finished work in our portfolio and case studies (you can opt out in writing)</li>
+                <li>Open-source plugins, themes, and software covered by their respective licences</li>
+              </ul>
+
+              <h3 class="legal-section-h3">Third-party assets</h3>
+              <p>
+                Stock photography, premium plugins, fonts, and themes are licensed to you under their respective terms. We document every paid licence in the SOW and the post-launch report so you know exactly what you own and what you license.
+              </p>
+            </div>
+          </section>
+
+          <section id="warranties" class="legal-section">
+            <span class="legal-section-num">10</span>
+            <h2 class="legal-section-h2">Warranties and disclaimers</h2>
+            <div class="legal-section-body">
+              <p>We warrant that:</p>
+              <ul class="legal-list">
+                <li>Custom code is free of malicious functionality at delivery</li>
+                <li>Sites ship at 90+ Lighthouse on every page (Performance, Accessibility, Best Practices, SEO)</li>
+                <li>We have the right to deliver the work we deliver</li>
+                <li>Bugs reported within 30 days of launch that are caused by our work are fixed at no charge</li>
+              </ul>
+
+              <p>
+                <strong>We do NOT guarantee:</strong> specific Google rankings, specific Local Pack placements, specific traffic numbers, or specific conversion rates. Search engine algorithms change continuously and outcomes depend on factors beyond our control (your industry's competitiveness, your business inputs, Google updates, market conditions).
+              </p>
+
+              <p>
+                Beyond the express warranties above, the services are provided "as is" without warranty of merchantability, fitness for a particular purpose, or non-infringement.
+              </p>
+            </div>
+          </section>
+
+          <section id="liability" class="legal-section">
+            <span class="legal-section-num">11</span>
+            <h2 class="legal-section-h2">Limitation of liability</h2>
+            <div class="legal-section-body">
+              <p>
+                To the maximum extent permitted by law, Upcoming Brand's total liability under any project is limited to the amount you paid us under that specific engagement.
+              </p>
+              <p>
+                We are not liable for: indirect, incidental, special, consequential, or punitive damages; lost profits or revenue; lost data (we ship with backups; we recommend keeping your own); loss of business opportunity; or claims by third parties.
+              </p>
+              <p>
+                These limitations apply even if we have been advised of the possibility of such damages and even if a remedy fails of its essential purpose.
+              </p>
+            </div>
+          </section>
+
+          <section id="termination" class="legal-section">
+            <span class="legal-section-num">12</span>
+            <h2 class="legal-section-h2">Termination</h2>
+            <div class="legal-section-body">
+              <h3 class="legal-section-h3">Either side can terminate</h3>
+              <p>
+                Either party may terminate a project for convenience with 14 days written notice. On termination, you pay for completed milestones and any work in progress at the milestone rate. The deposit is non-refundable. Care plans cancel month-to-month with no notice required.
+              </p>
+
+              <h3 class="legal-section-h3">For cause</h3>
+              <p>
+                Either side may terminate immediately for material breach (non-payment after notice, repeated missed milestones, demonstrable bad faith). On termination for our breach, we refund unused milestones. On termination for client breach, we retain payments for work delivered.
+              </p>
+
+              <h3 class="legal-section-h3">What you get on termination</h3>
+              <p>
+                Whatever has been delivered or built and paid for becomes yours. We provide a complete handover: code, credentials, asset files, schema documentation, and any third-party licences transferred to your name.
+              </p>
+            </div>
+          </section>
+
+          <section id="confidentiality" class="legal-section">
+            <span class="legal-section-num">13</span>
+            <h2 class="legal-section-h2">Confidentiality</h2>
+            <div class="legal-section-body">
+              <p>
+                Both sides treat the other's non-public business information as confidential. We don't share your strategy, financials, customer data, or anything else marked confidential with anyone outside the project team. Specialists in our network are bound by the same NDA we operate under.
+              </p>
+              <p>
+                Confidentiality survives termination of the project. The only exception is information legally required to be disclosed (court order, subpoena, regulatory request).
+              </p>
+            </div>
+          </section>
+
+          <section id="governing-law" class="legal-section">
+            <span class="legal-section-num">14</span>
+            <h2 class="legal-section-h2">Governing law</h2>
+            <div class="legal-section-body">
+              <p>
+                These terms are governed by the laws of the State of Maryland, USA, without regard to conflict-of-law principles. Any dispute arising under these terms or any project is resolved in the state or federal courts located in Maryland.
+              </p>
+              <p>
+                Before filing suit, both sides agree to attempt good-faith resolution by direct negotiation for 30 days. If that fails, mediation through a mutually agreed mediator. If mediation fails, the courts are next.
+              </p>
+            </div>
+          </section>
+
+          <section id="changes" class="legal-section">
+            <span class="legal-section-num">15</span>
+            <h2 class="legal-section-h2">Changes to these terms</h2>
+            <div class="legal-section-body">
+              <p>
+                We may update these terms as our services or applicable laws change. The "Last updated" date at the top reflects the most recent revision. Material changes are notified to active clients by email at least 30 days before they take effect, and the SOW you signed governs unless you accept the updated terms.
+              </p>
+              <p>
+                Past versions are archived and available on request.
+              </p>
+            </div>
+          </section>
+
+          <section id="contact" class="legal-section legal-section-contact">
+            <span class="legal-section-num">16</span>
+            <h2 class="legal-section-h2">Contact us</h2>
+            <div class="legal-section-body">
+              <p>Questions about these terms or any contract clause — reach out and we'll respond within 4 business hours during business days.</p>
+
+              <div class="legal-contact-card">
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Email</span>
+                  <a class="legal-contact-val" href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Subject line</span>
+                  <span class="legal-contact-val">Terms: [your topic]</span>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Response window</span>
+                  <span class="legal-contact-val">4 business hours, weekdays</span>
+                </div>
+                <div class="legal-contact-divider" aria-hidden="true"></div>
+                <div class="legal-contact-row">
+                  <span class="legal-contact-label">Mailing</span>
+                  <span class="legal-contact-val">Available on request via email</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </article>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to start</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Read the terms.<br>
+            <em>Now let's start the project.</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. We map your competitive set, identify the schema and Local Pack gaps, and send a fixed-scope quote — under these terms — within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/privacy-policy/" class="page-cta-ghost-light">
+              Privacy policy
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===========================================
+     SHARED PAGE / LEGAL SYSTEM (mirrored from privacy-policy)
+     =========================================== */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(56px, 8vh, 96px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 16px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .lp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+
+  /* Legal hero meta */
+  .legal-h1 { margin-bottom: 4px; }
+  .legal-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 14px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    margin-top: 8px;
+  }
+  .legal-meta-item { display: flex; flex-direction: column; gap: 3px; }
+  .legal-meta-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .legal-meta-val {
+    font-size: 13px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .legal-meta-divider {
+    width: 1px; height: 28px;
+    background: var(--line);
+  }
+
+  /* Body grid */
+  .legal-body {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    position: relative;
+  }
+  .legal-body-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 72px;
+    align-items: flex-start;
+  }
+
+  /* TOC */
+  .legal-toc { position: sticky; top: 24px; }
+  .legal-toc-inner {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 24px 22px;
+    box-shadow: var(--shadow-sm);
+  }
+  .legal-toc-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .legal-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .legal-toc-link {
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    align-items: baseline;
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+  }
+  .legal-toc-link:hover {
+    background: var(--paper);
+    color: var(--amber-deep);
+  }
+  .legal-toc-num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: var(--ink-muted);
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .legal-toc-link:hover .legal-toc-num { color: var(--amber); }
+  .legal-toc-text {
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    transition: color var(--transition);
+  }
+  .legal-toc-link:hover .legal-toc-text { color: var(--amber-deep); }
+  .legal-toc-footer {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px dashed var(--line);
+  }
+  .legal-toc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    text-decoration: none;
+    transition: gap 0.3s ease, color var(--transition);
+    font-weight: 500;
+  }
+  .legal-toc-cta:hover { gap: 10px; color: var(--ink); }
+
+  /* Content */
+  .legal-content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+  .legal-section {
+    position: relative;
+    scroll-margin-top: 24px;
+  }
+  .legal-section-callout {
+    background: var(--cream);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    position: relative;
+  }
+  .legal-section-callout::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-md) var(--radius-md) 0 0;
+  }
+  .legal-section-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+  .legal-section-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.8vw, 32px);
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+  }
+  .legal-section-h3 {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 28px 0 10px;
+  }
+  .legal-section-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+  }
+  .legal-section-body p { margin: 0 0 14px; }
+  .legal-section-body p:last-child { margin-bottom: 0; }
+  .legal-section-body strong { color: var(--ink); font-weight: 600; }
+  .legal-section-body a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: color var(--transition);
+  }
+  .legal-section-body a:hover { color: var(--ink); }
+
+  .legal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .legal-list li {
+    position: relative;
+    padding-left: 22px;
+    line-height: 1.6;
+  }
+  .legal-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 10px;
+    width: 8px; height: 1px;
+    background: var(--amber);
+  }
+
+  /* Tables */
+  .legal-table-wrap {
+    margin: 16px 0 18px;
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--cream);
+    font-size: 13px;
+  }
+  .legal-table th {
+    text-align: left;
+    padding: 12px 16px;
+    background: var(--paper);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 600;
+    border-bottom: 1px solid var(--line);
+  }
+  .legal-table td {
+    padding: 12px 16px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+  }
+  .legal-table tbody tr:last-child td { border-bottom: none; }
+  .legal-table tbody tr:hover td { background: var(--paper); }
+
+  /* Contact card */
+  .legal-section-contact {
+    background: var(--cream);
+    border-radius: var(--radius-md);
+    padding: 28px 32px;
+    border: 1px solid var(--line);
+  }
+  .legal-contact-card {
+    margin-top: 18px;
+    padding: 22px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+  }
+  .legal-contact-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 16px;
+    padding: 12px 0;
+    align-items: baseline;
+  }
+  .legal-contact-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 500;
+  }
+  .legal-contact-val {
+    font-size: 14px;
+    color: var(--ink);
+    font-weight: 500;
+  }
+  .legal-contact-val[href] {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .legal-contact-divider {
+    height: 1px;
+    border-top: 1px dashed var(--line);
+  }
+
+  /* Final CTA */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .legal-body-grid { grid-template-columns: 1fr; gap: 32px; }
+    .legal-toc { position: static; }
+    .legal-toc-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 4px;
+    }
+  }
+  @media (max-width: 768px) {
+    .legal-meta { gap: 12px; padding: 14px 18px; }
+    .legal-meta-divider { display: none; }
+    .legal-toc-list { grid-template-columns: 1fr; }
+    .legal-section-callout, .legal-section-contact { padding: 22px 22px; }
+    .legal-contact-row { grid-template-columns: 1fr; gap: 4px; }
+    .legal-table { font-size: 12px; }
+    .legal-table th, .legal-table td { padding: 10px 12px; }
+  }
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+  }
+</style>
