@@ -1,0 +1,560 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/services/wordpress-migration/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "WordPress Migration Service | Wix, Squarespace, GoDaddy to WordPress | Upcoming Brand",
+      "description": "WordPress migration service from a senior WordPress migration expert. Wix, Squarespace, GoDaddy, Shopify, or outdated WordPress to custom WordPress. Zero-downtime DNS, complete redirect maps, no ranking loss. Fixed-scope from $750.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",                "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services",            "item": "https://upcomingbrand.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "WordPress Migration", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      "name": "WordPress Migration Services",
+      "description": "Senior WordPress migration services from Wix, Squarespace, GoDaddy, Shopify, or outdated WordPress to custom WordPress builds. Complete redirect maps, zero-downtime DNS cutover, 30-day Search Console monitoring.",
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "serviceType": "WordPress migration",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "offers": {
+        "@type": "Offer",
+        "price": "750",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5"
+      },
+      "knowsAbout": [
+        "WordPress migration",
+        "WordPress migration service",
+        "WordPress migration services",
+        "WordPress migration expert",
+        "WordPress site migration",
+        "Wix to WordPress migration",
+        "Squarespace to WordPress migration",
+        "GoDaddy to WordPress migration",
+        "Shopify to WordPress migration",
+        "Migrate website to WordPress",
+        "WordPress migration company"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      "name": "How to migrate a website to WordPress",
+      "description": "The five-phase WordPress migration process for moving from Wix, Squarespace, GoDaddy, Shopify, or outdated WordPress without losing rankings.",
+      "totalTime": "P3W",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Audit current site",       "text": "URL inventory, content extraction plan, current ranking baseline (positions 1-50 captured), and integration / redirect dependencies mapped." },
+        { "@type": "HowToStep", "position": 2, "name": "Build new WordPress site",  "text": "Custom WordPress build on the new platform with schema, performance, and content architecture matched to or improved from the original." },
+        { "@type": "HowToStep", "position": 3, "name": "Map redirects",              "text": "Every old URL redirected to its new equivalent via 301 redirects. Lost or merged pages routed to the closest topical match." },
+        { "@type": "HowToStep", "position": 4, "name": "DNS cutover",                "text": "Zero-downtime DNS cutover scheduled in your timezone during low-traffic window. New site verified live before old site is decommissioned." },
+        { "@type": "HowToStep", "position": 5, "name": "30-day monitoring",          "text": "Daily Search Console + ranking monitoring for first 7 days, then weekly. Day-30 written report with full migration outcome." }
+      ]
+    }
+  ]
+});
+
+const sources = [
+  { num: "01", platform: "Wix",         detail: "Wix-locked content extraction, custom redirect mapping, and full WordPress rebuild with schema and Core Web Vitals." },
+  { num: "02", platform: "Squarespace", detail: "Catalog and content export, redirect map, and custom WordPress design that retains the brand without the platform lock-in." },
+  { num: "03", platform: "GoDaddy",      detail: "GoDaddy Website Builder or Managed WordPress to custom WordPress on better hosting. Most common migration we run." },
+  { num: "04", platform: "Shopify",      detail: "Shopify to WooCommerce migration with product import, customer/order import, and SEO-preserving redirect map." },
+  { num: "05", platform: "Outdated WP",  detail: "Old WordPress theme + plugin bloat to a clean custom build. Often paired with a redesign sprint." },
+  { num: "06", platform: "Webflow",       detail: "Webflow to WordPress for clients hitting CMS limitations or wanting open-platform ownership. Content + design re-platformed." },
+];
+
+const tiers = [
+  {
+    name: "Basic",
+    price: "From $750",
+    duration: "1-2 weeks",
+    summary: "Simple WordPress-to-WordPress migration or small site (under 20 pages) from Wix / Squarespace / GoDaddy with redirect map.",
+    fits: ["Under 20 pages", "WordPress-to-WordPress", "Hosting move only"],
+    href: "/contact/?plan=migration-basic",
+  },
+  {
+    name: "Standard",
+    price: "From $1,500",
+    duration: "2-4 weeks",
+    summary: "Full WordPress migration from any platform: content, schema, performance, redirect map, DNS cutover, 30-day monitoring.",
+    fits: ["20-100 pages", "Wix / Squarespace / GoDaddy", "Includes redesign light-touch"],
+    href: "/contact/?plan=migration-standard",
+    highlight: true,
+  },
+  {
+    name: "Custom",
+    price: "From $3,500",
+    duration: "4-8 weeks",
+    summary: "Complex migrations: WooCommerce / Shopify with product imports, multi-language, multi-site, or 100+ page catalogs.",
+    fits: ["WooCommerce / Shopify", "Multi-language", "100+ pages or complex"],
+    href: "/contact/?plan=migration-custom",
+  },
+];
+
+const whyMigrate = [
+  { num: "01", signal: "Wix monthly fees keep climbing",      detail: "$30-$60/month for a feature-limited site you can replace with WordPress + $20/month hosting. The migration pays for itself in 12-24 months." },
+  { num: "02", signal: "Squarespace can't add the schema you need", detail: "Squarespace has limited schema control. Custom WordPress with vertical-specific schema is what gets you into the Local Pack." },
+  { num: "03", signal: "GoDaddy hosting is destroying your speed", detail: "GoDaddy shared hosting routinely lands sites at 30-40 Lighthouse. Migrating to Cloudways or Kinsta puts you back at 90+." },
+  { num: "04", signal: "Shopify monthly + transaction fees eat margin", detail: "Past 12-18 months of operation, WooCommerce on your own hosting is almost always cheaper than Shopify Plus." },
+  { num: "05", signal: "Old WordPress theme is unmaintainable", detail: "If your current WP theme has 40+ active plugins, page builder lock-in, or hasn't been updated in 2 years, a migration to a custom build is the fix." },
+  { num: "06", signal: "You don't own the platform",            detail: "Wix, Squarespace, GoDaddy, and Shopify can deplatform a site. WordPress on your own hosting is yours forever." },
+];
+
+const faqs = [
+  {
+    q: "What is WordPress migration?",
+    a: "WordPress migration is the process of moving a website from another platform (Wix, Squarespace, GoDaddy, Shopify, or older WordPress) to a new WordPress installation. The migration includes content extraction, design rebuild or recreation, schema architecture, redirect mapping for SEO preservation, DNS cutover, and post-migration monitoring. Quality WordPress migration services preserve all rankings and traffic; cheap migrations frequently lose 30-50% of organic visibility because the redirect map is incomplete.",
+  },
+  {
+    q: "How much does WordPress migration cost?",
+    a: "Quality WordPress migration costs $750 to $5,000+ depending on source platform and complexity. WordPress-to-WordPress migrations or small Wix / Squarespace / GoDaddy moves start at $750. Standard migrations with redirect map, DNS cutover, and 30-day monitoring run $1,500-$2,500. Complex Shopify-to-WooCommerce or multi-language migrations start at $3,500. Hourly WordPress migration expert rates run $80-$200/hr; fixed-scope is the better structure for clients who don't want surprises.",
+  },
+  {
+    q: "Will I lose Google rankings during a WordPress migration?",
+    a: "Not if it's done correctly. Properly migrated WordPress sites recover all top-10 rankings within 4 weeks. The keys are: a complete 301 redirect map (every old URL routes to the right new one), a zero-downtime DNS cutover during a low-traffic window, schema preservation or improvement, and 30-day Search Console monitoring post-launch. Cheap migrations skip the redirect map and lose rankings; quality migrations don't.",
+  },
+  {
+    q: "How long does a WordPress migration take?",
+    a: "Typical timelines: simple WordPress-to-WordPress migrations in 1-2 weeks. Wix / Squarespace / GoDaddy migrations in 2-4 weeks. Complex Shopify-to-WooCommerce or multi-language migrations in 4-8 weeks. The biggest variables are content volume (50 pages vs 5,000), integration complexity (single CMS vs multiple connected systems), and whether the migration includes a design refresh.",
+  },
+  {
+    q: "Should I migrate from Wix or Squarespace to WordPress?",
+    a: "If you have under 5 simple pages, no schema needs, and the platform fee is comfortable: stay on Wix or Squarespace. Migrate to WordPress if you need vertical-specific schema (legal, medical, dental, real estate), Local Pack ranking, custom integrations (CRM, IDX, booking), faster page speed, or simply want to own the platform. The break-even point is roughly 12-24 months of platform fees vs. one-time WordPress build.",
+  },
+  {
+    q: "Can you migrate without taking the site offline?",
+    a: "Yes. Every migration we run is zero-downtime. We build the new WordPress site on a staging URL while your existing site stays live and serving traffic. On launch day, we do a DNS cutover during a low-traffic window (typically 2-4 AM Eastern). Visitors hitting the old IP during the propagation window get the old site; visitors hitting the new IP get the new site. Both render correctly. No 'this site is down for maintenance' page.",
+  },
+  {
+    q: "What's included in the redirect map?",
+    a: "Every old URL on the source site is paired with its new equivalent on the WordPress site. URLs that move (e.g., /blog/post-name to /articles/post-name) get a 301 redirect. URLs that are removed entirely (e.g., outdated landing pages) get redirected to the closest topical match or the parent category. We document the entire map in a spreadsheet you keep, so any future developer can see exactly what was redirected and why.",
+  },
+];
+---
+<BaseLayout
+  title="WordPress Migration Service | Wix, Squarespace, GoDaddy to WordPress | Upcoming Brand"
+  description="WordPress migration service from a senior expert. Wix, Squarespace, GoDaddy, Shopify, or outdated WordPress to custom WordPress. Zero-downtime DNS, complete redirect maps, no ranking loss. Fixed-scope from $750."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">WordPress migration service</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">WordPress migration</span>
+          <span class="page-h1-line"><em class="page-h1-accent">from any platform,</em></span>
+          <span class="page-h1-line page-h1-italic">with zero ranking loss.</span>
+        </h1>
+
+        <p class="page-lead">
+          <strong>WordPress migration services</strong> from Wix, Squarespace, <strong>GoDaddy to WordPress</strong>, Shopify, or outdated WordPress. Complete redirect maps. Zero-downtime DNS cutover. 30-day Search Console monitoring. <strong>Fixed-scope from $750.</strong> Recover all rankings within 4 weeks of launch.
+        </p>
+
+        <div class="page-hero-ctas">
+          <a href="/contact/" class="lp-btn-primary">
+            Start a migration
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#tiers" class="lp-btn-ghost">
+            View tiers
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">From $750 fixed-scope</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">Zero-downtime DNS</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">No ranking loss</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEFINITION -->
+    <section class="mig-define">
+      <div class="container">
+        <div class="mig-define-card">
+          <div class="mig-define-head">
+            <span class="mig-define-pulse" aria-hidden="true"></span>
+            <span class="mig-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 mig-define-h2">
+            What is WordPress migration?
+          </h2>
+          <p class="mig-define-answer">
+            <strong>WordPress migration is the process of moving a website from another platform (Wix, Squarespace, GoDaddy, Shopify, or older WordPress) to a new WordPress installation.</strong> Quality migration includes content extraction, schema preservation or improvement, complete 301 redirect mapping, zero-downtime DNS cutover, and 30-day post-launch monitoring. The biggest difference between cheap and quality migrations: cheap migrations skip the redirect map and lose 30-50% of organic visibility. Done right, you keep every ranking.
+          </p>
+          <div class="mig-define-meta">
+            <div class="mig-define-meta-item">
+              <span class="mig-define-meta-label">Investment</span>
+              <span class="mig-define-meta-val">$750 (basic) to $5,000+ (Shopify, multi-language)</span>
+            </div>
+            <div class="mig-define-meta-item">
+              <span class="mig-define-meta-label">Timeline</span>
+              <span class="mig-define-meta-val">1-2 weeks (small) to 4-8 weeks (complex)</span>
+            </div>
+            <div class="mig-define-meta-item">
+              <span class="mig-define-meta-label">Ranking impact</span>
+              <span class="mig-define-meta-val">Full recovery within 4 weeks (when done right)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOURCES -->
+    <section class="mig-sources">
+      <div class="container">
+        <div class="mig-sources-head">
+          <p class="mig-section-eyebrow">
+            <span class="mig-section-eyebrow-line"></span>
+            What we migrate from
+          </p>
+          <h2 class="page-h2">
+            Six platforms <em>migrated to WordPress.</em>
+          </h2>
+          <p class="page-section-lead">If your platform isn't listed, ask. We've handled custom CMSes, ASP.NET sites, Drupal, Joomla, and a few platforms even Google has forgotten about.</p>
+        </div>
+
+        <div class="mig-sources-grid">
+          {sources.map((s) => (
+            <article class="mig-source-card">
+              <span class="mig-source-num">{s.num}</span>
+              <h3 class="mig-source-platform">{s.platform}</h3>
+              <p class="mig-source-detail">{s.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TIERS -->
+    <section class="mig-tiers" id="tiers">
+      <div class="container">
+        <div class="mig-tiers-head">
+          <p class="mig-section-eyebrow">
+            <span class="mig-section-eyebrow-line"></span>
+            Three tiers
+          </p>
+          <h2 class="page-h2">
+            Three <em>WordPress migration packages.</em>
+          </h2>
+          <p class="page-section-lead">Each tier is fixed-scope, documented in a PDF, and held at the stated price for 30 days after the discovery call.</p>
+        </div>
+
+        <div class="mig-tiers-grid">
+          {tiers.map((t) => (
+            <a href={t.href} class={`mig-tier ${t.highlight ? 'mig-tier-highlight' : ''}`}>
+              {t.highlight && <span class="mig-tier-flag">Most chosen</span>}
+              <span class="mig-tier-name">{t.name}</span>
+              <span class="mig-tier-price">{t.price}</span>
+              <span class="mig-tier-duration">{t.duration}</span>
+              <p class="mig-tier-summary">{t.summary}</p>
+              <div class="mig-tier-fits">
+                <span class="mig-tier-fits-label">Fits</span>
+                <ul class="mig-tier-fits-list">
+                  {t.fits.map((f) => (<li>{f}</li>))}
+                </ul>
+              </div>
+              <span class="mig-tier-cta">
+                Start {t.name}
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- WHY MIGRATE (Causation) -->
+    <section class="mig-why">
+      <div class="container">
+        <div class="mig-why-head">
+          <p class="mig-section-eyebrow">
+            <span class="mig-section-eyebrow-line"></span>
+            When to migrate
+          </p>
+          <h2 class="page-h2">
+            Six signals <em>your site needs migrating.</em>
+          </h2>
+        </div>
+
+        <div class="mig-why-grid">
+          {whyMigrate.map((w) => (
+            <article class="mig-why-card">
+              <span class="mig-why-num">{w.num}</span>
+              <h3 class="mig-why-signal">{w.signal}</h3>
+              <p class="mig-why-detail">{w.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="mig-faq">
+      <div class="container">
+        <div class="mig-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">Migration FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 mig-faq-h2">
+            Seven questions <em>before you migrate.</em>
+          </h2>
+        </div>
+        <div class="mig-faq-list">
+          {faqs.map((f, i) => (
+            <details class="mig-faq-item">
+              <summary class="mig-faq-q">
+                <span class="mig-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="mig-faq-q-text">{f.q}</span>
+                <span class="mig-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="mig-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to migrate</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Migrate to WordPress<br>
+            <em>without losing rankings.</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. We audit your current platform, map the migration scope, and send a fixed-scope quote within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Start a migration
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/services/" class="page-cta-ghost-light">
+              View all services
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before { content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%); pointer-events: none; }
+  .page-hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
+  .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+  .page-h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(32px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.035em; display: flex; flex-direction: column; gap: 4px; margin: 0; text-align: center; }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent { font-style: inherit; position: relative; color: var(--ink); display: inline-block; }
+  .page-h1-accent::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.05em; height: 0.1em; background: var(--amber); opacity: 0.5; border-radius: 2px; }
+  .page-h1-italic { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .page-lead { font-size: clamp(15px, 1.2vw, 18px); line-height: 1.6; color: var(--ink-soft); max-width: 64ch; margin: 0 auto; }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+  .page-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+  .lp-btn-primary, .lp-btn-ghost { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-body); font-size: 15px; font-weight: 500; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap; transition: all 0.22s ease; cursor: pointer; }
+  .lp-btn-primary { background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); }
+  .lp-btn-primary:hover { background: var(--amber-deep); border-color: var(--amber-deep); transform: translateY(-2px); }
+  .lp-btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line-strong); }
+  .lp-btn-ghost:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); transform: translateY(-2px); }
+  .lp-btn-primary svg, .lp-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover svg { transform: translate(2px, -2px); }
+  .page-hero-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+  .page-trust-line { display: inline-flex; align-items: center; gap: 5px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--ink-muted); text-transform: uppercase; }
+  .page-trust-dot { width: 3px; height: 3px; background: var(--ink-muted); border-radius: 50%; opacity: 0.4; }
+  .page-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 12px 0 0; }
+  .page-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .page-section-lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; margin: 16px auto 0; }
+  .mig-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin: 0; font-weight: 500; }
+  .mig-section-eyebrow-line { display: inline-block; width: 32px; height: 1px; background: var(--amber); }
+
+  /* DEFINITION */
+  .mig-define { background: var(--paper); padding: clamp(48px, 6vh, 80px) 0; border-bottom: 1px solid var(--line); }
+  .mig-define-card { max-width: 880px; margin: 0 auto; background: var(--cream); border: 1.5px solid rgba(212,147,46,0.3); border-radius: var(--radius-lg); padding: 36px 40px; position: relative; box-shadow: var(--shadow-sm); }
+  .mig-define-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .mig-define-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .mig-define-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(212,147,46,0.18); animation: mig-pulse 2s ease-in-out infinite; }
+  @keyframes mig-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .mig-define-label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .mig-define-h2 { margin: 0 0 16px; font-size: clamp(22px, 3vw, 32px); }
+  .mig-define-answer { font-size: 16.5px; line-height: 1.6; color: var(--ink); margin: 0 0 20px; }
+  .mig-define-answer strong { font-weight: 600; color: var(--ink); }
+  .mig-define-meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .mig-define-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .mig-define-meta-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .mig-define-meta-val { font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+
+  /* SOURCES (dark band) */
+  .mig-sources { background: var(--ink); color: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+  .mig-sources::before { content: ""; position: absolute; top: 0; left: 50%; width: 60%; height: 1px; background: linear-gradient(90deg, transparent, rgba(212,147,46,0.5), transparent); transform: translateX(-50%); }
+  .mig-sources-head { text-align: center; max-width: 720px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .mig-sources-head .mig-section-eyebrow { color: var(--amber); }
+  .mig-sources-head .page-h2 { color: var(--cream); }
+  .mig-sources-head .page-h2 em { color: var(--amber); }
+  .mig-sources-head .page-section-lead { color: rgba(244,239,230,0.65); }
+  .mig-sources-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .mig-source-card { padding: 26px 24px 22px; background: rgba(244,239,230,0.04); border: 1px solid rgba(244,239,230,0.08); border-radius: var(--radius-md); transition: all 0.3s ease; display: flex; flex-direction: column; gap: 8px; }
+  .mig-source-card:hover { border-color: rgba(212,147,46,0.4); background: rgba(244,239,230,0.06); transform: translateY(-3px); }
+  .mig-source-num { font-family: var(--f-display); font-size: 16px; font-style: italic; color: var(--amber); font-weight: 400; }
+  .mig-source-platform { font-family: var(--f-display); font-size: 22px; line-height: 1.2; color: var(--cream); font-weight: 600; letter-spacing: -0.015em; margin: 4px 0; }
+  .mig-source-detail { font-size: 13px; line-height: 1.55; color: rgba(244,239,230,0.62); margin: 0; }
+
+  /* TIERS */
+  .mig-tiers { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
+  .mig-tiers-head { text-align: center; max-width: 720px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .mig-tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; align-items: stretch; }
+  .mig-tier { display: flex; flex-direction: column; gap: 10px; padding: 32px 28px 28px; background: var(--cream); border: 1.5px solid var(--line); border-radius: var(--radius-lg); text-decoration: none; color: inherit; transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .mig-tier:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 14px 36px rgba(212,147,46,0.12); }
+  .mig-tier-highlight { background: var(--ink); color: var(--cream); border-color: var(--amber); transform: translateY(-6px); }
+  .mig-tier-highlight::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber)); }
+  .mig-tier-highlight:hover { transform: translateY(-10px); }
+  .mig-tier-flag { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); padding: 4px 14px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .mig-tier-name { font-family: var(--f-display); font-size: 32px; line-height: 1; color: var(--ink); font-weight: 500; letter-spacing: -0.025em; margin-top: 4px; }
+  .mig-tier-highlight .mig-tier-name { color: var(--cream); }
+  .mig-tier-price { font-family: var(--f-display); font-size: 24px; line-height: 1; color: var(--amber-deep); font-weight: 500; margin-top: 8px; }
+  .mig-tier-highlight .mig-tier-price { color: var(--amber); }
+  .mig-tier-duration { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+  .mig-tier-highlight .mig-tier-duration { color: rgba(244,239,230,0.5); }
+  .mig-tier-summary { font-size: 13px; line-height: 1.55; color: var(--ink-muted); margin: 12px 0 0; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .mig-tier-highlight .mig-tier-summary { color: rgba(244,239,230,0.7); border-color: rgba(244,239,230,0.15); }
+  .mig-tier-fits { margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--line); flex: 1; }
+  .mig-tier-highlight .mig-tier-fits { border-color: rgba(244,239,230,0.15); }
+  .mig-tier-fits-label { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 8px; font-weight: 500; }
+  .mig-tier-highlight .mig-tier-fits-label { color: var(--amber); }
+  .mig-tier-fits-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .mig-tier-fits-list li { font-size: 12.5px; color: var(--ink-soft); padding-left: 14px; position: relative; }
+  .mig-tier-fits-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 1px; background: var(--amber); }
+  .mig-tier-highlight .mig-tier-fits-list li { color: rgba(244,239,230,0.75); }
+  .mig-tier-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .mig-tier-highlight .mig-tier-cta { color: var(--amber); border-color: rgba(244,239,230,0.15); }
+
+  /* WHY MIGRATE */
+  .mig-why { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .mig-why-head { text-align: center; max-width: 760px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .mig-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .mig-why-card { padding: 28px 26px 24px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .mig-why-card::before { content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--amber); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
+  .mig-why-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(212,147,46,0.1); }
+  .mig-why-card:hover::before { transform: scaleY(1); }
+  .mig-why-num { font-family: var(--f-display); font-size: 14px; font-style: italic; color: var(--amber-deep); font-weight: 400; }
+  .mig-why-signal { font-family: var(--f-display); font-size: 19px; line-height: 1.25; color: var(--ink); font-weight: 600; letter-spacing: -0.015em; margin: 10px 0 8px; }
+  .mig-why-detail { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; }
+
+  /* FAQ */
+  .mig-faq { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .mig-faq-head { text-align: center; max-width: 760px; margin: 0 auto 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .mig-faq-h2 { text-align: center; }
+  .mig-faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 880px; margin: 0 auto; }
+  .mig-faq-item { background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition); }
+  .mig-faq-item[open] { border-color: var(--amber); box-shadow: 0 4px 14px rgba(212,147,46,0.08); }
+  .mig-faq-q { display: grid; grid-template-columns: 36px 1fr 24px; gap: 16px; align-items: center; padding: 20px 24px; cursor: pointer; list-style: none; }
+  .mig-faq-q::-webkit-details-marker { display: none; }
+  .mig-faq-item:hover .mig-faq-q { background: rgba(212,147,46,0.04); }
+  .mig-faq-num { font-family: var(--f-display); font-size: 13px; color: var(--amber-deep); font-style: italic; font-weight: 400; }
+  .mig-faq-q-text { font-family: var(--f-display); font-size: 18px; line-height: 1.3; color: var(--ink); font-weight: 500; letter-spacing: -0.015em; }
+  .mig-faq-icon { width: 24px; height: 24px; border-radius: 50%; background: rgba(15,20,25,0.06); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+  .mig-faq-item[open] .mig-faq-icon { background: var(--amber); color: var(--ink); transform: rotate(180deg); }
+  .mig-faq-a { padding: 0 24px 22px 76px; font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin: 0; border-top: 1px dashed var(--line); padding-top: 18px; }
+
+  /* CTA */
+  .page-cta { background: var(--ink); padding: clamp(72px, 10vh, 112px) 0; position: relative; overflow: hidden; }
+  .page-cta::before { content: ""; position: absolute; top: -300px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%); pointer-events: none; }
+  .page-cta::after { content: ""; position: absolute; bottom: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%); pointer-events: none; }
+  .page-cta-inner { max-width: 720px; text-align: center; margin: 0 auto; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead { font-size: 16px; line-height: 1.6; color: rgba(244,239,230,0.65); max-width: 56ch; margin: 0 auto; }
+  .page-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .page-cta-primary { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+  .page-cta-primary:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+  .page-cta-ghost-light { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid rgba(244,239,230,0.2); color: var(--cream); background: transparent; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.22s ease; }
+  .page-cta-ghost-light:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,147,46,0.08); transform: translateY(-2px); }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  @media (max-width: 1024px) {
+    .mig-define-meta { grid-template-columns: 1fr; gap: 12px; }
+    .mig-define-card { padding: 28px 24px; }
+    .mig-sources-grid { grid-template-columns: repeat(2, 1fr); }
+    .mig-tiers-grid { grid-template-columns: 1fr; }
+    .mig-tier-highlight { transform: none; }
+    .mig-tier-highlight:hover { transform: translateY(-4px); }
+    .mig-why-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .mig-sources-grid { grid-template-columns: 1fr; }
+    .mig-why-grid { grid-template-columns: 1fr; }
+    .mig-faq-q { grid-template-columns: 1fr 24px; gap: 12px; }
+    .mig-faq-num { display: none; }
+    .mig-faq-a { padding-left: 24px; }
+  }
+  @media (max-width: 640px) { .page-eyebrow-line { width: 24px; } }
+</style>
