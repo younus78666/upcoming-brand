@@ -571,18 +571,15 @@ const sections = [
     font-style: inherit;
     position: relative;
     color: var(--ink);
-    display: inline-block;
+    display: inline;
+    text-decoration: underline;
+    text-decoration-color: rgba(212, 147, 46, 0.55);
+    text-decoration-thickness: 0.08em;
+    text-underline-offset: 0.16em;
+    text-decoration-skip-ink: none;
   }
 
-  .page-h1-accent::after {
-    content: "";
-    position: absolute;
-    left: 0; right: 0; bottom: 0.05em;
-    height: 0.1em;
-    background: var(--amber);
-    opacity: 0.5;
-    border-radius: 2px;
-  }
+  .page-h1-accent::after { display: none; }
 
   .page-lead {
     font-size: clamp(15px, 1.2vw, 18px);
