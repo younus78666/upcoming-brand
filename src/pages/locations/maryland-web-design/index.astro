@@ -1,0 +1,1147 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const city      = "Maryland";
+const stateAbbr = "MD";
+const slug      = "maryland-web-design";
+const canonical = `https://upcomingbrand.com/locations/${slug}/`;
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "name": "Web Design Maryland | WordPress & SEO | Upcoming Brand",
+      "url": canonical,
+      "description": "Web design Maryland businesses trust for real Google rankings. Custom WordPress builds, 90+ PageSpeed, fixed pricing. Serving all 18 cities across Maryland's DC Metro, Baltimore, and Eastern Shore regions.",
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://upcomingbrand.com/locations/" },
+          { "@type": "ListItem", "position": 3, "name": "Maryland Web Design", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://upcomingbrand.com/#localbusiness",
+      "name": "Upcoming Brand",
+      "description": "WordPress web design studio serving all of Maryland. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
+      "url": "https://upcomingbrand.com/",
+      "priceRange": "$$-$$$",
+      "areaServed": [
+        { "@type": "State",  "name": "Maryland" },
+        { "@type": "City",   "name": "Baltimore" },
+        { "@type": "City",   "name": "Annapolis" },
+        { "@type": "City",   "name": "Frederick" },
+        { "@type": "City",   "name": "Bethesda" },
+        { "@type": "City",   "name": "Rockville" },
+        { "@type": "City",   "name": "Silver Spring" },
+        { "@type": "City",   "name": "Columbia" },
+        { "@type": "City",   "name": "Towson" },
+        { "@type": "City",   "name": "Gaithersburg" },
+        { "@type": "City",   "name": "Germantown" },
+        { "@type": "City",   "name": "Ellicott City" },
+        { "@type": "City",   "name": "Catonsville" },
+        { "@type": "City",   "name": "Dundalk" },
+        { "@type": "City",   "name": "Hagerstown" },
+        { "@type": "City",   "name": "Westminster" },
+        { "@type": "City",   "name": "Bowie" },
+        { "@type": "City",   "name": "Waldorf" },
+        { "@type": "City",   "name": "Salisbury" }
+      ],
+      "serviceType": ["WordPress Web Design", "WooCommerce Development", "SEO", "Web Maintenance"],
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Credit Card, Bank Transfer"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a WordPress website cost in Maryland?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Maryland WordPress websites range from $1,500 to $10,000+ depending on scope. An 8-page starter site runs $1,500-$3,500. A 15-20 page site with custom design and local SEO runs $3,500-$6,000. Complex builds for law firms, medical practices, or contractors with WooCommerce start at $6,000. Every project is fixed-scope - one price, no hourly billing." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you serve businesses across all of Maryland?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work with businesses across all 24 Maryland counties and Baltimore City - from the DC Metro corridor (Bethesda, Rockville, Silver Spring, Gaithersburg, Germantown) to the Baltimore region (Baltimore, Towson, Catonsville, Dundalk) to Howard County (Columbia, Ellicott City), Western Maryland (Frederick, Hagerstown, Westminster), the Annapolis area, and the Eastern Shore (Salisbury). Every project runs entirely remote over Zoom, Google Meet, and async staging reviews." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a Maryland WordPress project take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce, IDX real estate, or medical practice builds take 8-10 weeks. Timeline depends most on how quickly you review and approve design rounds - we keep the build moving on our end." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you work with Maryland clients remotely?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. A Frederick contractor reviewing designs between job sites gets the same process as a Bethesda law firm reviewing from a conference room. No commutes, no lost time." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my Maryland website rank in Google's Local Pack?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Local Pack rankings need your Google Business Profile, review velocity, and local citations working together with your website. We handle the website side: LocalBusiness schema with correct NAP data for your specific city, service area pages covering your county and neighboring cities, internal linking, and Core Web Vitals in the green. That combination is the technical foundation every Local Pack ranking in Maryland is built on." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you redesign my existing Maryland business website?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many Maryland businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements created a real ranking gap. We benchmark every page before touching anything, build a complete 301 redirect map, run a zero-downtime DNS cutover, and monitor Search Console for 30 days after launch to catch any slippage early." }
+        }
+      ]
+    }
+  ]
+});
+
+const industries = [
+  {
+    num: "01",
+    name: "Medical & Dental",
+    stat: "+284% appointment inquiries",
+    hook: "Maryland's healthcare market runs from Johns Hopkins and the University of Maryland Medical System in Baltimore to NIH-adjacent practices in Montgomery County and TidalHealth on the Eastern Shore. Patients across the state research specialist and dental practices online before booking any appointment. We build HIPAA-aware contact forms, Physician and Dentist schema, and appointment pages that rank for condition-specific and location-specific searches - whether you're competing in a dense Baltimore corridor or serving a regional patient base in Western Maryland.",
+    schema: "MedicalOrganization",
+    tags: ["HIPAA-aware forms", "Physician schema", "Maryland medical SEO"],
+    href: "/industries/medical-website-design/",
+  },
+  {
+    num: "02",
+    name: "Law Firms",
+    stat: "+312% organic intake leads",
+    hook: "Maryland's legal market spans the US District Court in Baltimore, Montgomery County Circuit Court in Rockville, Anne Arundel Circuit Court in Annapolis, and county courts from Hagerstown to Salisbury. Attorneys across the state compete for clients who search on mobile before calling any office. We build multi-step intake forms, LegalService schema, attorney profile pages, and practice area pages that rank for the competitive legal searches Maryland clients use when they need representation.",
+    schema: "LegalService",
+    tags: ["Multi-step intake forms", "LegalService schema", "Maryland legal SEO"],
+    href: "/industries/law-firm-website-design/",
+  },
+  {
+    num: "03",
+    name: "Contractors & Trades",
+    stat: "7s average contractor site load",
+    hook: "Maryland's contractor market spans Bethesda's luxury renovation corridor, Baltimore's aging row house inventory, Columbia's planned community housing stock, and Western Maryland's rural trade service areas. Homeowners compare contractors online before calling - in every market from Montgomery County to Carroll County. A fast portfolio site with HomeAndConstructionBusiness schema, a quote request form that works, and service area pages covering your county puts you ahead of every competitor still running a Wix page from 2020.",
+    schema: "HomeAndConstructionBusiness",
+    tags: ["Quote request forms", "HomeAndConstruction schema", "Maryland contractor SEO"],
+    href: "/industries/contractor-website-design/",
+  },
+  {
+    num: "04",
+    name: "Restaurants & Small Business",
+    stat: "89% research online first",
+    hook: "Maryland's restaurant market covers the Inner Harbor and Federal Hill in Baltimore, the DC suburb dining corridors in Bethesda and Silver Spring, Annapolis waterfront dining, Ocean City's tourist dining season, and the independent restaurant towns from Frederick to Salisbury. Diners search before they visit everywhere in the state. The restaurant with a slow site or a PDF menu loses the reservation to whoever loads first - regardless of whether they're in a tourist town or a suburban strip.",
+    schema: "Restaurant",
+    tags: ["Menu SEO", "Restaurant schema", "Maryland dining SEO"],
+    href: "/industries/restaurant-website-design/",
+  },
+  {
+    num: "05",
+    name: "Real Estate",
+    stat: "93% of buyers start on Google",
+    hook: "Maryland's real estate market is one of the most diverse in the mid-Atlantic - luxury suburbs in Montgomery County, competitive waterfront markets in Annapolis and the Eastern Shore, Baltimore City neighborhood buyers, Howard County family buyers, and rural land markets in Western Maryland. Buyers search specific neighborhood and city names with purchase intent before contacting any agent. We build IDX-integrated sites with neighborhood landing pages, RealEstateAgent schema, and community content that ranks for the specific searches Maryland buyers use.",
+    schema: "RealEstateAgent",
+    tags: ["IDX integration", "Neighborhood landing pages", "RealEstateAgent schema"],
+    href: "/industries/real-estate-website-design/",
+  },
+  {
+    num: "06",
+    name: "Nonprofits & Churches",
+    stat: "3x donor engagement lift",
+    hook: "Maryland's nonprofit sector spans national organizations headquartered in the DC Metro corridor, Baltimore-anchored human services organizations, faith communities across 24 counties, and cause-focused nonprofits throughout the state. Donors, volunteers, and community members research organizations online before giving or getting involved. We build donation flows, volunteer forms, event pages, and Organization schema that rank for cause-specific and geographic searches across Maryland's diverse philanthropic landscape.",
+    schema: "NonprofitOrganization",
+    tags: ["Donation flows", "Organization schema", "Maryland nonprofit SEO"],
+    href: "/industries/nonprofit-website-design/",
+  },
+];
+
+const phases = [
+  { num: "01", name: "Discovery Call",   timing: "Week 0",     desc: "45-min call to understand your Maryland business, goals, and current site. We figure out if we're the right fit - no sales pitch, just a working conversation." },
+  { num: "02", name: "Scope & Proposal", timing: "Days 3-5",   desc: "Written fixed-scope proposal: page list, feature list, timeline, and one price. You approve it or walk away with no pressure." },
+  { num: "03", name: "Design",           timing: "Weeks 1-2",  desc: "AI-assisted custom layouts built to your brand, deployed to a staging URL for real-time review. No static mockups - you see real device behavior from day one." },
+  { num: "04", name: "Development",      timing: "Weeks 2-6",  desc: "Full build on staging - Elementor Pro, Astra, RankMath Pro, weekly demo links. We don't launch until you've signed off on every page." },
+  { num: "05", name: "SEO & Speed",      timing: "Weeks 5-7",  desc: "RankMath Pro, JSON-LD schema matched to your business type and Maryland city, WP Rocket, Cloudflare CDN. PageSpeed and Core Web Vitals tested before going live." },
+  { num: "06", name: "Launch & Care",    timing: "Weeks 6-10", desc: "Zero-downtime DNS cutover, 30-day Search Console monitoring, recorded admin walkthrough. Optional care plan from $150/mo." },
+];
+
+const regions = [
+  {
+    name: "Baltimore Area",
+    cities: [
+      { name: "Baltimore",    county: "Baltimore City",   hook: "Law, medical, nonprofits, Inner Harbor business",    href: "/locations/baltimore-web-design/" },
+      { name: "Towson",       county: "Baltimore County", hook: "Baltimore County seat, GBMC, law firms, contractors",  href: "/locations/towson-web-design/" },
+      { name: "Catonsville",  county: "Baltimore County", hook: "UMBC corridor, medical, contractors, restaurants",     href: "/locations/catonsville-web-design/" },
+      { name: "Dundalk",      county: "Baltimore County", hook: "Trade contractors, manufacturing, small business",     href: "/locations/dundalk-web-design/" },
+    ],
+  },
+  {
+    name: "DC Metro Corridor",
+    cities: [
+      { name: "Bethesda",      county: "Montgomery County", hook: "Luxury medical, law firms, NIH-adjacent practices",  href: "/locations/bethesda-web-design/" },
+      { name: "Rockville",     county: "Montgomery County", hook: "Circuit Court, biotech, medical practices",          href: "/locations/rockville-web-design/" },
+      { name: "Silver Spring", county: "Montgomery County", hook: "Diverse small business, restaurants, nonprofits",    href: "/locations/silver-spring-web-design/" },
+      { name: "Gaithersburg",  county: "Montgomery County", hook: "Tech corridor, medical, contractors, retail",        href: "/locations/gaithersburg-web-design/" },
+      { name: "Germantown",    county: "Montgomery County", hook: "Growing suburban market, contractors, small biz",    href: "/locations/germantown-web-design/" },
+      { name: "Bowie",         county: "Prince George's",   hook: "30 min DC, growing residential, real estate",       href: "/locations/bowie-web-design/" },
+      { name: "Waldorf",       county: "Charles County",    hook: "Military corridor, growing South MD market",         href: "/locations/waldorf-web-design/" },
+    ],
+  },
+  {
+    name: "Howard County & Annapolis",
+    cities: [
+      { name: "Columbia",      county: "Howard County",     hook: "Planned community, medical, nonprofits, corporate", href: "/locations/columbia-web-design/" },
+      { name: "Ellicott City", county: "Howard County",     hook: "High-income residential, contractors, real estate", href: "/locations/ellicott-city-web-design/" },
+      { name: "Annapolis",     county: "Anne Arundel",      hook: "State capital, maritime, law, tourism, dining",     href: "/locations/annapolis-web-design/" },
+    ],
+  },
+  {
+    name: "Western Maryland",
+    cities: [
+      { name: "Frederick",    county: "Frederick County", hook: "Fastest-growing MD city, medical, contractors, tech", href: "/locations/frederick-web-design/" },
+      { name: "Hagerstown",   county: "Washington County", hook: "Regional hub, I-81 corridor, trades, healthcare",    href: "/locations/hagerstown-web-design/" },
+      { name: "Westminster",  county: "Carroll County",   hook: "Rural-suburban market, contractors, small business",  href: "/locations/westminster-web-design/" },
+    ],
+  },
+  {
+    name: "Eastern Shore",
+    cities: [
+      { name: "Salisbury",    county: "Wicomico County",  hook: "Regional hub for Delmarva, TidalHealth, SU, dining",  href: "/locations/salisbury-web-design/" },
+    ],
+  },
+];
+
+const faqs = [
+  { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Maryland?",           a: "Maryland WordPress websites range from $1,500 to $10,000+ depending on scope. An 8-page starter site runs $1,500-$3,500. A 15-20 page site with custom design and local SEO runs $3,500-$6,000. Complex builds for law firms, medical practices, or contractors with WooCommerce start at $6,000. Every project is fixed-scope - one price, no hourly billing." },
+  { num: "02", category: "Location",   q: "Do you serve businesses across all of Maryland?",               a: "Yes. We work with businesses across all 24 Maryland counties and Baltimore City - from the DC Metro corridor to the Baltimore region, Howard County, Western Maryland, the Annapolis area, and the Eastern Shore. Every project runs entirely remote over Zoom, Google Meet, and async staging reviews." },
+  { num: "03", category: "Timeline",   q: "How long does a Maryland WordPress project take?",               a: "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce, IDX real estate, or medical practice builds take 8-10 weeks. Timeline depends most on how quickly you review and approve design rounds - we keep the build moving on our end." },
+  { num: "04", category: "Process",    q: "How do you work with Maryland clients remotely?",                a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. A Frederick contractor reviewing designs between job sites gets the same process as a Bethesda law firm reviewing from a conference room. No commutes, no lost time." },
+  { num: "05", category: "SEO",        q: "Will my Maryland website rank in Google's Local Pack?",          a: "Local Pack rankings need your Google Business Profile, review velocity, and local citations working together with your website. We handle the website side: LocalBusiness schema with correct NAP data for your specific city, service area pages covering your county and neighboring cities, internal linking, and Core Web Vitals in the green. That combination is the technical foundation every Local Pack ranking in Maryland is built on." },
+  { num: "06", category: "Migration",  q: "Can you redesign my existing Maryland business website?",        a: "Yes. Many Maryland businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements created a real ranking gap. We benchmark every page before touching anything, build a complete 301 redirect map, run a zero-downtime DNS cutover, and monitor Search Console for 30 days after launch to catch any slippage early." },
+];
+
+const catColors: Record<string, { bg: string; text: string; border: string }> = {
+  "Pricing":    { bg: "rgba(212,147,46,0.1)",  text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)"  },
+  "Location":   { bg: "rgba(66,133,244,0.08)", text: "#2a6fc4",           border: "rgba(66,133,244,0.18)"  },
+  "Timeline":   { bg: "rgba(92,128,64,0.09)",  text: "#4a7a28",           border: "rgba(92,128,64,0.2)"    },
+  "Process":    { bg: "rgba(176,74,62,0.08)",  text: "#b04a3e",           border: "rgba(176,74,62,0.18)"   },
+  "SEO":        { bg: "rgba(92,128,64,0.09)",  text: "#4a7a28",           border: "rgba(92,128,64,0.2)"    },
+  "Migration":  { bg: "rgba(160,100,200,0.08)",text: "#7a40b0",           border: "rgba(160,100,200,0.2)"  },
+};
+---
+<BaseLayout
+  title="Web Design Maryland | WordPress & SEO | Upcoming Brand"
+  description="Web design Maryland businesses trust for real Google rankings. Custom WordPress builds, 90+ PageSpeed, fixed pricing. Serving all 18 cities across Maryland's DC Metro, Baltimore, and Eastern Shore regions."
+  canonicalUrl={canonical}
+>
+  <script slot="head" type="application/ld+json" set:html={jsonLd} />
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="lp-hero" id="hero">
+    <div class="container lp-hero-wrap">
+
+      <!-- LEFT -->
+      <div class="lp-hero-left">
+        <div class="lp-hero-tags">
+          <span class="lp-hero-pill">
+            <span class="lp-hero-dot" aria-hidden="true"></span>
+            WordPress Specialists &middot; {city}, {stateAbbr}
+          </span>
+          <span class="lp-hero-eyebrow">A studio, not a factory</span>
+        </div>
+
+        <h1 class="lp-h1">
+          <span class="lp-h1-line">{city}</span>
+          <span class="lp-h1-line lp-h1-accent-line"><em class="lp-h1-accent">web design that ranks,</em></span>
+          <span class="lp-h1-line lp-h1-italic">converts &amp; keeps working.</span>
+        </h1>
+
+        <p class="lp-hero-lede">
+          Upcoming Brand is a Maryland-based WordPress web design studio. We design and build
+          custom WordPress websites for <strong>law firms from Bethesda to Baltimore, medical practices
+          along the I-270 biotech corridor and York Road, contractors in every Maryland county,</strong> and
+          small businesses from Frederick to the Eastern Shore - sites built for the way Maryland actually searches.
+        </p>
+
+        <div class="lp-hero-ctas">
+          <a href="#contact" class="lp-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/locations/" class="lp-btn-ghost">
+            See all Maryland cities
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="lp-hero-trust">
+          <span class="lp-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Top Rated &middot; Upwork
+          </span>
+          <span class="lp-trust-dot" aria-hidden="true"></span>
+          <span class="lp-trust-item">400+ projects &middot; 12 countries</span>
+          <span class="lp-trust-dot" aria-hidden="true"></span>
+          <span class="lp-trust-item">Remote-first &middot; Zoom &middot; Async</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: dark form card -->
+      <div class="lp-hero-right">
+        <div class="lp-form-card">
+          <div class="lp-form-header">
+            <p class="lp-form-eyebrow">Free discovery call &middot; {city}</p>
+            <h2 class="lp-form-title">Tell us about your project</h2>
+            <p class="lp-form-sub">We reply within 4 business hours. No sales pitch - just an honest conversation about what you need.</p>
+          </div>
+
+          <form class="lp-form" id="lp-hero-form" name="maryland-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="maryland-inquiry" />
+            <input type="hidden" name="location" value="Maryland, MD" />
+            <div class="hp-field" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+            <input type="hidden" name="_timestamp" id="lp-form-timestamp" value="" />
+
+            <div class="lp-form-row">
+              <label class="lp-form-label" for="lp-name">Your name</label>
+              <input class="lp-form-input" type="text" id="lp-name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+            </div>
+
+            <div class="lp-form-row">
+              <label class="lp-form-label" for="lp-email">Email address</label>
+              <input class="lp-form-input" type="email" id="lp-email" name="email" placeholder="jane@company.com" required autocomplete="email" />
+            </div>
+
+            <div class="lp-form-row">
+              <span class="lp-form-label" id="lbl-biz-lp">Business type</span>
+              <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-biz-lp" data-name="business_type">
+                <button type="button" class="cs-trigger" aria-haspopup="listbox">
+                  <span class="cs-val">Select your industry</span>
+                  <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="cs-list" role="listbox" aria-label="Business type">
+                  <li class="cs-opt" role="option" data-value="Law Firm / Attorney">Law Firm / Attorney</li>
+                  <li class="cs-opt" role="option" data-value="Dental Practice">Dental Practice</li>
+                  <li class="cs-opt" role="option" data-value="Medical Clinic">Medical Clinic</li>
+                  <li class="cs-opt" role="option" data-value="Real Estate">Real Estate</li>
+                  <li class="cs-opt" role="option" data-value="Restaurant / Hospitality">Restaurant / Hospitality</li>
+                  <li class="cs-opt" role="option" data-value="Contractor / Trades">Contractor / Trades</li>
+                  <li class="cs-opt" role="option" data-value="Nonprofit / Church">Nonprofit / Church</li>
+                  <li class="cs-opt" role="option" data-value="Ecommerce / Retail">Ecommerce / Retail</li>
+                  <li class="cs-opt" role="option" data-value="Small Business / Startup">Small Business / Startup</li>
+                  <li class="cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="business_type" class="cs-hidden" />
+              </div>
+            </div>
+
+            <div class="lp-form-row">
+              <span class="lp-form-label" id="lbl-budget-lp">Estimated budget</span>
+              <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-budget-lp" data-name="budget">
+                <button type="button" class="cs-trigger" aria-haspopup="listbox">
+                  <span class="cs-val">Select a range</span>
+                  <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="cs-list" role="listbox" aria-label="Budget">
+                  <li class="cs-opt" role="option" data-value="$1,500 - $3,500">$1,500 - $3,500 &nbsp;<span class="cs-badge">Starter</span></li>
+                  <li class="cs-opt" role="option" data-value="$3,500 - $6,000">$3,500 - $6,000 &nbsp;<span class="cs-badge">Standard</span></li>
+                  <li class="cs-opt" role="option" data-value="$6,000 - $10,000">$6,000 - $10,000 &nbsp;<span class="cs-badge">Custom</span></li>
+                  <li class="cs-opt" role="option" data-value="Not sure yet">Not sure yet</li>
+                </ul>
+                <input type="hidden" name="budget" class="cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lp-form-submit">
+              Get a free quote
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="lp-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats strip -->
+    <div class="container">
+      <div class="lp-stats" role="list" aria-label="Key statistics">
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">400<span class="amb">+</span></div>
+          <div class="lp-stat-lbl">WordPress projects<br>delivered</div>
+        </div>
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">90<span class="amb">+</span></div>
+          <div class="lp-stat-lbl">PageSpeed score<br>on every launch</div>
+        </div>
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">18<span class="amb"> cities</span></div>
+          <div class="lp-stat-lbl">Maryland markets<br>we serve</div>
+        </div>
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">4<span class="amb">hr</span></div>
+          <div class="lp-stat-lbl">Average<br>response time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DEFINITION
+  ══════════════════════════════════════════ -->
+  <section class="lp-definition section-pad-sm" aria-labelledby="def-heading">
+    <div class="container">
+      <div class="lp-def-inner">
+
+        <div class="lp-def-left">
+          <span class="lp-def-label mono-xs">Definition</span>
+          <h2 class="lp-def-heading" id="def-heading">What does custom WordPress web design mean for a Maryland business?</h2>
+          <div class="lp-def-amber-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="lp-def-right">
+          <p class="lp-def-body">Custom WordPress web design means building your site from a blank canvas - not installing a $59 theme already running on 40,000 other businesses. For a Maryland business, what that means depends entirely on where you are and who you're competing against. A Bethesda medical practice competing for NIH-corridor patient searches needs Physician schema and HIPAA-aware forms. A Baltimore County Circuit Court law firm needs LegalService schema and multi-step intake flows. A Frederick contractor competing against regional firms with HomeAndConstructionBusiness schema needs a portfolio site that loads in under 2 seconds on a mobile phone. A Salisbury restaurant needs a fast menu page and Restaurant schema that ranks for Eastern Shore dining searches. We've built for all of these markets. Every build we ship includes 90+ PageSpeed, JSON-LD schema matched to your business type and city, and all three Core Web Vitals passing before the DNS transfers. You own the code outright - no platform fee, no lock-in.</p>
+
+          <div class="lp-def-facts">
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">90<span class="lp-def-fact-sup">+</span></span>
+              <span class="lp-def-fact-lbl mono-xs">PageSpeed on every build</span>
+            </div>
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">$0</span>
+              <span class="lp-def-fact-lbl mono-xs">Platform fee after launch</span>
+            </div>
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">3</span>
+              <span class="lp-def-fact-lbl mono-xs">Core Web Vitals in the green</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       LOCAL PROOF PILLARS
+  ══════════════════════════════════════════ -->
+  <section class="lp-pillars section-pad-sm" aria-labelledby="pillars-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Why local matters</p>
+        <h2 class="h2-section" id="pillars-heading">What does a Maryland-based WordPress studio do differently?</h2>
+        <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever's available. We're a Maryland studio - remote-first by design, but built around the Maryland market. We know the competitive corridors in Montgomery County, the medical market density in Baltimore, the contractor demand in Howard County, and the local search patterns that differ between Frederick and Salisbury.</p>
+      </div>
+
+      <div class="lp-pillars-grid">
+        <div class="lp-pillar-card">
+          <div class="lp-pillar-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="lp-pillar-title">Google Local Pack signals, built per city</h3>
+          <p class="lp-pillar-text">We set up LocalBusiness schema with correct NAP data for your specific Maryland city, add areaServed markup covering your county and neighboring cities, and build service pages targeting the searches your customers actually use. A "rockville contractor" search and a "bethesda renovation" search are different queries with different competitive landscapes - both need pages that answer them directly.</p>
+        </div>
+        <div class="lp-pillar-card">
+          <div class="lp-pillar-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="lp-pillar-title">Remote-first, async by design</h3>
+          <p class="lp-pillar-text">Discovery calls and design reviews run over Zoom or Google Meet. The build phase is fully async - you get weekly staging links, leave feedback directly on the page, and we iterate on your schedule. A Hagerstown contractor reviewing designs between job sites gets the same process as a Bethesda attorney reviewing between client calls. No commutes, no scheduling friction, no quality loss across Maryland's geography.</p>
+        </div>
+        <div class="lp-pillar-card">
+          <div class="lp-pillar-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3 class="lp-pillar-title">Maryland industry expertise across all markets</h3>
+          <p class="lp-pillar-text">A Montgomery County law firm whose DC-adjacent clients compare multiple attorneys before calling, a Johns Hopkins-affiliated specialist who needs HIPAA-aware booking flows, a Frederick contractor competing for renovation searches, and a Salisbury restaurant competing for Eastern Shore dining searches - they all need different sites. Different schema types, different compliance layers, different trust signals. We've built for every one of these verticals across Maryland.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════════ -->
+  <section class="lp-services section-pad-sm" id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">What we build</p>
+        <h2 class="h2-section" id="services-heading">What does every Maryland business need from its WordPress website?</h2>
+        <p class="lead">From an 8-page starter site to a full WooCommerce store - every build is custom, fixed-scope, and shipped with 90+ PageSpeed and clean schema out of the box.</p>
+      </div>
+
+      <div class="lp-svc-grid">
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h.01M10 8h.01"/><path d="M13 8h4M7 12h10"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">001</span>
+          </div>
+          <h3 class="lp-svc-title">Custom WordPress Design</h3>
+          <p class="lp-svc-desc">Maryland's web market is one of the most competitive on the East Coast - you're not just competing against local businesses, you're competing against DC-adjacent firms and Baltimore companies that've had professional sites for years. A Bethesda homeowner comparing luxury renovation contractors isn't looking for a colorful homepage. They're looking for portfolio work, credentials, and a quote form that actually submits. A Rockville patient comparing two specialist practices looks at the appointment page before they look at the credentials. Your design has to answer the question in the first five seconds. Every iteration happens on a live staging URL so you see real device behavior before we finalize a single pixel. We build on Elementor Pro and Astra: fast, flexible, yours to own.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Built for Maryland's high-income, high-expectation audience</li>
+            <li><span class="lp-bullet-dot"></span>Elementor Pro on Astra - fast, flexible, yours</li>
+            <li><span class="lp-bullet-dot"></span>2 design rounds on a live staging URL</li>
+            <li><span class="lp-bullet-dot"></span>Mobile-first, tested on real devices before launch</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">002</span>
+          </div>
+          <h3 class="lp-svc-title">WooCommerce Stores</h3>
+          <p class="lp-svc-desc">Maryland businesses from Bethesda boutiques to Annapolis gift shops to Columbia wellness studios leave real revenue on the table without a proper online sales or booking flow. A Silver Spring boutique runs a Square page with no cart. A Gaithersburg wellness studio loses appointment bookings because the form goes nowhere. An Annapolis specialty food shop takes phone orders instead of running WooCommerce. We build on a production-tested foundation with checkout flows proven on mobile from day one. Retail stores, service booking deposits, gift cards, and subscription products - each use case is tested end to end before your first Maryland customer reaches checkout.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Retail and booking flows tested for Maryland's diverse markets</li>
+            <li><span class="lp-bullet-dot"></span>Stripe, PayPal, Authorize.net - tested end to end</li>
+            <li><span class="lp-bullet-dot"></span>Abandoned cart recovery wired up at launch</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">003</span>
+          </div>
+          <h3 class="lp-svc-title">Care Plans &amp; Maintenance</h3>
+          <p class="lp-svc-desc">Maryland businesses can't afford downtime. A Rockville medical practice whose appointment booking breaks on a Monday morning loses patients to the practice two blocks over. A Baltimore contractor whose quote form stops working during peak season loses jobs to whoever answers first. A Columbia restaurant whose reservation system crashes on a busy Saturday loses those covers to the restaurant next door. These aren't hypotheticals - they're what happens without active maintenance. Our care plan watches your site every week: WordPress core and plugin updates, off-site backups to S3 or Google Drive, and uptime monitoring around the clock. A 4-hour SLA means a real fix the same day. Plans start at $150/month.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Weekly core and plugin updates</li>
+            <li><span class="lp-bullet-dot"></span>Off-site backups to S3 or Google Drive</li>
+            <li><span class="lp-bullet-dot"></span>4-hour incident response SLA - same day fix</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">004</span>
+          </div>
+          <h3 class="lp-svc-title">Speed Optimization</h3>
+          <p class="lp-svc-desc">Maryland clients search on their phones. A Montgomery County homeowner comparing two renovation contractors, a patient choosing between two Baltimore specialist practices, a diner deciding between three Annapolis waterfront restaurants on a Friday night - they're all making that comparison on a phone in under 30 seconds. If your site loads in 3.8 seconds and the competitor loads in 1.6, the competitor gets the call. We run a full speed audit before every launch: LCP under 2.5 seconds, zero layout shift, interaction under 200ms. WP Rocket caches server responses, WebP cuts image weight by 40-60%, Cloudflare CDN serves assets from the nearest edge node. PageSpeed measured on both mobile and desktop. 90+ or we don't go live.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>WP Rocket caching + Cloudflare CDN</li>
+            <li><span class="lp-bullet-dot"></span>WebP image conversion on every image</li>
+            <li><span class="lp-bullet-dot"></span>LCP under 2.5s - tested on real mobile devices</li>
+            <li><span class="lp-bullet-dot"></span>90+ PageSpeed guaranteed before launch</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 14l2-3 2 2 2-4"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">005</span>
+          </div>
+          <h3 class="lp-svc-title">SEO &amp; Schema</h3>
+          <p class="lp-svc-desc">Maryland search is competitive across every market - from DC-adjacent Montgomery County firms competing for highly educated, high-income clients to Baltimore medical practices competing against national directory sites for condition-specific searches. A Bethesda attorney searching their own practice area finds DC competitors ranking above their listing. A Frederick contractor finds a home services marketplace above their business page. We build keyword maps for each Maryland market, write JSON-LD schema matched to your business type - LegalService, MedicalOrganization, Restaurant, HomeAndConstructionBusiness, RealEstateAgent - and build internal link structures so Google understands exactly what your site is the authority on in your part of Maryland.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Maryland city and county keyword mapping</li>
+            <li><span class="lp-bullet-dot"></span>JSON-LD schema for 15+ Maryland business types</li>
+            <li><span class="lp-bullet-dot"></span>Internal linking plan built in from day one</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card lp-svc-card-dark">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4M3 7h18"/><path d="M7 21l-4-4 4-4M21 17H3"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">006</span>
+          </div>
+          <h3 class="lp-svc-title">Migration &amp; Redesign</h3>
+          <p class="lp-svc-desc">Many Maryland businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals, before mobile-first indexing, before local schema requirements created a real ranking gap. In a state where DC-adjacent competition is as intense as anywhere in the country, an outdated site isn't neutral. It's actively losing you leads every week to businesses that've had proper schema and 90+ PageSpeed since 2021. Migrating to a custom WordPress build is the highest-ROI investment available, but only when it's handled correctly. We benchmark your current rankings page by page before touching anything. A complete 301 redirect map covers every URL Google has indexed. Launch is a zero-downtime DNS cutover. Then we monitor Search Console for 30 days to catch any slippage before it compounds into a ranking hole.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Full 301 redirect map before launch</li>
+            <li><span class="lp-bullet-dot"></span>Zero-downtime DNS cutover</li>
+            <li><span class="lp-bullet-dot"></span>30-day post-launch Search Console monitoring</li>
+          </ul>
+          <a href="#contact" class="lp-svc-cta">Start a migration project &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       MARYLAND MARKET CONTEXT
+  ══════════════════════════════════════════ -->
+  <section class="lp-market section-pad-sm" aria-labelledby="market-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">The Maryland market</p>
+        <h2 class="h2-section" id="market-heading">What makes web design in Maryland different from every other state?</h2>
+        <p class="lead">Maryland's 6.2 million residents have the highest median household income of any state in the country - $92,000+. The state's economy runs on federal government contractors, a world-class medical research corridor, a dense DC-adjacent professional services market, and a large base of independent small businesses from the Eastern Shore to the western mountains. Businesses competing here are working against some of the most digitally sophisticated buyers in the US.</p>
+      </div>
+
+      <div class="lp-market-grid">
+        <div class="lp-market-card">
+          <div class="lp-market-num">6.2M<span class="lp-market-unit">+</span></div>
+          <h3 class="lp-market-title">Maryland residents - with the highest median household income of any US state at $92,000+</h3>
+          <p class="lp-market-text">Maryland's population is concentrated in the I-95 corridor from the DC suburbs through Baltimore, but it spans 24 counties with distinct economic profiles. The state's high median income reflects its federal employment and professional services base - and it means Maryland buyers research vendors extensively before making any purchasing decision. An outdated site doesn't just underperform here. It actively disqualifies you in a market that expects professionalism online.</p>
+        </div>
+        <div class="lp-market-card">
+          <div class="lp-market-num">3<span class="lp-market-unit"> anchors</span></div>
+          <h3 class="lp-market-title">Johns Hopkins, University of Maryland, and the NIH research corridor anchoring one of the US's most competitive medical markets</h3>
+          <p class="lp-market-text">Johns Hopkins Hospital and Health System, the University of Maryland Medical System, and the National Institutes of Health in Bethesda anchor a medical research and clinical care market that's among the deepest in the country. Patients from Baltimore to Montgomery County research specialist practices before booking. The practices winning in this environment have properly structured, schema-optimized sites. Those that don't are losing appointment inquiries to competitors every day.</p>
+        </div>
+        <div class="lp-market-card">
+          <div class="lp-market-num">24<span class="lp-market-unit"> counties</span></div>
+          <h3 class="lp-market-title">24 counties plus Baltimore City - each with distinct industries, search patterns, and competitive landscapes</h3>
+          <p class="lp-market-text">Montgomery County's luxury professional market is different from Baltimore's industrial-to-professional transition economy, which is different from Frederick's fast-growing suburban contractor market, which is different from Wicomico County's regional Eastern Shore service hub. One-size web design doesn't work across this geography. We build with city-specific schema, county-specific areaServed markup, and content targeting the searches your specific Maryland market actually uses.</p>
+        </div>
+        <div class="lp-market-card">
+          <div class="lp-market-num">I-95<span class="lp-market-unit"> corridor</span></div>
+          <h3 class="lp-market-title">The I-95 and I-270 corridors creating one of the country's most competitive web markets for professional services</h3>
+          <p class="lp-market-text">The DC-to-Baltimore I-95 corridor and the I-270 biotech/federal corridor in Montgomery County put Maryland businesses in direct competition with DC and Northern Virginia firms for the same professional services clients. Law firms, medical practices, and financial advisors operating in this market aren't just competing locally. They're competing against well-resourced competitors who've been investing in schema-optimized, fast WordPress sites for years.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PLATFORM COMPARISON
+  ══════════════════════════════════════════ -->
+  <section class="lp-compare section-pad-sm" aria-labelledby="compare-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Platform comparison</p>
+        <h2 class="h2-section" id="compare-heading">WordPress vs Wix, Squarespace, and page builders for Maryland businesses</h2>
+        <p class="lead">Maryland is a market where your web presence is compared against DC and Virginia businesses that've had proper schema and 90+ PageSpeed for years. The law firms, medical practices, and contractors ranking in the Local Pack across Montgomery County and Baltimore are on optimized WordPress. A Wix or GoDaddy site built in 2019 isn't on the same playing field - and in a state this economically active, that gap shows up as lost leads every single week.</p>
+      </div>
+
+      <div class="lp-compare-cols">
+
+        <div class="lp-compare-col lp-compare-col-wp">
+          <div class="lp-compare-col-head">
+            <span class="lp-compare-badge lp-compare-badge-wp mono-xs">Custom WordPress</span>
+            <p class="lp-compare-col-sub">Built from scratch, owned by you</p>
+          </div>
+          <ul class="lp-compare-list">
+            <li class="lp-ci lp-ci-good">You own the code outright - no platform can raise prices or shut you down</li>
+            <li class="lp-ci lp-ci-good">PageSpeed 90+ is achievable with correct setup - Core Web Vitals consistently pass</li>
+            <li class="lp-ci lp-ci-good">Full JSON-LD schema support for Local Pack and rich results</li>
+            <li class="lp-ci lp-ci-good">Any plugin, any integration, any custom function - no artificial limits</li>
+            <li class="lp-ci lp-ci-good">No monthly platform fee after launch - only hosting and optional care plan</li>
+            <li class="lp-ci lp-ci-neutral">Significant changes require a developer - not a drag-and-drop interface</li>
+          </ul>
+        </div>
+
+        <div class="lp-compare-col lp-compare-col-diy">
+          <div class="lp-compare-col-head">
+            <span class="lp-compare-badge lp-compare-badge-diy mono-xs">Wix / Squarespace / GoDaddy</span>
+            <p class="lp-compare-col-sub">Rented platform, shared infrastructure</p>
+          </div>
+          <ul class="lp-compare-list">
+            <li class="lp-ci lp-ci-neutral">Fast to get started - drag and drop, no developer needed initially</li>
+            <li class="lp-ci lp-ci-bad">PageSpeed typically 50-70 - Core Web Vitals frequently fail on mobile</li>
+            <li class="lp-ci lp-ci-bad">Limited schema markup - Local Pack ranking is harder without full JSON-LD control</li>
+            <li class="lp-ci lp-ci-bad">You rent the site - the platform controls your data, your URL structure, your export options</li>
+            <li class="lp-ci lp-ci-bad">Monthly fees scale with traffic, ecommerce features, and storage</li>
+            <li class="lp-ci lp-ci-bad">Migrating away costs time and risks ranking loss without a proper redirect strategy</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="lp-compare-note">
+        Wix and Squarespace are workable starting points for a business that isn't competing on Google. For a Montgomery County attorney competing for "bethesda family lawyer" against firms that've had proper LegalService schema and 90+ PageSpeed for three years, or a Baltimore medical practice competing against offices that've had Physician schema since 2022 - the platform gap isn't theoretical. It shows up as position 8 instead of position 2, and in a Maryland market where DC and Virginia competitors are already fully optimized, that position difference is the difference between a full calendar and chasing leads.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       METRICS STRIP
+  ══════════════════════════════════════════ -->
+  <section class="lp-metrics section-pad-sm" aria-label="Key metrics">
+    <div class="container">
+      <div class="lp-metrics-grid">
+        <div class="lp-metric">
+          <div class="lp-metric-num">90<span class="lp-metric-sup">+</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">PageSpeed<br>guaranteed</div>
+          <div class="lp-metric-sub mono-xs">Every launch, mobile + desktop</div>
+        </div>
+        <div class="lp-metric">
+          <div class="lp-metric-num">$0<span class="lp-metric-sup">hourly</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">Fixed-scope<br>pricing only</div>
+          <div class="lp-metric-sub mono-xs">One price, no surprise invoices</div>
+        </div>
+        <div class="lp-metric">
+          <div class="lp-metric-num">6<span class="lp-metric-sup">-10 wk</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">Typical delivery<br>timeline</div>
+          <div class="lp-metric-sub mono-xs">Discovery call to live site</div>
+        </div>
+        <div class="lp-metric">
+          <div class="lp-metric-num">18<span class="lp-metric-sup"> cities</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">Maryland markets<br>we cover</div>
+          <div class="lp-metric-sub mono-xs">DC Metro to Eastern Shore</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       INDUSTRIES SERVED
+  ══════════════════════════════════════════ -->
+  <section class="lp-industries section-pad-sm" id="industries" aria-labelledby="industries-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Industries we serve</p>
+        <h2 class="h2-section" id="industries-heading">Which Maryland industries do we build WordPress sites for?</h2>
+        <p class="lead">Different industries need different schema types, compliance rules, and conversion patterns. We've built for all six of the verticals most active across Maryland's diverse markets - from Montgomery County's professional services corridor to Baltimore's medical ecosystem to the Eastern Shore's regional service economy.</p>
+      </div>
+
+      <div class="lp-ind-grid">
+        {industries.map((ind) => (
+          <div class="lp-ind-card">
+            <div class="lp-ind-top">
+              <span class="lp-ind-num mono-xs">{ind.num}</span>
+              <span class="lp-ind-stat">{ind.stat}</span>
+            </div>
+            {ind.href ? (
+              <h3 class="lp-ind-name"><a href={ind.href} class="lp-ind-link">{ind.name}</a></h3>
+            ) : (
+              <h3 class="lp-ind-name">{ind.name}</h3>
+            )}
+            <blockquote class="lp-ind-hook">{ind.hook}</blockquote>
+            <div class="lp-ind-schema mono-xs">{ind.schema}</div>
+            <div class="lp-ind-tags">
+              {ind.tags.map((tag) => (
+                <span class="lp-ind-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="lp-ind-more">
+        Serving all 12 vertical niches &rarr; <a href="/industries/">See all industry pages</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════ -->
+  <section class="lp-process section-pad-sm" id="process" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">How we work</p>
+        <h2 class="h2-section" id="process-heading">How does a Maryland WordPress project actually run from first call to launch?</h2>
+        <p class="lead">Fixed scope, fixed price, fixed timeline. No chasing, no ambiguity - you know what's happening at every stage.</p>
+      </div>
+
+      <div class="lp-process-grid" role="list" aria-label="Project phases">
+        {phases.map((ph) => (
+          <div class="lp-phase" role="listitem">
+            <div class="lp-phase-marker" aria-hidden="true">
+              <span class="lp-phase-num">{ph.num}</span>
+              <div class="lp-phase-line"></div>
+            </div>
+            <div class="lp-phase-body">
+              <div class="lp-phase-header">
+                <h3 class="lp-phase-name">{ph.name}</h3>
+                <span class="lp-phase-timing mono-xs">{ph.timing}</span>
+              </div>
+              <p class="lp-phase-label mono-xs">DELIVERABLES</p>
+              <p class="lp-phase-desc">{ph.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="lp-process-cta">
+        <a href="#contact" class="cta-btn">Start with a discovery call &rarr;</a>
+        <p class="lp-process-note mono-xs">No sales pitch on the first call. Just a working conversation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       MARYLAND CITIES - AREAS SERVED
+  ══════════════════════════════════════════ -->
+  <section class="lp-areas section-pad-sm" id="areas" aria-labelledby="areas-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Service area</p>
+        <h2 class="h2-section" id="areas-heading">Which Maryland cities does Upcoming Brand serve?</h2>
+        <p class="lead">We serve all of Maryland entirely remotely - discovery calls on Zoom, async design reviews, weekly staging links. Each city and region below has distinct industries, competitive dynamics, and web design needs. We know all of them.</p>
+      </div>
+
+      <!-- Coverage stat bar -->
+      <div class="lp-areas-coverage" role="list" aria-label="Service area coverage stats">
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">18</span>
+          <span class="lp-cov-label mono-xs">Maryland cities</span>
+        </div>
+        <div class="lp-cov-divider" aria-hidden="true"></div>
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">5</span>
+          <span class="lp-cov-label mono-xs">Maryland regions</span>
+        </div>
+        <div class="lp-cov-divider" aria-hidden="true"></div>
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">100<span class="lp-cov-unit">%</span></span>
+          <span class="lp-cov-label mono-xs">Remote-first workflow</span>
+        </div>
+        <div class="lp-cov-divider" aria-hidden="true"></div>
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">6.2M<span class="lp-cov-unit">+</span></span>
+          <span class="lp-cov-label mono-xs">Maryland residents we serve</span>
+        </div>
+      </div>
+
+      <!-- Region groups -->
+      <div class="md-regions">
+        {regions.map((region) => (
+          <div class="md-region">
+            <h3 class="md-region-title">{region.name}</h3>
+            <div class="lp-area-grid" role="list" aria-label={`${region.name} cities`}>
+              {region.cities.map((city) => (
+                <a class="lp-area-tile lp-area-tile-linked" href={city.href} role="listitem">
+                  <div class="lp-area-tile-top">
+                    <div class="lp-area-name-row">
+                      <span class="lp-area-pin" aria-hidden="true">
+                        <svg width="11" height="13" viewBox="0 0 12 14" fill="none"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" fill="currentColor"/><circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/></svg>
+                      </span>
+                      <span class="lp-area-name">{city.name}</span>
+                    </div>
+                    <div class="lp-area-tile-badges">
+                      <span class="lp-area-county mono-xs">{city.county}</span>
+                      <span class="lp-area-remote mono-xs">Remote</span>
+                    </div>
+                  </div>
+                  <p class="lp-area-char">{city.hook}</p>
+                  <span class="lp-area-cta-arrow mono-xs">View {city.name} page &rarr;</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Dark contact card -->
+      <div class="lp-area-card lp-area-card-md">
+        <div class="lp-area-badge">
+          <span class="lp-area-dot" aria-hidden="true"></span>
+          <span class="mono-xs">Available now</span>
+        </div>
+        <h3 class="lp-area-card-title">Let's talk about your Maryland project</h3>
+
+        <div class="lp-area-card-stat">
+          <div class="lp-ac-stat">
+            <span class="lp-ac-num">6.2M<span class="lp-ac-pct">+</span></span>
+            <span class="lp-ac-lbl mono-xs">Maryland residents - highest median household income of any US state</span>
+          </div>
+          <div class="lp-ac-stat">
+            <span class="lp-ac-num">18<span class="lp-ac-pct"> cities</span></span>
+            <span class="lp-ac-lbl mono-xs">Maryland markets we serve from DC Metro to Eastern Shore</span>
+          </div>
+        </div>
+
+        <div class="lp-area-details">
+          <div class="lp-area-detail">
+            <span class="lp-ad-label mono-xs">Response time</span>
+            <span class="lp-ad-val">Under 4 business hours</span>
+          </div>
+          <div class="lp-area-detail">
+            <span class="lp-ad-label mono-xs">How we meet</span>
+            <span class="lp-ad-val">Zoom &middot; Google Meet &middot; Async</span>
+          </div>
+          <div class="lp-area-detail">
+            <span class="lp-ad-label mono-xs">Languages</span>
+            <span class="lp-ad-val">English &middot; Urdu</span>
+          </div>
+          <div class="lp-area-detail">
+            <span class="lp-ad-label mono-xs">Working hours</span>
+            <span class="lp-ad-val">Mon-Fri &middot; 9 AM - 6 PM EST</span>
+          </div>
+        </div>
+        <a href="#contact" class="cta-btn cta-btn-light lp-area-cta">Book a free discovery call &rarr;</a>
+        <p class="lp-area-note mono-xs">No sales pitch &middot; 45 minutes &middot; Fixed-scope pricing only</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════ -->
+  <section class="lp-faq section-pad-sm" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="lp-faq-layout">
+
+        <!-- Sidebar -->
+        <div class="lp-faq-sidebar">
+          <p class="eyebrow">Common questions</p>
+          <h2 class="h2-section lp-faq-h2" id="faq-heading">{city} web design questions answered before the sales call</h2>
+          <p class="lp-faq-sub">Every question we get from Maryland businesses before they book a discovery call - answered up front.</p>
+
+          <div class="lp-faq-stats">
+            <div class="lp-faq-stat">
+              <span class="lp-faq-stat-num">6</span>
+              <span class="lp-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lp-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lp-faq-stat">
+              <span class="lp-faq-stat-num">4</span>
+              <span class="lp-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="cta-btn lp-faq-cta">Ask your own question &rarr;</a>
+          <p class="lp-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- Accordion -->
+        <div class="lp-faq-list" id="lp-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = catColors[faq.category] || catColors["Pricing"];
+            return (
+              <div class="lp-faq-item" data-faq-item>
+                <button
+                  class="lp-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`lp-faq-answer-${i}`}
+                  id={`lp-faq-btn-${i}`}
+                >
+                  <span class="lp-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lp-faq-q">{faq.q}</span>
+                  <span
+                    class="lp-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lp-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path class="lp-plus-h" d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lp-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lp-faq-answer"
+                  id={`lp-faq-answer-${i}`}
+                  role="region"
+                  aria-labelledby={`lp-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lp-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       NEARBY LOCATIONS
+  ══════════════════════════════════════════ -->
+  <section class="lp-nearby section-pad-sm" aria-labelledby="nearby-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Explore by region</p>
+        <h2 class="h2-section" id="nearby-heading">Browse web design by Maryland region</h2>
+        <p class="lead">We've built dedicated pages for every major Maryland market. Find the one that fits your city.</p>
+      </div>
+      <div class="lp-nearby-grid">
+        <a class="lp-nearby-card" href="/locations/baltimore-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Baltimore Area</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Baltimore City &middot; Towson &middot; Catonsville &middot; Dundalk</span>
+        </a>
+        <a class="lp-nearby-card" href="/locations/bethesda-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">DC Metro Corridor</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Bethesda &middot; Rockville &middot; Silver Spring &middot; Gaithersburg</span>
+        </a>
+        <a class="lp-nearby-card" href="/locations/columbia-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Howard County &amp; Annapolis</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Columbia &middot; Ellicott City &middot; Annapolis</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════ -->
+  <section class="lp-cta section-pad-sm" id="contact" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="lp-cta-inner">
+
+        <!-- Left -->
+        <div class="lp-cta-content">
+          <p class="eyebrow lp-cta-eyebrow">Ready to start?</p>
+          <h2 class="display-lg lp-cta-h2" id="cta-heading">
+            Let's build the WordPress website your Maryland business actually needs.
+          </h2>
+
+          <div class="lp-cta-trust">
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed-scope pricing - one price, no surprises</span>
+            </div>
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 4 business hours</span>
+            </div>
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Remote-first &middot; serving all 18 Maryland cities</span>
+            </div>
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts &middot; 30-day cancel</span>
+            </div>
+          </div>
+
+          <p class="lp-cta-reviews mono-xs">
+            <span class="lp-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="lp-cta-card" aria-label="Contact form">
+          <div class="lp-cta-card-header">
+            <div class="lp-avail-badge">
+              <span class="lp-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects - May 2026</span>
+            </div>
+            <h3 class="lp-cta-card-title">Book a free discovery call</h3>
+            <p class="lp-cta-card-sub">45 minutes &middot; No sales pitch &middot; Fixed-scope quote within 24 hours</p>
+          </div>
+
+          <form class="lp-cta-form" name="maryland-contact" method="POST" action="#contact" novalidate>
+            <div class="lp-cta-row">
+              <div class="lp-cta-group">
+                <label class="lp-cta-label mono-xs" for="cta-name-lp">Your name</label>
+                <input class="lp-cta-input" type="text" id="cta-name-lp" name="name" placeholder="Jane Smith" autocomplete="name" />
+              </div>
+              <div class="lp-cta-group">
+                <label class="lp-cta-label mono-xs" for="cta-email-lp">Email address</label>
+                <input class="lp-cta-input" type="email" id="cta-email-lp" name="email" placeholder="jane@business.com" autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="lp-cta-group">
+              <label class="lp-cta-label mono-xs" for="cta-biz-lp">Business type</label>
+              <select class="lp-cta-input lp-cta-select" id="cta-biz-lp" name="business">
+                <option value="" disabled selected>Select your industry</option>
+                <option>Law Firm / Attorney</option>
+                <option>Dental Practice</option>
+                <option>Medical Clinic</option>
+                <option>Real Estate / Brokerage</option>
+                <option>Restaurant / Hospitality</option>
+                <option>Contractor / Trades</option>
+                <option>Nonprofit / Church</option>
+                <option>Small Business / Startup</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="lp-cta-group">
+              <label class="lp-cta-label mono-xs" for="cta-msg-lp">Tell us about your project</label>
+              <textarea class="lp-cta-input lp-cta-textarea" id="cta-msg-lp" name="message" rows="3" placeholder="What does your current site look like? What's not working? Any timeline or budget in mind?"></textarea>
+            </div>
+
+            <button type="submit" class="cta-btn cta-btn-light lp-cta-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lp-cta-watermark" aria-hidden="true">{city}</div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ════════════════════════════════════════════
+     Maryland regions layout
+  ════════════════════════════════════════════ */
+  .md-regions {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(32px, 4vw, 56px);
+    margin-bottom: clamp(32px, 4vw, 48px);
+  }
+
+  .md-region-title {
+    font-size: clamp(13px, 1.4vw, 15px);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber-deep, #b8852a);
+    margin: 0 0 16px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(184,133,42,0.2);
+  }
+
+  .lp-area-tile-linked {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .lp-area-tile-linked:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  }
+
+  .lp-area-cta-arrow {
+    display: block;
+    margin-top: 10px;
+    color: var(--amber-deep, #b8852a);
+    font-size: 11px;
+  }
+
+  .lp-area-card-md {
+    margin-top: clamp(24px, 3vw, 40px);
+  }
+</style>
