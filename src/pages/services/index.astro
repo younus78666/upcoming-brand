@@ -1,0 +1,1139 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/services/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "WordPress Services | Custom Design, Development & SEO | Upcoming Brand",
+      "description": "Twelve WordPress services under one roof: custom design, WooCommerce development, care plans, speed optimization, SEO and schema, migration, security, and support. Fixed-scope pricing from $1,500.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": `${canonical}#itemlist`,
+      "name": "WordPress services from Upcoming Brand",
+      "numberOfItems": 12,
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1,  "url": "https://upcomingbrand.com/services/wordpress-web-design/",         "name": "Custom WordPress Web Design" },
+        { "@type": "ListItem", "position": 2,  "url": "https://upcomingbrand.com/services/woocommerce-development/",     "name": "WooCommerce Development" },
+        { "@type": "ListItem", "position": 3,  "url": "https://upcomingbrand.com/services/wordpress-care-plans/",        "name": "WordPress Care Plans" },
+        { "@type": "ListItem", "position": 4,  "url": "https://upcomingbrand.com/services/wordpress-speed-optimization/", "name": "WordPress Speed Optimization" },
+        { "@type": "ListItem", "position": 5,  "url": "https://upcomingbrand.com/services/wordpress-seo-services/",      "name": "WordPress SEO Services" },
+        { "@type": "ListItem", "position": 6,  "url": "https://upcomingbrand.com/services/local-seo-maryland/",          "name": "Local SEO Maryland" },
+        { "@type": "ListItem", "position": 7,  "url": "https://upcomingbrand.com/services/seo-audit/",                   "name": "SEO Audit" },
+        { "@type": "ListItem", "position": 8,  "url": "https://upcomingbrand.com/services/wordpress-migration/",         "name": "WordPress Migration" },
+        { "@type": "ListItem", "position": 9,  "url": "https://upcomingbrand.com/services/wordpress-redesign/",          "name": "WordPress Redesign" },
+        { "@type": "ListItem", "position": 10, "url": "https://upcomingbrand.com/services/wordpress-security/",          "name": "WordPress Security" },
+        { "@type": "ListItem", "position": 11, "url": "https://upcomingbrand.com/services/wordpress-hosting/",           "name": "WordPress Hosting" },
+        { "@type": "ListItem", "position": 12, "url": "https://upcomingbrand.com/services/wordpress-support/",           "name": "WordPress On-Demand Support" }
+      ]
+    }
+  ]
+});
+
+const groups = [
+  {
+    label: "Design & Build",
+    eyebrow: "Group 01",
+    summary: "Custom WordPress builds, ecommerce, and migrations. The core of every project we ship.",
+    services: [
+      { num: "01", name: "Custom WordPress Web Design",  href: "/services/wordpress-web-design/",        price: "From $1,500", note: "Custom blocks, no page builders", tag: "Most popular" },
+      { num: "02", name: "WooCommerce Development",       href: "/services/woocommerce-development/",     price: "From $4,500", note: "Subscriptions, configurators, multi-vendor", tag: "" },
+      { num: "03", name: "WordPress Migration",           href: "/services/wordpress-migration/",         price: "From $750",   note: "Wix / Squarespace / GoDaddy → custom WP", tag: "" },
+      { num: "04", name: "WordPress Redesign",            href: "/services/wordpress-redesign/",          price: "From $2,500", note: "Refresh existing WP without losing rankings", tag: "" },
+    ],
+  },
+  {
+    label: "Performance & SEO",
+    eyebrow: "Group 02",
+    summary: "Make the site faster, find and fix the SEO gaps, and rank in the Local Pack.",
+    services: [
+      { num: "05", name: "WordPress Speed Optimization", href: "/services/wordpress-speed-optimization/", price: "From $2,500", note: "90+ Lighthouse on every page", tag: "" },
+      { num: "06", name: "WordPress SEO & Schema",        href: "/services/wordpress-seo-services/",      price: "From $1,500", note: "RankMath, schema, internal linking", tag: "" },
+      { num: "07", name: "Local SEO Maryland",            href: "/services/local-seo-maryland/",          price: "From $1,500", note: "GBP, citations, Local Pack ranking", tag: "" },
+      { num: "08", name: "SEO Audit",                     href: "/services/seo-audit/",                   price: "$1,500",       note: "Schema, performance, content, gap analysis", tag: "" },
+    ],
+  },
+  {
+    label: "Care & Protection",
+    eyebrow: "Group 03",
+    summary: "After-launch monitoring, maintenance, security, and support. Keep the site running.",
+    services: [
+      { num: "09", name: "WordPress Care Plans",          href: "/services/wordpress-care-plans/",        price: "From $150/mo", note: "Updates, backups, monitoring, 4-hour SLA", tag: "Recurring" },
+      { num: "10", name: "WordPress Security",            href: "/services/wordpress-security/",          price: "From $1,000",  note: "Hardening, firewall, malware recovery", tag: "" },
+      { num: "11", name: "WordPress Hosting",             href: "/services/wordpress-hosting/",           price: "Partner pricing", note: "Cloudways, Kinsta, WP Engine setup", tag: "" },
+      { num: "12", name: "On-Demand WordPress Support",   href: "/services/wordpress-support/",           price: "$150/hr",      note: "Hourly help when you need it", tag: "" },
+    ],
+  },
+];
+
+const baseline = [
+  { area: "Schema-first",         detail: "Every project ships with vertical-specific schema mapped before design begins" },
+  { area: "Custom WordPress",      detail: "Custom Gutenberg blocks, no page builders, no $400/year plugin licences" },
+  { area: "Core Web Vitals",       detail: "90+ Lighthouse on every page on launch day, contractually" },
+  { area: "Fixed-scope pricing",   detail: "One number agreed before code is written; no hourly billing, ever" },
+  { area: "Direct founder access", detail: "Same person on the call writes your schema and ships your code" },
+  { area: "Post-launch monitoring", detail: "30-90 days of Search Console + Core Web Vitals watch on every project" },
+];
+
+const faqs = [
+  {
+    q: "Can I bundle multiple services into one engagement?",
+    a: "Yes. Most clients combine 3-5 services into a single fixed-scope project: typically Custom WordPress Web Design + WordPress SEO + a Care Plan, sometimes with Migration if they're moving from another platform. Every bundle is quoted as one fixed price after the discovery call. It's almost always less expensive (and faster) than buying each service standalone.",
+  },
+  {
+    q: "Are services available standalone, or only as part of a build?",
+    a: "Standalone too. SEO Audits, Speed Optimization sprints, Migrations, and Schema retrofits are commonly bought as standalone work — often by businesses that already have a WordPress site they want improved without a full rebuild. Care Plans, Security, and Support are ongoing and not tied to a build engagement.",
+  },
+  {
+    q: "Do you offer all services to clients outside Maryland?",
+    a: "Yes — except Local SEO Maryland, which is geographically focused on the state. Every other service is delivered remotely to clients across all US states and 12 countries. Discovery on Zoom, async build via private staging URL, weekly written status updates. Distance has zero effect on the work.",
+  },
+  {
+    q: "What's the difference between WordPress SEO Services and an SEO Audit?",
+    a: "An SEO Audit is a one-time assessment ($1,500) that delivers a prioritised action list. WordPress SEO Services is implementation: schema architecture, RankMath setup, internal linking, on-page optimization, and ongoing monitoring. Most clients start with the audit, then convert to ongoing SEO services if the gap analysis warrants it. The audit fee is credited toward the SEO services engagement if you proceed.",
+  },
+  {
+    q: "Can you take over a project that another agency or freelancer started?",
+    a: "Often, yes — depending on what was built. We audit the existing codebase, identify what's salvageable vs what needs replacement, and quote the takeover scope. We don't take on projects with deeply broken architecture (e.g., 40+ active plugins, broken schema, custom code with no documentation) unless the rebuild is in scope. Send the URL during discovery and we'll give you an honest assessment.",
+  },
+  {
+    q: "Which service should I start with if I'm not sure?",
+    a: "If you have an existing site that's underperforming, start with an SEO Audit ($1,500) — it surfaces the actual problems and tells us whether you need a rebuild, optimization, or just better SEO implementation. If you're starting from scratch, book a free discovery call and we'll scope the right combination of services in one fixed quote.",
+  },
+];
+---
+<BaseLayout
+  title="WordPress Services Maryland | Custom Design, Development & SEO | Upcoming Brand"
+  description="Twelve WordPress services under one roof: custom design, WooCommerce, care plans, speed optimization, SEO and schema, migration, security, and support. Fixed-scope from $1,500."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">WordPress services</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">Twelve services.</span>
+          <span class="page-h1-line"><em class="page-h1-accent">One studio.</em></span>
+          <span class="page-h1-line page-h1-italic">Schema-first on every project.</span>
+        </h1>
+
+        <p class="page-lead">
+          A complete WordPress agency stack — <strong>design, development, SEO, performance, care plans, and support</strong>. Buy them standalone, or bundle 3-5 into a single fixed-scope quote. Every service ships with the same engineering bar: schema-led, 90+ Lighthouse, direct founder access.
+        </p>
+
+        <div class="page-hero-ctas">
+          <a href="#groups" class="lp-btn-primary">
+            Browse all services
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/contact/" class="lp-btn-ghost">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">12 services</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">3 service groups</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">From $1,500 fixed-scope</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== BASELINE STRIP ====== -->
+    <section class="services-baseline">
+      <div class="container">
+        <div class="services-baseline-grid">
+          {baseline.map((b) => (
+            <div class="services-baseline-item">
+              <span class="services-baseline-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <div class="services-baseline-content">
+                <span class="services-baseline-area">{b.area}</span>
+                <span class="services-baseline-detail">{b.detail}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SERVICE GROUPS ====== -->
+    <div id="groups">
+      {groups.map((group, gIdx) => (
+        <section class={`services-group ${gIdx % 2 === 0 ? 'services-group-light' : 'services-group-dim'}`}>
+          <div class="container">
+            <div class="services-group-head">
+              <div class="services-group-eyebrow-row">
+                <span class="services-group-num">{group.eyebrow} / 03</span>
+                <span class="services-group-pill">{group.services.length} services</span>
+              </div>
+              <h2 class="page-h2 services-group-h2">
+                {group.label}
+              </h2>
+              <p class="services-group-summary">{group.summary}</p>
+            </div>
+
+            <div class="services-list">
+              {group.services.map((s) => (
+                <a href={s.href} class="services-card">
+                  <span class="services-card-num">{s.num}</span>
+
+                  <div class="services-card-main">
+                    <div class="services-card-title-row">
+                      <h3 class="services-card-name">{s.name}</h3>
+                      {s.tag && <span class="services-card-tag">{s.tag}</span>}
+                    </div>
+                    <p class="services-card-note">{s.note}</p>
+                  </div>
+
+                  <div class="services-card-price-block">
+                    <span class="services-card-price">{s.price}</span>
+                    <span class="services-card-cta-label">View service</span>
+                  </div>
+
+                  <span class="services-card-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      ))}
+    </div>
+
+    <!-- ====== BUNDLE CALLOUT ====== -->
+    <section class="services-bundle">
+      <div class="container">
+        <div class="services-bundle-card">
+          <div class="services-bundle-text">
+            <p class="services-bundle-eyebrow">
+              <span class="services-bundle-eyebrow-line"></span>
+              Most clients bundle
+            </p>
+            <h2 class="page-h2 services-bundle-h2">
+              Bundle 3-5 services <em>into one fixed quote.</em>
+            </h2>
+            <p class="services-bundle-desc">
+              Custom WordPress Web Design + WordPress SEO + Care Plan is the most common combination. Add Migration if you're moving from another platform; add Speed Optimization if performance is the bottleneck. Bundles are quoted as one fixed price — typically 15-25% less than buying each service standalone.
+            </p>
+            <div class="services-bundle-stack">
+              <span class="services-bundle-pill">Custom WordPress Design</span>
+              <span class="services-bundle-plus" aria-hidden="true">+</span>
+              <span class="services-bundle-pill">WordPress SEO</span>
+              <span class="services-bundle-plus" aria-hidden="true">+</span>
+              <span class="services-bundle-pill">Care Plan</span>
+              <span class="services-bundle-equals" aria-hidden="true">=</span>
+              <span class="services-bundle-pill services-bundle-pill-amber">One quote</span>
+            </div>
+          </div>
+
+          <a href="/contact/" class="services-bundle-cta">
+            Bundle &amp; quote
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="services-faq">
+      <div class="container">
+        <div class="services-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">Services FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 services-faq-h2">
+            Six questions <em>before you pick a service.</em>
+          </h2>
+        </div>
+
+        <div class="services-faq-list">
+          {faqs.map((f, i) => (
+            <details class="services-faq-item">
+              <summary class="services-faq-q">
+                <span class="services-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="services-faq-q-text">{f.q}</span>
+                <span class="services-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="services-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to scope</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Pick the services.<br>
+            <em>We'll scope the bundle.</em>
+          </h2>
+          <p class="page-cta-lead">A free 45-minute discovery call. We map your competitive set, identify which services move the needle, and send a fixed-scope quote within 48 hours.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book a discovery call
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/pricing/" class="page-cta-ghost-light">
+              View tier pricing
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* SHARED */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .page-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .lp-btn-primary, .lp-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lp-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lp-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg, .lp-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover svg { transform: translate(2px, -2px); }
+
+  .page-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .page-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .page-trust-dot {
+    width: 3px; height: 3px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 46px);
+    line-height: 1.1;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 12px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  /* BASELINE STRIP */
+  .services-baseline {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 28px 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .services-baseline::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 80%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,147,46,0.5), transparent);
+    transform: translateX(-50%);
+  }
+
+  .services-baseline-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px 24px;
+  }
+
+  .services-baseline-item {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .services-baseline-icon {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.15);
+    color: var(--amber);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .services-baseline-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .services-baseline-area {
+    font-size: 13px;
+    color: var(--cream);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .services-baseline-detail {
+    font-size: 12px;
+    line-height: 1.45;
+    color: rgba(244,239,230,0.55);
+  }
+
+  /* SERVICE GROUPS */
+  .services-group {
+    padding: clamp(48px, 7vh, 80px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .services-group-light { background: var(--paper); }
+  .services-group-dim   { background: var(--cream); }
+
+  .services-group-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .services-group-eyebrow-row {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .services-group-num {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+
+  .services-group-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 10px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .services-group-dim .services-group-pill { background: var(--paper); }
+
+  .services-group-h2 {
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  .services-group-summary {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 6px auto 0;
+  }
+
+  /* SERVICE CARDS */
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .services-card {
+    display: grid;
+    grid-template-columns: 36px 1fr 200px 28px;
+    gap: 20px;
+    align-items: center;
+    padding: 22px 26px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .services-group-dim .services-card { background: var(--paper); }
+
+  .services-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+
+  .services-card:hover {
+    border-color: var(--amber);
+    transform: translateX(4px);
+    box-shadow: -4px 4px 18px rgba(212,147,46,0.1);
+  }
+
+  .services-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .services-card-num {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .services-card-main {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+  }
+
+  .services-card-title-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .services-card-name {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .services-card-tag {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.12);
+    border: 1px solid rgba(212,147,46,0.3);
+    padding: 3px 8px;
+    border-radius: var(--radius-pill);
+    font-weight: 500;
+  }
+
+  .services-card-note {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  .services-card-price-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    text-align: right;
+  }
+
+  .services-card-price {
+    font-family: var(--f-display);
+    font-size: 16px;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .services-card-cta-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+  }
+
+  .services-card-arrow {
+    color: var(--amber);
+    transition: transform var(--transition);
+  }
+
+  .services-card:hover .services-card-arrow {
+    transform: translateX(4px);
+    color: var(--amber-deep);
+  }
+
+  /* BUNDLE CALLOUT */
+  .services-bundle {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .services-bundle-card {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: 40px 48px;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 32px;
+    align-items: center;
+  }
+
+  .services-bundle-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber));
+  }
+
+  .services-bundle-card::after {
+    content: "";
+    position: absolute;
+    top: -150px; right: -150px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(212,147,46,0.12) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .services-bundle-text {
+    position: relative;
+    z-index: 1;
+  }
+
+  .services-bundle-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 12px;
+    font-weight: 500;
+  }
+
+  .services-bundle-eyebrow-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  .services-bundle-h2 {
+    color: var(--cream);
+    margin: 0 0 14px;
+  }
+
+  .services-bundle-h2 em {
+    color: var(--amber);
+  }
+
+  .services-bundle-desc {
+    font-size: 15px;
+    line-height: 1.65;
+    color: rgba(244,239,230,0.7);
+    margin: 0 0 24px;
+  }
+
+  .services-bundle-stack {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .services-bundle-pill {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.85);
+    background: rgba(244,239,230,0.06);
+    border: 1px solid rgba(244,239,230,0.12);
+    padding: 6px 12px;
+    border-radius: var(--radius-pill);
+  }
+
+  .services-bundle-pill-amber {
+    background: var(--amber);
+    color: var(--ink);
+    border-color: var(--amber);
+    font-weight: 600;
+  }
+
+  .services-bundle-plus,
+  .services-bundle-equals {
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  .services-bundle-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 24px;
+    background: var(--amber);
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.22s ease;
+    position: relative;
+    z-index: 1;
+    flex-shrink: 0;
+  }
+
+  .services-bundle-cta:hover {
+    background: var(--cream);
+    transform: translateY(-2px);
+  }
+
+  .services-bundle-cta svg { transition: transform 0.22s ease; }
+  .services-bundle-cta:hover svg { transform: translateX(3px); }
+
+  /* FAQ */
+  .services-faq {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .services-faq-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .services-faq-h2 { text-align: center; }
+  .services-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .services-faq-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+  .services-faq-item[open] {
+    border-color: var(--amber);
+    box-shadow: 0 4px 14px rgba(212,147,46,0.08);
+  }
+  .services-faq-q {
+    display: grid;
+    grid-template-columns: 36px 1fr 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .services-faq-q::-webkit-details-marker { display: none; }
+  .services-faq-item:hover .services-faq-q {
+    background: rgba(212,147,46,0.04);
+  }
+  .services-faq-num {
+    font-family: var(--f-display);
+    font-size: 13px;
+    color: var(--amber-deep);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .services-faq-q-text {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  .services-faq-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(15,20,25,0.06);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .services-faq-item[open] .services-faq-icon {
+    background: var(--amber);
+    color: var(--ink);
+    transform: rotate(180deg);
+  }
+  .services-faq-a {
+    padding: 0 24px 22px 76px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    border-top: 1px dashed var(--line);
+    padding-top: 18px;
+  }
+
+  /* PAGE FINAL CTA */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .services-baseline-grid { grid-template-columns: repeat(2, 1fr); }
+    .services-card {
+      grid-template-columns: 28px 1fr 24px;
+      grid-template-rows: auto auto;
+      gap: 12px 16px;
+    }
+    .services-card-price-block {
+      grid-column: 2;
+      grid-row: 2;
+      flex-direction: row;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+      padding-top: 8px;
+      border-top: 1px dashed var(--line);
+    }
+    .services-card-arrow {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .services-bundle-card {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 32px 28px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .services-baseline-grid { grid-template-columns: 1fr; }
+    .services-card { padding: 18px 20px; }
+    .services-faq-q {
+      grid-template-columns: 1fr 24px;
+      gap: 12px;
+    }
+    .services-faq-num { display: none; }
+    .services-faq-a { padding-left: 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+    .services-bundle-card { padding: 28px 22px; }
+  }
+</style>

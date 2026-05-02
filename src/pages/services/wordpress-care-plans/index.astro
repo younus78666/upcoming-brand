@@ -1,0 +1,1383 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/services/wordpress-care-plans/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "WordPress Care Plans & Maintenance Services Maryland | Upcoming Brand",
+      "description": "WordPress care plans from $150/month. Weekly updates, off-site backups, uptime monitoring, security patching, and a 4-hour SLA — direct to the founder. Month-to-month, no annual contracts.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",                "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services",            "item": "https://upcomingbrand.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "WordPress Care Plans", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      "name": "WordPress Care Plans & Maintenance Services",
+      "description": "Monthly WordPress maintenance services: core + plugin updates, off-site backups, uptime monitoring, security patching, and 4-hour SLA support direct from the founder. Month-to-month, no annual contract.",
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "serviceType": "WordPress maintenance",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "knowsAbout": [
+        "WordPress maintenance services",
+        "WordPress care plans",
+        "WordPress support",
+        "WordPress updates",
+        "WordPress backups",
+        "WordPress security monitoring"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "WordPress Care Plan Tiers",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Essential Care Plan" }, "price": "150", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "150", "priceCurrency": "USD", "billingDuration": "P1M" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Growth Care Plan" },    "price": "275", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "275", "priceCurrency": "USD", "billingDuration": "P1M" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pro Care Plan" },        "price": "400", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "price": "400", "priceCurrency": "USD", "billingDuration": "P1M" } }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5"
+      }
+    }
+  ]
+});
+
+const tiers = [
+  {
+    name: "Essential",
+    price: "$150",
+    cadence: "/month",
+    summary: "The minimum viable care plan. Updates, backups, monitoring, security. For sites under ~10,000 monthly visitors.",
+    features: [
+      "Weekly WordPress core + plugin updates",
+      "Daily off-site backups (S3 / Google Drive)",
+      "Uptime monitoring with 5-minute checks",
+      "Security firewall + malware scanning",
+      "Monthly performance check (Lighthouse)",
+      "4-hour business-hours support SLA",
+    ],
+    notIncluded: [
+      "Content updates",
+      "Design changes",
+      "SEO reports",
+    ],
+    href: "/contact/?plan=essential",
+  },
+  {
+    name: "Growth",
+    price: "$275",
+    cadence: "/month",
+    summary: "Everything in Essential plus content updates and quarterly SEO reporting. For sites under ~50,000 monthly visitors.",
+    features: [
+      "Everything in Essential, plus:",
+      "Up to 1 hour of content updates per month",
+      "Quarterly Search Console + ranking report",
+      "Quarterly Core Web Vitals audit",
+      "Schema validation + maintenance",
+      "Priority support (2-hour SLA)",
+    ],
+    notIncluded: [
+      "Net-new pages or features",
+      "Major redesigns",
+    ],
+    href: "/contact/?plan=growth",
+    highlight: true,
+  },
+  {
+    name: "Pro",
+    price: "$400",
+    cadence: "/month",
+    summary: "For high-traffic sites or businesses where the website is the primary lead-gen channel. Full strategic care.",
+    features: [
+      "Everything in Growth, plus:",
+      "Up to 3 hours of content updates per month",
+      "Monthly Search Console + ranking report",
+      "Monthly Core Web Vitals audit",
+      "1 strategic call per quarter",
+      "1-hour SLA, weekend availability",
+    ],
+    notIncluded: [
+      "Net-new feature development",
+      "Major redesigns or migrations",
+    ],
+    href: "/contact/?plan=pro",
+  },
+];
+
+const monthlyTasks = [
+  { week: "Week 1", task: "Plugin updates",      detail: "Test on staging first. Roll back if any issue. Document each update in the monthly report." },
+  { week: "Week 1", task: "WordPress core",      detail: "Test on staging. Apply during off-peak hours. Verify forms, schema, performance afterwards." },
+  { week: "Week 2", task: "Off-site backup",     detail: "Full database + uploads to encrypted off-site storage (S3 or Google Drive). Verified weekly." },
+  { week: "Week 2", task: "Uptime check",        detail: "5-minute interval monitoring with email alerts on any 1-minute outage. SLA-tracked." },
+  { week: "Week 3", task: "Security scan",       detail: "Wordfence + manual review of changed files, suspicious logins, and access patterns." },
+  { week: "Week 3", task: "Performance audit",   detail: "Lighthouse + PageSpeed Insights. Flag any page that drops below 90." },
+  { week: "Week 4", task: "Schema validation",   detail: "Verify LocalBusiness, FAQ, Service schemas still render. Check Search Console for warnings." },
+  { week: "Week 4", task: "Monthly report",      detail: "Written email with all updates applied, performance numbers, uptime %, and any issues found." },
+];
+
+const slaBreakdown = [
+  { tier: "Essential",         sla: "4 business hours", channel: "Email",            availability: "Mon-Fri" },
+  { tier: "Growth",            sla: "2 business hours", channel: "Email + Slack",   availability: "Mon-Fri" },
+  { tier: "Pro",               sla: "1 hour",           channel: "Email + Slack + SMS", availability: "Mon-Fri + weekends" },
+];
+
+const faqs = [
+  {
+    q: "Do I have to be locked into an annual contract?",
+    a: "No. All Upcoming Brand WordPress care plans are month-to-month with no minimum term. Cancel any time with no penalty or fee. We don't believe in trapping clients with annual commitments — if the plan isn't worth it, you should be able to leave. About 90% of clients who start a care plan stay on it indefinitely; the few who cancel typically do so because they sold the business or shut down the site.",
+  },
+  {
+    q: "What's the difference between a $99/month plan and a $150 care plan?",
+    a: "$99/month plans are typically automated — a bot updates plugins on a schedule with no testing, no backups before changes, no manual review, and no human you can actually email when something breaks. Our care plans involve a person testing every update on staging first, rolling back if anything breaks, monitoring uptime live, and personally responding to your emails within hours. The $51 difference buys real human accountability instead of automation that fails silently.",
+  },
+  {
+    q: "What does the 4-hour SLA actually cover?",
+    a: "The 4-hour SLA on Essential (2-hour on Growth, 1-hour on Pro) covers our response to your email or ticket — not necessarily resolution. We respond within the SLA window, diagnose the issue, and either fix it immediately (usually) or give you a written ETA for resolution. For critical issues (site down, security breach), we begin work immediately regardless of SLA. We've never let a critical incident sit unaddressed past 30 minutes.",
+  },
+  {
+    q: "Can I include content changes in the plan, or is that extra?",
+    a: "Essential covers technical maintenance only — no content edits. Growth includes 1 hour of content updates per month (rolls over up to 3 months unused). Pro includes 3 hours per month. Any content work beyond your plan's allotment is billed at $150/hr in 30-minute increments, with a written estimate before work begins. Most clients on Growth or Pro never exceed their monthly content allotment.",
+  },
+  {
+    q: "What happens if my site gets hacked?",
+    a: "Care plans include malware recovery as part of the security work. We restore from the most recent clean backup, identify and patch the vulnerability, scan for residual malware, and document the incident in writing. There's no hourly billing for incident response on care plan clients. If your site isn't on a care plan, recovery is billed at $150/hr or as a $1,000 fixed-scope security recovery engagement.",
+  },
+  {
+    q: "Do care plans cover the hosting bill?",
+    a: "No. You pay your own hosting (we recommend specific hosts at three price points: Cloudways for budget, Kinsta for mid-tier, WP Engine for enterprise). Care plans cover the maintenance, monitoring, and support — not the server. We chose this structure so you keep ownership of the hosting account; if you ever cancel the care plan, you don't lose your server.",
+  },
+  {
+    q: "Can I add a care plan later, after the project launches?",
+    a: "Yes. Care plans can start at any time — at launch, three months later, or three years later. Most projects start their care plan at launch because the 30-day post-launch monitoring is included in the build engagement, and clients tend to want continuity. But there's no cliff — you can pause the relationship at launch and pick up a care plan later when it makes sense.",
+  },
+];
+---
+<BaseLayout
+  title="WordPress Care Plans & Maintenance Services | From $150/mo | Upcoming Brand"
+  description="WordPress care plans from $150/month. Weekly updates, off-site backups, uptime monitoring, security patching, 4-hour SLA — direct to the founder. Month-to-month, no annual contracts."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">WordPress care plans</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">WordPress maintenance</span>
+          <span class="page-h1-line"><em class="page-h1-accent">that's actually maintained.</em></span>
+          <span class="page-h1-line page-h1-italic">Not a bot, not a help desk.</span>
+        </h1>
+
+        <p class="page-lead">
+          <strong>WordPress care plans from $150/month.</strong> Weekly core + plugin updates tested on staging, daily off-site backups, uptime monitoring, security patching, and a written monthly report. <strong>4-hour SLA direct to the founder. Month-to-month, no annual contract.</strong>
+        </p>
+
+        <div class="page-hero-ctas">
+          <a href="#tiers" class="lp-btn-primary">
+            View care plans
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/contact/" class="lp-btn-ghost">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">From $150/month</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">Month-to-month</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">4-hour SLA &middot; Direct to founder</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== TIERS ====== -->
+    <section class="care-tiers" id="tiers">
+      <div class="container">
+        <div class="care-tiers-head">
+          <p class="care-section-eyebrow">
+            <span class="care-section-eyebrow-line"></span>
+            Three plans
+          </p>
+          <h2 class="page-h2">
+            Three care plans. <em>One fixed monthly price.</em>
+          </h2>
+          <p class="page-section-lead">Every plan is month-to-month with no minimum term. Move up, down, or cancel any time without a fee.</p>
+        </div>
+
+        <div class="care-tiers-grid">
+          {tiers.map((t) => (
+            <article class={`care-tier ${t.highlight ? 'care-tier-highlight' : ''}`}>
+              {t.highlight && <span class="care-tier-flag">Most chosen</span>}
+
+              <span class="care-tier-name">{t.name}</span>
+
+              <div class="care-tier-price-block">
+                <span class="care-tier-price">{t.price}</span>
+                <span class="care-tier-cadence">{t.cadence}</span>
+              </div>
+
+              <p class="care-tier-summary">{t.summary}</p>
+
+              <a href={t.href} class={`care-tier-cta ${t.highlight ? 'care-tier-cta-amber' : ''}`}>
+                Start {t.name}
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+
+              <div class="care-tier-divider">
+                <span class="care-tier-divider-label">What's included</span>
+              </div>
+
+              <ul class="care-tier-features">
+                {t.features.map((f) => (
+                  <li>
+                    <span class="care-tier-check" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2.5 5.5l2 2 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              {t.notIncluded.length > 0 && (
+                <ul class="care-tier-excludes">
+                  {t.notIncluded.map((nf) => (
+                    <li>
+                      <span class="care-tier-x" aria-hidden="true">
+                        <svg width="9" height="9" viewBox="0 0 10 10" fill="none"><path d="M2 2l6 6M8 2l-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                      </span>
+                      {nf}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </article>
+          ))}
+        </div>
+
+        <div class="care-tiers-foot">
+          <span class="care-tiers-foot-label">All plans include:</span>
+          <span class="care-tiers-foot-pills">
+            <span class="care-foot-pill">Month-to-month</span>
+            <span class="care-foot-pill">No setup fee</span>
+            <span class="care-foot-pill">Direct founder access</span>
+            <span class="care-foot-pill">Written monthly report</span>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== MONTHLY TASKS BREAKDOWN ====== -->
+    <section class="care-tasks">
+      <div class="container">
+        <div class="care-tasks-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">What we do every month</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 care-tasks-h2">
+            Eight tasks <em>every month, on every plan.</em>
+          </h2>
+          <p class="care-tasks-lead">A real human runs through this list every week. Updates tested on staging before production. Backups verified, not just scheduled.</p>
+        </div>
+
+        <div class="care-tasks-list">
+          {monthlyTasks.map((t, i) => (
+            <article class="care-task">
+              <span class="care-task-num">{String(i + 1).padStart(2, '0')}</span>
+              <div class="care-task-content">
+                <div class="care-task-meta">
+                  <span class="care-task-week">{t.week}</span>
+                  <span class="care-task-divider" aria-hidden="true"></span>
+                  <span class="care-task-name">{t.task}</span>
+                </div>
+                <p class="care-task-detail">{t.detail}</p>
+              </div>
+              <span class="care-task-check" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M3 6.5l2.5 2.5L10 4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== SLA TABLE ====== -->
+    <section class="care-sla">
+      <div class="container">
+        <div class="care-sla-head">
+          <p class="care-section-eyebrow">
+            <span class="care-section-eyebrow-line"></span>
+            SLA breakdown
+          </p>
+          <h2 class="page-h2">
+            Response times <em>by plan tier.</em>
+          </h2>
+          <p class="page-section-lead">SLA covers our first response (diagnosis + ETA). Critical issues — site down, security breach — get worked on immediately regardless of plan tier.</p>
+        </div>
+
+        <div class="care-sla-table-wrap">
+          <table class="care-sla-table">
+            <thead>
+              <tr>
+                <th>Plan tier</th>
+                <th>Response SLA</th>
+                <th>Channel</th>
+                <th>Availability</th>
+              </tr>
+            </thead>
+            <tbody>
+              {slaBreakdown.map((row) => (
+                <tr>
+                  <td class="care-sla-tier">{row.tier}</td>
+                  <td>{row.sla}</td>
+                  <td>{row.channel}</td>
+                  <td>{row.availability}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="care-sla-foot">
+          <span class="care-sla-foot-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </span>
+          <p class="care-sla-foot-text">Average actual response time across all tiers in 2025: <strong>47 minutes.</strong> SLA is the floor, not the goal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="care-faq">
+      <div class="container">
+        <div class="care-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">Care plan FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 care-faq-h2">
+            Seven questions <em>before you sign up.</em>
+          </h2>
+        </div>
+
+        <div class="care-faq-list">
+          {faqs.map((f, i) => (
+            <details class="care-faq-item">
+              <summary class="care-faq-q">
+                <span class="care-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="care-faq-q-text">{f.q}</span>
+                <span class="care-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="care-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Start a care plan</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Real maintenance.<br>
+            <em>Real human accountability.</em>
+          </h2>
+          <p class="page-cta-lead">A free 15-minute call to scope which plan tier matches your traffic, complexity, and risk tolerance. We'll recommend Essential if it's the right fit — we don't upsell.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Start a care plan
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/services/" class="page-cta-ghost-light">
+              View all services
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* SHARED (mirrored from /services/wordpress-web-design/) */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(32px, 5vw, 60px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .page-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+
+  .lp-btn-primary, .lp-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lp-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lp-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg, .lp-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover svg { transform: translate(2px, -2px); }
+
+  .page-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .page-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .page-trust-dot {
+    width: 3px; height: 3px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 12px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-section-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 16px auto 0;
+  }
+
+  .care-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0;
+    font-weight: 500;
+  }
+  .care-section-eyebrow-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  /* TIERS */
+  .care-tiers {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+    scroll-margin-top: 24px;
+  }
+
+  .care-tiers-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .care-tiers-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: stretch;
+  }
+
+  .care-tier {
+    display: flex;
+    flex-direction: column;
+    padding: 36px 28px 30px;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .care-tier:hover {
+    border-color: var(--amber);
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(212,147,46,0.12);
+  }
+
+  .care-tier-highlight {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--amber);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 48px rgba(15,20,25,0.18);
+  }
+
+  .care-tier-highlight::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber));
+  }
+
+  .care-tier-highlight:hover { transform: translateY(-12px); }
+
+  .care-tier-flag {
+    position: absolute;
+    top: -10px; left: 50%;
+    transform: translateX(-50%);
+    padding: 4px 14px;
+    background: var(--amber);
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .care-tier-name {
+    font-family: var(--f-display);
+    font-size: 32px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.025em;
+  }
+
+  .care-tier-highlight .care-tier-name { color: var(--cream); }
+
+  .care-tier-price-block {
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+    margin-top: 12px;
+  }
+
+  .care-tier-price {
+    font-family: var(--f-display);
+    font-size: 48px;
+    line-height: 1;
+    color: var(--amber-deep);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+  }
+
+  .care-tier-highlight .care-tier-price { color: var(--amber); }
+
+  .care-tier-cadence {
+    font-family: var(--f-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+  }
+
+  .care-tier-highlight .care-tier-cadence { color: rgba(244,239,230,0.55); }
+
+  .care-tier-summary {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 14px 0 20px;
+  }
+
+  .care-tier-highlight .care-tier-summary {
+    color: rgba(244,239,230,0.72);
+  }
+
+  .care-tier-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px 18px;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+
+  .care-tier-cta:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+
+  .care-tier-cta-amber {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+
+  .care-tier-cta-amber:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+
+  .care-tier-cta svg { transition: transform 0.22s ease; }
+  .care-tier-cta:hover svg { transform: translateX(3px); }
+
+  .care-tier-divider {
+    margin: 22px 0 12px;
+  }
+
+  .care-tier-divider-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+
+  .care-tier-highlight .care-tier-divider-label { color: var(--amber); }
+
+  .care-tier-features,
+  .care-tier-excludes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .care-tier-excludes {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--line);
+    flex: none;
+  }
+
+  .care-tier-highlight .care-tier-excludes {
+    border-color: rgba(244,239,230,0.15);
+  }
+
+  .care-tier-features li,
+  .care-tier-excludes li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  .care-tier-highlight .care-tier-features li,
+  .care-tier-highlight .care-tier-excludes li {
+    color: rgba(244,239,230,0.78);
+  }
+
+  .care-tier-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(92,128,64,0.12);
+    color: var(--green);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .care-tier-highlight .care-tier-check {
+    background: rgba(212,147,46,0.18);
+    color: var(--amber);
+  }
+
+  .care-tier-x {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(176,74,62,0.1);
+    color: var(--red);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+    opacity: 0.7;
+  }
+
+  .care-tier-excludes li {
+    color: var(--ink-muted);
+    text-decoration: line-through;
+    text-decoration-color: rgba(176,74,62,0.3);
+  }
+
+  .care-tier-highlight .care-tier-excludes li {
+    color: rgba(244,239,230,0.5);
+  }
+
+  /* All-plans foot */
+  .care-tiers-foot {
+    margin-top: 40px;
+    padding: 22px 28px;
+    background: var(--cream);
+    border: 1px dashed rgba(212,147,46,0.3);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .care-tiers-foot-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+
+  .care-tiers-foot-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .care-foot-pill {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+  }
+
+  /* MONTHLY TASKS */
+  .care-tasks {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(64px, 9vh, 112px) 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .care-tasks::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 60%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,147,46,0.5), transparent);
+    transform: translateX(-50%);
+  }
+
+  .care-tasks-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .care-tasks-h2 { color: var(--cream); }
+  .care-tasks-h2 em { color: var(--amber); }
+
+  .care-tasks-lead {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+
+  .care-tasks-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .care-task {
+    display: grid;
+    grid-template-columns: 36px 1fr 28px;
+    gap: 14px;
+    padding: 20px 22px;
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.08);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    align-items: center;
+  }
+
+  .care-task:hover {
+    border-color: rgba(212,147,46,0.4);
+    background: rgba(244,239,230,0.06);
+    transform: translateY(-2px);
+  }
+
+  .care-task-num {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .care-task-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .care-task-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .care-task-week {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+  }
+
+  .care-task-divider {
+    width: 8px; height: 1px;
+    background: rgba(244,239,230,0.25);
+  }
+
+  .care-task-name {
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 600;
+  }
+
+  .care-task-detail {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.62);
+    margin: 0;
+  }
+
+  .care-task-check {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(92,128,64,0.18);
+    color: #8ab86a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  /* SLA TABLE */
+  .care-sla {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .care-sla-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .care-sla-table-wrap {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .care-sla-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  .care-sla-table th {
+    padding: 16px 20px;
+    text-align: left;
+    background: var(--paper);
+    border-bottom: 2px solid var(--line);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 600;
+  }
+
+  .care-sla-table td {
+    padding: 14px 20px;
+    border-bottom: 1px dashed var(--line);
+    color: var(--ink-soft);
+  }
+
+  .care-sla-table tbody tr:last-child td { border-bottom: none; }
+  .care-sla-table tbody tr:hover td { background: var(--paper); }
+
+  .care-sla-tier {
+    font-family: var(--f-display);
+    font-weight: 600;
+    color: var(--ink) !important;
+  }
+
+  .care-sla-foot {
+    max-width: 880px;
+    margin: 24px auto 0;
+    padding: 18px 22px;
+    background: rgba(212,147,46,0.06);
+    border: 1px dashed rgba(212,147,46,0.3);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .care-sla-foot-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.12);
+    color: var(--amber-deep);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .care-sla-foot-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .care-sla-foot-text strong {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  /* FAQ */
+  .care-faq {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .care-faq-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .care-faq-h2 { text-align: center; }
+  .care-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .care-faq-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+  .care-faq-item[open] {
+    border-color: var(--amber);
+    box-shadow: 0 4px 14px rgba(212,147,46,0.08);
+  }
+  .care-faq-q {
+    display: grid;
+    grid-template-columns: 36px 1fr 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .care-faq-q::-webkit-details-marker { display: none; }
+  .care-faq-item:hover .care-faq-q {
+    background: rgba(212,147,46,0.04);
+  }
+  .care-faq-num {
+    font-family: var(--f-display);
+    font-size: 13px;
+    color: var(--amber-deep);
+    font-style: italic;
+    font-weight: 400;
+  }
+  .care-faq-q-text {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+  .care-faq-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(15,20,25,0.06);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  .care-faq-item[open] .care-faq-icon {
+    background: var(--amber);
+    color: var(--ink);
+    transform: rotate(180deg);
+  }
+  .care-faq-a {
+    padding: 0 24px 22px 76px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    border-top: 1px dashed var(--line);
+    padding-top: 18px;
+  }
+
+  /* PAGE FINAL CTA */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .care-tiers-grid { grid-template-columns: 1fr; }
+    .care-tier-highlight { transform: none; }
+    .care-tier-highlight:hover { transform: translateY(-4px); }
+    .care-tasks-list { grid-template-columns: 1fr; }
+    .care-tiers-foot { flex-direction: column; align-items: flex-start; gap: 10px; }
+  }
+
+  @media (max-width: 768px) {
+    .care-tier { padding: 28px 24px; }
+    .care-tier-price { font-size: 40px; }
+    .care-sla-table { font-size: 12px; }
+    .care-sla-table th, .care-sla-table td { padding: 10px 12px; }
+    .care-sla-foot { flex-direction: column; align-items: flex-start; }
+    .care-faq-q {
+      grid-template-columns: 1fr 24px;
+      gap: 12px;
+    }
+    .care-faq-num { display: none; }
+    .care-faq-a { padding-left: 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+  }
+</style>
