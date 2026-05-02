@@ -1,0 +1,1536 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/careers/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Careers & Open Collaborations | Upcoming Brand",
+      "description": "Project-based collaborations for senior WordPress designers, front-end developers, SEO specialists, and photographers. Async, remote, paid through us.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "dateModified": "2026-05-02",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",    "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Careers", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const howItWorks = [
+  {
+    num: "01",
+    title: "Project-based, not employment",
+    detail: "We don't hire full-time. We engage senior specialists per project under a clear scope and a fixed price. You stay independent. We pay through us so the client only sees one chain of accountability.",
+  },
+  {
+    num: "02",
+    title: "Vetted before, not after",
+    detail: "We don't post jobs to freelance marketplaces. We work with people we've reviewed, tested, and (where possible) collaborated with on a small project first. Quality bar is the same as our client deliverable.",
+  },
+  {
+    num: "03",
+    title: "Async-first, US time zones",
+    detail: "Most communication is written, on private staging URLs and project channels. We schedule sync calls only when the conversation needs voice. Heavy overlap with US business hours preferred.",
+  },
+  {
+    num: "04",
+    title: "Paid on milestones, not hourly",
+    detail: "Same fixed-scope rule we apply to clients applies to collaborators. Each engagement is scoped, milestoned, and paid on delivery. Net-7 payment via Stripe or wire transfer.",
+  },
+];
+
+const roles = [
+  {
+    title: "Senior WordPress front-end developer",
+    type: "Project-based",
+    rate: "$85-$120/hr equivalent (project priced)",
+    location: "Remote · US time zones preferred",
+    status: "open",
+    summary: "We're looking for senior WordPress developers who write custom Gutenberg blocks, build performant themes, and care about Core Web Vitals as a deliverable. ACF Pro, modern PHP, and Tailwind/CSS architecture experience a strong plus.",
+    requirements: [
+      "5+ years of WordPress development",
+      "Custom block / theme development experience (no page builders)",
+      "Proven Core Web Vitals 90+ track record",
+      "Comfortable with async / written communication",
+      "US time zone overlap (East Coast preferred)",
+    ],
+  },
+  {
+    title: "Visual / UI designer (WordPress projects)",
+    type: "Project-based",
+    rate: "$70-$110/hr equivalent (project priced)",
+    location: "Remote · Any time zone",
+    status: "open",
+    summary: "Looking for designers who can run brand-aligned UI / UX work on WordPress projects. Comfortable designing in Figma, exporting clean specs, and iterating async on a private staging URL. Bonus for experience designing for SEO-led sites where conversion architecture matters.",
+    requirements: [
+      "Strong portfolio with B2B or service-business work",
+      "Figma proficiency (component-based, design tokens)",
+      "Conversion architecture awareness, not just visuals",
+      "Async communication style with written feedback loops",
+      "5+ years of UI / UX design experience",
+    ],
+  },
+  {
+    title: "SEO + technical content specialist",
+    type: "Project-based",
+    rate: "$65-$95/hr equivalent (project priced)",
+    location: "Remote · US time zones preferred",
+    status: "limited",
+    summary: "On-page SEO and content specialist comfortable writing for regulated industries (legal, medical, dental, real estate). Schema-fluent and Lighthouse-aware. Roster currently has 2 active specialists — we're adding 1 more.",
+    requirements: [
+      "On-page SEO + technical SEO portfolio",
+      "Schema.org fluency (vertical-specific types)",
+      "Long-form content writing experience",
+      "Comfortable with regulated-industry compliance",
+      "Familiarity with RankMath, Search Console, Bing Webmaster",
+    ],
+  },
+  {
+    title: "Maryland-based photographer",
+    type: "Project-based",
+    rate: "Per shoot",
+    location: "Maryland · On-location",
+    status: "expression",
+    summary: "Photographers based in Maryland who can shoot business portraits, location work, and product photography for client projects. Remote brief, on-location shoot, hand off web-ready assets.",
+    requirements: [
+      "Maryland-based with reliable on-location capability",
+      "Business portrait and architectural photography portfolio",
+      "Web-ready export workflow (sRGB, optimised file sizes)",
+      "Insured and licensed for commercial work",
+    ],
+  },
+];
+
+const lookFor = [
+  { trait: "Depth over breadth",     detail: "We'd rather work with a designer who's built 50 dental sites than a generalist who's built one of everything." },
+  { trait: "Async communication",    detail: "Writing well in Slack threads and PR comments is a job requirement, not a nice-to-have." },
+  { trait: "Care about the launch",  detail: "Treating Lighthouse 90+ as a deliverable, not a stretch goal. Schema as architecture, not afterthought." },
+  { trait: "Comfortable saying no",  detail: "Pushing back on briefs that would compromise the work — we trust senior collaborators to weigh in, not just execute." },
+];
+
+const applicationProcess = [
+  { num: "01", step: "Send portfolio + brief", detail: "Email a relevant portfolio piece and a paragraph about why this fit. No cover letters required." },
+  { num: "02", step: "30-min intro call",       detail: "We chat about your work, your async style, and the kind of projects you'd thrive on." },
+  { num: "03", step: "Small paid trial",         detail: "Where it makes sense, we collaborate on a small piece of a real project — paid at full rate, scoped at 1-2 weeks." },
+  { num: "04", step: "Network onboarding",       detail: "If the trial goes well, you go on the active roster. We tag you on incoming projects that match your specialty." },
+];
+
+const faqs = [
+  {
+    q: "Are these full-time positions?",
+    a: "No. We don't hire full-time. Every role is project-based — you stay independent, set your own schedule, and engage with us on individual projects under a clear scope and fixed price. Some collaborators work with us once or twice a year. Others have ongoing roster relationships and see 4-8 projects annually.",
+  },
+  {
+    q: "How are projects priced for collaborators?",
+    a: "We scope each engagement against your senior rate (the bands listed above are equivalents — actual fee is per-project). For a typical 4-week design engagement on a Growth-tier client, that runs $7,000-$12,000 depending on scope. We pay net-7 on milestone delivery via Stripe or wire transfer.",
+  },
+  {
+    q: "Do you take a cut of my rate?",
+    a: "No, your rate is your rate. We bill the client at our project price; you bill us at your project price. The client doesn't see your invoice, you don't see ours. We absorb the project management, client communication, and revisions overhead — that's the value we add to the engagement.",
+  },
+  {
+    q: "What if I'm not US-based?",
+    a: "We work with international collaborators on the visual design and SEO content roles where time zone overlap is less critical. For development roles we strongly prefer US time zones because of how often we need to ship updates during the client's business hours. Photographers must be Maryland-local.",
+  },
+  {
+    q: "Can I apply if I don't see a role I match exactly?",
+    a: "Yes. The roles on this page are the active ones, but we're always interested in hearing from senior specialists in WordPress, performance engineering, schema, accessibility audit, technical content, and brand design. Send your portfolio with a one-paragraph note about what you'd want to work on.",
+  },
+];
+---
+<BaseLayout
+  title="Careers & Open Collaborations | Upcoming Brand WordPress Studio"
+  description="Project-based collaborations for senior WordPress designers, front-end developers, SEO specialists, and photographers. Async, remote, paid through us."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ====== HERO ====== -->
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">Open collaborations</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">Project-based work</span>
+          <span class="page-h1-line"><em class="page-h1-accent">with senior specialists.</em></span>
+          <span class="page-h1-line page-h1-italic">No employment, no agencies in between.</span>
+        </h1>
+
+        <p class="page-lead">
+          We don't hire full-time. We engage <strong>senior designers, developers, SEO specialists, and photographers</strong> on a project-by-project basis. Async, remote, paid through us, vetted before — not after. Same quality bar we apply to client deliverables.
+        </p>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">Project-based</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">Async &middot; Remote</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">Net-7 milestone payments</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== HOW IT WORKS ====== -->
+    <section class="careers-how">
+      <div class="container">
+        <div class="careers-how-head">
+          <p class="careers-section-eyebrow">
+            <span class="careers-section-eyebrow-line"></span>
+            How collaborations work
+          </p>
+          <h2 class="page-h2">
+            Four things <em>that aren't negotiable.</em>
+          </h2>
+          <p class="page-section-lead">If any of these are deal-breakers, we're probably not the right network for you. If they sound like how you already work, we'd like to know you.</p>
+        </div>
+
+        <div class="careers-how-grid">
+          {howItWorks.map((h) => (
+            <article class="careers-how-card">
+              <span class="careers-how-num">{h.num}</span>
+              <h3 class="careers-how-title">{h.title}</h3>
+              <p class="careers-how-detail">{h.detail}</p>
+              <div class="careers-how-line" aria-hidden="true"></div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== OPEN ROLES ====== -->
+    <section class="careers-roles">
+      <div class="container">
+        <div class="careers-roles-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-light"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Currently open</span>
+            <span class="page-eyebrow-line page-eyebrow-line-light"></span>
+          </div>
+          <h2 class="page-h2 careers-roles-h2">
+            Four open <em>collaborations.</em>
+          </h2>
+          <p class="careers-roles-lead">Two fully open, one with limited capacity, one open for expressions of interest. Click any card to expand the role details.</p>
+        </div>
+
+        <div class="careers-roles-list">
+          {roles.map((r, i) => (
+            <details class={`careers-role careers-role-${r.status}`}>
+              <summary class="careers-role-summary">
+                <span class="careers-role-num">{String(i + 1).padStart(2, '0')}</span>
+                <div class="careers-role-head">
+                  <h3 class="careers-role-title">{r.title}</h3>
+                  <div class="careers-role-meta">
+                    <span class="careers-role-type">{r.type}</span>
+                    <span class="careers-role-meta-dot" aria-hidden="true"></span>
+                    <span class="careers-role-location">{r.location}</span>
+                  </div>
+                </div>
+                <div class="careers-role-status-block">
+                  {r.status === "open" && (
+                    <span class="careers-role-status careers-role-status-open">
+                      <span class="careers-role-status-dot" aria-hidden="true"></span>
+                      Open
+                    </span>
+                  )}
+                  {r.status === "limited" && (
+                    <span class="careers-role-status careers-role-status-limited">
+                      <span class="careers-role-status-dot" aria-hidden="true"></span>
+                      Limited capacity
+                    </span>
+                  )}
+                  {r.status === "expression" && (
+                    <span class="careers-role-status careers-role-status-expression">
+                      <span class="careers-role-status-dot" aria-hidden="true"></span>
+                      Expression of interest
+                    </span>
+                  )}
+                </div>
+                <span class="careers-role-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+
+              <div class="careers-role-body">
+                <div class="careers-role-body-grid">
+                  <div class="careers-role-body-main">
+                    <p class="careers-role-summary-text">{r.summary}</p>
+
+                    <div class="careers-role-reqs">
+                      <span class="careers-role-reqs-label">Requirements</span>
+                      <ul class="careers-role-reqs-list">
+                        {r.requirements.map((req) => (
+                          <li>
+                            <span class="careers-role-check" aria-hidden="true">
+                              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2.5 5.5l2 2 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </span>
+                            {req}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <aside class="careers-role-body-side">
+                    <div class="careers-role-rate-card">
+                      <span class="careers-role-rate-label">Compensation</span>
+                      <span class="careers-role-rate-val">{r.rate}</span>
+                    </div>
+                    <a href={`mailto:hello@upcomingbrand.com?subject=${encodeURIComponent('Application: ' + r.title)}`} class="careers-role-cta">
+                      Apply for this role
+                      <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </a>
+                    <span class="careers-role-cta-note">Email portfolio + 1-paragraph note</span>
+                  </aside>
+                </div>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHAT WE LOOK FOR ====== -->
+    <section class="careers-look">
+      <div class="container">
+        <div class="careers-look-head">
+          <p class="careers-section-eyebrow">
+            <span class="careers-section-eyebrow-line"></span>
+            What we look for
+          </p>
+          <h2 class="page-h2">
+            Four traits, <em>across every role.</em>
+          </h2>
+          <p class="page-section-lead">Specific skills change by role. These four signals show up in every collaborator we've stayed on the roster with for more than a year.</p>
+        </div>
+
+        <div class="careers-look-grid">
+          {lookFor.map((l, i) => (
+            <article class="careers-look-card">
+              <div class="careers-look-card-top">
+                <span class="careers-look-num">{String(i + 1).padStart(2, '0')}</span>
+                <h3 class="careers-look-trait">{l.trait}</h3>
+              </div>
+              <p class="careers-look-detail">{l.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== APPLICATION PROCESS ====== -->
+    <section class="careers-process">
+      <div class="container">
+        <div class="careers-process-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">Application process</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 careers-process-h2">
+            Four steps <em>from email to project.</em>
+          </h2>
+        </div>
+
+        <div class="careers-process-grid">
+          {applicationProcess.map((p, i) => (
+            <div class="careers-process-step">
+              <div class="careers-process-num-block">
+                <span class="careers-process-num">{p.num}</span>
+                {i < applicationProcess.length - 1 && (
+                  <span class="careers-process-arrow" aria-hidden="true">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </span>
+                )}
+              </div>
+              <h3 class="careers-process-step-title">{p.step}</h3>
+              <p class="careers-process-step-detail">{p.detail}</p>
+            </div>
+          ))}
+        </div>
+
+        <div class="careers-process-cta">
+          <div class="careers-process-cta-text">
+            <span class="careers-process-cta-label">Don't see a role you match?</span>
+            <p class="careers-process-cta-desc">Send your portfolio anyway. We keep a list of senior specialists for roles that open up — performance engineering, accessibility audit, brand design, schema architecture.</p>
+          </div>
+          <a href="mailto:hello@upcomingbrand.com?subject=General%20application" class="careers-process-cta-btn">
+            Send a general application
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FAQ ====== -->
+    <section class="careers-faq">
+      <div class="container">
+        <div class="careers-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">Collaboration FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 careers-faq-h2">
+            Five questions <em>before you apply.</em>
+          </h2>
+        </div>
+
+        <div class="careers-faq-list">
+          {faqs.map((f, i) => (
+            <details class="careers-faq-item">
+              <summary class="careers-faq-q">
+                <span class="careers-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="careers-faq-q-text">{f.q}</span>
+                <span class="careers-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="careers-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Ready to apply</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Senior specialists welcome.<br>
+            <em>One email to start.</em>
+          </h2>
+          <p class="page-cta-lead">Send a relevant portfolio piece and a one-paragraph note. We respond within 4 business hours and propose an intro call within the week.</p>
+          <div class="page-cta-buttons">
+            <a href="mailto:hello@upcomingbrand.com?subject=Application" class="lp-btn-primary page-cta-primary">
+              Email an application
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/team/" class="page-cta-ghost-light">
+              About the team
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ===========================================
+     SHARED PAGE SYSTEM
+     =========================================== */
+  .page-hero {
+    background: var(--cream);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .page-hero::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: 50%;
+    transform: translateX(-50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-hero-inner {
+    position: relative; z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+  }
+  .page-eyebrow-strip {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: nowrap;
+    justify-content: center;
+  }
+  .page-eyebrow-line {
+    display: inline-block;
+    width: 48px; height: 1px;
+    background: var(--amber);
+    flex-shrink: 0;
+  }
+  .page-eyebrow-line-light { background: rgba(212,147,46,0.5); }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    white-space: nowrap;
+  }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+
+  .page-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(34px, 5.5vw, 64px);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    text-align: center;
+  }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+    display: inline-block;
+  }
+  .page-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+  .page-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-lead {
+    font-size: clamp(15px, 1.2vw, 18px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 64ch;
+    margin: 0 auto;
+  }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+
+  .page-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 4px;
+  }
+  .page-trust-line {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-transform: uppercase;
+  }
+  .page-trust-dot {
+    width: 3px; height: 3px;
+    background: var(--ink-muted);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+
+  .page-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 12px 0 0;
+  }
+  .page-h2 em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .page-section-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 16px auto 0;
+  }
+
+  .lp-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg { transition: transform 0.22s ease; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+
+  .careers-section-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin: 0;
+    font-weight: 500;
+  }
+  .careers-section-eyebrow-line {
+    display: inline-block;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+  }
+
+  /* ===========================================
+     HOW IT WORKS
+     =========================================== */
+  .careers-how {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .careers-how-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .careers-how-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  .careers-how-card {
+    padding: 32px 28px 28px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .careers-how-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+
+  .careers-how-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(212,147,46,0.12);
+  }
+
+  .careers-how-card:hover::before {
+    transform: scaleY(1);
+  }
+
+  .careers-how-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+
+  .careers-how-title {
+    font-family: var(--f-display);
+    font-size: 22px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 12px 0 10px;
+  }
+
+  .careers-how-detail {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .careers-how-line {
+    margin-top: 18px;
+    width: 32px;
+    height: 1px;
+    background: var(--amber);
+    opacity: 0.4;
+    transition: width 0.3s ease, opacity 0.3s ease;
+  }
+
+  .careers-how-card:hover .careers-how-line {
+    width: 56px;
+    opacity: 1;
+  }
+
+  /* ===========================================
+     ROLES (dark band)
+     =========================================== */
+  .careers-roles {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .careers-roles::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 50%;
+    width: 60%; height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(212,147,46,0.5), transparent);
+    transform: translateX(-50%);
+  }
+
+  .careers-roles::after {
+    content: "";
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.07) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .careers-roles-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .careers-roles-h2 {
+    color: var(--cream);
+  }
+
+  .careers-roles-h2 em {
+    color: var(--amber);
+  }
+
+  .careers-roles-lead {
+    font-size: 15px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.7);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+
+  .careers-roles-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 1100px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .careers-role {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.08);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+
+  .careers-role[open] {
+    border-color: rgba(212,147,46,0.4);
+    background: rgba(244,239,230,0.06);
+  }
+
+  .careers-role-summary {
+    display: grid;
+    grid-template-columns: 36px 1fr auto 28px;
+    gap: 18px;
+    align-items: center;
+    padding: 22px 26px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .careers-role-summary::-webkit-details-marker { display: none; }
+
+  .careers-role:hover .careers-role-summary {
+    background: rgba(212,147,46,0.04);
+  }
+
+  .careers-role-num {
+    font-family: var(--f-display);
+    font-size: 22px;
+    font-style: italic;
+    color: var(--amber);
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .careers-role-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 0;
+  }
+
+  .careers-role-title {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.2;
+    color: var(--cream);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .careers-role-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.55);
+    text-transform: uppercase;
+    flex-wrap: wrap;
+  }
+
+  .careers-role-meta-dot {
+    width: 3px; height: 3px;
+    background: rgba(244,239,230,0.3);
+    border-radius: 50%;
+  }
+
+  .careers-role-status-block {
+    display: flex;
+    align-items: center;
+  }
+
+  .careers-role-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .careers-role-status-open {
+    background: rgba(92,128,64,0.15);
+    border: 1px solid rgba(92,128,64,0.4);
+    color: #8ab86a;
+  }
+
+  .careers-role-status-limited {
+    background: rgba(212,147,46,0.15);
+    border: 1px solid rgba(212,147,46,0.4);
+    color: var(--amber);
+  }
+
+  .careers-role-status-expression {
+    background: rgba(244,239,230,0.06);
+    border: 1px solid rgba(244,239,230,0.15);
+    color: rgba(244,239,230,0.7);
+  }
+
+  .careers-role-status-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+  }
+
+  .careers-role-status-open .careers-role-status-dot {
+    animation: career-status-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes career-status-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+
+  .careers-role-icon {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: rgba(244,239,230,0.06);
+    color: var(--cream);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .careers-role[open] .careers-role-icon {
+    background: var(--amber);
+    color: var(--ink);
+    transform: rotate(180deg);
+  }
+
+  .careers-role-body {
+    padding: 0 26px 24px;
+    border-top: 1px dashed rgba(244,239,230,0.1);
+    padding-top: 22px;
+    margin-top: 8px;
+  }
+
+  .careers-role-body-grid {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+    align-items: flex-start;
+  }
+
+  .careers-role-summary-text {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: rgba(244,239,230,0.78);
+    margin: 0 0 18px;
+  }
+
+  .careers-role-reqs-label {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 12px;
+    font-weight: 500;
+  }
+
+  .careers-role-reqs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .careers-role-reqs-list li {
+    display: grid;
+    grid-template-columns: 18px 1fr;
+    gap: 10px;
+    align-items: flex-start;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.75);
+  }
+
+  .careers-role-check {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(92,128,64,0.18);
+    color: #8ab86a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* Side panel inside role body */
+  .careers-role-body-side {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .careers-role-rate-card {
+    padding: 16px 18px;
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.25);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .careers-role-rate-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 500;
+  }
+
+  .careers-role-rate-val {
+    font-family: var(--f-display);
+    font-size: 14px;
+    color: var(--cream);
+    font-weight: 500;
+    line-height: 1.4;
+  }
+
+  .careers-role-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--amber);
+    color: var(--ink);
+    border: 1.5px solid var(--amber);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all var(--transition);
+  }
+
+  .careers-role-cta:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    transform: translateY(-2px);
+  }
+
+  .careers-role-cta svg { transition: transform 0.22s ease; }
+  .careers-role-cta:hover svg { transform: translateX(3px); }
+
+  .careers-role-cta-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.45);
+    text-align: center;
+  }
+
+  /* ===========================================
+     WHAT WE LOOK FOR
+     =========================================== */
+  .careers-look {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .careers-look-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .careers-look-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .careers-look-card {
+    padding: 24px 26px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .careers-look-card:hover {
+    border-color: var(--amber);
+    transform: translateX(4px);
+    box-shadow: -4px 4px 14px rgba(212,147,46,0.08);
+  }
+
+  .careers-look-card-top {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+  }
+
+  .careers-look-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+
+  .careers-look-trait {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .careers-look-detail {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+    padding-left: 26px;
+  }
+
+  /* ===========================================
+     APPLICATION PROCESS
+     =========================================== */
+  .careers-process {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .careers-process-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .careers-process-h2 { text-align: center; }
+
+  .careers-process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto 48px;
+    position: relative;
+  }
+
+  .careers-process-step {
+    padding: 24px 22px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all var(--transition);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+  }
+
+  .careers-process-step:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 22px rgba(212,147,46,0.1);
+  }
+
+  .careers-process-num-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+
+  .careers-process-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .careers-process-arrow {
+    color: var(--amber);
+    opacity: 0.4;
+  }
+
+  .careers-process-step-title {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0;
+  }
+
+  .careers-process-step-detail {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* Generic application CTA */
+  .careers-process-cta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 28px 32px;
+    background: rgba(212,147,46,0.06);
+    border: 1px dashed rgba(212,147,46,0.3);
+    border-radius: var(--radius-md);
+  }
+
+  .careers-process-cta-text {
+    flex: 1;
+    max-width: 640px;
+  }
+
+  .careers-process-cta-label {
+    display: block;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+
+  .careers-process-cta-desc {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .careers-process-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 20px;
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all var(--transition);
+    flex-shrink: 0;
+  }
+
+  .careers-process-cta-btn:hover {
+    background: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+
+  .careers-process-cta-btn svg { transition: transform 0.22s ease; }
+  .careers-process-cta-btn:hover svg { transform: translateX(3px); }
+
+  /* ===========================================
+     FAQ
+     =========================================== */
+  .careers-faq {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .careers-faq-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .careers-faq-h2 { text-align: center; }
+
+  .careers-faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+
+  .careers-faq-item {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all var(--transition);
+  }
+
+  .careers-faq-item[open] {
+    border-color: var(--amber);
+    box-shadow: 0 4px 14px rgba(212,147,46,0.08);
+  }
+
+  .careers-faq-q {
+    display: grid;
+    grid-template-columns: 36px 1fr 24px;
+    gap: 16px;
+    align-items: center;
+    padding: 20px 24px;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .careers-faq-q::-webkit-details-marker { display: none; }
+
+  .careers-faq-item:hover .careers-faq-q {
+    background: rgba(212,147,46,0.04);
+  }
+
+  .careers-faq-num {
+    font-family: var(--f-display);
+    font-size: 13px;
+    color: var(--amber-deep);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .careers-faq-q-text {
+    font-family: var(--f-display);
+    font-size: 18px;
+    line-height: 1.3;
+    color: var(--ink);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+  }
+
+  .careers-faq-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: rgba(15,20,25,0.06);
+    color: var(--ink);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .careers-faq-item[open] .careers-faq-icon {
+    background: var(--amber);
+    color: var(--ink);
+    transform: rotate(180deg);
+  }
+
+  .careers-faq-a {
+    padding: 0 24px 22px 76px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0;
+    border-top: 1px dashed var(--line);
+    padding-top: 18px;
+  }
+
+  /* ===========================================
+     PAGE FINAL CTA
+     =========================================== */
+  .page-cta {
+    background: var(--ink);
+    padding: clamp(72px, 10vh, 112px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-cta::before {
+    content: "";
+    position: absolute;
+    top: -300px; left: -200px;
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .page-cta-inner {
+    max-width: 720px;
+    text-align: center;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: rgba(244,239,230,0.65);
+    max-width: 56ch;
+    margin: 0 auto;
+  }
+  .page-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+  .page-cta-primary {
+    background: var(--amber);
+    border-color: var(--amber);
+    color: var(--ink);
+  }
+  .page-cta-primary:hover {
+    background: var(--cream);
+    border-color: var(--cream);
+    color: var(--ink);
+  }
+  .page-cta-ghost-light {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    border: 1.5px solid rgba(244,239,230,0.2);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.22s ease;
+  }
+  .page-cta-ghost-light:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+    background: rgba(212,147,46,0.08);
+    transform: translateY(-2px);
+  }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  /* ===========================================
+     RESPONSIVE
+     =========================================== */
+  @media (max-width: 1024px) {
+    .careers-how-grid { grid-template-columns: 1fr; }
+    .careers-look-grid { grid-template-columns: 1fr; }
+    .careers-process-grid { grid-template-columns: repeat(2, 1fr); }
+    .careers-process-cta { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .careers-role-summary {
+      grid-template-columns: 28px 1fr 28px;
+      grid-template-rows: auto auto;
+      gap: 12px;
+    }
+    .careers-role-status-block {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: flex-start;
+    }
+    .careers-role-icon {
+      grid-column: 3;
+      grid-row: 1;
+    }
+    .careers-role-body-grid {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .careers-process-grid { grid-template-columns: 1fr; }
+    .careers-process-arrow { transform: rotate(90deg); align-self: flex-start; }
+    .careers-faq-q {
+      grid-template-columns: 1fr 24px;
+      gap: 12px;
+    }
+    .careers-faq-num { display: none; }
+    .careers-faq-a { padding-left: 24px; }
+  }
+
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+    .careers-role-summary { padding: 18px 20px; }
+    .careers-look-detail { padding-left: 0; }
+  }
+</style>
