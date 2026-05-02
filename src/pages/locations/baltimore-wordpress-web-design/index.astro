@@ -60,8 +60,8 @@ const jsonLd = JSON.stringify({
         },
         {
           "@type": "Question",
-          "name": "Do you offer in-person meetings for Baltimore clients?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We are Maryland-based and can meet in person in Baltimore City, Towson, Columbia, Ellicott City, and across the DMV metro. We also offer Zoom and Google Meet for remote-first clients." }
+          "name": "How do you work with Baltimore clients remotely?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback in comments, and we iterate. No commutes, no scheduling friction, and clients across the US and internationally get the same process." }
         },
         {
           "@type": "Question",
@@ -154,90 +154,90 @@ const areas = [
     county: "Baltimore City",
     character: "Downtown law firms, Inner Harbor hospitality, Federal Hill contractors, Fells Point restaurants, Canton creatives - the densest web design market in Maryland.",
     industries: ["Law / Legal", "Restaurant", "Medical", "Contractor"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Towson",
     county: "Baltimore County",
     character: "County seat with one of Maryland's densest medical corridors, strong professional services market, and Route 45 retail district.",
     industries: ["Medical / Dental", "Professional Services", "Retail"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Columbia",
     county: "Howard County",
     character: "Planned mixed-use hub with tech firms, healthcare campuses, and a strong small business market across all 10 villages.",
     industries: ["Tech / SaaS", "Medical", "Small Business"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Ellicott City",
     county: "Howard County",
     character: "Historic Main Street boutiques alongside modern Route 40 commercial businesses - a two-speed market needing different web strategies.",
     industries: ["Retail / Boutique", "Restaurant", "Contractor"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Catonsville",
     county: "Baltimore County",
     character: "UMBC corridor with education-adjacent services and a Route 40 commercial strip that includes medical, dental, and trade businesses.",
     industries: ["Education Adjacent", "Medical / Dental", "Small Business"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Pikesville",
     county: "Baltimore County",
     character: "Northwest Baltimore County with a concentrated professional and medical services market serving a high-income residential base.",
     industries: ["Medical / Dental", "Law", "Professional Services"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Owings Mills",
     county: "Baltimore County",
     character: "Metro Centre development hub with a rapidly growing suburban professional market and strong healthcare and financial services presence.",
     industries: ["Professional Services", "Medical", "Financial"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Timonium",
     county: "Baltimore County",
     character: "State Fairgrounds area and Route 83 business strip with event venues, contractors, and professional services north of the Beltway.",
     industries: ["Events / Venue", "Contractor", "Professional Services"],
-    inPerson: true,
+    remote: true,
   },
   {
     name: "Essex",
     county: "Baltimore County",
     character: "Eastern Baltimore County waterfront community with active marine, contractor, and trade businesses serving the Chesapeake corridor.",
     industries: ["Contractor / Trades", "Marine / Waterfront", "Retail"],
-    inPerson: false,
+    remote: true,
   },
   {
     name: "Dundalk",
     county: "Baltimore County",
     character: "South Baltimore County working waterfront with strong contractor, auto service, and blue-collar trade business market.",
     industries: ["Contractor / Trades", "Auto / Marine", "Restaurant"],
-    inPerson: false,
+    remote: true,
   },
   {
     name: "Cockeysville",
     county: "Baltimore County",
     character: "Hunt Valley tech and professional services cluster with medical, legal, and financial firms north of the Beltway on Route 83.",
     industries: ["Tech / Professional", "Medical", "Law"],
-    inPerson: false,
+    remote: true,
   },
   {
     name: "Parkville",
     county: "Baltimore County",
     character: "Northeast Baltimore County residential hub with an active small business and restaurant scene along Harford Road and Belair Road corridors.",
     industries: ["Small Business", "Restaurant", "Retail"],
-    inPerson: false,
+    remote: true,
   },
 ];
 
 const faqs = [
   { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Baltimore, MD?",         a: "Most Baltimore small business WordPress websites fall between $1,500 and $10,000. A straightforward 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce or IDX builds start at $6,000. Every quote is fixed-scope with one price and no hourly surprises." },
-  { num: "02", category: "Location",   q: "Do you offer in-person meetings for Baltimore clients?",           a: "Yes. We are Maryland-based and can meet in person in Baltimore City, Towson, Columbia, Ellicott City, and across the DMV metro. We kick off projects with a discovery call - in-person or Zoom - then move to async collaboration for the build phase." },
+  { num: "02", category: "Location",   q: "How do you work with Baltimore clients remotely?",                a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate. Clients across Baltimore, the DMV, and internationally all follow the same process with no loss of quality." },
   { num: "03", category: "Timeline",   q: "How long does a Baltimore website project take?",                  a: "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce or booking builds take 8-10 weeks. The biggest timeline variable is how quickly you review and approve design rounds." },
   { num: "04", category: "Industries", q: "Do you work with Baltimore law firms and medical practices?",     a: "Yes. Law firms, dental practices, and medical clinics make up a significant part of our Baltimore client base. We know HIPAA-aware form design, attorney ethics rules around testimonials, and the correct schema types - LegalService, Dentist, MedicalOrganization - that help these sites rank in competitive local searches." },
   { num: "05", category: "SEO",        q: "Will my Baltimore website rank in Google's Local Pack?",          a: "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct NAP, city-specific service pages, internal linking, and Core Web Vitals in the green. That is the foundation every Local Pack ranking is built on." },
@@ -313,7 +313,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
           <span class="lp-trust-dot" aria-hidden="true"></span>
           <span class="lp-trust-item">400+ projects &middot; 12 countries</span>
           <span class="lp-trust-dot" aria-hidden="true"></span>
-          <span class="lp-trust-item">In-person meetings available in {city}</span>
+          <span class="lp-trust-item">Remote-first &middot; Zoom &middot; Async</span>
         </div>
       </div>
 
@@ -443,8 +443,8 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
           <div class="lp-pillar-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
           </div>
-          <h3 class="lp-pillar-title">In-person, when you want it</h3>
-          <p class="lp-pillar-text">We're within driving distance of every Baltimore-area business. Discovery calls, design reviews, and launch walkthroughs can happen at your office, a coffee shop in Fells Point, or over Zoom - your choice.</p>
+          <h3 class="lp-pillar-title">Remote-first, async by design</h3>
+          <p class="lp-pillar-text">Discovery calls and design reviews run over Zoom. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. No commutes, no scheduling overhead, same quality regardless of where you're based.</p>
         </div>
         <div class="lp-pillar-card">
           <div class="lp-pillar-icon" aria-hidden="true">
@@ -684,7 +684,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
       <div class="lp-section-intro">
         <p class="eyebrow">Service area</p>
         <h2 class="h2-section" id="areas-heading">Which {city}-area cities does Upcoming Brand serve?</h2>
-        <p class="lead">Maryland-based and within 90 minutes of every business in the Baltimore metro. Each market below has distinct industries, competition levels, and web design needs - we know all of them.</p>
+        <p class="lead">Serving Baltimore and the broader Maryland market entirely remotely. Discovery calls on Zoom, async design reviews, weekly staging links. Each market below has distinct industries, competition levels, and web design needs - we know all of them.</p>
       </div>
 
       <!-- Coverage stat bar -->
@@ -700,8 +700,8 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
         </div>
         <div class="lp-cov-divider" aria-hidden="true"></div>
         <div class="lp-cov-item" role="listitem">
-          <span class="lp-cov-num">8</span>
-          <span class="lp-cov-label mono-xs">Cities with in-person</span>
+          <span class="lp-cov-num">100<span class="lp-cov-unit">%</span></span>
+          <span class="lp-cov-label mono-xs">Remote-first workflow</span>
         </div>
         <div class="lp-cov-divider" aria-hidden="true"></div>
         <div class="lp-cov-item" role="listitem">
@@ -725,9 +725,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
                 </div>
                 <div class="lp-area-tile-badges">
                   <span class="lp-area-county mono-xs">{area.county}</span>
-                  {area.inPerson && (
-                    <span class="lp-area-inperson mono-xs" title="In-person meetings available">In-person</span>
-                  )}
+                  <span class="lp-area-remote mono-xs">Remote</span>
                 </div>
               </div>
               <p class="lp-area-char">{area.character}</p>
@@ -765,8 +763,8 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
               <span class="lp-ad-val">Under 4 business hours</span>
             </div>
             <div class="lp-area-detail">
-              <span class="lp-ad-label mono-xs">Meeting options</span>
-              <span class="lp-ad-val">In-person &middot; Zoom &middot; Google Meet</span>
+              <span class="lp-ad-label mono-xs">How we meet</span>
+              <span class="lp-ad-val">Zoom &middot; Google Meet &middot; Async</span>
             </div>
             <div class="lp-area-detail">
               <span class="lp-ad-label mono-xs">Languages</span>
@@ -889,7 +887,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
               <span class="lp-trust-icon" aria-hidden="true">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
               </span>
-              <span>{city}-based &middot; in-person within 90 min of DC</span>
+              <span>Remote-first &middot; serving {city} and all of Maryland</span>
             </div>
             <div class="lp-trust-row">
               <span class="lp-trust-icon" aria-hidden="true">
@@ -2003,13 +2001,13 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     white-space: nowrap;
   }
 
-  .lp-area-inperson {
+  .lp-area-remote {
     font-size: 9px;
     letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: #4a7a28;
-    background: rgba(92,128,64,0.08);
-    border: 1px solid rgba(92,128,64,0.2);
+    color: var(--ink-muted);
+    background: rgba(15,20,25,0.05);
+    border: 1px solid rgba(15,20,25,0.1);
     border-radius: var(--radius-pill);
     padding: 2px 8px;
     white-space: nowrap;
