@@ -1,28 +1,28 @@
 ---
 const cities = [
-  { name: "Baltimore",      county: "Baltimore City" },
-  { name: "Annapolis",      county: "Anne Arundel Co." },
-  { name: "Frederick",      county: "Frederick Co." },
-  { name: "Bethesda",       county: "Montgomery Co." },
-  { name: "Rockville",      county: "Montgomery Co." },
-  { name: "Silver Spring",  county: "Montgomery Co." },
-  { name: "Columbia",       county: "Howard Co." },
-  { name: "Gaithersburg",   county: "Montgomery Co." },
-  { name: "Towson",         county: "Baltimore Co." },
-  { name: "Ellicott City",  county: "Howard Co." },
-  { name: "Germantown",     county: "Montgomery Co." },
-  { name: "Hagerstown",     county: "Washington Co." },
-  { name: "Bowie",          county: "Prince George's Co." },
+  { name: "Baltimore",      county: "Baltimore City",          href: "/locations/baltimore-web-design/" },
+  { name: "Annapolis",      county: "Anne Arundel Co.",        href: "/locations/annapolis-web-design/" },
+  { name: "Frederick",      county: "Frederick Co.",           href: "/locations/frederick-web-design/" },
+  { name: "Bethesda",       county: "Montgomery Co.",          href: "/locations/bethesda-web-design/" },
+  { name: "Rockville",      county: "Montgomery Co.",          href: "/locations/rockville-web-design/" },
+  { name: "Silver Spring",  county: "Montgomery Co.",          href: "/locations/silver-spring-web-design/" },
+  { name: "Columbia",       county: "Howard Co.",              href: "/locations/columbia-web-design/" },
+  { name: "Gaithersburg",   county: "Montgomery Co.",          href: "/locations/gaithersburg-web-design/" },
+  { name: "Towson",         county: "Baltimore Co.",           href: "/locations/towson-web-design/" },
+  { name: "Ellicott City",  county: "Howard Co.",              href: "/locations/ellicott-city-web-design/" },
+  { name: "Germantown",     county: "Montgomery Co.",          href: "/locations/germantown-web-design/" },
+  { name: "Hagerstown",     county: "Washington Co.",          href: "/locations/hagerstown-web-design/" },
+  { name: "Bowie",          county: "Prince George's Co.",     href: "/locations/bowie-web-design/" },
+  { name: "Waldorf",        county: "Charles Co.",             href: "/locations/waldorf-web-design/" },
+  { name: "Catonsville",    county: "Baltimore Co.",           href: "/locations/catonsville-web-design/" },
+  { name: "Dundalk",        county: "Baltimore Co.",           href: "/locations/dundalk-web-design/" },
+  { name: "Westminster",    county: "Carroll Co.",             href: "/locations/westminster-web-design/" },
+  { name: "Salisbury",      county: "Wicomico Co.",            href: "/locations/salisbury-web-design/" },
   { name: "Glen Burnie",    county: "Anne Arundel Co." },
-  { name: "Waldorf",        county: "Charles Co." },
   { name: "Laurel",         county: "Prince George's Co." },
   { name: "College Park",   county: "Prince George's Co." },
-  { name: "Catonsville",    county: "Baltimore Co." },
   { name: "Greenbelt",      county: "Prince George's Co." },
   { name: "Pasadena",       county: "Anne Arundel Co." },
-  { name: "Owings Mills",   county: "Baltimore Co." },
-  { name: "Severn",         county: "Anne Arundel Co." },
-  { name: "Pikesville",     county: "Baltimore Co." },
 ];
 
 const contactDetails = [
@@ -51,21 +51,36 @@ const contactDetails = [
       <div class="locations-main">
         <div class="city-grid" role="list" aria-label="Maryland cities we serve">
           {cities.map((city) => (
-            <div class="city-tile" role="listitem">
-              <span class="city-pin" aria-hidden="true">
-                <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
-                  <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" fill="currentColor"/>
-                  <circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/>
-                </svg>
-              </span>
-              <div class="city-text">
-                <span class="city-name">{city.name}</span>
-                <span class="city-county mono-xs">{city.county}</span>
+            city.href ? (
+              <a href={city.href} class="city-tile city-tile-linked" role="listitem">
+                <span class="city-pin" aria-hidden="true">
+                  <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                    <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" fill="currentColor"/>
+                    <circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/>
+                  </svg>
+                </span>
+                <div class="city-text">
+                  <span class="city-name">{city.name}</span>
+                  <span class="city-county mono-xs">{city.county}</span>
+                </div>
+              </a>
+            ) : (
+              <div class="city-tile" role="listitem">
+                <span class="city-pin" aria-hidden="true">
+                  <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                    <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" fill="currentColor"/>
+                    <circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/>
+                  </svg>
+                </span>
+                <div class="city-text">
+                  <span class="city-name">{city.name}</span>
+                  <span class="city-county mono-xs">{city.county}</span>
+                </div>
               </div>
-            </div>
+            )
           ))}
         </div>
-        <p class="city-more mono-xs">+ Ocean City, Salisbury, Easton, Cumberland &amp; more across Maryland</p>
+        <p class="city-more mono-xs">+ Ocean City, Easton, Cumberland &amp; more across Maryland &middot; <a href="/locations/" class="city-more-link">View all locations &rarr;</a></p>
       </div>
 
       <!-- RIGHT: Map + contact card -->
@@ -192,12 +207,31 @@ const contactDetails = [
     background: var(--cream-soft);
     transition: border-color var(--transition), background var(--transition), transform var(--transition);
     cursor: default;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .city-tile-linked {
+    cursor: pointer;
   }
 
   .city-tile:hover {
     border-color: var(--amber);
     background: var(--amber-glow);
     transform: translateX(3px);
+  }
+
+  .city-more-link {
+    color: var(--amber-deep);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-decoration: none;
+    transition: color var(--transition);
+  }
+
+  .city-more-link:hover {
+    color: var(--ink);
   }
 
   .city-pin {

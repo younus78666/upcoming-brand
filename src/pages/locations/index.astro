@@ -1,0 +1,329 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/locations/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "name": "Web Design Maryland | All Locations | Upcoming Brand",
+      "url": canonical,
+      "description": "WordPress web design for Maryland businesses. Serving 18+ cities across Baltimore, DC metro, and the Eastern Shore. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Locations", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://upcomingbrand.com/#localbusiness",
+      "name": "Upcoming Brand",
+      "description": "WordPress web design studio serving Maryland businesses statewide. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
+      "url": "https://upcomingbrand.com/",
+      "priceRange": "$$-$$$",
+      "areaServed": { "@type": "State", "name": "Maryland" },
+      "serviceType": ["WordPress Web Design", "WooCommerce Development", "SEO", "Web Maintenance"]
+    }
+  ]
+});
+
+const regions = [
+  {
+    label: "Baltimore Area",
+    cities: [
+      { name: "Baltimore",    county: "Baltimore City",  slug: "baltimore-web-design",    hook: "Baltimore City and the I-695 beltway corridor" },
+      { name: "Towson",       county: "Baltimore Co.",   slug: "towson-web-design",        hook: "Baltimore County seat, GBMC, St. Joseph, Towson University" },
+      { name: "Catonsville",  county: "Baltimore Co.",   slug: "catonsville-web-design",   hook: "UMBC, Frederick Road arts district, 1920s-60s housing" },
+      { name: "Dundalk",      county: "Baltimore Co.",   slug: "dundalk-web-design",       hook: "Tradepoint Atlantic, working-class waterfront, 1940s-60s housing" },
+    ],
+  },
+  {
+    label: "DC Metro Corridor",
+    cities: [
+      { name: "Bethesda",      county: "Montgomery Co.", slug: "bethesda-web-design",      hook: "NIH campus, high-income professional corridor, Chevy Chase" },
+      { name: "Rockville",     county: "Montgomery Co.", slug: "rockville-web-design",     hook: "Montgomery County seat, I-270 tech corridor, Pike & Rose" },
+      { name: "Silver Spring", county: "Montgomery Co.", slug: "silver-spring-web-design", hook: "Discovery HQ, diverse urban market, Metro Red Line" },
+      { name: "Gaithersburg",  county: "Montgomery Co.", slug: "gaithersburg-web-design",  hook: "NIST, Kentlands, King Farm, I-270 planned communities" },
+      { name: "Germantown",    county: "Montgomery Co.", slug: "germantown-web-design",     hook: "Most diverse MD community, 130+ languages, MARC rail" },
+      { name: "Bowie",         county: "Prince George's Co.", slug: "bowie-web-design",    hook: "Largest PG County city, Bowie State HBCU, DC+Annapolis 30 min" },
+      { name: "Waldorf",       county: "Charles Co.",    slug: "waldorf-web-design",       hook: "Fast-growing suburb, military families, DC 30 min on US-301" },
+    ],
+  },
+  {
+    label: "Howard County & Annapolis",
+    cities: [
+      { name: "Columbia",       county: "Howard Co.",        slug: "columbia-web-design",       hook: "10-village planned community, $120K+ median HHI, Johns Hopkins HCGH" },
+      { name: "Ellicott City",  county: "Howard Co.",        slug: "ellicott-city-web-design",  hook: "Howard County seat, Old EC National Historic District, $120K+ HHI" },
+      { name: "Annapolis",      county: "Anne Arundel Co.",  slug: "annapolis-web-design",      hook: "State capital, Naval Academy, maritime economy, tourism" },
+    ],
+  },
+  {
+    label: "Western Maryland",
+    cities: [
+      { name: "Frederick",    county: "Frederick Co.",    slug: "frederick-web-design",    hook: "I-70/I-270 crossroads, historic downtown, fast-growing outer suburb" },
+      { name: "Hagerstown",   county: "Washington Co.",   slug: "hagerstown-web-design",   hook: "I-70/I-81 Hub City, tri-state market, Meritus Medical Center" },
+      { name: "Westminster",  county: "Carroll Co.",      slug: "westminster-web-design",  hook: "Carroll County seat, Carroll Hospital, McDaniel College, rural market" },
+    ],
+  },
+  {
+    label: "Eastern Shore",
+    cities: [
+      { name: "Salisbury",    county: "Wicomico Co.",     slug: "salisbury-web-design",    hook: "Delmarva hub, TidalHealth Level II Trauma, Ocean City 30 min" },
+    ],
+  },
+];
+---
+<BaseLayout
+  title="Web Design Maryland | All Locations | Upcoming Brand"
+  description="WordPress web design for Maryland businesses. Serving 18+ cities across Baltimore, DC metro, and the Eastern Shore. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery."
+  canonical={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- Hero -->
+    <section class="loc-hero section-pad-sm">
+      <div class="container">
+        <div class="loc-hero-inner">
+          <p class="eyebrow">Maryland web design</p>
+          <h1 class="h1-display">WordPress web design<br>for every Maryland market</h1>
+          <p class="lead">Based in Maryland and serving 18+ cities statewide. Every project is handled entirely remotely - discovery calls over Zoom, async design reviews, weekly staging links. Fixed-scope pricing. 90+ PageSpeed guaranteed.</p>
+          <div class="loc-hero-ctas">
+            <a href="/contact/" class="cta-btn cta-btn-primary">Book a free discovery call &rarr;</a>
+            <a href="/pricing/" class="cta-btn cta-btn-ghost">View pricing</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Regions -->
+    {regions.map((region) => (
+      <section class="loc-region section-pad-sm">
+        <div class="container">
+          <h2 class="loc-region-heading">
+            <span class="eyebrow-inline">{region.label}</span>
+          </h2>
+          <div class="loc-city-grid">
+            {region.cities.map((city) => (
+              <a href={`/locations/${city.slug}/`} class="loc-city-card">
+                <div class="loc-city-card-top">
+                  <span class="loc-city-pin" aria-hidden="true">
+                    <svg width="12" height="14" viewBox="0 0 12 14" fill="none">
+                      <path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" fill="currentColor"/>
+                      <circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/>
+                    </svg>
+                  </span>
+                  <div>
+                    <span class="loc-city-name">{city.name}</span>
+                    <span class="loc-city-county mono-xs">{city.county}</span>
+                  </div>
+                  <span class="loc-city-arrow" aria-hidden="true">&rarr;</span>
+                </div>
+                <p class="loc-city-hook">{city.hook}</p>
+                <span class="loc-city-cta mono-xs">Web design for {city.name} &rarr;</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- Bottom CTA -->
+    <section class="loc-cta-section section-pad-sm">
+      <div class="container">
+        <div class="loc-cta-inner">
+          <p class="eyebrow">Don't see your city?</p>
+          <h2 class="h2-section">We serve all of Maryland</h2>
+          <p class="lead">Don't see your city listed? We work with businesses across all of Maryland - Laurel, College Park, Glen Burnie, Ocean City, Easton, Cumberland, and everywhere else. Entirely remote means location is never a limitation.</p>
+          <a href="/contact/" class="cta-btn cta-btn-primary">Book a free discovery call &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .loc-hero {
+    background: var(--cream);
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+  }
+
+  .loc-hero-inner {
+    max-width: 680px;
+  }
+
+  .loc-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+
+  /* Region sections */
+  .loc-region {
+    background: var(--paper);
+    border-bottom: 1px solid rgba(15,20,25,0.06);
+  }
+
+  .loc-region:nth-child(even) {
+    background: var(--cream);
+  }
+
+  .loc-region-heading {
+    margin-bottom: 24px;
+  }
+
+  .eyebrow-inline {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+
+  /* City grid */
+  .loc-city-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  .loc-city-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;
+    border: 1.5px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-md);
+    background: var(--cream-soft);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+  }
+
+  .loc-city-card:hover {
+    border-color: var(--amber);
+    background: var(--amber-glow);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(212,147,46,0.12);
+  }
+
+  .loc-city-card-top {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .loc-city-pin {
+    color: var(--amber);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .loc-city-card:hover .loc-city-pin {
+    color: var(--amber-deep);
+  }
+
+  .loc-city-name {
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .loc-city-county {
+    display: block;
+    font-size: 10px;
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  .loc-city-arrow {
+    margin-left: auto;
+    color: var(--amber);
+    font-size: 16px;
+    transition: transform var(--transition);
+    flex-shrink: 0;
+  }
+
+  .loc-city-card:hover .loc-city-arrow {
+    transform: translateX(4px);
+  }
+
+  .loc-city-hook {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.5;
+    flex: 1;
+  }
+
+  .loc-city-cta {
+    font-size: 10px;
+    color: var(--amber-deep);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color var(--transition);
+  }
+
+  .loc-city-card:hover .loc-city-cta {
+    color: var(--ink);
+  }
+
+  /* Bottom CTA */
+  .loc-cta-section {
+    background: var(--ink);
+  }
+
+  .loc-cta-inner {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .loc-cta-section .eyebrow {
+    justify-content: center;
+    color: rgba(244,239,230,0.4);
+  }
+
+  .loc-cta-section .h2-section {
+    color: var(--cream);
+  }
+
+  .loc-cta-section .lead {
+    color: rgba(244,239,230,0.6);
+  }
+
+  .loc-cta-section .cta-btn-primary {
+    margin-top: 8px;
+  }
+
+  @media (max-width: 640px) {
+    .loc-city-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
