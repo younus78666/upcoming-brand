@@ -1,0 +1,637 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/services/seo-audit/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "SEO Audit Service | Technical SEO Audit & Local SEO Audit | Upcoming Brand",
+      "description": "Senior SEO audit service: technical SEO audit, schema audit, Core Web Vitals audit, content gap analysis, and local SEO audit. Prioritised action list. Fixed-scope $1,500. Audit fee credited toward implementation.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services",   "item": "https://upcomingbrand.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "SEO Audit",  "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      "name": "SEO Audit Service",
+      "description": "Senior SEO audit service covering technical SEO, schema, Core Web Vitals, content, and local SEO. Delivered as a prioritised action list. Fixed-scope $1,500.",
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "serviceType": "SEO audit",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "offers": {
+        "@type": "Offer",
+        "price": "1500",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5"
+      },
+      "knowsAbout": [
+        "SEO audit",
+        "SEO audit service",
+        "SEO audit services",
+        "Technical SEO audit",
+        "Local SEO audit",
+        "Website SEO audit",
+        "WordPress SEO audit",
+        "Site audit",
+        "SEO audit report",
+        "SEO audit checklist",
+        "SEO audit cost",
+        "Schema audit",
+        "Core Web Vitals audit"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      "name": "How to run an SEO audit",
+      "description": "The five-phase SEO audit methodology covering technical SEO, schema, Core Web Vitals, content, and local SEO.",
+      "totalTime": "P5D",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Crawl and inventory", "text": "Full site crawl (Screaming Frog or Sitebulb), URL inventory, indexation status, and Search Console performance baseline." },
+        { "@type": "HowToStep", "position": 2, "name": "Technical SEO check", "text": "Schema validation, canonical tags, robots.txt, sitemap, redirect map, hreflang, broken links, server status codes." },
+        { "@type": "HowToStep", "position": 3, "name": "Performance audit",   "text": "Lighthouse + PageSpeed Insights on top 10 pages, Core Web Vitals field data review, image optimization check." },
+        { "@type": "HowToStep", "position": 4, "name": "Content + on-page",   "text": "Title tag and meta optimization, heading hierarchy, internal linking analysis, content gap vs top SERP results." },
+        { "@type": "HowToStep", "position": 5, "name": "Prioritised action list", "text": "Findings sorted by impact and effort. Top 10 fixes ranked. Delivered as a written report you keep regardless of who implements." }
+      ]
+    }
+  ]
+});
+
+const audited = [
+  "Site crawl with full URL inventory and indexation status",
+  "Technical SEO audit: schema, canonicals, robots.txt, sitemap, hreflang",
+  "Core Web Vitals audit on top 10 pages (Lighthouse + field data)",
+  "Schema validation against Google Structured Data Testing tool",
+  "Title tag and meta description audit across the site",
+  "Heading hierarchy and on-page content structure",
+  "Internal linking strategy and topical authority gaps",
+  "Image optimization, alt text, and page weight analysis",
+  "Local SEO audit: GBP, citations, NAP consistency, Local Pack",
+  "Content gap analysis vs top SERP competitors",
+  "Backlink profile review and toxic link check",
+  "Search Console performance data and ranking baseline",
+];
+
+const tiers = [
+  {
+    name: "Standard",
+    price: "$1,500",
+    duration: "5-7 business days",
+    summary: "Comprehensive SEO audit covering technical, on-page, schema, performance, and content. Delivered as a prioritised action list.",
+    fits: ["Sites under 200 pages", "First SEO audit", "Pre-redesign baseline"],
+    href: "/contact/?plan=audit-standard",
+    highlight: true,
+  },
+  {
+    name: "Technical",
+    price: "$2,500",
+    duration: "7-10 business days",
+    summary: "Deep technical SEO audit with site crawl analysis, schema deep-dive, Core Web Vitals on every key page, log file review.",
+    fits: ["Sites 200-2,000 pages", "Migration prep", "Lost-rankings diagnosis"],
+    href: "/contact/?plan=audit-technical",
+  },
+  {
+    name: "Enterprise",
+    price: "From $4,500",
+    duration: "2-3 weeks",
+    summary: "Enterprise audit for large sites: multi-language, multi-region, complex catalogs, log files, and JS rendering deep-dives.",
+    fits: ["Sites 2,000+ pages", "International / multi-language", "Complex JS frameworks"],
+    href: "/contact/?plan=audit-enterprise",
+  },
+];
+
+const whenAudit = [
+  { num: "01", signal: "Rankings dropped and you don't know why",  detail: "Common after migrations, redesigns, or Google updates. An SEO audit identifies the exact cause and provides a prioritised fix list." },
+  { num: "02", signal: "Site looks great, ranks for nothing",        detail: "Beautiful design, empty Search Console. Almost always means missing schema, weak Core Web Vitals, or no internal linking strategy." },
+  { num: "03", signal: "Pre-redesign / pre-migration baseline",      detail: "Before redesigning or migrating, audit the existing site so you can validate post-launch that you didn't lose anything." },
+  { num: "04", signal: "Inheriting a site from another developer",   detail: "If the previous developer skipped schema, broke redirects, or shipped 40+ active plugins, an audit surfaces what needs fixing first." },
+  { num: "05", signal: "Local Pack rankings disappeared",             detail: "Local SEO audit checks GBP, citations, NAP consistency, schema, and local landing pages to identify why you fell out." },
+  { num: "06", signal: "You want a take-it-anywhere fix list",       detail: "Sometimes you don't want a full implementation engagement. The audit alone gives you a prioritised list any developer can execute." },
+];
+
+const auditVsFree = [
+  { factor: "Depth",            free: "Plugin scan: 10-20 surface-level checks", paid: "Senior auditor: 100+ checks across 5 dimensions" },
+  { factor: "Schema",           free: "Generic warnings, no fix recommendations", paid: "Validated against vertical-specific requirements with code-ready fixes" },
+  { factor: "Performance",      free: "Single Lighthouse score reproduced",       paid: "Lighthouse + field data + image and asset audit on top 10 pages" },
+  { factor: "Content + content gap", free: "Skipped entirely",                    paid: "Top SERP competitor analysis + gap inventory" },
+  { factor: "Action list",      free: "PDF list ranked by automation, not impact", paid: "Prioritised by impact x effort with implementation notes" },
+  { factor: "Local SEO",        free: "Skipped or generic",                       paid: "GBP, citations, NAP, Local Pack composition fully audited" },
+];
+
+const faqs = [
+  {
+    q: "What is an SEO audit?",
+    a: "An SEO audit is a comprehensive review of a website's ability to rank in search engines. A quality SEO audit covers five dimensions: technical SEO (schema, canonicals, sitemaps, robots.txt), on-page SEO (titles, meta, headings, internal linking), Core Web Vitals (Lighthouse, page speed, image optimization), content (gap analysis vs competitors), and local SEO (GBP, citations, NAP consistency). The output is a prioritised action list ranked by impact and effort.",
+  },
+  {
+    q: "How much does an SEO audit cost?",
+    a: "Quality SEO audit services run $1,500 to $5,000+ depending on site size and complexity. Standard audits for sites under 200 pages run $1,500-$2,500. Technical audits with deep crawl analysis on sites 200-2,000 pages run $2,500-$4,500. Enterprise audits for sites with 2,000+ pages, multiple languages, or complex JS frameworks start at $4,500. Hourly SEO consultant rates run $80-$300/hr; the better firms have moved to fixed-scope.",
+  },
+  {
+    q: "Are free SEO audits worth anything?",
+    a: "Free SEO audits are usually plugin scans (Ubersuggest, Neil Patel, SEMrush free tier, HubSpot Website Grader) that surface 10-20 surface-level checks. They identify obvious issues like missing meta descriptions or broken canonicals but skip the things that actually move rankings: schema architecture, Core Web Vitals deep-dive, content gaps, internal linking strategy, and Local Pack composition. Useful as a free starting point. Not a substitute for a real audit.",
+  },
+  {
+    q: "What's the difference between a technical SEO audit and a regular SEO audit?",
+    a: "A regular SEO audit covers all five dimensions (technical, on-page, performance, content, local) at sufficient depth. A technical SEO audit focuses just on the technical layer: deep crawl analysis, server log review, schema deep-dive, JavaScript rendering analysis, hreflang validation, redirect chain analysis. Technical audits are typically commissioned when a site has dropped rankings and the owner suspects technical issues, not content issues.",
+  },
+  {
+    q: "How long does an SEO audit take?",
+    a: "Standard audits take 5-7 business days from kickoff to delivery. Technical audits take 7-10 business days. Enterprise audits take 2-3 weeks. The variable is site size: a 50-page site can be fully audited in 3 days; a 5,000-page enterprise site with multi-language requires significantly more crawl time and analysis. We commit to a delivery date in the SOW; if we miss it, we credit 10% of the audit fee.",
+  },
+  {
+    q: "Do I have to implement the audit findings with you?",
+    a: "No. The audit is a standalone deliverable: a written report with prioritised action items you can take to any developer. We sell the audit at $1,500 specifically as a take-it-anywhere starting point. If you do want us to implement, the $1,500 audit fee is credited toward the implementation engagement (Standard SEO services start at $3,500). About 60% of audit clients return for implementation; 40% take the report to their existing team.",
+  },
+  {
+    q: "Can you audit a WordPress site specifically?",
+    a: "Yes. WordPress SEO audits are a significant portion of our audit work. We dive deeper on WordPress-specific issues: plugin bloat, theme schema gaps, RankMath / Yoast configuration, custom post type SEO, page builder code soup, and WooCommerce schema if applicable. WordPress SEO audits are scoped at the same $1,500 standard rate; if your site has more than 200 pages or complex WooCommerce, we'll quote the Technical or Enterprise tier.",
+  },
+];
+---
+<BaseLayout
+  title="SEO Audit Service | Technical SEO Audit from $1,500 | Upcoming Brand"
+  description="Senior SEO audit service: technical SEO audit, schema audit, Core Web Vitals, content gap analysis, local SEO audit. Prioritised action list. Fixed-scope $1,500. Audit fee credited toward implementation."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <section class="page-hero">
+      <div class="container page-hero-inner">
+        <div class="page-eyebrow-strip">
+          <span class="page-eyebrow-line"></span>
+          <span class="page-eyebrow-text">SEO audit service</span>
+          <span class="page-eyebrow-line"></span>
+        </div>
+
+        <h1 class="page-h1">
+          <span class="page-h1-line">SEO audit service</span>
+          <span class="page-h1-line"><em class="page-h1-accent">from a senior auditor</em></span>
+          <span class="page-h1-line page-h1-italic">who actually fixes things.</span>
+        </h1>
+
+        <p class="page-lead">
+          A real <strong>SEO audit service</strong> covering technical SEO, schema, Core Web Vitals, content, and local SEO. Delivered as a prioritised action list, not a 60-page PDF nobody reads. <strong>Fixed-scope $1,500.</strong> Audit fee credited toward implementation if you come back. Better than any free SEO audit tool.
+        </p>
+
+        <div class="page-hero-ctas">
+          <a href="/contact/" class="lp-btn-primary">
+            Book an audit
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="#tiers" class="lp-btn-ghost">
+            View tiers
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="page-hero-trust">
+          <span class="page-trust-line">From $1,500 fixed-scope</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">5-day delivery</span>
+          <span class="page-trust-dot" aria-hidden="true"></span>
+          <span class="page-trust-line">Take-it-anywhere fix list</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEFINITION -->
+    <section class="aud-define">
+      <div class="container">
+        <div class="aud-define-card">
+          <div class="aud-define-head">
+            <span class="aud-define-pulse" aria-hidden="true"></span>
+            <span class="aud-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 aud-define-h2">
+            What is an SEO audit?
+          </h2>
+          <p class="aud-define-answer">
+            <strong>An SEO audit is a comprehensive review of a website's ability to rank in search engines.</strong> Quality SEO audit services cover five dimensions: technical SEO (schema, canonicals, sitemaps, robots.txt), on-page SEO (titles, meta, headings, internal linking), Core Web Vitals (Lighthouse, page speed, asset optimization), content (gap analysis vs competitors), and local SEO (GBP, citations, NAP, Local Pack composition). The output is a prioritised action list ranked by impact and effort, delivered as a written report you keep regardless of who implements.
+          </p>
+          <div class="aud-define-meta">
+            <div class="aud-define-meta-item">
+              <span class="aud-define-meta-label">Investment</span>
+              <span class="aud-define-meta-val">$1,500 (Standard) to $5,000+ (Enterprise)</span>
+            </div>
+            <div class="aud-define-meta-item">
+              <span class="aud-define-meta-label">Delivery</span>
+              <span class="aud-define-meta-val">5-7 business days for standard audit</span>
+            </div>
+            <div class="aud-define-meta-item">
+              <span class="aud-define-meta-label">Output</span>
+              <span class="aud-define-meta-val">Prioritised action list, take-it-anywhere</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT WE AUDIT -->
+    <section class="aud-includes">
+      <div class="container">
+        <div class="aud-includes-head">
+          <p class="aud-section-eyebrow">
+            <span class="aud-section-eyebrow-line"></span>
+            What we audit
+          </p>
+          <h2 class="page-h2">
+            Twelve checks <em>across five dimensions.</em>
+          </h2>
+          <p class="page-section-lead">Technical, on-page, performance, content, and local. Each delivered with code-ready fix recommendations, not just warnings.</p>
+        </div>
+
+        <div class="aud-includes-grid">
+          {audited.map((item, i) => (
+            <div class="aud-include">
+              <span class="aud-include-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="aud-include-check" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2.5 5.5l2 2 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="aud-include-text">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- TIERS -->
+    <section class="aud-tiers" id="tiers">
+      <div class="container">
+        <div class="aud-tiers-head">
+          <p class="aud-section-eyebrow">
+            <span class="aud-section-eyebrow-line"></span>
+            Three tiers
+          </p>
+          <h2 class="page-h2">
+            Three <em>SEO audit packages.</em>
+          </h2>
+          <p class="page-section-lead">Each tier is fixed-scope, documented in a PDF, and held at the stated price for 30 days after the discovery call.</p>
+        </div>
+
+        <div class="aud-tiers-grid">
+          {tiers.map((t) => (
+            <a href={t.href} class={`aud-tier ${t.highlight ? 'aud-tier-highlight' : ''}`}>
+              {t.highlight && <span class="aud-tier-flag">Most chosen</span>}
+              <span class="aud-tier-name">{t.name}</span>
+              <span class="aud-tier-price">{t.price}</span>
+              <span class="aud-tier-duration">{t.duration}</span>
+              <p class="aud-tier-summary">{t.summary}</p>
+              <div class="aud-tier-fits">
+                <span class="aud-tier-fits-label">Fits</span>
+                <ul class="aud-tier-fits-list">
+                  {t.fits.map((f) => (<li>{f}</li>))}
+                </ul>
+              </div>
+              <span class="aud-tier-cta">
+                Book {t.name}
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- WHEN -->
+    <section class="aud-when">
+      <div class="container">
+        <div class="aud-when-head">
+          <p class="aud-section-eyebrow">
+            <span class="aud-section-eyebrow-line"></span>
+            When you need one
+          </p>
+          <h2 class="page-h2">
+            Six signals <em>your site needs an SEO audit.</em>
+          </h2>
+        </div>
+
+        <div class="aud-when-grid">
+          {whenAudit.map((w) => (
+            <article class="aud-when-card">
+              <span class="aud-when-num">{w.num}</span>
+              <h3 class="aud-when-signal">{w.signal}</h3>
+              <p class="aud-when-detail">{w.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON: paid vs free -->
+    <section class="aud-compare">
+      <div class="container">
+        <div class="aud-compare-head">
+          <p class="aud-section-eyebrow">
+            <span class="aud-section-eyebrow-line"></span>
+            Paid vs free SEO audits
+          </p>
+          <h2 class="page-h2">
+            What a paid SEO audit covers <em>that free SEO audit tools skip.</em>
+          </h2>
+        </div>
+
+        <div class="aud-compare-table-wrap">
+          <table class="aud-compare-table">
+            <thead>
+              <tr>
+                <th class="aud-compare-th-factor">Audit dimension</th>
+                <th class="aud-compare-th-free">Free SEO audit tool</th>
+                <th class="aud-compare-th-paid">
+                  <span class="aud-compare-amber-pill">Paid audit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {auditVsFree.map((c) => (
+                <tr>
+                  <td class="aud-compare-factor">{c.factor}</td>
+                  <td class="aud-compare-free">
+                    <span class="aud-compare-icon-no" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M3 3l8 8M11 3l-8 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                    {c.free}
+                  </td>
+                  <td class="aud-compare-paid">
+                    <span class="aud-compare-icon-yes" aria-hidden="true">
+                      <svg width="11" height="11" viewBox="0 0 14 14" fill="none"><path d="M3 7l3 3 5-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    {c.paid}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="aud-faq">
+      <div class="container">
+        <div class="aud-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">SEO audit FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 aud-faq-h2">
+            Seven questions <em>before you book.</em>
+          </h2>
+        </div>
+
+        <div class="aud-faq-list">
+          {faqs.map((f, i) => (
+            <details class="aud-faq-item">
+              <summary class="aud-faq-q">
+                <span class="aud-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="aud-faq-q-text">{f.q}</span>
+                <span class="aud-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="aud-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Book an audit</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            A real SEO audit.<br>
+            <em>$1,500. Five-day delivery.</em>
+          </h2>
+          <p class="page-cta-lead">A free 15-minute call to confirm the audit scope matches your site. We send the SOW within 24 hours and start the audit on signature.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book an audit
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/services/wordpress-seo-services/" class="page-cta-ghost-light">
+              See full SEO services
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px); position: relative; overflow: hidden; text-align: center; }
+  .page-hero::before { content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%); pointer-events: none; }
+  .page-hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px; }
+  .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
+  .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+  .page-h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(32px, 5vw, 60px); line-height: 1.05; letter-spacing: -0.035em; display: flex; flex-direction: column; gap: 4px; margin: 0; text-align: center; }
+  .page-h1-line { display: block; color: var(--ink); }
+  .page-h1-accent { font-style: inherit; position: relative; color: var(--ink); display: inline-block; }
+  .page-h1-accent::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0.05em; height: 0.1em; background: var(--amber); opacity: 0.5; border-radius: 2px; }
+  .page-h1-italic { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .page-lead { font-size: clamp(15px, 1.2vw, 18px); line-height: 1.6; color: var(--ink-soft); max-width: 64ch; margin: 0 auto; }
+  .page-lead strong { font-weight: 600; color: var(--ink); }
+  .page-hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+  .lp-btn-primary, .lp-btn-ghost { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-body); font-size: 15px; font-weight: 500; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap; transition: all 0.22s ease; cursor: pointer; }
+  .lp-btn-primary { background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); }
+  .lp-btn-primary:hover { background: var(--amber-deep); border-color: var(--amber-deep); transform: translateY(-2px); }
+  .lp-btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line-strong); }
+  .lp-btn-ghost:hover { background: var(--ink); color: var(--cream); border-color: var(--ink); transform: translateY(-2px); }
+  .lp-btn-primary svg, .lp-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover svg { transform: translate(2px, -2px); }
+  .page-hero-trust { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 4px; }
+  .page-trust-line { display: inline-flex; align-items: center; gap: 5px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--ink-muted); text-transform: uppercase; }
+  .page-trust-dot { width: 3px; height: 3px; background: var(--ink-muted); border-radius: 50%; opacity: 0.4; }
+  .page-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 12px 0 0; }
+  .page-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .page-section-lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; margin: 16px auto 0; }
+  .aud-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin: 0; font-weight: 500; }
+  .aud-section-eyebrow-line { display: inline-block; width: 32px; height: 1px; background: var(--amber); }
+
+  /* DEFINITION */
+  .aud-define { background: var(--paper); padding: clamp(48px, 6vh, 80px) 0; border-bottom: 1px solid var(--line); }
+  .aud-define-card { max-width: 880px; margin: 0 auto; background: var(--cream); border: 1.5px solid rgba(212,147,46,0.3); border-radius: var(--radius-lg); padding: 36px 40px; position: relative; box-shadow: var(--shadow-sm); }
+  .aud-define-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .aud-define-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .aud-define-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(212,147,46,0.18); animation: aud-pulse 2s ease-in-out infinite; }
+  @keyframes aud-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .aud-define-label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .aud-define-h2 { margin: 0 0 16px; font-size: clamp(22px, 3vw, 32px); }
+  .aud-define-answer { font-size: 16.5px; line-height: 1.6; color: var(--ink); margin: 0 0 20px; }
+  .aud-define-answer strong { font-weight: 600; color: var(--ink); }
+  .aud-define-meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .aud-define-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .aud-define-meta-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .aud-define-meta-val { font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+
+  /* INCLUDES */
+  .aud-includes { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .aud-includes-head { text-align: center; max-width: 720px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .aud-includes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 1100px; margin: 0 auto; }
+  .aud-include { display: grid; grid-template-columns: 28px 22px 1fr; gap: 14px; align-items: flex-start; padding: 16px 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all var(--transition); }
+  .aud-include:hover { border-color: var(--amber); transform: translateX(3px); }
+  .aud-include-num { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.08em; font-weight: 500; margin-top: 2px; }
+  .aud-include-check { width: 22px; height: 22px; border-radius: 50%; background: rgba(92,128,64,0.12); color: var(--green); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .aud-include-text { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+
+  /* TIERS */
+  .aud-tiers { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
+  .aud-tiers-head { text-align: center; max-width: 720px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .aud-tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; align-items: stretch; }
+  .aud-tier { display: flex; flex-direction: column; gap: 10px; padding: 32px 28px 28px; background: var(--cream); border: 1.5px solid var(--line); border-radius: var(--radius-lg); text-decoration: none; color: inherit; transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .aud-tier:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 14px 36px rgba(212,147,46,0.12); }
+  .aud-tier-highlight { background: var(--ink); color: var(--cream); border-color: var(--amber); transform: translateY(-6px); }
+  .aud-tier-highlight::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber)); }
+  .aud-tier-highlight:hover { transform: translateY(-10px); }
+  .aud-tier-flag { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); padding: 4px 14px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .aud-tier-name { font-family: var(--f-display); font-size: 32px; line-height: 1; color: var(--ink); font-weight: 500; letter-spacing: -0.025em; margin-top: 4px; }
+  .aud-tier-highlight .aud-tier-name { color: var(--cream); }
+  .aud-tier-price { font-family: var(--f-display); font-size: 24px; line-height: 1; color: var(--amber-deep); font-weight: 500; margin-top: 8px; }
+  .aud-tier-highlight .aud-tier-price { color: var(--amber); }
+  .aud-tier-duration { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+  .aud-tier-highlight .aud-tier-duration { color: rgba(244,239,230,0.5); }
+  .aud-tier-summary { font-size: 13px; line-height: 1.55; color: var(--ink-muted); margin: 12px 0 0; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .aud-tier-highlight .aud-tier-summary { color: rgba(244,239,230,0.7); border-color: rgba(244,239,230,0.15); }
+  .aud-tier-fits { margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--line); flex: 1; }
+  .aud-tier-highlight .aud-tier-fits { border-color: rgba(244,239,230,0.15); }
+  .aud-tier-fits-label { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 8px; font-weight: 500; }
+  .aud-tier-highlight .aud-tier-fits-label { color: var(--amber); }
+  .aud-tier-fits-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .aud-tier-fits-list li { font-size: 12.5px; color: var(--ink-soft); padding-left: 14px; position: relative; }
+  .aud-tier-fits-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 1px; background: var(--amber); }
+  .aud-tier-highlight .aud-tier-fits-list li { color: rgba(244,239,230,0.75); }
+  .aud-tier-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .aud-tier-highlight .aud-tier-cta { color: var(--amber); border-color: rgba(244,239,230,0.15); }
+
+  /* WHEN */
+  .aud-when { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .aud-when-head { text-align: center; max-width: 760px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .aud-when-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .aud-when-card { padding: 28px 26px 24px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .aud-when-card::before { content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--amber); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
+  .aud-when-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(212,147,46,0.1); }
+  .aud-when-card:hover::before { transform: scaleY(1); }
+  .aud-when-num { font-family: var(--f-display); font-size: 14px; font-style: italic; color: var(--amber-deep); font-weight: 400; }
+  .aud-when-signal { font-family: var(--f-display); font-size: 19px; line-height: 1.25; color: var(--ink); font-weight: 600; letter-spacing: -0.015em; margin: 10px 0 8px; }
+  .aud-when-detail { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; }
+
+  /* COMPARE */
+  .aud-compare { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .aud-compare-head { text-align: center; max-width: 760px; margin: 0 auto 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .aud-compare-table-wrap { max-width: 1000px; margin: 0 auto; overflow-x: auto; border: 1.5px solid var(--line); border-radius: var(--radius-lg); background: var(--cream); box-shadow: var(--shadow-md); }
+  .aud-compare-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  .aud-compare-table th { padding: 18px 20px; text-align: left; background: var(--paper); border-bottom: 2px solid var(--line); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+  .aud-compare-th-factor { color: var(--ink-muted); width: 22%; }
+  .aud-compare-th-free { color: var(--ink-muted); width: 39%; }
+  .aud-compare-th-paid { color: var(--amber-deep); width: 39%; }
+  .aud-compare-amber-pill { display: inline-block; padding: 4px 12px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+  .aud-compare-table td { padding: 14px 20px; border-bottom: 1px dashed var(--line); line-height: 1.5; color: var(--ink-soft); vertical-align: top; }
+  .aud-compare-table tbody tr:last-child td { border-bottom: none; }
+  .aud-compare-table tbody tr:hover td { background: var(--paper); }
+  .aud-compare-factor { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--ink) !important; font-weight: 600; text-transform: uppercase; }
+  .aud-compare-free { color: var(--ink-muted) !important; text-decoration: line-through; text-decoration-color: rgba(176,74,62,0.4); }
+  .aud-compare-paid { color: var(--ink) !important; font-weight: 500; background: rgba(212,147,46,0.04); }
+  .aud-compare-icon-no, .aud-compare-icon-yes { display: inline-flex; align-items: center; justify-content: center; width: 18px; height: 18px; border-radius: 50%; margin-right: 8px; vertical-align: middle; }
+  .aud-compare-icon-no { background: rgba(176,74,62,0.1); color: var(--red); }
+  .aud-compare-icon-yes { background: rgba(92,128,64,0.12); color: var(--green); }
+
+  /* FAQ */
+  .aud-faq { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .aud-faq-head { text-align: center; max-width: 760px; margin: 0 auto 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .aud-faq-h2 { text-align: center; }
+  .aud-faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 880px; margin: 0 auto; }
+  .aud-faq-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition); }
+  .aud-faq-item[open] { border-color: var(--amber); box-shadow: 0 4px 14px rgba(212,147,46,0.08); }
+  .aud-faq-q { display: grid; grid-template-columns: 36px 1fr 24px; gap: 16px; align-items: center; padding: 20px 24px; cursor: pointer; list-style: none; }
+  .aud-faq-q::-webkit-details-marker { display: none; }
+  .aud-faq-item:hover .aud-faq-q { background: rgba(212,147,46,0.04); }
+  .aud-faq-num { font-family: var(--f-display); font-size: 13px; color: var(--amber-deep); font-style: italic; font-weight: 400; }
+  .aud-faq-q-text { font-family: var(--f-display); font-size: 18px; line-height: 1.3; color: var(--ink); font-weight: 500; letter-spacing: -0.015em; }
+  .aud-faq-icon { width: 24px; height: 24px; border-radius: 50%; background: rgba(15,20,25,0.06); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+  .aud-faq-item[open] .aud-faq-icon { background: var(--amber); color: var(--ink); transform: rotate(180deg); }
+  .aud-faq-a { padding: 0 24px 22px 76px; font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin: 0; border-top: 1px dashed var(--line); padding-top: 18px; }
+
+  /* CTA */
+  .page-cta { background: var(--ink); padding: clamp(72px, 10vh, 112px) 0; position: relative; overflow: hidden; }
+  .page-cta::before { content: ""; position: absolute; top: -300px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%); pointer-events: none; }
+  .page-cta::after { content: ""; position: absolute; bottom: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%); pointer-events: none; }
+  .page-cta-inner { max-width: 720px; text-align: center; margin: 0 auto; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead { font-size: 16px; line-height: 1.6; color: rgba(244,239,230,0.65); max-width: 56ch; margin: 0 auto; }
+  .page-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .page-cta-primary { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+  .page-cta-primary:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+  .page-cta-ghost-light { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid rgba(244,239,230,0.2); color: var(--cream); background: transparent; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.22s ease; }
+  .page-cta-ghost-light:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,147,46,0.08); transform: translateY(-2px); }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  @media (max-width: 1024px) {
+    .aud-define-meta { grid-template-columns: 1fr; gap: 12px; }
+    .aud-define-card { padding: 28px 24px; }
+    .aud-includes-grid { grid-template-columns: 1fr; }
+    .aud-tiers-grid { grid-template-columns: 1fr; }
+    .aud-tier-highlight { transform: none; }
+    .aud-tier-highlight:hover { transform: translateY(-4px); }
+    .aud-when-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .aud-when-grid { grid-template-columns: 1fr; }
+    .aud-compare-table { font-size: 12px; }
+    .aud-compare-table th, .aud-compare-table td { padding: 10px 12px; }
+    .aud-faq-q { grid-template-columns: 1fr 24px; gap: 12px; }
+    .aud-faq-num { display: none; }
+    .aud-faq-a { padding-left: 24px; }
+  }
+  @media (max-width: 640px) { .page-eyebrow-line { width: 24px; } }
+</style>
