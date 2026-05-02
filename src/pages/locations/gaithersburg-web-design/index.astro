@@ -1,0 +1,3200 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+
+const city      = "Gaithersburg";
+const stateAbbr = "MD";
+const slug      = "gaithersburg-web-design";
+const canonical = `https://upcomingbrand.com/locations/${slug}/`;
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "name": `Web Design ${city} MD | WordPress & SEO | Upcoming Brand`,
+      "url": canonical,
+      "description": `Web design ${city} businesses trust for real Google rankings. Custom WordPress builds, 90+ PageSpeed, fixed pricing. Serving Gaithersburg, Germantown, North Potomac, and Montgomery County.`,
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://upcomingbrand.com/locations/" },
+          { "@type": "ListItem", "position": 3, "name": `${city} Web Design`, "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "LocalBusiness",
+      "@id": "https://upcomingbrand.com/#localbusiness",
+      "name": "Upcoming Brand",
+      "description": "WordPress web design studio serving Gaithersburg and Montgomery County, Maryland. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
+      "url": "https://upcomingbrand.com/",
+      "priceRange": "$$-$$$",
+      "areaServed": [
+        { "@type": "City", "name": "Gaithersburg"   },
+        { "@type": "City", "name": "Germantown"     },
+        { "@type": "City", "name": "North Potomac"  },
+        { "@type": "City", "name": "Kentlands"      },
+        { "@type": "City", "name": "Shady Grove"    },
+        { "@type": "City", "name": "Montgomery Village" },
+        { "@type": "City", "name": "Clarksburg"     },
+        { "@type": "City", "name": "Boyds"          }
+      ],
+      "serviceType": ["WordPress Web Design", "WooCommerce Development", "SEO", "Web Maintenance"],
+      "currenciesAccepted": "USD",
+      "paymentAccepted": "Credit Card, Bank Transfer"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a WordPress website cost in Gaithersburg, MD?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Most Gaithersburg small business WordPress websites fall between $1,500 and $10,000. A simple 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce, medical practice, or government contractor builds start at $6,000. Every quote is fixed-scope - one price, no hourly surprises." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work with I-270 corridor tech and biotech companies in Gaithersburg?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. The I-270 corridor from Gaithersburg to Rockville is one of the densest biotech and federal research clusters in the United States, anchored by NIST and Shady Grove Medical Center. We build professional services sites for consultants, vendors, and specialty practices serving this corridor - including government contractor capability statements, professional profile pages, and service area pages that rank for the specific searches this market uses." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a Gaithersburg website project take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce, IDX real estate, or medical practice builds take 8-10 weeks. The biggest timeline variable is how quickly you review and approve design rounds." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do you work with Gaithersburg clients remotely?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. Gaithersburg clients across Montgomery County all get the same process with no loss of quality." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my Gaithersburg website rank in Google's Local Pack?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct Gaithersburg NAP, city-specific service pages targeting Kentlands, Shady Grove, and Germantown, internal linking, and Core Web Vitals in the green. That's the foundation every Local Pack ranking in Montgomery County is built on." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you redesign my existing Gaithersburg business website?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many Gaithersburg businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - often built before Core Web Vitals or local schema requirements existed. In a market where clients research multiple vendors before calling, an outdated site costs you leads every week. We migrate to a custom WordPress build with a complete 301 redirect map, pre-launch ranking benchmark, and 30 days of Search Console monitoring post-launch." }
+        }
+      ]
+    }
+  ]
+});
+
+const industries = [
+  {
+    num: "01",
+    name: "Medical & Dental",
+    stat: "+284% appointment inquiries",
+    hook: "Shady Grove Medical Center anchors a dense medical corridor along the I-270/Shady Grove Road interchange - one of the most active outpatient and specialist markets in Montgomery County. Practices here compete for the same high-income patient base as Bethesda and Rockville, with patients who research specialists on mobile before calling any office. We build HIPAA-aware contact forms, Physician and Dentist schema, and appointment pages that rank for condition-specific searches across the Gaithersburg and Germantown healthcare corridor.",
+    schema: "MedicalOrganization",
+    tags: ["HIPAA-aware forms", "Physician schema", "Shady Grove corridor SEO"],
+    href: "/industries/medical-website-design/",
+  },
+  {
+    num: "02",
+    name: "Contractors & Trades",
+    stat: "7s average contractor site load",
+    hook: "Gaithersburg and Germantown have some of the most active contractor and renovation markets in Montgomery County - Kentlands, King Farm, Lakelands, and Montgomery Village all have aging housing stock, active HOA communities, and high-income homeowners who search for contractors online before calling. A fast portfolio site with HomeAndConstructionBusiness schema, a quote request form that actually works, and service area pages covering North Potomac, Clarksburg, and Germantown puts you ahead of every competitor still running a Wix page from 2019.",
+    schema: "HomeAndConstructionBusiness",
+    tags: ["Quote request forms", "HomeAndConstruction schema", "Kentlands / King Farm SEO"],
+    href: "/industries/contractor-website-design/",
+  },
+  {
+    num: "03",
+    name: "Restaurants & Retail",
+    stat: "89% research online first",
+    hook: "The Kentlands Market Square, Rio Washingtonian Center, and Downtown Gaithersburg host a dense concentration of restaurants, specialty retail, and food businesses serving the wealthiest zip codes in Montgomery County. Diners and shoppers search before they visit - and the restaurant with the slow site, the PDF menu, or the broken OpenTable integration loses the reservation to whoever loads first. We build menus that rank, reservation flows that convert, and product pages that load under 2 seconds on mobile.",
+    schema: "Restaurant",
+    tags: ["Menu SEO", "Kentlands / Rio corridor", "Restaurant schema"],
+    href: "/industries/restaurant-website-design/",
+  },
+  {
+    num: "04",
+    name: "Real Estate",
+    stat: "93% of buyers start on Google",
+    hook: "Gaithersburg's planned communities - Kentlands, King Farm, Lakelands, Washingtonian Woods - are among the most searched residential communities in Montgomery County. Buyers from the DC metro area search specific community names with purchase intent before contacting any agent. We build IDX-integrated sites with dedicated community landing pages, RealEstateAgent schema, and neighborhood content that ranks for the searches buyers actually use before contacting an agent.",
+    schema: "RealEstateAgent",
+    tags: ["IDX integration", "Kentlands / King Farm pages", "RealEstateAgent schema"],
+    href: "/industries/real-estate-website-design/",
+  },
+  {
+    num: "05",
+    name: "Law Firms & Professional Services",
+    stat: "+312% organic intake leads",
+    hook: "The I-270 corridor from Gaithersburg to Rockville is dense with government contractors, biotech firms, and the legal and financial services that support them. Family law, estate planning, business formation, and personal injury firms in Gaithersburg compete for clients searching on mobile before calling any office. We build multi-step intake forms, LegalService schema, and attorney profile pages that establish credibility before a potential client makes contact - and service area pages covering Montgomery Village, Germantown, and Clarksburg.",
+    schema: "LegalService",
+    tags: ["Multi-step intake forms", "LegalService schema", "I-270 corridor SEO"],
+    href: "/industries/law-firm-website-design/",
+  },
+  {
+    num: "06",
+    name: "Nonprofits & Community Orgs",
+    stat: "60%+ of donors research online first",
+    hook: "Gaithersburg has a large and active nonprofit sector reflecting the city's demographic diversity - cultural organizations, immigrant services, faith communities, youth programs, and advocacy groups serving one of the most diverse cities in Maryland. Most operate with limited web budgets and sites that don't reflect their actual impact. We build donation-optimized WordPress sites with NGO schema, volunteer intake forms, multilingual-ready structures, and event calendar integration.",
+    schema: "NGO",
+    tags: ["Donation flows", "NGO schema", "Multilingual-ready structure"],
+    href: "/industries/nonprofit-website-design/",
+  },
+];
+
+const phases = [
+  { num: "01", name: "Discovery Call",   timing: "Week 0",     desc: "45-min call to understand your Gaithersburg business, goals, and current site. We figure out if we're the right fit with no sales pitch." },
+  { num: "02", name: "Scope & Proposal", timing: "Days 3-5",   desc: "Written fixed-scope proposal: page list, feature list, timeline, and one price. You approve it or walk away with no pressure." },
+  { num: "03", name: "Design",           timing: "Weeks 1-2",  desc: "AI-assisted custom layouts built and refined to your brand, deployed to a staging URL for real-time client review. No static mockups." },
+  { num: "04", name: "Development",      timing: "Weeks 2-6",  desc: "Full build on staging - Elementor Pro, Astra, RankMath Pro, weekly demo links. We don't launch until you sign off on every page." },
+  { num: "05", name: "SEO & Speed",      timing: "Weeks 5-7",  desc: "RankMath Pro, JSON-LD schema matched to your business type, WP Rocket, Cloudflare CDN. PageSpeed and Core Web Vitals tested before going live." },
+  { num: "06", name: "Launch & Care",    timing: "Weeks 6-10", desc: "Zero-downtime DNS cutover, 30-day Search Console monitoring, recorded admin walkthrough. Optional care plan from $150/mo." },
+];
+
+const areas = [
+  {
+    name: "Kentlands",
+    county: "Montgomery County",
+    character: "Gaithersburg's premier planned community and most recognized address - a walkable New Urbanist neighborhood with Market Square retail, high-income households, active contractor and renovation demand from 30-year-old housing stock, real estate buyers, and dining and boutique retail along the main street corridor.",
+    industries: ["Contractor / Renovation", "Real Estate", "Restaurant / Retail", "Professional Services"],
+    remote: true,
+  },
+  {
+    name: "Shady Grove",
+    county: "Montgomery County",
+    character: "I-270 corridor hub anchored by Shady Grove Medical Center and the Shady Grove Metro Red Line station with dense concentration of medical specialist practices, dental offices, biotech firms, and professional services drawing workers and patients from across Montgomery County and the DC metro.",
+    industries: ["Medical / Dental", "Biotech / Professional Services", "Financial Services"],
+    remote: true,
+  },
+  {
+    name: "Germantown",
+    county: "Montgomery County",
+    character: "One of the largest unincorporated communities in Maryland with a highly diverse population, active contractor and renovation demand from 1970s-1990s housing stock, strong medical and dental market, retail corridors on Middlebrook Road and Crystal Rock Drive, and significant South Asian and Latin American small business community.",
+    industries: ["Contractor / Trades", "Medical / Dental", "Restaurant / Retail", "Small Business"],
+    remote: true,
+  },
+  {
+    name: "North Potomac",
+    county: "Montgomery County",
+    character: "Affluent unincorporated community between Gaithersburg and Potomac with some of the highest household incomes in Montgomery County, estate-scale contractor and renovation demand, high-end real estate market, and private professional services serving executives and federal researchers from the I-270 corridor.",
+    industries: ["Contractor / Luxury Renovation", "Real Estate", "Medical / Dental", "Professional Services"],
+    remote: true,
+  },
+  {
+    name: "King Farm",
+    county: "Montgomery County",
+    character: "Dense mixed-use planned community adjacent to Shady Grove Metro with condos, townhomes, restaurants, retail, and professional offices. High-income, transit-oriented population with strong demand for medical, dental, legal, and professional services within walking distance of their homes.",
+    industries: ["Medical / Dental", "Professional Services", "Restaurant / Retail", "Real Estate"],
+    remote: true,
+  },
+  {
+    name: "Montgomery Village",
+    county: "Montgomery County",
+    character: "Large planned community in central Gaithersburg with a diverse residential base, active contractor market from aging 1970s-era housing, community-serving small businesses, and medical and professional services drawing from a substantial residential catchment.",
+    industries: ["Contractor / Trades", "Medical / Dental", "Small Business"],
+    remote: true,
+  },
+  {
+    name: "Rio / Washingtonian",
+    county: "Montgomery County",
+    character: "Major mixed-use retail and dining destination centered on the Washingtonian Center and Rio Lakefront with high-traffic restaurants, chain and independent retail, movie theaters, and service businesses drawing from across northern Montgomery County and the I-270 corridor.",
+    industries: ["Restaurant", "Retail / Service", "Entertainment"],
+    remote: true,
+  },
+  {
+    name: "Lakelands",
+    county: "Montgomery County",
+    character: "Upscale planned community adjacent to Kentlands with single-family homes, townhomes, a strong neighborhood identity, active real estate and renovation markets, and professional services demand from a high-income residential base.",
+    industries: ["Real Estate", "Contractor / Renovation", "Professional Services"],
+    remote: true,
+  },
+  {
+    name: "Downtown Gaithersburg",
+    county: "Montgomery County",
+    character: "Historic city center with MARC commuter rail, City Hall, independent restaurants and shops, nonprofit and government offices, and a growing arts scene. Serves as the civic and cultural hub for Gaithersburg proper with strong small business and professional services demand.",
+    industries: ["Small Business", "Restaurant", "Nonprofit", "Professional Services"],
+    remote: true,
+  },
+  {
+    name: "Clarksburg",
+    county: "Montgomery County",
+    character: "Fast-growing community at the northern edge of Montgomery County with newer housing developments, active contractor market for both new construction and renovation, growing medical and professional services, and real estate buyers drawn by I-270 access and more affordable pricing than southern Montgomery County.",
+    industries: ["Contractor / Trades", "Real Estate", "Medical / Dental", "Small Business"],
+    remote: true,
+  },
+  {
+    name: "Boyds",
+    county: "Montgomery County",
+    character: "Small rural community in northwestern Montgomery County with large lots, active residential contractor and landscaping market, and real estate buyers seeking semi-rural properties within commuting distance of the I-270 corridor tech and federal research employers.",
+    industries: ["Contractor / Trades", "Real Estate", "Small Business"],
+    remote: true,
+  },
+  {
+    name: "Quince Orchard",
+    county: "Montgomery County",
+    character: "Established residential area in southwestern Gaithersburg with active contractor and renovation demand from 1980s-era housing stock, strong medical and dental corridor on Quince Orchard Road, and diverse small business community serving a large multi-cultural residential catchment.",
+    industries: ["Medical / Dental", "Contractor / Trades", "Small Business / Restaurant"],
+    remote: true,
+  },
+];
+
+const faqs = [
+  { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Gaithersburg, MD?",           a: "Most Gaithersburg small business WordPress websites fall between $1,500 and $10,000. A simple 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce, medical practice, or government contractor builds start at $6,000. Every quote is fixed-scope - one price, no hourly surprises." },
+  { num: "02", category: "Industries", q: "Do you work with I-270 corridor tech and biotech companies in Gaithersburg?", a: "Yes. The I-270 corridor from Gaithersburg to Rockville is one of the densest biotech and federal research clusters in the United States, anchored by NIST and Shady Grove Medical Center. We build professional services sites for consultants, vendors, and specialty practices serving this corridor - including government contractor capability statements, professional profile pages, and service area pages that rank for the specific searches this market uses." },
+  { num: "03", category: "Timeline",   q: "How long does a Gaithersburg website project take?",                     a: "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce, IDX real estate, or medical practice builds take 8-10 weeks. The biggest timeline variable is how quickly you review and approve design rounds." },
+  { num: "04", category: "Location",   q: "How do you work with Gaithersburg clients remotely?",                    a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. Gaithersburg clients across Montgomery County all get the same process with no loss of quality." },
+  { num: "05", category: "SEO",        q: "Will my Gaithersburg website rank in Google's Local Pack?",              a: "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct Gaithersburg NAP, city-specific service pages targeting Kentlands, Shady Grove, and Germantown, internal linking, and Core Web Vitals in the green. That's the foundation every Local Pack ranking in Montgomery County is built on." },
+  { num: "06", category: "Migration",  q: "Can you redesign my existing Gaithersburg business website?",            a: "Yes. Many Gaithersburg businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - often built before Core Web Vitals or local schema requirements existed. In a market where clients research multiple vendors before calling, an outdated site costs you leads every week. We migrate to a custom WordPress build with a complete 301 redirect map, pre-launch ranking benchmark, and 30 days of Search Console monitoring post-launch." },
+];
+
+const catColors: Record<string, { bg: string; text: string; border: string }> = {
+  "Pricing":    { bg: "rgba(212,147,46,0.1)",  text: "var(--amber-deep)", border: "rgba(212,147,46,0.25)"  },
+  "Location":   { bg: "rgba(66,133,244,0.08)", text: "#2a6fc4",           border: "rgba(66,133,244,0.18)"  },
+  "Timeline":   { bg: "rgba(92,128,64,0.09)",  text: "#4a7a28",           border: "rgba(92,128,64,0.2)"    },
+  "Industries": { bg: "rgba(176,74,62,0.08)",  text: "#b04a3e",           border: "rgba(176,74,62,0.18)"   },
+  "SEO":        { bg: "rgba(92,128,64,0.09)",  text: "#4a7a28",           border: "rgba(92,128,64,0.2)"    },
+  "Migration":  { bg: "rgba(160,100,200,0.08)",text: "#7a40b0",           border: "rgba(160,100,200,0.2)"  },
+};
+---
+<BaseLayout
+  title={`Web Design ${city} MD | WordPress & SEO | Upcoming Brand`}
+  description={`Web design ${city} businesses trust for real Google rankings. Custom WordPress builds, 90+ PageSpeed, fixed pricing. Serving Gaithersburg, Germantown, North Potomac, and Montgomery County.`}
+  canonicalUrl={canonical}
+>
+  <!-- JSON-LD in head slot -->
+  <script slot="head" type="application/ld+json" set:html={jsonLd} />
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <!-- ══════════════════════════════════════════
+       HERO
+  ══════════════════════════════════════════ -->
+  <section class="lp-hero" id="hero">
+    <div class="container lp-hero-wrap">
+
+      <!-- LEFT -->
+      <div class="lp-hero-left">
+        <div class="lp-hero-tags">
+          <span class="lp-hero-pill">
+            <span class="lp-hero-dot" aria-hidden="true"></span>
+            WordPress Specialists &middot; {city}, {stateAbbr}
+          </span>
+          <span class="lp-hero-eyebrow">A studio, not a factory</span>
+        </div>
+
+        <h1 class="lp-h1">
+          <span class="lp-h1-line">{city}</span>
+          <span class="lp-h1-line lp-h1-accent-line"><em class="lp-h1-accent">web design that ranks,</em></span>
+          <span class="lp-h1-line lp-h1-italic">converts &amp; keeps working.</span>
+        </h1>
+
+        <p class="lp-hero-lede">
+          Upcoming Brand is a Maryland-based WordPress web design studio. We design and build
+          custom WordPress websites for <strong>Shady Grove medical practices, Kentlands contractors,
+          I-270 corridor professional services, real estate agents,</strong> and restaurants across Gaithersburg,
+          Germantown, and Montgomery County - sites built for the way one of Maryland's most diverse and competitive markets actually searches.
+        </p>
+
+        <div class="lp-hero-ctas">
+          <a href="#contact" class="lp-btn-primary">
+            Book a discovery call
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a href="/industries/" class="lp-btn-ghost">
+            See industries we serve
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
+
+        <div class="lp-hero-trust">
+          <span class="lp-trust-item">
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Top Rated &middot; Upwork
+          </span>
+          <span class="lp-trust-dot" aria-hidden="true"></span>
+          <span class="lp-trust-item">400+ projects &middot; 12 countries</span>
+          <span class="lp-trust-dot" aria-hidden="true"></span>
+          <span class="lp-trust-item">Remote-first &middot; Zoom &middot; Async</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: dark form card -->
+      <div class="lp-hero-right">
+        <div class="lp-form-card">
+          <div class="lp-form-header">
+            <p class="lp-form-eyebrow">Free discovery call &middot; {city}</p>
+            <h2 class="lp-form-title">Tell us about your project</h2>
+            <p class="lp-form-sub">We reply within 4 business hours. No sales pitch - just an honest conversation about what you need.</p>
+          </div>
+
+          <form class="lp-form" id="lp-hero-form" name="gaithersburg-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <input type="hidden" name="form-name" value="gaithersburg-inquiry" />
+            <input type="hidden" name="location" value="Gaithersburg, MD" />
+            <div class="hp-field" aria-hidden="true">
+              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+            </div>
+            <input type="hidden" name="_timestamp" id="lp-form-timestamp" value="" />
+
+            <div class="lp-form-row">
+              <label class="lp-form-label" for="lp-name">Your name</label>
+              <input class="lp-form-input" type="text" id="lp-name" name="name" placeholder="Jane Smith" required autocomplete="name" />
+            </div>
+
+            <div class="lp-form-row">
+              <label class="lp-form-label" for="lp-email">Email address</label>
+              <input class="lp-form-input" type="email" id="lp-email" name="email" placeholder="jane@company.com" required autocomplete="email" />
+            </div>
+
+            <!-- Business type dropdown -->
+            <div class="lp-form-row">
+              <span class="lp-form-label" id="lbl-biz-lp">Business type</span>
+              <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-biz-lp" data-name="business_type">
+                <button type="button" class="cs-trigger" aria-haspopup="listbox">
+                  <span class="cs-val">Select your industry</span>
+                  <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="cs-list" role="listbox" aria-label="Business type">
+                  <li class="cs-opt" role="option" data-value="Law Firm / Attorney">Law Firm / Attorney</li>
+                  <li class="cs-opt" role="option" data-value="Dental Practice">Dental Practice</li>
+                  <li class="cs-opt" role="option" data-value="Medical Clinic">Medical Clinic</li>
+                  <li class="cs-opt" role="option" data-value="Real Estate">Real Estate</li>
+                  <li class="cs-opt" role="option" data-value="Restaurant / Hospitality">Restaurant / Hospitality</li>
+                  <li class="cs-opt" role="option" data-value="Contractor / Trades">Contractor / Trades</li>
+                  <li class="cs-opt" role="option" data-value="Nonprofit / Church">Nonprofit / Church</li>
+                  <li class="cs-opt" role="option" data-value="Ecommerce / Retail">Ecommerce / Retail</li>
+                  <li class="cs-opt" role="option" data-value="Small Business / Startup">Small Business / Startup</li>
+                  <li class="cs-opt" role="option" data-value="Other">Other</li>
+                </ul>
+                <input type="hidden" name="business_type" class="cs-hidden" />
+              </div>
+            </div>
+
+            <!-- Budget dropdown -->
+            <div class="lp-form-row">
+              <span class="lp-form-label" id="lbl-budget-lp">Estimated budget</span>
+              <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-budget-lp" data-name="budget">
+                <button type="button" class="cs-trigger" aria-haspopup="listbox">
+                  <span class="cs-val">Select a range</span>
+                  <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </button>
+                <ul class="cs-list" role="listbox" aria-label="Budget">
+                  <li class="cs-opt" role="option" data-value="$1,500 - $3,500">$1,500 - $3,500 &nbsp;<span class="cs-badge">Starter</span></li>
+                  <li class="cs-opt" role="option" data-value="$3,500 - $6,000">$3,500 - $6,000 &nbsp;<span class="cs-badge">Standard</span></li>
+                  <li class="cs-opt" role="option" data-value="$6,000 - $10,000">$6,000 - $10,000 &nbsp;<span class="cs-badge">Custom</span></li>
+                  <li class="cs-opt" role="option" data-value="Not sure yet">Not sure yet</li>
+                </ul>
+                <input type="hidden" name="budget" class="cs-hidden" />
+              </div>
+            </div>
+
+            <button type="submit" class="lp-form-submit">
+              Get a free quote
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <p class="lp-form-note">No commitment required &middot; Fixed-scope quotes only</p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Stats strip -->
+    <div class="container">
+      <div class="lp-stats" role="list" aria-label="Key statistics">
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">400<span class="amb">+</span></div>
+          <div class="lp-stat-lbl">WordPress projects<br>delivered</div>
+        </div>
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">90<span class="amb">+</span></div>
+          <div class="lp-stat-lbl">PageSpeed score<br>on every launch</div>
+        </div>
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">7<span class="amb">yrs</span></div>
+          <div class="lp-stat-lbl">Full-time<br>WordPress</div>
+        </div>
+        <div class="lp-stat" role="listitem">
+          <div class="lp-stat-num">4<span class="amb">hr</span></div>
+          <div class="lp-stat-lbl">Average<br>response time</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       DEFINITION
+  ══════════════════════════════════════════ -->
+  <section class="lp-definition section-pad-sm" aria-labelledby="def-heading">
+    <div class="container">
+      <div class="lp-def-inner">
+
+        <div class="lp-def-left">
+          <span class="lp-def-label mono-xs">Definition</span>
+          <h2 class="lp-def-heading" id="def-heading">What is custom WordPress web design?</h2>
+          <div class="lp-def-amber-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="lp-def-right">
+          <p class="lp-def-body">Custom WordPress web design means building your site from a blank canvas on WordPress CMS - not installing a $59 theme already running on 40,000 other businesses. For a Gaithersburg contractor competing against three Kentlands or King Farm homeowner searches on mobile, that means a quote request form that actually submits, HomeAndConstructionBusiness schema, and service area pages covering Germantown, Clarksburg, and North Potomac. For a Shady Grove Medical Center-adjacent specialist practice, it means HIPAA-aware contact forms, Physician schema, and appointment pages that rank for condition-specific searches in a high-competition medical corridor. For a Kentlands or Rio restaurant competing for Friday night diners against a dozen nearby options, it means a menu that loads under 1.5 seconds and a reservation flow that works on the first tap. You own the code outright with no monthly platform fee. Every build ships with 90+ PageSpeed, JSON-LD schema matched to your exact business type, and all three Core Web Vitals passing before the DNS transfers.</p>
+
+          <div class="lp-def-facts">
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">90<span class="lp-def-fact-sup">+</span></span>
+              <span class="lp-def-fact-lbl mono-xs">PageSpeed on every build</span>
+            </div>
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">$0</span>
+              <span class="lp-def-fact-lbl mono-xs">Platform fee after launch</span>
+            </div>
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">3</span>
+              <span class="lp-def-fact-lbl mono-xs">Core Web Vitals in the green</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       LOCAL PROOF PILLARS
+  ══════════════════════════════════════════ -->
+  <section class="lp-pillars section-pad-sm" aria-labelledby="pillars-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Why local matters</p>
+        <h2 class="h2-section" id="pillars-heading">What a {city}-based WordPress studio does differently</h2>
+        <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever's available. We're a Maryland studio - remote-first by design, but built around the Gaithersburg and Montgomery County market. We know which corridors are competitive, which industries search most aggressively, and exactly what a Gaithersburg or Germantown client compares before they make contact.</p>
+      </div>
+
+      <div class="lp-pillars-grid">
+        <div class="lp-pillar-card">
+          <div class="lp-pillar-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3 class="lp-pillar-title">Google Local Pack signals</h3>
+          <p class="lp-pillar-text">We set up LocalBusiness schema with correct Gaithersburg NAP data, add areaServed markup covering Montgomery County communities, and build city-specific service pages for the corridors your customers search from. A "gaithersburg contractor" search and a "kentlands plumber" search are different queries - both need a page that answers them directly.</p>
+        </div>
+        <div class="lp-pillar-card">
+          <div class="lp-pillar-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
+          <h3 class="lp-pillar-title">Remote-first, async by design</h3>
+          <p class="lp-pillar-text">Discovery calls and design reviews run over Zoom or Google Meet. The build phase is fully async - you get weekly staging links, leave feedback directly on the page, and we iterate on your schedule. A Gaithersburg contractor reviewing designs between Kentlands job sites gets the same process as a Rio restaurant owner reviewing from the kitchen at 7 AM. No commutes, no scheduling friction.</p>
+        </div>
+        <div class="lp-pillar-card">
+          <div class="lp-pillar-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3 class="lp-pillar-title">{city} industry expertise</h3>
+          <p class="lp-pillar-text">A Kentlands contractor whose homeowner clients compare three quote pages before calling, a Shady Grove specialist practice that needs HIPAA-aware booking flows, a Rio restaurant competing against a dozen nearby options for the same Friday night diners, and a Gaithersburg law firm whose clients research on mobile before calling - they all need completely different sites. Different schema types, different compliance layers, different trust signals. We've built for every one of these verticals in the Gaithersburg and Montgomery County market.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       SERVICES
+  ══════════════════════════════════════════ -->
+  <section class="lp-services section-pad-sm" id="services" aria-labelledby="services-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">What we build</p>
+        <h2 class="h2-section" id="services-heading">What does every {city} business need from its WordPress website?</h2>
+        <p class="lead">From an 8-page starter site to a full WooCommerce store - every build is custom, fixed-scope, and shipped with 90+ PageSpeed and clean schema out of the box.</p>
+      </div>
+
+      <div class="lp-svc-grid">
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h.01M10 8h.01"/><path d="M13 8h4M7 12h10"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">001</span>
+          </div>
+          <h3 class="lp-svc-title">Custom WordPress Design</h3>
+          <p class="lp-svc-desc">Gaithersburg is one of Maryland's most competitive web markets - clients in Kentlands, Shady Grove, and Germantown compare vendors the same way they compare everything else: quickly, on mobile, with high expectations. A Kentlands homeowner comparing three renovation contractors on their phone isn't looking for a colorful homepage - they're looking for social proof, a portfolio, and a quote form that works. A Shady Grove patient comparing two specialist practices judges the appointment page before they judge the credentials. Your design needs to answer the question in the first five seconds. Every design iteration happens on a live staging URL so you see real device behavior before we finalize a single pixel. We build on Elementor Pro and Astra: fast, flexible, yours to own.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Designed for Gaithersburg's high-expectation, diverse audience</li>
+            <li><span class="lp-bullet-dot"></span>Elementor Pro on Astra - fast, flexible, yours</li>
+            <li><span class="lp-bullet-dot"></span>2 design rounds on a live staging URL</li>
+            <li><span class="lp-bullet-dot"></span>Mobile-first, tested on real devices before launch</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">002</span>
+          </div>
+          <h3 class="lp-svc-title">WooCommerce Stores</h3>
+          <p class="lp-svc-desc">Gaithersburg businesses along the Kentlands Market Square, Rio, and Germantown retail corridors leave significant revenue on the table without a proper online sales or booking flow. A Kentlands boutique runs a Square page with no cart. A King Farm wellness studio loses appointment bookings because the form goes nowhere. A Germantown specialty food shop takes phone orders instead of running WooCommerce. We build on a production-tested foundation with checkout flows proven on mobile from day one. Retail stores, service booking deposits, gift cards, and subscription products - each use case is tested end to end before your first customer reaches checkout.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Kentlands, Rio, and Germantown retail and booking flows</li>
+            <li><span class="lp-bullet-dot"></span>Stripe, PayPal, Authorize.net - tested end to end</li>
+            <li><span class="lp-bullet-dot"></span>Abandoned cart recovery wired up at launch</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">003</span>
+          </div>
+          <h3 class="lp-svc-title">Care Plans &amp; Maintenance</h3>
+          <p class="lp-svc-desc">Gaithersburg businesses can't afford downtime - a Shady Grove specialist whose appointment booking breaks on a Monday morning loses patients to the practice across the parking lot. A Kentlands contractor whose quote form stops working during peak season loses jobs to whoever answers first. A Rio restaurant whose reservation system crashes on a Friday night loses those covers to the restaurant next door. These aren't hypotheticals - they're what happens without active maintenance. Our care plan watches your site every week: WordPress core and plugin updates, off-site backups to S3 or Google Drive, and uptime monitoring around the clock. A 4-hour SLA means a real fix the same day, not a queue position. Plans start at $150/month.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Weekly core and plugin updates</li>
+            <li><span class="lp-bullet-dot"></span>Off-site backups to S3 or Google Drive</li>
+            <li><span class="lp-bullet-dot"></span>4-hour incident response SLA - same day fix</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">004</span>
+          </div>
+          <h3 class="lp-svc-title">Speed Optimization</h3>
+          <p class="lp-svc-desc">Gaithersburg clients search on their phones. A Kentlands homeowner comparing two renovation contractors, a patient choosing between two Shady Grove specialists, a diner deciding between three Washingtonian restaurants - they're all making the comparison on a phone in under 30 seconds. If your site loads in 3.8 seconds and the competitor loads in 1.6, the competitor gets the call - not because they're better, but because their site is faster. We run a full speed audit before every launch: LCP under 2.5 seconds, zero layout shift, interaction under 200ms. WP Rocket caches server responses, WebP cuts image weight by 40-60%, Cloudflare CDN serves assets from the nearest edge node. PageSpeed measured on mobile and desktop. 90+ or we don't go live.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>WP Rocket caching + Cloudflare CDN</li>
+            <li><span class="lp-bullet-dot"></span>WebP image conversion on every image</li>
+            <li><span class="lp-bullet-dot"></span>LCP under 2.5s - tested on real mobile devices</li>
+            <li><span class="lp-bullet-dot"></span>90+ PageSpeed guaranteed before launch</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/><path d="M8 14l2-3 2 2 2-4"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">005</span>
+          </div>
+          <h3 class="lp-svc-title">SEO &amp; Schema</h3>
+          <p class="lp-svc-desc">Gaithersburg search is genuinely competitive - you're not just competing against local businesses, you're competing against Rockville and Bethesda firms ranking for Montgomery County terms, and national directories outranking local practices on condition-specific searches. A Gaithersburg contractor searching their own trade finds two Rockville competitors above their listing. A Shady Grove specialist finds a Healthgrades directory above their practice page. We build keyword maps for those searches, write JSON-LD schema matched to your business type - LegalService, MedicalOrganization, Restaurant, HomeAndConstructionBusiness, RealEstateAgent - and structure internal links so Google understands exactly what your site is the authority on in Gaithersburg. That's what generates consistent leads month after month.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Gaithersburg + Kentlands + Germantown keyword mapping</li>
+            <li><span class="lp-bullet-dot"></span>JSON-LD schema for 15+ Gaithersburg business types</li>
+            <li><span class="lp-bullet-dot"></span>Internal linking plan built in from day one</li>
+          </ul>
+        </div>
+
+        <div class="lp-svc-card lp-svc-card-dark">
+          <div class="lp-svc-top">
+            <div class="lp-svc-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3l4 4-4 4M3 7h18"/><path d="M7 21l-4-4 4-4M21 17H3"/></svg>
+            </div>
+            <span class="lp-svc-num mono-xs">006</span>
+          </div>
+          <h3 class="lp-svc-title">Migration &amp; Redesign</h3>
+          <p class="lp-svc-desc">Many Gaithersburg businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals, before mobile-first indexing, before local schema requirements created a real ranking gap. In a market this competitive - where Rockville and Bethesda competitors have had proper schema and 90+ PageSpeed for years - an outdated site isn't neutral, it's actively losing you leads every week. Migrating to a custom WordPress build is the highest-ROI move available, but only if it's handled right. We benchmark your current rankings page by page before touching anything. A complete 301 redirect map covers every URL Google has indexed. Launch is a zero-downtime DNS cutover. Then we monitor Search Console for 30 days to catch any slippage before it compounds.</p>
+          <ul class="lp-svc-bullets">
+            <li><span class="lp-bullet-dot"></span>Full 301 redirect map before launch</li>
+            <li><span class="lp-bullet-dot"></span>Zero-downtime DNS cutover</li>
+            <li><span class="lp-bullet-dot"></span>30-day post-launch Search Console monitoring</li>
+          </ul>
+          <a href="#contact" class="lp-svc-cta">Start a migration project &rarr;</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       GAITHERSBURG MARKET CONTEXT
+  ══════════════════════════════════════════ -->
+  <section class="lp-market section-pad-sm" aria-labelledby="market-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">The Gaithersburg market</p>
+        <h2 class="h2-section" id="market-heading">What makes web design in Gaithersburg different from the rest of Maryland</h2>
+        <p class="lead">Gaithersburg is Montgomery County's second-largest city and one of the most diverse cities in the United States - a tech corridor hub, a medical market, a planned community retail destination, and a multicultural small business ecosystem all in one. The businesses winning in this market have fast, schema-optimized WordPress sites that speak to multiple communities at once.</p>
+      </div>
+
+      <div class="lp-market-grid">
+        <div class="lp-market-card">
+          <div class="lp-market-num">70K<span class="lp-market-unit">+</span></div>
+          <h3 class="lp-market-title">Gaithersburg population - one of the most diverse cities in the US</h3>
+          <p class="lp-market-text">Gaithersburg is consistently ranked among the most ethnically and linguistically diverse cities in America - with large South Asian, Latin American, Chinese, Korean, and African communities alongside its traditionally suburban base. This diversity creates a unique small business and professional services market where multilingual website considerations, community-specific trust signals, and culturally aware design choices are real competitive advantages.</p>
+        </div>
+        <div class="lp-market-card">
+          <div class="lp-market-num">NIST</div>
+          <h3 class="lp-market-title">National Institute of Standards and Technology - federal research anchor</h3>
+          <p class="lp-market-text">NIST's main campus in Gaithersburg employs thousands of researchers, engineers, and administrative staff and anchors a federal research and biotech cluster along the I-270 corridor. The vendors, consultants, specialty practices, and service providers that orbit this cluster need professional websites that signal credibility and rank for the searches federal researchers and contractors use - not generic template sites that every competitor is also running.</p>
+        </div>
+        <div class="lp-market-card">
+          <div class="lp-market-num">5<span class="lp-market-unit">+</span></div>
+          <h3 class="lp-market-title">Major planned communities - Kentlands, King Farm, Lakelands, and more</h3>
+          <p class="lp-market-text">Gaithersburg's planned communities - Kentlands, King Farm, Lakelands, Washingtonian Woods, Montgomery Village - represent some of the most actively searched residential addresses in Montgomery County. Buyers search community names directly before contacting agents. Contractors search by community when targeting renovation work. Each community has its own HOA market, demographic profile, and web design needs that a generic "Gaithersburg" landing page won't capture.</p>
+        </div>
+        <div class="lp-market-card">
+          <div class="lp-market-num">2<span class="lp-market-unit"> Metro stops</span></div>
+          <h3 class="lp-market-title">Shady Grove and Rockville Metro stations - DC commuter market</h3>
+          <p class="lp-market-text">The Shady Grove Metro terminus draws thousands of daily DC commuters through Gaithersburg's commercial corridors. The King Farm and Shady Grove area serves a transit-oriented, high-income professional population that has high expectations for vendor websites. A medical practice, law firm, or restaurant that appears in organic search for "near Shady Grove Metro" captures a population that searches frequently and converts faster than the general suburban audience.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PLATFORM COMPARISON
+  ══════════════════════════════════════════ -->
+  <section class="lp-compare section-pad-sm" aria-labelledby="compare-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Platform comparison</p>
+        <h2 class="h2-section" id="compare-heading">WordPress vs Wix, Squarespace, and page builders for Gaithersburg businesses</h2>
+        <p class="lead">Gaithersburg is a competitive market where your web presence is being compared against Rockville and Bethesda businesses that've had proper schema and 90+ PageSpeed for years. The contractors, medical practices, and restaurants ranking in the Local Pack here are on optimized WordPress. A Wix or GoDaddy site built in 2019 is not competing on the same field - and in a county this active, that gap shows up as lost leads every single week.</p>
+      </div>
+
+      <div class="lp-compare-cols">
+
+        <div class="lp-compare-col lp-compare-col-wp">
+          <div class="lp-compare-col-head">
+            <span class="lp-compare-badge lp-compare-badge-wp mono-xs">Custom WordPress</span>
+            <p class="lp-compare-col-sub">Built from scratch, owned by you</p>
+          </div>
+          <ul class="lp-compare-list">
+            <li class="lp-ci lp-ci-good">You own the code outright - no platform can raise prices or shut you down</li>
+            <li class="lp-ci lp-ci-good">PageSpeed 90+ is achievable with correct setup - Core Web Vitals consistently pass</li>
+            <li class="lp-ci lp-ci-good">Full JSON-LD schema support for Local Pack and rich results</li>
+            <li class="lp-ci lp-ci-good">Any plugin, any integration, any custom function - no artificial limits</li>
+            <li class="lp-ci lp-ci-good">No monthly platform fee after launch - only hosting and optional care plan</li>
+            <li class="lp-ci lp-ci-neutral">Significant changes require a developer - not a drag-and-drop interface</li>
+          </ul>
+        </div>
+
+        <div class="lp-compare-col lp-compare-col-diy">
+          <div class="lp-compare-col-head">
+            <span class="lp-compare-badge lp-compare-badge-diy mono-xs">Wix / Squarespace / GoDaddy</span>
+            <p class="lp-compare-col-sub">Rented platform, shared infrastructure</p>
+          </div>
+          <ul class="lp-compare-list">
+            <li class="lp-ci lp-ci-neutral">Fast to get started - drag and drop, no developer needed initially</li>
+            <li class="lp-ci lp-ci-bad">PageSpeed typically 50-70 - Core Web Vitals frequently fail on mobile</li>
+            <li class="lp-ci lp-ci-bad">Limited schema markup - Local Pack ranking is harder without full JSON-LD control</li>
+            <li class="lp-ci lp-ci-bad">You rent the site - the platform controls your data, your URL structure, your export options</li>
+            <li class="lp-ci lp-ci-bad">Monthly fees scale with traffic, ecommerce features, and storage</li>
+            <li class="lp-ci lp-ci-bad">Migrating away costs time and risks ranking loss without a proper redirect strategy</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <p class="lp-compare-note">
+        Wix and Squarespace are workable starting points for a business that isn't competing on Google. For a Gaithersburg contractor competing for "kentlands contractor" against businesses that've had proper HomeAndConstructionBusiness schema and 90+ PageSpeed for three years, or a Shady Grove medical practice competing against offices that've had Physician schema since 2022 - the platform gap isn't hypothetical. It shows up as position 8 instead of position 2, and in a Montgomery County market where Rockville and Bethesda competitors are already optimized, that position difference is the difference between a full calendar and chasing leads.
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       METRICS STRIP
+  ══════════════════════════════════════════ -->
+  <section class="lp-metrics section-pad-sm" aria-label="Key metrics">
+    <div class="container">
+      <div class="lp-metrics-grid">
+        <div class="lp-metric">
+          <div class="lp-metric-num">90<span class="lp-metric-sup">+</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">PageSpeed<br>guaranteed</div>
+          <div class="lp-metric-sub mono-xs">Every launch, mobile + desktop</div>
+        </div>
+        <div class="lp-metric">
+          <div class="lp-metric-num">$0<span class="lp-metric-sup">hourly</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">Fixed-scope<br>pricing only</div>
+          <div class="lp-metric-sub mono-xs">One price, no surprise invoices</div>
+        </div>
+        <div class="lp-metric">
+          <div class="lp-metric-num">6<span class="lp-metric-sup">-10 wk</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">Typical delivery<br>timeline</div>
+          <div class="lp-metric-sub mono-xs">Discovery call to live site</div>
+        </div>
+        <div class="lp-metric">
+          <div class="lp-metric-num">7<span class="lp-metric-sup">yrs</span></div>
+          <div class="lp-metric-rule" aria-hidden="true"></div>
+          <div class="lp-metric-label">Full-time<br>WordPress</div>
+          <div class="lp-metric-sub mono-xs">400+ projects across 12 countries</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       INDUSTRIES SERVED
+  ══════════════════════════════════════════ -->
+  <section class="lp-industries section-pad-sm" id="industries" aria-labelledby="industries-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Industries we serve</p>
+        <h2 class="h2-section" id="industries-heading">Which {city} industries do we build WordPress sites for?</h2>
+        <p class="lead">Different industries need different schema types, compliance rules, and conversion patterns. We've built for all six of the verticals most active in the Gaithersburg and Montgomery County market - and for a diverse, tech-aware audience that researches online before committing to any vendor.</p>
+      </div>
+
+      <div class="lp-ind-grid">
+        {industries.map((ind) => (
+          <div class="lp-ind-card">
+            <div class="lp-ind-top">
+              <span class="lp-ind-num mono-xs">{ind.num}</span>
+              <span class="lp-ind-stat">{ind.stat}</span>
+            </div>
+            {ind.href ? (
+              <h3 class="lp-ind-name"><a href={ind.href} class="lp-ind-link">{ind.name}</a></h3>
+            ) : (
+              <h3 class="lp-ind-name">{ind.name}</h3>
+            )}
+            <blockquote class="lp-ind-hook">{ind.hook}</blockquote>
+            <div class="lp-ind-schema mono-xs">{ind.schema}</div>
+            <div class="lp-ind-tags">
+              {ind.tags.map((tag) => (
+                <span class="lp-ind-tag">{tag}</span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <p class="lp-ind-more">
+        Serving all 12 vertical niches &rarr; <a href="/industries/">See all industry pages</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PROCESS
+  ══════════════════════════════════════════ -->
+  <section class="lp-process section-pad-sm" id="process" aria-labelledby="process-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">How we work</p>
+        <h2 class="h2-section" id="process-heading">How does an {city} WordPress project actually run from first call to launch?</h2>
+        <p class="lead">Fixed scope, fixed price, fixed timeline. No chasing, no ambiguity - you know what's happening at every stage.</p>
+      </div>
+
+      <div class="lp-process-grid" role="list" aria-label="Project phases">
+        {phases.map((ph) => (
+          <div class="lp-phase" role="listitem">
+            <div class="lp-phase-marker" aria-hidden="true">
+              <span class="lp-phase-num">{ph.num}</span>
+              <div class="lp-phase-line"></div>
+            </div>
+            <div class="lp-phase-body">
+              <div class="lp-phase-header">
+                <h3 class="lp-phase-name">{ph.name}</h3>
+                <span class="lp-phase-timing mono-xs">{ph.timing}</span>
+              </div>
+              <p class="lp-phase-label mono-xs">DELIVERABLES</p>
+              <p class="lp-phase-desc">{ph.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div class="lp-process-cta">
+        <a href="#contact" class="cta-btn">Start with a discovery call &rarr;</a>
+        <p class="lp-process-note mono-xs">No sales pitch on the first call. Just a working conversation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       AREAS SERVED
+  ══════════════════════════════════════════ -->
+  <section class="lp-areas section-pad-sm" id="areas" aria-labelledby="areas-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Service area</p>
+        <h2 class="h2-section" id="areas-heading">Which {city}-area cities does Upcoming Brand serve?</h2>
+        <p class="lead">Serving Gaithersburg and its surrounding communities entirely remotely across Montgomery County. Discovery calls on Zoom, async design reviews, weekly staging links. Each community below has distinct demographics, industries, and web design needs - we know all of them.</p>
+      </div>
+
+      <!-- Coverage stat bar -->
+      <div class="lp-areas-coverage" role="list" aria-label="Service area coverage stats">
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">12</span>
+          <span class="lp-cov-label mono-xs">Service areas</span>
+        </div>
+        <div class="lp-cov-divider" aria-hidden="true"></div>
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">1</span>
+          <span class="lp-cov-label mono-xs">Maryland county</span>
+        </div>
+        <div class="lp-cov-divider" aria-hidden="true"></div>
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">100<span class="lp-cov-unit">%</span></span>
+          <span class="lp-cov-label mono-xs">Remote-first workflow</span>
+        </div>
+        <div class="lp-cov-divider" aria-hidden="true"></div>
+        <div class="lp-cov-item" role="listitem">
+          <span class="lp-cov-num">90<span class="lp-cov-unit">min</span></span>
+          <span class="lp-cov-label mono-xs">To any MD business</span>
+        </div>
+      </div>
+
+      <div class="lp-areas-layout">
+
+        <!-- Rich city grid -->
+        <div class="lp-area-grid" role="list" aria-label="Areas served">
+          {areas.map((area) => (
+            <div class="lp-area-tile" role="listitem">
+              <div class="lp-area-tile-top">
+                <div class="lp-area-name-row">
+                  <span class="lp-area-pin" aria-hidden="true">
+                    <svg width="11" height="13" viewBox="0 0 12 14" fill="none"><path d="M6 0C3.24 0 1 2.24 1 5c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z" fill="currentColor"/><circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/></svg>
+                  </span>
+                  <span class="lp-area-name">{area.name}</span>
+                </div>
+                <div class="lp-area-tile-badges">
+                  <span class="lp-area-county mono-xs">{area.county}</span>
+                  <span class="lp-area-remote mono-xs">Remote</span>
+                </div>
+              </div>
+              <p class="lp-area-char">{area.character}</p>
+              <div class="lp-area-ind-tags">
+                {area.industries.map((ind) => (
+                  <span class="lp-area-ind-tag">{ind}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Dark contact card -->
+        <div class="lp-area-card">
+          <div class="lp-area-badge">
+            <span class="lp-area-dot" aria-hidden="true"></span>
+            <span class="mono-xs">Available now</span>
+          </div>
+          <h3 class="lp-area-card-title">Let's talk about your {city} project</h3>
+
+          <div class="lp-area-card-stat">
+            <div class="lp-ac-stat">
+              <span class="lp-ac-num">70K<span class="lp-ac-pct">+</span></span>
+              <span class="lp-ac-lbl mono-xs">Gaithersburg residents - one of Maryland's most diverse cities</span>
+            </div>
+            <div class="lp-ac-stat">
+              <span class="lp-ac-num">NIST</span>
+              <span class="lp-ac-lbl mono-xs">federal research anchor on I-270 tech corridor</span>
+            </div>
+          </div>
+
+          <div class="lp-area-details">
+            <div class="lp-area-detail">
+              <span class="lp-ad-label mono-xs">Response time</span>
+              <span class="lp-ad-val">Under 4 business hours</span>
+            </div>
+            <div class="lp-area-detail">
+              <span class="lp-ad-label mono-xs">How we meet</span>
+              <span class="lp-ad-val">Zoom &middot; Google Meet &middot; Async</span>
+            </div>
+            <div class="lp-area-detail">
+              <span class="lp-ad-label mono-xs">Languages</span>
+              <span class="lp-ad-val">English &middot; Urdu</span>
+            </div>
+            <div class="lp-area-detail">
+              <span class="lp-ad-label mono-xs">Working hours</span>
+              <span class="lp-ad-val">Mon-Fri &middot; 9 AM - 6 PM EST</span>
+            </div>
+          </div>
+          <a href="#contact" class="cta-btn cta-btn-light lp-area-cta">Book a free discovery call &rarr;</a>
+          <p class="lp-area-note mono-xs">No sales pitch &middot; 45 minutes &middot; Fixed-scope pricing only</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       NEARBY LOCATIONS
+  ══════════════════════════════════════════ -->
+  <section class="lp-nearby section-pad-sm" aria-labelledby="nearby-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Also serving</p>
+        <h2 class="h2-section" id="nearby-heading">WordPress web design across Maryland</h2>
+        <p class="lead">We build and maintain WordPress websites across all of Maryland. Here are nearby cities where we also work.</p>
+      </div>
+      <div class="lp-nearby-grid">
+        <a class="lp-nearby-card" href="/locations/rockville-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Rockville</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Montgomery County &middot; Law, Medical, Gov Contractors</span>
+        </a>
+        <a class="lp-nearby-card" href="/locations/bethesda-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Bethesda</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Montgomery County &middot; NIH, Financial Services, Fine Dining</span>
+        </a>
+        <a class="lp-nearby-card" href="/locations/frederick-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Frederick</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Frederick County &middot; Medical, Contractors, Downtown Dining</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FAQ
+  ══════════════════════════════════════════ -->
+  <section class="lp-faq section-pad-sm" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+      <div class="lp-faq-layout">
+
+        <!-- Sidebar -->
+        <div class="lp-faq-sidebar">
+          <p class="eyebrow">Common questions</p>
+          <h2 class="h2-section lp-faq-h2" id="faq-heading">{city} web design questions answered before the sales call</h2>
+          <p class="lp-faq-sub">Every question we get from {city}-area businesses before they book a discovery call - answered up front.</p>
+
+          <div class="lp-faq-stats">
+            <div class="lp-faq-stat">
+              <span class="lp-faq-stat-num">6</span>
+              <span class="lp-faq-stat-label mono-xs">Questions answered</span>
+            </div>
+            <div class="lp-faq-stat-divider" aria-hidden="true"></div>
+            <div class="lp-faq-stat">
+              <span class="lp-faq-stat-num">4</span>
+              <span class="lp-faq-stat-label mono-xs">Topic areas</span>
+            </div>
+          </div>
+
+          <a href="#contact" class="cta-btn lp-faq-cta">Ask your own question &rarr;</a>
+          <p class="lp-faq-cta-note mono-xs">We reply within 4 business hours</p>
+        </div>
+
+        <!-- Accordion -->
+        <div class="lp-faq-list" id="lp-faq-accordion">
+          {faqs.map((faq, i) => {
+            const cat = catColors[faq.category] || catColors["Pricing"];
+            return (
+              <div class="lp-faq-item" data-faq-item>
+                <button
+                  class="lp-faq-trigger"
+                  aria-expanded={i === 0 ? "true" : "false"}
+                  aria-controls={`lp-faq-answer-${i}`}
+                  id={`lp-faq-btn-${i}`}
+                >
+                  <span class="lp-faq-num mono-xs" aria-hidden="true">{faq.num}</span>
+                  <span class="lp-faq-q">{faq.q}</span>
+                  <span
+                    class="lp-faq-cat mono-xs"
+                    style={`background:${cat.bg};color:${cat.text};border-color:${cat.border}`}
+                    aria-hidden="true"
+                  >{faq.category}</span>
+                  <span class="lp-faq-icon" aria-hidden="true">
+                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                      <path class="lp-plus-h" d="M3 9H15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                      <path class="lp-plus-v" d="M9 3V15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                </button>
+                <div
+                  class="lp-faq-answer"
+                  id={`lp-faq-answer-${i}`}
+                  role="region"
+                  aria-labelledby={`lp-faq-btn-${i}`}
+                  hidden={i !== 0 ? true : undefined}
+                >
+                  <p class="lp-faq-a">{faq.a}</p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       FINAL CTA
+  ══════════════════════════════════════════ -->
+  <section class="lp-cta section-pad-sm" id="contact" aria-labelledby="cta-heading">
+    <div class="container">
+      <div class="lp-cta-inner">
+
+        <!-- Left -->
+        <div class="lp-cta-content">
+          <p class="eyebrow lp-cta-eyebrow">Ready to start?</p>
+          <h2 class="display-lg lp-cta-h2" id="cta-heading">
+            Let's build the WordPress website your {city} business actually needs.
+          </h2>
+
+          <div class="lp-cta-trust">
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </span>
+              <span>Fixed-scope pricing - one price, no surprises</span>
+            </div>
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <span>Reply within 4 business hours</span>
+            </div>
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>Remote-first &middot; serving {city} and all of Maryland</span>
+            </div>
+            <div class="lp-trust-row">
+              <span class="lp-trust-icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              </span>
+              <span>No long-term contracts &middot; 30-day cancel</span>
+            </div>
+          </div>
+
+          <p class="lp-cta-reviews mono-xs">
+            <span class="lp-review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+            5.0 on Google &nbsp;&middot;&nbsp; 99% Job Success on Upwork
+          </p>
+        </div>
+
+        <!-- Right: form card -->
+        <div class="lp-cta-card" aria-label="Contact form">
+          <div class="lp-cta-card-header">
+            <div class="lp-avail-badge">
+              <span class="lp-avail-dot" aria-hidden="true"></span>
+              <span class="mono-xs">Taking new projects - May 2026</span>
+            </div>
+            <h3 class="lp-cta-card-title">Book a free discovery call</h3>
+            <p class="lp-cta-card-sub">45 minutes &middot; No sales pitch &middot; Fixed-scope quote within 24 hours</p>
+          </div>
+
+          <form class="lp-cta-form" name="gaithersburg-contact" method="POST" action="#contact" novalidate>
+            <div class="lp-cta-row">
+              <div class="lp-cta-group">
+                <label class="lp-cta-label mono-xs" for="cta-name-lp">Your name</label>
+                <input class="lp-cta-input" type="text" id="cta-name-lp" name="name" placeholder="Jane Smith" autocomplete="name" />
+              </div>
+              <div class="lp-cta-group">
+                <label class="lp-cta-label mono-xs" for="cta-email-lp">Email address</label>
+                <input class="lp-cta-input" type="email" id="cta-email-lp" name="email" placeholder="jane@business.com" autocomplete="email" />
+              </div>
+            </div>
+
+            <div class="lp-cta-group">
+              <label class="lp-cta-label mono-xs" for="cta-biz-lp">Business type</label>
+              <select class="lp-cta-input lp-cta-select" id="cta-biz-lp" name="business">
+                <option value="" disabled selected>Select your industry</option>
+                <option>Law Firm / Attorney</option>
+                <option>Dental Practice</option>
+                <option>Medical Clinic</option>
+                <option>Real Estate / Brokerage</option>
+                <option>Restaurant / Hospitality</option>
+                <option>Contractor / Trades</option>
+                <option>Nonprofit / Church</option>
+                <option>Small Business / Startup</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="lp-cta-group">
+              <label class="lp-cta-label mono-xs" for="cta-msg-lp">Tell us about your project</label>
+              <textarea class="lp-cta-input lp-cta-textarea" id="cta-msg-lp" name="message" rows="3" placeholder="What does your current site look like? What's not working? Any timeline or budget in mind?"></textarea>
+            </div>
+
+            <button type="submit" class="cta-btn cta-btn-light lp-cta-submit">
+              Send &amp; request a quote &rarr;
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="lp-cta-watermark" aria-hidden="true">{city}</div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* ════════════════════════════════════════════
+     HERO
+  ════════════════════════════════════════════ */
+  .lp-hero {
+    padding-top: clamp(28px, 4vh, 80px);
+    padding-bottom: 0;
+    overflow: hidden;
+  }
+
+  .lp-hero-wrap {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: clamp(24px, 4vw, 64px);
+    align-items: center;
+    padding-bottom: clamp(28px, 4vh, 64px);
+  }
+
+  .lp-hero-left {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(16px, 2.5vh, 28px);
+  }
+
+  .lp-hero-tags {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .lp-hero-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .lp-hero-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: lp-dot-pulse 2.4s ease-in-out infinite;
+  }
+
+  @keyframes lp-dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lp-hero-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+
+  .lp-h1 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(28px, min(4.5vw, 6vh), 64px);
+    line-height: 1.0;
+    letter-spacing: -0.035em;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin: 0;
+  }
+
+  .lp-h1-line         { display: block; color: var(--ink); }
+  .lp-h1-accent-line  { display: block; }
+
+  .lp-h1-accent {
+    font-style: inherit;
+    position: relative;
+    color: var(--ink);
+  }
+  .lp-h1-accent::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: 0.05em;
+    height: 0.1em;
+    background: var(--amber);
+    opacity: 0.5;
+    border-radius: 2px;
+  }
+
+  .lp-h1-italic {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--amber-deep);
+  }
+
+  .lp-hero-lede {
+    font-size: clamp(14px, min(1.2vw, 2vh), 17px);
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 56ch;
+    margin: 0;
+  }
+  .lp-hero-lede strong { font-weight: 600; color: var(--ink); }
+
+  .lp-hero-ctas {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .lp-btn-primary,
+  .lp-btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 14px 26px;
+    border-radius: var(--radius-pill);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: all 0.22s ease;
+    cursor: pointer;
+  }
+  .lp-btn-primary {
+    background: var(--ink);
+    color: var(--cream);
+    border: 1.5px solid var(--ink);
+  }
+  .lp-btn-primary:hover {
+    background: var(--amber-deep);
+    border-color: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+  .lp-btn-ghost {
+    background: transparent;
+    color: var(--ink);
+    border: 1.5px solid var(--line-strong);
+  }
+  .lp-btn-ghost:hover {
+    background: var(--ink);
+    color: var(--cream);
+    border-color: var(--ink);
+    transform: translateY(-2px);
+  }
+  .lp-btn-primary svg,
+  .lp-btn-ghost  svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lp-btn-ghost:hover   svg { transform: translate(2px, -2px); }
+
+  .lp-hero-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .lp-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+  }
+  .lp-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .lp-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: var(--line-strong);
+    flex-shrink: 0;
+  }
+
+  /* Right: form card */
+  .lp-hero-right { align-self: start; }
+
+  .lp-form-card {
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: var(--radius-lg);
+    padding: clamp(20px, 2.5vh, 32px) clamp(20px, 2.5vw, 32px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .lp-form-header { margin-bottom: clamp(14px, 2vh, 22px); }
+
+  .lp-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-bottom: 8px;
+  }
+
+  .lp-form-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 2vw, 24px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    color: var(--cream);
+  }
+
+  .lp-form-sub {
+    font-size: 13px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.5);
+  }
+
+  .lp-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(10px, 1.5vh, 14px);
+  }
+
+  .hp-field {
+    position: absolute;
+    left: -9999px; width: 1px; height: 1px;
+    overflow: hidden; opacity: 0; pointer-events: none;
+  }
+
+  .lp-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    position: relative;
+  }
+
+  .lp-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.45);
+  }
+
+  .lp-form-input {
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s;
+    width: 100%;
+  }
+  .lp-form-input::placeholder { color: rgba(244,239,230,0.28); }
+  .lp-form-input:focus { border-color: var(--amber); }
+
+  /* Custom dropdowns (shared with homepage Hero) */
+  .cs-wrap { position: relative; }
+
+  .cs-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(244,239,230,0.07);
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    padding: clamp(8px, 1.2vh, 11px) 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: rgba(244,239,230,0.4);
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+  .cs-trigger:focus { outline: none; border-color: var(--amber); }
+  .cs-wrap[aria-expanded="true"] .cs-trigger { border-color: var(--amber); color: var(--cream); }
+  .cs-wrap.has-value .cs-trigger { color: var(--cream); }
+
+  .cs-chevron {
+    flex-shrink: 0;
+    color: rgba(244,239,230,0.35);
+    transition: transform 0.2s;
+  }
+  .cs-wrap[aria-expanded="true"] .cs-chevron { transform: rotate(180deg); }
+
+  .cs-list {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #1C232B;
+    border: 1px solid rgba(244,239,230,0.15);
+    border-radius: var(--radius-sm);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    z-index: 100;
+    list-style: none;
+    margin: 0;
+    padding: 4px;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+  .cs-wrap[aria-expanded="true"] .cs-list { display: block; }
+
+  .cs-opt {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.7);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .cs-opt:hover { background: rgba(212,147,46,0.15); color: var(--cream); }
+  .cs-opt.selected { background: rgba(212,147,46,0.2); color: var(--amber); }
+
+  .cs-badge {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.7;
+    margin-left: auto;
+  }
+  .cs-hidden { display: none; }
+
+  .lp-form-submit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    width: 100%;
+    background: var(--amber);
+    color: var(--ink);
+    font-family: var(--f-body);
+    font-size: 15px;
+    font-weight: 600;
+    padding: clamp(11px, 1.5vh, 15px) 24px;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background 0.22s, transform 0.22s;
+    margin-top: 2px;
+  }
+  .lp-form-submit:hover {
+    background: var(--amber-deep);
+    color: var(--cream);
+    transform: translateY(-2px);
+  }
+  .lp-form-submit svg { transition: transform 0.22s; flex-shrink: 0; }
+  .lp-form-submit:hover svg { transform: translateX(3px); }
+
+  .lp-form-note {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-align: center;
+    margin-top: -4px;
+  }
+
+  /* Stats strip */
+  .lp-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    padding-block: 28px;
+  }
+
+  .lp-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding-inline: clamp(12px, 2vw, 32px);
+    border-right: 1px solid var(--line);
+    text-align: center;
+  }
+  .lp-stat:last-child { border-right: none; }
+
+  .lp-stat-num {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .lp-stat-num .amb {
+    color: var(--amber-deep);
+    font-style: italic;
+    font-weight: 300;
+  }
+  .lp-stat-lbl {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.4;
+  }
+
+  /* ════════════════════════════════════════════
+     SHARED SECTION INTRO
+  ════════════════════════════════════════════ */
+  .lp-section-intro {
+    max-width: 640px;
+    margin: 0 auto 48px;
+    text-align: center;
+  }
+  .lp-section-intro .eyebrow { justify-content: center; }
+
+  /* ════════════════════════════════════════════
+     PILLARS
+  ════════════════════════════════════════════ */
+  .lp-pillars {
+    background: var(--cream-soft);
+  }
+
+  .lp-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .lp-pillar-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    box-shadow: 0 2px 10px rgba(15,20,25,0.06);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .lp-pillar-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(15,20,25,0.11);
+  }
+
+  .lp-pillar-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+  }
+
+  .lp-pillar-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 20px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .lp-pillar-text {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+  }
+
+  /* ════════════════════════════════════════════
+     SERVICES
+  ════════════════════════════════════════════ */
+  .lp-services { background: var(--paper); }
+
+  .lp-svc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+  }
+
+  .lp-svc-card {
+    background: var(--cream-soft);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .lp-svc-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(15,20,25,0.12);
+  }
+
+  .lp-svc-card-dark {
+    background: var(--ink);
+    border-color: rgba(244,239,230,0.08);
+    color: var(--cream);
+  }
+  .lp-svc-card-dark:hover {
+    box-shadow: 0 14px 40px rgba(0,0,0,0.22);
+  }
+
+  .lp-svc-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
+
+  .lp-svc-icon {
+    width: 44px; height: 44px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--amber);
+    flex-shrink: 0;
+  }
+
+  .lp-svc-num {
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    font-size: 11px;
+    opacity: 0.7;
+    padding-top: 2px;
+  }
+
+  .lp-svc-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.5vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .lp-svc-card-dark .lp-svc-title { color: var(--cream); }
+
+  .lp-svc-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    flex: 1;
+  }
+  .lp-svc-card-dark .lp-svc-desc { color: rgba(244,239,230,0.6); }
+
+  .lp-svc-bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .lp-svc-bullets li {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    font-size: 12px;
+    color: var(--ink-muted);
+    line-height: 1.45;
+  }
+  .lp-svc-card-dark .lp-svc-bullets li { color: rgba(244,239,230,0.45); }
+
+  .lp-bullet-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--amber);
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+
+  .lp-svc-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(244,239,230,0.12);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--amber);
+    text-decoration: none;
+    transition: opacity var(--transition);
+  }
+  .lp-svc-cta:hover { opacity: 0.75; }
+
+  /* ════════════════════════════════════════════
+     METRICS
+  ════════════════════════════════════════════ */
+  .lp-metrics {
+    background: var(--ink);
+  }
+
+  .lp-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+
+  .lp-metric {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 32px 24px;
+    border-right: 1px solid rgba(244,239,230,0.08);
+    border-radius: var(--radius-sm);
+  }
+  .lp-metric:last-child { border-right: none; }
+
+  .lp-metric-num {
+    font-family: var(--f-display);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+  }
+
+  .lp-metric-sup {
+    font-family: var(--f-display);
+    font-size: 0.45em;
+    font-style: italic;
+    color: rgba(212,147,46,0.7);
+    letter-spacing: 0;
+    white-space: nowrap;
+  }
+
+  .lp-metric-rule {
+    width: 32px;
+    height: 1px;
+    background: rgba(212,147,46,0.35);
+  }
+
+  .lp-metric-label {
+    font-family: var(--f-display);
+    font-size: clamp(14px, 1.3vw, 17px);
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    line-height: 1.3;
+  }
+
+  .lp-metric-sub {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.3);
+    text-transform: uppercase;
+  }
+
+  /* ════════════════════════════════════════════
+     INDUSTRIES
+  ════════════════════════════════════════════ */
+  .lp-industries { background: var(--cream-soft); }
+
+  .lp-ind-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-bottom: 32px;
+  }
+
+  .lp-ind-card {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .lp-ind-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 28px rgba(15,20,25,0.1);
+  }
+
+  .lp-ind-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .lp-ind-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+  }
+
+  .lp-ind-stat {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    color: #4a7a28;
+    background: rgba(92,128,64,0.09);
+    border: 1px solid rgba(92,128,64,0.2);
+    border-radius: var(--radius-pill);
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+
+  .lp-ind-name {
+    font-family: var(--f-display);
+    font-size: clamp(17px, 1.7vw, 21px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+
+  .lp-ind-hook {
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    border-left: 3px solid var(--amber);
+    padding-left: 12px;
+    margin: 0;
+    font-style: normal;
+  }
+
+  .lp-ind-schema {
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    padding: 3px 10px;
+    width: fit-content;
+  }
+
+  .lp-ind-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .lp-ind-tag {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    background: var(--cream-soft);
+    border: 1px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-pill);
+    padding: 3px 9px;
+  }
+
+  .lp-ind-more {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink-muted);
+    text-align: center;
+  }
+  .lp-ind-more a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* ════════════════════════════════════════════
+     PROCESS
+  ════════════════════════════════════════════ */
+  .lp-process { background: var(--paper); }
+
+  .lp-process-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    margin-bottom: 40px;
+    background: var(--cream-soft);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .lp-phase {
+    display: flex;
+    flex-direction: column;
+    padding: 24px 20px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    background: var(--paper);
+    transition: background var(--transition);
+  }
+  .lp-phase:hover { background: var(--cream-soft); }
+  .lp-phase:nth-child(3n)                            { border-right: none; }
+  .lp-phase:nth-child(4), .lp-phase:nth-child(5),
+  .lp-phase:nth-child(6)                             { border-bottom: none; }
+
+  .lp-phase-marker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+
+  .lp-phase-num {
+    width: 40px; height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    border-radius: 50%;
+    color: var(--amber);
+    font-family: var(--f-display);
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 400;
+    flex-shrink: 0;
+  }
+
+  .lp-phase-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  .lp-phase-body { display: flex; flex-direction: column; gap: 8px; }
+
+  .lp-phase-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .lp-phase-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.5vw, 18px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .lp-phase-timing {
+    color: var(--amber);
+    white-space: nowrap;
+    letter-spacing: 0.06em;
+    font-size: 10px;
+  }
+
+  .lp-phase-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber);
+    opacity: 0.8;
+  }
+
+  .lp-phase-desc {
+    font-size: 13px;
+    color: var(--ink-muted);
+    line-height: 1.6;
+  }
+
+  .lp-process-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lp-process-note {
+    color: var(--ink-muted);
+    letter-spacing: 0.06em;
+    font-size: 10px;
+  }
+
+  /* ════════════════════════════════════════════
+     AREAS
+  ════════════════════════════════════════════ */
+  .lp-areas { background: var(--cream-soft); }
+
+  /* Coverage bar */
+  .lp-areas-coverage {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    background: var(--paper);
+    overflow: hidden;
+    margin-bottom: 32px;
+    box-shadow: 0 1px 6px rgba(15,20,25,0.05);
+  }
+
+  .lp-cov-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 18px 24px;
+    flex: 1;
+    text-align: center;
+  }
+
+  .lp-cov-num {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 2.2vw, 30px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--amber-deep);
+    line-height: 1;
+  }
+
+  .lp-cov-unit {
+    font-size: 0.55em;
+    font-style: italic;
+    color: var(--amber);
+    letter-spacing: 0;
+  }
+
+  .lp-cov-label {
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    line-height: 1.3;
+  }
+
+  .lp-cov-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(15,20,25,0.07);
+    flex-shrink: 0;
+  }
+
+  /* Main layout */
+  .lp-areas-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 28px;
+    align-items: start;
+  }
+
+  /* Rich 2-col tile grid */
+  .lp-area-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .lp-area-tile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 18px 16px 14px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    border-radius: var(--radius-sm);
+    background: var(--paper);
+    transition: border-color var(--transition), border-left-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    cursor: default;
+  }
+  .lp-area-tile:hover {
+    border-color: rgba(15,20,25,0.1);
+    border-left-color: var(--amber);
+    transform: translateX(3px);
+    box-shadow: 0 4px 16px rgba(15,20,25,0.08);
+  }
+
+  /* Tile top row: name + badges */
+  .lp-area-tile-top {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lp-area-name-row {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+
+  .lp-area-pin {
+    color: var(--amber);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+  }
+  .lp-area-tile:hover .lp-area-pin { color: var(--amber-deep); }
+
+  .lp-area-name {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.4vw, 17px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .lp-area-tile-badges {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .lp-area-county {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.08);
+    border: 1px solid rgba(212,147,46,0.2);
+    border-radius: var(--radius-pill);
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+
+  .lp-area-remote {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    background: rgba(15,20,25,0.05);
+    border: 1px solid rgba(15,20,25,0.1);
+    border-radius: var(--radius-pill);
+    padding: 2px 8px;
+    white-space: nowrap;
+  }
+
+  /* Character line */
+  .lp-area-char {
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* Industry tags */
+  .lp-area-ind-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 2px;
+  }
+
+  .lp-area-ind-tag {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.05em;
+    color: var(--ink-muted);
+    background: var(--cream-soft);
+    border: 1px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-pill);
+    padding: 2px 8px;
+    line-height: 1.4;
+  }
+
+  /* Area card (dark) */
+  .lp-area-card {
+    background: var(--ink);
+    border: 1px solid rgba(244,239,230,0.08);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 24px 20px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 88px;
+  }
+
+  /* Stats inside card */
+  .lp-area-card-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 16px;
+    background: rgba(212,147,46,0.06);
+    border: 1px solid rgba(212,147,46,0.12);
+    border-radius: var(--radius-sm);
+  }
+
+  .lp-ac-stat { display: flex; align-items: baseline; gap: 10px; }
+
+  .lp-ac-num {
+    font-family: var(--f-display);
+    font-size: 26px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+
+  .lp-ac-pct {
+    font-size: 0.55em;
+    font-style: italic;
+    color: rgba(212,147,46,0.7);
+  }
+
+  .lp-ac-lbl {
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(244,239,230,0.5);
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .lp-area-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.3);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.08);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lp-area-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lp-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  @keyframes lp-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+  }
+
+  .lp-area-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(16px, 1.6vw, 19px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    line-height: 1.25;
+  }
+
+  .lp-area-details {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(244,239,230,0.08);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+
+  .lp-area-detail {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 11px 13px;
+    border-bottom: 1px solid rgba(244,239,230,0.07);
+    transition: background var(--transition);
+  }
+  .lp-area-detail:last-child { border-bottom: none; }
+  .lp-area-detail:hover { background: rgba(244,239,230,0.04); }
+
+  .lp-ad-label {
+    color: rgba(244,239,230,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 9px;
+  }
+
+  .lp-ad-val {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(244,239,230,0.85);
+  }
+
+  .lp-area-cta { width: 100%; justify-content: center; }
+
+  .lp-area-note {
+    text-align: center;
+    color: rgba(244,239,230,0.3);
+    letter-spacing: 0.06em;
+    font-size: 10px;
+    margin-top: -8px;
+  }
+
+  /* ════════════════════════════════════════════
+     FAQ
+  ════════════════════════════════════════════ */
+  .lp-faq { background: var(--paper); }
+
+  .lp-faq-layout {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .lp-faq-sidebar {
+    position: sticky;
+    top: 88px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .lp-faq-h2 {
+    font-size: clamp(20px, 2vw, 26px);
+    line-height: 1.2;
+  }
+
+  .lp-faq-sub {
+    font-size: 14px;
+    color: var(--ink-muted);
+    line-height: 1.65;
+    margin-top: -4px;
+  }
+
+  .lp-faq-stats {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 14px 18px;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-sm);
+    background: var(--cream-soft);
+  }
+
+  .lp-faq-stat { display: flex; flex-direction: column; gap: 3px; }
+
+  .lp-faq-stat-num {
+    font-family: var(--f-display);
+    font-size: 28px;
+    font-weight: 300;
+    letter-spacing: -0.04em;
+    color: var(--amber);
+    line-height: 1;
+  }
+
+  .lp-faq-stat-label {
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lp-faq-stat-divider {
+    width: 1px; height: 36px;
+    background: var(--line);
+  }
+
+  .lp-faq-cta { width: 100%; justify-content: center; text-align: center; }
+
+  .lp-faq-cta-note {
+    text-align: center;
+    color: var(--ink-muted);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    margin-top: -8px;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .lp-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1.5px solid rgba(15,20,25,0.07);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(15,20,25,0.05);
+  }
+
+  .lp-faq-item {
+    border-bottom: 1px solid rgba(15,20,25,0.07);
+    border-left: 3px solid transparent;
+    transition: border-left-color var(--transition), background var(--transition);
+    background: var(--paper);
+  }
+  .lp-faq-item:last-child { border-bottom: none; }
+  .lp-faq-item:has(.lp-faq-trigger[aria-expanded="true"]) {
+    border-left-color: var(--amber);
+    background: var(--cream-soft);
+  }
+
+  .lp-faq-trigger {
+    display: grid;
+    grid-template-columns: 36px 1fr auto auto;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 18px 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  .lp-faq-trigger:hover .lp-faq-q { color: var(--amber-deep); }
+
+  .lp-faq-num {
+    font-size: 11px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+
+  .lp-faq-q {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--ink);
+    transition: color var(--transition);
+  }
+
+  .lp-faq-cat {
+    font-size: 9px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: var(--radius-pill);
+    border: 1px solid;
+    white-space: nowrap;
+    flex-shrink: 0;
+    display: none;
+  }
+  @media (min-width: 800px) { .lp-faq-cat { display: inline-block; } }
+
+  .lp-faq-icon {
+    flex-shrink: 0;
+    width: 18px; height: 18px;
+    color: var(--ink-muted);
+    transition: color var(--transition), transform var(--transition);
+  }
+  .lp-faq-trigger[aria-expanded="true"] .lp-faq-icon {
+    color: var(--amber);
+    transform: rotate(45deg);
+  }
+
+  .lp-faq-answer { overflow: hidden; }
+  .lp-faq-answer:not([hidden]) {
+    display: block;
+    animation: lp-faq-open 200ms ease forwards;
+  }
+  @keyframes lp-faq-open {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .lp-faq-a {
+    padding: 0 20px 20px 70px;
+    font-size: 14px;
+    line-height: 1.75;
+    color: var(--ink-muted);
+  }
+
+  /* ════════════════════════════════════════════
+     CTA (dark)
+  ════════════════════════════════════════════ */
+  .lp-cta {
+    background: var(--ink);
+    color: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lp-cta-watermark {
+    position: absolute;
+    bottom: -24px;
+    right: -12px;
+    font-family: var(--f-display);
+    font-size: clamp(60px, 14vw, 180px);
+    font-weight: 300;
+    font-style: italic;
+    letter-spacing: -0.04em;
+    color: var(--cream);
+    opacity: 0.03;
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    line-height: 1;
+  }
+
+  .lp-cta-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 460px;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .lp-cta-content { display: flex; flex-direction: column; gap: 24px; }
+
+  .lp-cta-eyebrow {
+    color: rgba(244,239,230,0.45);
+    margin-top: -8px;
+  }
+  .lp-cta-eyebrow::before { background: rgba(244,239,230,0.25); }
+
+  .lp-cta-h2 {
+    color: var(--cream);
+    max-width: 18ch;
+    margin: 0;
+    font-family: var(--f-display);
+    font-size: clamp(24px, 2.8vw, 40px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .lp-cta-trust { display: flex; flex-direction: column; gap: 12px; }
+
+  .lp-trust-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(244,239,230,0.65);
+    line-height: 1.4;
+  }
+
+  .lp-trust-icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px; height: 26px;
+    border-radius: var(--radius-sm);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    color: var(--amber);
+  }
+
+  .lp-cta-reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(244,239,230,0.4);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lp-review-stars {
+    color: var(--amber);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  /* CTA card */
+  .lp-cta-card {
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-top: 3px solid var(--amber);
+    border-radius: var(--radius-md);
+    padding: 28px 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  }
+
+  .lp-cta-card-header { display: flex; flex-direction: column; gap: 10px; }
+
+  .lp-avail-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+    padding: 4px 10px;
+    border: 1px solid rgba(92,128,64,0.35);
+    border-radius: var(--radius-pill);
+    background: rgba(92,128,64,0.1);
+    color: #8ab86a;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .lp-avail-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #8ab86a;
+    flex-shrink: 0;
+    animation: lp-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+  }
+
+  .lp-cta-card-title {
+    font-family: var(--f-display);
+    font-size: clamp(18px, 1.8vw, 22px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    line-height: 1.2;
+  }
+
+  .lp-cta-card-sub {
+    font-size: 12px;
+    color: rgba(244,239,230,0.45);
+    font-family: var(--f-mono);
+    letter-spacing: 0.03em;
+  }
+
+  .lp-cta-form { display: flex; flex-direction: column; gap: 14px; }
+
+  .lp-cta-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .lp-cta-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .lp-cta-label {
+    color: rgba(244,239,230,0.4);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lp-cta-input {
+    background: rgba(244,239,230,0.05);
+    border: 1px solid rgba(244,239,230,0.12);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    width: 100%;
+    transition: border-color var(--transition);
+    outline: none;
+    -webkit-appearance: none;
+  }
+  .lp-cta-input::placeholder { color: rgba(244,239,230,0.25); }
+  .lp-cta-input:focus { border-color: rgba(212,147,46,0.5); }
+
+  .lp-cta-select {
+    cursor: pointer;
+    color: rgba(244,239,230,0.6);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='rgba(244,239,230,0.4)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+  }
+  .lp-cta-select option { background: #1a2030; color: var(--cream); }
+
+  .lp-cta-textarea {
+    resize: vertical;
+    min-height: 76px;
+    line-height: 1.5;
+  }
+
+  .lp-cta-submit { width: 100%; justify-content: center; margin-top: 4px; }
+
+  /* ════════════════════════════════════════════
+     DEFINITION SECTION
+  ════════════════════════════════════════════ */
+  .lp-definition {
+    background: var(--ink);
+  }
+
+  .lp-def-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+
+  .lp-def-left {
+    position: sticky;
+    top: 32px;
+  }
+
+  .lp-def-label {
+    display: inline-block;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    border: 1px solid rgba(212,147,46,0.3);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 20px;
+  }
+
+  .lp-def-heading {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 3.2vw, 46px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    margin: 0 0 28px 0;
+  }
+
+  .lp-def-amber-rule {
+    width: 40px;
+    height: 3px;
+    background: var(--amber);
+    border-radius: 2px;
+  }
+
+  .lp-def-body {
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.72;
+    color: rgba(255,255,255,0.65);
+    margin: 0 0 36px 0;
+  }
+
+  .lp-def-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+  }
+
+  .lp-def-fact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lp-def-fact-num {
+    font-family: var(--f-display);
+    font-size: clamp(28px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--amber);
+    position: relative;
+  }
+
+  .lp-def-fact-sup {
+    font-size: 0.55em;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+
+  .lp-def-fact-lbl {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.45;
+  }
+
+  /* ════════════════════════════════════════════
+     ANNAPOLIS MARKET CONTEXT
+  ════════════════════════════════════════════ */
+  .lp-market {
+    background: var(--ink);
+  }
+  .lp-market .lp-section-intro .eyebrow,
+  .lp-market .h2-section,
+  .lp-market .lead {
+    color: var(--cream);
+  }
+  .lp-market .lead {
+    color: rgba(255,255,255,0.65);
+  }
+  .lp-market-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(16px, 2vw, 28px);
+    margin-top: clamp(32px, 4vw, 56px);
+  }
+  .lp-market-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg);
+    padding: clamp(24px, 3vw, 40px);
+  }
+  .lp-market-num {
+    font-family: var(--f-display);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .lp-market-unit {
+    font-size: 0.55em;
+    vertical-align: super;
+    color: var(--amber);
+  }
+  .lp-market-title {
+    font-family: var(--f-display);
+    font-size: clamp(15px, 1.4vw, 18px);
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 10px;
+  }
+  .lp-market-text {
+    font-size: clamp(13px, 1.1vw, 15px);
+    color: rgba(255,255,255,0.6);
+    line-height: 1.65;
+  }
+  @media (max-width: 768px) {
+    .lp-market-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ════════════════════════════════════════════
+     PLATFORM COMPARISON
+  ════════════════════════════════════════════ */
+  .lp-compare {
+    background: var(--cream-soft);
+  }
+
+  .lp-compare-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 28px;
+  }
+
+  .lp-compare-col {
+    border-radius: var(--radius-md);
+    padding: 28px;
+    border: 1.5px solid rgba(15,20,25,0.08);
+  }
+
+  .lp-compare-col-wp {
+    background: var(--paper);
+    border-color: rgba(212,147,46,0.2);
+  }
+
+  .lp-compare-col-diy {
+    background: rgba(15,20,25,0.03);
+  }
+
+  .lp-compare-col-head {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(15,20,25,0.08);
+  }
+
+  .lp-compare-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: var(--radius-pill);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    width: fit-content;
+  }
+
+  .lp-compare-badge-wp {
+    background: rgba(212,147,46,0.12);
+    color: var(--amber-deep);
+    border: 1px solid rgba(212,147,46,0.25);
+  }
+
+  .lp-compare-badge-diy {
+    background: rgba(15,20,25,0.06);
+    color: var(--ink-muted);
+    border: 1px solid rgba(15,20,25,0.1);
+  }
+
+  .lp-compare-col-sub {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  .lp-compare-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lp-ci {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+  }
+
+  .lp-ci::before {
+    content: "";
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-top: 1px;
+    background-size: 10px 10px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  .lp-ci-good {
+    background: rgba(92,128,64,0.06);
+  }
+  .lp-ci-good::before {
+    background-color: rgba(92,128,64,0.15);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2 5l2 2 4-4' stroke='%234a7a28' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  }
+
+  .lp-ci-bad {
+    background: rgba(176,74,62,0.05);
+  }
+  .lp-ci-bad::before {
+    background-color: rgba(176,74,62,0.12);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M3 3l4 4M7 3L3 7' stroke='%23b04a3e' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+
+  .lp-ci-neutral {
+    background: rgba(15,20,25,0.04);
+  }
+  .lp-ci-neutral::before {
+    background-color: rgba(15,20,25,0.1);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M2 5h6' stroke='%23666' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+  }
+
+  .lp-compare-note {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-muted);
+    padding: 16px 20px;
+    border: 1px dashed rgba(15,20,25,0.15);
+    border-radius: var(--radius-sm);
+    margin: 0;
+  }
+
+  /* ════════════════════════════════════════════
+     RESPONSIVE
+  ════════════════════════════════════════════ */
+  @media (max-width: 1100px) {
+    .lp-hero-wrap        { grid-template-columns: 1fr 360px; gap: 32px; }
+    .lp-form-sub         { display: none; }
+    .lp-cta-inner        { grid-template-columns: 1fr 400px; gap: 48px; }
+  }
+
+  @media (max-width: 960px) {
+    .lp-pillars-grid     { grid-template-columns: 1fr 1fr; }
+    .lp-svc-grid         { grid-template-columns: 1fr 1fr; }
+    .lp-svc-card-dark    { grid-column: span 2; }
+    .lp-ind-grid         { grid-template-columns: 1fr 1fr; }
+    .lp-metrics-grid     { grid-template-columns: 1fr 1fr; }
+    .lp-metric           { border-right: none; border-bottom: 1px solid rgba(244,239,230,0.08); }
+    .lp-metric:nth-child(odd)  { border-right: 1px solid rgba(244,239,230,0.08); }
+    .lp-metric:last-child      { border-bottom: none; }
+    .lp-metric:nth-child(3)    { border-bottom: none; }
+    .lp-process-grid     { grid-template-columns: 1fr 1fr; }
+    .lp-phase:nth-child(3n)    { border-right: 1px solid var(--line); }
+    .lp-phase:nth-child(2n)    { border-right: none; }
+    .lp-phase:nth-child(5), .lp-phase:nth-child(6) { border-bottom: none; }
+    .lp-phase:nth-child(4)     { border-bottom: 1px solid var(--line); }
+    .lp-areas-layout     { grid-template-columns: 1fr; }
+    .lp-area-grid        { grid-template-columns: repeat(2, 1fr); }
+    .lp-area-card        { position: static; }
+    .lp-cta-inner        { grid-template-columns: 1fr; gap: 40px; }
+    .lp-cta-h2           { max-width: 100%; }
+  }
+
+  @media (max-width: 768px) {
+    .lp-hero { padding-top: clamp(24px, 5vw, 48px); }
+    .lp-hero-wrap { grid-template-columns: 1fr; gap: 28px; padding-bottom: 32px; }
+    .lp-h1  { font-size: clamp(28px, 8vw, 48px); }
+    .lp-stats { grid-template-columns: repeat(2, 1fr); padding-block: 20px; }
+    .lp-stat:nth-child(2)  { border-right: none; }
+    .lp-stat:nth-child(3)  { border-right: 1px solid var(--line); border-top: 1px solid var(--line); padding-top: 20px; }
+    .lp-stat:nth-child(4)  { border-top: 1px solid var(--line); padding-top: 20px; }
+    .lp-trust-dot          { display: none; }
+    .lp-faq-layout         { grid-template-columns: 1fr; gap: 36px; }
+    .lp-faq-sidebar        { position: static; }
+    .lp-pillars-grid       { grid-template-columns: 1fr; }
+    .lp-ind-grid           { grid-template-columns: 1fr; }
+    .lp-compare-cols       { grid-template-columns: 1fr; }
+    .lp-def-inner          { grid-template-columns: 1fr; }
+    .lp-def-left           { position: static; }
+    .lp-def-facts          { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 600px) {
+    .lp-svc-grid         { grid-template-columns: 1fr; }
+    .lp-svc-card-dark    { grid-column: span 1; }
+    .lp-process-grid     { grid-template-columns: 1fr; }
+    .lp-phase            { border-right: none !important; }
+    .lp-phase:last-child { border-bottom: none; }
+    .lp-phase:nth-child(n) { border-bottom: 1px solid var(--line); }
+    .lp-process-cta      { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .lp-area-grid        { grid-template-columns: 1fr; }
+    .lp-areas-coverage   { flex-wrap: wrap; }
+    .lp-cov-item         { min-width: 120px; }
+    .lp-cov-divider      { display: none; }
+    .lp-cta-row          { grid-template-columns: 1fr; }
+    .lp-faq-trigger      { grid-template-columns: 28px 1fr auto; gap: 10px; padding: 16px; }
+    .lp-faq-a            { padding: 0 16px 18px 54px; }
+    .lp-hero-ctas        { flex-direction: column; width: 100%; }
+    .lp-btn-primary, .lp-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* Nearby locations */
+  .lp-nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .lp-nearby-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--cream-soft);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .lp-nearby-card:hover {
+    border-color: var(--amber);
+    background: var(--cream);
+  }
+  .lp-nearby-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lp-nearby-city {
+    font-family: var(--f-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .lp-nearby-arr {
+    color: var(--amber-deep);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .lp-nearby-card:hover .lp-nearby-arr { transform: translateX(4px); }
+  .lp-nearby-sub {
+    color: var(--ink-muted);
+    font-size: 11px;
+  }
+  /* Industry name link */
+  .lp-ind-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .lp-ind-link:hover { color: var(--amber-deep); }
+  @media (max-width: 768px) {
+    .lp-nearby-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  // ── CUSTOM DROPDOWNS ─────────────────────────────────────────
+  function initCustomSelects() {
+    document.querySelectorAll('.cs-wrap').forEach((wrap) => {
+      const trigger = wrap.querySelector('.cs-trigger');
+      const valSpan = wrap.querySelector('.cs-val');
+      const hidden  = wrap.querySelector('.cs-hidden');
+      const opts    = wrap.querySelectorAll('.cs-opt');
+
+      const open  = () => wrap.setAttribute('aria-expanded', 'true');
+      const close = () => wrap.setAttribute('aria-expanded', 'false');
+      const isOpen = () => wrap.getAttribute('aria-expanded') === 'true';
+
+      trigger.addEventListener('click', (e) => { e.stopPropagation(); isOpen() ? close() : open(); });
+
+      opts.forEach((opt) => {
+        opt.setAttribute('tabindex', '0');
+        opt.addEventListener('click', () => {
+          valSpan.textContent = opt.querySelector('.cs-badge')
+            ? opt.childNodes[0].textContent.trim()
+            : opt.textContent.trim();
+          hidden.value = opt.dataset.value;
+          opts.forEach(o => o.classList.remove('selected'));
+          opt.classList.add('selected');
+          wrap.classList.add('has-value');
+          close();
+          trigger.focus();
+        });
+        opt.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); opt.click(); }
+        });
+      });
+
+      document.addEventListener('click', (e) => { if (!wrap.contains(e.target)) close(); });
+      wrap.addEventListener('keydown', (e) => { if (e.key === 'Escape') { close(); trigger.focus(); } });
+    });
+  }
+
+  // ── SPAM PROTECTION ──────────────────────────────────────────
+  function initSpamProtection() {
+    const ts = document.getElementById('lp-form-timestamp');
+    if (ts) ts.value = Date.now().toString();
+
+    const form = document.getElementById('lp-hero-form');
+    if (!form) return;
+
+    form.addEventListener('submit', function(e) {
+      const elapsed = Date.now() - parseInt(ts?.value || '0', 10);
+      if (elapsed < 2000) { e.preventDefault(); return; }
+      const bot = form.querySelector('[name="bot-field"]');
+      if (bot && bot.value !== '') { e.preventDefault(); return; }
+    });
+  }
+
+  // ── FAQ ACCORDION ─────────────────────────────────────────────
+  function initFaq() {
+    const items = document.querySelectorAll('[data-faq-item]');
+    items.forEach((item) => {
+      const btn    = item.querySelector('.lp-faq-trigger');
+      const answer = item.querySelector('.lp-faq-answer');
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        items.forEach((other) => {
+          other.querySelector('.lp-faq-trigger').setAttribute('aria-expanded', 'false');
+          other.querySelector('.lp-faq-answer').hidden = true;
+        });
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          answer.hidden = false;
+        }
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initCustomSelects();
+    initSpamProtection();
+    initFaq();
+  });
+</script>
