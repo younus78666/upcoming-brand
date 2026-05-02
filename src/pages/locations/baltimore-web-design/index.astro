@@ -56,7 +56,7 @@ const jsonLd = JSON.stringify({
         {
           "@type": "Question",
           "name": "How much does a WordPress website cost in Baltimore, MD?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Most Baltimore small business WordPress websites fall between $1,500 and $10,000. A straightforward 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce or IDX builds start at $6,000. Every quote is fixed-scope with one price and no hourly surprises." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Most Baltimore small business WordPress websites fall between $1,500 and $10,000. A simple 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce or IDX builds start at $6,000. Every quote is fixed-scope with one price and no hourly surprises." }
         },
         {
           "@type": "Question",
@@ -143,7 +143,7 @@ const phases = [
   { num: "01", name: "Discovery Call",   timing: "Week 0",     desc: "45-min call to understand your Baltimore business, goals, and current site. We figure out if we're the right fit with no sales pitch." },
   { num: "02", name: "Scope & Proposal", timing: "Days 3-5",   desc: "Written fixed-scope proposal: page list, feature list, timeline, and one price. You approve it or walk away with no pressure." },
   { num: "03", name: "Design",           timing: "Weeks 1-2",  desc: "AI-assisted custom layouts built and refined to your brand, deployed to a staging URL for real-time client review. No static mockups." },
-  { num: "04", name: "Development",      timing: "Weeks 2-6",  desc: "Full build on staging - Elementor Pro, Astra, RankMath Pro, weekly demo links. We do not launch until you sign off on every page." },
+  { num: "04", name: "Development",      timing: "Weeks 2-6",  desc: "Full build on staging - Elementor Pro, Astra, RankMath Pro, weekly demo links. We don't launch until you sign off on every page." },
   { num: "05", name: "SEO & Speed",      timing: "Weeks 5-7",  desc: "RankMath Pro, JSON-LD schema, internal linking, WP Rocket, Cloudflare CDN. PageSpeed and Core Web Vitals tested before going live." },
   { num: "06", name: "Launch & Care",    timing: "Weeks 6-10", desc: "Zero-downtime DNS cutover, 30-day Search Console monitoring, recorded admin walkthrough. Optional care plan from $150/mo." },
 ];
@@ -236,11 +236,11 @@ const areas = [
 ];
 
 const faqs = [
-  { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Baltimore, MD?",         a: "Most Baltimore small business WordPress websites fall between $1,500 and $10,000. A straightforward 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce or IDX builds start at $6,000. Every quote is fixed-scope with one price and no hourly surprises." },
+  { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Baltimore, MD?",         a: "Most Baltimore small business WordPress websites fall between $1,500 and $10,000. A simple 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce or IDX builds start at $6,000. Every quote is fixed-scope with one price and no hourly surprises." },
   { num: "02", category: "Location",   q: "How do you work with Baltimore clients remotely?",                a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate. Clients across Baltimore, the DMV, and internationally all follow the same process with no loss of quality." },
   { num: "03", category: "Timeline",   q: "How long does a Baltimore website project take?",                  a: "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce or booking builds take 8-10 weeks. The biggest timeline variable is how quickly you review and approve design rounds." },
   { num: "04", category: "Industries", q: "Do you work with Baltimore law firms and medical practices?",     a: "Yes. Law firms, dental practices, and medical clinics make up a significant part of our Baltimore client base. We know HIPAA-aware form design, attorney ethics rules around testimonials, and the correct schema types - LegalService, Dentist, MedicalOrganization - that help these sites rank in competitive local searches." },
-  { num: "05", category: "SEO",        q: "Will my Baltimore website rank in Google's Local Pack?",          a: "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct NAP, city-specific service pages, internal linking, and Core Web Vitals in the green. That is the foundation every Local Pack ranking is built on." },
+  { num: "05", category: "SEO",        q: "Will my Baltimore website rank in Google's Local Pack?",          a: "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct NAP, city-specific service pages, internal linking, and Core Web Vitals in the green. That's the foundation every Local Pack ranking is built on." },
   { num: "06", category: "Migration",  q: "Can you redesign my existing Baltimore business website?",        a: "Yes. If you are on Wix, Squarespace, or an outdated WordPress theme, we migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." },
 ];
 
@@ -464,7 +464,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
       <div class="lp-section-intro">
         <p class="eyebrow">Why local matters</p>
         <h2 class="h2-section" id="pillars-heading">What a {city}-based WordPress studio does differently</h2>
-        <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever is available. We are a Maryland studio - remote-first by design, but built entirely around the Baltimore market. We know which suburbs are growing, which industries are competitive, and which search terms your customers run before they call anyone.</p>
+        <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever's available. We're a Maryland studio - remote-first by design, but built entirely around the Baltimore market. We know which suburbs are growing, which industries are competitive, and which search terms your customers run before they call anyone.</p>
       </div>
 
       <div class="lp-pillars-grid">
@@ -500,7 +500,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     <div class="container">
       <div class="lp-section-intro">
         <p class="eyebrow">What we build</p>
-        <h2 class="h2-section" id="services-heading">WordPress services for {city} businesses</h2>
+        <h2 class="h2-section" id="services-heading">What does every {city} business need from its WordPress website?</h2>
         <p class="lead">From an 8-page starter site to a full WooCommerce store - every build is custom, fixed-scope, and shipped with 90+ PageSpeed and clean schema out of the box.</p>
       </div>
 
@@ -513,7 +513,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">001</span>
           </div>
           <h3 class="lp-svc-title">Custom WordPress Design</h3>
-          <p class="lp-svc-desc">Baltimore businesses get a design built around their audience and their Baltimore competitors' weak points - not a theme draped with a logo. Design rounds happen on a live staging URL so you can see exactly how it looks on mobile before we finalize a single pixel. We build on Elementor Pro and Astra because they are fast, extensible, and allow full design freedom without locking you into a proprietary system. Every build ships 90+ PageSpeed and gets a full responsive pass on real devices before launch.</p>
+          <p class="lp-svc-desc">Baltimore businesses get a design built around their audience and their Baltimore competitors' weak points - not a theme draped with a logo. Design rounds happen on a live staging URL so you can see exactly how it'll look on mobile before we finalize a single pixel. We build on Elementor Pro and Astra because they're fast, extensible, and allow full design freedom without locking you into a proprietary system. Every build ships 90+ PageSpeed and gets a full responsive pass on real devices before launch.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>AI-assisted custom design built to your brand</li>
             <li><span class="lp-bullet-dot"></span>Elementor Pro on Astra - fast, flexible, yours</li>
@@ -530,7 +530,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">002</span>
           </div>
           <h3 class="lp-svc-title">WooCommerce Stores</h3>
-          <p class="lp-svc-desc">Maryland retail and service businesses need stores that hold up under real conditions - variable pricing, partial inventory, and payment gateway edge cases that only show up after a customer reports a failed transaction. We build WooCommerce on a production-tested foundation. Checkout flows are optimized for mobile conversion from day one. Abandoned cart recovery, subscription billing, and gateway-specific quirks are tested before you go live - not after your first real customer hits a wall.</p>
+          <p class="lp-svc-desc">Maryland retail and service businesses need stores that hold up under real conditions - variable pricing, partial inventory, and payment gateway edge cases that don't show up until a customer reports a failed transaction. We build WooCommerce on a production-tested foundation. Checkout flows are optimized for mobile conversion from day one. Abandoned cart recovery, subscription billing, and gateway-specific quirks are tested before you go live - not after your first real customer hits a wall.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>Stripe, PayPal, Authorize.net - tested end to end</li>
             <li><span class="lp-bullet-dot"></span>Subscriptions, variable pricing, product configurators</li>
@@ -546,7 +546,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">003</span>
           </div>
           <h3 class="lp-svc-title">Care Plans &amp; Maintenance</h3>
-          <p class="lp-svc-desc">Most Baltimore business owners do not have time to track plugin changelogs, monitor uptime, or debug a white-screen-of-death at 11 PM. Care plans handle the maintenance layer so you never have to. Every week: WordPress core updates, plugin updates, off-site backup to S3 or Google Drive, and an uptime check. If something breaks, the 4-hour SLA means a real fix the same day - not a ticket number and a queue. Plans start at $150/month.</p>
+          <p class="lp-svc-desc">Most Baltimore business owners don't have time to track plugin changelogs, monitor uptime, or debug a white-screen-of-death at 11 PM. Care plans handle the maintenance layer so you never have to. Every week: WordPress core updates, plugin updates, off-site backup to S3 or Google Drive, and an uptime check. If something breaks, the 4-hour SLA means a real fix the same day - not a ticket number and a queue. Plans start at $150/month.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>Weekly core and plugin updates</li>
             <li><span class="lp-bullet-dot"></span>Off-site backups to S3 or Google Drive</li>
@@ -562,7 +562,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">004</span>
           </div>
           <h3 class="lp-svc-title">Speed Optimization</h3>
-          <p class="lp-svc-desc">A slow site costs Baltimore businesses real revenue. Every extra second of load time drops conversions by 7%, and Google's Core Web Vitals now directly affect how pages rank. We run a full audit before launch: LCP under 2.5 seconds, zero layout shift, fast interaction. WP Rocket handles server caching, WebP handles images, and Cloudflare CDN puts your assets closer to every Maryland visitor. PageSpeed is measured on both mobile and desktop. If it is not 90+, we do not push the DNS over.</p>
+          <p class="lp-svc-desc">A slow site costs Baltimore businesses real revenue. Every extra second of load time drops conversions by 7%, and Google's Core Web Vitals now directly affect how pages rank. We run a full audit before launch: LCP under 2.5 seconds, zero layout shift, fast interaction. WP Rocket handles server caching, WebP handles images, and Cloudflare CDN puts your assets closer to every Maryland visitor. PageSpeed is measured on both mobile and desktop. If it isn't 90+, we don't push the DNS over.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>WP Rocket caching</li>
             <li><span class="lp-bullet-dot"></span>WebP image conversion</li>
@@ -579,7 +579,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">005</span>
           </div>
           <h3 class="lp-svc-title">SEO &amp; Schema</h3>
-          <p class="lp-svc-desc">A fast site that nobody finds is an expensive placeholder. Baltimore search is genuinely competitive - law firms, dental practices, and contractors all have agencies actively working their rankings. We set up RankMath Pro, build a keyword map for every page, write the JSON-LD schema Google uses to serve rich results, and lay out the internal link structure that builds topical authority month after month. This is what separates a site that exists from one that generates consistent leads.</p>
+          <p class="lp-svc-desc">A fast site that nobody finds is an expensive placeholder. Baltimore search is seriously competitive - law firms, dental practices, and contractors all have agencies actively working their rankings. We set up RankMath Pro, build a keyword map for every page, write the JSON-LD schema Google uses to serve rich results, and lay out the internal link structure that builds topical authority month after month. That's what separates a site that exists from one that generates consistent leads.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>Keyword research and topical map</li>
             <li><span class="lp-bullet-dot"></span>JSON-LD schema for 15+ business types</li>
@@ -595,7 +595,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">006</span>
           </div>
           <h3 class="lp-svc-title">Migration &amp; Redesign</h3>
-          <p class="lp-svc-desc">If you are on Wix, Squarespace, or an aging WordPress theme, migrating to a custom build is the highest-ROI move most Baltimore businesses can make. The risk is dropping your Google rankings in the transition - we eliminate that risk. Before touching anything, we benchmark your current rankings page by page. We build a complete 301 redirect map covering every URL. Launch is a zero-downtime DNS cutover. Then we monitor Search Console for 30 days to catch any ranking slippage early and fix it before it compounds.</p>
+          <p class="lp-svc-desc">If you're on Wix, Squarespace, or an aging WordPress theme, migrating to a custom build is the highest-ROI move most Baltimore businesses can make. The risk is dropping your Google rankings in the transition - we eliminate that risk. Before touching anything, we benchmark your current rankings page by page. We build a complete 301 redirect map covering every URL. Launch is a zero-downtime DNS cutover. Then we monitor Search Console for 30 days to catch any ranking slippage early and fix it before it compounds.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>Full 301 redirect map before launch</li>
             <li><span class="lp-bullet-dot"></span>Zero-downtime DNS cutover</li>
@@ -699,7 +699,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     <div class="container">
       <div class="lp-section-intro">
         <p class="eyebrow">Industries we serve</p>
-        <h2 class="h2-section" id="industries-heading">{city} industries we've built for</h2>
+        <h2 class="h2-section" id="industries-heading">Which {city} industries do we build WordPress sites for?</h2>
         <p class="lead">Different industries need different schema types, compliance rules, and conversion patterns. We've built for all six of the verticals most active in the Baltimore market.</p>
       </div>
 
@@ -735,7 +735,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     <div class="container">
       <div class="lp-section-intro">
         <p class="eyebrow">How we work</p>
-        <h2 class="h2-section" id="process-heading">From first call to live {city} site in 4-10 weeks</h2>
+        <h2 class="h2-section" id="process-heading">How does a {city} WordPress project actually run from first call to launch?</h2>
         <p class="lead">Fixed scope, fixed price, fixed timeline. No chasing, no ambiguity - you know what's happening at every stage.</p>
       </div>
 
