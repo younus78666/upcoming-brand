@@ -14,7 +14,7 @@ const jsonLd = JSON.stringify({
       "@id": `${canonical}#webpage`,
       "name": "Web Design Maryland | All Locations | Upcoming Brand",
       "url": canonical,
-      "description": "WordPress web design for Maryland businesses. Serving 18+ cities across Baltimore, DC metro, and the Eastern Shore. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
+      "description": "WordPress web design for Maryland businesses. Serving 18+ cities across Baltimore, DC metro, Howard County, Western MD, and the Eastern Shore. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
       "about": { "@id": "https://upcomingbrand.com/#organization" },
@@ -30,70 +30,99 @@ const jsonLd = JSON.stringify({
           { "@type": "ListItem", "position": 2, "name": "Locations", "item": canonical }
         ]
       }
-    },
-    {
-      "@type": "LocalBusiness",
-      "@id": "https://upcomingbrand.com/#localbusiness",
-      "name": "Upcoming Brand",
-      "description": "WordPress web design studio serving Maryland businesses statewide. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery.",
-      "url": "https://upcomingbrand.com/",
-      "priceRange": "$$-$$$",
-      "areaServed": { "@type": "State", "name": "Maryland" },
-      "serviceType": ["WordPress Web Design", "WooCommerce Development", "SEO", "Web Maintenance"]
     }
   ]
 });
 
+const featured = [
+  {
+    name: "Baltimore",
+    slug: "baltimore-web-design",
+    region: "Baltimore Area",
+    pop: "575K",
+    income: "$54K",
+    blurb: "Maryland's largest city. Healthcare, legal, hospitality, and a fast-growing creative class along the harbor and Mt. Vernon corridor."
+  },
+  {
+    name: "Bethesda",
+    slug: "bethesda-web-design",
+    region: "DC Metro Corridor",
+    pop: "68K",
+    income: "$170K",
+    blurb: "NIH-anchored professional corridor. The highest-income market in Maryland — home to medical specialists, law firms, and consultancies."
+  },
+  {
+    name: "Frederick",
+    slug: "frederick-web-design",
+    region: "Western Maryland",
+    pop: "80K",
+    income: "$80K",
+    blurb: "I-70/I-270 crossroads with a historic downtown and the fastest-growing outer-suburb economy in Western Maryland."
+  }
+];
+
 const regions = [
   {
     label: "Baltimore Area",
+    anchor: "baltimore-area",
+    intro: "Baltimore City and the I-695 beltway corridor — a 575K-population urban core wrapped by Towson, Catonsville, and Dundalk's Baltimore County submarkets.",
     cities: [
-      { name: "Baltimore",    county: "Baltimore City",  slug: "baltimore-web-design",    hook: "Baltimore City and the I-695 beltway corridor" },
-      { name: "Towson",       county: "Baltimore Co.",   slug: "towson-web-design",        hook: "Baltimore County seat, GBMC, St. Joseph, Towson University" },
-      { name: "Catonsville",  county: "Baltimore Co.",   slug: "catonsville-web-design",   hook: "UMBC, Frederick Road arts district, 1920s-60s housing" },
-      { name: "Dundalk",      county: "Baltimore Co.",   slug: "dundalk-web-design",       hook: "Tradepoint Atlantic, working-class waterfront, 1940s-60s housing" },
+      { name: "Baltimore",    county: "Baltimore City",  slug: "baltimore-web-design",    pop: "575K", income: "$54K",  hook: "Baltimore City and the I-695 beltway corridor." },
+      { name: "Towson",       county: "Baltimore Co.",   slug: "towson-web-design",        pop: "60K",  income: "$84K",  hook: "Baltimore County seat. GBMC, St. Joseph, Towson University." },
+      { name: "Catonsville",  county: "Baltimore Co.",   slug: "catonsville-web-design",   pop: "44K",  income: "$95K",  hook: "UMBC, Frederick Road arts district, 1920s-60s housing." },
+      { name: "Dundalk",      county: "Baltimore Co.",   slug: "dundalk-web-design",       pop: "63K",  income: "$58K",  hook: "Tradepoint Atlantic, working-class waterfront." },
     ],
   },
   {
     label: "DC Metro Corridor",
+    anchor: "dc-metro",
+    intro: "Maryland's wealthiest sub-region. Montgomery County's I-270 tech corridor plus the Prince George's and Charles County commuter markets.",
     cities: [
-      { name: "Bethesda",      county: "Montgomery Co.", slug: "bethesda-web-design",      hook: "NIH campus, high-income professional corridor, Chevy Chase" },
-      { name: "Rockville",     county: "Montgomery Co.", slug: "rockville-web-design",     hook: "Montgomery County seat, I-270 tech corridor, Pike & Rose" },
-      { name: "Silver Spring", county: "Montgomery Co.", slug: "silver-spring-web-design", hook: "Discovery HQ, diverse urban market, Metro Red Line" },
-      { name: "Gaithersburg",  county: "Montgomery Co.", slug: "gaithersburg-web-design",  hook: "NIST, Kentlands, King Farm, I-270 planned communities" },
-      { name: "Germantown",    county: "Montgomery Co.", slug: "germantown-web-design",     hook: "Most diverse MD community, 130+ languages, MARC rail" },
-      { name: "Bowie",         county: "Prince George's Co.", slug: "bowie-web-design",    hook: "Largest PG County city, Bowie State HBCU, DC+Annapolis 30 min" },
-      { name: "Waldorf",       county: "Charles Co.",    slug: "waldorf-web-design",       hook: "Fast-growing suburb, military families, DC 30 min on US-301" },
+      { name: "Bethesda",      county: "Montgomery Co.",      slug: "bethesda-web-design",      pop: "68K",  income: "$170K", hook: "NIH campus, high-income professional corridor, Chevy Chase." },
+      { name: "Rockville",     county: "Montgomery Co.",      slug: "rockville-web-design",     pop: "67K",  income: "$120K", hook: "Montgomery County seat, I-270 tech corridor, Pike & Rose." },
+      { name: "Silver Spring", county: "Montgomery Co.",      slug: "silver-spring-web-design", pop: "83K",  income: "$94K",  hook: "Discovery HQ, diverse urban market, Metro Red Line." },
+      { name: "Gaithersburg",  county: "Montgomery Co.",      slug: "gaithersburg-web-design",  pop: "71K",  income: "$110K", hook: "NIST, Kentlands, King Farm, I-270 planned communities." },
+      { name: "Germantown",    county: "Montgomery Co.",      slug: "germantown-web-design",    pop: "91K",  income: "$95K",  hook: "Most diverse MD community, 130+ languages, MARC rail." },
+      { name: "Bowie",         county: "Prince George's Co.", slug: "bowie-web-design",         pop: "58K",  income: "$117K", hook: "Largest PG County city, Bowie State HBCU, DC + Annapolis 30 min." },
+      { name: "Waldorf",       county: "Charles Co.",         slug: "waldorf-web-design",       pop: "70K",  income: "$93K",  hook: "Fast-growing suburb, military families, DC 30 min on US-301." },
     ],
   },
   {
     label: "Howard County & Annapolis",
+    anchor: "howard-annapolis",
+    intro: "Howard County's planned-community wealth corridor and the Annapolis maritime + state-government economy.",
     cities: [
-      { name: "Columbia",       county: "Howard Co.",        slug: "columbia-web-design",       hook: "10-village planned community, $120K+ median HHI, Johns Hopkins HCGH" },
-      { name: "Ellicott City",  county: "Howard Co.",        slug: "ellicott-city-web-design",  hook: "Howard County seat, Old EC National Historic District, $120K+ HHI" },
-      { name: "Annapolis",      county: "Anne Arundel Co.",  slug: "annapolis-web-design",      hook: "State capital, Naval Academy, maritime economy, tourism" },
+      { name: "Columbia",       county: "Howard Co.",       slug: "columbia-web-design",       pop: "104K", income: "$125K", hook: "10-village planned community, Johns Hopkins HCGH, $120K+ HHI." },
+      { name: "Ellicott City",  county: "Howard Co.",       slug: "ellicott-city-web-design",  pop: "73K",  income: "$135K", hook: "Howard County seat, Old EC National Historic District." },
+      { name: "Annapolis",      county: "Anne Arundel Co.", slug: "annapolis-web-design",      pop: "40K",  income: "$95K",  hook: "State capital, Naval Academy, maritime economy, tourism." },
     ],
   },
   {
     label: "Western Maryland",
+    anchor: "western-md",
+    intro: "I-70 / I-81 corridor markets — Frederick's fast-growing suburban economy, Hagerstown's tri-state hub, and Westminster's Carroll County seat.",
     cities: [
-      { name: "Frederick",    county: "Frederick Co.",    slug: "frederick-web-design",    hook: "I-70/I-270 crossroads, historic downtown, fast-growing outer suburb" },
-      { name: "Hagerstown",   county: "Washington Co.",   slug: "hagerstown-web-design",   hook: "I-70/I-81 Hub City, tri-state market, Meritus Medical Center" },
-      { name: "Westminster",  county: "Carroll Co.",      slug: "westminster-web-design",  hook: "Carroll County seat, Carroll Hospital, McDaniel College, rural market" },
+      { name: "Frederick",    county: "Frederick Co.",  slug: "frederick-web-design",    pop: "80K", income: "$80K", hook: "I-70/I-270 crossroads, historic downtown, fast-growing outer suburb." },
+      { name: "Hagerstown",   county: "Washington Co.", slug: "hagerstown-web-design",   pop: "44K", income: "$45K", hook: "I-70/I-81 Hub City, tri-state market, Meritus Medical Center." },
+      { name: "Westminster",  county: "Carroll Co.",    slug: "westminster-web-design",  pop: "19K", income: "$70K", hook: "Carroll County seat, Carroll Hospital, McDaniel College." },
     ],
   },
   {
     label: "Eastern Shore",
+    anchor: "eastern-shore",
+    intro: "The Delmarva peninsula's commercial and healthcare hub, anchored by TidalHealth and 30 minutes from Ocean City.",
     cities: [
-      { name: "Salisbury",    county: "Wicomico Co.",     slug: "salisbury-web-design",    hook: "Delmarva hub, TidalHealth Level II Trauma, Ocean City 30 min" },
+      { name: "Salisbury",    county: "Wicomico Co.", slug: "salisbury-web-design",    pop: "33K", income: "$48K", hook: "Delmarva hub, TidalHealth Level II Trauma, Ocean City 30 min." },
     ],
   },
 ];
+
+const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 ---
 <BaseLayout
-  title="Web Design Maryland | All Locations | Upcoming Brand"
-  description="WordPress web design for Maryland businesses. Serving 18+ cities across Baltimore, DC metro, and the Eastern Shore. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery."
-  canonical={canonical}
+  title="Web Design Maryland | All 18 Locations | Upcoming Brand"
+  description="WordPress web design for Maryland businesses. Serving 18+ cities across Baltimore, DC metro, Howard County, Western MD, and the Eastern Shore. Fixed-scope pricing, 90+ PageSpeed, 6-10 week delivery."
+  canonicalUrl={canonical}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLd} />
@@ -104,28 +133,207 @@ const regions = [
 
   <main id="main-content">
 
-    <!-- Hero -->
+    <!-- ====== HERO ====== -->
     <section class="loc-hero section-pad-sm">
       <div class="container">
-        <div class="loc-hero-inner">
-          <p class="eyebrow">Maryland web design</p>
-          <h1 class="h1-display">WordPress web design<br>for every Maryland market</h1>
-          <p class="lead">Based in Maryland and serving 18+ cities statewide. Every project is handled entirely remotely - discovery calls over Zoom, async design reviews, weekly staging links. Fixed-scope pricing. 90+ PageSpeed guaranteed.</p>
-          <div class="loc-hero-ctas">
-            <a href="/contact/" class="cta-btn cta-btn-primary">Book a free discovery call &rarr;</a>
-            <a href="/pricing/" class="cta-btn cta-btn-ghost">View pricing</a>
+        <div class="loc-hero-grid">
+          <div class="loc-hero-text">
+            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Maryland coverage</p>
+            <h1 class="h1-display">WordPress web design<br>for every Maryland market</h1>
+            <p class="lead">Based in Maryland. Serving {totalCities}+ cities across five regions. Every project runs entirely remote — Zoom discovery, async design reviews, weekly staging links. Fixed-scope pricing. 90+ PageSpeed guaranteed.</p>
+            <div class="loc-hero-ctas">
+              <a href="/contact/" class="cta-btn cta-btn-primary">Book a free discovery call &rarr;</a>
+              <a href="/pricing/" class="cta-btn cta-btn-ghost">View pricing</a>
+            </div>
+          </div>
+
+          <!-- Coverage panel: stylized regional spread -->
+          <div class="loc-hero-panel" aria-hidden="true">
+            <div class="loc-panel-header">
+              <span class="loc-panel-label mono-xs">Maryland · Coverage map</span>
+              <span class="loc-panel-pulse"></span>
+            </div>
+
+            <svg class="loc-panel-svg" viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Stylized map of Maryland regions">
+              <!-- Stylized Maryland silhouette -->
+              <path d="M 30 110 L 90 100 L 160 92 L 230 88 L 290 90 L 320 100 L 348 118 L 364 142 L 360 168 L 350 192 L 332 216 L 300 230 L 270 232 L 244 226 L 224 214 L 212 200 L 220 180 L 230 162 L 224 148 L 206 142 L 186 152 L 162 162 L 134 168 L 106 168 L 80 162 L 56 150 L 38 134 Z" fill="rgba(212,147,46,0.06)" stroke="rgba(212,147,46,0.35)" stroke-width="1.5" stroke-linejoin="round"/>
+
+              <!-- Bay cutout suggestion -->
+              <path d="M 200 160 Q 210 175 215 195 Q 218 210 222 220" fill="none" stroke="rgba(15,20,25,0.18)" stroke-width="1" stroke-dasharray="2 3"/>
+
+              <!-- Region pins with labels - approximate geographic positioning -->
+              <!-- Western MD -->
+              <g class="loc-pin">
+                <circle cx="62" cy="130" r="3.5" fill="#D4932E"/>
+                <circle cx="62" cy="130" r="8" fill="rgba(212,147,46,0.18)"/>
+              </g>
+              <!-- Frederick -->
+              <g class="loc-pin">
+                <circle cx="118" cy="125" r="3.5" fill="#D4932E"/>
+                <circle cx="118" cy="125" r="8" fill="rgba(212,147,46,0.18)"/>
+              </g>
+              <!-- DC Metro cluster -->
+              <g class="loc-pin">
+                <circle cx="148" cy="155" r="4.5" fill="#D4932E"/>
+                <circle cx="148" cy="155" r="11" fill="rgba(212,147,46,0.22)"/>
+              </g>
+              <!-- Howard Co -->
+              <g class="loc-pin">
+                <circle cx="182" cy="138" r="3.5" fill="#D4932E"/>
+                <circle cx="182" cy="138" r="8" fill="rgba(212,147,46,0.18)"/>
+              </g>
+              <!-- Baltimore cluster -->
+              <g class="loc-pin">
+                <circle cx="208" cy="125" r="5" fill="#D4932E"/>
+                <circle cx="208" cy="125" r="12" fill="rgba(212,147,46,0.22)"/>
+              </g>
+              <!-- Annapolis -->
+              <g class="loc-pin">
+                <circle cx="218" cy="158" r="3.5" fill="#D4932E"/>
+                <circle cx="218" cy="158" r="8" fill="rgba(212,147,46,0.18)"/>
+              </g>
+              <!-- Eastern Shore / Salisbury -->
+              <g class="loc-pin">
+                <circle cx="298" cy="195" r="3.5" fill="#D4932E"/>
+                <circle cx="298" cy="195" r="8" fill="rgba(212,147,46,0.18)"/>
+              </g>
+
+              <!-- Region label lines -->
+              <g class="loc-label-group">
+                <line x1="62" y1="130" x2="40" y2="80" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+                <text x="40" y="72" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">Western MD</text>
+              </g>
+              <g class="loc-label-group">
+                <line x1="208" y1="125" x2="240" y2="62" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+                <text x="240" y="54" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">Baltimore</text>
+              </g>
+              <g class="loc-label-group">
+                <line x1="148" y1="155" x2="80" y2="240" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+                <text x="80" y="252" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">DC Metro</text>
+              </g>
+              <g class="loc-label-group">
+                <line x1="298" y1="195" x2="340" y2="252" stroke="rgba(15,20,25,0.25)" stroke-width="0.75"/>
+                <text x="320" y="265" font-family="JetBrains Mono, monospace" font-size="9" fill="rgba(15,20,25,0.55)" text-anchor="start">Eastern Shore</text>
+              </g>
+            </svg>
+
+            <div class="loc-panel-footer">
+              <div class="loc-panel-stat">
+                <span class="loc-panel-stat-num">{totalCities}</span>
+                <span class="loc-panel-stat-label mono-xs">Cities</span>
+              </div>
+              <div class="loc-panel-stat">
+                <span class="loc-panel-stat-num">5</span>
+                <span class="loc-panel-stat-label mono-xs">Regions</span>
+              </div>
+              <div class="loc-panel-stat">
+                <span class="loc-panel-stat-num">100%</span>
+                <span class="loc-panel-stat-label mono-xs">Remote</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Regions -->
-    {regions.map((region) => (
-      <section class="loc-region section-pad-sm">
+    <!-- ====== TRUST STRIP ====== -->
+    <section class="loc-trust">
+      <div class="container">
+        <div class="loc-trust-grid">
+          <div class="loc-trust-item">
+            <span class="loc-trust-num">{totalCities}+</span>
+            <span class="loc-trust-label mono-xs">MD cities served</span>
+          </div>
+          <div class="loc-trust-divider" aria-hidden="true"></div>
+          <div class="loc-trust-item">
+            <span class="loc-trust-num">90+</span>
+            <span class="loc-trust-label mono-xs">PageSpeed guaranteed</span>
+          </div>
+          <div class="loc-trust-divider" aria-hidden="true"></div>
+          <div class="loc-trust-item">
+            <span class="loc-trust-num">6&ndash;10</span>
+            <span class="loc-trust-label mono-xs">Week delivery</span>
+          </div>
+          <div class="loc-trust-divider" aria-hidden="true"></div>
+          <div class="loc-trust-item">
+            <span class="loc-trust-num">$1.5K+</span>
+            <span class="loc-trust-label mono-xs">Fixed-scope pricing</span>
+          </div>
+          <div class="loc-trust-divider" aria-hidden="true"></div>
+          <div class="loc-trust-item">
+            <span class="loc-trust-num">100%</span>
+            <span class="loc-trust-label mono-xs">Async / remote</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== JUMP NAV ====== -->
+    <nav class="loc-jumpnav" aria-label="Jump to region">
+      <div class="container">
+        <div class="loc-jumpnav-inner">
+          <span class="loc-jumpnav-label mono-xs">Jump to:</span>
+          {regions.map((r) => (
+            <a href={`#${r.anchor}`} class="loc-jumpnav-pill">
+              {r.label}
+              <span class="loc-jumpnav-count mono-xs">{r.cities.length}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </nav>
+
+    <!-- ====== FEATURED MARKETS ====== -->
+    <section class="loc-featured section-pad-sm">
+      <div class="container">
+        <div class="loc-featured-head">
+          <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Featured markets</p>
+          <h2 class="h2-section">Maryland's three highest-velocity markets</h2>
+          <p class="lead">Where most of our work happens — Baltimore's urban core, Bethesda's medical and professional corridor, and Frederick's fast-growing outer suburbs.</p>
+        </div>
+
+        <div class="loc-featured-grid">
+          {featured.map((city) => (
+            <a href={`/locations/${city.slug}/`} class="loc-featured-card">
+              <div class="loc-featured-card-top">
+                <span class="loc-featured-region mono-xs">{city.region}</span>
+                <span class="loc-featured-arrow" aria-hidden="true">&rarr;</span>
+              </div>
+              <h3 class="loc-featured-name">{city.name}</h3>
+              <div class="loc-featured-stats">
+                <div class="loc-featured-stat">
+                  <span class="loc-featured-stat-num">{city.pop}</span>
+                  <span class="loc-featured-stat-label mono-xs">Population</span>
+                </div>
+                <div class="loc-featured-stat">
+                  <span class="loc-featured-stat-num">{city.income}</span>
+                  <span class="loc-featured-stat-label mono-xs">Median HHI</span>
+                </div>
+              </div>
+              <p class="loc-featured-blurb">{city.blurb}</p>
+              <span class="loc-featured-cta mono-xs">Web design for {city.name} &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== REGION SECTIONS ====== -->
+    {regions.map((region, idx) => (
+      <section class="loc-region section-pad-sm" id={region.anchor}>
         <div class="container">
-          <h2 class="loc-region-heading">
-            <span class="eyebrow-inline">{region.label}</span>
-          </h2>
+          <div class="loc-region-head">
+            <div class="loc-region-head-left">
+              <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Region {String(idx + 1).padStart(2, '0')} / 05</p>
+              <h2 class="h2-section">{region.label}</h2>
+              <p class="loc-region-intro">{region.intro}</p>
+            </div>
+            <div class="loc-region-head-right">
+              <span class="loc-region-count">{region.cities.length}</span>
+              <span class="loc-region-count-label mono-xs">{region.cities.length === 1 ? 'City' : 'Cities'}</span>
+            </div>
+          </div>
+
           <div class="loc-city-grid">
             {region.cities.map((city) => (
               <a href={`/locations/${city.slug}/`} class="loc-city-card">
@@ -136,13 +344,23 @@ const regions = [
                       <circle cx="6" cy="5" r="1.8" fill="white" opacity="0.9"/>
                     </svg>
                   </span>
-                  <div>
+                  <div class="loc-city-card-name-block">
                     <span class="loc-city-name">{city.name}</span>
                     <span class="loc-city-county mono-xs">{city.county}</span>
                   </div>
                   <span class="loc-city-arrow" aria-hidden="true">&rarr;</span>
                 </div>
                 <p class="loc-city-hook">{city.hook}</p>
+                <div class="loc-city-stats">
+                  <div class="loc-city-stat">
+                    <span class="loc-city-stat-num">{city.pop}</span>
+                    <span class="loc-city-stat-label mono-xs">Pop</span>
+                  </div>
+                  <div class="loc-city-stat">
+                    <span class="loc-city-stat-num">{city.income}</span>
+                    <span class="loc-city-stat-label mono-xs">Median HHI</span>
+                  </div>
+                </div>
                 <span class="loc-city-cta mono-xs">Web design for {city.name} &rarr;</span>
               </a>
             ))}
@@ -151,14 +369,38 @@ const regions = [
       </section>
     ))}
 
-    <!-- Bottom CTA -->
-    <section class="loc-cta-section section-pad-sm">
+    <!-- ====== COVERAGE STATEMENT ====== -->
+    <section class="loc-coverage section-pad-sm">
+      <div class="container">
+        <div class="loc-coverage-grid">
+          <div class="loc-coverage-text">
+            <p class="eyebrow"><span class="eyebrow-dot" aria-hidden="true"></span>Don't see your city?</p>
+            <h2 class="h2-section">We work everywhere in Maryland</h2>
+            <p class="lead">The 18 cities listed above are where our project volume is concentrated, but we work with businesses across all 24 Maryland counties. Laurel, College Park, Glen Burnie, Cumberland, Easton, Ocean City, Cambridge, Aberdeen — entirely remote means location is never a limitation.</p>
+            <a href="/contact/" class="cta-btn cta-btn-ghost">Tell us about your project &rarr;</a>
+          </div>
+          <ul class="loc-coverage-list" role="list">
+            <li>Laurel</li><li>College Park</li><li>Glen Burnie</li><li>Cumberland</li>
+            <li>Easton</li><li>Ocean City</li><li>Cambridge</li><li>Aberdeen</li>
+            <li>La Plata</li><li>Severna Park</li><li>Crofton</li><li>Eldersburg</li>
+            <li>Pikesville</li><li>Owings Mills</li><li>Timonium</li><li>Wheaton</li>
+            <li>Takoma Park</li><li>Greenbelt</li><li>Hyattsville</li><li>+ all 24 counties</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== FINAL CTA ====== -->
+    <section class="loc-cta-section">
       <div class="container">
         <div class="loc-cta-inner">
-          <p class="eyebrow">Don't see your city?</p>
-          <h2 class="h2-section">We serve all of Maryland</h2>
-          <p class="lead">Don't see your city listed? We work with businesses across all of Maryland - Laurel, College Park, Glen Burnie, Ocean City, Easton, Cumberland, and everywhere else. Entirely remote means location is never a limitation.</p>
-          <a href="/contact/" class="cta-btn cta-btn-primary">Book a free discovery call &rarr;</a>
+          <p class="eyebrow"><span class="eyebrow-dot eyebrow-dot-amber" aria-hidden="true"></span>Ready to start</p>
+          <h2 class="h2-section">Let's build the site Maryland keeps Googling for.</h2>
+          <p class="lead">A free 45-minute discovery call. We map your competitive set, identify the schema and Local Pack gaps, and give you a fixed quote within 48 hours.</p>
+          <div class="loc-cta-buttons">
+            <a href="/contact/" class="cta-btn cta-btn-primary">Book a discovery call &rarr;</a>
+            <a href="/pricing/" class="cta-btn cta-btn-ghost-light">View pricing</a>
+          </div>
         </div>
       </div>
     </section>
@@ -169,24 +411,367 @@ const regions = [
 </BaseLayout>
 
 <style>
-  /* Hero */
+  /* ===== HERO ===== */
   .loc-hero {
     background: var(--cream);
     border-bottom: 1px solid rgba(15,20,25,0.07);
+    position: relative;
+    overflow: hidden;
   }
 
-  .loc-hero-inner {
-    max-width: 680px;
+  .loc-hero::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    right: -200px;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .loc-hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 56px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .loc-hero-text {
+    max-width: 580px;
   }
 
   .loc-hero-ctas {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+    margin-top: 24px;
+  }
+
+  /* Coverage panel */
+  .loc-hero-panel {
+    background: var(--paper);
+    border: 1.5px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-lg, 16px);
+    padding: 24px;
+    box-shadow: 0 6px 24px rgba(15,20,25,0.05);
+    position: relative;
+  }
+
+  .loc-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px dashed rgba(15,20,25,0.1);
+    margin-bottom: 16px;
+  }
+
+  .loc-panel-label {
+    color: rgba(15,20,25,0.55);
+    letter-spacing: 0.12em;
+  }
+
+  .loc-panel-pulse {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green, #5C8040);
+    animation: loc-pulse 2s cubic-bezier(0.4,0,0.6,1) infinite;
+    box-shadow: 0 0 0 4px rgba(92,128,64,0.15);
+  }
+
+  @keyframes loc-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .loc-panel-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .loc-pin circle:first-child {
+    animation: loc-pin-pulse 3s ease-in-out infinite;
+    transform-origin: center;
+  }
+
+  @keyframes loc-pin-pulse {
+    0%, 100% { opacity: 0.4; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.4); }
+  }
+
+  .loc-panel-footer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-top: 16px;
+    border-top: 1px dashed rgba(15,20,25,0.1);
     margin-top: 8px;
   }
 
-  /* Region sections */
+  .loc-panel-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: center;
+  }
+
+  .loc-panel-stat-num {
+    font-family: var(--f-display, 'Fraunces', serif);
+    font-size: 28px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .loc-panel-stat-label {
+    color: rgba(15,20,25,0.5);
+    letter-spacing: 0.12em;
+    font-size: 10px;
+  }
+
+  /* ===== TRUST STRIP ===== */
+  .loc-trust {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 20px 0;
+  }
+
+  .loc-trust-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .loc-trust-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: center;
+    flex: 1;
+  }
+
+  .loc-trust-num {
+    font-family: var(--f-display, 'Fraunces', serif);
+    font-size: 26px;
+    line-height: 1;
+    color: var(--amber, #D4932E);
+    font-weight: 500;
+  }
+
+  .loc-trust-label {
+    color: rgba(244,239,230,0.55);
+    letter-spacing: 0.1em;
+    font-size: 10px;
+  }
+
+  .loc-trust-divider {
+    width: 1px;
+    height: 32px;
+    background: rgba(244,239,230,0.12);
+    flex-shrink: 0;
+  }
+
+  /* ===== JUMP NAV ===== */
+  .loc-jumpnav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(251,248,242,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(15,20,25,0.08);
+    padding: 12px 0;
+  }
+
+  .loc-jumpnav-inner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .loc-jumpnav-label {
+    color: rgba(15,20,25,0.5);
+    letter-spacing: 0.12em;
+    margin-right: 4px;
+    flex-shrink: 0;
+  }
+
+  .loc-jumpnav-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 12px 7px 14px;
+    border: 1px solid rgba(15,20,25,0.1);
+    border-radius: var(--radius-pill, 999px);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all var(--transition);
+    white-space: nowrap;
+  }
+
+  .loc-jumpnav-pill:hover {
+    border-color: var(--amber, #D4932E);
+    background: var(--amber-glow, rgba(212,147,46,0.08));
+    color: var(--amber-deep, #B07A1D);
+  }
+
+  .loc-jumpnav-count {
+    background: rgba(15,20,25,0.06);
+    padding: 2px 7px;
+    border-radius: var(--radius-pill, 999px);
+    font-size: 10px;
+    color: rgba(15,20,25,0.55);
+    transition: all var(--transition);
+  }
+
+  .loc-jumpnav-pill:hover .loc-jumpnav-count {
+    background: rgba(212,147,46,0.15);
+    color: var(--amber-deep, #B07A1D);
+  }
+
+  /* ===== FEATURED MARKETS ===== */
+  .loc-featured {
+    background: var(--paper);
+  }
+
+  .loc-featured-head {
+    max-width: 680px;
+    margin-bottom: 40px;
+  }
+
+  .loc-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .loc-featured-card {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 28px;
+    background: var(--cream);
+    border: 1.5px solid rgba(15,20,25,0.08);
+    border-radius: var(--radius-lg, 16px);
+    text-decoration: none;
+    color: inherit;
+    transition: all var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loc-featured-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--amber, #D4932E) 0%, transparent 100%);
+    opacity: 0;
+    transition: opacity var(--transition);
+  }
+
+  .loc-featured-card:hover {
+    border-color: var(--amber, #D4932E);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(212,147,46,0.15);
+  }
+
+  .loc-featured-card:hover::before {
+    opacity: 1;
+  }
+
+  .loc-featured-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .loc-featured-region {
+    color: var(--amber-deep, #B07A1D);
+    letter-spacing: 0.12em;
+  }
+
+  .loc-featured-arrow {
+    color: var(--amber, #D4932E);
+    font-size: 18px;
+    transition: transform var(--transition);
+  }
+
+  .loc-featured-card:hover .loc-featured-arrow {
+    transform: translateX(4px);
+  }
+
+  .loc-featured-name {
+    font-family: var(--f-display, 'Fraunces', serif);
+    font-size: 36px;
+    line-height: 1.05;
+    color: var(--ink);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .loc-featured-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px 0;
+    border-top: 1px dashed rgba(15,20,25,0.12);
+    border-bottom: 1px dashed rgba(15,20,25,0.12);
+  }
+
+  .loc-featured-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .loc-featured-stat-num {
+    font-family: var(--f-display, 'Fraunces', serif);
+    font-size: 22px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .loc-featured-stat-label {
+    color: rgba(15,20,25,0.5);
+    letter-spacing: 0.1em;
+    font-size: 10px;
+  }
+
+  .loc-featured-blurb {
+    font-size: 14px;
+    color: var(--ink-muted, rgba(15,20,25,0.65));
+    line-height: 1.55;
+    flex: 1;
+    margin: 0;
+  }
+
+  .loc-featured-cta {
+    color: var(--amber-deep, #B07A1D);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-size: 10px;
+    transition: color var(--transition);
+  }
+
+  .loc-featured-card:hover .loc-featured-cta {
+    color: var(--ink);
+  }
+
+  /* ===== REGION SECTIONS ===== */
   .loc-region {
     background: var(--paper);
     border-bottom: 1px solid rgba(15,20,25,0.06);
@@ -196,17 +781,46 @@ const regions = [
     background: var(--cream);
   }
 
-  .loc-region-heading {
-    margin-bottom: 24px;
+  .loc-region-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 32px;
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 1px dashed rgba(15,20,25,0.12);
   }
 
-  .eyebrow-inline {
-    font-family: var(--f-mono);
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--amber-deep);
+  .loc-region-head-left {
+    max-width: 640px;
+  }
+
+  .loc-region-intro {
+    font-size: 15px;
+    color: var(--ink-muted, rgba(15,20,25,0.65));
+    line-height: 1.6;
+    margin-top: 12px;
+  }
+
+  .loc-region-head-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+
+  .loc-region-count {
+    font-family: var(--f-display, 'Fraunces', serif);
+    font-size: 56px;
+    line-height: 1;
+    color: var(--amber, #D4932E);
     font-weight: 400;
+  }
+
+  .loc-region-count-label {
+    color: rgba(15,20,25,0.5);
+    letter-spacing: 0.12em;
   }
 
   /* City grid */
@@ -219,21 +833,25 @@ const regions = [
   .loc-city-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
     padding: 20px;
     border: 1.5px solid rgba(15,20,25,0.08);
-    border-radius: var(--radius-md);
-    background: var(--cream-soft);
+    border-radius: var(--radius-md, 12px);
+    background: var(--cream-soft, var(--cream));
     text-decoration: none;
     color: inherit;
-    transition: border-color var(--transition), background var(--transition), transform var(--transition), box-shadow var(--transition);
+    transition: all var(--transition);
+  }
+
+  .loc-region:nth-child(even) .loc-city-card {
+    background: var(--paper);
   }
 
   .loc-city-card:hover {
-    border-color: var(--amber);
-    background: var(--amber-glow);
+    border-color: var(--amber, #D4932E);
+    background: var(--amber-glow, rgba(212,147,46,0.08));
     transform: translateY(-2px);
-    box-shadow: 0 4px 16px rgba(212,147,46,0.12);
+    box-shadow: 0 6px 18px rgba(212,147,46,0.12);
   }
 
   .loc-city-card-top {
@@ -242,15 +860,20 @@ const regions = [
     gap: 10px;
   }
 
+  .loc-city-card-name-block {
+    flex: 1;
+    min-width: 0;
+  }
+
   .loc-city-pin {
-    color: var(--amber);
+    color: var(--amber, #D4932E);
     flex-shrink: 0;
     display: flex;
     align-items: center;
   }
 
   .loc-city-card:hover .loc-city-pin {
-    color: var(--amber-deep);
+    color: var(--amber-deep, #B07A1D);
   }
 
   .loc-city-name {
@@ -264,14 +887,14 @@ const regions = [
   .loc-city-county {
     display: block;
     font-size: 10px;
-    color: var(--ink-muted);
+    color: var(--ink-muted, rgba(15,20,25,0.5));
     letter-spacing: 0.06em;
     margin-top: 2px;
   }
 
   .loc-city-arrow {
     margin-left: auto;
-    color: var(--amber);
+    color: var(--amber, #D4932E);
     font-size: 16px;
     transition: transform var(--transition);
     flex-shrink: 0;
@@ -283,14 +906,42 @@ const regions = [
 
   .loc-city-hook {
     font-size: 13px;
-    color: var(--ink-muted);
+    color: var(--ink-muted, rgba(15,20,25,0.65));
     line-height: 1.5;
     flex: 1;
+    margin: 0;
+  }
+
+  .loc-city-stats {
+    display: flex;
+    gap: 16px;
+    padding: 10px 0;
+    border-top: 1px dashed rgba(15,20,25,0.1);
+  }
+
+  .loc-city-stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .loc-city-stat-num {
+    font-family: var(--f-display, 'Fraunces', serif);
+    font-size: 16px;
+    line-height: 1;
+    color: var(--ink);
+    font-weight: 500;
+  }
+
+  .loc-city-stat-label {
+    color: rgba(15,20,25,0.45);
+    letter-spacing: 0.1em;
+    font-size: 9px;
   }
 
   .loc-city-cta {
     font-size: 10px;
-    color: var(--amber-deep);
+    color: var(--amber-deep, #B07A1D);
     letter-spacing: 0.08em;
     text-transform: uppercase;
     transition: color var(--transition);
@@ -300,37 +951,212 @@ const regions = [
     color: var(--ink);
   }
 
-  /* Bottom CTA */
+  /* ===== COVERAGE SECTION ===== */
+  .loc-coverage {
+    background: var(--paper);
+    border-top: 1px solid rgba(15,20,25,0.06);
+  }
+
+  .loc-coverage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: center;
+  }
+
+  .loc-coverage-text {
+    max-width: 520px;
+  }
+
+  .loc-coverage-text .cta-btn {
+    margin-top: 16px;
+  }
+
+  .loc-coverage-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .loc-coverage-list li {
+    font-family: var(--f-mono, 'JetBrains Mono', monospace);
+    font-size: 12px;
+    color: rgba(15,20,25,0.55);
+    padding: 8px 14px;
+    background: var(--cream-soft, var(--cream));
+    border: 1px solid rgba(15,20,25,0.06);
+    border-radius: var(--radius-pill, 999px);
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+
+  /* ===== FINAL CTA ===== */
   .loc-cta-section {
     background: var(--ink);
+    padding: 96px 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .loc-cta-section::before {
+    content: "";
+    position: absolute;
+    top: -200px;
+    left: -200px;
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
   }
 
   .loc-cta-inner {
-    max-width: 600px;
+    max-width: 700px;
     text-align: center;
     margin: 0 auto;
+    position: relative;
   }
 
   .loc-cta-section .eyebrow {
     justify-content: center;
-    color: rgba(244,239,230,0.4);
+    color: rgba(244,239,230,0.5);
+  }
+
+  .eyebrow-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--amber, #D4932E);
+    display: inline-block;
+    margin-right: 8px;
+  }
+
+  .eyebrow-dot-amber {
+    background: var(--amber, #D4932E);
+    box-shadow: 0 0 0 4px rgba(212,147,46,0.2);
   }
 
   .loc-cta-section .h2-section {
     color: var(--cream);
+    margin-top: 12px;
   }
 
   .loc-cta-section .lead {
     color: rgba(244,239,230,0.6);
+    margin-top: 16px;
   }
 
-  .loc-cta-section .cta-btn-primary {
-    margin-top: 8px;
+  .loc-cta-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 32px;
+  }
+
+  .cta-btn-ghost-light {
+    border: 1px solid rgba(244,239,230,0.25);
+    color: var(--cream);
+    background: transparent;
+    padding: 14px 24px;
+    border-radius: var(--radius-pill, 999px);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .cta-btn-ghost-light:hover {
+    border-color: var(--amber, #D4932E);
+    color: var(--amber, #D4932E);
+    background: rgba(212,147,46,0.08);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 1024px) {
+    .loc-hero-grid {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .loc-hero-panel {
+      max-width: 480px;
+    }
+
+    .loc-featured-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .loc-coverage-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .loc-trust-grid {
+      flex-wrap: wrap;
+      gap: 16px 8px;
+    }
+
+    .loc-trust-item {
+      flex: 1 1 30%;
+      min-width: 100px;
+    }
+
+    .loc-trust-divider {
+      display: none;
+    }
+
+    .loc-region-head {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .loc-region-head-right {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .loc-region-count {
+      font-size: 40px;
+    }
+
+    .loc-jumpnav-inner {
+      overflow-x: auto;
+      flex-wrap: nowrap;
+      padding-bottom: 4px;
+      scrollbar-width: none;
+    }
+
+    .loc-jumpnav-inner::-webkit-scrollbar {
+      display: none;
+    }
   }
 
   @media (max-width: 640px) {
     .loc-city-grid {
       grid-template-columns: 1fr;
+    }
+
+    .loc-coverage-list {
+      grid-template-columns: 1fr;
+    }
+
+    .loc-featured-name {
+      font-size: 28px;
+    }
+
+    .loc-cta-section {
+      padding: 64px 0;
     }
   }
 </style>
