@@ -421,6 +421,42 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
   </section>
 
   <!-- ══════════════════════════════════════════
+       DEFINITION
+  ══════════════════════════════════════════ -->
+  <section class="lp-definition section-pad-sm" aria-labelledby="def-heading">
+    <div class="container">
+      <div class="lp-def-inner">
+
+        <div class="lp-def-left">
+          <span class="lp-def-label mono-xs">Definition</span>
+          <h2 class="lp-def-heading" id="def-heading">What is custom WordPress web design?</h2>
+          <div class="lp-def-amber-rule" aria-hidden="true"></div>
+        </div>
+
+        <div class="lp-def-right">
+          <p class="lp-def-body">Custom WordPress web design means building your site on WordPress CMS from a blank canvas - not a pre-built theme already installed on 50,000 other businesses. The design is built around your brand and audience, the page structure targets the specific search terms your Baltimore customers actually run, and you own the code outright with no recurring platform fee locked to a third party. Every Upcoming Brand build ships with 90+ PageSpeed, JSON-LD schema matched to your business type, and all three Core Web Vitals in the green before launch day.</p>
+
+          <div class="lp-def-facts">
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">90<span class="lp-def-fact-sup">+</span></span>
+              <span class="lp-def-fact-lbl mono-xs">PageSpeed on every build</span>
+            </div>
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">$0</span>
+              <span class="lp-def-fact-lbl mono-xs">Platform fee after launch</span>
+            </div>
+            <div class="lp-def-fact">
+              <span class="lp-def-fact-num">3</span>
+              <span class="lp-def-fact-lbl mono-xs">Core Web Vitals in the green</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
        LOCAL PROOF PILLARS
   ══════════════════════════════════════════ -->
   <section class="lp-pillars section-pad-sm" aria-labelledby="pillars-heading">
@@ -429,12 +465,6 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
         <p class="eyebrow">Why local matters</p>
         <h2 class="h2-section" id="pillars-heading">What a {city}-based WordPress studio does differently</h2>
         <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever is available. We are a Maryland studio - remote-first by design, but built entirely around the Baltimore market. We know which suburbs are growing, which industries are competitive, and which search terms your customers run before they call anyone.</p>
-      </div>
-
-      <!-- Definition block -->
-      <div class="lp-def-callout">
-        <span class="lp-def-tag mono-xs">What is custom WordPress web design?</span>
-        <p class="lp-def-text">Custom WordPress web design means building your site on WordPress CMS from a blank canvas - not a pre-built theme already installed on 50,000 other businesses. The design is built around your brand and audience, the page structure targets the specific search terms your Baltimore customers actually run, and you own the code outright with no recurring platform fee locked to a third party. Every Upcoming Brand build ships with 90+ PageSpeed, JSON-LD schema matched to your business type, and all three Core Web Vitals in the green before launch day.</p>
       </div>
 
       <div class="lp-pillars-grid">
@@ -2604,32 +2634,96 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
   .lp-cta-submit { width: 100%; justify-content: center; margin-top: 4px; }
 
   /* ════════════════════════════════════════════
-     DEFINITION CALLOUT
+     DEFINITION SECTION
   ════════════════════════════════════════════ */
-  .lp-def-callout {
-    border-left: 3px solid var(--amber);
-    background: var(--amber-glow);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    padding: 18px 24px;
-    margin-bottom: 48px;
-    max-width: 800px;
+  .lp-definition {
+    background: var(--ink);
   }
 
-  .lp-def-tag {
-    display: block;
-    color: var(--amber-deep);
+  .lp-def-inner {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+
+  .lp-def-left {
+    position: sticky;
+    top: 32px;
+  }
+
+  .lp-def-label {
+    display: inline-block;
     font-size: 9px;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
-    margin-bottom: 8px;
-    font-weight: 600;
+    color: var(--amber);
+    border: 1px solid rgba(212,147,46,0.3);
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    margin-bottom: 20px;
   }
 
-  .lp-def-text {
-    font-size: 15px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin: 0;
+  .lp-def-heading {
+    font-family: var(--f-display);
+    font-size: clamp(26px, 3.2vw, 46px);
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.03em;
+    color: var(--cream);
+    margin: 0 0 28px 0;
+  }
+
+  .lp-def-amber-rule {
+    width: 40px;
+    height: 3px;
+    background: var(--amber);
+    border-radius: 2px;
+  }
+
+  .lp-def-body {
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.72;
+    color: rgba(255,255,255,0.65);
+    margin: 0 0 36px 0;
+  }
+
+  .lp-def-facts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 28px;
+  }
+
+  .lp-def-fact {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .lp-def-fact-num {
+    font-family: var(--f-display);
+    font-size: clamp(28px, 2.5vw, 38px);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    color: var(--amber);
+    position: relative;
+  }
+
+  .lp-def-fact-sup {
+    font-size: 0.55em;
+    vertical-align: super;
+    letter-spacing: 0;
+  }
+
+  .lp-def-fact-lbl {
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.45;
   }
 
   /* ════════════════════════════════════════════
@@ -2809,7 +2903,9 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     .lp-pillars-grid       { grid-template-columns: 1fr; }
     .lp-ind-grid           { grid-template-columns: 1fr; }
     .lp-compare-cols       { grid-template-columns: 1fr; }
-    .lp-def-callout        { margin-bottom: 32px; }
+    .lp-def-inner          { grid-template-columns: 1fr; }
+    .lp-def-left           { position: static; }
+    .lp-def-facts          { grid-template-columns: repeat(3, 1fr); }
   }
 
   @media (max-width: 600px) {
