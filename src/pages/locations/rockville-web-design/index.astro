@@ -96,6 +96,7 @@ const industries = [
     hook: "Montgomery County Circuit Court sits on Maryland Avenue in Rockville, and the surrounding legal market is one of the most competitive in the state. Family law, immigration, estate planning, and personal injury firms all fight for the same Local Pack positions. Firms in the top 3 of Google Maps capture 70% of clicks. We build multi-step intake forms, LegalService schema, and attorney profile pages structured to convert before a potential client ever calls.",
     schema: "LegalService",
     tags: ["Multi-step intake forms", "LegalService schema", "Montgomery County court SEO"],
+    href: "/industries/law-firm-website-design/",
   },
   {
     num: "02",
@@ -104,6 +105,7 @@ const industries = [
     hook: "Shady Grove Medical Center and Kaiser Permanente anchor Rockville's healthcare corridor, drawing practices throughout Montgomery County. Patients search by condition, insurance type, and neighborhood before calling any office. We build HIPAA-aware contact forms, Physician and Dentist schema, and fast pages that rank for condition-specific and location searches across the MD-355 medical corridor.",
     schema: "MedicalOrganization",
     tags: ["HIPAA-aware forms", "Physician schema", "Shady Grove corridor SEO"],
+    href: "/industries/medical-website-design/",
   },
   {
     num: "03",
@@ -112,6 +114,7 @@ const industries = [
     hook: "The I-270 Technology Corridor running through Rockville and Gaithersburg is home to hundreds of federal contractors, life science firms, and defense technology companies serving HHS, NIH, FDA, NIST, and DARPA. Most have outdated websites that don't reflect their capabilities. We build professional services sites with correct schema, capability statement pages, and the technical credibility these clients need to win federal contract work.",
     schema: "ProfessionalService",
     tags: ["Capability statement pages", "ProfessionalService schema", "I-270 corridor SEO"],
+    href: "/industries/small-business-website-design/",
   },
   {
     num: "04",
@@ -120,6 +123,7 @@ const industries = [
     hook: "Montgomery County is one of the highest-value real estate markets in the Mid-Atlantic. Buyers search neighborhoods, school ratings, and commute windows - Potomac, North Bethesda, and Rockville Town Center all attract different buyer profiles. We build IDX-integrated sites with neighborhood landing pages, RealEstateAgent schema, and property search flows that rank for Montgomery County home searches before a buyer ever calls an agent.",
     schema: "RealEstateAgent",
     tags: ["IDX integration", "Montgomery County neighborhood pages", "RealEstateAgent schema"],
+    href: "/industries/real-estate-website-design/",
   },
   {
     num: "05",
@@ -128,6 +132,7 @@ const industries = [
     hook: "Rockville Pike is one of Maryland's densest commercial corridors. Rockville Town Center draws diners and shoppers from across Montgomery County and DC. The Pike's Korean and Asian restaurant cluster has national search demand. We build menus that rank, reservation flows that convert, and product pages that load in under 2 seconds on mobile - because diners decide where to eat before they leave the house.",
     schema: "Restaurant",
     tags: ["OpenTable / Resy", "Menu SEO", "Restaurant schema"],
+    href: "/industries/restaurant-website-design/",
   },
   {
     num: "06",
@@ -136,6 +141,7 @@ const industries = [
     hook: "Potomac estate renovation and the dense residential stock throughout Rockville and North Bethesda generate consistent high-value contractor work. Homeowners with $1M+ properties search for contractors the same way everyone else does - on Google. A fast site with service area pages covering Potomac, Kensington, and Olney, plus HomeAndConstructionBusiness schema, puts you ahead of every competitor still running a GoDaddy template from 2017.",
     schema: "HomeAndConstructionBusiness",
     tags: ["Potomac estate pages", "Service area coverage", "HomeAndConstruction schema"],
+    href: "/industries/contractor-website-design/",
   },
 ];
 
@@ -746,7 +752,11 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
               <span class="lp-ind-num mono-xs">{ind.num}</span>
               <span class="lp-ind-stat">{ind.stat}</span>
             </div>
-            <h3 class="lp-ind-name">{ind.name}</h3>
+            {ind.href ? (
+              <h3 class="lp-ind-name"><a href={ind.href} class="lp-ind-link">{ind.name}</a></h3>
+            ) : (
+              <h3 class="lp-ind-name">{ind.name}</h3>
+            )}
             <blockquote class="lp-ind-hook">{ind.hook}</blockquote>
             <div class="lp-ind-schema mono-xs">{ind.schema}</div>
             <div class="lp-ind-tags">
@@ -904,6 +914,42 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
           <p class="lp-area-note mono-xs">No sales pitch &middot; 45 minutes &middot; Fixed-scope pricing only</p>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       NEARBY LOCATIONS
+  ══════════════════════════════════════════ -->
+  <section class="lp-nearby section-pad-sm" aria-labelledby="nearby-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Also serving</p>
+        <h2 class="h2-section" id="nearby-heading">WordPress web design across Maryland</h2>
+        <p class="lead">We build and maintain WordPress websites across all of Maryland. Here are nearby cities where we also work.</p>
+      </div>
+      <div class="lp-nearby-grid">
+        <a class="lp-nearby-card" href="/locations/baltimore-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Baltimore</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Baltimore City &middot; Law, Medical, Nonprofit</span>
+        </a>
+        <a class="lp-nearby-card" href="/locations/annapolis-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Annapolis</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Anne Arundel County &middot; Law, Marine, Medical</span>
+        </a>
+        <a class="lp-nearby-card" href="/locations/frederick-web-design/">
+          <div class="lp-nearby-top">
+            <span class="lp-nearby-city">Frederick</span>
+            <span class="lp-nearby-arr">&rarr;</span>
+          </div>
+          <span class="lp-nearby-sub mono-xs">Frederick County &middot; Biotech, Law, Restaurants</span>
+        </a>
       </div>
     </div>
   </section>
@@ -3016,6 +3062,60 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     .lp-faq-a            { padding: 0 16px 18px 54px; }
     .lp-hero-ctas        { flex-direction: column; width: 100%; }
     .lp-btn-primary, .lp-btn-ghost { justify-content: center; width: 100%; }
+  }
+
+  /* Nearby locations */
+  .lp-nearby-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .lp-nearby-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px 24px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    background: var(--cream-soft);
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .lp-nearby-card:hover {
+    border-color: var(--amber);
+    background: var(--cream);
+  }
+  .lp-nearby-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .lp-nearby-city {
+    font-family: var(--f-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+  .lp-nearby-arr {
+    color: var(--amber-deep);
+    font-size: 18px;
+    transition: transform 0.2s;
+  }
+  .lp-nearby-card:hover .lp-nearby-arr { transform: translateX(4px); }
+  .lp-nearby-sub {
+    color: var(--ink-muted);
+    font-size: 11px;
+  }
+  /* Industry name link */
+  .lp-ind-link {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .lp-ind-link:hover { color: var(--amber-deep); }
+  @media (max-width: 768px) {
+    .lp-nearby-grid { grid-template-columns: 1fr; }
   }
 </style>
 

@@ -5,48 +5,48 @@ const nav = [
   {
     heading: "Services",
     links: [
-      { label: "Custom WordPress Design", href: "#services" },
-      { label: "WooCommerce Development", href: "#services" },
-      { label: "Care Plans & Maintenance", href: "#services" },
-      { label: "Speed Optimization", href: "#services" },
-      { label: "SEO & Schema", href: "#services" },
-      { label: "Migration & Redesign", href: "#services" },
-      { label: "Security & Recovery", href: "#services" },
+      { label: "Custom WordPress Design", href: "/services/wordpress-web-design/" },
+      { label: "WooCommerce Development", href: "/services/woocommerce-development/" },
+      { label: "Care Plans & Maintenance", href: "/services/wordpress-care-plans/" },
+      { label: "Speed Optimization", href: "/services/wordpress-speed-optimization/" },
+      { label: "SEO & Schema", href: "/services/wordpress-seo-services/" },
+      { label: "Migration & Redesign", href: "/services/wordpress-migration/" },
+      { label: "Security & Recovery", href: "/services/wordpress-security/" },
     ],
   },
   {
     heading: "Industries",
     links: [
-      { label: "Law Firms & Attorneys", href: "#industries" },
-      { label: "Dental Practices", href: "#industries" },
-      { label: "Medical Clinics", href: "#industries" },
-      { label: "Real Estate Brokers", href: "#industries" },
-      { label: "HVAC & Contractors", href: "#industries" },
-      { label: "Nonprofits & Churches", href: "#industries" },
-      { label: "Restaurants", href: "#industries" },
+      { label: "Law Firms & Attorneys", href: "/industries/law-firm-website-design/" },
+      { label: "Dental Practices", href: "/industries/dental-website-design/" },
+      { label: "Medical Clinics", href: "/industries/medical-website-design/" },
+      { label: "Real Estate Brokers", href: "/industries/real-estate-website-design/" },
+      { label: "Contractors & Trades", href: "/industries/contractor-website-design/" },
+      { label: "Nonprofits & Churches", href: "/industries/nonprofit-website-design/" },
+      { label: "Restaurants", href: "/industries/restaurant-website-design/" },
     ],
   },
   {
     heading: "Locations",
     links: [
-      { label: "Baltimore", href: "#locations" },
-      { label: "Annapolis", href: "#locations" },
-      { label: "Frederick", href: "#locations" },
-      { label: "Bethesda", href: "#locations" },
-      { label: "Rockville", href: "#locations" },
-      { label: "Silver Spring", href: "#locations" },
-      { label: "All 20+ Maryland cities →", href: "#locations" },
+      { label: "Baltimore", href: "/locations/baltimore-web-design/" },
+      { label: "Annapolis", href: "/locations/annapolis-web-design/" },
+      { label: "Frederick", href: "/locations/frederick-web-design/" },
+      { label: "Rockville", href: "/locations/rockville-web-design/" },
+      { label: "Silver Spring", href: "/locations/silver-spring-web-design/" },
+      { label: "Bethesda", href: "/locations/bethesda-web-design/" },
+      { label: "All Maryland cities →", href: "/locations/" },
     ],
   },
   {
     heading: "Company",
     links: [
-      { label: "About", href: "#" },
-      { label: "Process", href: "#process" },
-      { label: "Pricing", href: "#pricing" },
-      { label: "Portfolio", href: "#work" },
-      { label: "Blog", href: "#blog" },
-      { label: "Contact", href: "#contact" },
+      { label: "About", href: "/about/" },
+      { label: "Our Process", href: "/about/process/" },
+      { label: "Pricing", href: "/pricing/" },
+      { label: "Portfolio", href: "/work/" },
+      { label: "Blog", href: "/blog/" },
+      { label: "Contact", href: "/contact/" },
     ],
   },
 ];
@@ -73,7 +73,7 @@ const socials = [
             height="52"
           />
         </a>
-        <p class="footer-tagline">WordPress web design services based in Maryland — Baltimore, Annapolis, Frederick &amp; the DMV metro.</p>
+        <p class="footer-tagline">WordPress web design services based in Maryland — Baltimore, Annapolis, Frederick, Rockville &amp; all of Maryland.</p>
         <div class="footer-socials" role="list" aria-label="Social media links">
           {socials.map((s) => (
             <a href={s.href} class="social-link" role="listitem" aria-label={s.label}>
