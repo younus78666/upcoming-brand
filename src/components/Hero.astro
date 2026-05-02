@@ -22,7 +22,7 @@
       </h1>
 
       <p class="hero-lede">
-        Upcoming Brand is a <strong>WordPress web design agency</strong> based in Maryland — searching for "web design near me"? We design and build custom WordPress websites for <strong>law firms, dental practices, real estate brokerages,</strong> and small businesses across Baltimore, Annapolis, Frederick, Bethesda, and the broader DMV metro. Sites that rank in Google, win Local Pack placement, and keep working long after launch.
+        Upcoming Brand is a <a href="/wordpress-agency/" class="hero-lede-link"><strong>WordPress web design agency</strong></a> based in Maryland — searching for "web design near me"? We design and build custom WordPress websites for <strong>law firms, dental practices, real estate brokerages,</strong> and small businesses across Baltimore, Annapolis, Frederick, Bethesda, and the broader DMV metro. Sites that rank in Google, win Local Pack placement, and keep working long after launch.
       </p>
 
       <div class="hero-ctas">
@@ -285,6 +285,18 @@
     margin: 0;
   }
   .hero-lede strong { font-weight: 600; color: var(--ink); }
+  .hero-lede-link {
+    text-decoration: underline;
+    text-decoration-color: var(--amber);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+  .hero-lede-link:hover {
+    text-decoration-color: var(--amber-deep);
+  }
+  .hero-lede-link strong { color: var(--amber-deep); }
+  .hero-lede-link:hover strong { color: var(--ink); }
 
   /* ── CTAs ── */
   .hero-ctas {
