@@ -104,6 +104,20 @@ const jsonLd = JSON.stringify({
       },
       "provider": { "@id": "https://upcomingbrand.com/#organization" },
       "parentOrganization": { "@id": "https://upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      "name": "How to hire a WordPress agency",
+      "description": "The five-step process to hire a fixed-scope WordPress agency, from project brief to kickoff.",
+      "totalTime": "P10D",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Send a project brief",       "text": "Email a project description or fill the contact form. Most WordPress agencies respond within one business day." },
+        { "@type": "HowToStep", "position": 2, "name": "Book a discovery call",       "text": "A senior member of the agency runs a 45-minute Zoom call covering competitive set, schema map, Local Pack gaps, and conversion architecture." },
+        { "@type": "HowToStep", "position": 3, "name": "Receive a fixed-scope quote", "text": "Within 48 hours of the discovery call, the agency sends a PDF with full scope, milestones, deliverables, and one fixed price held for 30 days." },
+        { "@type": "HowToStep", "position": 4, "name": "Sign and pay deposit",         "text": "Sign the SOW and pay the deposit (typically 40%). The agency schedules kickoff within 5 business days." },
+        { "@type": "HowToStep", "position": 5, "name": "Async build and launch",       "text": "The build runs async with weekly staging URLs and written status updates. Launch includes a complete redirect map, zero-downtime DNS cutover, and 30-day post-launch monitoring." }
+      ]
     }
   ]
 });
@@ -114,48 +128,89 @@ const services = [
     title: "Custom WordPress design",
     detail: "Designed around your schema map and conversion architecture. Custom Gutenberg blocks, no page builders, no $400/year plugin licences. Editable forever by you or any developer.",
     keyword: "WordPress design",
+    href: "/services/wordpress-web-design/",
   },
   {
     num: "02",
-    title: "WordPress development",
-    detail: "Senior WordPress development with modern PHP, ACF Pro, custom post types, and performant theme architecture. Built for editors as much as for visitors.",
-    keyword: "WordPress development",
+    title: "WordPress website development",
+    detail: "Senior WordPress development services using modern PHP, ACF Pro, custom post types, and performant theme architecture. Built for editors as much as for visitors.",
+    keyword: "WordPress development services",
+    href: "/services/wordpress-web-design/",
   },
   {
     num: "03",
     title: "WooCommerce development",
     detail: "Complete WooCommerce builds: subscriptions, configurators, multi-vendor, custom checkout flows, payment integrations. WooCommerce schema and Core Web Vitals shipped at launch.",
     keyword: "WooCommerce agency",
+    href: "/services/woocommerce-development/",
   },
   {
     num: "04",
-    title: "WordPress SEO + schema",
-    detail: "LocalBusiness, FAQ, Service, and vertical-specific schema mapped before design begins. RankMath configuration, internal linking strategy, Search Console + Bing Webmaster setup.",
+    title: "WordPress SEO and schema",
+    detail: "LocalBusiness, FAQ, Service, and vertical-specific schema mapped before design begins. RankMath configuration, internal linking strategy, Search Console and Bing Webmaster setup.",
     keyword: "WordPress SEO agency",
+    href: "/services/wordpress-seo-services/",
   },
   {
     num: "05",
     title: "Core Web Vitals",
     detail: "90+ Lighthouse on every page, contractually. Image optimization, critical CSS, lazy loading, and server-level tuning so the site ships green and stays green.",
     keyword: "Web performance agency",
+    href: "/services/wordpress-speed-optimization/",
   },
   {
     num: "06",
-    title: "Migrations + redesigns",
+    title: "Migrations and redesigns",
     detail: "Wix, Squarespace, GoDaddy, or outdated WordPress to custom WordPress. Complete redirect map, zero-downtime DNS cutover, 30-day Search Console watch post-launch.",
     keyword: "WordPress migration",
+    href: "/services/wordpress-migration/",
   },
   {
     num: "07",
     title: "WordPress maintenance",
-    detail: "Care plans from $150/month: weekly updates, off-site backups, uptime monitoring, security patching, 4-hour SLA. Direct founder access, not a help-desk queue.",
+    detail: "Care plans from $150/month with weekly updates, off-site backups, uptime monitoring, security patching, and a 4-hour SLA. Direct founder access, not a help-desk queue.",
     keyword: "WordPress maintenance services",
+    href: "/services/wordpress-care-plans/",
   },
   {
     num: "08",
-    title: "Audits + sprints",
+    title: "Audits and sprints",
     detail: "Standalone $1,500 audits (schema, performance, Local Pack, content gaps) and 2-week speed sprints to bring an existing site to 90+ Lighthouse.",
     keyword: "WordPress audit",
+    href: "/services/seo-audit/",
+  },
+];
+
+const whenYouNeed = [
+  {
+    num: "01",
+    signal: "Your current site ranks for nothing",
+    detail: "Beautiful site, blank Search Console. Usually means missing schema, weak Core Web Vitals, and no Local Pack signals. A WordPress agency rebuilds the technical foundation those rankings need.",
+  },
+  {
+    num: "02",
+    signal: "You're stuck on Wix, Squarespace, or GoDaddy",
+    detail: "These platforms cap your schema flexibility, page speed, and ability to build the conversion architecture serious businesses need. Migrating to a custom WordPress build is the standard fix.",
+  },
+  {
+    num: "03",
+    signal: "A freelancer disappeared mid-project",
+    detail: "It happens. Single-developer dependencies are a single point of failure. An agency offers continuity, documentation, and a vetted network if specialists are needed.",
+  },
+  {
+    num: "04",
+    signal: "You're scaling past 'simple website'",
+    detail: "Adding WooCommerce, IDX feeds, multi-location schema, booking systems, or compliance layers (HIPAA, MRPC) takes you past freelancer scope. WordPress agencies live in that territory.",
+  },
+  {
+    num: "05",
+    signal: "Your current 'agency' bills hourly with no end",
+    detail: "Quotes that grow with each invoice, no fixed delivery date, scope creep priced into your weekly bill. A fixed-scope WordPress agency replaces that with one PDF, one number, signed before code is written.",
+  },
+  {
+    num: "06",
+    signal: "You don't know who's actually doing the work",
+    detail: "Project managers relay messages between you and faceless implementation teams. Direct-access agencies put you in the same conversation as the person writing the code.",
   },
 ];
 
@@ -168,7 +223,7 @@ const whyUs = [
   {
     num: "02",
     title: "Schema-first architecture",
-    detail: "Generic agencies skip schema because they don't understand it. We map LocalBusiness, FAQ, Service, and vertical-specific schema first — before a single block is designed.",
+    detail: "Generic agencies skip schema because they don't understand it. We map LocalBusiness, FAQ, Service, and vertical-specific schema first, before a single block is designed.",
   },
   {
     num: "03",
@@ -207,19 +262,19 @@ const comparison = [
 const faqs = [
   {
     q: "What does a WordPress agency actually do?",
-    a: "A WordPress agency designs, develops, optimises, and maintains WordPress websites — typically for businesses that need more than a freelancer can deliver and less overhead than a 50-person digital agency. The strongest WordPress agencies bundle four services in one engagement: custom design, custom development (no page builders), schema and SEO architecture, and Core Web Vitals optimisation. Upcoming Brand is structured exactly this way: every project ships with all four as a baseline, regardless of tier.",
+    a: "A WordPress agency designs, develops, optimises, and maintains WordPress websites. The clients are typically businesses that need more than a freelancer can deliver and less overhead than a 50-person digital agency. The strongest WordPress agencies bundle four services in one engagement: custom design, custom development (no page builders), schema and SEO architecture, and Core Web Vitals optimisation. Upcoming Brand is structured exactly this way: every project ships with all four as a baseline, regardless of tier.",
   },
   {
     q: "How much does a WordPress agency charge?",
-    a: "Quality WordPress agency pricing in the US runs $1,500 to $15,000 for most small-to-mid business projects, with enterprise builds (multi-location, multi-language, complex integrations) ranging $20,000-$80,000+. Hourly rates at WordPress agencies typically run $80-$200/hr, but the higher-quality firms have moved to fixed-scope pricing. Upcoming Brand is fixed-scope only — Starter at $1,500, Growth at $3,500, Custom from $6,000 — with the full scope documented before you sign.",
+    a: "Quality WordPress agency pricing in the US runs $1,500 to $15,000 for most small-to-mid business projects, with enterprise builds (multi-location, multi-language, complex integrations) ranging $20,000-$80,000+. Hourly rates at WordPress agencies typically run $80-$200/hr, but the higher-quality firms have moved to fixed-scope pricing. Upcoming Brand is fixed-scope only: Starter at $1,500, Growth at $3,500, Custom from $6,000. The full scope is documented before you sign. See our <a href='/pricing/'>full pricing breakdown</a> for what's in each tier.",
   },
   {
-    q: "WordPress agency vs freelancer — which is right?",
-    a: "Freelancers work well for very simple sites, MVPs, or projects with tight budgets where you accept the trade-offs (no schema, basic performance, single point of failure). A WordPress agency is the better fit when you need: schema-led architecture, contractual Core Web Vitals, compliance work (HIPAA, MRPC, FEC), continuity if a single developer leaves, and post-launch monitoring. We accept projects from $1,500 specifically so businesses don't have to choose between freelancer cheap and agency expensive.",
+    q: "WordPress agency vs freelancer: which is right?",
+    a: "Freelancers work well for very simple sites, MVPs, or projects with tight budgets where you accept the trade-offs (no schema, basic performance, single point of failure). A WordPress agency is the better fit when you need schema-led architecture, contractual Core Web Vitals, compliance work (HIPAA, MRPC, FEC), continuity if a single developer leaves, and post-launch monitoring. We accept projects from $1,500 specifically so businesses don't have to choose between freelancer cheap and agency expensive. If you've decided on the freelancer side, see our <a href='/hire-wordpress-designer/'>hire a WordPress designer</a> page.",
   },
   {
     q: "What's the difference between a WordPress web design agency and a WordPress development agency?",
-    a: "In practice, none — most senior firms do both. A 'WordPress web design agency' implies the project is design-led; a 'WordPress development agency' implies it's engineering-led. Upcoming Brand is both: our designers know schema and our developers know conversion architecture. The same person who runs the discovery call writes the schema and ships the launch. There's no design-then-throw-over-the-wall-to-dev hand-off.",
+    a: "In practice, none. Most senior firms do both. A 'WordPress web design agency' implies the project is design-led; a 'WordPress development agency' implies it's engineering-led. Upcoming Brand is both: our designers know schema and our developers know conversion architecture. The same person who runs the discovery call writes the schema and ships the launch. There's no design-then-throw-over-the-wall-to-dev hand-off.",
   },
   {
     q: "Do you work as a white-label WordPress agency for other agencies?",
@@ -227,17 +282,17 @@ const faqs = [
   },
   {
     q: "Are you a Maryland-based WordPress agency or do you work nationally?",
-    a: "Both. We're based in Maryland and have built sites for businesses across all US states, plus 12 countries internationally. Every project runs entirely remote — discovery on Zoom, async build with weekly staging links, written status updates. Maryland clients get the local schema and Local Pack expertise; out-of-state clients get the same engineering bar. Distance has zero effect on the work.",
+    a: "Both. We're based in Maryland and have built sites for businesses across all US states, plus 12 countries internationally. Every project runs entirely remote: discovery on Zoom, async build with weekly staging links, written status updates. Maryland clients get the local schema and Local Pack expertise; out-of-state clients get the same engineering bar. Distance has zero effect on the work.",
   },
   {
     q: "How fast can a WordPress agency project be delivered?",
-    a: "Standard delivery: Starter (8 pages) in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks. The biggest variable is how quickly you review and approve design rounds — we keep building on our end, but the timeline pauses if content or feedback is delayed beyond the SOW window.",
+    a: "Standard delivery: Starter (8 pages) in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks. The biggest variable is how quickly you review and approve design rounds. We keep building on our end, but the timeline pauses if content or feedback is delayed beyond the SOW window.",
   },
 ];
 ---
 <BaseLayout
-  title="WordPress Agency Maryland | Custom WordPress Web Design Company | Upcoming Brand"
-  description="Upcoming Brand is a WordPress agency in Maryland. Custom WordPress web design, development, schema architecture, and Core Web Vitals. Fixed-scope, 90+ Lighthouse, 6-10 week delivery. From $1,500."
+  title="WordPress Agency Maryland | Web Design & Development Services | Upcoming Brand"
+  description="Upcoming Brand is a WordPress agency in Maryland offering web design and development services. Schema architecture, Core Web Vitals, WooCommerce, fixed-scope from $1,500. 90+ Lighthouse guaranteed. Maryland-based, serving the US."
   canonicalUrl={canonical}
 >
   <Fragment slot="head">
@@ -265,7 +320,7 @@ const faqs = [
         </h1>
 
         <p class="page-lead">
-          Upcoming Brand is a Maryland-based <strong>WordPress agency</strong> for serious businesses. Custom WordPress web design, WooCommerce development, schema architecture, and Core Web Vitals optimization — bundled into every project. <strong>Fixed-scope from $1,500. 90+ Lighthouse guaranteed. 6-10 week delivery.</strong>
+          Upcoming Brand is a Maryland-based <strong>WordPress agency</strong> offering <strong>WordPress web design and development services</strong> for serious businesses. WooCommerce, schema architecture, and Core Web Vitals optimization come bundled into every project. Searching for a "WordPress agency near me"? We work with Maryland clients locally and US-wide remotely. <strong>Fixed-scope from $1,500. 90+ Lighthouse guaranteed. 6-10 week delivery.</strong>
         </p>
 
         <div class="page-hero-ctas">
@@ -319,6 +374,64 @@ const faqs = [
       </div>
     </section>
 
+    <!-- ====== DEFINITION BLOCK (Know intent + AI Overview citation) ====== -->
+    <section class="agency-define">
+      <div class="container">
+        <div class="agency-define-card">
+          <div class="agency-define-head">
+            <span class="agency-define-pulse" aria-hidden="true"></span>
+            <span class="agency-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 agency-define-h2">
+            What is a WordPress agency?
+          </h2>
+          <p class="agency-define-answer">
+            <strong>A WordPress agency is a studio that designs, builds, and maintains WordPress websites for businesses.</strong> Unlike a freelancer, a WordPress agency offers continuity, a vetted network of specialists, and the technical depth needed for schema architecture, Core Web Vitals optimization, and compliance work. Unlike a 50-person digital agency, a WordPress-focused studio bundles design, development, SEO, and performance into one engagement without account-manager layers.
+          </p>
+          <div class="agency-define-meta">
+            <div class="agency-define-meta-item">
+              <span class="agency-define-meta-label">Also known as</span>
+              <span class="agency-define-meta-val">WordPress design agency, WordPress development company, WordPress web design studio</span>
+            </div>
+            <div class="agency-define-meta-item">
+              <span class="agency-define-meta-label">Category</span>
+              <span class="agency-define-meta-val">Web design and development agency, specialized in WordPress</span>
+            </div>
+            <div class="agency-define-meta-item">
+              <span class="agency-define-meta-label">Typical engagement</span>
+              <span class="agency-define-meta-val">$1,500 to $80,000 per project, fixed-scope or hourly</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHEN YOU NEED ONE (Causation frame) ====== -->
+    <section class="agency-when">
+      <div class="container">
+        <div class="agency-when-head">
+          <p class="agency-section-eyebrow">
+            <span class="agency-section-eyebrow-line"></span>
+            When to hire one
+          </p>
+          <h2 class="page-h2">
+            Six signals <em>you need a WordPress agency.</em>
+          </h2>
+          <p class="page-section-lead">If two or more of these match your situation, the right answer is hiring a <a href="/services/wordpress-web-design/">WordPress development services</a> partner with the depth to fix the underlying issue. Not all problems need an agency. These six usually do.</p>
+        </div>
+
+        <div class="agency-when-grid">
+          {whenYouNeed.map((w) => (
+            <article class="agency-when-card">
+              <span class="agency-when-num">{w.num}</span>
+              <h3 class="agency-when-signal">{w.signal}</h3>
+              <p class="agency-when-detail">{w.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- ====== SERVICES ====== -->
     <section class="agency-services">
       <div class="container">
@@ -331,20 +444,24 @@ const faqs = [
           <h2 class="page-h2 agency-services-h2">
             Eight WordPress services <em>under one roof.</em>
           </h2>
-          <p class="agency-services-lead">A full WordPress agency stack — design, development, SEO, performance, maintenance, and audits — with no hand-offs between specialist silos.</p>
+          <p class="agency-services-lead">A full WordPress agency stack covering design, development, SEO, performance, maintenance, and audits, with no hand-offs between specialist silos.</p>
         </div>
 
         <div class="agency-services-grid">
           {services.map((s) => (
-            <article class="agency-service-card">
+            <a href={s.href} class="agency-service-card">
               <div class="agency-service-head">
                 <span class="agency-service-num">{s.num}</span>
                 <span class="agency-service-keyword">{s.keyword}</span>
               </div>
               <h3 class="agency-service-title">{s.title}</h3>
               <p class="agency-service-detail">{s.detail}</p>
+              <span class="agency-service-link" aria-hidden="true">
+                See service
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
               <div class="agency-service-bar" aria-hidden="true"></div>
-            </article>
+            </a>
           ))}
         </div>
       </div>
@@ -361,7 +478,7 @@ const faqs = [
           <h2 class="page-h2">
             Nine industries. <em>Vertical-specific schema on every project.</em>
           </h2>
-          <p class="page-section-lead">A generic WordPress agency builds for everyone the same way. We build differently per vertical — different schema, different compliance, different conversion architecture.</p>
+          <p class="page-section-lead">A generic WordPress agency builds for everyone the same way. We build differently per vertical: different schema, different compliance, different conversion architecture.</p>
         </div>
 
         <div class="agency-verticals-grid">
@@ -448,7 +565,7 @@ const faqs = [
           <h2 class="page-h2">
             Three packages. <em>One fixed price.</em>
           </h2>
-          <p class="page-section-lead">Real WordPress agency pricing — written down, fixed-scope, no hourly billing. The Growth tier is what most clients pick.</p>
+          <p class="page-section-lead">Real WordPress agency pricing: written down, fixed-scope, no hourly billing. The Growth tier is what most clients pick.</p>
         </div>
 
         <div class="agency-pricing-grid">
@@ -855,6 +972,199 @@ const faqs = [
   }
 
   /* ===========================================
+     DEFINITION CALLOUT (Know intent)
+     =========================================== */
+  .agency-define {
+    background: var(--cream);
+    padding: clamp(48px, 6vh, 80px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agency-define-card {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1.5px solid rgba(212,147,46,0.3);
+    border-radius: var(--radius-lg);
+    padding: 36px 40px;
+    position: relative;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .agency-define-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+
+  .agency-define-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .agency-define-pulse {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--amber);
+    box-shadow: 0 0 0 4px rgba(212,147,46,0.18);
+    animation: agency-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes agency-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+  }
+
+  .agency-define-label {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+
+  .agency-define-h2 {
+    margin: 0 0 16px;
+    font-size: clamp(24px, 3vw, 34px);
+  }
+
+  .agency-define-answer {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+
+  .agency-define-answer strong {
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .agency-define-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    padding-top: 18px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .agency-define-meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .agency-define-meta-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+  }
+
+  .agency-define-meta-val {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+
+  /* ===========================================
+     WHEN YOU NEED ONE
+     =========================================== */
+  .agency-when {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agency-when-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .agency-when-head a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+  }
+
+  .agency-when-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .agency-when-card {
+    padding: 28px 26px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .agency-when-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+
+  .agency-when-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+
+  .agency-when-card:hover::before { transform: scaleY(1); }
+
+  .agency-when-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+
+  .agency-when-signal {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 10px 0 8px;
+  }
+
+  .agency-when-detail {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* ===========================================
      SERVICES (dark band)
      =========================================== */
   .agency-services {
@@ -972,6 +1282,24 @@ const faqs = [
     margin: 0;
     flex: 1;
   }
+
+  .agency-service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin-top: 4px;
+    transition: gap 0.3s ease;
+  }
+  .agency-service-card:hover .agency-service-link {
+    gap: 10px;
+    color: var(--cream);
+  }
+  .agency-service-link svg { transition: transform 0.22s ease; }
 
   .agency-service-bar {
     width: 24px;
@@ -1428,6 +1756,13 @@ const faqs = [
     border-top: 1px dashed var(--line);
     padding-top: 18px;
   }
+  .agency-faq-a a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+  }
+  .agency-faq-a a:hover { color: var(--ink); }
 
   /* ===========================================
      PAGE FINAL CTA
@@ -1522,6 +1857,12 @@ const faqs = [
     .agency-services-grid { grid-template-columns: repeat(2, 1fr); }
     .agency-verticals-grid { grid-template-columns: repeat(2, 1fr); }
     .agency-pricing-grid { grid-template-columns: 1fr; }
+    .agency-define-meta { grid-template-columns: 1fr; gap: 12px; }
+    .agency-define-card { padding: 28px 24px; }
+    .agency-when-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .agency-when-grid { grid-template-columns: 1fr; }
   }
 
   @media (max-width: 768px) {
