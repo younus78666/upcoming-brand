@@ -485,7 +485,42 @@ const jsonLdString = JSON.stringify({
 
 <script is:inline>
 (function(){
+  // Visible debug panel — shows checkpoints + JS errors directly on page (no DevTools needed)
+  var __sgDebug = { steps: [], errors: [] };
+  function __sgLog(step){ __sgDebug.steps.push(step); __sgRender(); }
+  function __sgErr(msg){ __sgDebug.errors.push(String(msg)); __sgRender(); }
+  function __sgRender(){
+    var p = document.getElementById('sg-debug-panel');
+    if(!p){
+      p = document.createElement('div');
+      p.id = 'sg-debug-panel';
+      p.style.cssText = 'position:fixed;bottom:10px;right:10px;max-width:380px;max-height:50vh;overflow:auto;background:#111;color:#0f0;font:11px/1.4 monospace;padding:10px 12px;border-radius:8px;z-index:99999;box-shadow:0 8px 30px rgba(0,0,0,0.4);border:1px solid #333;';
+      var btn = document.createElement('button');
+      btn.textContent = 'x';
+      btn.style.cssText = 'position:absolute;top:4px;right:6px;background:transparent;color:#888;border:0;cursor:pointer;font-size:14px;';
+      btn.onclick = function(){ p.style.display = 'none'; };
+      p.appendChild(btn);
+      var body = document.createElement('div');
+      body.id = 'sg-debug-body';
+      p.appendChild(body);
+      (document.body || document.documentElement).appendChild(p);
+    }
+    var body = document.getElementById('sg-debug-body');
+    if(!body) return;
+    var html = '<strong style="color:#fff;">SG debug</strong><br>';
+    html += '<span style="color:#0f0;">' + __sgDebug.steps.length + ' checkpoints OK</span><br>';
+    __sgDebug.steps.forEach(function(s){ html += '&#x2713; ' + s + '<br>'; });
+    if(__sgDebug.errors.length){
+      html += '<br><strong style="color:#f55;">ERRORS:</strong><br>';
+      __sgDebug.errors.forEach(function(e){ html += '<span style="color:#f99;">' + e.replace(/</g,'&lt;') + '</span><br>'; });
+    }
+    body.innerHTML = html;
+  }
+  window.addEventListener('error', function(e){ __sgErr((e.message || 'error') + ' @ ' + (e.filename || '').split('/').pop() + ':' + (e.lineno || '?')); });
+  __sgLog('script loaded');
+
   document.addEventListener('DOMContentLoaded', function(){
+    try { __sgLog('DOMContentLoaded'); } catch(e){}
     var state = {
       name:'', url:'', description:'', phone:'', email:'',
       street:'', city:'', region:'', postal:'', country:'US',
@@ -1440,6 +1475,7 @@ const jsonLdString = JSON.stringify({
       });
       return btn;
     }
+    try { __sgLog('makeAiButton defined'); } catch(e){}
 
     // Track all rendered AI buttons so we can re-enable/disable when key changes
     var aiButtonRegistry = [];
@@ -1497,8 +1533,11 @@ const jsonLdString = JSON.stringify({
         registerAi(descAiBtn);
         descEl.parentNode.classList.add('sg-field-with-ai');
         descEl.parentNode.appendChild(descAiBtn);
+        try { __sgLog('description sparkle attached'); } catch(e){}
+      } else {
+        try { __sgErr('sg-description element not found'); } catch(e){}
       }
-    } catch(e){ if(window.console) console.error('Description AI button failed:', e); }
+    } catch(e){ try { __sgErr('description AI button failed: ' + (e.message||e)); } catch(_){} }
 
     // Wire AI button next to knowsAbout textarea
     try {
@@ -1520,8 +1559,11 @@ const jsonLdString = JSON.stringify({
         registerAi(knowsAiBtn);
         knowsTa.parentNode.classList.add('sg-field-with-ai');
         knowsTa.parentNode.appendChild(knowsAiBtn);
+        try { __sgLog('knowsAbout sparkle attached'); } catch(e){}
+      } else {
+        try { __sgErr('sg-knows-about element not found'); } catch(e){}
       }
-    } catch(e){ if(window.console) console.error('knowsAbout AI button failed:', e); }
+    } catch(e){ try { __sgErr('knowsAbout AI button failed: ' + (e.message||e)); } catch(_){} }
 
     // The big buttons at the top of AI section now do master auto-fill + key clear
     document.getElementById('sg-ai-polish-desc').addEventListener('click', function(){
