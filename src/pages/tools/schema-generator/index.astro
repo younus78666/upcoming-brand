@@ -221,7 +221,7 @@ const jsonLdString = JSON.stringify({
       businessType:'LocalBusiness',
       includeOrganization:true, includeWebsite:true, includeLocalBusiness:true,
       includeRating:false, ratingValue:'5.0', ratingCount:'12',
-      includeService:false, services:[{name:'',price:''}],
+      includeService:false, services:[{name:'',description:'',price:''}],
       includeFaq:false, faqs:[{q:'',a:''}],
       includeSpeakable:false, speakableSelectors:[]
     };
@@ -280,51 +280,116 @@ const jsonLdString = JSON.stringify({
     function renderServices(){
       servicesList.innerHTML = '';
       state.services.forEach(function(s, idx){
-        var row = document.createElement('div');
-        row.className = 'sg-service-row';
-        var nameI = document.createElement('input');
-        nameI.type='text'; nameI.className='sg-input'; nameI.placeholder='Service name'; nameI.value=s.name;
-        var priceI = document.createElement('input');
-        priceI.type='text'; priceI.className='sg-input'; priceI.placeholder='From $1,500'; priceI.value=s.price;
+        var card = document.createElement('div');
+        card.className = 'sg-row-card';
+
+        var head = document.createElement('div');
+        head.className = 'sg-row-head';
+        var label = document.createElement('span');
+        label.className = 'sg-row-label';
+        label.textContent = 'Service ' + String(idx + 1).padStart(2, '0');
         var rmB = document.createElement('button');
         rmB.type='button'; rmB.className='sg-row-remove'; rmB.textContent='Remove';
-        nameI.addEventListener('input', function(){ state.services[idx].name = nameI.value; render(); });
-        priceI.addEventListener('input', function(){ state.services[idx].price = priceI.value; render(); });
         rmB.addEventListener('click', function(){
           state.services.splice(idx,1);
-          if(state.services.length===0) state.services.push({name:'',price:''});
+          if(state.services.length===0) state.services.push({name:'',description:'',price:''});
           renderServices(); render();
         });
-        row.appendChild(nameI); row.appendChild(priceI); row.appendChild(rmB);
-        servicesList.appendChild(row);
+        head.appendChild(label); head.appendChild(rmB);
+
+        var grid = document.createElement('div');
+        grid.className = 'sg-row-grid';
+
+        // Name field
+        var nameField = document.createElement('div');
+        nameField.className = 'sg-field sg-field-full';
+        var nameLabel = document.createElement('label');
+        nameLabel.className = 'sg-label';
+        nameLabel.textContent = 'Service name';
+        var nameI = document.createElement('input');
+        nameI.type='text'; nameI.className='sg-input'; nameI.placeholder='e.g. Estate Planning'; nameI.value=s.name;
+        nameI.addEventListener('input', function(){ state.services[idx].name = nameI.value; render(); });
+        nameField.appendChild(nameLabel); nameField.appendChild(nameI);
+
+        // Description field
+        var descField = document.createElement('div');
+        descField.className = 'sg-field sg-field-full';
+        var descLabel = document.createElement('label');
+        descLabel.className = 'sg-label';
+        descLabel.textContent = 'Short description (optional)';
+        var descI = document.createElement('textarea');
+        descI.className='sg-input sg-textarea'; descI.rows=2; descI.placeholder='What this service includes, in one sentence.'; descI.value=s.description || '';
+        descI.addEventListener('input', function(){ state.services[idx].description = descI.value; render(); });
+        descField.appendChild(descLabel); descField.appendChild(descI);
+
+        // Price field
+        var priceField = document.createElement('div');
+        priceField.className = 'sg-field sg-field-full';
+        var priceLabel = document.createElement('label');
+        priceLabel.className = 'sg-label';
+        priceLabel.textContent = 'Price or starting from';
+        var priceI = document.createElement('input');
+        priceI.type='text'; priceI.className='sg-input'; priceI.placeholder='From $1,500'; priceI.value=s.price;
+        priceI.addEventListener('input', function(){ state.services[idx].price = priceI.value; render(); });
+        priceField.appendChild(priceLabel); priceField.appendChild(priceI);
+
+        grid.appendChild(nameField); grid.appendChild(descField); grid.appendChild(priceField);
+        card.appendChild(head); card.appendChild(grid);
+        servicesList.appendChild(card);
       });
     }
     document.getElementById('sg-add-service').addEventListener('click', function(){
       if(state.services.length >= 5) return;
-      state.services.push({name:'', price:''}); renderServices(); render();
+      state.services.push({name:'',description:'',price:''}); renderServices(); render();
     });
 
     var faqsList = document.getElementById('sg-faqs-list');
     function renderFaqs(){
       faqsList.innerHTML = '';
       state.faqs.forEach(function(f, idx){
-        var row = document.createElement('div');
-        row.className = 'sg-faq-row';
-        var qI = document.createElement('input');
-        qI.type='text'; qI.className='sg-input'; qI.placeholder='Question'; qI.value=f.q;
-        var aI = document.createElement('textarea');
-        aI.className='sg-input sg-textarea'; aI.rows=2; aI.placeholder='Answer'; aI.value=f.a;
+        var card = document.createElement('div');
+        card.className = 'sg-row-card';
+
+        var head = document.createElement('div');
+        head.className = 'sg-row-head';
+        var label = document.createElement('span');
+        label.className = 'sg-row-label';
+        label.textContent = 'Q&A ' + String(idx + 1).padStart(2, '0');
         var rmB = document.createElement('button');
         rmB.type='button'; rmB.className='sg-row-remove'; rmB.textContent='Remove';
-        qI.addEventListener('input', function(){ state.faqs[idx].q = qI.value; render(); });
-        aI.addEventListener('input', function(){ state.faqs[idx].a = aI.value; render(); });
         rmB.addEventListener('click', function(){
           state.faqs.splice(idx,1);
           if(state.faqs.length===0) state.faqs.push({q:'',a:''});
           renderFaqs(); render();
         });
-        row.appendChild(qI); row.appendChild(aI); row.appendChild(rmB);
-        faqsList.appendChild(row);
+        head.appendChild(label); head.appendChild(rmB);
+
+        var grid = document.createElement('div');
+        grid.className = 'sg-row-grid';
+
+        var qField = document.createElement('div');
+        qField.className = 'sg-field sg-field-full';
+        var qLabel = document.createElement('label');
+        qLabel.className = 'sg-label';
+        qLabel.textContent = 'Question';
+        var qI = document.createElement('input');
+        qI.type='text'; qI.className='sg-input'; qI.placeholder='e.g. How much does this cost?'; qI.value=f.q;
+        qI.addEventListener('input', function(){ state.faqs[idx].q = qI.value; render(); });
+        qField.appendChild(qLabel); qField.appendChild(qI);
+
+        var aField = document.createElement('div');
+        aField.className = 'sg-field sg-field-full';
+        var aLabel = document.createElement('label');
+        aLabel.className = 'sg-label';
+        aLabel.textContent = 'Answer';
+        var aI = document.createElement('textarea');
+        aI.className='sg-input sg-textarea'; aI.rows=3; aI.placeholder='Direct, factual answer in 2-3 sentences.'; aI.value=f.a;
+        aI.addEventListener('input', function(){ state.faqs[idx].a = aI.value; render(); });
+        aField.appendChild(aLabel); aField.appendChild(aI);
+
+        grid.appendChild(qField); grid.appendChild(aField);
+        card.appendChild(head); card.appendChild(grid);
+        faqsList.appendChild(card);
       });
     }
     document.getElementById('sg-add-faq').addEventListener('click', function(){
@@ -334,8 +399,8 @@ const jsonLdString = JSON.stringify({
 
     // Industry presets
     var presets = {
-      'law': { name:'Coleman and Reyes Law', url:'https://example-law.com', description:'Maryland estate planning and business law firm.', businessType:'LegalService', street:'1100 N Charles St', city:'Baltimore', region:'MD', postal:'21201', phone:'+1-410-555-0100', email:'hello@example-law.com', includeRating:true, includeService:true, includeFaq:true, services:[{name:'Estate Planning',price:'From $2,500'},{name:'Business Formation',price:'From $1,500'}], faqs:[{q:'How much does estate planning cost?',a:'Estate planning starts at $2,500 for basic packages.'}] },
-      'dental': { name:'Hartford Family Dentistry', url:'https://example-dental.com', description:'Family and cosmetic dental practice.', businessType:'Dentist', street:'500 York Rd', city:'Towson', region:'MD', postal:'21204', phone:'+1-410-555-0200', email:'hello@example-dental.com', includeRating:true, includeService:true, services:[{name:'Dental Cleaning',price:'$150'},{name:'Teeth Whitening',price:'From $400'}] },
+      'law': { name:'Coleman and Reyes Law', url:'https://example-law.com', description:'Maryland estate planning and business law firm.', businessType:'LegalService', street:'1100 N Charles St', city:'Baltimore', region:'MD', postal:'21201', phone:'+1-410-555-0100', email:'hello@example-law.com', includeRating:true, includeService:true, includeFaq:true, services:[{name:'Estate Planning',description:'Wills, trusts, and estate administration for individuals and families.',price:'From $2,500'},{name:'Business Formation',description:'LLC, S-corp, and partnership formation with operating agreements.',price:'From $1,500'}], faqs:[{q:'How much does estate planning cost?',a:'Estate planning starts at $2,500 for basic packages and scales by complexity.'}] },
+      'dental': { name:'Hartford Family Dentistry', url:'https://example-dental.com', description:'Family and cosmetic dental practice.', businessType:'Dentist', street:'500 York Rd', city:'Towson', region:'MD', postal:'21204', phone:'+1-410-555-0200', email:'hello@example-dental.com', includeRating:true, includeService:true, services:[{name:'Dental Cleaning',description:'Routine cleaning and exam every six months.',price:'$150'},{name:'Teeth Whitening',description:'In-office whitening procedure with same-day results.',price:'From $400'}] },
       'medical': { name:'Park Family Practice', url:'https://example-medical.com', description:'Primary care medical practice.', businessType:'MedicalClinic', street:'6710 Oak Hall Ln', city:'Columbia', region:'MD', postal:'21045', phone:'+1-410-555-0300', email:'hello@example-medical.com', includeRating:true },
       'real-estate': { name:'Donnelly Bay Properties', url:'https://example-realty.com', description:'Annapolis real estate brokerage specializing in waterfront homes.', businessType:'RealEstateAgent', street:'110 Main St', city:'Annapolis', region:'MD', postal:'21401', phone:'+1-410-555-0400', email:'hello@example-realty.com', includeRating:true, includeService:true, services:[{name:'Buyer Representation',price:'Standard commission'},{name:'Seller Representation',price:'Standard commission'}] },
       'restaurant': { name:'Russo Italian Kitchen', url:'https://example-restaurant.com', description:'Modern Italian restaurant in Baltimore.', businessType:'Restaurant', street:'200 W Pratt St', city:'Baltimore', region:'MD', postal:'21201', phone:'+1-410-555-0500', email:'reservations@example-restaurant.com', includeRating:true },
@@ -428,6 +493,7 @@ const jsonLdString = JSON.stringify({
         state.services.forEach(function(s, i){
           if(!s.name) return;
           var svc = { '@type':'Service', '@id':(baseUrl + '#service-' + (i+1)), name:s.name, serviceType:s.name };
+          if(s.description) svc.description = s.description;
           if(state.includeOrganization) svc.provider = { '@id': orgId };
           if(s.price){
             svc.offers = { '@type':'Offer', price:(s.price.replace(/[^\d.]/g,'') || '0'), priceCurrency:'USD', description:s.price };
@@ -501,7 +567,7 @@ const jsonLdString = JSON.stringify({
 })();
 </script>
 
-<style>
+<style is:global>
   .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
   .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
   .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
@@ -553,13 +619,16 @@ const jsonLdString = JSON.stringify({
   .sg-toggle-desc { grid-column: 2; font-size: 11px; line-height: 1.4; color: var(--ink-muted); }
   .sg-toggle-active { border-color: var(--amber); background: rgba(212,147,46,0.05); }
 
-  .sg-services, .sg-faqs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
-  .sg-service-row { display: grid; grid-template-columns: 1fr 140px auto; gap: 6px; }
-  .sg-faq-row { display: grid; grid-template-columns: 1fr auto; gap: 6px; }
-  .sg-row-remove { padding: 7px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); cursor: pointer; transition: all 0.2s ease; font-weight: 600; }
-  .sg-row-remove:hover { border-color: #c44; color: #c44; }
-  .sg-add-row { padding: 8px 14px; background: transparent; border: 1px dashed var(--line-strong); border-radius: var(--radius-md); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); cursor: pointer; transition: all 0.2s ease; font-weight: 500; }
-  .sg-add-row:hover { border-color: var(--amber); color: var(--amber-deep); border-style: solid; }
+  .sg-services, .sg-faqs { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
+  .sg-row-card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; transition: border-color 0.2s ease; }
+  .sg-row-card:focus-within { border-color: var(--amber); }
+  .sg-row-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding-bottom: 8px; border-bottom: 1px dashed var(--line); }
+  .sg-row-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; }
+  .sg-row-grid { display: flex; flex-direction: column; gap: 10px; }
+  .sg-row-remove { padding: 5px 11px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); cursor: pointer; transition: all 0.2s ease; font-weight: 600; line-height: 1; }
+  .sg-row-remove:hover { border-color: #c44; color: #c44; background: rgba(196,68,68,0.05); }
+  .sg-add-row { padding: 9px 16px; background: transparent; border: 1px dashed var(--line-strong); border-radius: var(--radius-md); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); cursor: pointer; transition: all 0.2s ease; font-weight: 600; align-self: flex-start; }
+  .sg-add-row:hover { border-color: var(--amber); color: var(--amber-deep); border-style: solid; background: rgba(212,147,46,0.04); }
 
   .sg-output { position: sticky; top: 24px; align-self: start; }
   .sg-output-card { position: relative; background: var(--ink); color: var(--cream); border-radius: var(--radius-lg); padding: 22px 22px; box-shadow: 0 24px 60px -20px rgba(15,20,25,0.4); overflow: hidden; }
