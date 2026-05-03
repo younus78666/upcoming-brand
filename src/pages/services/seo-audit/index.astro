@@ -3,6 +3,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import ServiceHero from '../../../components/ServiceHero.astro';
+import Marquee from '../../../components/Marquee.astro';
 
 const canonical = "https://upcomingbrand.com/services/seo-audit/";
 
@@ -190,44 +192,19 @@ const faqs = [
 
   <main id="main-content">
 
-    <section class="page-hero">
-      <div class="container page-hero-inner">
-        <div class="page-eyebrow-strip">
-          <span class="page-eyebrow-line"></span>
-          <span class="page-eyebrow-text">SEO audit service</span>
-          <span class="page-eyebrow-line"></span>
-        </div>
-
-        <h1 class="page-h1">
-          <span class="page-h1-line">SEO audit service</span>
-          <span class="page-h1-line"><em class="page-h1-accent">from a senior auditor</em></span>
-          <span class="page-h1-line page-h1-italic">who actually fixes things.</span>
-        </h1>
-
-        <p class="page-lead">
-          A real <strong>SEO audit service</strong> covering technical SEO, schema, Core Web Vitals, content, and local SEO. Delivered as a prioritised action list, not a 60-page PDF nobody reads. <strong>Fixed-scope $1,500.</strong> Audit fee credited toward implementation if you come back. Better than any free SEO audit tool.
-        </p>
-
-        <div class="page-hero-ctas">
-          <a href="/contact/" class="lp-btn-primary">
-            Book an audit
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#tiers" class="lp-btn-ghost">
-            View tiers
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="page-hero-trust">
-          <span class="page-trust-line">From $1,500 fixed-scope</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">5-day delivery</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">Take-it-anywhere fix list</span>
-        </div>
-      </div>
-    </section>
+    <ServiceHero
+      eyebrow='SEO audit service'
+      pillText='SEO Audits · Maryland'
+      h1Lines={[
+        { text: 'SEO audit service' },
+        { text: 'from a senior auditor', type: 'accent' },
+        { text: 'who actually fixes things.', type: 'italic' },
+      ]}
+      lead='A real <strong>SEO audit service</strong> covering technical SEO, schema, Core Web Vitals, content, and local SEO. Delivered as a prioritised action list, not a 60-page PDF nobody reads. <strong>Fixed-scope $1,500.</strong> Audit fee credited toward implementation if you come back. Better than any free SEO audit tool.'
+      formName='seo-audit-inquiry'
+      trustLines={['From $1,500 fixed-scope', '5-day delivery', 'Take-it-anywhere fix list']}
+    />
+    <Marquee />
 
     <!-- DEFINITION -->
     <section class="aud-define">

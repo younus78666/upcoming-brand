@@ -3,6 +3,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import ServiceHero from '../../../components/ServiceHero.astro';
+import Marquee from '../../../components/Marquee.astro';
 
 const canonical = "https://upcomingbrand.com/services/wordpress-migration/";
 
@@ -173,44 +175,19 @@ const faqs = [
 
   <main id="main-content">
 
-    <section class="page-hero">
-      <div class="container page-hero-inner">
-        <div class="page-eyebrow-strip">
-          <span class="page-eyebrow-line"></span>
-          <span class="page-eyebrow-text">WordPress migration service</span>
-          <span class="page-eyebrow-line"></span>
-        </div>
-
-        <h1 class="page-h1">
-          <span class="page-h1-line">WordPress migration</span>
-          <span class="page-h1-line"><em class="page-h1-accent">from any platform,</em></span>
-          <span class="page-h1-line page-h1-italic">with zero ranking loss.</span>
-        </h1>
-
-        <p class="page-lead">
-          <strong>WordPress migration services</strong> from Wix, Squarespace, <strong>GoDaddy to WordPress</strong>, Shopify, or outdated WordPress. Complete redirect maps. Zero-downtime DNS cutover. 30-day Search Console monitoring. <strong>Fixed-scope from $750.</strong> Recover all rankings within 4 weeks of launch.
-        </p>
-
-        <div class="page-hero-ctas">
-          <a href="/contact/" class="lp-btn-primary">
-            Start a migration
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#tiers" class="lp-btn-ghost">
-            View tiers
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="page-hero-trust">
-          <span class="page-trust-line">From $750 fixed-scope</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">Zero-downtime DNS</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">No ranking loss</span>
-        </div>
-      </div>
-    </section>
+    <ServiceHero
+      eyebrow='WordPress migration service'
+      pillText='WordPress Migration · Maryland'
+      h1Lines={[
+        { text: 'WordPress migration' },
+        { text: 'from any platform,', type: 'accent' },
+        { text: 'with zero ranking loss.', type: 'italic' },
+      ]}
+      lead='<strong>WordPress migration services</strong> from Wix, Squarespace, <strong>GoDaddy to WordPress</strong>, Shopify, or outdated WordPress. Complete redirect maps. Zero-downtime DNS cutover. 30-day Search Console monitoring. <strong>Fixed-scope from $750.</strong> Recover all rankings within 4 weeks of launch.'
+      formName='wp-migration-inquiry'
+      trustLines={['From $750 fixed-scope', 'Zero-downtime DNS', 'No ranking loss']}
+    />
+    <Marquee />
 
     <!-- DEFINITION -->
     <section class="mig-define">

@@ -3,6 +3,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
+import ServiceHero from '../../components/ServiceHero.astro';
+import Marquee from '../../components/Marquee.astro';
 
 const canonical = "https://upcomingbrand.com/wordpress-agency/";
 
@@ -305,47 +307,20 @@ const faqs = [
   <main id="main-content">
 
     <!-- ====== HERO ====== -->
-    <section class="page-hero">
-      <div class="container page-hero-inner">
-        <div class="page-eyebrow-strip">
-          <span class="page-eyebrow-line"></span>
-          <span class="page-eyebrow-text">WordPress agency &middot; Maryland</span>
-          <span class="page-eyebrow-line"></span>
-        </div>
-
-        <h1 class="page-h1">
-          <span class="page-h1-line">A WordPress agency</span>
-          <span class="page-h1-line"><em class="page-h1-accent">that ships sites that rank.</em></span>
-          <span class="page-h1-line page-h1-italic">Schema-first. Fixed-scope.</span>
-        </h1>
-
-        <p class="page-lead">
-          Upcoming Brand is a Maryland-based <strong>WordPress agency</strong> offering <strong>WordPress web design and development services</strong> for serious businesses. WooCommerce, schema architecture, and Core Web Vitals optimization come bundled into every project. Searching for a "WordPress agency near me"? We work with Maryland clients locally and US-wide remotely. <strong>Fixed-scope from $1,500. 90+ Lighthouse guaranteed. 6-10 week delivery.</strong>
-        </p>
-
-        <div class="page-hero-ctas">
-          <a href="/contact/" class="lp-btn-primary">
-            Book a discovery call
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/pricing/" class="lp-btn-ghost">
-            View agency pricing
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="page-hero-trust">
-          <span class="page-trust-line">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Top Rated &middot; Upwork
-          </span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">400+ projects &middot; 12 countries</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">5+ years &middot; 9 verticals</span>
-        </div>
-      </div>
-    </section>
+    <ServiceHero
+      eyebrow='WordPress agency · Maryland'
+      pillText='WordPress Specialists · Maryland'
+      h1Lines={[
+        { text: 'A WordPress agency' },
+        { text: 'that ships sites that rank.', type: 'accent' },
+        { text: 'Schema-first. Fixed-scope.', type: 'italic' },
+      ]}
+      lead='Upcoming Brand is a Maryland-based <strong>WordPress agency</strong> offering <strong>WordPress web design and development services</strong> for serious businesses. WooCommerce, schema architecture, and Core Web Vitals optimization come bundled into every project. Searching for a "WordPress agency near me"? We work with Maryland clients locally and US-wide remotely. <strong>Fixed-scope from $1,500. 90+ Lighthouse guaranteed. 6-10 week delivery.</strong>'
+      formName='wp-agency-inquiry'
+      servicePresetValue='Agency Inquiry'
+      trustLines={['Top Rated · Upwork', '400+ projects · 12 countries', '5+ years · 9 verticals']}
+    />
+    <Marquee />
 
     <!-- ====== WHY US ====== -->
     <section class="agency-why">
@@ -667,32 +642,6 @@ const faqs = [
   /* ===========================================
      SHARED PAGE SYSTEM
      =========================================== */
-  .page-hero {
-    background: var(--cream);
-    border-bottom: 1px solid var(--line);
-    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  .page-hero::before {
-    content: "";
-    position: absolute;
-    top: -300px; left: 50%;
-    transform: translateX(-50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .page-hero-inner {
-    position: relative; z-index: 1;
-    max-width: 880px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
-  }
   .page-eyebrow-strip {
     display: inline-flex;
     align-items: center;
@@ -718,54 +667,6 @@ const faqs = [
     white-space: nowrap;
   }
   .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
-
-  .page-h1 {
-    font-family: var(--f-display);
-    font-weight: 400;
-    font-size: clamp(34px, 5.5vw, 64px);
-    line-height: 1.02;
-    letter-spacing: -0.035em;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin: 0;
-    text-align: center;
-  }
-  .page-h1-line { display: block; color: var(--ink); }
-  .page-h1-accent {
-    font-style: inherit;
-    position: relative;
-    color: var(--ink);
-    display: inline;
-    text-decoration: underline;
-    text-decoration-color: rgba(212, 147, 46, 0.55);
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.16em;
-    text-decoration-skip-ink: none;
-  }
-  .page-h1-accent::after { display: none; }
-  .page-h1-italic {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--amber-deep);
-  }
-
-  .page-lead {
-    font-size: clamp(15px, 1.2vw, 18px);
-    line-height: 1.6;
-    color: var(--ink-soft);
-    max-width: 64ch;
-    margin: 0 auto;
-  }
-  .page-lead strong { font-weight: 600; color: var(--ink); }
-
-  .page-hero-ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 4px;
-  }
 
   .lp-btn-primary, .lp-btn-ghost {
     display: inline-flex;
@@ -805,31 +706,6 @@ const faqs = [
   .lp-btn-primary svg, .lp-btn-ghost svg { transition: transform 0.22s ease; flex-shrink: 0; }
   .lp-btn-primary:hover svg { transform: translateX(3px); }
   .lp-btn-ghost:hover svg { transform: translate(2px, -2px); }
-
-  .page-hero-trust {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 4px;
-  }
-  .page-trust-line {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.06em;
-    color: var(--ink-muted);
-    text-transform: uppercase;
-  }
-  .page-trust-dot {
-    width: 3px; height: 3px;
-    background: var(--ink-muted);
-    border-radius: 50%;
-    opacity: 0.4;
-  }
 
   .page-h2 {
     font-family: var(--f-display);

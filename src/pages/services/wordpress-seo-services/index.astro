@@ -3,6 +3,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import ServiceHero from '../../../components/ServiceHero.astro';
+import Marquee from '../../../components/Marquee.astro';
 
 const canonical = "https://upcomingbrand.com/services/wordpress-seo-services/";
 
@@ -215,44 +217,19 @@ const faqs = [
   <main id="main-content">
 
     <!-- ====== HERO ====== -->
-    <section class="page-hero">
-      <div class="container page-hero-inner">
-        <div class="page-eyebrow-strip">
-          <span class="page-eyebrow-line"></span>
-          <span class="page-eyebrow-text">WordPress SEO services</span>
-          <span class="page-eyebrow-line"></span>
-        </div>
-
-        <h1 class="page-h1">
-          <span class="page-h1-line">WordPress SEO services</span>
-          <span class="page-h1-line"><em class="page-h1-accent">from a senior WordPress SEO expert</em></span>
-          <span class="page-h1-line page-h1-italic">who actually moves rankings.</span>
-        </h1>
-
-        <p class="page-lead">
-          <strong>WordPress SEO services</strong> covering schema architecture, RankMath setup, internal linking strategy, Core Web Vitals, and Local Pack optimization. Hire a <strong>WordPress SEO expert</strong> who handles all five in one engagement. <strong>Fixed-scope from $1,500.</strong> No retainer traps. No ranking promises we can't keep.
-        </p>
-
-        <div class="page-hero-ctas">
-          <a href="/contact/" class="lp-btn-primary">
-            Hire the SEO expert
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#tiers" class="lp-btn-ghost">
-            View tiers
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="page-hero-trust">
-          <span class="page-trust-line">Audits from $1,500</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">Schema-first architecture</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">90+ Lighthouse contractually</span>
-        </div>
-      </div>
-    </section>
+    <ServiceHero
+      eyebrow='WordPress SEO services'
+      pillText='WordPress SEO · Maryland'
+      h1Lines={[
+        { text: 'WordPress SEO services' },
+        { text: 'from a senior WordPress SEO expert', type: 'accent' },
+        { text: 'who actually moves rankings.', type: 'italic' },
+      ]}
+      lead={`<strong>WordPress SEO services</strong> covering schema architecture, RankMath setup, internal linking strategy, Core Web Vitals, and Local Pack optimization. Hire a <strong>WordPress SEO expert</strong> who handles all five in one engagement. <strong>Fixed-scope from $1,500.</strong> No retainer traps. No ranking promises we can't keep.`}
+      formName='wp-seo-inquiry'
+      trustLines={['Audits from $1,500', 'Schema-first architecture', '90+ Lighthouse contractually']}
+    />
+    <Marquee />
 
     <!-- ====== DEFINITION (Know intent) ====== -->
     <section class="seo-define">

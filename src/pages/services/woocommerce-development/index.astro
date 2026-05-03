@@ -3,6 +3,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import ServiceHero from '../../../components/ServiceHero.astro';
+import Marquee from '../../../components/Marquee.astro';
 
 const canonical = "https://upcomingbrand.com/services/woocommerce-development/";
 
@@ -220,44 +222,20 @@ const faqs = [
   <main id="main-content">
 
     <!-- ====== HERO ====== -->
-    <section class="page-hero">
-      <div class="container page-hero-inner">
-        <div class="page-eyebrow-strip">
-          <span class="page-eyebrow-line"></span>
-          <span class="page-eyebrow-text">WooCommerce development</span>
-          <span class="page-eyebrow-line"></span>
-        </div>
-
-        <h1 class="page-h1">
-          <span class="page-h1-line">WooCommerce development</span>
-          <span class="page-h1-line"><em class="page-h1-accent">from a senior WooCommerce expert</em></span>
-          <span class="page-h1-line page-h1-italic">who actually ships.</span>
-        </h1>
-
-        <p class="page-lead">
-          <strong>WooCommerce development services</strong> covering custom store builds, subscriptions, configurators, multi-vendor, and payment integrations. Want to <strong>hire a WooCommerce developer</strong> who handles design, schema, and performance in one engagement? <strong>Fixed-scope from $4,500.</strong> 90+ Lighthouse on every product page. 5-14 week delivery.
-        </p>
-
-        <div class="page-hero-ctas">
-          <a href="/contact/" class="lp-btn-primary">
-            Hire the expert
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="#tiers" class="lp-btn-ghost">
-            View tiers
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M2 8l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="page-hero-trust">
-          <span class="page-trust-line">From $4,500 fixed-scope</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">90+ Lighthouse on product pages</span>
-          <span class="page-trust-dot" aria-hidden="true"></span>
-          <span class="page-trust-line">5-14 week delivery</span>
-        </div>
-      </div>
-    </section>
+    <ServiceHero
+      eyebrow='WooCommerce development'
+      pillText='WooCommerce Specialists · Maryland'
+      h1Lines={[
+        { text: 'WooCommerce development' },
+        { text: 'from a senior WooCommerce expert', type: 'accent' },
+        { text: 'who actually ships.', type: 'italic' },
+      ]}
+      lead='<strong>WooCommerce development services</strong> covering custom store builds, subscriptions, configurators, multi-vendor, and payment integrations. Want to <strong>hire a WooCommerce developer</strong> who handles design, schema, and performance in one engagement? <strong>Fixed-scope from $4,500.</strong> 90+ Lighthouse on every product page. 5-14 week delivery.'
+      formName='woocommerce-inquiry'
+      servicePresetValue='Ecommerce / Retail'
+      trustLines={['From $4,500 fixed-scope', '90+ Lighthouse on product pages', '5-14 week delivery']}
+    />
+    <Marquee />
 
     <!-- ====== DEFINITION (Know intent + AI Overview citation) ====== -->
     <section class="woo-define">
@@ -524,32 +502,6 @@ const faqs = [
 
 <style>
   /* SHARED */
-  .page-hero {
-    background: var(--cream);
-    border-bottom: 1px solid var(--line);
-    padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px);
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-  }
-  .page-hero::before {
-    content: "";
-    position: absolute;
-    top: -300px; left: 50%;
-    transform: translateX(-50%);
-    width: 800px; height: 800px;
-    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-  .page-hero-inner {
-    position: relative; z-index: 1;
-    max-width: 880px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
-  }
   .page-eyebrow-strip {
     display: inline-flex;
     align-items: center;
@@ -574,54 +526,6 @@ const faqs = [
     white-space: nowrap;
   }
   .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
-
-  .page-h1 {
-    font-family: var(--f-display);
-    font-weight: 400;
-    font-size: clamp(32px, 5vw, 60px);
-    line-height: 1.05;
-    letter-spacing: -0.035em;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin: 0;
-    text-align: center;
-  }
-  .page-h1-line { display: block; color: var(--ink); }
-  .page-h1-accent {
-    font-style: inherit;
-    position: relative;
-    color: var(--ink);
-    display: inline;
-    text-decoration: underline;
-    text-decoration-color: rgba(212, 147, 46, 0.55);
-    text-decoration-thickness: 0.08em;
-    text-underline-offset: 0.16em;
-    text-decoration-skip-ink: none;
-  }
-  .page-h1-accent::after { display: none; }
-  .page-h1-italic {
-    font-style: italic;
-    font-weight: 300;
-    color: var(--amber-deep);
-  }
-
-  .page-lead {
-    font-size: clamp(15px, 1.2vw, 18px);
-    line-height: 1.6;
-    color: var(--ink-soft);
-    max-width: 64ch;
-    margin: 0 auto;
-  }
-  .page-lead strong { font-weight: 600; color: var(--ink); }
-
-  .page-hero-ctas {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 4px;
-  }
 
   .lp-btn-primary, .lp-btn-ghost {
     display: inline-flex;
