@@ -7,6 +7,7 @@ export interface Props {
   ogImage?: string;
   ogImageAlt?: string;
   canonicalUrl?: string;
+  noindex?: boolean;
 }
 
 const {
@@ -15,7 +16,9 @@ const {
   ogImage = "https://upcomingbrand.com/og-image.jpg",
   ogImageAlt = "Upcoming Brand — WordPress Web Design Maryland",
   canonicalUrl = "https://upcomingbrand.com/",
+  noindex = false,
 } = Astro.props;
+const robotsContent = noindex ? "noindex, follow" : "index, follow";
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -58,7 +61,7 @@ const {
   <meta name="twitter:image:alt" content={ogImageAlt} />
 
   <!-- Robots -->
-  <meta name="robots" content="index, follow" />
+  <meta name="robots" content={robotsContent} />
 
   <!-- Favicon — all devices -->
   <link rel="icon" type="image/jpeg" href="/favicon.jpg" />
