@@ -228,6 +228,43 @@ const faqs = [
       lead={`<strong>WordPress SEO services</strong> covering schema architecture, RankMath setup, internal linking strategy, Core Web Vitals, and Local Pack optimization. Hire a <strong>WordPress SEO expert</strong> who handles all five in one engagement. <strong>Fixed-scope from $1,500.</strong> No retainer traps. No ranking promises we can't keep.`}
       formName='wp-seo-inquiry'
       trustLines={['Audits from $1,500', 'Schema-first architecture', '90+ Lighthouse contractually']}
+      formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'About your site',
+          subtitle: 'Where the SEO work needs to happen.',
+          fields: [
+            { type: 'url',  name: 'site_url',        label: 'WordPress site URL', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+            { type: 'select', name: 'monthly_traffic', label: 'Monthly organic visitors', required: true,
+              options: ['Under 500', '500 to 2,000', '2,000 to 10,000', '10,000 to 50,000', '50,000+', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Current SEO setup',
+          subtitle: 'What you have running now and what you want to rank for.',
+          fields: [
+            { type: 'select', name: 'seo_plugin', label: 'Current SEO plugin', required: true,
+              options: ['RankMath', 'Yoast SEO', 'SEOPress', 'All in One SEO', 'None installed', 'Not sure'] },
+            { type: 'text', name: 'target_keywords', label: 'Top 3 target keywords', placeholder: 'e.g. dentist baltimore, family law maryland' },
+          ],
+        },
+        {
+          title: 'Engagement scope',
+          subtitle: 'Which package fits and what success looks like.',
+          fields: [
+            { type: 'select', name: 'engagement_tier', label: 'Engagement type', required: true,
+              options: ['One-time SEO audit ($1,500)', 'Schema + on-page sprint ($3,500)', 'Full SEO engagement ($6,000+)', 'Local Pack focus', 'Not sure yet'] },
+            { type: 'textarea', name: 'message', label: 'What does winning look like?', placeholder: 'Specific keywords, traffic goals, or rankings you want.', required: true, rows: 2 },
+          ],
+        },
+      ]}
     />
     <Marquee />
 
@@ -845,21 +882,7 @@ const faqs = [
     background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber));
   }
   .seo-tier-highlight:hover { transform: translateY(-10px); }
-  .seo-tier-flag {
-    position: absolute;
-    top: 14px; left: 50%;
-    transform: translateX(-50%);
-    padding: 4px 14px;
-    background: var(--amber);
-    color: var(--ink);
-    border-radius: var(--radius-pill);
-    font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
-    white-space: nowrap;
-  }
+  .seo-tier-flag { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 5px 11px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 10px rgba(212, 147, 46, 0.4); z-index: 3; }
   .seo-tier-name {
     font-family: var(--f-display);
     font-size: 32px;

@@ -4,6 +4,24 @@ export interface H1Line {
   type?: 'normal' | 'accent' | 'italic';
 }
 
+export interface FormField {
+  type: 'text' | 'email' | 'url' | 'tel' | 'textarea' | 'select';
+  name: string;
+  label: string;
+  placeholder?: string;
+  required?: boolean;
+  optional?: boolean;
+  options?: string[];
+  rows?: number;
+  autocomplete?: string;
+}
+
+export interface FormStep {
+  title: string;
+  subtitle: string;
+  fields: FormField[];
+}
+
 export interface Props {
   eyebrow: string;
   pillText?: string;
@@ -12,7 +30,53 @@ export interface Props {
   formName: string;
   trustLines?: string[];
   servicePresetValue?: string;
+  formSteps?: FormStep[];
+  hiddenFields?: Record<string, string>;
 }
+
+const defaultSteps: FormStep[] = [
+  {
+    title: 'Tell us who you are',
+    subtitle: 'Just your name and email. 30 seconds.',
+    fields: [
+      { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',          required: true, autocomplete: 'name' },
+      { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com',    required: true, autocomplete: 'email' },
+    ],
+  },
+  {
+    title: 'Tell us about your business',
+    subtitle: 'Company and what industry you operate in.',
+    fields: [
+      { type: 'text', name: 'company', label: 'Company or brand', placeholder: 'Smith & Co.', autocomplete: 'organization' },
+      {
+        type: 'select', name: 'business_type', label: 'Business type', required: true,
+        options: ['Law Firm / Attorney', 'Dental Practice', 'Medical Clinic', 'Real Estate', 'Restaurant / Hospitality', 'Contractor / Trades', 'Nonprofit / Church', 'Ecommerce / Retail', 'Small Business / Startup', 'Other'],
+      },
+    ],
+  },
+  {
+    title: 'Project scope',
+    subtitle: 'Budget range and timeline. Pick the closest fit.',
+    fields: [
+      {
+        type: 'select', name: 'budget', label: 'Estimated budget', required: true,
+        options: ['Under $1,500', '$1,500 to $3,500', '$3,500 to $6,000', '$6,000 to $15,000', '$15,000+', 'Not sure yet'],
+      },
+      {
+        type: 'select', name: 'timeline', label: 'Timeline', required: true,
+        options: ['ASAP, within 4 weeks', 'Standard, 6 to 10 weeks', 'Flexible, 3+ months', 'Just exploring'],
+      },
+    ],
+  },
+  {
+    title: 'Project goal',
+    subtitle: 'Site URL and what success looks like.',
+    fields: [
+      { type: 'url',      name: 'current_site', label: 'Current site URL', placeholder: 'https://yourcurrentsite.com', optional: true, autocomplete: 'url' },
+      { type: 'textarea', name: 'message',      label: 'Project goal',     placeholder: 'Three sentences. We will ask the rest in the reply.', required: true, rows: 2 },
+    ],
+  },
+];
 
 const {
   eyebrow,
@@ -22,10 +86,14 @@ const {
   formName,
   trustLines = [],
   servicePresetValue,
+  formSteps = defaultSteps,
+  hiddenFields = {},
 } = Astro.props;
 
 const formId = `svc-hero-form-${formName}`;
 const tsId = `svc-hero-ts-${formName}`;
+const firstStep = formSteps[0];
+const totalStepsCount = formSteps.length;
 ---
 
 <section class="svc-hero">
@@ -88,15 +156,15 @@ const tsId = `svc-hero-ts-${formName}`;
         <div class="svc-hero-form-header">
           <div class="svc-hero-form-meta">
             <span class="svc-hero-form-eyebrow">Free discovery call</span>
-            <span class="svc-hero-form-step-pill" data-step-label>Step 1 of 4</span>
+            <span class="svc-hero-form-step-pill" data-step-label>Step 1 of {totalStepsCount}</span>
           </div>
-          <h2 class="svc-hero-form-title" data-step-title>Tell us who you are</h2>
-          <p class="svc-hero-form-sub" data-step-sub>Just your name and email. 30 seconds.</p>
+          <h2 class="svc-hero-form-title" data-step-title>{firstStep.title}</h2>
+          <p class="svc-hero-form-sub" data-step-sub>{firstStep.subtitle}</p>
         </div>
 
         <!-- Progress bar -->
         <div class="svc-hero-form-progress" aria-hidden="true">
-          <div class="svc-hero-form-progress-fill" data-progress-fill style="width: 25%"></div>
+          <div class="svc-hero-form-progress-fill" data-progress-fill style={`width: ${(1 / totalStepsCount) * 100}%`}></div>
         </div>
 
         <form
@@ -110,85 +178,78 @@ const tsId = `svc-hero-ts-${formName}`;
           data-multistep
         >
           <input type="hidden" name="form-name" value={formName} />
+          {Object.entries(hiddenFields).map(([k, v]) => (
+            <input type="hidden" name={k} value={v} />
+          ))}
           <div class="svc-hero-hp" aria-hidden="true">
             <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
           </div>
           <input type="hidden" name="_timestamp" id={tsId} value="" />
 
-          <!-- STEP 1: Contact -->
-          <div class="svc-hero-step" data-step="1" data-step-active>
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-name`}>Your name</label>
-              <input class="svc-hero-form-input" type="text" id={`${formId}-name`} name="name" placeholder="Jane Smith" autocomplete="name" data-required />
+          {formSteps.map((step, sIdx) => (
+            <div class="svc-hero-step" data-step={sIdx + 1} data-step-active={sIdx === 0 ? '' : null}>
+              {step.fields.map((field) => {
+                const fieldId = `${formId}-${field.name}`;
+                const presetMatch = field.name === 'business_type' ? servicePresetValue : undefined;
+                if (field.type === 'select') {
+                  return (
+                    <div class="svc-hero-form-row">
+                      <label class="svc-hero-form-label" for={fieldId}>
+                        {field.label}
+                        {field.optional && <span class="svc-hero-form-optional">(optional)</span>}
+                      </label>
+                      <select
+                        class="svc-hero-form-input svc-hero-form-select"
+                        id={fieldId}
+                        name={field.name}
+                        data-required={field.required ? '' : null}
+                      >
+                        <option value="">{field.placeholder ?? 'Select an option'}</option>
+                        {(field.options ?? []).map((opt) => (
+                          <option value={opt} selected={presetMatch === opt}>{opt}</option>
+                        ))}
+                      </select>
+                    </div>
+                  );
+                }
+                if (field.type === 'textarea') {
+                  return (
+                    <div class="svc-hero-form-row">
+                      <label class="svc-hero-form-label" for={fieldId}>
+                        {field.label}
+                        {field.optional && <span class="svc-hero-form-optional">(optional)</span>}
+                      </label>
+                      <textarea
+                        class="svc-hero-form-input svc-hero-form-textarea"
+                        id={fieldId}
+                        name={field.name}
+                        rows={field.rows ?? 2}
+                        placeholder={field.placeholder ?? ''}
+                        data-required={field.required ? '' : null}
+                      ></textarea>
+                    </div>
+                  );
+                }
+                return (
+                  <div class="svc-hero-form-row">
+                    <label class="svc-hero-form-label" for={fieldId}>
+                      {field.label}
+                      {field.optional && <span class="svc-hero-form-optional">(optional)</span>}
+                    </label>
+                    <input
+                      class="svc-hero-form-input"
+                      type={field.type}
+                      id={fieldId}
+                      name={field.name}
+                      placeholder={field.placeholder ?? ''}
+                      autocomplete={field.autocomplete ?? 'off'}
+                      data-required={field.required ? '' : null}
+                    />
+                  </div>
+                );
+              })}
             </div>
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-email`}>Email address</label>
-              <input class="svc-hero-form-input" type="email" id={`${formId}-email`} name="email" placeholder="jane@company.com" autocomplete="email" data-required />
-            </div>
-          </div>
-
-          <!-- STEP 2: Business -->
-          <div class="svc-hero-step" data-step="2">
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-company`}>Company or brand</label>
-              <input class="svc-hero-form-input" type="text" id={`${formId}-company`} name="company" placeholder="Smith &amp; Co." autocomplete="organization" />
-            </div>
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-biz`}>Business type</label>
-              <select class="svc-hero-form-input svc-hero-form-select" id={`${formId}-biz`} name="business_type" data-required>
-                <option value="">Select your industry</option>
-                <option value="Law Firm / Attorney" selected={servicePresetValue === 'Law Firm / Attorney'}>Law Firm / Attorney</option>
-                <option value="Dental Practice" selected={servicePresetValue === 'Dental Practice'}>Dental Practice</option>
-                <option value="Medical Clinic" selected={servicePresetValue === 'Medical Clinic'}>Medical Clinic</option>
-                <option value="Real Estate" selected={servicePresetValue === 'Real Estate'}>Real Estate</option>
-                <option value="Restaurant / Hospitality" selected={servicePresetValue === 'Restaurant / Hospitality'}>Restaurant / Hospitality</option>
-                <option value="Contractor / Trades" selected={servicePresetValue === 'Contractor / Trades'}>Contractor / Trades</option>
-                <option value="Nonprofit / Church" selected={servicePresetValue === 'Nonprofit / Church'}>Nonprofit / Church</option>
-                <option value="Ecommerce / Retail" selected={servicePresetValue === 'Ecommerce / Retail'}>Ecommerce / Retail</option>
-                <option value="Small Business / Startup" selected={servicePresetValue === 'Small Business / Startup'}>Small Business / Startup</option>
-                <option value="Agency Inquiry" selected={servicePresetValue === 'Agency Inquiry'}>Agency Inquiry</option>
-                <option value="Other" selected={servicePresetValue === 'Other'}>Other</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- STEP 3: Project scope -->
-          <div class="svc-hero-step" data-step="3">
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-budget`}>Estimated budget</label>
-              <select class="svc-hero-form-input svc-hero-form-select" id={`${formId}-budget`} name="budget" data-required>
-                <option value="">Select a range</option>
-                <option value="Under $1,500 (audit only)">Under $1,500 (audit only)</option>
-                <option value="$1,500 to $3,500 (Starter)">$1,500 to $3,500 (Starter)</option>
-                <option value="$3,500 to $6,000 (Growth)">$3,500 to $6,000 (Growth)</option>
-                <option value="$6,000 to $15,000 (Custom)">$6,000 to $15,000 (Custom)</option>
-                <option value="$15,000+ (Enterprise)">$15,000+ (Enterprise)</option>
-                <option value="Not sure yet">Not sure yet, open to recommendation</option>
-              </select>
-            </div>
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-timeline`}>Timeline</label>
-              <select class="svc-hero-form-input svc-hero-form-select" id={`${formId}-timeline`} name="timeline" data-required>
-                <option value="">Select your timeline</option>
-                <option value="ASAP within 4 weeks">ASAP, within 4 weeks</option>
-                <option value="Standard 6-10 weeks">Standard, 6 to 10 weeks</option>
-                <option value="Flexible 3+ months">Flexible, 3+ months</option>
-                <option value="Just exploring">Just exploring</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- STEP 4: Project details -->
-          <div class="svc-hero-step" data-step="4">
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-url`}>Current site URL <span class="svc-hero-form-optional">(optional)</span></label>
-              <input class="svc-hero-form-input" type="url" id={`${formId}-url`} name="current_site" placeholder="https://yourcurrentsite.com" autocomplete="url" />
-            </div>
-            <div class="svc-hero-form-row">
-              <label class="svc-hero-form-label" for={`${formId}-msg`}>Project goal</label>
-              <textarea class="svc-hero-form-input svc-hero-form-textarea" id={`${formId}-msg`} name="message" rows="2" placeholder="Three sentences. We will ask the rest in the reply." data-required></textarea>
-            </div>
-          </div>
+          ))}
 
           <!-- Primary action button (full width) -->
           <div class="svc-hero-form-nav">
@@ -216,7 +277,7 @@ const tsId = `svc-hero-ts-${formName}`;
   </div>
 </section>
 
-<script is:inline define:vars={{ formId, tsId }}>
+<script is:inline define:vars={{ formId, tsId, formSteps }}>
   document.addEventListener('DOMContentLoaded', () => {
     const ts = document.getElementById(tsId);
     if (ts) ts.value = String(Date.now());
@@ -224,14 +285,12 @@ const tsId = `svc-hero-ts-${formName}`;
     const form = document.getElementById(formId);
     if (!form) return;
 
-    const stepLabels = {
-      1: { title: 'Tell us who you are',          sub: 'Just your name and email. 30 seconds.' },
-      2: { title: 'Tell us about your business', sub: 'Company name and what industry you are in.' },
-      3: { title: 'Project scope',                 sub: 'Budget range and timeline. Pick the closest fit.' },
-      4: { title: 'Project goal',                  sub: 'Current site URL and what success looks like.' },
-    };
+    const stepLabels = {};
+    formSteps.forEach((s, i) => {
+      stepLabels[i + 1] = { title: s.title, sub: s.subtitle };
+    });
 
-    const totalSteps = 4;
+    const totalSteps = formSteps.length;
     let currentStep = 1;
 
     const card     = form.closest('[data-form-card]');

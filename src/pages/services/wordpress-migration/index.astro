@@ -186,6 +186,44 @@ const faqs = [
       lead='<strong>WordPress migration services</strong> from Wix, Squarespace, <strong>GoDaddy to WordPress</strong>, Shopify, or outdated WordPress. Complete redirect maps. Zero-downtime DNS cutover. 30-day Search Console monitoring. <strong>Fixed-scope from $750.</strong> Recover all rankings within 4 weeks of launch.'
       formName='wp-migration-inquiry'
       trustLines={['From $750 fixed-scope', 'Zero-downtime DNS', 'No ranking loss']}
+      formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'Source platform',
+          subtitle: 'Where the site lives now.',
+          fields: [
+            { type: 'select', name: 'source_platform', label: 'Migrating from', required: true,
+              options: ['Wix', 'Squarespace', 'GoDaddy Builder', 'Webflow', 'Shopify', 'Old WordPress site', 'Custom HTML', 'Joomla / Drupal', 'Other'] },
+            { type: 'url', name: 'current_site', label: 'Current site URL', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+          ],
+        },
+        {
+          title: 'Site size',
+          subtitle: 'Page count and access.',
+          fields: [
+            { type: 'select', name: 'page_count', label: 'Approximate page count', required: true,
+              options: ['Under 10 pages', '10 to 30 pages', '30 to 100 pages', '100 to 500 pages', '500+ pages', 'Not sure yet'] },
+            { type: 'select', name: 'admin_access', label: 'Do you have admin access?', required: true,
+              options: ['Yes, full admin', 'Partial access only', 'No, need to recover', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Timeline + goal',
+          subtitle: 'When you need it migrated.',
+          fields: [
+            { type: 'select', name: 'timeline', label: 'Timeline', required: true,
+              options: ['ASAP, within 2 weeks', 'Standard, 3 to 5 weeks', 'Flexible, 2+ months', 'Just exploring'] },
+            { type: 'textarea', name: 'message', label: 'Migration concerns', placeholder: 'Rankings, downtime, design changes you want.', required: true, rows: 2 },
+          ],
+        },
+      ]}
     />
     <Marquee />
 
@@ -458,7 +496,7 @@ const faqs = [
   .mig-tier-highlight { background: var(--ink); color: var(--cream); border-color: var(--amber); transform: translateY(-6px); }
   .mig-tier-highlight::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber)); }
   .mig-tier-highlight:hover { transform: translateY(-10px); }
-  .mig-tier-flag { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); padding: 4px 14px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .mig-tier-flag { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 5px 11px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 10px rgba(212, 147, 46, 0.4); z-index: 3; }
   .mig-tier-name { font-family: var(--f-display); font-size: 32px; line-height: 1; color: var(--ink); font-weight: 500; letter-spacing: -0.025em; margin-top: 4px; }
   .mig-tier-highlight .mig-tier-name { color: var(--cream); }
   .mig-tier-price { font-family: var(--f-display); font-size: 24px; line-height: 1; color: var(--amber-deep); font-weight: 500; margin-top: 8px; }

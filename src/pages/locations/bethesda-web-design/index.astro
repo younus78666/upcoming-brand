@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import ServiceHero from '../../../components/ServiceHero.astro';
 
 const city      = "Bethesda";
 const stateAbbr = "MD";
@@ -347,158 +348,57 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
   <!-- ══════════════════════════════════════════
        HERO
   ══════════════════════════════════════════ -->
-  <section class="lp-hero" id="hero">
-    <div class="container lp-hero-wrap">
-
-      <!-- LEFT -->
-      <div class="lp-hero-left">
-        <div class="lp-hero-tags">
-          <span class="lp-hero-pill">
-            <span class="lp-hero-dot" aria-hidden="true"></span>
-            WordPress Specialists &middot; {city}, {stateAbbr}
-          </span>
-          <span class="lp-hero-eyebrow">A studio, not a factory</span>
-        </div>
-
-        <h1 class="lp-h1">
-          <span class="lp-h1-line">{city}</span>
-          <span class="lp-h1-line lp-h1-accent-line"><em class="lp-h1-accent">web design that ranks,</em></span>
-          <span class="lp-h1-line lp-h1-italic">converts &amp; keeps working.</span>
-        </h1>
-
-        <p class="lp-hero-lede">
-          Upcoming Brand is a Maryland-based WordPress web design studio. We design and build
-          custom WordPress websites for <strong>NIH-affiliated medical practices, law firms,
-          financial services, luxury real estate,</strong> and fine dining restaurants across Bethesda,
-          Chevy Chase, and Montgomery County - sites that meet the high-standard expectations of
-          the clients who actually search for your services here.
-        </p>
-
-        <div class="lp-hero-ctas">
-          <a href="#contact" class="lp-btn-primary">
-            Book a discovery call
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-          <a href="/industries/" class="lp-btn-ghost">
-            See industries we serve
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </a>
-        </div>
-
-        <div class="lp-hero-trust">
-          <span class="lp-trust-item">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.35"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Top Rated &middot; Upwork
-          </span>
-          <span class="lp-trust-dot" aria-hidden="true"></span>
-          <span class="lp-trust-item">400+ projects &middot; 12 countries</span>
-          <span class="lp-trust-dot" aria-hidden="true"></span>
-          <span class="lp-trust-item">Remote-first &middot; Zoom &middot; Async</span>
-        </div>
-      </div>
-
-      <!-- RIGHT: dark form card -->
-      <div class="lp-hero-right">
-        <div class="lp-form-card">
-          <div class="lp-form-header">
-            <p class="lp-form-eyebrow">Free discovery call &middot; {city}</p>
-            <h2 class="lp-form-title">Tell us about your project</h2>
-            <p class="lp-form-sub">We reply within 4 business hours. No sales pitch - just an honest conversation about what you need.</p>
-          </div>
-
-          <form class="lp-form" id="lp-hero-form" name="bethesda-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
-            <input type="hidden" name="form-name" value="bethesda-inquiry" />
-            <input type="hidden" name="location" value="Bethesda, MD" />
-            <div class="hp-field" aria-hidden="true">
-              <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
-            </div>
-            <input type="hidden" name="_timestamp" id="lp-form-timestamp" value="" />
-
-            <div class="lp-form-row">
-              <label class="lp-form-label" for="lp-name">Your name</label>
-              <input class="lp-form-input" type="text" id="lp-name" name="name" placeholder="Jane Smith" required autocomplete="name" />
-            </div>
-
-            <div class="lp-form-row">
-              <label class="lp-form-label" for="lp-email">Email address</label>
-              <input class="lp-form-input" type="email" id="lp-email" name="email" placeholder="jane@company.com" required autocomplete="email" />
-            </div>
-
-            <!-- Business type dropdown -->
-            <div class="lp-form-row">
-              <span class="lp-form-label" id="lbl-biz-lp">Business type</span>
-              <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-biz-lp" data-name="business_type">
-                <button type="button" class="cs-trigger" aria-haspopup="listbox">
-                  <span class="cs-val">Select your industry</span>
-                  <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </button>
-                <ul class="cs-list" role="listbox" aria-label="Business type">
-                  <li class="cs-opt" role="option" data-value="Law Firm / Attorney">Law Firm / Attorney</li>
-                  <li class="cs-opt" role="option" data-value="Dental Practice">Dental Practice</li>
-                  <li class="cs-opt" role="option" data-value="Medical Clinic">Medical Clinic</li>
-                  <li class="cs-opt" role="option" data-value="Real Estate">Real Estate</li>
-                  <li class="cs-opt" role="option" data-value="Restaurant / Hospitality">Restaurant / Hospitality</li>
-                  <li class="cs-opt" role="option" data-value="Contractor / Trades">Contractor / Trades</li>
-                  <li class="cs-opt" role="option" data-value="Nonprofit / Church">Nonprofit / Church</li>
-                  <li class="cs-opt" role="option" data-value="Ecommerce / Retail">Ecommerce / Retail</li>
-                  <li class="cs-opt" role="option" data-value="Small Business / Startup">Small Business / Startup</li>
-                  <li class="cs-opt" role="option" data-value="Other">Other</li>
-                </ul>
-                <input type="hidden" name="business_type" class="cs-hidden" />
-              </div>
-            </div>
-
-            <!-- Budget dropdown -->
-            <div class="lp-form-row">
-              <span class="lp-form-label" id="lbl-budget-lp">Estimated budget</span>
-              <div class="cs-wrap" role="combobox" aria-expanded="false" aria-labelledby="lbl-budget-lp" data-name="budget">
-                <button type="button" class="cs-trigger" aria-haspopup="listbox">
-                  <span class="cs-val">Select a range</span>
-                  <svg class="cs-chevron" width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-                </button>
-                <ul class="cs-list" role="listbox" aria-label="Budget">
-                  <li class="cs-opt" role="option" data-value="$1,500 - $3,500">$1,500 - $3,500 &nbsp;<span class="cs-badge">Starter</span></li>
-                  <li class="cs-opt" role="option" data-value="$3,500 - $6,000">$3,500 - $6,000 &nbsp;<span class="cs-badge">Standard</span></li>
-                  <li class="cs-opt" role="option" data-value="$6,000 - $10,000">$6,000 - $10,000 &nbsp;<span class="cs-badge">Custom</span></li>
-                  <li class="cs-opt" role="option" data-value="Not sure yet">Not sure yet</li>
-                </ul>
-                <input type="hidden" name="budget" class="cs-hidden" />
-              </div>
-            </div>
-
-            <button type="submit" class="lp-form-submit">
-              Get a free quote
-              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <p class="lp-form-note">No commitment required &middot; Fixed-scope quotes only</p>
-          </form>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Stats strip -->
-    <div class="container">
-      <div class="lp-stats" role="list" aria-label="Key statistics">
-        <div class="lp-stat" role="listitem">
-          <div class="lp-stat-num">400<span class="amb">+</span></div>
-          <div class="lp-stat-lbl">WordPress projects<br>delivered</div>
-        </div>
-        <div class="lp-stat" role="listitem">
-          <div class="lp-stat-num">90<span class="amb">+</span></div>
-          <div class="lp-stat-lbl">PageSpeed score<br>on every launch</div>
-        </div>
-        <div class="lp-stat" role="listitem">
-          <div class="lp-stat-num">7<span class="amb">yrs</span></div>
-          <div class="lp-stat-lbl">Full-time<br>WordPress</div>
-        </div>
-        <div class="lp-stat" role="listitem">
-          <div class="lp-stat-num">4<span class="amb">hr</span></div>
-          <div class="lp-stat-lbl">Average<br>response time</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <ServiceHero
+    eyebrow='A studio, not a factory'
+    pillText='WordPress Specialists · Bethesda, MD'
+    h1Lines={[
+      { text: 'Bethesda' },
+      { text: 'web design that ranks,', type: 'accent' },
+      { text: 'converts & keeps working.', type: 'italic' },
+    ]}
+    lead={`Upcoming Brand is a Maryland-based WordPress web design studio. We design and build custom WordPress websites for <strong>NIH-affiliated medical practices, law firms, financial services, luxury real estate,</strong> and fine dining restaurants across Bethesda, Chevy Chase, and Montgomery County - sites that meet the high-standard expectations of the clients who actually search for your services here.`}
+    formName='bethesda-inquiry'
+    trustLines={['Top Rated · Upwork', '400+ projects · 12 countries', 'Remote-first · Zoom · Async']}
+    hiddenFields={{ location: 'Bethesda, MD' }}
+    formSteps={[
+      {
+        title: 'Tell us who you are',
+        subtitle: 'Just your name and email. 30 seconds.',
+        fields: [
+          { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+          { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+        ],
+      },
+      {
+        title: 'About your business',
+        subtitle: 'Company and what you do.',
+        fields: [
+          { type: 'text', name: 'company', label: 'Company or brand', placeholder: 'Smith & Co.', autocomplete: 'organization' },
+          { type: 'select', name: 'business_type', label: 'Business type', required: true,
+            options: ['Law Firm / Attorney', 'Dental / Medical', 'Real Estate', 'Restaurant / Hospitality', 'Contractor / Trades', 'Nonprofit / Church', 'Ecommerce / Retail', 'Small Business / Startup', 'Other'] },
+        ],
+      },
+      {
+        title: 'What you need',
+        subtitle: 'Which service and your budget.',
+        fields: [
+          { type: 'select', name: 'service_interest', label: 'Service interested in', required: true,
+            options: ['New WordPress site build', 'Redesign existing site', 'WooCommerce store', 'WordPress SEO services', 'Migration to WordPress', 'Care plan / maintenance', 'SEO audit', 'Not sure yet'] },
+          { type: 'select', name: 'budget', label: 'Budget range', required: true,
+            options: ['Under $1,500', '$1,500 to $3,500', '$3,500 to $6,000', '$6,000 to $15,000', '$15,000+', 'Not sure yet'] },
+        ],
+      },
+      {
+        title: 'Timeline + goal',
+        subtitle: 'When you need it and what success looks like.',
+        fields: [
+          { type: 'select', name: 'timeline', label: 'Timeline', required: true,
+            options: ['ASAP, within 4 weeks', 'Standard, 6 to 10 weeks', 'Flexible, 3+ months', 'Just exploring'] },
+          { type: 'textarea', name: 'message', label: 'Project goal', placeholder: 'Three sentences. We will ask the rest in the reply.', required: true, rows: 2 },
+        ],
+      },
+    ]}
+  />
 
   <!-- ══════════════════════════════════════════
        DEFINITION

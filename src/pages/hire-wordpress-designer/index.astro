@@ -278,6 +278,44 @@ const faqs = [
       lead='Skip the freelance marketplace. <strong>Upcoming Brand is a senior WordPress designer and developer for hire</strong> who handles design, custom development, schema architecture, and Core Web Vitals, bundled into one fixed-scope quote. Searching to <strong>hire a WordPress developer or hire a WordPress expert</strong>? Same person, same engagement. <strong>Projects from $1,500. Reply in 4 hours. Quote in 48.</strong>'
       formName='wp-hire-inquiry'
       trustLines={['Top Rated · Upwork', 'From $1,500 · Fixed-scope', '90+ Lighthouse guaranteed']}
+      formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'Project type',
+          subtitle: 'What you need a WordPress expert for.',
+          fields: [
+            { type: 'select', name: 'project_type', label: 'Project type', required: true,
+              options: ['New WordPress site build', 'Redesign existing site', 'Custom development / plugin', 'Site audit + fixes', 'Migration to WordPress', 'Speed / Core Web Vitals fix', 'Schema architecture', 'Ongoing dev retainer'] },
+            { type: 'text', name: 'company', label: 'Company or brand', placeholder: 'Smith & Co.', autocomplete: 'organization' },
+          ],
+        },
+        {
+          title: 'Scope + budget',
+          subtitle: 'Page count and budget range.',
+          fields: [
+            { type: 'select', name: 'page_count', label: 'Approximate page count', required: true,
+              options: ['1 to 5 pages', '6 to 15 pages', '16 to 40 pages', '40+ pages', 'Not sure yet'] },
+            { type: 'select', name: 'budget', label: 'Budget range', required: true,
+              options: ['Under $1,500', '$1,500 to $3,500', '$3,500 to $6,000', '$6,000 to $15,000', '$15,000+', 'Not sure yet'] },
+          ],
+        },
+        {
+          title: 'Timeline + goal',
+          subtitle: 'When you need it and what success looks like.',
+          fields: [
+            { type: 'select', name: 'timeline', label: 'Timeline', required: true,
+              options: ['ASAP, within 4 weeks', 'Standard, 6 to 10 weeks', 'Flexible, 3+ months', 'Just exploring'] },
+            { type: 'textarea', name: 'message', label: 'Project goal', placeholder: 'Three sentences on what you want built.', required: true, rows: 2 },
+          ],
+        },
+      ]}
     />
     <Marquee />
 

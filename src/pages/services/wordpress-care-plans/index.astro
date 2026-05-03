@@ -275,6 +275,44 @@ const faqs = [
       lead='<strong>WordPress maintenance services and care plans from $150/month.</strong> A real <strong>WordPress website maintenance plan</strong> with weekly core + plugin updates tested on staging, daily off-site backups, uptime monitoring, security patching, and a written monthly report. <strong>4-hour SLA direct to the founder. Month-to-month, no annual contract.</strong>'
       formName='wp-care-plan-inquiry'
       trustLines={['From $150/month', 'Month-to-month', '4-hour SLA · Direct to founder']}
+      formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'About your site',
+          subtitle: 'Where your WordPress site lives.',
+          fields: [
+            { type: 'url',  name: 'site_url',     label: 'WordPress site URL', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+            { type: 'select', name: 'current_host', label: 'Current host', required: true,
+              options: ['Kinsta', 'WP Engine', 'SiteGround', 'Cloudways', 'Bluehost', 'GoDaddy', 'Hostinger', 'Other / Not sure'] },
+          ],
+        },
+        {
+          title: 'Site details',
+          subtitle: 'Plugin count and approximate traffic.',
+          fields: [
+            { type: 'select', name: 'plugin_count', label: 'Active plugins', required: true,
+              options: ['Under 10', '10 to 25', '25 to 50', '50+', 'Not sure'] },
+            { type: 'select', name: 'monthly_traffic', label: 'Monthly visitors', required: true,
+              options: ['Under 1,000', '1,000 to 10,000', '10,000 to 50,000', '50,000+', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Plan tier',
+          subtitle: 'Which care plan fits your site.',
+          fields: [
+            { type: 'select', name: 'plan_tier', label: 'Plan tier', required: true,
+              options: ['Essential ($150/mo)', 'Pro ($350/mo)', 'WooCommerce ($550/mo)', 'Not sure, recommend one'] },
+            { type: 'textarea', name: 'message', label: 'Anything specific?', placeholder: 'Recurring issues, slow load, security concerns.', required: true, rows: 2 },
+          ],
+        },
+      ]}
     />
     <Marquee />
 
@@ -898,21 +936,7 @@ const faqs = [
 
   .care-tier-highlight:hover { transform: translateY(-12px); }
 
-  .care-tier-flag {
-    position: absolute;
-    top: 14px; left: 50%;
-    transform: translateX(-50%);
-    padding: 4px 14px;
-    background: var(--amber);
-    color: var(--ink);
-    border-radius: var(--radius-pill);
-    font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
-    white-space: nowrap;
-  }
+  .care-tier-flag { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 5px 11px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 10px rgba(212, 147, 46, 0.4); z-index: 3; }
 
   .care-tier-name {
     font-family: var(--f-display);

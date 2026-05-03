@@ -203,6 +203,44 @@ const faqs = [
       lead='A real <strong>SEO audit service</strong> covering technical SEO, schema, Core Web Vitals, content, and local SEO. Delivered as a prioritised action list, not a 60-page PDF nobody reads. <strong>Fixed-scope $1,500.</strong> Audit fee credited toward implementation if you come back. Better than any free SEO audit tool.'
       formName='seo-audit-inquiry'
       trustLines={['From $1,500 fixed-scope', '5-day delivery', 'Take-it-anywhere fix list']}
+      formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'About your site',
+          subtitle: 'What we will audit.',
+          fields: [
+            { type: 'url',  name: 'site_url',     label: 'Site URL to audit', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+            { type: 'select', name: 'platform', label: 'Site platform', required: true,
+              options: ['WordPress', 'Shopify', 'Webflow', 'Squarespace', 'Wix', 'Custom / Headless', 'Other'] },
+          ],
+        },
+        {
+          title: 'Site size',
+          subtitle: 'Page count and current rankings.',
+          fields: [
+            { type: 'select', name: 'page_count', label: 'Approximate page count', required: true,
+              options: ['Under 25 pages', '25 to 100 pages', '100 to 500 pages', '500 to 5,000 pages', '5,000+ pages', 'Not sure'] },
+            { type: 'select', name: 'monthly_traffic', label: 'Monthly organic visitors', required: true,
+              options: ['Under 500', '500 to 5,000', '5,000 to 50,000', '50,000+', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Audit focus',
+          subtitle: 'What problem you want solved.',
+          fields: [
+            { type: 'select', name: 'audit_focus', label: 'Primary audit focus', required: true,
+              options: ['Full technical + content audit', 'Technical / Core Web Vitals only', 'Schema architecture', 'Content / on-page only', 'Local SEO audit', 'Pre-migration audit', 'Not sure, recommend'] },
+            { type: 'textarea', name: 'message', label: 'What is going wrong?', placeholder: 'Traffic dropped, rankings stuck, recent algo hit.', required: true, rows: 2 },
+          ],
+        },
+      ]}
     />
     <Marquee />
 
@@ -514,7 +552,7 @@ const faqs = [
   .aud-tier-highlight { background: var(--ink); color: var(--cream); border-color: var(--amber); transform: translateY(-6px); }
   .aud-tier-highlight::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber)); }
   .aud-tier-highlight:hover { transform: translateY(-10px); }
-  .aud-tier-flag { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); padding: 4px 14px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; white-space: nowrap; }
+  .aud-tier-flag { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 5px 11px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 10px rgba(212, 147, 46, 0.4); z-index: 3; }
   .aud-tier-name { font-family: var(--f-display); font-size: 32px; line-height: 1; color: var(--ink); font-weight: 500; letter-spacing: -0.025em; margin-top: 4px; }
   .aud-tier-highlight .aud-tier-name { color: var(--cream); }
   .aud-tier-price { font-family: var(--f-display); font-size: 24px; line-height: 1; color: var(--amber-deep); font-weight: 500; margin-top: 8px; }

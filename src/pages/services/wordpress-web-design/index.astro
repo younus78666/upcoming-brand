@@ -281,6 +281,44 @@ const faqs = [
       lead='<strong>WordPress web design services</strong> and <strong>custom WordPress development</strong> for Maryland businesses that need a site that ranks in Google, converts visitors, and stays maintainable for the next ten years. Responsive website design with custom Gutenberg blocks. Schema-first architecture. 90+ Lighthouse contractually. <strong>Fixed-scope from $1,500.</strong>'
       formName='wp-web-design-inquiry'
       trustLines={['From $1,500 fixed-scope', '90+ Lighthouse guaranteed', '4-6 to 10 week delivery']}
+      formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'Current platform',
+          subtitle: 'Where your site lives now (or starting fresh).',
+          fields: [
+            { type: 'select', name: 'current_platform', label: 'Current website platform', required: true,
+              options: ['No existing site', 'Old WordPress site', 'Wix', 'Squarespace', 'Webflow', 'Shopify', 'GoDaddy / Hostinger builder', 'Custom HTML', 'Other'] },
+            { type: 'url', name: 'current_site', label: 'Current site URL', placeholder: 'https://yoursite.com', optional: true, autocomplete: 'url' },
+          ],
+        },
+        {
+          title: 'Project size',
+          subtitle: 'Page count and budget.',
+          fields: [
+            { type: 'select', name: 'page_count', label: 'Pages needed', required: true,
+              options: ['1 to 5 pages', '6 to 15 pages', '16 to 40 pages', '40+ pages', 'Not sure yet'] },
+            { type: 'select', name: 'budget', label: 'Budget range', required: true,
+              options: ['Under $1,500', '$1,500 to $3,500', '$3,500 to $6,000', '$6,000 to $15,000', '$15,000+', 'Not sure yet'] },
+          ],
+        },
+        {
+          title: 'Timeline + goal',
+          subtitle: 'When you need it live and what it must do.',
+          fields: [
+            { type: 'select', name: 'timeline', label: 'Timeline', required: true,
+              options: ['ASAP, within 4 weeks', 'Standard, 6 to 10 weeks', 'Flexible, 3+ months', 'Just exploring'] },
+            { type: 'textarea', name: 'message', label: 'Design goal', placeholder: 'What does the new site need to accomplish?', required: true, rows: 2 },
+          ],
+        },
+      ]}
     />
     <Marquee />
 
@@ -1019,21 +1057,7 @@ const faqs = [
 
   .svc-tier-highlight:hover { transform: translateY(-10px); }
 
-  .svc-tier-flag {
-    position: absolute;
-    top: 14px; left: 50%;
-    transform: translateX(-50%);
-    padding: 4px 14px;
-    background: var(--amber);
-    color: var(--ink);
-    border-radius: var(--radius-pill);
-    font-family: var(--f-mono);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    font-weight: 600;
-    white-space: nowrap;
-  }
+  .svc-tier-flag { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 5px 11px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 10px rgba(212, 147, 46, 0.4); z-index: 3; }
 
   .svc-tier-name {
     font-family: var(--f-display);
