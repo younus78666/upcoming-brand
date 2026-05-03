@@ -4,6 +4,7 @@ import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import BottomFormCTA from '../../components/BottomFormCTA.astro';
+import { projects } from '../../data/projects';
 
 const canonical = "https://upcomingbrand.com/work/";
 
@@ -33,17 +34,6 @@ const jsonLd = JSON.stringify({
   ]
 });
 
-const projects = [
-  { vertical: "Law Firm",         filter: "law",       name: "Maryland Estate Planning Firm",     scope: "WordPress site + Local Pack SEO",   metric: "Lighthouse 96 / 14 mo Local Pack #1",  detail: "Custom WordPress build with Attorney + LegalService schema, 8 practice-area pages, GBP optimization, and citation cleanup. Ranked #1 Local Pack within 14 months for 'estate planning attorney baltimore'." },
-  { vertical: "Dental",           filter: "medical",   name: "Baltimore Cosmetic Dental Practice", scope: "Redesign + WooCommerce booking",     metric: "+62% form submissions / 90+ Lighthouse", detail: "Replaced legacy Divi build with native Gutenberg blocks. MedicalBusiness schema, MedicalProcedure markup per service, and integrated BookSteam booking. Form submissions up 62 percent in first 90 days." },
-  { vertical: "Real Estate",      filter: "real-estate", name: "Annapolis Brokerage",              scope: "WordPress + IDX Broker + custom search", metric: "10x indexed pages / 4-month launch", detail: "Custom WordPress + IDX Broker integration with neighborhood landing pages and RealEstateAgent schema. 4,200 listings indexed in Search Console within 60 days of launch." },
-  { vertical: "Ecommerce",        filter: "ecommerce", name: "Maryland Outdoor Goods",            scope: "WooCommerce + subscriptions",         metric: "98 Lighthouse / -45% LCP",           detail: "Custom WooCommerce theme with 220 SKUs, Stripe Subscriptions for monthly box, and Product schema across the catalog. Mobile LCP cut from 4.2s to 2.3s; conversion rate up 28 percent." },
-  { vertical: "Restaurant",       filter: "restaurant", name: "Baltimore Hospitality Group",      scope: "Multi-location WordPress + menu schema", metric: "3 locations Local Pack / 90+ Lighthouse", detail: "Three-location WordPress build with Restaurant + Menu schema, per-location landing pages, and online ordering integration. All three locations ranking Local Pack for primary keywords within 6 months." },
-  { vertical: "Nonprofit",        filter: "nonprofit", name: "Maryland Community Foundation",     scope: "WordPress redesign + giving platform", metric: "+89% donations / WCAG AA",            detail: "Redesigned WordPress site with NGO schema, accessible-by-default components (WCAG 2.2 AA), and integrated GiveWP donation processing. Online donations up 89 percent year-over-year." },
-  { vertical: "Contractor",       filter: "contractor", name: "DMV Roofing Company",              scope: "WordPress + GBP + service-area pages", metric: "47 Local Pack #1 results / 8 mo",    detail: "WordPress build with HomeAndConstructionBusiness schema, 23 service-area landing pages across MD/DC/VA, and integrated quote calculator. Ranking Local Pack #1 in 47 service-city combinations after 8 months." },
-  { vertical: "Church / Faith",   filter: "nonprofit",  name: "Baltimore Megachurch",             scope: "WordPress + sermon archive + giving",  metric: "+340% sermon plays / WCAG AA",         detail: "Custom WordPress with Church schema, sermon archive with structured data, and integrated Tithely giving. Sermon plays up 340 percent after launching the searchable archive." },
-  { vertical: "Redesign",         filter: "redesign",   name: "Annapolis Accountant Firm",        scope: "Migration from Wix + redesign",        metric: "Zero ranking loss / 0 to 90 Lighthouse", detail: "Wix-to-WordPress migration with full redirect map, AccountingService schema, and complete redesign. Rankings preserved through migration; mobile Lighthouse improved from 0 to 90+." },
-];
 
 const categories = [
   { id: "all",           label: "All projects" },
@@ -114,15 +104,19 @@ const stats = [
       <div class="container">
         <div class="wrk-grid" id="wrk-grid">
           {projects.map((p) => (
-            <article class="wrk-card" data-vertical={p.filter}>
+            <a href={`/work/${p.slug}/`} class="wrk-card" data-vertical={p.filter}>
               <div class="wrk-card-head">
                 <span class="wrk-card-vertical">{p.vertical}</span>
-                <span class="wrk-card-metric">{p.metric}</span>
+                <span class="wrk-card-timeline">{p.timeline}</span>
               </div>
               <h3 class="wrk-card-name">{p.name}</h3>
-              <p class="wrk-card-scope">{p.scope}</p>
-              <p class="wrk-card-detail">{p.detail}</p>
-            </article>
+              <p class="wrk-card-headline"><em>{p.headline}</em></p>
+              <p class="wrk-card-detail">{p.summary}</p>
+              <span class="wrk-card-cta">
+                Read case study
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
           ))}
         </div>
       </div>
@@ -212,12 +206,15 @@ const stats = [
 
   .wrk-grid-wrap { background: var(--cream); padding: clamp(40px, 6vh, 64px) 0 clamp(56px, 8vh, 96px); }
   .wrk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
-  .wrk-card { background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 26px 28px; transition: all 0.3s ease; position: relative; }
+  .wrk-card { display: flex; flex-direction: column; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 26px 28px; transition: all 0.3s ease; position: relative; text-decoration: none; color: inherit; }
   .wrk-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,147,46,0.1); }
   .wrk-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
   .wrk-card-vertical { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); padding: 4px 10px; background: rgba(212,147,46,0.1); border-radius: var(--radius-pill); font-weight: 600; }
-  .wrk-card-metric { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.04em; }
+  .wrk-card-timeline { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.04em; }
   .wrk-card-name { font-family: var(--f-display); font-size: 22px; line-height: 1.2; color: var(--ink); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .wrk-card-headline { font-family: var(--f-display); font-size: 14px; line-height: 1.4; color: var(--amber-deep); margin: 0 0 8px; font-weight: 300; }
+  .wrk-card-headline em { font-style: italic; }
+  .wrk-card-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
   .wrk-card-scope { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--amber-deep); margin: 0 0 12px; font-weight: 500; }
   .wrk-card-detail { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
 
