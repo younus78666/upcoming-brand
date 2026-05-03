@@ -386,16 +386,18 @@ const jsonLdString = JSON.stringify({
                 <div class="sg-field"><label for="sg-ai-provider" class="sg-label">Provider</label>
                   <select id="sg-ai-provider" class="sg-input sg-select">
                     <option value="">Select a provider</option>
-                    <option value="anthropic">Anthropic (Claude)</option>
-                    <option value="openai">OpenAI (GPT-4)</option>
-                    <option value="google">Google (Gemini)</option>
-                    <option value="groq">Groq (fast Llama)</option>
-                    <option value="kimi">Kimi (Moonshot)</option>
+                    <option value="anthropic">Anthropic (Claude Haiku 4.5)</option>
+                    <option value="openai">OpenAI (GPT-4o mini)</option>
+                    <option value="google">Google (Gemini 2.0 Flash)</option>
+                    <option value="groq">Groq (Llama 3.3 70B)</option>
+                    <option value="kimi">Kimi (Moonshot v1)</option>
                   </select>
                 </div>
                 <div class="sg-field"><label for="sg-ai-key" class="sg-label">API key</label><input type="password" id="sg-ai-key" class="sg-input" placeholder="sk-... (saved to your browser only)" autocomplete="off" /></div>
                 <div class="sg-field sg-field-full">
-                  <span class="sg-field-help">Keys are stored in localStorage on this device only. Cleared when you click Clear key. We do not have a server endpoint that sees this key.</span>
+                  <label for="sg-ai-model" class="sg-label">Model override (optional)</label>
+                  <input type="text" id="sg-ai-model" class="sg-input" placeholder="Leave empty to use the default for your provider" autocomplete="off" />
+                  <span class="sg-field-help">Default: <span id="sg-ai-default-model">choose a provider above</span>. Override only if a specific model version is needed (e.g. <code>gemini-2.5-flash</code>, <code>claude-sonnet-4-6</code>, <code>gpt-4.1-mini</code>). Keys are stored in localStorage on this device only — never sent to our servers.</span>
                 </div>
                 <div class="sg-field sg-field-full sg-ai-actions">
                   <button type="button" id="sg-ai-polish-desc" class="sg-ai-btn" data-target="description">
@@ -495,7 +497,7 @@ const jsonLdString = JSON.stringify({
       includeSpeakable:false, speakableSelectors:[],
       latitude:'', longitude:'',
       platform:'wp-rankmath',
-      aiProvider:'', aiKey:''
+      aiProvider:'', aiKey:'', aiModel:''
     };
 
     function bind(id, key){
@@ -1088,20 +1090,28 @@ const jsonLdString = JSON.stringify({
     // ===== AI POLISH (BYO API key) =====
     var aiProviderEl = document.getElementById('sg-ai-provider');
     var aiKeyEl = document.getElementById('sg-ai-key');
+    var aiModelEl = document.getElementById('sg-ai-model');
     var aiStatusEl = document.getElementById('sg-ai-status');
+    var aiDefaultModelEl = document.getElementById('sg-ai-default-model');
 
-    // Restore saved key
+    // Restore saved key + provider + model
     try {
       var savedKey = localStorage.getItem('sg-ai-key');
       var savedProvider = localStorage.getItem('sg-ai-provider');
+      var savedModel = localStorage.getItem('sg-ai-model');
       if(savedKey) { aiKeyEl.value = savedKey; state.aiKey = savedKey; }
       if(savedProvider) { aiProviderEl.value = savedProvider; state.aiProvider = savedProvider; }
+      if(savedModel) { aiModelEl.value = savedModel; state.aiModel = savedModel; }
     } catch(e){}
 
     function updateAiStatus(){
       var hasKey = state.aiKey && state.aiProvider;
-      aiStatusEl.textContent = hasKey ? ('Ready: ' + state.aiProvider) : 'No key set';
+      var modelName = getModel();
+      aiStatusEl.textContent = hasKey ? ('Ready: ' + (state.aiProvider) + (modelName ? ' (' + modelName + ')' : '')) : 'No key set';
       aiStatusEl.className = hasKey ? 'sg-ai-status sg-ai-status-ready' : 'sg-ai-status';
+      if(aiDefaultModelEl){
+        aiDefaultModelEl.textContent = state.aiProvider ? (defaultModels[state.aiProvider] || 'unknown') : 'choose a provider above';
+      }
       document.querySelectorAll('.sg-ai-btn').forEach(function(b){
         b.disabled = !hasKey;
         b.title = hasKey ? '' : 'Add provider + API key above to enable AI polish';
@@ -1119,49 +1129,81 @@ const jsonLdString = JSON.stringify({
       try { localStorage.setItem('sg-ai-key', state.aiKey); } catch(e){}
       updateAiStatus();
     });
+    aiModelEl.addEventListener('input', function(){
+      state.aiModel = aiModelEl.value;
+      try { localStorage.setItem('sg-ai-model', state.aiModel); } catch(e){}
+      updateAiStatus();
+    });
     document.getElementById('sg-ai-clear-key').addEventListener('click', function(){
-      state.aiKey = ''; state.aiProvider = '';
-      aiKeyEl.value = ''; aiProviderEl.value = '';
-      try { localStorage.removeItem('sg-ai-key'); localStorage.removeItem('sg-ai-provider'); } catch(e){}
+      state.aiKey = ''; state.aiProvider = ''; state.aiModel = '';
+      aiKeyEl.value = ''; aiProviderEl.value = ''; aiModelEl.value = '';
+      try { localStorage.removeItem('sg-ai-key'); localStorage.removeItem('sg-ai-provider'); localStorage.removeItem('sg-ai-model'); } catch(e){}
       updateAiStatus();
     });
 
+    // Default model IDs per provider — updated 2026-05.
+    // User can override via the "Model" input below if a specific version is needed.
+    var defaultModels = {
+      anthropic: 'claude-haiku-4-5-20251001',
+      openai:    'gpt-4o-mini',
+      google:    'gemini-2.0-flash',
+      groq:      'llama-3.3-70b-versatile',
+      kimi:      'moonshot-v1-8k'
+    };
+
+    function getModel(){
+      var override = state.aiModel && state.aiModel.trim();
+      return override || defaultModels[state.aiProvider] || '';
+    }
+
     function callAi(prompt, callback){
       if(!state.aiKey || !state.aiProvider) { callback(null, 'No API key set'); return; }
+      var model = getModel();
       var endpoint, headers, body;
       if(state.aiProvider === 'anthropic'){
         endpoint = 'https://api.anthropic.com/v1/messages';
         headers = { 'x-api-key': state.aiKey, 'anthropic-version': '2023-06-01', 'content-type': 'application/json', 'anthropic-dangerous-direct-browser-access': 'true' };
-        body = JSON.stringify({ model: 'claude-3-5-sonnet-20241022', max_tokens: 500, messages: [{ role: 'user', content: prompt }] });
+        body = JSON.stringify({ model: model, max_tokens: 600, messages: [{ role: 'user', content: prompt }] });
       } else if(state.aiProvider === 'openai'){
         endpoint = 'https://api.openai.com/v1/chat/completions';
         headers = { 'Authorization': 'Bearer ' + state.aiKey, 'content-type': 'application/json' };
-        body = JSON.stringify({ model: 'gpt-4o-mini', messages: [{ role: 'user', content: prompt }] });
+        body = JSON.stringify({ model: model, max_tokens: 600, messages: [{ role: 'user', content: prompt }] });
       } else if(state.aiProvider === 'google'){
-        endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=' + encodeURIComponent(state.aiKey);
+        endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/' + encodeURIComponent(model) + ':generateContent?key=' + encodeURIComponent(state.aiKey);
         headers = { 'content-type': 'application/json' };
-        body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] });
+        body = JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { maxOutputTokens: 600 } });
       } else if(state.aiProvider === 'groq'){
         endpoint = 'https://api.groq.com/openai/v1/chat/completions';
         headers = { 'Authorization': 'Bearer ' + state.aiKey, 'content-type': 'application/json' };
-        body = JSON.stringify({ model: 'llama-3.3-70b-versatile', messages: [{ role: 'user', content: prompt }] });
+        body = JSON.stringify({ model: model, max_tokens: 600, messages: [{ role: 'user', content: prompt }] });
       } else if(state.aiProvider === 'kimi'){
         endpoint = 'https://api.moonshot.ai/v1/chat/completions';
         headers = { 'Authorization': 'Bearer ' + state.aiKey, 'content-type': 'application/json' };
-        body = JSON.stringify({ model: 'moonshot-v1-8k', messages: [{ role: 'user', content: prompt }] });
+        body = JSON.stringify({ model: model, max_tokens: 600, messages: [{ role: 'user', content: prompt }] });
       } else { callback(null, 'Unsupported provider'); return; }
 
       fetch(endpoint, { method: 'POST', headers: headers, body: body })
-        .then(function(r){ return r.json(); })
-        .then(function(data){
+        .then(function(r){ return r.json().then(function(data){ return { status: r.status, data: data }; }); })
+        .then(function(res){
+          var data = res.data;
+          // Extract error message if any
+          if(res.status >= 400){
+            var msg = '';
+            if(data && data.error){
+              if(typeof data.error === 'string') msg = data.error;
+              else msg = data.error.message || data.error.type || JSON.stringify(data.error);
+            } else { msg = 'HTTP ' + res.status; }
+            callback(null, msg);
+            return;
+          }
           var text = '';
           if(state.aiProvider === 'anthropic') text = (data.content && data.content[0] && data.content[0].text) || '';
           else if(state.aiProvider === 'google') text = (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0].text) || '';
           else text = (data.choices && data.choices[0] && data.choices[0].message && data.choices[0].message.content) || '';
           if(text) callback(text.trim());
-          else callback(null, JSON.stringify(data).slice(0, 200));
+          else callback(null, 'Empty response from provider');
         })
-        .catch(function(e){ callback(null, e.message); });
+        .catch(function(e){ callback(null, e.message || 'Network error'); });
     }
 
     document.getElementById('sg-ai-polish-desc').addEventListener('click', function(){
