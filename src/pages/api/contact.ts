@@ -133,6 +133,9 @@ function adminEmailHtml(opts: {
     .join('');
   return `<!doctype html><html><body style="margin:0;background:#f6efe1;font-family:system-ui,sans-serif;">
 <div style="max-width:600px;margin:24px auto;background:#fdf8ec;border:1px solid #e6d9bb;border-radius:12px;padding:32px;">
+  <div style="text-align:left;margin-bottom:18px;padding-bottom:14px;border-bottom:1px dashed #e6d9bb;">
+    <img src="https://www.upcomingbrand.com/02-footer-logo-dark-edited.png" alt="Upcoming Brand" width="140" style="display:inline-block;max-width:140px;height:auto;" />
+  </div>
   <div style="font:500 11px monospace;letter-spacing:.18em;text-transform:uppercase;color:#8a6a1e;margin-bottom:8px;">New form submission</div>
   <h1 style="margin:0 0 20px;font:600 22px/1.2 Georgia,serif;color:#1a1208;">${escapeHtml(opts.formName)}</h1>
   <table style="width:100%;border-collapse:collapse;border-top:1px dashed #e6d9bb;">${rows}</table>
@@ -150,7 +153,10 @@ function thankYouHtml(firstName: string): string {
   const name = firstName || 'there';
   return `<!doctype html><html><body style="margin:0;background:#f6efe1;font-family:system-ui,sans-serif;">
 <div style="max-width:560px;margin:32px auto;background:#fdf8ec;border:1px solid #e6d9bb;border-radius:14px;padding:40px 36px;">
-  <div style="font:500 11px monospace;letter-spacing:.2em;text-transform:uppercase;color:#8a6a1e;margin-bottom:14px;">Upcoming Brand</div>
+  <div style="text-align:center;margin-bottom:24px;padding-bottom:20px;border-bottom:1px dashed #e6d9bb;">
+    <img src="https://www.upcomingbrand.com/02-footer-logo-dark-edited.png" alt="Upcoming Brand" width="180" style="display:inline-block;max-width:180px;height:auto;" />
+  </div>
+  <div style="font:500 11px monospace;letter-spacing:.2em;text-transform:uppercase;color:#8a6a1e;margin-bottom:14px;">Message received</div>
   <h1 style="margin:0 0 18px;font:500 28px/1.15 Georgia,serif;color:#1a1208;letter-spacing:-0.02em;">Thanks, ${escapeHtml(name)}.</h1>
   <p style="font:400 16px/1.6 system-ui;color:#3a2e1c;margin:0 0 16px;">Your message just landed in my inbox. I read every single one personally — no auto-routing, no junior account managers.</p>
   <p style="font:400 16px/1.6 system-ui;color:#3a2e1c;margin:0 0 16px;"><strong>What happens next:</strong></p>

@@ -1,0 +1,409 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+
+const canonical = "https://upcomingbrand.com/thank-you/";
+
+// Subject-line map mirrors the API endpoint so the page can show a context-specific lead-in
+const FORM_LABELS: Record<string, string> = {
+  'contact':                    'Your contact inquiry',
+  'hero-inquiry':               'Your homepage inquiry',
+  'bottom-cta':                 'Your inquiry',
+  'tools-cta':                  'Your tool request',
+  'services-cta':               'Your services inquiry',
+  'pricing-cta':                'Your pricing inquiry',
+  'reviews-cta':                'Your inquiry',
+  'about-cta':                  'Your inquiry',
+  'work-cta':                   'Your portfolio inquiry',
+  'industries-cta':             'Your industry inquiry',
+  'locations-cta':              'Your location inquiry',
+  'process-cta':                'Your process inquiry',
+  'team-cta':                   'Your inquiry',
+  'careers-cta':                'Your application',
+  'discovery-call':             'Your discovery call request',
+  'hire-designer':              'Your hire-a-designer inquiry',
+  'wp-agency-cta':              'Your WordPress agency inquiry',
+  'accountant-inquiry':         'Your accountant-website inquiry',
+  'church-inquiry':             'Your church-website inquiry',
+  'contractor-inquiry':         'Your contractor-website inquiry',
+  'dental-inquiry':             'Your dental-website inquiry',
+  'ec-inquiry':                 'Your ecommerce inquiry',
+  'gym-inquiry':                'Your gym-website inquiry',
+  'lawfirm-inquiry':            'Your law-firm inquiry',
+  'medical-inquiry':            'Your medical-website inquiry',
+  'nonprofit-inquiry':          'Your nonprofit-website inquiry',
+  'realestate-inquiry':         'Your real-estate inquiry',
+  'restaurant-inquiry':         'Your restaurant-website inquiry',
+  'smallbiz-inquiry':           'Your small-business inquiry',
+};
+
+const formLabelsJson = JSON.stringify(FORM_LABELS);
+---
+<BaseLayout
+  title="Thank you — Upcoming Brand"
+  description="Your message landed in our inbox. A real reply is on the way within one business day."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <meta name="robots" content="noindex, follow" />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content" class="ty-main">
+    <section class="ty-hero">
+      <div class="container">
+        <div class="ty-card">
+          <!-- Logo -->
+          <div class="ty-logo-row">
+            <img
+              src="/02-footer-logo-dark-edited.png"
+              alt="Upcoming Brand"
+              width="200"
+              height="52"
+              class="ty-logo"
+            />
+          </div>
+
+          <!-- Eyebrow -->
+          <div class="ty-eyebrow-strip">
+            <span class="ty-eyebrow-line"></span>
+            <span class="ty-eyebrow-text" id="ty-eyebrow">Message received</span>
+            <span class="ty-eyebrow-line"></span>
+          </div>
+
+          <!-- Big headline (personalized) -->
+          <h1 class="ty-h1" id="ty-headline">
+            <span class="ty-h1-line">Thanks for reaching out.</span>
+            <span class="ty-h1-line"><em class="ty-h1-accent">Your message just landed in our inbox.</em></span>
+          </h1>
+
+          <p class="ty-lead" id="ty-lead">
+            We read every single inquiry personally. No auto-routing. No junior account managers. A real reply with thoughts on your project is on its way.
+          </p>
+
+          <!-- Confirmation pills -->
+          <div class="ty-pills">
+            <div class="ty-pill">
+              <span class="ty-pill-icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M2 7l3.5 3.5L12 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="ty-pill-text">Submission confirmed</span>
+            </div>
+            <div class="ty-pill">
+              <span class="ty-pill-icon">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M1 3l6 4 6-4M1 3v8h12V3M1 3l6 4 6-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span class="ty-pill-text">Branded confirmation sent to your inbox</span>
+            </div>
+          </div>
+
+          <!-- What happens next -->
+          <div class="ty-next">
+            <h2 class="ty-next-h2">What happens next</h2>
+            <ol class="ty-steps">
+              <li class="ty-step">
+                <span class="ty-step-num">01</span>
+                <div class="ty-step-body">
+                  <h3 class="ty-step-h3">Within one business day</h3>
+                  <p>You will get a real reply from us with thoughts on your project. Specific. Useful. Not a templated "thanks for reaching out."</p>
+                </div>
+              </li>
+              <li class="ty-step">
+                <span class="ty-step-num">02</span>
+                <div class="ty-step-body">
+                  <h3 class="ty-step-h3">If it is a fit, we book a call</h3>
+                  <p>30-minute discovery call on Zoom or Google Meet. Your pick. We come prepared with questions specific to your business — not a generic agency pitch deck.</p>
+                </div>
+              </li>
+              <li class="ty-step">
+                <span class="ty-step-num">03</span>
+                <div class="ty-step-body">
+                  <h3 class="ty-step-h3">If it is not a fit, we tell you</h3>
+                  <p>And we point you to someone better suited. No pretending. No sunk-cost agreements. Your time matters.</p>
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Where to next -->
+          <div class="ty-explore">
+            <h2 class="ty-explore-h2">While you wait, browse around</h2>
+            <div class="ty-explore-grid">
+              <a href="/work/" class="ty-explore-card">
+                <div class="ty-explore-card-eyebrow">See</div>
+                <div class="ty-explore-card-name">Recent work</div>
+                <div class="ty-explore-card-desc">Real projects with real Lighthouse scores.</div>
+                <span class="ty-explore-card-cta">View portfolio
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </a>
+              <a href="/process/" class="ty-explore-card">
+                <div class="ty-explore-card-eyebrow">Read</div>
+                <div class="ty-explore-card-name">Our process</div>
+                <div class="ty-explore-card-desc">Discovery, schema, build, launch, support.</div>
+                <span class="ty-explore-card-cta">See the process
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </a>
+              <a href="/tools/" class="ty-explore-card">
+                <div class="ty-explore-card-eyebrow">Use</div>
+                <div class="ty-explore-card-name">Free tools</div>
+                <div class="ty-explore-card-desc">Schema generator, installment calculator, and more.</div>
+                <span class="ty-explore-card-cta">Open tools
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Direct contact fallback -->
+          <div class="ty-direct">
+            <p class="ty-direct-text">
+              <strong>Anything urgent?</strong> Email us directly at
+              <a href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>
+              — we will reply same-day.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+
+  <script is:inline define:vars={{ formLabelsJson }}>
+    (function(){
+      var FORM_LABELS = JSON.parse(formLabelsJson);
+      var params = new URLSearchParams(window.location.search);
+      var first = (params.get('name') || '').trim();
+      var formName = (params.get('form') || '').trim();
+      // Personalize headline
+      if(first){
+        var safe = first.replace(/[<>&]/g, '');
+        var h1 = document.getElementById('ty-headline');
+        if(h1){
+          h1.innerHTML =
+            '<span class="ty-h1-line">Thanks, ' + safe + '.</span>' +
+            '<span class="ty-h1-line"><em class="ty-h1-accent">Your message just landed in our inbox.</em></span>';
+        }
+      }
+      // Personalize eyebrow
+      if(formName && FORM_LABELS[formName]){
+        var eb = document.getElementById('ty-eyebrow');
+        if(eb) eb.textContent = FORM_LABELS[formName] + ' is in';
+      }
+    })();
+  </script>
+</BaseLayout>
+
+<style>
+  .ty-main { background: var(--paper); }
+
+  .ty-hero {
+    background: var(--cream);
+    padding: clamp(56px, 10vh, 120px) 0 clamp(56px, 8vh, 96px);
+    border-bottom: 1px solid var(--line);
+    position: relative;
+    overflow: hidden;
+  }
+  .ty-hero::before {
+    content: ""; position: absolute; top: -300px; left: 50%;
+    transform: translateX(-50%); width: 900px; height: 900px;
+    background: radial-gradient(circle, rgba(212,147,46,0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .ty-card {
+    position: relative;
+    z-index: 1;
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-xl);
+    padding: clamp(32px, 5vw, 64px);
+    box-shadow: 0 30px 80px rgba(212,147,46,0.06);
+  }
+
+  .ty-logo-row {
+    text-align: center;
+    margin-bottom: 32px;
+    padding-bottom: 28px;
+    border-bottom: 1px dashed var(--line);
+  }
+  .ty-logo { max-width: 200px; height: auto; opacity: 0.95; }
+
+  .ty-eyebrow-strip {
+    display: inline-flex; align-items: center; gap: 14px;
+    flex-wrap: nowrap; justify-content: center;
+    width: 100%; margin-bottom: 18px;
+  }
+  .ty-eyebrow-line {
+    display: inline-block; width: 48px; height: 1px;
+    background: var(--amber); flex-shrink: 0;
+  }
+  .ty-eyebrow-text {
+    font-family: var(--f-mono); font-size: 11px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--amber-deep); font-weight: 500; white-space: nowrap;
+  }
+
+  .ty-h1 {
+    font-family: var(--f-display); font-weight: 500;
+    font-size: clamp(32px, 5vw, 56px); line-height: 1.05;
+    letter-spacing: -0.03em;
+    display: flex; flex-direction: column; gap: 4px;
+    margin: 8px 0 24px; text-align: center;
+  }
+  .ty-h1-line { display: block; color: var(--ink); }
+  .ty-h1-accent { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+
+  .ty-lead {
+    font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6;
+    color: var(--ink-soft); max-width: 64ch; margin: 0 auto 32px;
+    text-align: center;
+  }
+
+  .ty-pills {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center; margin: 0 0 48px;
+  }
+  .ty-pill {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono); font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .ty-pill-icon {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--amber); color: var(--ink);
+  }
+  .ty-pill-text { font-weight: 500; }
+
+  .ty-next { margin: 56px 0 0; padding-top: 48px; border-top: 1px dashed var(--line); }
+  .ty-next-h2 {
+    font-family: var(--f-display); font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 28px); line-height: 1.2;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin: 0 0 28px; text-align: center;
+  }
+  .ty-steps {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 18px;
+  }
+  .ty-step {
+    display: flex; gap: 20px; align-items: flex-start;
+    padding: 22px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    transition: all 0.3s ease;
+  }
+  .ty-step:hover {
+    border-color: var(--amber);
+    transform: translateX(2px);
+  }
+  .ty-step-num {
+    font-family: var(--f-mono); font-size: 12px;
+    font-weight: 700; letter-spacing: 0.08em;
+    color: var(--amber-deep);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 6px 10px; border-radius: 6px;
+    flex-shrink: 0;
+  }
+  .ty-step-body { flex: 1; }
+  .ty-step-h3 {
+    font-family: var(--f-display); font-size: 17px;
+    font-weight: 600; color: var(--ink);
+    margin: 0 0 6px; letter-spacing: -0.01em;
+  }
+  .ty-step-body p {
+    margin: 0; font-size: 14px; line-height: 1.6;
+    color: var(--ink-soft);
+  }
+
+  .ty-explore { margin: 56px 0 0; padding-top: 48px; border-top: 1px dashed var(--line); }
+  .ty-explore-h2 {
+    font-family: var(--f-display); font-weight: 500;
+    font-size: clamp(22px, 2.6vw, 28px); line-height: 1.2;
+    letter-spacing: -0.02em; color: var(--ink);
+    margin: 0 0 28px; text-align: center;
+  }
+  .ty-explore-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+  }
+  .ty-explore-card {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 22px 22px 18px;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    text-decoration: none; color: inherit;
+    transition: all 0.3s ease;
+  }
+  .ty-explore-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212,147,46,0.10);
+  }
+  .ty-explore-card-eyebrow {
+    font-family: var(--f-mono); font-size: 9px;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--amber-deep); font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .ty-explore-card-name {
+    font-family: var(--f-display); font-size: 18px;
+    font-weight: 600; color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+  .ty-explore-card-desc {
+    font-size: 13px; line-height: 1.5;
+    color: var(--ink-soft); margin: 4px 0 8px;
+  }
+  .ty-explore-card-cta {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--f-mono); font-size: 10px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--amber-deep); font-weight: 600;
+    margin-top: 6px; padding-top: 10px;
+    border-top: 1px dashed var(--line);
+  }
+
+  .ty-direct {
+    margin: 48px 0 0; padding-top: 32px;
+    border-top: 1px dashed var(--line);
+    text-align: center;
+  }
+  .ty-direct-text {
+    font-size: 14px; line-height: 1.6;
+    color: var(--ink-soft); margin: 0;
+  }
+  .ty-direct-text strong { color: var(--ink); font-weight: 600; }
+  .ty-direct-text a {
+    color: var(--amber-deep); text-decoration: none;
+    font-weight: 500; border-bottom: 1px solid var(--amber);
+    padding-bottom: 1px;
+  }
+  .ty-direct-text a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+  @media (max-width: 768px) {
+    .ty-explore-grid { grid-template-columns: 1fr; }
+    .ty-step { flex-direction: column; gap: 12px; }
+  }
+</style>

@@ -199,18 +199,15 @@ const {
       s.textContent = text;
     }
 
-    function showSuccess(form){
+    function redirectToThankYou(form){
       var name = (form.querySelector('[name="name"], [name="first-name"], [name="firstName"]') || {}).value || '';
       var firstName = (name.split(/\s+/)[0] || '').trim();
-      var heading = firstName ? 'Thanks ' + firstName + '.' : 'Thanks.';
-      var card = document.createElement('div');
-      card.className = 'uc-form-success';
-      card.style.cssText = 'background:#fdf8ec;border:1.5px solid #e6d9bb;border-radius:14px;padding:32px;text-align:center;';
-      card.innerHTML = '<div style="font:500 11px monospace;letter-spacing:.18em;text-transform:uppercase;color:#8a6a1e;margin-bottom:8px;">Message received</div>' +
-        '<h3 style="font:500 24px/1.2 Georgia,serif;color:#1a1208;margin:0 0 12px;letter-spacing:-0.02em;">' + heading + '</h3>' +
-        '<p style="font:400 15px/1.6 system-ui;color:#3a2e1c;margin:0 0 6px;">A real reply from us is on the way within one business day.</p>' +
-        '<p style="font:400 13px/1.6 system-ui;color:#7a6a4a;margin:0;">Check your inbox for a confirmation note.</p>';
-      form.parentNode.replaceChild(card, form);
+      var formName = form.dataset.ucForm || form.getAttribute('name') || '';
+      var qs = new URLSearchParams();
+      if(firstName) qs.set('name', firstName);
+      if(formName)  qs.set('form', formName);
+      var url = '/thank-you/' + (qs.toString() ? '?' + qs.toString() : '');
+      window.location.href = url;
     }
 
     function localLangFilter(payload){
@@ -245,7 +242,7 @@ const {
 
         // local language pre-check (silent reject)
         if(localLangFilter(payload)){
-          showSuccess(form);
+          redirectToThankYou(form);
           return;
         }
 
@@ -270,7 +267,7 @@ const {
         }).then(function(r){ return r.json().catch(function(){return {ok:false,error:'bad_response'};}); })
         .then(function(j){
           if(j && j.ok){
-            showSuccess(form);
+            redirectToThankYou(form);
           } else {
             var msg = 'Something went wrong. Please try again or email hello@upcomingbrand.com.';
             if(j && j.error === 'recaptcha_failed') msg = 'Captcha failed. Please tick the box again.';
