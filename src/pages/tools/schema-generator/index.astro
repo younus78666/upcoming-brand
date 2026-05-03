@@ -411,9 +411,24 @@ const jsonLdString = JSON.stringify({
 
             <div class="sg-form-section" id="sg-speakable-section" data-shown="false">
               <h2 class="sg-form-section-title">Speakable selectors</h2>
-              <p class="sg-form-section-sub">CSS selectors that Google Assistant can read aloud. One per line.</p>
+              <p class="sg-form-section-sub">CSS selectors on your page that Google Assistant can read aloud during voice queries. <strong>Pick a preset</strong> matching your page type, or write your own (one selector per line). Most sites use H1 + H2 + intro paragraph.</p>
+
+              <div class="sg-speakable-presets">
+                <button type="button" class="sg-add-row" data-speakable-preset="default">Generic page (h1, h2, .lead)</button>
+                <button type="button" class="sg-add-row" data-speakable-preset="article">Blog article</button>
+                <button type="button" class="sg-add-row" data-speakable-preset="service">Service page</button>
+                <button type="button" class="sg-add-row" data-speakable-preset="faq">FAQ page</button>
+                <button type="button" class="sg-add-row" data-speakable-preset="recipe">Recipe</button>
+                <button type="button" class="sg-add-row" data-speakable-preset="product">Product page</button>
+                <button type="button" class="sg-add-row" data-speakable-preset="news">News article (Google requires this for voice)</button>
+              </div>
+
               <div class="sg-form-grid">
-                <div class="sg-field sg-field-full"><textarea id="sg-speakable-selectors" class="sg-input sg-textarea" rows="3" placeholder="h1, h2, .lead"></textarea></div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-speakable-selectors" class="sg-label">Selectors (one per line)</label>
+                  <textarea id="sg-speakable-selectors" class="sg-input sg-textarea" rows="4" placeholder="h1&#10;h2&#10;.lead"></textarea>
+                  <span class="sg-field-help">If you do not know your site's exact CSS classes, "h1" and "h2" work on every site. Use specific classes like <code>.lead</code> or <code>.summary</code> only if those classes actually exist on your pages.</span>
+                </div>
               </div>
             </div>
 
@@ -569,6 +584,30 @@ const jsonLdString = JSON.stringify({
         render();
       });
     }
+
+    var speakablePresets = {
+      'default': ['h1','h2','.lead'],
+      'article': ['h1','article h2','.article-summary','article p:first-of-type'],
+      'service': ['h1','.service-headline','.service-summary','section.intro p'],
+      'faq': ['h1','.faq-question','.faq-answer'],
+      'recipe': ['h1','.recipe-summary','.recipe-ingredients','.recipe-instructions'],
+      'product': ['h1','.product-name','.product-description','.product-price'],
+      'news': ['h1','.article-headline','.article-byline','article p:first-of-type']
+    };
+    document.querySelectorAll('[data-speakable-preset]').forEach(function(b){
+      b.addEventListener('click', function(){
+        var key = b.dataset.speakablePreset;
+        var preset = speakablePresets[key] || speakablePresets['default'];
+        state.speakableSelectors = preset.slice();
+        if(speakableEl) speakableEl.value = preset.join('\n');
+        // Auto-enable speakable section if not already
+        if(!state.includeSpeakable){
+          var t = document.getElementById('sg-include-speakable');
+          if(t){ t.checked = true; t.dispatchEvent(new Event('change')); }
+        }
+        render();
+      });
+    });
 
     var servicesList = document.getElementById('sg-services-list');
     function renderServices(){
@@ -1229,6 +1268,7 @@ const jsonLdString = JSON.stringify({
   .sg-hours-closed-label { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); cursor: pointer; }
   .sg-hours-closed-label input { accent-color: var(--amber); cursor: pointer; }
 
+  .sg-speakable-presets { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 14px; }
   .sg-platform-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 16px; }
   .sg-platform-btn { padding: 12px 14px; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-md); cursor: pointer; text-align: left; display: flex; flex-direction: column; gap: 4px; transition: all 0.2s ease; font-family: inherit; }
   .sg-platform-btn:hover { border-color: var(--amber); }
