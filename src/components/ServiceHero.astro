@@ -646,6 +646,8 @@ const tsId = `svc-hero-ts-${formName}`;
     gap: 10px;
     margin-top: 6px;
   }
+  /* Native hidden attribute must override flex display */
+  .svc-hero-form-nav [hidden] { display: none !important; }
 
   .svc-hero-form-back {
     display: inline-flex;
