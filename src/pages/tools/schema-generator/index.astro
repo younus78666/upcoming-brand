@@ -1219,6 +1219,42 @@ const jsonLdString = JSON.stringify({
     var aiStatusEl = document.getElementById('sg-ai-status');
     var aiDefaultModelEl = document.getElementById('sg-ai-default-model');
 
+    // ===== BULLETPROOF STATUS UPDATER (runs independent of state machinery) =====
+    // This is wired BEFORE updateAiStatus so it always reflects DOM truth even if
+    // anything else throws downstream.
+    function bulletproofStatus(){
+      try {
+        if(!aiStatusEl) return;
+        var k = aiKeyEl ? (aiKeyEl.value || '').trim() : '';
+        var p = aiProviderEl ? (aiProviderEl.value || '').trim() : '';
+        var hasK = !!k, hasP = !!p;
+        var msg, cls;
+        if(hasK && hasP){ msg = 'Ready: ' + p; cls = 'sg-ai-status sg-ai-status-ready'; }
+        else if(hasK && !hasP){ msg = 'Pick a provider (key saved)'; cls = 'sg-ai-status sg-ai-status-partial'; }
+        else if(!hasK && hasP){ msg = 'Paste API key (' + p + ' selected)'; cls = 'sg-ai-status sg-ai-status-partial'; }
+        else { msg = 'Pick provider + add key'; cls = 'sg-ai-status'; }
+        aiStatusEl.textContent = msg;
+        aiStatusEl.className = cls;
+        // Also enable/disable big buttons + sparkles
+        var ready = hasK && hasP;
+        document.querySelectorAll('.sg-ai-btn, .sg-ai-spark').forEach(function(b){
+          if(!b.classList.contains('sg-ai-spark-loading') && !b.dataset.loading){
+            b.disabled = !ready;
+          }
+        });
+        if(aiKeyEl) aiKeyEl.classList.toggle('sg-input-filled', hasK);
+        if(aiProviderEl) aiProviderEl.classList.toggle('sg-input-filled', hasP);
+      } catch(e){ if(window.console) console.error('bulletproofStatus failed:', e); }
+    }
+    if(aiKeyEl){
+      ['input','change','keyup','paste','blur'].forEach(function(ev){ aiKeyEl.addEventListener(ev, function(){ setTimeout(bulletproofStatus, 0); }); });
+    }
+    if(aiProviderEl){
+      ['change','input','blur'].forEach(function(ev){ aiProviderEl.addEventListener(ev, bulletproofStatus); });
+    }
+    // Fire once on load
+    bulletproofStatus();
+
     // Restore saved key + provider + model
     try {
       var savedKey = localStorage.getItem('sg-ai-key');
