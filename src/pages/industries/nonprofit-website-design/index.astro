@@ -3,6 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
+import BottomFormCTA from '../../../components/BottomFormCTA.astro';
 const PAGE_URL = "https://upcomingbrand.com/industries/nonprofit-website-design/";
 
 const schema = {
@@ -1128,6 +1129,8 @@ const tiers = [
 
     <div class="lf-cta-watermark" aria-hidden="true">Nonprofit</div>
   </section>
+
+  <BottomFormCTA formName="nonprofit-cta" />
 
   <Footer />
 

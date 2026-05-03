@@ -4,6 +4,7 @@ import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
+import BottomFormCTA from '../../components/BottomFormCTA.astro';
 const canonical = "https://upcomingbrand.com/careers/";
 
 const jsonLd = JSON.stringify({
@@ -447,6 +448,8 @@ const faqs = [
     </section>
 
   </main>
+
+  <BottomFormCTA formName="careers-cta" />
 
   <Footer />
 </BaseLayout>

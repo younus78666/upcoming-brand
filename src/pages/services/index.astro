@@ -6,6 +6,7 @@ import Footer from '../../components/Footer.astro';
 import ServiceHero from '../../components/ServiceHero.astro';
 import Marquee from '../../components/Marquee.astro';
 
+import BottomFormCTA from '../../components/BottomFormCTA.astro';
 const canonical = "https://upcomingbrand.com/services/";
 
 const jsonLd = JSON.stringify({
@@ -312,6 +313,8 @@ const faqs = [
     </section>
 
   </main>
+
+  <BottomFormCTA formName="services-cta" />
 
   <Footer />
 </BaseLayout>

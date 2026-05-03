@@ -1,0 +1,576 @@
+---
+import type { FormStep } from './ServiceHero.astro';
+
+export interface Props {
+  formName: string;
+  formSteps?: FormStep[];
+  hiddenFields?: Record<string, string>;
+  heading?: string;
+  sub?: string;
+  eyebrow?: string;
+}
+
+const defaultSteps: FormStep[] = [
+  {
+    title: 'Tell us who you are',
+    subtitle: 'Just your name and email. 30 seconds.',
+    fields: [
+      { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',          required: true, autocomplete: 'name' },
+      { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com',    required: true, autocomplete: 'email' },
+    ],
+  },
+  {
+    title: 'About your business',
+    subtitle: 'Company and what you do.',
+    fields: [
+      { type: 'text', name: 'company', label: 'Company or brand', placeholder: 'Smith & Co.', autocomplete: 'organization' },
+      {
+        type: 'select', name: 'business_type', label: 'Business type', required: true,
+        options: ['Law Firm / Attorney', 'Dental / Medical', 'Real Estate', 'Restaurant / Hospitality', 'Contractor / Trades', 'Nonprofit / Church', 'Ecommerce / Retail', 'Small Business / Startup', 'Other'],
+      },
+    ],
+  },
+  {
+    title: 'What you need',
+    subtitle: 'Which service and your budget.',
+    fields: [
+      { type: 'select', name: 'service_interest', label: 'Service interested in', required: true,
+        options: ['New WordPress site build', 'Redesign existing site', 'WooCommerce store', 'WordPress SEO services', 'Migration to WordPress', 'Care plan / maintenance', 'SEO audit', 'Not sure yet'] },
+      {
+        type: 'select', name: 'budget', label: 'Budget range', required: true,
+        options: ['Under $1,500', '$1,500 to $3,500', '$3,500 to $6,000', '$6,000 to $15,000', '$15,000+', 'Not sure yet'],
+      },
+    ],
+  },
+  {
+    title: 'Timeline + goal',
+    subtitle: 'When you need it and what success looks like.',
+    fields: [
+      {
+        type: 'select', name: 'timeline', label: 'Timeline', required: true,
+        options: ['ASAP, within 4 weeks', 'Standard, 6 to 10 weeks', 'Flexible, 3+ months', 'Just exploring'],
+      },
+      { type: 'textarea', name: 'message',  label: 'Project goal', placeholder: 'Three sentences. We will ask the rest in the reply.', required: true, rows: 2 },
+    ],
+  },
+];
+
+const {
+  formName,
+  formSteps = defaultSteps,
+  hiddenFields = {},
+  heading = 'Ready to start your project?',
+  sub = 'Tell us about your project. We reply within 4 business hours, no sales pitch.',
+  eyebrow = 'Free discovery call',
+} = Astro.props;
+
+const formId = `bcta-form-${formName}`;
+const tsId = `bcta-ts-${formName}`;
+const firstStep = formSteps[0];
+const totalStepsCount = formSteps.length;
+---
+
+<section class="bcta" id="contact">
+  <div class="container bcta-wrap">
+
+    <div class="bcta-text">
+      <span class="bcta-pill">
+        <span class="bcta-dot" aria-hidden="true"></span>
+        Start a project
+      </span>
+      <h2 class="bcta-heading">{heading}</h2>
+      <p class="bcta-sub">{sub}</p>
+
+      <div class="bcta-trust">
+        <span class="bcta-trust-item">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="5.5" stroke="currentColor" stroke-opacity="0.4"/><path d="M3.5 6l2 2 3-3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          4-hour reply, business days
+        </span>
+        <span class="bcta-trust-dot" aria-hidden="true"></span>
+        <span class="bcta-trust-item">Fixed-scope, no retainer traps</span>
+        <span class="bcta-trust-dot" aria-hidden="true"></span>
+        <span class="bcta-trust-item">Direct to founder</span>
+      </div>
+    </div>
+
+    <div class="bcta-form-wrap">
+      <div class="bcta-form-card" data-bcta-card>
+        <div class="bcta-form-stripe" aria-hidden="true"></div>
+
+        <div class="bcta-form-header">
+          <div class="bcta-form-meta">
+            <span class="bcta-form-eyebrow">{eyebrow}</span>
+            <span class="bcta-form-step-pill" data-bcta-step-label>Step 1 of {totalStepsCount}</span>
+          </div>
+          <h3 class="bcta-form-title" data-bcta-step-title>{firstStep.title}</h3>
+          <p class="bcta-form-sub" data-bcta-step-sub>{firstStep.subtitle}</p>
+        </div>
+
+        <div class="bcta-form-progress" aria-hidden="true">
+          <div class="bcta-form-progress-fill" data-bcta-progress-fill style={`width: ${(1 / totalStepsCount) * 100}%`}></div>
+        </div>
+
+        <form
+          class="bcta-form"
+          id={formId}
+          name={formName}
+          method="POST"
+          netlify-honeypot="bot-field"
+          data-netlify="true"
+          action="/thank-you/"
+          data-bcta-multistep
+        >
+          <input type="hidden" name="form-name" value={formName} />
+          {Object.entries(hiddenFields).map(([k, v]) => (
+            <input type="hidden" name={k} value={v} />
+          ))}
+          <div class="bcta-hp" aria-hidden="true">
+            <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
+          </div>
+          <input type="hidden" name="_timestamp" id={tsId} value="" />
+
+          {formSteps.map((step, sIdx) => (
+            <div class="bcta-step" data-bcta-step={sIdx + 1} data-bcta-step-active={sIdx === 0 ? '' : null}>
+              {step.fields.map((field) => {
+                const fieldId = `${formId}-${field.name}`;
+                if (field.type === 'select') {
+                  return (
+                    <div class="bcta-form-row">
+                      <label class="bcta-form-label" for={fieldId}>
+                        {field.label}
+                        {field.optional && <span class="bcta-form-optional">(optional)</span>}
+                      </label>
+                      <select
+                        class="bcta-form-input bcta-form-select"
+                        id={fieldId}
+                        name={field.name}
+                        data-bcta-required={field.required ? '' : null}
+                      >
+                        <option value="">{field.placeholder ?? 'Select an option'}</option>
+                        {(field.options ?? []).map((opt) => (
+                          <option value={opt}>{opt}</option>
+                        ))}
+                      </select>
+                    </div>
+                  );
+                }
+                if (field.type === 'textarea') {
+                  return (
+                    <div class="bcta-form-row">
+                      <label class="bcta-form-label" for={fieldId}>
+                        {field.label}
+                        {field.optional && <span class="bcta-form-optional">(optional)</span>}
+                      </label>
+                      <textarea
+                        class="bcta-form-input bcta-form-textarea"
+                        id={fieldId}
+                        name={field.name}
+                        rows={field.rows ?? 2}
+                        placeholder={field.placeholder ?? ''}
+                        data-bcta-required={field.required ? '' : null}
+                      ></textarea>
+                    </div>
+                  );
+                }
+                return (
+                  <div class="bcta-form-row">
+                    <label class="bcta-form-label" for={fieldId}>
+                      {field.label}
+                      {field.optional && <span class="bcta-form-optional">(optional)</span>}
+                    </label>
+                    <input
+                      class="bcta-form-input"
+                      type={field.type}
+                      id={fieldId}
+                      name={field.name}
+                      placeholder={field.placeholder ?? ''}
+                      autocomplete={field.autocomplete ?? 'off'}
+                      data-bcta-required={field.required ? '' : null}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          ))}
+
+          <div class="bcta-form-nav">
+            <button type="button" class="bcta-form-next" data-bcta-next-btn>
+              Next
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button type="submit" class="bcta-form-submit" data-bcta-submit-btn hidden>
+              Send brief
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <button type="button" class="bcta-form-back-link" data-bcta-back-btn hidden>
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back to previous step
+          </button>
+
+          <p class="bcta-form-note">By sending, you agree to our <a href="/privacy-policy/">privacy policy</a>. No spam, ever.</p>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline define:vars={{ formId, tsId, formSteps }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const ts = document.getElementById(tsId);
+    if (ts) ts.value = String(Date.now());
+
+    const form = document.getElementById(formId);
+    if (!form) return;
+
+    const stepLabels = {};
+    formSteps.forEach((s, i) => { stepLabels[i + 1] = { title: s.title, sub: s.subtitle }; });
+
+    const totalSteps = formSteps.length;
+    let currentStep = 1;
+
+    const card     = form.closest('[data-bcta-card]');
+    const titleEl  = card.querySelector('[data-bcta-step-title]');
+    const subEl    = card.querySelector('[data-bcta-step-sub]');
+    const labelEl  = card.querySelector('[data-bcta-step-label]');
+    const fillEl   = card.querySelector('[data-bcta-progress-fill]');
+    const backBtn  = card.querySelector('[data-bcta-back-btn]');
+    const nextBtn  = card.querySelector('[data-bcta-next-btn]');
+    const submitBtn = card.querySelector('[data-bcta-submit-btn]');
+
+    function showStep(n) {
+      currentStep = n;
+      card.querySelectorAll('[data-bcta-step]').forEach((el) => {
+        if (Number(el.dataset.bctaStep) === n) {
+          el.setAttribute('data-bcta-step-active', '');
+        } else {
+          el.removeAttribute('data-bcta-step-active');
+        }
+      });
+      titleEl.textContent = stepLabels[n].title;
+      subEl.textContent   = stepLabels[n].sub;
+      labelEl.textContent = `Step ${n} of ${totalSteps}`;
+      fillEl.style.width = `${(n / totalSteps) * 100}%`;
+      backBtn.hidden = (n === 1);
+      if (n === totalSteps) { nextBtn.hidden = true; submitBtn.hidden = false; }
+      else { nextBtn.hidden = false; submitBtn.hidden = true; }
+      const firstInput = card.querySelector(`[data-bcta-step="${n}"] input, [data-bcta-step="${n}"] select, [data-bcta-step="${n}"] textarea`);
+      if (firstInput && n > 1) firstInput.focus({ preventScroll: true });
+    }
+
+    function validateStep(n) {
+      const stepEl = card.querySelector(`[data-bcta-step="${n}"]`);
+      const required = stepEl.querySelectorAll('[data-bcta-required]');
+      let valid = true;
+      required.forEach((field) => {
+        if (!field.value || !field.value.trim()) {
+          field.classList.add('bcta-form-input-error');
+          valid = false;
+        } else {
+          field.classList.remove('bcta-form-input-error');
+        }
+      });
+      if (n === 1) {
+        const email = stepEl.querySelector('input[type="email"]');
+        if (email && email.value && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+          email.classList.add('bcta-form-input-error');
+          valid = false;
+        }
+      }
+      return valid;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      if (!validateStep(currentStep)) return;
+      if (currentStep < totalSteps) showStep(currentStep + 1);
+    });
+    backBtn.addEventListener('click', () => { if (currentStep > 1) showStep(currentStep - 1); });
+    form.addEventListener('submit', (e) => { if (!validateStep(currentStep)) e.preventDefault(); });
+
+    showStep(1);
+  });
+</script>
+
+<style>
+  .bcta {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .bcta::before {
+    content: "";
+    position: absolute;
+    top: -200px; right: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.10) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .bcta::after {
+    content: "";
+    position: absolute;
+    bottom: -200px; left: -100px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .bcta-wrap {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 440px;
+    gap: clamp(28px, 5vw, 72px);
+    align-items: center;
+  }
+
+  .bcta-text { display: flex; flex-direction: column; gap: 18px; }
+
+  .bcta-pill {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 14px;
+    background: rgba(244,239,230,0.06);
+    border: 1px solid rgba(244,239,230,0.18);
+    border-radius: var(--radius-pill);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.75);
+  }
+  .bcta-dot {
+    width: 6px; height: 6px;
+    background: var(--amber);
+    border-radius: 50%;
+    animation: bcta-dot-pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes bcta-dot-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .bcta-heading {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin: 0;
+    color: var(--cream);
+  }
+
+  .bcta-sub {
+    font-size: clamp(15px, 1.1vw, 17px);
+    line-height: 1.6;
+    color: rgba(244,239,230,0.7);
+    max-width: 50ch;
+    margin: 0;
+  }
+
+  .bcta-trust {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+  }
+  .bcta-trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.55);
+  }
+  .bcta-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .bcta-trust-dot {
+    width: 3px; height: 3px;
+    border-radius: 50%;
+    background: rgba(244,239,230,0.25);
+    flex-shrink: 0;
+  }
+
+  /* ===== form card (inverted: cream card on dark bg) ===== */
+  .bcta-form-wrap { align-self: start; }
+  .bcta-form-card {
+    position: relative;
+    background: var(--cream);
+    color: var(--ink);
+    border-radius: var(--radius-lg);
+    padding: 28px 26px 22px;
+    box-shadow: 0 24px 60px -20px rgba(0,0,0,0.5);
+    overflow: hidden;
+    border: 1px solid rgba(212,147,46,0.18);
+  }
+  .bcta-form-stripe {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent 0%, var(--amber) 30%, var(--amber-deep) 70%, transparent 100%);
+  }
+  .bcta-form-header { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+  .bcta-form-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+  .bcta-form-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 600;
+  }
+  .bcta-form-step-pill {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    background: rgba(212,147,46,0.1);
+    color: var(--amber-deep);
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+  }
+  .bcta-form-title {
+    font-family: var(--f-display);
+    font-size: 22px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+    font-weight: 500;
+  }
+  .bcta-form-sub {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .bcta-form-progress {
+    height: 3px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .bcta-form-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--amber), var(--amber-deep));
+    transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bcta-form { display: flex; flex-direction: column; gap: 12px; }
+  .bcta-hp { position: absolute; left: -10000px; top: -10000px; }
+
+  [data-bcta-step] { display: none; flex-direction: column; gap: 12px; }
+  [data-bcta-step][data-bcta-step-active] { display: flex; }
+
+  .bcta-form-row { display: flex; flex-direction: column; gap: 5px; }
+  .bcta-form-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-weight: 600;
+  }
+  .bcta-form-optional {
+    font-size: 9px;
+    color: var(--ink-muted);
+    margin-left: 6px;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .bcta-form-input {
+    width: 100%;
+    padding: 10px 12px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--ink);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .bcta-form-input::placeholder { color: var(--ink-muted); }
+  .bcta-form-input:focus {
+    outline: none;
+    border-color: var(--amber);
+    box-shadow: 0 0 0 3px rgba(212,147,46,0.16);
+  }
+  .bcta-form-input-error {
+    border-color: #c44;
+    box-shadow: 0 0 0 3px rgba(196,68,68,0.14);
+  }
+  .bcta-form-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'><path d='M2 4l4 4 4-4' stroke='%2363564a' stroke-width='1.5' stroke-linecap='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    cursor: pointer;
+  }
+  .bcta-form-textarea { resize: vertical; min-height: 64px; font-family: var(--f-body); }
+
+  .bcta-form-nav { margin-top: 6px; }
+  .bcta-form-next, .bcta-form-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 13px 16px;
+    background: var(--amber);
+    color: var(--ink);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--f-body);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.15s ease;
+  }
+  .bcta-form-next:hover, .bcta-form-submit:hover { background: var(--amber-deep); }
+  .bcta-form-next:active, .bcta-form-submit:active { transform: translateY(1px); }
+  [hidden] { display: none !important; }
+
+  .bcta-form-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    align-self: flex-start;
+    margin-top: 10px;
+    background: transparent;
+    border: none;
+    padding: 4px 0;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+  .bcta-form-back-link:hover { color: var(--ink); }
+
+  .bcta-form-note {
+    font-size: 11px;
+    line-height: 1.45;
+    color: var(--ink-muted);
+    margin: 12px 0 0;
+    text-align: center;
+  }
+  .bcta-form-note a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 2px; }
+
+  @media (max-width: 900px) {
+    .bcta-wrap { grid-template-columns: 1fr; gap: 32px; }
+    .bcta-form-wrap { width: 100%; max-width: 480px; margin: 0 auto; }
+  }
+</style>
