@@ -102,21 +102,113 @@ const jsonLdString = JSON.stringify({
                 <div class="sg-field"><label for="sg-postal" class="sg-label">Postal code</label><input type="text" id="sg-postal" class="sg-input" placeholder="21201" /></div>
                 <div class="sg-field"><label class="sg-label">Business type</label>
                   <select id="sg-business-type" class="sg-input sg-select">
-                    <option value="LocalBusiness">LocalBusiness</option>
-                    <option value="LegalService">LegalService</option>
-                    <option value="Attorney">Attorney</option>
-                    <option value="MedicalBusiness">MedicalBusiness</option>
-                    <option value="Dentist">Dentist</option>
-                    <option value="MedicalClinic">MedicalClinic</option>
-                    <option value="Physician">Physician</option>
-                    <option value="RealEstateAgent">RealEstateAgent</option>
-                    <option value="Restaurant">Restaurant</option>
-                    <option value="HomeAndConstructionBusiness">HomeAndConstructionBusiness</option>
-                    <option value="Store">Store</option>
-                    <option value="Church">Church</option>
-                    <option value="NGO">NGO</option>
-                    <option value="AccountingService">AccountingService</option>
-                    <option value="ProfessionalService">ProfessionalService</option>
+                    <option value="LocalBusiness">LocalBusiness (generic)</option>
+                    <option value="ProfessionalService">ProfessionalService (generic)</option>
+                    <optgroup label="Legal">
+                      <option value="LegalService">LegalService (Law Firm)</option>
+                      <option value="Attorney">Attorney</option>
+                      <option value="Notary">Notary</option>
+                    </optgroup>
+                    <optgroup label="Medical + Dental">
+                      <option value="MedicalBusiness">MedicalBusiness (generic)</option>
+                      <option value="MedicalClinic">MedicalClinic</option>
+                      <option value="Hospital">Hospital</option>
+                      <option value="Physician">Physician</option>
+                      <option value="Dentist">Dentist</option>
+                      <option value="Optician">Optician / Optometrist</option>
+                      <option value="Pharmacy">Pharmacy</option>
+                      <option value="VeterinaryCare">VeterinaryCare</option>
+                      <option value="ChildCare">ChildCare</option>
+                    </optgroup>
+                    <optgroup label="Real Estate + Hospitality">
+                      <option value="RealEstateAgent">RealEstateAgent</option>
+                      <option value="LodgingBusiness">LodgingBusiness</option>
+                      <option value="Hotel">Hotel</option>
+                      <option value="BedAndBreakfast">BedAndBreakfast</option>
+                      <option value="Resort">Resort</option>
+                      <option value="EventVenue">EventVenue</option>
+                    </optgroup>
+                    <optgroup label="Food + Beverage">
+                      <option value="Restaurant">Restaurant</option>
+                      <option value="FastFoodRestaurant">FastFoodRestaurant</option>
+                      <option value="CafeOrCoffeeShop">Cafe / Coffee Shop</option>
+                      <option value="Bakery">Bakery</option>
+                      <option value="BarOrPub">Bar / Pub</option>
+                      <option value="Brewery">Brewery</option>
+                      <option value="Winery">Winery</option>
+                      <option value="IceCreamShop">IceCreamShop</option>
+                    </optgroup>
+                    <optgroup label="Trades + Construction">
+                      <option value="HomeAndConstructionBusiness">HomeAndConstructionBusiness</option>
+                      <option value="GeneralContractor">GeneralContractor</option>
+                      <option value="RoofingContractor">RoofingContractor</option>
+                      <option value="Plumber">Plumber</option>
+                      <option value="Electrician">Electrician</option>
+                      <option value="HVACBusiness">HVAC Business</option>
+                      <option value="HousePainter">HousePainter</option>
+                      <option value="Locksmith">Locksmith</option>
+                      <option value="MovingCompany">MovingCompany</option>
+                    </optgroup>
+                    <optgroup label="Retail">
+                      <option value="Store">Store (generic)</option>
+                      <option value="ClothingStore">ClothingStore</option>
+                      <option value="ElectronicsStore">ElectronicsStore</option>
+                      <option value="JewelryStore">JewelryStore</option>
+                      <option value="ShoeStore">ShoeStore</option>
+                      <option value="HardwareStore">HardwareStore</option>
+                      <option value="HobbyShop">HobbyShop</option>
+                      <option value="Florist">Florist</option>
+                      <option value="GroceryStore">GroceryStore</option>
+                      <option value="PetStore">PetStore</option>
+                      <option value="Bookstore">Bookstore</option>
+                    </optgroup>
+                    <optgroup label="Beauty + Wellness">
+                      <option value="HealthAndBeautyBusiness">HealthAndBeautyBusiness</option>
+                      <option value="HairSalon">HairSalon</option>
+                      <option value="BeautySalon">BeautySalon</option>
+                      <option value="DaySpa">DaySpa</option>
+                      <option value="NailSalon">NailSalon</option>
+                      <option value="TattooParlor">TattooParlor</option>
+                    </optgroup>
+                    <optgroup label="Fitness">
+                      <option value="HealthClub">HealthClub / Gym</option>
+                      <option value="SportsActivityLocation">SportsActivityLocation</option>
+                      <option value="ExerciseGym">ExerciseGym</option>
+                      <option value="YogaStudio">YogaStudio (use SportsActivityLocation)</option>
+                    </optgroup>
+                    <optgroup label="Automotive">
+                      <option value="AutoDealer">AutoDealer</option>
+                      <option value="AutoRepair">AutoRepair</option>
+                      <option value="AutoBodyShop">AutoBodyShop</option>
+                      <option value="GasStation">GasStation</option>
+                      <option value="MotorcycleDealer">MotorcycleDealer</option>
+                    </optgroup>
+                    <optgroup label="Financial + Professional">
+                      <option value="AccountingService">AccountingService</option>
+                      <option value="FinancialService">FinancialService</option>
+                      <option value="InsuranceAgency">InsuranceAgency</option>
+                      <option value="BankOrCreditUnion">BankOrCreditUnion</option>
+                      <option value="EmploymentAgency">EmploymentAgency</option>
+                      <option value="TravelAgency">TravelAgency</option>
+                      <option value="ChildCare">ChildCare</option>
+                    </optgroup>
+                    <optgroup label="Faith + Community">
+                      <option value="Church">Church</option>
+                      <option value="HinduTemple">HinduTemple</option>
+                      <option value="Mosque">Mosque</option>
+                      <option value="Synagogue">Synagogue</option>
+                      <option value="BuddhistTemple">BuddhistTemple</option>
+                      <option value="NGO">NGO</option>
+                      <option value="GovernmentOffice">GovernmentOffice</option>
+                      <option value="Library">Library</option>
+                      <option value="Museum">Museum</option>
+                    </optgroup>
+                    <optgroup label="Other">
+                      <option value="DryCleaningOrLaundry">DryCleaningOrLaundry</option>
+                      <option value="ChildCare">ChildCare</option>
+                      <option value="EmploymentAgency">EmploymentAgency</option>
+                      <option value="EntertainmentBusiness">EntertainmentBusiness</option>
+                    </optgroup>
                   </select>
                 </div>
               </div>
@@ -132,6 +224,8 @@ const jsonLdString = JSON.stringify({
                 <label class="sg-toggle"><input type="checkbox" id="sg-include-rating" /><span class="sg-toggle-name">AggregateRating</span><span class="sg-toggle-desc">Star rating block</span></label>
                 <label class="sg-toggle"><input type="checkbox" id="sg-include-service" /><span class="sg-toggle-name">Service / Offer</span><span class="sg-toggle-desc">Up to 5 services</span></label>
                 <label class="sg-toggle"><input type="checkbox" id="sg-include-faq" /><span class="sg-toggle-name">FAQPage</span><span class="sg-toggle-desc">Up to 6 questions</span></label>
+                <label class="sg-toggle"><input type="checkbox" id="sg-include-authority" /><span class="sg-toggle-name">Authority signals</span><span class="sg-toggle-desc">knowsAbout + social URLs (sameAs)</span></label>
+                <label class="sg-toggle"><input type="checkbox" id="sg-include-hours" /><span class="sg-toggle-name">Opening hours</span><span class="sg-toggle-desc">Business hours per day</span></label>
                 <label class="sg-toggle"><input type="checkbox" id="sg-include-speakable" /><span class="sg-toggle-name">Speakable</span><span class="sg-toggle-desc">Voice search optimization</span></label>
               </div>
             </div>
@@ -156,6 +250,75 @@ const jsonLdString = JSON.stringify({
               <p class="sg-form-section-sub">Outputs FAQPage with Question and Answer entities.</p>
               <div class="sg-faqs" id="sg-faqs-list"></div>
               <button type="button" class="sg-add-row" id="sg-add-faq">Add Q and A</button>
+            </div>
+
+            <div class="sg-form-section" id="sg-authority-section" data-shown="false">
+              <h2 class="sg-form-section-title">Authority signals</h2>
+              <p class="sg-form-section-sub">Tells Google what topics you are expert on (knowsAbout) and which social profiles belong to this entity (sameAs). Both signals strengthen entity matching in the knowledge graph and improve AI Overview citation odds.</p>
+              <div class="sg-form-grid">
+                <div class="sg-field sg-field-full">
+                  <label for="sg-knows-about" class="sg-label">knowsAbout (one topic per line, up to 12)</label>
+                  <textarea id="sg-knows-about" class="sg-input sg-textarea" rows="5" placeholder="Estate planning&#10;Probate administration&#10;Trust formation&#10;Business succession&#10;Tax optimization"></textarea>
+                  <span class="sg-field-help">Use specific topics, not generic categories. "Estate planning" beats "Legal services". 5 to 12 topics is the sweet spot.</span>
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label class="sg-label">sameAs URLs (social profiles + verified pages)</label>
+                  <span class="sg-field-help" style="margin-bottom: 8px;">Links your business entity to verified social profiles. Google uses these to disambiguate your entity from similarly-named businesses.</span>
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-same-linkedin" class="sg-label-mini">LinkedIn</label>
+                  <input type="url" id="sg-same-linkedin" class="sg-input" placeholder="https://www.linkedin.com/company/your-company" />
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-same-facebook" class="sg-label-mini">Facebook</label>
+                  <input type="url" id="sg-same-facebook" class="sg-input" placeholder="https://www.facebook.com/your-page" />
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-same-instagram" class="sg-label-mini">Instagram</label>
+                  <input type="url" id="sg-same-instagram" class="sg-input" placeholder="https://www.instagram.com/your-handle" />
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-same-twitter" class="sg-label-mini">X / Twitter</label>
+                  <input type="url" id="sg-same-twitter" class="sg-input" placeholder="https://x.com/your-handle" />
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-same-youtube" class="sg-label-mini">YouTube</label>
+                  <input type="url" id="sg-same-youtube" class="sg-input" placeholder="https://www.youtube.com/@your-channel" />
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-same-wikipedia" class="sg-label-mini">Wikipedia / Wikidata (if listed)</label>
+                  <input type="url" id="sg-same-wikipedia" class="sg-input" placeholder="https://en.wikipedia.org/wiki/Your_Business" />
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-knows-language" class="sg-label">knowsLanguage (comma-separated)</label>
+                  <input type="text" id="sg-knows-language" class="sg-input" placeholder="en, es, ko" />
+                  <span class="sg-field-help">Languages your business operates in. Useful for multilingual / international businesses.</span>
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-founding-date" class="sg-label">foundingDate (optional)</label>
+                  <input type="date" id="sg-founding-date" class="sg-input" />
+                  <span class="sg-field-help">When the business was founded. Adds longevity signal.</span>
+                </div>
+                <div class="sg-field sg-field-full">
+                  <label for="sg-price-range" class="sg-label">priceRange (optional)</label>
+                  <input type="text" id="sg-price-range" class="sg-input" placeholder="$$ or $1,500 to $15,000" />
+                  <span class="sg-field-help">Either dollar signs ($, $$, $$$, $$$$) or a literal range. Shows in some local rich results.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="sg-form-section" id="sg-hours-section" data-shown="false">
+              <h2 class="sg-form-section-title">Opening hours</h2>
+              <p class="sg-form-section-sub">Per-day hours show in Google Maps and search results. Use 24-hour format (HH:MM). Leave empty days as Closed.</p>
+              <div class="sg-hours-grid">
+                <div class="sg-hours-row" data-day="Monday"><span class="sg-hours-day">Monday</span><input type="time" class="sg-input sg-hours-open" data-day="Monday" /><span class="sg-hours-sep">to</span><input type="time" class="sg-input sg-hours-close" data-day="Monday" /><label class="sg-hours-closed-label"><input type="checkbox" class="sg-hours-closed" data-day="Monday" /><span>Closed</span></label></div>
+                <div class="sg-hours-row" data-day="Tuesday"><span class="sg-hours-day">Tuesday</span><input type="time" class="sg-input sg-hours-open" data-day="Tuesday" /><span class="sg-hours-sep">to</span><input type="time" class="sg-input sg-hours-close" data-day="Tuesday" /><label class="sg-hours-closed-label"><input type="checkbox" class="sg-hours-closed" data-day="Tuesday" /><span>Closed</span></label></div>
+                <div class="sg-hours-row" data-day="Wednesday"><span class="sg-hours-day">Wednesday</span><input type="time" class="sg-input sg-hours-open" data-day="Wednesday" /><span class="sg-hours-sep">to</span><input type="time" class="sg-input sg-hours-close" data-day="Wednesday" /><label class="sg-hours-closed-label"><input type="checkbox" class="sg-hours-closed" data-day="Wednesday" /><span>Closed</span></label></div>
+                <div class="sg-hours-row" data-day="Thursday"><span class="sg-hours-day">Thursday</span><input type="time" class="sg-input sg-hours-open" data-day="Thursday" /><span class="sg-hours-sep">to</span><input type="time" class="sg-input sg-hours-close" data-day="Thursday" /><label class="sg-hours-closed-label"><input type="checkbox" class="sg-hours-closed" data-day="Thursday" /><span>Closed</span></label></div>
+                <div class="sg-hours-row" data-day="Friday"><span class="sg-hours-day">Friday</span><input type="time" class="sg-input sg-hours-open" data-day="Friday" /><span class="sg-hours-sep">to</span><input type="time" class="sg-input sg-hours-close" data-day="Friday" /><label class="sg-hours-closed-label"><input type="checkbox" class="sg-hours-closed" data-day="Friday" /><span>Closed</span></label></div>
+                <div class="sg-hours-row" data-day="Saturday"><span class="sg-hours-day">Saturday</span><input type="time" class="sg-input sg-hours-open" data-day="Saturday" /><span class="sg-hours-sep">to</span><input type="time" class="sg-input sg-hours-close" data-day="Saturday" /><label class="sg-hours-closed-label"><input type="checkbox" class="sg-hours-closed" data-day="Saturday" checked /><span>Closed</span></label></div>
+                <div class="sg-hours-row" data-day="Sunday"><span class="sg-hours-day">Sunday</span><input type="time" class="sg-input sg-hours-open" data-day="Sunday" /><span class="sg-hours-sep">to</span><input type="time" class="sg-input sg-hours-close" data-day="Sunday" /><label class="sg-hours-closed-label"><input type="checkbox" class="sg-hours-closed" data-day="Sunday" checked /><span>Closed</span></label></div>
+              </div>
             </div>
 
             <div class="sg-form-section" id="sg-speakable-section" data-shown="false">
@@ -223,6 +386,9 @@ const jsonLdString = JSON.stringify({
       includeRating:false, ratingValue:'5.0', ratingCount:'12',
       includeService:false, services:[{name:'',description:'',price:''}],
       includeFaq:false, faqs:[{q:'',a:''}],
+      includeAuthority:false, knowsAbout:[], sameAs:{linkedin:'',facebook:'',instagram:'',twitter:'',youtube:'',wikipedia:''},
+      knowsLanguage:'', foundingDate:'', priceRange:'',
+      includeHours:false, hours:{Monday:{open:'',close:'',closed:false},Tuesday:{open:'',close:'',closed:false},Wednesday:{open:'',close:'',closed:false},Thursday:{open:'',close:'',closed:false},Friday:{open:'',close:'',closed:false},Saturday:{open:'',close:'',closed:true},Sunday:{open:'',close:'',closed:true}},
       includeSpeakable:false, speakableSelectors:[]
     };
 
@@ -236,6 +402,40 @@ const jsonLdString = JSON.stringify({
     bind('sg-phone','phone'); bind('sg-email','email'); bind('sg-street','street');
     bind('sg-city','city'); bind('sg-region','region'); bind('sg-postal','postal');
     bind('sg-rating-value','ratingValue'); bind('sg-rating-count','ratingCount');
+    bind('sg-knows-language','knowsLanguage'); bind('sg-founding-date','foundingDate'); bind('sg-price-range','priceRange');
+
+    // knowsAbout textarea (split by lines)
+    var knowsAboutEl = document.getElementById('sg-knows-about');
+    if(knowsAboutEl){
+      knowsAboutEl.addEventListener('input', function(){
+        state.knowsAbout = knowsAboutEl.value.split('\n').map(function(s){return s.trim();}).filter(Boolean).slice(0, 12);
+        render();
+      });
+    }
+
+    // sameAs URL inputs
+    var sameAsMap = { 'sg-same-linkedin':'linkedin', 'sg-same-facebook':'facebook', 'sg-same-instagram':'instagram', 'sg-same-twitter':'twitter', 'sg-same-youtube':'youtube', 'sg-same-wikipedia':'wikipedia' };
+    Object.keys(sameAsMap).forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      el.addEventListener('input', function(){ state.sameAs[sameAsMap[id]] = el.value; render(); });
+    });
+
+    // Hours inputs
+    document.querySelectorAll('.sg-hours-open, .sg-hours-close, .sg-hours-closed').forEach(function(el){
+      el.addEventListener('change', function(){
+        var day = el.dataset.day;
+        if(!state.hours[day]) return;
+        if(el.classList.contains('sg-hours-closed')){
+          state.hours[day].closed = el.checked;
+        } else if(el.classList.contains('sg-hours-open')){
+          state.hours[day].open = el.value;
+        } else {
+          state.hours[day].close = el.value;
+        }
+        render();
+      });
+    });
 
     document.getElementById('sg-business-type').addEventListener('change', function(e){
       state.businessType = e.target.value; render();
@@ -248,6 +448,8 @@ const jsonLdString = JSON.stringify({
       ['sg-include-rating','includeRating', 'sg-rating-section'],
       ['sg-include-service','includeService', 'sg-service-section'],
       ['sg-include-faq','includeFaq', 'sg-faq-section'],
+      ['sg-include-authority','includeAuthority', 'sg-authority-section'],
+      ['sg-include-hours','includeHours', 'sg-hours-section'],
       ['sg-include-speakable','includeSpeakable', 'sg-speakable-section']
     ];
     toggles.forEach(function(t){
@@ -452,11 +654,22 @@ const jsonLdString = JSON.stringify({
       var ratingId = baseUrl + '#rating';
       var graph = [];
 
+      // Build sameAs array (filter empty)
+      var sameAsArr = Object.values(state.sameAs).filter(function(u){ return u && u.trim().length > 0; });
+      // Build knowsLanguage array (parse comma-separated)
+      var knowsLangArr = state.knowsLanguage ? state.knowsLanguage.split(',').map(function(s){return s.trim();}).filter(Boolean) : [];
+
       if(state.includeOrganization){
         var org = { '@type':'Organization', '@id':orgId, name:(state.name||'[Business name]'), url:baseUrl };
         if(state.description) org.description = state.description;
         if(state.email) org.email = state.email;
         if(state.phone) org.telephone = state.phone;
+        if(state.includeAuthority){
+          if(state.knowsAbout.length > 0) org.knowsAbout = state.knowsAbout;
+          if(sameAsArr.length > 0) org.sameAs = sameAsArr;
+          if(knowsLangArr.length > 0) org.knowsLanguage = knowsLangArr;
+          if(state.foundingDate) org.foundingDate = state.foundingDate;
+        }
         graph.push(org);
       }
 
@@ -482,6 +695,23 @@ const jsonLdString = JSON.stringify({
         }
         if(state.includeOrganization) biz.parentOrganization = { '@id': orgId };
         if(state.includeRating) biz.aggregateRating = { '@id': ratingId };
+        if(state.includeAuthority){
+          if(state.knowsAbout.length > 0) biz.knowsAbout = state.knowsAbout;
+          if(sameAsArr.length > 0) biz.sameAs = sameAsArr;
+          if(knowsLangArr.length > 0) biz.knowsLanguage = knowsLangArr;
+          if(state.priceRange) biz.priceRange = state.priceRange;
+        }
+        if(state.includeHours){
+          var hoursSpec = [];
+          var dayMap = { Monday:'Monday', Tuesday:'Tuesday', Wednesday:'Wednesday', Thursday:'Thursday', Friday:'Friday', Saturday:'Saturday', Sunday:'Sunday' };
+          Object.keys(state.hours).forEach(function(day){
+            var h = state.hours[day];
+            if(!h.closed && h.open && h.close){
+              hoursSpec.push({ '@type':'OpeningHoursSpecification', dayOfWeek:dayMap[day], opens:h.open, closes:h.close });
+            }
+          });
+          if(hoursSpec.length > 0) biz.openingHoursSpecification = hoursSpec;
+        }
         graph.push(biz);
       }
 
@@ -612,6 +842,14 @@ const jsonLdString = JSON.stringify({
   .sg-select { appearance: none; padding-right: 28px; cursor: pointer; }
 
   .sg-toggles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .sg-field-help { font-family: var(--f-body); font-size: 11.5px; line-height: 1.5; color: var(--ink-muted); display: block; margin-top: 4px; }
+  .sg-label-mini { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); font-weight: 500; }
+  .sg-hours-grid { display: flex; flex-direction: column; gap: 6px; }
+  .sg-hours-row { display: grid; grid-template-columns: 100px 1fr 30px 1fr 110px; gap: 8px; align-items: center; padding: 8px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); }
+  .sg-hours-day { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 600; }
+  .sg-hours-sep { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); text-align: center; }
+  .sg-hours-closed-label { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); cursor: pointer; }
+  .sg-hours-closed-label input { accent-color: var(--amber); cursor: pointer; }
   .sg-toggle { display: grid; grid-template-columns: 18px 1fr; gap: 10px; padding: 10px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s ease; align-items: start; }
   .sg-toggle:hover { border-color: var(--amber); }
   .sg-toggle input { grid-row: 1 / span 2; margin-top: 2px; accent-color: var(--amber); cursor: pointer; }
@@ -663,8 +901,8 @@ const jsonLdString = JSON.stringify({
   }
   @media (max-width: 640px) {
     .sg-presets { grid-template-columns: 1fr 1fr; }
-    .sg-service-row { grid-template-columns: 1fr; }
-    .sg-faq-row { grid-template-columns: 1fr; }
     .sg-why-grid { grid-template-columns: 1fr; }
+    .sg-hours-row { grid-template-columns: 1fr; gap: 6px; }
+    .sg-hours-sep { display: none; }
   }
 </style>
