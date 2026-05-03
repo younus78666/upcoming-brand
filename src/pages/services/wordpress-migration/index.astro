@@ -408,7 +408,46 @@ const faqs = [
     </section>
 
   </main>
-  <BottomFormCTA formName="wordpress-migration-cta" />
+  <BottomFormCTA formName="wordpress-migration-cta" 
+    formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'Source platform',
+          subtitle: 'Where the site lives now.',
+          fields: [
+            { type: 'select', name: 'source_platform', label: 'Migrating from', required: true,
+              options: ['Wix', 'Squarespace', 'GoDaddy Builder', 'Webflow', 'Shopify', 'Old WordPress site', 'Custom HTML', 'Joomla / Drupal', 'Other'] },
+            { type: 'url', name: 'current_site', label: 'Current site URL', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+          ],
+        },
+        {
+          title: 'Site size',
+          subtitle: 'Page count and access.',
+          fields: [
+            { type: 'select', name: 'page_count', label: 'Approximate page count', required: true,
+              options: ['Under 10 pages', '10 to 30 pages', '30 to 100 pages', '100 to 500 pages', '500+ pages', 'Not sure yet'] },
+            { type: 'select', name: 'admin_access', label: 'Do you have admin access?', required: true,
+              options: ['Yes, full admin', 'Partial access only', 'No, need to recover', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Timeline + goal',
+          subtitle: 'When you need it migrated.',
+          fields: [
+            { type: 'select', name: 'timeline', label: 'Timeline', required: true,
+              options: ['ASAP, within 2 weeks', 'Standard, 3 to 5 weeks', 'Flexible, 2+ months', 'Just exploring'] },
+            { type: 'textarea', name: 'message', label: 'Migration concerns', placeholder: 'Rankings, downtime, design changes you want.', required: true, rows: 2 },
+          ],
+        },
+      ]}
+  />
 
   <Footer />
 </BaseLayout>

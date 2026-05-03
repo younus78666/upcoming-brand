@@ -674,7 +674,46 @@ const faqs = [
 
   </main>
 
-  <BottomFormCTA formName="wordpress-agency-cta" />
+  <BottomFormCTA formName="wordpress-agency-cta" 
+    formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'About your business',
+          subtitle: 'Company and what you sell.',
+          fields: [
+            { type: 'text', name: 'company', label: 'Company or brand', placeholder: 'Smith & Co.', autocomplete: 'organization' },
+            { type: 'select', name: 'business_type', label: 'Business type', required: true,
+              options: ['Law Firm / Attorney', 'Dental / Medical', 'Real Estate', 'Restaurant / Hospitality', 'Contractor / Trades', 'Nonprofit / Church', 'Ecommerce / Retail', 'Small Business / Startup', 'Other'] },
+          ],
+        },
+        {
+          title: 'Project scope',
+          subtitle: 'Which services and budget.',
+          fields: [
+            { type: 'select', name: 'service_mix', label: 'Services needed', required: true,
+              options: ['Full website build', 'Redesign existing WP site', 'WooCommerce store', 'SEO + schema only', 'Care plan + maintenance', 'Bundle 3-5 services', 'Not sure yet'] },
+            { type: 'select', name: 'budget', label: 'Budget range', required: true,
+              options: ['Under $1,500', '$1,500 to $3,500', '$3,500 to $6,000', '$6,000 to $15,000', '$15,000+', 'Not sure yet'] },
+          ],
+        },
+        {
+          title: 'Timeline + goal',
+          subtitle: 'When you need it live and what success looks like.',
+          fields: [
+            { type: 'select', name: 'timeline', label: 'Timeline', required: true,
+              options: ['ASAP, within 4 weeks', 'Standard, 6 to 10 weeks', 'Flexible, 3+ months', 'Just exploring'] },
+            { type: 'textarea', name: 'message', label: 'Project goal', placeholder: 'Three sentences. We will ask the rest in the reply.', required: true, rows: 2 },
+          ],
+        },
+      ]}
+  />
 
   <Footer />
 </BaseLayout>

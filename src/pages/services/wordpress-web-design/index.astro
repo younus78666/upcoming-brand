@@ -599,7 +599,46 @@ const faqs = [
 
   </main>
 
-  <BottomFormCTA formName="wordpress-cta" />
+  <BottomFormCTA formName="wordpress-cta" 
+    formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'Current platform',
+          subtitle: 'Where your site lives now (or starting fresh).',
+          fields: [
+            { type: 'select', name: 'current_platform', label: 'Current website platform', required: true,
+              options: ['No existing site', 'Old WordPress site', 'Wix', 'Squarespace', 'Webflow', 'Shopify', 'GoDaddy / Hostinger builder', 'Custom HTML', 'Other'] },
+            { type: 'url', name: 'current_site', label: 'Current site URL', placeholder: 'https://yoursite.com', optional: true, autocomplete: 'url' },
+          ],
+        },
+        {
+          title: 'Project size',
+          subtitle: 'Page count and budget.',
+          fields: [
+            { type: 'select', name: 'page_count', label: 'Pages needed', required: true,
+              options: ['1 to 5 pages', '6 to 15 pages', '16 to 40 pages', '40+ pages', 'Not sure yet'] },
+            { type: 'select', name: 'budget', label: 'Budget range', required: true,
+              options: ['Under $1,500', '$1,500 to $3,500', '$3,500 to $6,000', '$6,000 to $15,000', '$15,000+', 'Not sure yet'] },
+          ],
+        },
+        {
+          title: 'Timeline + goal',
+          subtitle: 'When you need it live and what it must do.',
+          fields: [
+            { type: 'select', name: 'timeline', label: 'Timeline', required: true,
+              options: ['ASAP, within 4 weeks', 'Standard, 6 to 10 weeks', 'Flexible, 3+ months', 'Just exploring'] },
+            { type: 'textarea', name: 'message', label: 'Design goal', placeholder: 'What does the new site need to accomplish?', required: true, rows: 2 },
+          ],
+        },
+      ]}
+  />
 
   <Footer />
 </BaseLayout>

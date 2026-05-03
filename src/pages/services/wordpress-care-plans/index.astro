@@ -590,7 +590,46 @@ const faqs = [
 
   </main>
 
-  <BottomFormCTA formName="wordpress-care-plans-cta" />
+  <BottomFormCTA formName="wordpress-care-plans-cta" 
+    formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'About your site',
+          subtitle: 'Where your WordPress site lives.',
+          fields: [
+            { type: 'url',  name: 'site_url',     label: 'WordPress site URL', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+            { type: 'select', name: 'current_host', label: 'Current host', required: true,
+              options: ['Kinsta', 'WP Engine', 'SiteGround', 'Cloudways', 'Bluehost', 'GoDaddy', 'Hostinger', 'Other / Not sure'] },
+          ],
+        },
+        {
+          title: 'Site details',
+          subtitle: 'Plugin count and approximate traffic.',
+          fields: [
+            { type: 'select', name: 'plugin_count', label: 'Active plugins', required: true,
+              options: ['Under 10', '10 to 25', '25 to 50', '50+', 'Not sure'] },
+            { type: 'select', name: 'monthly_traffic', label: 'Monthly visitors', required: true,
+              options: ['Under 1,000', '1,000 to 10,000', '10,000 to 50,000', '50,000+', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Plan tier',
+          subtitle: 'Which care plan fits your site.',
+          fields: [
+            { type: 'select', name: 'plan_tier', label: 'Plan tier', required: true,
+              options: ['Essential ($150/mo)', 'Pro ($350/mo)', 'WooCommerce ($550/mo)', 'Not sure, recommend one'] },
+            { type: 'textarea', name: 'message', label: 'Anything specific?', placeholder: 'Recurring issues, slow load, security concerns.', required: true, rows: 2 },
+          ],
+        },
+      ]}
+  />
 
   <Footer />
 </BaseLayout>

@@ -476,7 +476,46 @@ const faqs = [
     </section>
 
   </main>
-  <BottomFormCTA formName="seo-audit-cta" />
+  <BottomFormCTA formName="seo-audit-cta" 
+    formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'About your site',
+          subtitle: 'What we will audit.',
+          fields: [
+            { type: 'url',  name: 'site_url',     label: 'Site URL to audit', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+            { type: 'select', name: 'platform', label: 'Site platform', required: true,
+              options: ['WordPress', 'Shopify', 'Webflow', 'Squarespace', 'Wix', 'Custom / Headless', 'Other'] },
+          ],
+        },
+        {
+          title: 'Site size',
+          subtitle: 'Page count and current rankings.',
+          fields: [
+            { type: 'select', name: 'page_count', label: 'Approximate page count', required: true,
+              options: ['Under 25 pages', '25 to 100 pages', '100 to 500 pages', '500 to 5,000 pages', '5,000+ pages', 'Not sure'] },
+            { type: 'select', name: 'monthly_traffic', label: 'Monthly organic visitors', required: true,
+              options: ['Under 500', '500 to 5,000', '5,000 to 50,000', '50,000+', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Audit focus',
+          subtitle: 'What problem you want solved.',
+          fields: [
+            { type: 'select', name: 'audit_focus', label: 'Primary audit focus', required: true,
+              options: ['Full technical + content audit', 'Technical / Core Web Vitals only', 'Schema architecture', 'Content / on-page only', 'Local SEO audit', 'Pre-migration audit', 'Not sure, recommend'] },
+            { type: 'textarea', name: 'message', label: 'What is going wrong?', placeholder: 'Traffic dropped, rankings stuck, recent algo hit.', required: true, rows: 2 },
+          ],
+        },
+      ]}
+  />
 
   <Footer />
 </BaseLayout>

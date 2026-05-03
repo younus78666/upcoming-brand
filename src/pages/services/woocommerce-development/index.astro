@@ -536,7 +536,46 @@ const faqs = [
 
   </main>
 
-  <BottomFormCTA formName="woocommerce-development-cta" />
+  <BottomFormCTA formName="woocommerce-development-cta" 
+    formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'Current store',
+          subtitle: 'Where you sell now.',
+          fields: [
+            { type: 'select', name: 'current_platform', label: 'Current ecommerce platform', required: true,
+              options: ['No store yet', 'Shopify', 'WooCommerce (existing)', 'BigCommerce', 'Magento / Adobe Commerce', 'Squarespace Commerce', 'Wix Stores', 'Etsy / Marketplace only', 'Other'] },
+            { type: 'url', name: 'current_site', label: 'Current store URL', placeholder: 'https://yourstore.com', optional: true, autocomplete: 'url' },
+          ],
+        },
+        {
+          title: 'Store complexity',
+          subtitle: 'Product count and what you need.',
+          fields: [
+            { type: 'select', name: 'product_count', label: 'Product count', required: true,
+              options: ['Under 25', '25 to 100', '100 to 500', '500 to 5,000', '5,000+', 'Not sure yet'] },
+            { type: 'select', name: 'features', label: 'Key features needed', required: true,
+              options: ['Standard checkout', 'Subscriptions / recurring', 'Product configurator', 'Multi-vendor / marketplace', 'B2B / wholesale pricing', 'Memberships', 'Multiple of the above'] },
+          ],
+        },
+        {
+          title: 'Budget + timeline',
+          subtitle: 'Scope and goal.',
+          fields: [
+            { type: 'select', name: 'budget', label: 'Budget range', required: true,
+              options: ['$4,500 to $7,500', '$7,500 to $15,000', '$15,000 to $30,000', '$30,000+', 'Not sure yet'] },
+            { type: 'textarea', name: 'message', label: 'Store goal', placeholder: 'What does the new store need to do?', required: true, rows: 2 },
+          ],
+        },
+      ]}
+  />
 
   <Footer />
 </BaseLayout>
