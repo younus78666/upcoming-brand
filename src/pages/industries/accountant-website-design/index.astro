@@ -448,7 +448,7 @@ const schemaData = {
             <p class="lfh-form-sub">We review your current site and send a plain-English audit within 2 business days. No sales call required.</p>
           </div>
 
-          <form class="lfh-form" name="accountant-inquiry" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+          <form class="lfh-form" name="accountant-inquiry"-honeypot="bot-field" data-uc-form="accountant-inquiry" method="POST" novalidate>
             <input type="hidden" name="form-name" value="accountant-inquiry" />
             <div style="position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden;" aria-hidden="true">
               <label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label>
@@ -744,7 +744,7 @@ const schemaData = {
           <div class="lf-gsb-block">
             <p class="lf-gsb-eyebrow mono-xs">Quick estimate</p>
             <h4 class="lf-gsb-h4">What Will Your Accounting Site Cost?</h4>
-            <form class="lf-gsb-form" data-netlify="true" name="guide-accountant" method="POST">
+            <form class="lf-gsb-form" name="guide-accountant" method="POST" data-uc-form="guide-accountant" novalidate>
               <input type="hidden" name="form-name" value="guide-accountant" />
               <input type="text" name="name" placeholder="Your name" class="lf-gsb-input" required />
               <input type="email" name="email" placeholder="Email address" class="lf-gsb-input" required />
@@ -766,7 +766,7 @@ const schemaData = {
             <p class="lf-gsb-eyebrow mono-xs">Weekly tips</p>
             <h4 class="lf-gsb-h4">Maryland SEO Insights</h4>
             <p class="lf-gsb-desc">Weekly tips on ranking your Maryland business higher in Google. No spam, unsubscribe any time.</p>
-            <form class="lf-gsb-form" data-netlify="true" name="newsletter-guide" method="POST">
+            <form class="lf-gsb-form" name="newsletter-guide" method="POST" data-uc-form="newsletter-guide" novalidate>
               <input type="hidden" name="form-name" value="newsletter-guide" />
               <input type="email" name="email" placeholder="Your email address" class="lf-gsb-input" required />
               <button type="submit" class="lf-gsb-submit">Subscribe &rarr;</button>
@@ -1048,7 +1048,7 @@ const schemaData = {
             <h3 class="lf-cta-card-title">Book a free discovery call</h3>
             <p class="lf-cta-card-sub">30 minutes &middot; We review your site, your market, and tell you exactly what we'd build and what it costs.</p>
           </div>
-          <form class="lf-form" name="contact-accountant" method="POST" action="#contact" novalidate>
+          <form class="lf-form" name="contact-accountant" method="POST" novalidate data-uc-form="contact-accountant">
             <div class="lf-form-row">
               <div class="lf-form-group">
                 <label class="lf-form-label mono-xs" for="cta-name">Your name</label>

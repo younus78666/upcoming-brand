@@ -187,7 +187,7 @@ const jsonLd = JSON.stringify({
           </div>
 
           <!-- Subscribe -->
-          <form class="art-subscribe" name={`blog-${article.slug}`} method="POST" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+          <form class="art-subscribe" name={`blog-${article.slug}`} method="POST"-honeypot="bot-field" name="generic-form" data-uc-form="generic-form" novalidate>
             <input type="hidden" name="form-name" value={`blog-${article.slug}`} />
             <input type="hidden" name="article_slug" value={article.slug} />
             <div class="art-hp" aria-hidden="true"><label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></div>

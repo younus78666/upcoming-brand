@@ -167,16 +167,7 @@ const totalStepsCount = formSteps.length;
           <div class="svc-hero-form-progress-fill" data-progress-fill style={`width: ${(1 / totalStepsCount) * 100}%`}></div>
         </div>
 
-        <form
-          class="svc-hero-form"
-          id={formId}
-          name={formName}
-          method="POST"
-          netlify-honeypot="bot-field"
-          data-netlify="true"
-          action="/thank-you/"
-          data-multistep
-        >
+        <form class="svc-hero-form" id={formId} name={formName} method="POST"-honeypot="bot-field" data-multistep name="generic-form" data-uc-form="generic-form" novalidate>
           <input type="hidden" name="form-name" value={formName} />
           {Object.entries(hiddenFields).map(([k, v]) => (
             <input type="hidden" name={k} value={v} />

@@ -141,7 +141,7 @@ const sidebarFormId = `cs-sidebar-${project.slug}`;
             <span class="cs-side-eyebrow">Want similar work?</span>
             <h3 class="cs-side-title">Want to build a similar project?</h3>
             <p class="cs-side-sub">Tell us about your situation. 4-hour reply, no sales pitch.</p>
-            <form class="cs-side-formel" id={sidebarFormId} name={`work-${project.slug}-sidebar`} method="POST" netlify-honeypot="bot-field" data-netlify="true" action="/thank-you/">
+            <form class="cs-side-formel" id={sidebarFormId} name={`work-${project.slug}-sidebar`} method="POST"-honeypot="bot-field" name="generic-form" data-uc-form="generic-form" novalidate>
               <input type="hidden" name="form-name" value={`work-${project.slug}-sidebar`} />
               <input type="hidden" name="reference_project" value={project.slug} />
               <div class="cs-side-hp" aria-hidden="true"><label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></div>

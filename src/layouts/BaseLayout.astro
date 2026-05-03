@@ -58,8 +58,8 @@ const {
   <meta name="msapplication-TileImage" content="/favicon.jpg" />
   <meta name="msapplication-TileColor" content="#0F1419" />
 
-  <!-- reCAPTCHA v3 — replace YOUR_SITE_KEY once obtained from https://www.google.com/recaptcha/admin -->
-  <!-- <script src="https://www.google.com/recaptcha/api.js?render=YOUR_SITE_KEY" async defer></script> -->
+  <!-- reCAPTCHA v2 (I'm not a robot) -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -142,5 +142,163 @@ const {
 </head>
 <body>
   <slot />
+
+  <!-- Universal form handler: intercepts every <form data-uc-form="..." method="POST" novalidate> on the site -->
+  <script is:inline>
+  (function(){
+    var SITE_KEY = '6LewrNcsAAAAAHUrAokdU5EqgK46ycH4JyFdNxI8';
+    var ENDPOINT = '/api/contact';
+    var BLOCKED_LANG_RE = /[Ѐ-ӿԀ-ԯ぀-ヿ㐀-䶿一-鿿가-힯豈-﫿]/;
+
+    function ensureRecaptcha(form){
+      var holder = form.querySelector('.uc-recaptcha');
+      if(!holder){
+        holder = document.createElement('div');
+        holder.className = 'uc-recaptcha g-recaptcha';
+        holder.setAttribute('data-sitekey', SITE_KEY);
+        holder.style.margin = '14px 0 4px';
+        var submit = form.querySelector('button[type="submit"], input[type="submit"]');
+        if(submit && submit.parentNode){
+          submit.parentNode.insertBefore(holder, submit);
+        } else {
+          form.appendChild(holder);
+        }
+      } else if(!holder.classList.contains('g-recaptcha')){
+        holder.classList.add('g-recaptcha');
+        holder.setAttribute('data-sitekey', SITE_KEY);
+      }
+    }
+
+    function ensureHoneypot(form){
+      if(form.querySelector('input[name="bot-field"]')) return;
+      var hp = document.createElement('input');
+      hp.type = 'text'; hp.name = 'bot-field'; hp.tabIndex = -1; hp.autocomplete = 'off';
+      hp.style.cssText = 'position:absolute;left:-9999px;opacity:0;width:1px;height:1px;';
+      form.appendChild(hp);
+    }
+
+    function getStatusEl(form){
+      var s = form.querySelector('.uc-form-status');
+      if(s) return s;
+      s = document.createElement('div');
+      s.className = 'uc-form-status';
+      s.style.cssText = 'margin-top:14px;font:500 13px/1.5 system-ui;display:none;';
+      form.appendChild(s);
+      return s;
+    }
+
+    function setStatus(form, kind, text){
+      var s = getStatusEl(form);
+      var color = kind === 'ok' ? '#1a6e3a' : kind === 'err' ? '#a8321a' : '#7a6a4a';
+      var bg    = kind === 'ok' ? '#e8f5ec' : kind === 'err' ? '#fbe9e3' : '#f6efe1';
+      s.style.display = 'block';
+      s.style.background = bg;
+      s.style.color = color;
+      s.style.padding = '10px 14px';
+      s.style.borderRadius = '8px';
+      s.textContent = text;
+    }
+
+    function showSuccess(form){
+      var name = (form.querySelector('[name="name"], [name="first-name"], [name="firstName"]') || {}).value || '';
+      var firstName = (name.split(/\s+/)[0] || '').trim();
+      var heading = firstName ? 'Thanks ' + firstName + '.' : 'Thanks.';
+      var card = document.createElement('div');
+      card.className = 'uc-form-success';
+      card.style.cssText = 'background:#fdf8ec;border:1.5px solid #e6d9bb;border-radius:14px;padding:32px;text-align:center;';
+      card.innerHTML = '<div style="font:500 11px monospace;letter-spacing:.18em;text-transform:uppercase;color:#8a6a1e;margin-bottom:8px;">Message received</div>' +
+        '<h3 style="font:500 24px/1.2 Georgia,serif;color:#1a1208;margin:0 0 12px;letter-spacing:-0.02em;">' + heading + '</h3>' +
+        '<p style="font:400 15px/1.6 system-ui;color:#3a2e1c;margin:0 0 6px;">A real reply from us is on the way within one business day.</p>' +
+        '<p style="font:400 13px/1.6 system-ui;color:#7a6a4a;margin:0;">Check your inbox for a confirmation note.</p>';
+      form.parentNode.replaceChild(card, form);
+    }
+
+    function localLangFilter(payload){
+      var keys = ['name','first-name','firstName','email','message','notes','details','project','company'];
+      for(var i=0;i<keys.length;i++){
+        var v = payload[keys[i]];
+        if(v && BLOCKED_LANG_RE.test(v)) return true;
+      }
+      return false;
+    }
+
+    function attach(form){
+      if(form.dataset.ucBound) return;
+      form.dataset.ucBound = '1';
+      ensureHoneypot(form);
+      ensureRecaptcha(form);
+      // strip old netlify attrs so they don't conflict
+      form.removeAttribute('data-netlify');
+      form.removeAttribute('netlify');
+      form.removeAttribute('netlify-honeypot');
+      form.setAttribute('novalidate','');
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        var submit = form.querySelector('button[type="submit"], input[type="submit"]');
+        var origLabel = submit ? submit.innerHTML : '';
+
+        // collect payload
+        var fd = new FormData(form);
+        var payload = {};
+        fd.forEach(function(v,k){ payload[k] = String(v); });
+
+        // local language pre-check (silent reject)
+        if(localLangFilter(payload)){
+          showSuccess(form);
+          return;
+        }
+
+        // recaptcha token
+        var token = '';
+        try { if(window.grecaptcha){ token = window.grecaptcha.getResponse(); } } catch(_){}
+        if(!token){
+          setStatus(form, 'err', 'Please confirm you are not a robot.');
+          return;
+        }
+        payload['g-recaptcha-response'] = token;
+        payload['form-name'] = form.dataset.ucForm || form.getAttribute('name') || 'unknown';
+        payload['page-url'] = location.href;
+
+        if(submit){ submit.disabled = true; submit.innerHTML = 'Sending...'; }
+        setStatus(form, 'info', 'Sending your message...');
+
+        fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        }).then(function(r){ return r.json().catch(function(){return {ok:false,error:'bad_response'};}); })
+        .then(function(j){
+          if(j && j.ok){
+            showSuccess(form);
+          } else {
+            var msg = 'Something went wrong. Please try again or email hello@upcomingbrand.com.';
+            if(j && j.error === 'recaptcha_failed') msg = 'Captcha failed. Please tick the box again.';
+            if(j && j.error === 'rate_limit')      msg = 'Too many submissions. Try again in an hour.';
+            setStatus(form, 'err', msg);
+            if(submit){ submit.disabled = false; submit.innerHTML = origLabel; }
+            try { if(window.grecaptcha) window.grecaptcha.reset(); } catch(_){}
+          }
+        }).catch(function(){
+          setStatus(form, 'err', 'Network error. Please try again.');
+          if(submit){ submit.disabled = false; submit.innerHTML = origLabel; }
+        });
+      });
+    }
+
+    function scan(){
+      document.querySelectorAll('form[data-uc-form]').forEach(attach);
+    }
+
+    if(document.readyState === 'loading'){
+      document.addEventListener('DOMContentLoaded', scan);
+    } else {
+      scan();
+    }
+    // late-render forms (e.g. inserted by other scripts)
+    var mo = new MutationObserver(scan);
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+  })();
+  </script>
 </body>
 </html>
