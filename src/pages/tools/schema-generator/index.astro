@@ -661,27 +661,29 @@ const jsonLdString = JSON.stringify({
         descField.appendChild(descLabel); descField.appendChild(descI);
 
         // AI button for service description (polish or generate from name + biz context)
-        if(typeof makeAiButton === 'function'){
-          var serviceAi = makeAiButton({
-            label: 'Polish service description',
-            tooltip: 'Polish this description, or generate one from the service name',
-            getCurrentValue: function(){ return state.services[idx].description; },
-            buildPrompt: function(current){
-              var sname = state.services[idx].name || 'this service';
-              if(current){
-                return 'Rewrite this service description in 1 sentence. Factual, no em-dashes, no marketing puffery. Output ONLY the rewritten text:\n\n' + current;
+        try {
+          if(typeof makeAiButton === 'function'){
+            var serviceAi = makeAiButton({
+              label: 'Polish service description',
+              tooltip: 'Polish this description, or generate one from the service name',
+              getCurrentValue: function(){ return state.services[idx].description; },
+              buildPrompt: function(current){
+                var sname = state.services[idx].name || 'this service';
+                if(current){
+                  return 'Rewrite this service description in 1 sentence. Factual, no em-dashes, no marketing puffery. Output ONLY the rewritten text:\n\n' + current;
+                }
+                return 'Write a 1-sentence factual description of "' + sname + '" as offered by ' + (typeof bizContextString === 'function' ? bizContextString() : (state.name || 'this business')) + '. No em-dashes, no marketing fluff. Output ONLY the description.';
+              },
+              applyResult: function(text){
+                state.services[idx].description = text;
+                descI.value = text;
+                render();
               }
-              return 'Write a 1-sentence factual description of "' + sname + '" as offered by ' + bizContextString() + '. No em-dashes, no marketing fluff. Output ONLY the description.';
-            },
-            applyResult: function(text){
-              state.services[idx].description = text;
-              descI.value = text;
-              render();
-            }
-          });
-          registerAi(serviceAi);
-          descField.appendChild(serviceAi);
-        }
+            });
+            if(typeof registerAi === 'function') registerAi(serviceAi);
+            descField.appendChild(serviceAi);
+          }
+        } catch(e){ if(window.console) console.error('Service AI button failed:', e); }
 
         // Price field
         var priceField = document.createElement('div');
@@ -748,27 +750,30 @@ const jsonLdString = JSON.stringify({
         aI.addEventListener('input', function(){ state.faqs[idx].a = aI.value; render(); });
         aField.appendChild(aLabel); aField.appendChild(aI);
 
-        if(typeof makeAiButton === 'function'){
-          var faqAi = makeAiButton({
-            label: 'Polish FAQ answer',
-            tooltip: 'Polish this answer, or generate one from the question',
-            getCurrentValue: function(){ return state.faqs[idx].a; },
-            buildPrompt: function(current){
-              var question = state.faqs[idx].q || 'a frequently asked question';
-              if(current){
-                return 'Rewrite this FAQ answer in 2-3 factual sentences. Direct answer first, then context. No em-dashes, no marketing puffery. Output ONLY the rewritten text:\n\nQuestion: ' + question + '\n\nCurrent answer: ' + current;
+        try {
+          if(typeof makeAiButton === 'function'){
+            var faqAi = makeAiButton({
+              label: 'Polish FAQ answer',
+              tooltip: 'Polish this answer, or generate one from the question',
+              getCurrentValue: function(){ return state.faqs[idx].a; },
+              buildPrompt: function(current){
+                var question = state.faqs[idx].q || 'a frequently asked question';
+                var ctx = typeof bizContextString === 'function' ? bizContextString() : (state.name || 'this business');
+                if(current){
+                  return 'Rewrite this FAQ answer in 2-3 factual sentences. Direct answer first, then context. No em-dashes, no marketing puffery. Output ONLY the rewritten text:\n\nQuestion: ' + question + '\n\nCurrent answer: ' + current;
+                }
+                return 'Write a 2-3 sentence factual answer to this FAQ question, in the context of ' + ctx + '. Direct answer first sentence. No em-dashes, no marketing fluff. Output ONLY the answer.\n\nQuestion: ' + question;
+              },
+              applyResult: function(text){
+                state.faqs[idx].a = text;
+                aI.value = text;
+                render();
               }
-              return 'Write a 2-3 sentence factual answer to this FAQ question, in the context of ' + bizContextString() + '. Direct answer first sentence. No em-dashes, no marketing fluff. Output ONLY the answer.\n\nQuestion: ' + question;
-            },
-            applyResult: function(text){
-              state.faqs[idx].a = text;
-              aI.value = text;
-              render();
-            }
-          });
-          registerAi(faqAi);
-          aField.appendChild(faqAi);
-        }
+            });
+            if(typeof registerAi === 'function') registerAi(faqAi);
+            aField.appendChild(faqAi);
+          }
+        } catch(e){ if(window.console) console.error('FAQ AI button failed:', e); }
 
         grid.appendChild(qField); grid.appendChild(aField);
         card.appendChild(head); card.appendChild(grid);
@@ -1319,7 +1324,7 @@ const jsonLdString = JSON.stringify({
 
     function bizContextString(){
       return (state.name || 'this business') + ' (' + state.businessType + ')' +
-        (state.description ? ' — ' + state.description : '') +
+        (state.description ? '. ' + state.description : '') +
         (state.city ? ' in ' + state.city + (state.region ? ', ' + state.region : '') : '');
     }
 
