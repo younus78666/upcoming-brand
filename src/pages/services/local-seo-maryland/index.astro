@@ -1,0 +1,637 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceHero from '../../../components/ServiceHero.astro';
+import Marquee from '../../../components/Marquee.astro';
+import BottomFormCTA from '../../../components/BottomFormCTA.astro';
+
+const canonical = "https://upcomingbrand.com/services/local-seo-maryland/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Local SEO Services Maryland | Google Business Profile + Local Pack | Upcoming Brand",
+      "description": "Local SEO services for Maryland businesses and US-wide remote clients. Google Business Profile optimization, citation building, NAP consistency, Local Pack ranking, schema. Fixed-scope from $1,500.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",                "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services",            "item": "https://upcomingbrand.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "Local SEO Maryland",  "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      "name": "Local SEO Services Maryland",
+      "description": "Senior local SEO services covering Google Business Profile optimization, citation building, NAP consistency, LocalBusiness schema, Local Pack ranking strategy, and review acquisition. Maryland-based, US-wide remote. Fixed-scope from $1,500.",
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "serviceType": "Local SEO",
+      "areaServed": [
+        { "@type": "State", "name": "Maryland" },
+        { "@type": "Country", "name": "United States" }
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "1500",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "priceValidUntil": "2026-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "12",
+        "bestRating": "5"
+      },
+      "knowsAbout": [
+        "Local SEO",
+        "Local SEO services",
+        "Local SEO Maryland",
+        "Local SEO Baltimore",
+        "Local SEO agency",
+        "Local SEO expert",
+        "Local SEO company",
+        "Local SEO for small business",
+        "Local SEO audit",
+        "Google Business Profile optimization",
+        "Google My Business optimization",
+        "GBP optimization",
+        "Local Pack ranking",
+        "Local citation building",
+        "NAP consistency",
+        "LocalBusiness schema"
+      ]
+    },
+    {
+      "@type": "HowTo",
+      "@id": `${canonical}#howto`,
+      "name": "How to rank in the Local Pack",
+      "description": "The five-phase local SEO methodology covering Google Business Profile, citations, NAP consistency, schema, and review acquisition.",
+      "totalTime": "P30D",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Local SEO audit",       "text": "Google Business Profile audit, citation inventory, NAP consistency check across 50+ directories, LocalBusiness schema audit, competitor Local Pack analysis." },
+        { "@type": "HowToStep", "position": 2, "name": "GBP optimization",       "text": "Google Business Profile categories, services, products, posts, photos, business description, and Q&A optimization. Verification fixed if needed." },
+        { "@type": "HowToStep", "position": 3, "name": "Citation + NAP cleanup",  "text": "Submit to top 50 industry-specific directories, fix NAP inconsistencies via Whitespark or Yext, and remove duplicate listings." },
+        { "@type": "HowToStep", "position": 4, "name": "On-page + schema",        "text": "LocalBusiness schema on every key page, location landing pages with neighborhood-specific content, internal linking from service pages." },
+        { "@type": "HowToStep", "position": 5, "name": "Reviews + monitoring",    "text": "Review acquisition strategy, response templates, monthly Local Pack tracking, and 90-day report on Local Pack position changes." }
+      ]
+    }
+  ]
+});
+
+const covered = [
+  "Google Business Profile audit + complete optimization (categories, services, posts)",
+  "Citation building across 50+ industry-specific directories",
+  "NAP consistency cleanup across Yelp, BBB, Facebook, Apple Maps, Bing Places",
+  "LocalBusiness schema on every key page (with vertical-specific subtypes)",
+  "Local Pack competitor analysis: top 5 ranking sites for each target city",
+  "Neighborhood landing pages with embedded maps + service area schema",
+  "Review acquisition strategy + response templates",
+  "GBP photo optimization (geotagged, EXIF-tagged, optimized)",
+  "GBP Q&A seeding with target-keyword answers",
+  "GBP Posts strategy (offers, events, updates) tied to seasonal demand",
+  "Internal linking from service pages to location pages and back",
+  "Monthly Local Pack rank tracking on top 5 keywords per location",
+];
+
+const tiers = [
+  {
+    name: "Audit",
+    price: "$750",
+    duration: "5 business days",
+    summary: "Local SEO audit only. GBP audit, citation inventory, NAP consistency, competitor Local Pack analysis. Prioritised fix list, take-it-anywhere.",
+    fits: ["Single location", "First Local SEO assessment", "Pre-implementation baseline"],
+    href: "/contact/?plan=local-seo-audit",
+  },
+  {
+    name: "Standard",
+    price: "$1,500",
+    duration: "30 days to deliver, ongoing tracking",
+    summary: "Full Local SEO: audit plus GBP optimization, citation building, NAP cleanup, LocalBusiness schema, review acquisition kit. 90-day Local Pack tracking included.",
+    fits: ["Single location", "Service businesses", "Want to win the Local Pack"],
+    href: "/contact/?plan=local-seo-standard",
+    highlight: true,
+  },
+  {
+    name: "Multi-location",
+    price: "From $3,000",
+    duration: "30-60 days",
+    summary: "Multi-location Local SEO for businesses with 2-20 locations. Per-location GBP setup, location landing pages, citation work, schema, and consolidated reporting.",
+    fits: ["2-20 locations", "Franchises / chains", "Service-area businesses"],
+    href: "/contact/?plan=local-seo-multi",
+  },
+];
+
+const whenLocal = [
+  { num: "01", signal: "Not in the Local Pack for your main service",      detail: "If you do not show in the top 3 Local Pack results when searching '[your service] near me' from your service area, you are losing clicks to whoever does. Local SEO moves you into Pack visibility within 60 to 90 days for most verticals." },
+  { num: "02", signal: "Inconsistent NAP across directories",                detail: "Different phone numbers, address formats, or business names across Yelp, BBB, Facebook, and Apple Maps confuse Google's confidence in your business. NAP cleanup is the single highest-impact local SEO fix." },
+  { num: "03", signal: "Google Business Profile sitting unoptimized",         detail: "Most small businesses claim their GBP, fill in the basics, and never touch it again. Posts, photos, services, products, Q&A, and category optimization compound over months and pull you up in the Pack." },
+  { num: "04", signal: "Competitors with fewer reviews ranking above you",   detail: "If competitors with 30 reviews rank above you with 80 reviews, the issue is not review quantity. It is GBP optimization, citation depth, NAP consistency, or LocalBusiness schema. Audit reveals which one." },
+  { num: "05", signal: "Multi-location business with no per-city pages",      detail: "Service-area or multi-location businesses without per-city landing pages cannot rank for '[service] [city]' searches. Each location needs a dedicated page with neighborhood content, embedded maps, and LocalBusiness schema." },
+  { num: "06", signal: "Recently moved or rebranded",                          detail: "Address changes, business name changes, and rebranding events are when Local Pack rankings collapse. Local SEO recovery rebuilds citations, updates GBP, and restores NAP consistency on the new identity." },
+];
+
+const localPackFactors = [
+  { name: "Proximity",   weight: "~30%", detail: "How close your verified business address is to the searcher. Not directly controllable but mitigated by service-area listings and per-location pages." },
+  { name: "Relevance",   weight: "~30%", detail: "How closely GBP categories, services, business description, and on-site content match the search intent. Heavily controllable via GBP optimization and on-page work." },
+  { name: "Prominence",  weight: "~30%", detail: "Citations across directories, review quantity and quality, brand mentions, backlinks. Built over months via citation work, review acquisition, and content." },
+  { name: "Engagement",   weight: "~10%", detail: "GBP posts, photo additions, Q&A activity, profile completion percentage, and recency of updates. Controllable via ongoing GBP management." },
+];
+
+const faqs = [
+  {
+    q: "What is local SEO?",
+    a: "Local SEO is the practice of optimizing a business to rank in geographically-targeted search results, especially Google's Local Pack (the map-based 3-result block above organic results). Local SEO covers four pillars: Google Business Profile optimization, citation building and NAP consistency across directories, LocalBusiness schema and on-page optimization, and review acquisition. The output is consistent Local Pack visibility for '[service] near me' and '[service] [city]' searches that drive walk-in or call-in business.",
+  },
+  {
+    q: "How much does local SEO cost?",
+    a: "Quality local SEO services run $750 to $5,000+ per location depending on competition and scope. A local SEO audit alone runs $750. Standard single-location local SEO (audit plus implementation plus 90-day tracking) runs $1,500. Multi-location local SEO for 2 to 20 locations starts at $3,000 and scales by location count. Hourly local SEO consultant rates run $80 to $250/hr; the better firms ship fixed-scope work.",
+  },
+  {
+    q: "How long does local SEO take to work?",
+    a: "Local Pack ranking improvements typically appear in 60 to 90 days for low-to-medium competition verticals (lawyers, dentists, contractors in suburban markets). Highly competitive verticals (personal injury law in major metros, real estate in dense markets) take 6 to 12 months. The 30-day delivery window covers implementation; the ranking impact compounds as Google reindexes citations, schema, and GBP signals.",
+  },
+  {
+    q: "Do you only serve Maryland businesses?",
+    a: "No. Upcoming Brand is Maryland-based, but local SEO work is location-agnostic. We serve Maryland clients (Baltimore, Annapolis, Frederick, Bethesda, Rockville, Silver Spring, Columbia, Towson, Gaithersburg, Germantown) and US-wide remote clients across all 50 states. Local SEO does not require physical proximity to the client; it requires the client's service area to be clearly defined.",
+  },
+  {
+    q: "What is the Local Pack?",
+    a: "The Local Pack is Google's map-based search result block that appears for geographically-relevant queries. It shows three businesses with name, rating, address, hours, and a 'Directions' or 'Website' button. The Local Pack appears above organic results for queries like 'dentist near me', 'plumber baltimore', or 'restaurants in annapolis'. Ranking in the Local Pack typically drives more leads than ranking #1 organic for the same query.",
+  },
+  {
+    q: "How is local SEO different from regular SEO?",
+    a: "Regular SEO targets organic search results and the broader web. Local SEO specifically targets geographically-bounded results: the Local Pack, Google Maps, and Apple Maps. Local SEO uses different ranking factors (proximity, GBP signals, citations, NAP consistency) than regular SEO (backlinks, content depth, technical signals). Most service businesses need both: regular SEO drives top-of-funnel discovery, local SEO drives bottom-of-funnel calls and visits.",
+  },
+  {
+    q: "Do I need both Google Business Profile and a website?",
+    a: "Yes. Google Business Profile alone ranks in the Local Pack but cannot rank for broader organic queries, cannot accept payments, cannot host detailed service descriptions, and cannot capture leads via forms. The website handles organic visibility, conversion, content depth, and credibility. The two work together: GBP drives Pack clicks, the website converts those visits. Local SEO optimizes both.",
+  },
+];
+---
+<BaseLayout
+  title="Local SEO Services Maryland | Google Business Profile + Local Pack from $1,500 | Upcoming Brand"
+  description="Senior local SEO services for Maryland and US-wide remote clients. Google Business Profile optimization, citation building, NAP consistency, Local Pack ranking. Fixed-scope from $1,500. 60-90 day Pack visibility."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <ServiceHero
+      eyebrow='Local SEO services'
+      pillText='Local SEO · Maryland + US-wide remote'
+      h1Lines={[
+        { text: 'Local SEO services' },
+        { text: 'from a senior local SEO expert', type: 'accent' },
+        { text: 'who actually wins the Local Pack.', type: 'italic' },
+      ]}
+      lead='<strong>Local SEO services</strong> covering Google Business Profile optimization, citation building, NAP consistency, LocalBusiness schema, and Local Pack ranking strategy. <strong>Maryland-based, US-wide remote.</strong> Hire a <strong>local SEO expert</strong> who handles all four pillars in one engagement. <strong>Fixed-scope from $1,500. Local Pack visibility in 60-90 days.</strong>'
+      formName='local-seo-inquiry'
+      trustLines={['From $1,500 fixed-scope', '60-90 day Pack visibility', 'Maryland + US-wide remote']}
+      formSteps={[
+        {
+          title: 'Tell us who you are',
+          subtitle: 'Just your name and email. 30 seconds.',
+          fields: [
+            { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+            { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+          ],
+        },
+        {
+          title: 'About your business',
+          subtitle: 'Type, location, GBP status.',
+          fields: [
+            { type: 'select', name: 'business_type', label: 'Business type', required: true,
+              options: ['Law Firm / Attorney', 'Dental / Medical', 'Real Estate', 'Restaurant / Hospitality', 'Contractor / Trades', 'Nonprofit / Church', 'Service business', 'Retail', 'Other'] },
+            { type: 'select', name: 'gbp_status', label: 'Google Business Profile status', required: true,
+              options: ['Claimed and verified', 'Claimed but unverified', 'Not claimed yet', 'Multiple listings (need cleanup)', 'Not sure'] },
+          ],
+        },
+        {
+          title: 'Locations',
+          subtitle: 'Where you operate.',
+          fields: [
+            { type: 'select', name: 'location_count', label: 'Number of locations', required: true,
+              options: ['Single location', '2-5 locations', '6-20 locations', '20+ locations', 'Service-area only (no storefront)'] },
+            { type: 'text', name: 'primary_city', label: 'Primary city / metro', placeholder: 'Baltimore, MD' },
+          ],
+        },
+        {
+          title: 'Engagement scope',
+          subtitle: 'Which package fits and what success looks like.',
+          fields: [
+            { type: 'select', name: 'engagement_tier', label: 'Engagement type', required: true,
+              options: ['Local SEO audit ($750)', 'Standard local SEO ($1,500)', 'Multi-location ($3,000+)', 'Not sure yet'] },
+            { type: 'textarea', name: 'message', label: 'What is the goal?', placeholder: 'Specific keywords or cities you want to rank for, current Local Pack position.', required: true, rows: 2 },
+          ],
+        },
+      ]}
+    />
+    <Marquee />
+
+    <section class="lcl-define">
+      <div class="container">
+        <div class="lcl-define-card">
+          <div class="lcl-define-head">
+            <span class="lcl-define-pulse" aria-hidden="true"></span>
+            <span class="lcl-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 lcl-define-h2">
+            What is local SEO?
+          </h2>
+          <p class="lcl-define-answer">
+            <strong>Local SEO is the practice of optimizing a business to rank in geographically-targeted search results, especially Google's Local Pack.</strong> Quality local SEO services cover four pillars: Google Business Profile optimization (categories, services, posts, photos, Q&A), citation building and NAP consistency across 50+ directories, LocalBusiness schema and on-page optimization, and review acquisition strategy. The output is consistent Local Pack visibility for "[service] near me" and "[service] [city]" searches that drive walk-in or call-in business.
+          </p>
+          <div class="lcl-define-meta">
+            <div class="lcl-define-meta-item">
+              <span class="lcl-define-meta-label">Investment</span>
+              <span class="lcl-define-meta-val">$750 (Audit) to $3,000+ (Multi-location)</span>
+            </div>
+            <div class="lcl-define-meta-item">
+              <span class="lcl-define-meta-label">Delivery</span>
+              <span class="lcl-define-meta-val">30 days to implement, 60-90 days to rank</span>
+            </div>
+            <div class="lcl-define-meta-item">
+              <span class="lcl-define-meta-label">Outcome</span>
+              <span class="lcl-define-meta-val">Local Pack visibility, GBP optimized, citations clean</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="lcl-factors">
+      <div class="container">
+        <div class="lcl-factors-head">
+          <p class="lcl-section-eyebrow">
+            <span class="lcl-section-eyebrow-line"></span>
+            Local Pack ranking factors
+          </p>
+          <h2 class="page-h2">
+            Four factors <em>that decide Local Pack ranking.</em>
+          </h2>
+          <p class="page-section-lead">Google's Local Pack ranking is a weighted combination of four signals. Each requires a different optimization approach. A real local SEO engagement targets all four, not just GBP optimization.</p>
+        </div>
+
+        <div class="lcl-factors-grid">
+          {localPackFactors.map((c) => (
+            <article class="lcl-factor-card">
+              <div class="lcl-factor-card-head">
+                <span class="lcl-factor-name">{c.name}</span>
+                <span class="lcl-factor-weight">{c.weight}</span>
+              </div>
+              <p class="lcl-factor-detail">{c.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lcl-includes">
+      <div class="container">
+        <div class="lcl-includes-head">
+          <p class="lcl-section-eyebrow">
+            <span class="lcl-section-eyebrow-line"></span>
+            What we cover
+          </p>
+          <h2 class="page-h2">
+            Twelve checks <em>across four local SEO pillars.</em>
+          </h2>
+          <p class="page-section-lead">GBP, citations, schema, and reviews. Every engagement ships with a written report including before/after Local Pack position screenshots and a 90-day rank tracking dashboard.</p>
+        </div>
+
+        <div class="lcl-includes-grid">
+          {covered.map((item, i) => (
+            <div class="lcl-include">
+              <span class="lcl-include-num">{String(i + 1).padStart(2, '0')}</span>
+              <span class="lcl-include-check" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M2.5 5.5l2 2 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span class="lcl-include-text">{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lcl-tiers" id="tiers">
+      <div class="container">
+        <div class="lcl-tiers-head">
+          <p class="lcl-section-eyebrow">
+            <span class="lcl-section-eyebrow-line"></span>
+            Three tiers
+          </p>
+          <h2 class="page-h2">
+            Three <em>local SEO packages.</em>
+          </h2>
+          <p class="page-section-lead">Each tier is fixed-scope. Multi-location pricing scales linearly per location after the base setup, with volume discounts for 10+ locations.</p>
+        </div>
+
+        <div class="lcl-tiers-grid">
+          {tiers.map((t) => (
+            <a href={t.href} class={`lcl-tier ${t.highlight ? 'lcl-tier-highlight' : ''}`}>
+              {t.highlight && <span class="lcl-tier-flag">Most chosen</span>}
+              <span class="lcl-tier-name">{t.name}</span>
+              <span class="lcl-tier-price">{t.price}</span>
+              <span class="lcl-tier-duration">{t.duration}</span>
+              <p class="lcl-tier-summary">{t.summary}</p>
+              <div class="lcl-tier-fits">
+                <span class="lcl-tier-fits-label">Fits</span>
+                <ul class="lcl-tier-fits-list">
+                  {t.fits.map((f) => (<li>{f}</li>))}
+                </ul>
+              </div>
+              <span class="lcl-tier-cta">
+                Book {t.name}
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lcl-when">
+      <div class="container">
+        <div class="lcl-when-head">
+          <p class="lcl-section-eyebrow">
+            <span class="lcl-section-eyebrow-line"></span>
+            When you need it
+          </p>
+          <h2 class="page-h2">
+            Six signals <em>your business needs local SEO.</em>
+          </h2>
+        </div>
+
+        <div class="lcl-when-grid">
+          {whenLocal.map((w) => (
+            <article class="lcl-when-card">
+              <span class="lcl-when-num">{w.num}</span>
+              <h3 class="lcl-when-signal">{w.signal}</h3>
+              <p class="lcl-when-detail">{w.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="lcl-faq">
+      <div class="container">
+        <div class="lcl-faq-head">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line"></span>
+            <span class="page-eyebrow-text">Local SEO FAQ</span>
+            <span class="page-eyebrow-line"></span>
+          </div>
+          <h2 class="page-h2 lcl-faq-h2">
+            Seven questions <em>before you book.</em>
+          </h2>
+        </div>
+
+        <div class="lcl-faq-list">
+          {faqs.map((f, i) => (
+            <details class="lcl-faq-item">
+              <summary class="lcl-faq-q">
+                <span class="lcl-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="lcl-faq-q-text">{f.q}</span>
+                <span class="lcl-faq-icon" aria-hidden="true">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </summary>
+              <p class="lcl-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip">
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+            <span class="page-eyebrow-text page-eyebrow-text-light">Book local SEO</span>
+            <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
+          </div>
+          <h2 class="page-h2 page-cta-h2">
+            Local SEO that wins the Pack.<br>
+            <em>$1,500. 60-90 day visibility.</em>
+          </h2>
+          <p class="page-cta-lead">A free 15-minute call to assess your Local Pack opportunity. We send the SOW within 24 hours and start the audit on signature.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">
+              Book local SEO
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <a href="/services/wordpress-seo-services/" class="page-cta-ghost-light">
+              See full WordPress SEO services
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <BottomFormCTA formName="local-seo-cta"
+    formSteps={[
+      {
+        title: 'Tell us who you are',
+        subtitle: 'Just your name and email. 30 seconds.',
+        fields: [
+          { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+          { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+        ],
+      },
+      {
+        title: 'About your business',
+        subtitle: 'Type, location, GBP status.',
+        fields: [
+          { type: 'select', name: 'business_type', label: 'Business type', required: true,
+            options: ['Law Firm / Attorney', 'Dental / Medical', 'Real Estate', 'Restaurant / Hospitality', 'Contractor / Trades', 'Nonprofit / Church', 'Service business', 'Retail', 'Other'] },
+          { type: 'select', name: 'gbp_status', label: 'Google Business Profile status', required: true,
+            options: ['Claimed and verified', 'Claimed but unverified', 'Not claimed yet', 'Multiple listings (need cleanup)', 'Not sure'] },
+        ],
+      },
+      {
+        title: 'Locations',
+        subtitle: 'Where you operate.',
+        fields: [
+          { type: 'select', name: 'location_count', label: 'Number of locations', required: true,
+            options: ['Single location', '2-5 locations', '6-20 locations', '20+ locations', 'Service-area only (no storefront)'] },
+          { type: 'text', name: 'primary_city', label: 'Primary city / metro', placeholder: 'Baltimore, MD' },
+        ],
+      },
+      {
+        title: 'Engagement scope',
+        subtitle: 'Which package fits and what success looks like.',
+        fields: [
+          { type: 'select', name: 'engagement_tier', label: 'Engagement type', required: true,
+            options: ['Local SEO audit ($750)', 'Standard local SEO ($1,500)', 'Multi-location ($3,000+)', 'Not sure yet'] },
+          { type: 'textarea', name: 'message', label: 'What is the goal?', placeholder: 'Specific keywords or cities you want to rank for, current Local Pack position.', required: true, rows: 2 },
+        ],
+      },
+    ]}
+  />
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 12px 0 0; }
+  .page-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .page-section-lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; margin: 16px auto 0; }
+  .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
+  .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+  .lp-btn-primary { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-body); font-size: 15px; font-weight: 500; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap; transition: all 0.22s ease; cursor: pointer; background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); }
+  .lp-btn-primary:hover { background: var(--amber-deep); border-color: var(--amber-deep); transform: translateY(-2px); }
+  .lp-btn-primary svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .lcl-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin: 0; font-weight: 500; }
+  .lcl-section-eyebrow-line { display: inline-block; width: 32px; height: 1px; background: var(--amber); }
+
+  .lcl-define { background: var(--paper); padding: clamp(48px, 6vh, 80px) 0; border-bottom: 1px solid var(--line); }
+  .lcl-define-card { max-width: 880px; margin: 0 auto; background: var(--cream); border: 1.5px solid rgba(212,147,46,0.3); border-radius: var(--radius-lg); padding: 36px 40px; position: relative; box-shadow: var(--shadow-sm); }
+  .lcl-define-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .lcl-define-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .lcl-define-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(212,147,46,0.18); animation: lcl-pulse 2s ease-in-out infinite; }
+  @keyframes lcl-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .lcl-define-label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .lcl-define-h2 { margin: 0 0 16px; font-size: clamp(22px, 3vw, 32px); }
+  .lcl-define-answer { font-size: 16.5px; line-height: 1.6; color: var(--ink); margin: 0 0 20px; }
+  .lcl-define-answer strong { font-weight: 600; color: var(--ink); }
+  .lcl-define-meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .lcl-define-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .lcl-define-meta-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .lcl-define-meta-val { font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+
+  .lcl-factors { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .lcl-factors-head { text-align: center; max-width: 760px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .lcl-factors-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; max-width: 1100px; margin: 0 auto; }
+  .lcl-factor-card { padding: 24px 22px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all 0.3s ease; }
+  .lcl-factor-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(212,147,46,0.1); }
+  .lcl-factor-card-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 10px; }
+  .lcl-factor-name { font-family: var(--f-display); font-size: 22px; font-weight: 600; color: var(--ink); letter-spacing: -0.02em; }
+  .lcl-factor-weight { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; background: rgba(212,147,46,0.1); color: var(--amber-deep); border-radius: var(--radius-pill); font-weight: 600; }
+  .lcl-factor-detail { font-size: 13px; line-height: 1.55; color: var(--ink-muted); margin: 0; }
+
+  .lcl-includes { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .lcl-includes-head { text-align: center; max-width: 720px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .lcl-includes-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; max-width: 1100px; margin: 0 auto; }
+  .lcl-include { display: grid; grid-template-columns: 28px 22px 1fr; gap: 14px; align-items: flex-start; padding: 16px 20px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all var(--transition); }
+  .lcl-include:hover { border-color: var(--amber); transform: translateX(3px); }
+  .lcl-include-num { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.08em; font-weight: 500; margin-top: 2px; }
+  .lcl-include-check { width: 22px; height: 22px; border-radius: 50%; background: rgba(92,128,64,0.12); color: var(--green); display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .lcl-include-text { font-size: 13.5px; line-height: 1.55; color: var(--ink-soft); }
+
+  .lcl-tiers { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
+  .lcl-tiers-head { text-align: center; max-width: 720px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .lcl-tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; align-items: stretch; }
+  .lcl-tier { display: flex; flex-direction: column; gap: 10px; padding: 32px 28px 28px; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); text-decoration: none; color: inherit; transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .lcl-tier:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 14px 36px rgba(212,147,46,0.12); }
+  .lcl-tier-highlight { background: var(--ink); color: var(--cream); border-color: var(--amber); transform: translateY(-6px); }
+  .lcl-tier-highlight::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber)); }
+  .lcl-tier-highlight:hover { transform: translateY(-10px); }
+  .lcl-tier-flag { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 5px 11px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 10px rgba(212, 147, 46, 0.4); z-index: 3; }
+  .lcl-tier-name { font-family: var(--f-display); font-size: 32px; line-height: 1; color: var(--ink); font-weight: 500; letter-spacing: -0.025em; margin-top: 4px; }
+  .lcl-tier-highlight .lcl-tier-name { color: var(--cream); }
+  .lcl-tier-price { font-family: var(--f-display); font-size: 24px; line-height: 1; color: var(--amber-deep); font-weight: 500; margin-top: 8px; }
+  .lcl-tier-highlight .lcl-tier-price { color: var(--amber); }
+  .lcl-tier-duration { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+  .lcl-tier-highlight .lcl-tier-duration { color: rgba(244,239,230,0.5); }
+  .lcl-tier-summary { font-size: 13px; line-height: 1.55; color: var(--ink-muted); margin: 12px 0 0; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .lcl-tier-highlight .lcl-tier-summary { color: rgba(244,239,230,0.7); border-color: rgba(244,239,230,0.15); }
+  .lcl-tier-fits { margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--line); flex: 1; }
+  .lcl-tier-highlight .lcl-tier-fits { border-color: rgba(244,239,230,0.15); }
+  .lcl-tier-fits-label { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 8px; font-weight: 500; }
+  .lcl-tier-highlight .lcl-tier-fits-label { color: var(--amber); }
+  .lcl-tier-fits-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .lcl-tier-fits-list li { font-size: 12.5px; color: var(--ink-soft); padding-left: 14px; position: relative; }
+  .lcl-tier-fits-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 1px; background: var(--amber); }
+  .lcl-tier-highlight .lcl-tier-fits-list li { color: rgba(244,239,230,0.75); }
+  .lcl-tier-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .lcl-tier-highlight .lcl-tier-cta { color: var(--amber); border-color: rgba(244,239,230,0.15); }
+
+  .lcl-when { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .lcl-when-head { text-align: center; max-width: 760px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .lcl-when-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .lcl-when-card { padding: 28px 26px 24px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .lcl-when-card::before { content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--amber); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
+  .lcl-when-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(212,147,46,0.1); }
+  .lcl-when-card:hover::before { transform: scaleY(1); }
+  .lcl-when-num { font-family: var(--f-display); font-size: 14px; font-style: italic; color: var(--amber-deep); font-weight: 400; }
+  .lcl-when-signal { font-family: var(--f-display); font-size: 19px; line-height: 1.25; color: var(--ink); font-weight: 600; letter-spacing: -0.015em; margin: 10px 0 8px; }
+  .lcl-when-detail { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; }
+
+  .lcl-faq { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .lcl-faq-head { text-align: center; max-width: 760px; margin: 0 auto 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .lcl-faq-h2 { text-align: center; }
+  .lcl-faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 880px; margin: 0 auto; }
+  .lcl-faq-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition); }
+  .lcl-faq-item[open] { border-color: var(--amber); box-shadow: 0 4px 14px rgba(212,147,46,0.08); }
+  .lcl-faq-q { display: grid; grid-template-columns: 36px 1fr 24px; gap: 16px; align-items: center; padding: 20px 24px; cursor: pointer; list-style: none; }
+  .lcl-faq-q::-webkit-details-marker { display: none; }
+  .lcl-faq-item:hover .lcl-faq-q { background: rgba(212,147,46,0.04); }
+  .lcl-faq-num { font-family: var(--f-display); font-size: 13px; color: var(--amber-deep); font-style: italic; font-weight: 400; }
+  .lcl-faq-q-text { font-family: var(--f-display); font-size: 18px; line-height: 1.3; color: var(--ink); font-weight: 500; letter-spacing: -0.015em; }
+  .lcl-faq-icon { width: 24px; height: 24px; border-radius: 50%; background: rgba(15,20,25,0.06); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+  .lcl-faq-item[open] .lcl-faq-icon { background: var(--amber); color: var(--ink); transform: rotate(180deg); }
+  .lcl-faq-a { padding: 0 24px 22px 76px; font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin: 0; border-top: 1px dashed var(--line); padding-top: 18px; }
+
+  .page-cta { background: var(--ink); padding: clamp(72px, 10vh, 112px) 0; position: relative; overflow: hidden; }
+  .page-cta::before { content: ""; position: absolute; top: -300px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%); pointer-events: none; }
+  .page-cta::after { content: ""; position: absolute; bottom: -200px; right: -200px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%); pointer-events: none; }
+  .page-cta-inner { max-width: 720px; text-align: center; margin: 0 auto; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead { font-size: 16px; line-height: 1.6; color: rgba(244,239,230,0.65); max-width: 56ch; margin: 0 auto; }
+  .page-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .page-cta-primary { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+  .page-cta-primary:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+  .page-cta-ghost-light { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid rgba(244,239,230,0.2); color: var(--cream); background: transparent; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.22s ease; }
+  .page-cta-ghost-light:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,147,46,0.08); transform: translateY(-2px); }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  @media (max-width: 1024px) {
+    .lcl-define-meta { grid-template-columns: 1fr; gap: 12px; }
+    .lcl-define-card { padding: 28px 24px; }
+    .lcl-factors-grid { grid-template-columns: repeat(2, 1fr); }
+    .lcl-includes-grid { grid-template-columns: 1fr; }
+    .lcl-tiers-grid { grid-template-columns: 1fr; }
+    .lcl-tier-highlight { transform: none; }
+    .lcl-tier-highlight:hover { transform: translateY(-4px); }
+    .lcl-when-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .lcl-factors-grid { grid-template-columns: 1fr; }
+    .lcl-when-grid { grid-template-columns: 1fr; }
+    .lcl-faq-q { grid-template-columns: 1fr 24px; gap: 12px; }
+    .lcl-faq-num { display: none; }
+    .lcl-faq-a { padding-left: 24px; }
+  }
+  @media (max-width: 640px) { .page-eyebrow-line { width: 24px; } }
+</style>
