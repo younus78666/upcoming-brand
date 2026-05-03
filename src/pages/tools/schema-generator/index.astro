@@ -1230,16 +1230,36 @@ const jsonLdString = JSON.stringify({
     } catch(e){}
 
     function updateAiStatus(){
-      var hasKey = state.aiKey && state.aiProvider;
+      var hasKey = !!(state.aiKey && state.aiKey.trim());
+      var hasProvider = !!(state.aiProvider && state.aiProvider.trim());
+      var ready = hasKey && hasProvider;
       var modelName = getModel();
-      aiStatusEl.textContent = hasKey ? ('Ready: ' + (state.aiProvider) + (modelName ? ' (' + modelName + ')' : '')) : 'No key set';
-      aiStatusEl.className = hasKey ? 'sg-ai-status sg-ai-status-ready' : 'sg-ai-status';
+      var statusText, tooltip;
+      if(ready){
+        statusText = 'Ready: ' + state.aiProvider + (modelName ? ' (' + modelName + ')' : '');
+        tooltip = '';
+      } else if(!hasProvider && !hasKey){
+        statusText = 'Pick provider + add key';
+        tooltip = 'Choose a provider from the dropdown and paste your API key';
+      } else if(!hasProvider){
+        statusText = 'Pick a provider (key saved)';
+        tooltip = 'Key is saved. Now choose a provider from the dropdown above';
+      } else if(!hasKey){
+        statusText = 'Paste API key (' + state.aiProvider + ' selected)';
+        tooltip = 'Provider is set. Now paste your API key above';
+      }
+      aiStatusEl.textContent = statusText;
+      aiStatusEl.className = ready ? 'sg-ai-status sg-ai-status-ready' : (hasKey || hasProvider ? 'sg-ai-status sg-ai-status-partial' : 'sg-ai-status');
+      aiStatusEl.title = tooltip;
       if(aiDefaultModelEl){
         aiDefaultModelEl.textContent = state.aiProvider ? (defaultModels[state.aiProvider] || 'unknown') : 'choose a provider above';
       }
+      // Mark inputs visually based on filled state
+      if(aiKeyEl) aiKeyEl.classList.toggle('sg-input-filled', hasKey);
+      if(aiProviderEl) aiProviderEl.classList.toggle('sg-input-filled', hasProvider);
       document.querySelectorAll('.sg-ai-btn').forEach(function(b){
-        b.disabled = !hasKey;
-        b.title = hasKey ? '' : 'Add provider + API key above to enable AI polish';
+        b.disabled = !ready;
+        b.title = ready ? '' : tooltip;
       });
     }
     updateAiStatus();
@@ -1248,6 +1268,7 @@ const jsonLdString = JSON.stringify({
       state.aiProvider = aiProviderEl.value;
       try { localStorage.setItem('sg-ai-provider', state.aiProvider); } catch(e){}
       updateAiStatus();
+      refreshAiButtons();
     });
     function saveKey(){
       state.aiKey = aiKeyEl.value;
@@ -1381,18 +1402,23 @@ const jsonLdString = JSON.stringify({
     var aiButtonRegistry = [];
     function registerAi(btn){ aiButtonRegistry.push(btn); }
     function refreshAiButtons(){
-      var hasKey = state.aiKey && state.aiProvider;
+      var hasKey = !!(state.aiKey && state.aiKey.trim());
+      var hasProvider = !!(state.aiProvider && state.aiProvider.trim());
+      var ready = hasKey && hasProvider;
+      var disabledTip;
+      if(!hasProvider && !hasKey) disabledTip = 'Add provider + API key in the AI section above';
+      else if(!hasProvider) disabledTip = 'Pick a provider from the dropdown above';
+      else disabledTip = 'Paste your API key in the AI section above';
       aiButtonRegistry.forEach(function(b){
         if(!b.classList.contains('sg-ai-spark-loading')){
-          b.disabled = !hasKey;
-          b.title = hasKey ? 'AI polish / generate' : 'Add provider + API key in the AI section to enable';
+          b.disabled = !ready;
+          b.title = ready ? 'Polish if filled, generate if empty' : disabledTip;
         }
       });
-      // Also the big buttons
       document.querySelectorAll('.sg-ai-btn').forEach(function(b){
         if(!b.dataset.loading){
-          b.disabled = !hasKey;
-          b.title = hasKey ? '' : 'Add provider + API key above to enable AI polish';
+          b.disabled = !ready;
+          b.title = ready ? '' : disabledTip;
         }
       });
     }
@@ -1595,6 +1621,9 @@ const jsonLdString = JSON.stringify({
   .sg-ai-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 14px; }
   .sg-ai-status { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 11px; background: var(--paper); color: var(--ink-muted); border: 1px solid var(--line); border-radius: var(--radius-pill); white-space: nowrap; font-weight: 600; }
   .sg-ai-status-ready { background: rgba(92,128,64,0.12); color: var(--green); border-color: rgba(92,128,64,0.3); }
+  .sg-ai-status-partial { background: rgba(212,147,46,0.12); color: var(--amber-deep); border-color: rgba(212,147,46,0.4); }
+  .sg-input-filled { border-color: rgba(92,128,64,0.5); background: rgba(92,128,64,0.04); }
+  .sg-input-filled:focus { border-color: var(--amber); }
   .sg-ai-actions { display: flex; flex-direction: row; flex-wrap: wrap; gap: 8px; }
   .sg-ai-btn { padding: 9px 16px; background: var(--ink); color: var(--cream); border: 1px solid var(--ink); border-radius: var(--radius-md); cursor: pointer; font-family: var(--f-body); font-size: 13px; font-weight: 600; transition: all 0.2s ease; }
   .sg-ai-btn:hover:not(:disabled) { background: var(--amber-deep); border-color: var(--amber-deep); transform: translateY(-1px); }
