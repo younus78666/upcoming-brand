@@ -279,9 +279,11 @@ const jsonLd = JSON.stringify({
 
 <style>
   /* HERO */
-  .art-hero { background: var(--cream); padding: clamp(48px, 7vh, 88px) 0 clamp(36px, 5vh, 64px); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
-  .art-hero::before { content: ""; position: absolute; top: -300px; right: -200px; width: 700px; height: 700px; background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%); pointer-events: none; }
-  .art-hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+  .art-hero { background: var(--cream); padding: clamp(40px, 6vh, 72px) 0 clamp(36px, 5vh, 64px); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+  .art-hero::before { content: ""; position: absolute; top: -200px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 55%); pointer-events: none; }
+  .art-hero::after { content: ""; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%); pointer-events: none; }
+  .art-hero-inner { position: relative; z-index: 1; max-width: 880px; display: flex; flex-direction: column; gap: 14px; }
+  .art-h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.03em; color: var(--ink); margin: 6px 0 0; }
   .art-back-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s ease; align-self: flex-start; }
   .art-back-link:hover { color: var(--amber-deep); }
   .art-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -289,8 +291,7 @@ const jsonLd = JSON.stringify({
   .art-status-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); padding: 4px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-pill); }
   .art-status-dot { width: 6px; height: 6px; background: var(--amber); border-radius: 50%; animation: art-pulse 2.4s ease-in-out infinite; }
   @keyframes art-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
-  .art-h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px, 4.5vw, 44px); line-height: 1.1; letter-spacing: -0.025em; color: var(--ink); margin: 4px 0 0; }
-  .art-lead { font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: var(--ink-soft); margin: 0; }
+  .art-lead { font-size: clamp(15px, 1.2vw, 18px); line-height: 1.65; color: var(--ink-soft); margin: 0; max-width: 70ch; }
 
   /* BODY 2-COL */
   .art-body { background: var(--cream); padding: clamp(40px, 6vh, 72px) 0 clamp(56px, 8vh, 96px); border-bottom: 1px solid var(--line); }
