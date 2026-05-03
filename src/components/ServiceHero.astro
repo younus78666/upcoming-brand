@@ -190,12 +190,8 @@ const tsId = `svc-hero-ts-${formName}`;
             </div>
           </div>
 
-          <!-- Step navigation -->
+          <!-- Primary action button (full width) -->
           <div class="svc-hero-form-nav">
-            <button type="button" class="svc-hero-form-back" data-back-btn aria-hidden="true">
-              <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Back
-            </button>
             <button type="button" class="svc-hero-form-next" data-next-btn>
               Next
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -205,6 +201,12 @@ const tsId = `svc-hero-ts-${formName}`;
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
           </div>
+
+          <!-- Back link as subtle text below primary button -->
+          <button type="button" class="svc-hero-form-back-link" data-back-btn hidden>
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Back to previous step
+          </button>
 
           <p class="svc-hero-form-note">By sending, you agree to our <a href="/privacy-policy/">privacy policy</a>. No spam, ever.</p>
         </form>
@@ -258,13 +260,7 @@ const tsId = `svc-hero-ts-${formName}`;
       // progress bar
       fillEl.style.width = `${(n / totalSteps) * 100}%`;
       // nav buttons
-      if (n === 1) {
-        backBtn.setAttribute('aria-hidden', 'true');
-        backBtn.style.visibility = 'hidden';
-      } else {
-        backBtn.removeAttribute('aria-hidden');
-        backBtn.style.visibility = 'visible';
-      }
+      backBtn.hidden = (n === 1);
       if (n === totalSteps) {
         nextBtn.hidden = true;
         submitBtn.hidden = false;
@@ -639,41 +635,17 @@ const tsId = `svc-hero-ts-${formName}`;
     font-family: var(--f-body);
   }
 
-  /* Nav buttons */
+  /* Nav: primary action full width */
   .svc-hero-form-nav {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    display: block;
     margin-top: 6px;
   }
-  /* Native hidden attribute must override flex display */
-  .svc-hero-form-nav [hidden] { display: none !important; }
-
-  .svc-hero-form-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 7px;
-    background: transparent;
-    color: rgba(244,239,230,0.65);
-    border: 1.5px solid rgba(244,239,230,0.15);
-    border-radius: var(--radius-pill);
-    padding: 11px 18px;
-    font-family: var(--f-body);
-    font-size: 13px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .svc-hero-form-back:hover {
-    border-color: rgba(244,239,230,0.35);
-    color: var(--cream);
-  }
-  .svc-hero-form-back svg { transition: transform 0.2s; }
-  .svc-hero-form-back:hover svg { transform: translateX(-2px); }
+  /* Native hidden attribute must override default display */
+  [hidden] { display: none !important; }
 
   .svc-hero-form-next,
   .svc-hero-form-submit {
-    flex: 1;
+    width: 100%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -682,7 +654,7 @@ const tsId = `svc-hero-ts-${formName}`;
     color: var(--ink);
     border: none;
     border-radius: var(--radius-pill);
-    padding: 12px 22px;
+    padding: 13px 22px;
     font-family: var(--f-body);
     font-size: 14px;
     font-weight: 600;
@@ -699,6 +671,28 @@ const tsId = `svc-hero-ts-${formName}`;
   .svc-hero-form-submit svg { transition: transform 0.2s; }
   .svc-hero-form-next:hover svg,
   .svc-hero-form-submit:hover svg { transform: translateX(3px); }
+
+  /* Back link (subtle text-style) */
+  .svc-hero-form-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: none;
+    padding: 8px 0 0;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: rgba(244,239,230,0.5);
+    cursor: pointer;
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+  .svc-hero-form-back-link:hover {
+    color: var(--cream);
+  }
+  .svc-hero-form-back-link svg { transition: transform 0.2s; }
+  .svc-hero-form-back-link:hover svg { transform: translateX(-2px); }
 
   .svc-hero-form-note {
     font-family: var(--f-mono);
