@@ -400,13 +400,16 @@ const jsonLdString = JSON.stringify({
                   <span class="sg-field-help">Default: <span id="sg-ai-default-model">choose a provider above</span>. Override only if a specific model version is needed (e.g. <code>gemini-2.5-flash</code>, <code>claude-sonnet-4-6</code>, <code>gpt-4.1-mini</code>). Keys are stored in localStorage on this device only — never sent to our servers.</span>
                 </div>
                 <div class="sg-field sg-field-full sg-ai-actions">
-                  <button type="button" id="sg-ai-polish-desc" class="sg-ai-btn" data-target="description">
-                    <span>Polish description</span>
+                  <button type="button" id="sg-ai-polish-desc" class="sg-ai-btn" data-target="autofill">
+                    <span>Auto-fill from a pitch</span>
                   </button>
                   <button type="button" id="sg-ai-gen-knows" class="sg-ai-btn" data-target="knowsAbout">
-                    <span>Generate knowsAbout topics</span>
+                    <span>Generate knowsAbout (full list)</span>
                   </button>
                   <button type="button" id="sg-ai-clear-key" class="sg-ai-clear">Clear key</button>
+                </div>
+                <div class="sg-field sg-field-full">
+                  <span class="sg-field-help">After saving your key, look for the small <strong>✨ sparkle button</strong> next to each polishable field (description, knowsAbout, each Service description, each FAQ answer). Click it to polish or generate that specific field. The "Auto-fill from a pitch" button above fills the entire form from a 1-3 sentence business pitch.</span>
                 </div>
               </div>
             </div>
@@ -646,9 +649,9 @@ const jsonLdString = JSON.stringify({
         nameI.addEventListener('input', function(){ state.services[idx].name = nameI.value; render(); });
         nameField.appendChild(nameLabel); nameField.appendChild(nameI);
 
-        // Description field
+        // Description field with AI button
         var descField = document.createElement('div');
-        descField.className = 'sg-field sg-field-full';
+        descField.className = 'sg-field sg-field-full sg-field-with-ai';
         var descLabel = document.createElement('label');
         descLabel.className = 'sg-label';
         descLabel.textContent = 'Short description (optional)';
@@ -656,6 +659,29 @@ const jsonLdString = JSON.stringify({
         descI.className='sg-input sg-textarea'; descI.rows=2; descI.placeholder='What this service includes, in one sentence.'; descI.value=s.description || '';
         descI.addEventListener('input', function(){ state.services[idx].description = descI.value; render(); });
         descField.appendChild(descLabel); descField.appendChild(descI);
+
+        // AI button for service description (polish or generate from name + biz context)
+        if(typeof makeAiButton === 'function'){
+          var serviceAi = makeAiButton({
+            label: 'Polish service description',
+            tooltip: 'Polish this description, or generate one from the service name',
+            getCurrentValue: function(){ return state.services[idx].description; },
+            buildPrompt: function(current){
+              var sname = state.services[idx].name || 'this service';
+              if(current){
+                return 'Rewrite this service description in 1 sentence. Factual, no em-dashes, no marketing puffery. Output ONLY the rewritten text:\n\n' + current;
+              }
+              return 'Write a 1-sentence factual description of "' + sname + '" as offered by ' + bizContextString() + '. No em-dashes, no marketing fluff. Output ONLY the description.';
+            },
+            applyResult: function(text){
+              state.services[idx].description = text;
+              descI.value = text;
+              render();
+            }
+          });
+          registerAi(serviceAi);
+          descField.appendChild(serviceAi);
+        }
 
         // Price field
         var priceField = document.createElement('div');
@@ -713,7 +739,7 @@ const jsonLdString = JSON.stringify({
         qField.appendChild(qLabel); qField.appendChild(qI);
 
         var aField = document.createElement('div');
-        aField.className = 'sg-field sg-field-full';
+        aField.className = 'sg-field sg-field-full sg-field-with-ai';
         var aLabel = document.createElement('label');
         aLabel.className = 'sg-label';
         aLabel.textContent = 'Answer';
@@ -721,6 +747,28 @@ const jsonLdString = JSON.stringify({
         aI.className='sg-input sg-textarea'; aI.rows=3; aI.placeholder='Direct, factual answer in 2-3 sentences.'; aI.value=f.a;
         aI.addEventListener('input', function(){ state.faqs[idx].a = aI.value; render(); });
         aField.appendChild(aLabel); aField.appendChild(aI);
+
+        if(typeof makeAiButton === 'function'){
+          var faqAi = makeAiButton({
+            label: 'Polish FAQ answer',
+            tooltip: 'Polish this answer, or generate one from the question',
+            getCurrentValue: function(){ return state.faqs[idx].a; },
+            buildPrompt: function(current){
+              var question = state.faqs[idx].q || 'a frequently asked question';
+              if(current){
+                return 'Rewrite this FAQ answer in 2-3 factual sentences. Direct answer first, then context. No em-dashes, no marketing puffery. Output ONLY the rewritten text:\n\nQuestion: ' + question + '\n\nCurrent answer: ' + current;
+              }
+              return 'Write a 2-3 sentence factual answer to this FAQ question, in the context of ' + bizContextString() + '. Direct answer first sentence. No em-dashes, no marketing fluff. Output ONLY the answer.\n\nQuestion: ' + question;
+            },
+            applyResult: function(text){
+              state.faqs[idx].a = text;
+              aI.value = text;
+              render();
+            }
+          });
+          registerAi(faqAi);
+          aField.appendChild(faqAi);
+        }
 
         grid.appendChild(qField); grid.appendChild(aField);
         card.appendChild(head); card.appendChild(grid);
@@ -1124,16 +1172,22 @@ const jsonLdString = JSON.stringify({
       try { localStorage.setItem('sg-ai-provider', state.aiProvider); } catch(e){}
       updateAiStatus();
     });
-    aiKeyEl.addEventListener('input', function(){
+    function saveKey(){
       state.aiKey = aiKeyEl.value;
       try { localStorage.setItem('sg-ai-key', state.aiKey); } catch(e){}
       updateAiStatus();
-    });
-    aiModelEl.addEventListener('input', function(){
+      refreshAiButtons();
+    }
+    aiKeyEl.addEventListener('input', saveKey);
+    aiKeyEl.addEventListener('change', saveKey);
+    aiKeyEl.addEventListener('blur', saveKey);
+    function saveModel(){
       state.aiModel = aiModelEl.value;
       try { localStorage.setItem('sg-ai-model', state.aiModel); } catch(e){}
       updateAiStatus();
-    });
+    }
+    aiModelEl.addEventListener('input', saveModel);
+    aiModelEl.addEventListener('change', saveModel);
     document.getElementById('sg-ai-clear-key').addEventListener('click', function(){
       state.aiKey = ''; state.aiProvider = ''; state.aiModel = '';
       aiKeyEl.value = ''; aiProviderEl.value = ''; aiModelEl.value = '';
@@ -1206,44 +1260,174 @@ const jsonLdString = JSON.stringify({
         .catch(function(e){ callback(null, e.message || 'Network error'); });
     }
 
+    // ===== Per-field AI sparkle buttons =====
+    // Generic helper: attach a small ✨ button next to any input/textarea
+    // action: 'polish' | 'generate' | 'auto' (auto = polish if value, generate if empty)
+    // contextFn: () => string  (returns prompt context, like business name + type)
+    // applyFn: (text) => void  (applies the AI result to the form + state)
+    function makeAiButton(opts){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'sg-ai-spark';
+      btn.setAttribute('aria-label', opts.label || 'AI polish');
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1.5l1.2 3.3L11.5 6 8.2 7.2 7 10.5 5.8 7.2 2.5 6l3.3-1.2L7 1.5zM11 9l.5 1.5L13 11l-1.5.5L11 13l-.5-1.5L9 11l1.5-.5L11 9z" fill="currentColor"/></svg>';
+      var hasKey = state.aiKey && state.aiProvider;
+      btn.disabled = !hasKey;
+      btn.title = hasKey ? (opts.tooltip || 'AI polish / generate') : 'Add provider + API key in the AI section to enable';
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        if(btn.disabled) return;
+        var currentValue = opts.getCurrentValue ? opts.getCurrentValue() : '';
+        var prompt = opts.buildPrompt(currentValue);
+        var orig = btn.innerHTML;
+        btn.innerHTML = '<span class="sg-ai-spinner" aria-hidden="true"></span>';
+        btn.disabled = true;
+        btn.classList.add('sg-ai-spark-loading');
+        callAi(prompt, function(text, err){
+          btn.innerHTML = orig;
+          btn.disabled = !(state.aiKey && state.aiProvider);
+          btn.classList.remove('sg-ai-spark-loading');
+          if(text){
+            opts.applyResult(text);
+          } else {
+            alert('AI failed: ' + (err || 'unknown error'));
+          }
+        });
+      });
+      return btn;
+    }
+
+    // Track all rendered AI buttons so we can re-enable/disable when key changes
+    var aiButtonRegistry = [];
+    function registerAi(btn){ aiButtonRegistry.push(btn); }
+    function refreshAiButtons(){
+      var hasKey = state.aiKey && state.aiProvider;
+      aiButtonRegistry.forEach(function(b){
+        if(!b.classList.contains('sg-ai-spark-loading')){
+          b.disabled = !hasKey;
+          b.title = hasKey ? 'AI polish / generate' : 'Add provider + API key in the AI section to enable';
+        }
+      });
+      // Also the big buttons
+      document.querySelectorAll('.sg-ai-btn').forEach(function(b){
+        if(!b.dataset.loading){
+          b.disabled = !hasKey;
+          b.title = hasKey ? '' : 'Add provider + API key above to enable AI polish';
+        }
+      });
+    }
+
+    function bizContextString(){
+      return (state.name || 'this business') + ' (' + state.businessType + ')' +
+        (state.description ? ' — ' + state.description : '') +
+        (state.city ? ' in ' + state.city + (state.region ? ', ' + state.region : '') : '');
+    }
+
+    // Wire AI button next to Description field
+    (function(){
+      var descEl = document.getElementById('sg-description');
+      if(!descEl) return;
+      var btn = makeAiButton({
+        label: 'Polish description',
+        tooltip: 'Polish or generate a business description',
+        getCurrentValue: function(){ return state.description; },
+        buildPrompt: function(current){
+          if(current){
+            return 'Rewrite this business description in 1-2 sharp factual sentences. No em-dashes, no marketing puffery. Output ONLY the rewritten text:\n\n' + current;
+          }
+          return 'Write a 1-2 sentence factual business description for: ' + state.name + ' (' + state.businessType + ')' + (state.city ? ' in ' + state.city + (state.region ? ', ' + state.region : '') : '') + '. No em-dashes, no marketing puffery. Output ONLY the description.';
+        },
+        applyResult: function(text){
+          state.description = text;
+          descEl.value = text;
+          render();
+        }
+      });
+      registerAi(btn);
+      // Insert button as a sibling next to the textarea
+      descEl.parentNode.classList.add('sg-field-with-ai');
+      descEl.parentNode.appendChild(btn);
+    })();
+
+    // Wire AI button next to knowsAbout textarea
+    (function(){
+      var ta = document.getElementById('sg-knows-about');
+      if(!ta) return;
+      var btn = makeAiButton({
+        label: 'Generate knowsAbout',
+        tooltip: 'Generate 8-10 specific topics this business is expert on',
+        getCurrentValue: function(){ return state.knowsAbout.join('\n'); },
+        buildPrompt: function(){
+          return 'Based on this business: "' + bizContextString() + '"\n\nGenerate 8-10 specific topics this business is expert on, for schema.org knowsAbout. Use specific topics ("Estate planning" not "Legal services"). Output as a plain newline-separated list, no numbering, no bullets, no other text.';
+        },
+        applyResult: function(text){
+          state.knowsAbout = text.split('\n').map(function(s){return s.replace(/^[-*\d.\s]+/, '').trim();}).filter(Boolean).slice(0, 12);
+          ta.value = state.knowsAbout.join('\n');
+          render();
+        }
+      });
+      registerAi(btn);
+      ta.parentNode.classList.add('sg-field-with-ai');
+      ta.parentNode.appendChild(btn);
+    })();
+
+    // The big buttons at the top of AI section now do master auto-fill + key clear
     document.getElementById('sg-ai-polish-desc').addEventListener('click', function(){
       var btn = this;
-      var current = state.description;
-      if(!current){ alert('Add a description in the Identity section first.'); return; }
-      btn.querySelector('span').textContent = 'Polishing...';
+      var pitch = prompt('Paste a 1-3 sentence pitch about your business. AI will fill the entire form (description, services, FAQs, knowsAbout) for you to refine:');
+      if(!pitch || !pitch.trim()) return;
+      btn.querySelector('span').textContent = 'Auto-filling...';
       btn.disabled = true;
-      var prompt = 'Rewrite this business description in 1-2 sharp sentences. Keep it factual, avoid marketing puffery, no em-dashes. Output ONLY the rewritten text, nothing else:\n\n' + current;
-      callAi(prompt, function(text, err){
-        btn.querySelector('span').textContent = 'Polish description';
-        btn.disabled = false;
-        if(text){
-          state.description = text;
-          document.getElementById('sg-description').value = text;
+      btn.dataset.loading = 'true';
+      var systemPrompt = 'You are filling a schema.org markup generator. Given this business pitch:\n\n"' + pitch + '"\n\nReturn a strict JSON object (no markdown, no commentary) with these keys:\n{\n  "name": "business name",\n  "description": "1-2 factual sentences, no em-dashes",\n  "services": [{"name":"...","description":"1 sentence","price":"From $X"}, ...] (3-5 services),\n  "faqs": [{"q":"...","a":"1-3 sentences"}, ...] (3-5 Q&As),\n  "knowsAbout": ["topic 1","topic 2"] (8-10 specific topics)\n}\n\nReturn ONLY the JSON object. No preamble, no code fence.';
+      callAi(systemPrompt, function(text, err){
+        btn.querySelector('span').textContent = 'Auto-fill from a pitch';
+        btn.disabled = !(state.aiKey && state.aiProvider);
+        delete btn.dataset.loading;
+        if(!text){ alert('Auto-fill failed: ' + (err || 'unknown error')); return; }
+        try {
+          var cleaned = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '').trim();
+          var data = JSON.parse(cleaned);
+          if(data.name){ state.name = data.name; document.getElementById('sg-name').value = data.name; }
+          if(data.description){ state.description = data.description; document.getElementById('sg-description').value = data.description; }
+          if(data.services && data.services.length){
+            state.services = data.services.slice(0, 5).map(function(s){ return { name: s.name||'', description: s.description||'', price: s.price||'' }; });
+            renderServices();
+            if(!state.includeService){ var t = document.getElementById('sg-include-service'); if(t){ t.checked = true; t.dispatchEvent(new Event('change')); } }
+          }
+          if(data.faqs && data.faqs.length){
+            state.faqs = data.faqs.slice(0, 6).map(function(f){ return { q: f.q||'', a: f.a||'' }; });
+            renderFaqs();
+            if(!state.includeFaq){ var t2 = document.getElementById('sg-include-faq'); if(t2){ t2.checked = true; t2.dispatchEvent(new Event('change')); } }
+          }
+          if(data.knowsAbout && data.knowsAbout.length){
+            state.knowsAbout = data.knowsAbout.slice(0, 12);
+            var ka = document.getElementById('sg-knows-about'); if(ka) ka.value = state.knowsAbout.join('\n');
+            if(!state.includeAuthority){ var t3 = document.getElementById('sg-include-authority'); if(t3){ t3.checked = true; t3.dispatchEvent(new Event('change')); } }
+          }
           render();
-        } else {
-          alert('AI polish failed: ' + (err || 'unknown error'));
+        } catch(e){
+          alert('Could not parse AI response as JSON. Try a clearer pitch. Raw response (first 200 chars):\n\n' + text.slice(0, 200));
         }
       });
     });
 
     document.getElementById('sg-ai-gen-knows').addEventListener('click', function(){
       var btn = this;
-      var biz = state.name + ' (' + state.businessType + '). ' + (state.description || '');
+      var biz = bizContextString();
       btn.querySelector('span').textContent = 'Generating...';
       btn.disabled = true;
-      var prompt = 'Based on this business: "' + biz + '"\n\nGenerate 8-10 specific topics this business is expert on, for use in schema.org knowsAbout. Use specific topics (e.g., "Estate planning" not "Legal services"). Output as a plain newline-separated list, no numbering, no bullets, no other text.';
+      btn.dataset.loading = 'true';
+      var prompt = 'Based on this business: "' + biz + '"\n\nGenerate 8-10 specific topics this business is expert on, for schema.org knowsAbout. Use specific topics ("Estate planning" not "Legal services"). Output as a plain newline-separated list, no numbering, no bullets.';
       callAi(prompt, function(text, err){
-        btn.querySelector('span').textContent = 'Generate knowsAbout topics';
-        btn.disabled = false;
+        btn.querySelector('span').textContent = 'Generate knowsAbout (full list)';
+        btn.disabled = !(state.aiKey && state.aiProvider);
+        delete btn.dataset.loading;
         if(text){
           state.knowsAbout = text.split('\n').map(function(s){return s.replace(/^[-*\d.\s]+/, '').trim();}).filter(Boolean).slice(0, 12);
           var ta = document.getElementById('sg-knows-about');
           if(ta) ta.value = state.knowsAbout.join('\n');
-          // Auto-enable authority section if not already
-          if(!state.includeAuthority){
-            var t = document.getElementById('sg-include-authority');
-            if(t){ t.checked = true; t.dispatchEvent(new Event('change')); }
-          }
+          if(!state.includeAuthority){ var t = document.getElementById('sg-include-authority'); if(t){ t.checked = true; t.dispatchEvent(new Event('change')); } }
           render();
         } else {
           alert('AI generation failed: ' + (err || 'unknown error'));
@@ -1336,6 +1520,16 @@ const jsonLdString = JSON.stringify({
   .sg-ai-btn:disabled { opacity: 0.4; cursor: not-allowed; background: var(--paper); color: var(--ink-muted); border-color: var(--line); }
   .sg-ai-clear { padding: 9px 14px; background: transparent; color: var(--ink-muted); border: 1px dashed var(--line-strong); border-radius: var(--radius-md); cursor: pointer; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; transition: all 0.2s ease; font-weight: 600; }
   .sg-ai-clear:hover { border-color: #c44; color: #c44; }
+
+  .sg-field-with-ai { position: relative; }
+  .sg-ai-spark { position: absolute; top: 28px; right: 8px; width: 28px; height: 28px; padding: 0; display: inline-flex; align-items: center; justify-content: center; background: var(--cream); border: 1px solid var(--line); border-radius: 50%; color: var(--amber-deep); cursor: pointer; transition: all 0.2s ease; z-index: 2; }
+  .sg-ai-spark:hover:not(:disabled) { border-color: var(--amber); background: rgba(212,147,46,0.1); transform: scale(1.08); }
+  .sg-ai-spark:disabled { opacity: 0.35; cursor: not-allowed; }
+  .sg-ai-spark-loading { background: var(--amber); color: var(--ink); border-color: var(--amber); }
+  .sg-ai-spinner { width: 12px; height: 12px; border: 2px solid rgba(15,20,25,0.2); border-top-color: var(--ink); border-radius: 50%; animation: sg-spin 0.8s linear infinite; }
+  @keyframes sg-spin { to { transform: rotate(360deg); } }
+  .sg-field-with-ai .sg-input { padding-right: 44px; }
+  .sg-field-with-ai .sg-textarea { padding-right: 44px; }
   .sg-toggle { display: grid; grid-template-columns: 18px 1fr; gap: 10px; padding: 10px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); cursor: pointer; transition: all 0.2s ease; align-items: start; }
   .sg-toggle:hover { border-color: var(--amber); }
   .sg-toggle input { grid-row: 1 / span 2; margin-top: 2px; accent-color: var(--amber); cursor: pointer; }
