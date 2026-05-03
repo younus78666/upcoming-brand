@@ -834,16 +834,14 @@ const faqs = [
     border-radius: var(--radius-lg);
     padding: 36px 40px;
     position: relative;
-    box-shadow: var(--shadow-sm);
-  }
+    box-shadow: var(--shadow-sm); overflow: hidden; }
   .svc-define-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
     background: var(--amber);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  }
+    }
   .svc-define-head {
     display: flex;
     align-items: center;
@@ -1086,8 +1084,7 @@ const faqs = [
     background: var(--ink);
     color: var(--cream);
     border-color: var(--amber);
-    transform: translateY(-6px);
-  }
+    transform: translateY(-6px); overflow: hidden; }
 
   .svc-tier-highlight::before {
     content: "";

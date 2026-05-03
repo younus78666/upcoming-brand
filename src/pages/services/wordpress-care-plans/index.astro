@@ -756,16 +756,14 @@ const faqs = [
     border-radius: var(--radius-lg);
     padding: 36px 40px;
     position: relative;
-    box-shadow: var(--shadow-sm);
-  }
+    box-shadow: var(--shadow-sm); overflow: hidden; }
   .care-define-card::before {
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
     background: var(--amber);
-    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
-  }
+    }
   .care-define-head {
     display: flex;
     align-items: center;
@@ -965,8 +963,7 @@ const faqs = [
     color: var(--cream);
     border-color: var(--amber);
     transform: translateY(-8px);
-    box-shadow: 0 20px 48px rgba(15,20,25,0.18);
-  }
+    box-shadow: 0 20px 48px rgba(15,20,25,0.18); overflow: hidden; }
 
   .care-tier-highlight::before {
     content: "";
