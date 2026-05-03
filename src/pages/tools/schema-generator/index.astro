@@ -1230,8 +1230,15 @@ const jsonLdString = JSON.stringify({
     } catch(e){}
 
     function updateAiStatus(){
-      var hasKey = !!(state.aiKey && state.aiKey.trim());
-      var hasProvider = !!(state.aiProvider && state.aiProvider.trim());
+      // Read directly from DOM as the source of truth, not state
+      // (state can race or be stale)
+      var keyValue = aiKeyEl ? (aiKeyEl.value || '') : '';
+      var providerValue = aiProviderEl ? (aiProviderEl.value || '') : '';
+      // Sync state from DOM
+      state.aiKey = keyValue;
+      state.aiProvider = providerValue;
+      var hasKey = !!(keyValue && keyValue.trim());
+      var hasProvider = !!(providerValue && providerValue.trim());
       var ready = hasKey && hasProvider;
       var modelName = getModel();
       var statusText, tooltip;
@@ -1402,8 +1409,10 @@ const jsonLdString = JSON.stringify({
     var aiButtonRegistry = [];
     function registerAi(btn){ aiButtonRegistry.push(btn); }
     function refreshAiButtons(){
-      var hasKey = !!(state.aiKey && state.aiKey.trim());
-      var hasProvider = !!(state.aiProvider && state.aiProvider.trim());
+      var keyValue = aiKeyEl ? (aiKeyEl.value || '') : '';
+      var providerValue = aiProviderEl ? (aiProviderEl.value || '') : '';
+      var hasKey = !!(keyValue && keyValue.trim());
+      var hasProvider = !!(providerValue && providerValue.trim());
       var ready = hasKey && hasProvider;
       var disabledTip;
       if(!hasProvider && !hasKey) disabledTip = 'Add provider + API key in the AI section above';
