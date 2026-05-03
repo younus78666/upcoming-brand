@@ -1,0 +1,240 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import BottomFormCTA from '../../components/BottomFormCTA.astro';
+
+const canonical = "https://upcomingbrand.com/work/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Portfolio | WordPress Web Design Projects | Upcoming Brand",
+      "description": "Selected WordPress web design and development work across law firms, medical practices, real estate, ecommerce, restaurants, nonprofits, and small business in Maryland and US-wide.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const projects = [
+  { vertical: "Law Firm",         filter: "law",       name: "Maryland Estate Planning Firm",     scope: "WordPress site + Local Pack SEO",   metric: "Lighthouse 96 / 14 mo Local Pack #1",  detail: "Custom WordPress build with Attorney + LegalService schema, 8 practice-area pages, GBP optimization, and citation cleanup. Ranked #1 Local Pack within 14 months for 'estate planning attorney baltimore'." },
+  { vertical: "Dental",           filter: "medical",   name: "Baltimore Cosmetic Dental Practice", scope: "Redesign + WooCommerce booking",     metric: "+62% form submissions / 90+ Lighthouse", detail: "Replaced legacy Divi build with native Gutenberg blocks. MedicalBusiness schema, MedicalProcedure markup per service, and integrated BookSteam booking. Form submissions up 62 percent in first 90 days." },
+  { vertical: "Real Estate",      filter: "real-estate", name: "Annapolis Brokerage",              scope: "WordPress + IDX Broker + custom search", metric: "10x indexed pages / 4-month launch", detail: "Custom WordPress + IDX Broker integration with neighborhood landing pages and RealEstateAgent schema. 4,200 listings indexed in Search Console within 60 days of launch." },
+  { vertical: "Ecommerce",        filter: "ecommerce", name: "Maryland Outdoor Goods",            scope: "WooCommerce + subscriptions",         metric: "98 Lighthouse / -45% LCP",           detail: "Custom WooCommerce theme with 220 SKUs, Stripe Subscriptions for monthly box, and Product schema across the catalog. Mobile LCP cut from 4.2s to 2.3s; conversion rate up 28 percent." },
+  { vertical: "Restaurant",       filter: "restaurant", name: "Baltimore Hospitality Group",      scope: "Multi-location WordPress + menu schema", metric: "3 locations Local Pack / 90+ Lighthouse", detail: "Three-location WordPress build with Restaurant + Menu schema, per-location landing pages, and online ordering integration. All three locations ranking Local Pack for primary keywords within 6 months." },
+  { vertical: "Nonprofit",        filter: "nonprofit", name: "Maryland Community Foundation",     scope: "WordPress redesign + giving platform", metric: "+89% donations / WCAG AA",            detail: "Redesigned WordPress site with NGO schema, accessible-by-default components (WCAG 2.2 AA), and integrated GiveWP donation processing. Online donations up 89 percent year-over-year." },
+  { vertical: "Contractor",       filter: "contractor", name: "DMV Roofing Company",              scope: "WordPress + GBP + service-area pages", metric: "47 Local Pack #1 results / 8 mo",    detail: "WordPress build with HomeAndConstructionBusiness schema, 23 service-area landing pages across MD/DC/VA, and integrated quote calculator. Ranking Local Pack #1 in 47 service-city combinations after 8 months." },
+  { vertical: "Church / Faith",   filter: "nonprofit",  name: "Baltimore Megachurch",             scope: "WordPress + sermon archive + giving",  metric: "+340% sermon plays / WCAG AA",         detail: "Custom WordPress with Church schema, sermon archive with structured data, and integrated Tithely giving. Sermon plays up 340 percent after launching the searchable archive." },
+  { vertical: "Redesign",         filter: "redesign",   name: "Annapolis Accountant Firm",        scope: "Migration from Wix + redesign",        metric: "Zero ranking loss / 0 to 90 Lighthouse", detail: "Wix-to-WordPress migration with full redirect map, AccountingService schema, and complete redesign. Rankings preserved through migration; mobile Lighthouse improved from 0 to 90+." },
+];
+
+const categories = [
+  { id: "all",           label: "All projects" },
+  { id: "law",           label: "Law firms" },
+  { id: "medical",       label: "Dental + Medical" },
+  { id: "real-estate",   label: "Real estate" },
+  { id: "ecommerce",     label: "Ecommerce" },
+  { id: "restaurant",    label: "Restaurants" },
+  { id: "nonprofit",     label: "Nonprofits" },
+  { id: "contractor",    label: "Contractors" },
+  { id: "redesign",      label: "Redesigns + migrations" },
+];
+
+const stats = [
+  { num: "400+",    label: "WordPress projects shipped" },
+  { num: "12",      label: "Countries served" },
+  { num: "9",       label: "Verticals covered" },
+  { num: "5+ yrs",  label: "Senior WordPress experience" },
+];
+---
+<BaseLayout
+  title="Portfolio | WordPress Web Design Projects | Upcoming Brand"
+  description="Selected WordPress web design work across law firms, medical practices, real estate, ecommerce, restaurants, nonprofits, contractors, and small business in Maryland and US-wide."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head"><script type="application/ld+json" set:html={jsonLd} /></Fragment>
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="wrk-hero">
+      <div class="container">
+        <div class="wrk-hero-inner">
+          <div class="page-eyebrow-strip"><span class="page-eyebrow-line"></span><span class="page-eyebrow-text">Selected work</span><span class="page-eyebrow-line"></span></div>
+          <h1 class="wrk-h1">
+            <span class="wrk-h1-line">WordPress projects</span>
+            <span class="wrk-h1-line wrk-h1-accent"><em>across nine verticals.</em></span>
+          </h1>
+          <p class="wrk-lead">A curated selection of recent <strong>WordPress web design and development projects</strong> across law firms, medical practices, real estate, ecommerce, restaurants, nonprofits, contractors, churches, and small business. Project specifics are anonymized at the client's request, but the metrics are real.</p>
+
+          <div class="wrk-stats">
+            {stats.map((s) => (
+              <div class="wrk-stat">
+                <div class="wrk-stat-num">{s.num}</div>
+                <div class="wrk-stat-label">{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <section class="wrk-filters">
+      <div class="container">
+        <div class="wrk-filters-inner" id="wrk-filters">
+          {categories.map((c) => (
+            <button class="wrk-filter-btn" data-filter={c.id} type="button">{c.label}</button>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT GRID -->
+    <section class="wrk-grid-wrap">
+      <div class="container">
+        <div class="wrk-grid" id="wrk-grid">
+          {projects.map((p) => (
+            <article class="wrk-card" data-vertical={p.filter}>
+              <div class="wrk-card-head">
+                <span class="wrk-card-vertical">{p.vertical}</span>
+                <span class="wrk-card-metric">{p.metric}</span>
+              </div>
+              <h3 class="wrk-card-name">{p.name}</h3>
+              <p class="wrk-card-scope">{p.scope}</p>
+              <p class="wrk-card-detail">{p.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip"><span class="page-eyebrow-line page-eyebrow-line-amber"></span><span class="page-eyebrow-text page-eyebrow-text-light">Start a project</span><span class="page-eyebrow-line page-eyebrow-line-amber"></span></div>
+          <h2 class="page-h2 page-cta-h2">Want your project on this list?<br><em>Fixed-scope from $1,500.</em></h2>
+          <p class="page-cta-lead">A free 15-minute call to scope the project. We send the SOW within 24 hours and start on signature.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">Book a call <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="/services/" class="page-cta-ghost-light">See full services <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <BottomFormCTA formName="work-cta" />
+  <Footer />
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterBar = document.getElementById('wrk-filters');
+    const grid = document.getElementById('wrk-grid');
+    if (!filterBar || !grid) return;
+
+    const buttons = filterBar.querySelectorAll('.wrk-filter-btn');
+    const cards = grid.querySelectorAll('.wrk-card');
+
+    function applyFilter(id) {
+      buttons.forEach((b) => {
+        b.classList.toggle('wrk-filter-btn-active', b.dataset.filter === id);
+      });
+      cards.forEach((c) => {
+        const v = c.dataset.vertical;
+        c.style.display = (id === 'all' || v === id) ? '' : 'none';
+      });
+    }
+
+    buttons.forEach((b) => {
+      b.addEventListener('click', () => applyFilter(b.dataset.filter));
+    });
+
+    // Honor ?filter= query param
+    const qp = new URLSearchParams(window.location.search);
+    const initial = qp.get('filter') || 'all';
+    applyFilter(initial);
+  });
+</script>
+
+<style>
+  .page-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 12px 0 0; }
+  .page-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
+  .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+  .lp-btn-primary { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-body); font-size: 15px; font-weight: 500; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap; transition: all 0.22s ease; cursor: pointer; background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); }
+  .lp-btn-primary:hover { background: var(--amber-deep); border-color: var(--amber-deep); transform: translateY(-2px); }
+  .lp-btn-primary svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+
+  .wrk-hero { background: var(--cream); border-bottom: 1px solid var(--line); padding: clamp(56px, 8vh, 96px) 0 clamp(40px, 6vh, 64px); position: relative; overflow: hidden; text-align: center; }
+  .wrk-hero::before { content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%); pointer-events: none; }
+  .wrk-hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .wrk-h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(32px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.035em; display: flex; flex-direction: column; gap: 4px; margin: 8px 0 0; text-align: center; }
+  .wrk-h1-line { display: block; color: var(--ink); }
+  .wrk-h1-accent em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .wrk-lead { font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: var(--ink-soft); max-width: 64ch; margin: 4px auto 0; }
+  .wrk-lead strong { font-weight: 600; color: var(--ink); }
+  .wrk-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; max-width: 720px; margin: 18px auto 0; width: 100%; }
+  .wrk-stat { text-align: center; padding: 16px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); }
+  .wrk-stat-num { font-family: var(--f-display); font-size: 28px; font-weight: 600; color: var(--amber-deep); letter-spacing: -0.02em; }
+  .wrk-stat-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-top: 4px; }
+
+  .wrk-filters { background: var(--paper); border-bottom: 1px solid var(--line); padding: 20px 0; position: sticky; top: 0; z-index: 5; }
+  .wrk-filters-inner { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .wrk-filter-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); cursor: pointer; transition: all 0.2s ease; font-weight: 500; }
+  .wrk-filter-btn:hover { border-color: var(--amber); color: var(--ink); }
+  .wrk-filter-btn-active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+  .wrk-grid-wrap { background: var(--cream); padding: clamp(40px, 6vh, 64px) 0 clamp(56px, 8vh, 96px); }
+  .wrk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .wrk-card { background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 26px 28px; transition: all 0.3s ease; position: relative; }
+  .wrk-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,147,46,0.1); }
+  .wrk-card-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+  .wrk-card-vertical { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); padding: 4px 10px; background: rgba(212,147,46,0.1); border-radius: var(--radius-pill); font-weight: 600; }
+  .wrk-card-metric { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.04em; }
+  .wrk-card-name { font-family: var(--f-display); font-size: 22px; line-height: 1.2; color: var(--ink); font-weight: 600; letter-spacing: -0.02em; margin: 0 0 6px; }
+  .wrk-card-scope { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--amber-deep); margin: 0 0 12px; font-weight: 500; }
+  .wrk-card-detail { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+
+  .page-cta { background: var(--ink); padding: clamp(72px, 10vh, 112px) 0; position: relative; overflow: hidden; }
+  .page-cta::before { content: ""; position: absolute; top: -300px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%); pointer-events: none; }
+  .page-cta-inner { max-width: 720px; text-align: center; margin: 0 auto; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead { font-size: 16px; line-height: 1.6; color: rgba(244,239,230,0.65); max-width: 56ch; margin: 0 auto; }
+  .page-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .page-cta-primary { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+  .page-cta-primary:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+  .page-cta-ghost-light { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid rgba(244,239,230,0.2); color: var(--cream); background: transparent; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.22s ease; }
+  .page-cta-ghost-light:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,147,46,0.08); transform: translateY(-2px); }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  @media (max-width: 1024px) { .wrk-stats { grid-template-columns: repeat(2, 1fr); } .wrk-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 640px) { .page-eyebrow-line { width: 24px; } }
+</style>

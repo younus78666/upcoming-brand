@@ -1,0 +1,358 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+import ServiceHero from '../../../components/ServiceHero.astro';
+import Marquee from '../../../components/Marquee.astro';
+import BottomFormCTA from '../../../components/BottomFormCTA.astro';
+
+const canonical = "https://upcomingbrand.com/services/wordpress-support/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "WordPress Support Service | On-Demand Hourly WordPress Help | Upcoming Brand",
+      "description": "On-demand WordPress support service. Hourly WordPress help, emergency support, troubleshooting, and ad-hoc fixes. $150/hr or 10-hour blocks for $1,500. 4-hour response.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "about": { "@id": "https://upcomingbrand.com/#organization" },
+      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "dateModified": "2026-05-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",                "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Services",            "item": "https://upcomingbrand.com/services/" },
+          { "@type": "ListItem", "position": 3, "name": "WordPress Support",   "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": `${canonical}#service`,
+      "name": "WordPress Support Service",
+      "description": "Senior on-demand WordPress support service: hourly WordPress help, emergency support, troubleshooting, and ad-hoc fixes. $150/hr or 10-hour blocks for $1,500.",
+      "provider": { "@id": "https://upcomingbrand.com/#organization" },
+      "serviceType": "WordPress support",
+      "areaServed": { "@type": "Country", "name": "United States" },
+      "offers": { "@type": "Offer", "price": "150", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-31" },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "12", "bestRating": "5" },
+      "knowsAbout": ["WordPress support", "WordPress support service", "WordPress help", "WordPress tech support", "WordPress emergency support", "On-demand WordPress support", "Hourly WordPress help", "WordPress troubleshooting"]
+    }
+  ]
+});
+
+const tiers = [
+  { name: "One-time",   price: "$150/hr",        duration: "Same-week scheduling", summary: "On-demand WordPress help billed hourly. Pay only for what you use. 30-minute minimum, 4-hour SLA reply during business hours.", fits: ["Single fix or task", "Plugin or theme issue", "One-off troubleshooting"], href: "/contact/?plan=support-hourly" },
+  { name: "Block",      price: "$1,500",         duration: "10 hours, valid 6 months", summary: "Block of 10 hours at $150/hr. Useful for businesses with periodic WordPress needs. No expiration anxiety; the block is good for 6 months from purchase.", fits: ["Periodic WordPress work", "Multiple small fixes", "Occasional new content"], href: "/contact/?plan=support-block", highlight: true },
+  { name: "Retainer",   price: "From $500/mo",   duration: "Month-to-month",        summary: "Monthly retainer with priority response and dedicated hours. Pairs with care plans for clients who want guaranteed hands available without buying blocks.", fits: ["Monthly WordPress needs", "Priority response (1-hour SLA)", "Pairs with care plan"], href: "/contact/?plan=support-retainer" },
+];
+
+const whenSupport = [
+  { num: "01", signal: "Plugin update broke the site",        detail: "WP-Admin or front-end suddenly returning a white screen of death after a plugin update. We diagnose via SSH or staging access, identify the conflict, and roll forward or back depending on impact." },
+  { num: "02", signal: "Need to add or change something fast", detail: "New service page, content update, form field tweak, or plugin configuration that you do not want to figure out yourself. Send the brief, get it done within 1 to 2 business days." },
+  { num: "03", signal: "WooCommerce is misbehaving",            detail: "Checkout error, payment gateway issue, shipping calculation broken, subscription renewal failing. WooCommerce-specific support that does not require buying a full development engagement." },
+  { num: "04", signal: "Site is down right now",                 detail: "Emergency WordPress support. We respond to confirmed-down events within 4 hours during business hours, 8 hours otherwise. Most outages are fixed within 1 to 4 hours of starting work." },
+  { num: "05", signal: "Need a one-off improvement",             detail: "Speed fix, schema addition, redirect cleanup, image optimization. Tasks that are too small for a full engagement but bigger than what you want to handle yourself." },
+  { num: "06", signal: "Lost your last developer",                detail: "Previous freelancer or agency is unreachable. We pick up the site, audit the state, and become your default support contact. No retainer required initially." },
+];
+
+const faqs = [
+  { q: "What is WordPress support?", a: "WordPress support is on-demand help with WordPress sites for tasks that do not warrant a full engagement. Typical WordPress support tasks include plugin troubleshooting, theme tweaks, content updates, performance fixes, security patches, WooCommerce issues, and emergency outage response. Quality WordPress support is billed hourly or in blocks rather than as a fixed-scope project, which keeps the engagement flexible for unpredictable work." },
+  { q: "How much does WordPress support cost?", a: "Quality WordPress support runs $80 to $250/hr depending on seniority. Our WordPress support is $150/hr with a 30-minute minimum, billed in 15-minute increments after that. Blocks of 10 hours run $1,500 ($150/hr equivalent) and are valid 6 months from purchase. Retainers start at $500/mo for businesses with ongoing WordPress needs." },
+  { q: "How fast do you respond to WordPress support requests?", a: "Standard WordPress support response is 4 hours during business hours (Eastern Time, Monday to Friday) and 8 hours otherwise. Emergency support for confirmed-down events targets 1-hour response during business hours and 4-hour response after hours. Retainer clients get priority response with 1-hour SLA on all requests." },
+  { q: "Do you offer WordPress emergency support?", a: "Yes. WordPress emergency support is for confirmed-down sites, hacked sites, or active outages affecting business operations. We respond within 4 hours during business hours and 8 hours otherwise. Emergency support is billed at $200/hr (33 percent premium over standard rate) given the response-time commitment. Most emergencies are resolved within 1 to 4 hours of starting work." },
+  { q: "Can you help with WooCommerce issues?", a: "Yes. WooCommerce support is a major portion of our WordPress support work. Common issues include checkout errors, payment gateway failures, shipping calculation bugs, subscription renewal problems, product variation issues, and inventory sync errors. WooCommerce support is billed at the same $150/hr rate; emergency rate applies if the store is actively down." },
+  { q: "What is the difference between WordPress support and a care plan?", a: "Care plans are monthly recurring services covering scheduled maintenance: weekly plugin updates tested on staging, daily backups, security monitoring, uptime tracking, and performance reports. WordPress support is on-demand help for unscheduled tasks: troubleshooting, content updates, new features, emergency response. Most clients use both: a care plan for the recurring maintenance, support hours for the one-off needs that arise." },
+];
+---
+<BaseLayout
+  title="WordPress Support Service | On-Demand Hourly Help from $150/hr | Upcoming Brand"
+  description="Senior on-demand WordPress support service. Hourly WordPress help, emergency support, troubleshooting, ad-hoc fixes. $150/hr or 10-hour blocks for $1,500. 4-hour SLA."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head"><script type="application/ld+json" set:html={jsonLd} /></Fragment>
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+    <ServiceHero
+      eyebrow='WordPress support service'
+      pillText='WordPress Support · On-Demand'
+      h1Lines={[
+        { text: 'WordPress support service' },
+        { text: 'on-demand, hourly,', type: 'accent' },
+        { text: 'no retainer required.', type: 'italic' },
+      ]}
+      lead='<strong>WordPress support service</strong> billed hourly or in blocks. Plugin troubleshooting, theme tweaks, content updates, performance fixes, WooCommerce issues, and <strong>WordPress emergency support</strong> for down sites. Hire a senior WordPress expert by the hour without committing to a retainer. <strong>$150/hr or $1,500 for 10 hours. 4-hour reply SLA.</strong>'
+      formName='wp-support-inquiry'
+      trustLines={['$150/hr or 10-hr block', '4-hour reply SLA', 'No retainer required']}
+      formSteps={[
+        { title: 'Tell us who you are', subtitle: 'Just your name and email. 30 seconds.', fields: [
+          { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+          { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+        ]},
+        { title: 'About your site', subtitle: 'Where it lives.', fields: [
+          { type: 'url',  name: 'site_url', label: 'WordPress site URL', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+          { type: 'select', name: 'urgency', label: 'How urgent is this?', required: true,
+            options: ['Site is down right now (emergency)', 'Need it done within 1-2 days', 'Need it done within 1 week', 'Flexible, no rush'] },
+        ]},
+        { title: 'What needs help?', subtitle: 'The category of work.', fields: [
+          { type: 'select', name: 'work_type', label: 'Type of help needed', required: true,
+            options: ['Plugin / theme troubleshooting', 'Content / page update', 'WooCommerce issue', 'Performance / speed fix', 'Security / hacked site', 'New feature / functionality', 'Multiple small things', 'Not sure'] },
+          { type: 'select', name: 'engagement_tier', label: 'Engagement type', required: true,
+            options: ['One-time hourly ($150/hr)', '10-hour block ($1,500)', 'Monthly retainer ($500+/mo)', 'Not sure yet'] },
+        ]},
+        { title: 'Describe the issue', subtitle: 'A few sentences on what is happening.', fields: [
+          { type: 'textarea', name: 'message', label: 'What is going on?', placeholder: 'Specific symptoms, error messages, recent changes, what you have already tried.', required: true, rows: 3 },
+        ]},
+      ]}
+    />
+    <Marquee />
+
+    <section class="sup-define">
+      <div class="container">
+        <div class="sup-define-card">
+          <div class="sup-define-head">
+            <span class="sup-define-pulse" aria-hidden="true"></span>
+            <span class="sup-define-label">Definition</span>
+          </div>
+          <h2 class="page-h2 sup-define-h2">What is WordPress support?</h2>
+          <p class="sup-define-answer">
+            <strong>WordPress support is on-demand help with WordPress sites for tasks that do not warrant a full engagement.</strong> Typical WordPress support tasks include plugin troubleshooting, theme tweaks, content updates, performance fixes, security patches, WooCommerce issues, and emergency outage response. Quality WordPress support is billed hourly or in blocks rather than as a fixed-scope project, which keeps the engagement flexible for unpredictable work.
+          </p>
+          <div class="sup-define-meta">
+            <div class="sup-define-meta-item"><span class="sup-define-meta-label">Rate</span><span class="sup-define-meta-val">$150/hr (30-min minimum, 15-min increments)</span></div>
+            <div class="sup-define-meta-item"><span class="sup-define-meta-label">Reply SLA</span><span class="sup-define-meta-val">4 hours business, 8 hours otherwise</span></div>
+            <div class="sup-define-meta-item"><span class="sup-define-meta-label">Outcome</span><span class="sup-define-meta-val">Fixed fast, no retainer commitment</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sup-tiers" id="tiers">
+      <div class="container">
+        <div class="sup-tiers-head">
+          <p class="sup-section-eyebrow"><span class="sup-section-eyebrow-line"></span>Three options</p>
+          <h2 class="page-h2">Three <em>WordPress support packages.</em></h2>
+          <p class="page-section-lead">Pay for the help, not for a contract. The block is the most popular option for businesses with periodic WordPress needs.</p>
+        </div>
+        <div class="sup-tiers-grid">
+          {tiers.map((t) => (
+            <a href={t.href} class={`sup-tier ${t.highlight ? 'sup-tier-highlight' : ''}`}>
+              {t.highlight && <span class="sup-tier-flag">Most chosen</span>}
+              <span class="sup-tier-name">{t.name}</span>
+              <span class="sup-tier-price">{t.price}</span>
+              <span class="sup-tier-duration">{t.duration}</span>
+              <p class="sup-tier-summary">{t.summary}</p>
+              <div class="sup-tier-fits">
+                <span class="sup-tier-fits-label">Fits</span>
+                <ul class="sup-tier-fits-list">{t.fits.map((f) => (<li>{f}</li>))}</ul>
+              </div>
+              <span class="sup-tier-cta">Book {t.name} <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sup-when">
+      <div class="container">
+        <div class="sup-when-head">
+          <p class="sup-section-eyebrow"><span class="sup-section-eyebrow-line"></span>When to call</p>
+          <h2 class="page-h2">Six signals <em>your WordPress site needs hourly support.</em></h2>
+        </div>
+        <div class="sup-when-grid">
+          {whenSupport.map((w) => (
+            <article class="sup-when-card">
+              <span class="sup-when-num">{w.num}</span>
+              <h3 class="sup-when-signal">{w.signal}</h3>
+              <p class="sup-when-detail">{w.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="sup-faq">
+      <div class="container">
+        <div class="sup-faq-head">
+          <div class="page-eyebrow-strip"><span class="page-eyebrow-line"></span><span class="page-eyebrow-text">WordPress support FAQ</span><span class="page-eyebrow-line"></span></div>
+          <h2 class="page-h2 sup-faq-h2">Six questions <em>before you call.</em></h2>
+        </div>
+        <div class="sup-faq-list">
+          {faqs.map((f, i) => (
+            <details class="sup-faq-item">
+              <summary class="sup-faq-q">
+                <span class="sup-faq-num">{String(i + 1).padStart(2, '0')}</span>
+                <span class="sup-faq-q-text">{f.q}</span>
+                <span class="sup-faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </summary>
+              <p class="sup-faq-a">{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="page-cta">
+      <div class="container">
+        <div class="page-cta-inner">
+          <div class="page-eyebrow-strip"><span class="page-eyebrow-line page-eyebrow-line-amber"></span><span class="page-eyebrow-text page-eyebrow-text-light">Book WordPress support</span><span class="page-eyebrow-line page-eyebrow-line-amber"></span></div>
+          <h2 class="page-h2 page-cta-h2">On-demand WordPress help.<br><em>$150/hr. 4-hour reply.</em></h2>
+          <p class="page-cta-lead">If your site is actively down, mark the form urgent. We respond to confirmed emergencies within 4 hours during business days.</p>
+          <div class="page-cta-buttons">
+            <a href="/contact/" class="lp-btn-primary page-cta-primary">Book support <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a href="/services/wordpress-care-plans/" class="page-cta-ghost-light">See care plans for ongoing maintenance <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 12L12 2M12 2H5M12 2v7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <BottomFormCTA formName="wp-support-cta"
+    formSteps={[
+      { title: 'Tell us who you are', subtitle: 'Just your name and email. 30 seconds.', fields: [
+        { type: 'text',  name: 'name',  label: 'Your name',     placeholder: 'Jane Smith',       required: true, autocomplete: 'name' },
+        { type: 'email', name: 'email', label: 'Email address', placeholder: 'jane@company.com', required: true, autocomplete: 'email' },
+      ]},
+      { title: 'About your site', subtitle: 'Where it lives.', fields: [
+        { type: 'url',  name: 'site_url', label: 'WordPress site URL', placeholder: 'https://yoursite.com', required: true, autocomplete: 'url' },
+        { type: 'select', name: 'urgency', label: 'How urgent is this?', required: true,
+          options: ['Site is down right now (emergency)', 'Need it done within 1-2 days', 'Need it done within 1 week', 'Flexible, no rush'] },
+      ]},
+      { title: 'What needs help?', subtitle: 'The category of work.', fields: [
+        { type: 'select', name: 'work_type', label: 'Type of help needed', required: true,
+          options: ['Plugin / theme troubleshooting', 'Content / page update', 'WooCommerce issue', 'Performance / speed fix', 'Security / hacked site', 'New feature / functionality', 'Multiple small things', 'Not sure'] },
+        { type: 'select', name: 'engagement_tier', label: 'Engagement type', required: true,
+          options: ['One-time hourly ($150/hr)', '10-hour block ($1,500)', 'Monthly retainer ($500+/mo)', 'Not sure yet'] },
+      ]},
+      { title: 'Describe the issue', subtitle: 'A few sentences on what is happening.', fields: [
+        { type: 'textarea', name: 'message', label: 'What is going on?', placeholder: 'Specific symptoms, error messages, recent changes, what you have already tried.', required: true, rows: 3 },
+      ]},
+    ]}
+  />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 12px 0 0; }
+  .page-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .page-section-lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; margin: 16px auto 0; }
+  .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
+  .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
+  .page-eyebrow-line-amber { background: var(--amber); }
+  .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
+  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
+  .lp-btn-primary { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-body); font-size: 15px; font-weight: 500; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap; transition: all 0.22s ease; cursor: pointer; background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); }
+  .lp-btn-primary:hover { background: var(--amber-deep); border-color: var(--amber-deep); transform: translateY(-2px); }
+  .lp-btn-primary svg { transition: transform 0.22s ease; flex-shrink: 0; }
+  .lp-btn-primary:hover svg { transform: translateX(3px); }
+  .sup-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin: 0; font-weight: 500; }
+  .sup-section-eyebrow-line { display: inline-block; width: 32px; height: 1px; background: var(--amber); }
+
+  .sup-define { background: var(--paper); padding: clamp(48px, 6vh, 80px) 0; border-bottom: 1px solid var(--line); }
+  .sup-define-card { max-width: 880px; margin: 0 auto; background: var(--cream); border: 1.5px solid rgba(212,147,46,0.3); border-radius: var(--radius-lg); padding: 36px 40px; position: relative; box-shadow: var(--shadow-sm); }
+  .sup-define-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+  .sup-define-head { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+  .sup-define-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px rgba(212,147,46,0.18); animation: sup-pulse 2s ease-in-out infinite; }
+  @keyframes sup-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
+  .sup-define-label { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .sup-define-h2 { margin: 0 0 16px; font-size: clamp(22px, 3vw, 32px); }
+  .sup-define-answer { font-size: 16.5px; line-height: 1.6; color: var(--ink); margin: 0 0 20px; }
+  .sup-define-answer strong { font-weight: 600; color: var(--ink); }
+  .sup-define-meta { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; padding-top: 18px; border-top: 1px dashed var(--line); }
+  .sup-define-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .sup-define-meta-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; }
+  .sup-define-meta-val { font-size: 13px; line-height: 1.5; color: var(--ink-soft); }
+
+  .sup-tiers { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 24px; }
+  .sup-tiers-head { text-align: center; max-width: 720px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .sup-tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; align-items: stretch; }
+  .sup-tier { display: flex; flex-direction: column; gap: 10px; padding: 32px 28px 28px; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); text-decoration: none; color: inherit; transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .sup-tier:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 14px 36px rgba(212,147,46,0.12); }
+  .sup-tier-highlight { background: var(--ink); color: var(--cream); border-color: var(--amber); transform: translateY(-6px); }
+  .sup-tier-highlight::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--amber), var(--amber-deep), var(--amber)); }
+  .sup-tier-highlight:hover { transform: translateY(-10px); }
+  .sup-tier-flag { position: absolute; top: 14px; right: 14px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 11px 5px 11px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; white-space: nowrap; box-shadow: 0 2px 10px rgba(212, 147, 46, 0.4); z-index: 3; }
+  .sup-tier-name { font-family: var(--f-display); font-size: 32px; line-height: 1; color: var(--ink); font-weight: 500; letter-spacing: -0.025em; margin-top: 4px; }
+  .sup-tier-highlight .sup-tier-name { color: var(--cream); }
+  .sup-tier-price { font-family: var(--f-display); font-size: 24px; line-height: 1; color: var(--amber-deep); font-weight: 500; margin-top: 8px; }
+  .sup-tier-highlight .sup-tier-price { color: var(--amber); }
+  .sup-tier-duration { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); }
+  .sup-tier-highlight .sup-tier-duration { color: rgba(244,239,230,0.5); }
+  .sup-tier-summary { font-size: 13px; line-height: 1.55; color: var(--ink-muted); margin: 12px 0 0; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .sup-tier-highlight .sup-tier-summary { color: rgba(244,239,230,0.7); border-color: rgba(244,239,230,0.15); }
+  .sup-tier-fits { margin-top: 8px; padding-top: 12px; border-top: 1px dashed var(--line); flex: 1; }
+  .sup-tier-highlight .sup-tier-fits { border-color: rgba(244,239,230,0.15); }
+  .sup-tier-fits-label { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin-bottom: 8px; font-weight: 500; }
+  .sup-tier-highlight .sup-tier-fits-label { color: var(--amber); }
+  .sup-tier-fits-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+  .sup-tier-fits-list li { font-size: 12.5px; color: var(--ink-soft); padding-left: 14px; position: relative; }
+  .sup-tier-fits-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 8px; height: 1px; background: var(--amber); }
+  .sup-tier-highlight .sup-tier-fits-list li { color: rgba(244,239,230,0.75); }
+  .sup-tier-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+  .sup-tier-highlight .sup-tier-cta { color: var(--amber); border-color: rgba(244,239,230,0.15); }
+
+  .sup-when { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .sup-when-head { text-align: center; max-width: 760px; margin: 0 auto 48px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .sup-when-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .sup-when-card { padding: 28px 26px 24px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); transition: all 0.3s ease; position: relative; overflow: hidden; }
+  .sup-when-card::before { content: ""; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--amber); transform: scaleY(0); transform-origin: top; transition: transform 0.4s ease; }
+  .sup-when-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(212,147,46,0.1); }
+  .sup-when-card:hover::before { transform: scaleY(1); }
+  .sup-when-num { font-family: var(--f-display); font-size: 14px; font-style: italic; color: var(--amber-deep); font-weight: 400; }
+  .sup-when-signal { font-family: var(--f-display); font-size: 19px; line-height: 1.25; color: var(--ink); font-weight: 600; letter-spacing: -0.015em; margin: 10px 0 8px; }
+  .sup-when-detail { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; }
+
+  .sup-faq { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .sup-faq-head { text-align: center; max-width: 760px; margin: 0 auto 40px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .sup-faq-h2 { text-align: center; }
+  .sup-faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 880px; margin: 0 auto; }
+  .sup-faq-item { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: all var(--transition); }
+  .sup-faq-item[open] { border-color: var(--amber); box-shadow: 0 4px 14px rgba(212,147,46,0.08); }
+  .sup-faq-q { display: grid; grid-template-columns: 36px 1fr 24px; gap: 16px; align-items: center; padding: 20px 24px; cursor: pointer; list-style: none; }
+  .sup-faq-q::-webkit-details-marker { display: none; }
+  .sup-faq-item:hover .sup-faq-q { background: rgba(212,147,46,0.04); }
+  .sup-faq-num { font-family: var(--f-display); font-size: 13px; color: var(--amber-deep); font-style: italic; font-weight: 400; }
+  .sup-faq-q-text { font-family: var(--f-display); font-size: 18px; line-height: 1.3; color: var(--ink); font-weight: 500; letter-spacing: -0.015em; }
+  .sup-faq-icon { width: 24px; height: 24px; border-radius: 50%; background: rgba(15,20,25,0.06); color: var(--ink); display: inline-flex; align-items: center; justify-content: center; transition: all 0.3s ease; }
+  .sup-faq-item[open] .sup-faq-icon { background: var(--amber); color: var(--ink); transform: rotate(180deg); }
+  .sup-faq-a { padding: 0 24px 22px 76px; font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin: 0; border-top: 1px dashed var(--line); padding-top: 18px; }
+
+  .page-cta { background: var(--ink); padding: clamp(72px, 10vh, 112px) 0; position: relative; overflow: hidden; }
+  .page-cta::before { content: ""; position: absolute; top: -300px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%); pointer-events: none; }
+  .page-cta-inner { max-width: 720px; text-align: center; margin: 0 auto; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
+  .page-cta-h2 em { color: var(--amber); }
+  .page-cta-lead { font-size: 16px; line-height: 1.6; color: rgba(244,239,230,0.65); max-width: 56ch; margin: 0 auto; }
+  .page-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
+  .page-cta-primary { background: var(--amber); border-color: var(--amber); color: var(--ink); }
+  .page-cta-primary:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
+  .page-cta-ghost-light { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid rgba(244,239,230,0.2); color: var(--cream); background: transparent; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.22s ease; }
+  .page-cta-ghost-light:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,147,46,0.08); transform: translateY(-2px); }
+  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
+  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
+
+  @media (max-width: 1024px) {
+    .sup-define-meta { grid-template-columns: 1fr; gap: 12px; }
+    .sup-define-card { padding: 28px 24px; }
+    .sup-tiers-grid { grid-template-columns: 1fr; }
+    .sup-tier-highlight { transform: none; }
+    .sup-tier-highlight:hover { transform: translateY(-4px); }
+    .sup-when-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .sup-when-grid { grid-template-columns: 1fr; }
+    .sup-faq-q { grid-template-columns: 1fr 24px; gap: 12px; }
+    .sup-faq-num { display: none; }
+    .sup-faq-a { padding-left: 24px; }
+  }
+  @media (max-width: 640px) { .page-eyebrow-line { width: 24px; } }
+</style>
