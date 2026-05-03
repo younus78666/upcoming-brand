@@ -1,0 +1,130 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import BottomFormCTA from '../../components/BottomFormCTA.astro';
+
+const canonical = "https://upcomingbrand.com/tools/";
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Free Tools | Upcoming Brand",
+      "description": "Free tools for WordPress site owners: installment calculator, speed test, schema generator, hosting recommender, and local SEO checker.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "dateModified": "2026-05-03",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",  "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Tools", "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+
+const tools = [
+  {
+    slug: 'installment-calculator',
+    name: 'Installment Calculator',
+    tagline: 'Start today, pay over 3-12 months',
+    desc: 'Pick any Upcoming Brand fixed-price project, choose your deposit and term, see exactly when your site launches, your monthly payment, and projected ROI break-even.',
+    status: 'live',
+    badge: 'New',
+  },
+  { slug: 'website-cost-calculator', name: 'Website Cost Calculator', tagline: '5-year TCO with risk-adjusted pricing', desc: 'Most calculators give one number. Ours projects total cost over 5 years (build + hosting + maintenance + opportunity cost) with risk scoring per pricing tier.', status: 'coming-soon' },
+  { slug: 'wordpress-speed-test',     name: 'WordPress Speed Test',     tagline: 'Multi-page Lighthouse + CrUX field data',     desc: 'Tests homepage + 3 inner pages, reconciles lab vs field data, detects common heavy plugins, and calculates the dollar cost of every 100ms of LCP.', status: 'coming-soon' },
+  { slug: 'schema-generator',          name: 'Schema Markup Generator',  tagline: 'Multi-entity @graph with industry presets', desc: 'Generate connected schemas (LocalBusiness + Service + FAQ) with @id cross-references. Industry presets bundle the right combinations automatically.', status: 'coming-soon' },
+  { slug: 'local-seo-checker',         name: 'Local SEO Checker',        tagline: 'Live competitor Local Pack audit',          desc: 'NAP consistency diff across 50+ directories, GBP completeness scored against competitors, photo EXIF audit, and review velocity benchmarking.', status: 'coming-soon' },
+  { slug: 'hosting-recommender',       name: 'Hosting Recommender',       tagline: 'Real CrUX data + 3-year TCO',                 desc: 'Compares Kinsta, WP Engine, Cloudways, SiteGround using real CrUX data for similar-traffic sites. Independent, no affiliate commissions.', status: 'coming-soon' },
+];
+---
+<BaseLayout
+  title="Free Tools for WordPress + SEO | Upcoming Brand"
+  description="Free tools for WordPress site owners: installment calculator, speed test, schema generator, hosting recommender, and local SEO checker. No email required."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head"><script type="application/ld+json" set:html={jsonLd} /></Fragment>
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <section class="tools-hero">
+      <div class="container">
+        <div class="tools-hero-inner">
+          <div class="page-eyebrow-strip"><span class="page-eyebrow-line"></span><span class="page-eyebrow-text">Free tools</span><span class="page-eyebrow-line"></span></div>
+          <h1 class="tools-h1">
+            <span class="tools-h1-line">Free WordPress + SEO tools</span>
+            <span class="tools-h1-line"><em class="tools-h1-accent">that actually go beyond the basics.</em></span>
+          </h1>
+          <p class="tools-lead">
+            We built these because the existing tools in the market are either ad-stuffed or surface-level. Each tool here ships with features you will not find anywhere else. <strong>No email required to use them.</strong>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tools-grid-section">
+      <div class="container">
+        <div class="tools-grid">
+          {tools.map((t) => (
+            <a href={t.status === 'live' ? `/tools/${t.slug}/` : '#'} class={`tools-card ${t.status === 'coming-soon' ? 'tools-card-soon' : ''}`} aria-disabled={t.status === 'coming-soon'}>
+              {t.status === 'live' && t.badge && <span class="tools-card-badge">{t.badge}</span>}
+              {t.status === 'coming-soon' && <span class="tools-card-soon-pill">Coming soon</span>}
+              <h3 class="tools-card-name">{t.name}</h3>
+              <p class="tools-card-tagline">{t.tagline}</p>
+              <p class="tools-card-desc">{t.desc}</p>
+              {t.status === 'live' && (
+                <span class="tools-card-cta">
+                  Open tool
+                  <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              )}
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <BottomFormCTA formName="tools-cta" heading="Want a tool we have not built yet?" sub="Tell us what you wish existed. We ship a new tool every quarter based on what clients actually ask for." />
+  <Footer />
+</BaseLayout>
+
+<style>
+  .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
+  .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
+  .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
+
+  .tools-hero { background: var(--cream); padding: clamp(56px, 8vh, 96px) 0 clamp(40px, 6vh, 64px); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; text-align: center; }
+  .tools-hero::before { content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%); pointer-events: none; }
+  .tools-hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 16px; }
+  .tools-h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(32px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.03em; display: flex; flex-direction: column; gap: 4px; margin: 8px 0 0; text-align: center; }
+  .tools-h1-line { display: block; color: var(--ink); }
+  .tools-h1-accent { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .tools-lead { font-size: clamp(15px, 1.2vw, 17px); line-height: 1.6; color: var(--ink-soft); max-width: 64ch; margin: 4px auto 0; }
+  .tools-lead strong { font-weight: 600; color: var(--ink); }
+
+  .tools-grid-section { background: var(--paper); padding: clamp(48px, 7vh, 80px) 0 clamp(56px, 8vh, 96px); }
+  .tools-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .tools-card { position: relative; display: flex; flex-direction: column; gap: 8px; padding: 28px 30px; background: var(--cream); border: 1.5px solid var(--line); border-radius: var(--radius-lg); text-decoration: none; color: inherit; transition: all 0.3s ease; }
+  .tools-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,147,46,0.1); }
+  .tools-card-soon { opacity: 0.7; cursor: not-allowed; }
+  .tools-card-soon:hover { transform: none; box-shadow: none; }
+  .tools-card-badge { position: absolute; top: 16px; right: 16px; padding: 4px 10px; background: var(--amber); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; box-shadow: 0 4px 10px rgba(212,147,46,0.3); }
+  .tools-card-soon-pill { position: absolute; top: 16px; right: 16px; padding: 4px 10px; background: var(--paper); color: var(--ink-muted); border: 1px solid var(--line); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+  .tools-card-name { font-family: var(--f-display); font-size: 22px; line-height: 1.2; color: var(--ink); font-weight: 600; letter-spacing: -0.02em; margin: 0; padding-right: 90px; }
+  .tools-card-tagline { font-family: var(--f-display); font-size: 14px; line-height: 1.4; color: var(--amber-deep); margin: 0; font-style: italic; font-weight: 300; }
+  .tools-card-desc { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); margin: 4px 0 0; }
+  .tools-card-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
+
+  @media (max-width: 768px) { .tools-grid { grid-template-columns: 1fr; } }
+</style>
