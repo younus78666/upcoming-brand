@@ -187,6 +187,19 @@ function thankYouHtml(firstName: string): string {
                 </td>
               </tr>
             </table>
+
+            <!-- BIG CALL/WHATSAPP CTA in hero -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:28px auto 0;">
+              <tr>
+                <td style="padding:0;text-align:center;">
+                  <div style="font:500 11px/1.2 'SF Mono',Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,230,0.55);margin-bottom:10px;">Need to talk now?</div>
+                  <a href="tel:+12402092757" style="display:inline-block;font:700 26px/1.1 Georgia,'Times New Roman',serif;color:#D4932E;text-decoration:none;letter-spacing:-0.01em;">+1 (240) 209 2757</a>
+                  <div style="margin-top:12px;">
+                    <a href="https://wa.me/12402092757?text=Hi%20Upcoming%20Brand%2C%20I%20just%20sent%20you%20an%20inquiry." style="display:inline-block;background:#25D366;color:#FFFFFF;font:700 12px/1 -apple-system,sans-serif;letter-spacing:.06em;text-decoration:none;border-radius:999px;padding:11px 18px;">&#9742; WhatsApp us</a>
+                  </div>
+                </td>
+              </tr>
+            </table>
           </td>
         </tr>
 
@@ -307,15 +320,31 @@ function thankYouHtml(firstName: string): string {
             <h2 style="margin:0 0 12px;font:500 26px/1.15 Georgia,serif;color:#F4EFE6;letter-spacing:-0.02em;">Reach us directly.</h2>
             <p style="margin:0 auto 24px;font:400 14px/1.6 -apple-system,sans-serif;color:rgba(244,239,230,0.75);max-width:420px;">If your project is time-sensitive or you have a specific question, the founder is one email away.</p>
 
-            <!-- primary CTA -->
-            <p style="margin:0 0 12px;">
-              <a href="mailto:hello@upcomingbrand.com" style="display:inline-block;background:#D4932E;color:#0F1419;font:600 12px/1 'SF Mono',Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:999px;padding:14px 22px;">hello@upcomingbrand.com</a>
-            </p>
+            <!-- BIG phone (primary direct contact) -->
+            <div style="margin:0 0 8px;">
+              <div style="font:500 10px/1 'SF Mono',Consolas,monospace;letter-spacing:.2em;text-transform:uppercase;color:rgba(244,239,230,0.55);margin-bottom:8px;">Call or WhatsApp</div>
+              <a href="tel:+12402092757" style="display:inline-block;font:700 32px/1.05 Georgia,'Times New Roman',serif;color:#D4932E;text-decoration:none;letter-spacing:-0.01em;">+1 (240) 209 2757</a>
+            </div>
+
+            <!-- CTA buttons -->
+            <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="margin:18px auto 0;">
+              <tr>
+                <td style="padding:4px;">
+                  <a href="https://wa.me/12402092757?text=Hi%20Upcoming%20Brand%2C%20I%20just%20sent%20you%20an%20inquiry." style="display:inline-block;background:#25D366;color:#FFFFFF;font:700 12px/1 -apple-system,sans-serif;letter-spacing:.06em;text-decoration:none;border-radius:999px;padding:13px 20px;">&#9742; WhatsApp</a>
+                </td>
+                <td style="padding:4px;">
+                  <a href="tel:+12402092757" style="display:inline-block;background:#D4932E;color:#0F1419;font:700 12px/1 'SF Mono',Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:999px;padding:13px 20px;">Call now</a>
+                </td>
+                <td style="padding:4px;">
+                  <a href="mailto:hello@upcomingbrand.com" style="display:inline-block;background:transparent;color:#F4EFE6;font:600 12px/1 'SF Mono',Consolas,monospace;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1.5px solid rgba(244,239,230,0.3);border-radius:999px;padding:11.5px 20px;">Email</a>
+                </td>
+              </tr>
+            </table>
 
             <!-- live status -->
             <div style="margin-top:20px;font:500 11px/1.4 'SF Mono',Consolas,monospace;letter-spacing:.06em;color:rgba(244,239,230,0.6);">
               <span style="display:inline-block;width:8px;height:8px;background:#4ade80;border-radius:50%;vertical-align:middle;margin-right:6px;"></span>
-              Replies within 1 business day &middot; Mon-Fri, 9 AM-6 PM ET
+              Mon-Fri, 9 AM-6 PM ET &middot; Replies within 1 business day
             </div>
 
             <!-- sign-off -->

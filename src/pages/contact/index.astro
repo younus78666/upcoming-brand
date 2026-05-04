@@ -33,18 +33,25 @@ const jsonLd = JSON.stringify({
 
 const channels = [
   {
+    name: "Call us",
+    detail: "+1 (240) 209 2757",
+    note: "Mon-Fri, 9 AM-6 PM ET",
+    icon: "phone",
+    href: "tel:+12402092757",
+  },
+  {
+    name: "WhatsApp",
+    detail: "+1 (240) 209 2757",
+    note: "Same number, async or live",
+    icon: "wa",
+    href: "https://wa.me/12402092757?text=Hi%20Upcoming%20Brand%2C%20I%27d%20like%20to%20discuss%20a%20project.",
+  },
+  {
     name: "Email",
     detail: "hello@upcomingbrand.com",
     note: "4-hour response on weekdays",
     icon: "mail",
     href: "mailto:hello@upcomingbrand.com",
-  },
-  {
-    name: "Discovery call",
-    detail: "Free 45-minute Zoom",
-    note: "Schedule via the form",
-    icon: "video",
-    href: "/book-a-discovery-call/",
   },
   {
     name: "Project brief",
@@ -312,6 +319,8 @@ const timelines = [
 
               <div class="contact-side-foot">
                 <span class="contact-side-foot-label">Direct line</span>
+                <a class="contact-side-foot-val contact-side-foot-phone" href="tel:+12402092757">+1 (240) 209 2757</a>
+                <a class="contact-side-foot-val contact-side-foot-wa" href="https://wa.me/12402092757?text=Hi%20Upcoming%20Brand%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener">WhatsApp this number</a>
                 <a class="contact-side-foot-val" href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>
               </div>
             </div>
@@ -995,8 +1004,19 @@ const timelines = [
     text-decoration: none;
     font-weight: 500;
     transition: color var(--transition);
+    display: block;
+    margin-top: 4px;
   }
-
+  .contact-side-foot-phone {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+  .contact-side-foot-wa {
+    font-size: 13px;
+    color: #25D366;
+  }
+  .contact-side-foot-wa:hover { color: #fff; }
   .contact-side-foot-val:hover {
     color: var(--cream);
   }
