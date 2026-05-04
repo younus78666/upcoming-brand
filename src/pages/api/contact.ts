@@ -404,17 +404,48 @@ export const POST: APIRoute = async ({ request }) => {
   const ip = getClientIp(request) || 'unknown';
   const ua = request.headers.get('user-agent') || '';
 
+  // Origin / referer check — block obvious cross-site abuse
+  // (form submissions must originate from upcomingbrand.com or its preview domains)
+  const origin = request.headers.get('origin') || request.headers.get('referer') || '';
+  const isAllowedOrigin = !origin
+    || /^https?:\/\/(www\.)?upcomingbrand\.com(\/|$)/i.test(origin)
+    || /^https?:\/\/[a-z0-9-]+\.vercel\.app(\/|$)/i.test(origin)
+    || /^https?:\/\/localhost(:\d+)?(\/|$)/i.test(origin);
+  if (!isAllowedOrigin) {
+    return new Response(JSON.stringify({ ok: false, error: 'origin_not_allowed' }), { status: 403, headers: { 'content-type': 'application/json' } });
+  }
+
+  // Body size guard — reject obvious payload-flooding attempts
+  const contentLength = Number(request.headers.get('content-length') || '0');
+  if (contentLength > 32_000) {
+    return new Response(JSON.stringify({ ok: false, error: 'payload_too_large' }), { status: 413, headers: { 'content-type': 'application/json' } });
+  }
+
   let payload: Record<string, string> = {};
   try {
     const ct = request.headers.get('content-type') || '';
     if (ct.includes('application/json')) {
       payload = await request.json();
-    } else {
+    } else if (ct.includes('application/x-www-form-urlencoded') || ct.includes('multipart/form-data')) {
       const fd = await request.formData();
       fd.forEach((v, k) => { payload[k] = String(v); });
+    } else {
+      return new Response(JSON.stringify({ ok: false, error: 'unsupported_content_type' }), { status: 415, headers: { 'content-type': 'application/json' } });
     }
   } catch {
     return new Response(JSON.stringify({ ok: false, error: 'bad_payload' }), { status: 400, headers: { 'content-type': 'application/json' } });
+  }
+
+  // Per-field length caps — prevent abusive payloads even when content-length is bypassed
+  const FIELD_CAPS: Record<string, number> = {
+    name: 120, email: 200, phone: 40, business: 80, company: 120,
+    message: 4000, notes: 4000, details: 4000, project: 4000,
+    'first-name': 120, firstName: 120,
+  };
+  for (const [k, v] of Object.entries(payload)) {
+    if (typeof v !== 'string') continue;
+    const cap = FIELD_CAPS[k] ?? 1000;
+    if (v.length > cap) payload[k] = v.slice(0, cap);
   }
 
   // honeypot
