@@ -169,7 +169,7 @@ function thankYouHtml(firstName: string): string {
         <!-- ========== 1. HERO (BLACK) ========== -->
         <tr>
           <td style="background:#0F1419;padding:44px 40px 40px;text-align:center;">
-            <img src="https://www.upcomingbrand.com/01-header-logo-light-edited.png" alt="Upcoming Brand" width="180" style="display:block;margin:0 auto 24px;max-width:180px;height:auto;" />
+            <img src="https://www.upcomingbrand.com/02-footer-logo-dark-edited.png" alt="Upcoming Brand" width="180" style="display:block;margin:0 auto 24px;max-width:180px;height:auto;" />
             <div style="font:500 11px/1.2 'SF Mono',Consolas,monospace;letter-spacing:.22em;text-transform:uppercase;color:#D4932E;margin-bottom:14px;">Message received</div>
             <h1 style="margin:0 0 14px;font:500 32px/1.1 Georgia,'Times New Roman',serif;color:#F4EFE6;letter-spacing:-0.025em;">Thanks, ${escapeHtml(name)}.</h1>
             <p style="margin:0 auto;font:400 16px/1.6 -apple-system,sans-serif;color:rgba(244,239,230,0.78);max-width:440px;">Your message just landed in our inbox. We read every single inquiry personally. No auto-routing. No junior account managers.</p>
