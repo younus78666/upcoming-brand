@@ -65,63 +65,231 @@
           <p class="contact-card-sub">45 minutes · No sales pitch · Fixed-scope quote within 24 hours</p>
         </div>
 
-        <form class="contact-form" name="contact" method="POST" novalidate data-uc-form="contact">
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label mono-xs" for="cta-name">Your name</label>
-              <input
-                class="form-input"
-                type="text"
-                id="cta-name"
-                name="name"
-                placeholder="Jane Smith"
-                autocomplete="name"
-              />
+        <form class="contact-form ms-form" name="contact" method="POST" novalidate data-uc-form="contact" id="hp-multistep-form">
+
+          <!-- Progress -->
+          <div class="ms-progress" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Form progress">
+            <div class="ms-pill is-active" data-step-pill="1">
+              <span class="ms-pill-num">01</span>
+              <span class="ms-pill-label">You</span>
             </div>
-            <div class="form-group">
-              <label class="form-label mono-xs" for="cta-email">Email address</label>
-              <input
-                class="form-input"
-                type="email"
-                id="cta-email"
-                name="email"
-                placeholder="jane@business.com"
-                autocomplete="email"
-              />
+            <span class="ms-pill-line"><span class="ms-pill-line-fill"></span></span>
+            <div class="ms-pill" data-step-pill="2">
+              <span class="ms-pill-num">02</span>
+              <span class="ms-pill-label">Project</span>
+            </div>
+            <span class="ms-pill-line"><span class="ms-pill-line-fill"></span></span>
+            <div class="ms-pill" data-step-pill="3">
+              <span class="ms-pill-num">03</span>
+              <span class="ms-pill-label">Send</span>
             </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label mono-xs" for="cta-business">Business type</label>
-            <select class="form-input form-select" id="cta-business" name="business">
-              <option value="" disabled selected>Select your industry</option>
-              <option>Law Firm / Attorney</option>
-              <option>Dental Practice</option>
-              <option>Medical Clinic</option>
-              <option>Real Estate / Brokerage</option>
-              <option>Contractor / Trades</option>
-              <option>Restaurant / Hospitality</option>
-              <option>Nonprofit / Church</option>
-              <option>Small Business / Startup</option>
-              <option>Other</option>
-            </select>
+          <!-- ==== STEP 1: contact info ==== -->
+          <div class="ms-step is-active" data-step-pane="1">
+            <div class="ms-step-head">
+              <span class="ms-step-eyebrow">Step 01 of 03</span>
+              <h4 class="ms-step-h4">Who's reaching out?</h4>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label mono-xs" for="cta-name">Your name</label>
+                <input
+                  class="form-input"
+                  type="text"
+                  id="cta-name"
+                  name="name"
+                  placeholder="Jane Smith"
+                  autocomplete="name"
+                  data-step-required="1"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label mono-xs" for="cta-email">Email address</label>
+                <input
+                  class="form-input"
+                  type="email"
+                  id="cta-email"
+                  name="email"
+                  placeholder="jane@business.com"
+                  autocomplete="email"
+                  data-step-required="1"
+                />
+              </div>
+            </div>
+            <div class="ms-actions">
+              <button type="button" class="cta-btn cta-btn-light ms-next" data-go-step="2">
+                Next: Project details &rarr;
+              </button>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label class="form-label mono-xs" for="cta-message">Tell us about your project</label>
-            <textarea
-              class="form-input form-textarea"
-              id="cta-message"
-              name="message"
-              rows="3"
-              placeholder="What does your current site look like? What's not working? Any timeline or budget in mind?"
-            ></textarea>
+          <!-- ==== STEP 2: project info ==== -->
+          <div class="ms-step" data-step-pane="2">
+            <div class="ms-step-head">
+              <span class="ms-step-eyebrow">Step 02 of 03</span>
+              <h4 class="ms-step-h4">About your project</h4>
+            </div>
+            <div class="form-group">
+              <label class="form-label mono-xs" for="cta-business">Business type</label>
+              <select class="form-input form-select" id="cta-business" name="business" data-step-required="2">
+                <option value="" disabled selected>Select your industry</option>
+                <option>Law Firm / Attorney</option>
+                <option>Dental Practice</option>
+                <option>Medical Clinic</option>
+                <option>Real Estate / Brokerage</option>
+                <option>Contractor / Trades</option>
+                <option>Restaurant / Hospitality</option>
+                <option>Nonprofit / Church</option>
+                <option>Small Business / Startup</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label mono-xs" for="cta-message">Tell us about your project</label>
+              <textarea
+                class="form-input form-textarea"
+                id="cta-message"
+                name="message"
+                rows="4"
+                placeholder="What does your current site look like? What's not working? Any timeline or budget in mind?"
+                data-step-required="2"
+              ></textarea>
+            </div>
+            <div class="ms-actions ms-actions-split">
+              <button type="button" class="ms-back" data-go-step="1">&larr; Back</button>
+              <button type="button" class="cta-btn cta-btn-light ms-next" data-go-step="3">
+                Continue &rarr;
+              </button>
+            </div>
           </div>
 
-          <button type="submit" class="cta-btn cta-btn-light form-submit">
-            Send &amp; request a quote &rarr;
-          </button>
+          <!-- ==== STEP 3: review + send ==== -->
+          <div class="ms-step" data-step-pane="3">
+            <div class="ms-step-head">
+              <span class="ms-step-eyebrow">Step 03 of 03</span>
+              <h4 class="ms-step-h4">One last check, then we are off.</h4>
+            </div>
+
+            <ul class="ms-summary" aria-label="Submission summary">
+              <li class="ms-summary-row">
+                <span class="ms-summary-label">Name</span>
+                <span class="ms-summary-val" data-summary="name">—</span>
+              </li>
+              <li class="ms-summary-row">
+                <span class="ms-summary-label">Email</span>
+                <span class="ms-summary-val" data-summary="email">—</span>
+              </li>
+              <li class="ms-summary-row">
+                <span class="ms-summary-label">Industry</span>
+                <span class="ms-summary-val" data-summary="business">—</span>
+              </li>
+              <li class="ms-summary-row ms-summary-row-message">
+                <span class="ms-summary-label">Project</span>
+                <span class="ms-summary-val" data-summary="message">—</span>
+              </li>
+            </ul>
+
+            <!-- captcha placeholder — universal handler injects g-recaptcha here -->
+            <div class="uc-recaptcha"></div>
+
+            <div class="ms-actions ms-actions-split">
+              <button type="button" class="ms-back" data-go-step="2">&larr; Back</button>
+              <button type="submit" class="cta-btn cta-btn-light form-submit">
+                Send &amp; request a quote &rarr;
+              </button>
+            </div>
+          </div>
         </form>
+
+        <script is:inline>
+          (function(){
+            var form = document.getElementById('hp-multistep-form');
+            if(!form) return;
+
+            var pills  = form.querySelectorAll('[data-step-pill]');
+            var lines  = form.querySelectorAll('.ms-pill-line');
+            var panes  = form.querySelectorAll('[data-step-pane]');
+            var current = 1;
+
+            function setStep(n){
+              if(n < 1) n = 1; if(n > 3) n = 3;
+              current = n;
+              panes.forEach(function(p){
+                p.classList.toggle('is-active', Number(p.dataset.stepPane) === n);
+              });
+              pills.forEach(function(p){
+                var num = Number(p.dataset.stepPill);
+                p.classList.toggle('is-active', num === n);
+                p.classList.toggle('is-done', num < n);
+              });
+              lines.forEach(function(l, idx){
+                l.classList.toggle('is-done', idx + 1 < n);
+              });
+              form.setAttribute('aria-valuenow', String(n));
+              if(n === 3) updateSummary();
+              // smooth scroll-to-top of card on step change for mobile
+              try {
+                form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+              } catch(_) {}
+            }
+
+            function validateStep(n){
+              var pane = form.querySelector('[data-step-pane="' + n + '"]');
+              if(!pane) return true;
+              var requiredFields = pane.querySelectorAll('[data-step-required="' + n + '"]');
+              var ok = true;
+              requiredFields.forEach(function(f){
+                f.classList.remove('is-error');
+                var v = (f.value || '').trim();
+                if(!v){
+                  ok = false;
+                  f.classList.add('is-error');
+                } else if(f.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){
+                  ok = false;
+                  f.classList.add('is-error');
+                }
+              });
+              if(!ok && requiredFields[0]){
+                try { requiredFields[0].focus(); } catch(_){}
+              }
+              return ok;
+            }
+
+            function updateSummary(){
+              var get = function(name){
+                var el = form.querySelector('[name="' + name + '"]');
+                return el ? (el.value || '').trim() : '';
+              };
+              var fields = ['name','email','business','message'];
+              fields.forEach(function(k){
+                var slot = form.querySelector('[data-summary="' + k + '"]');
+                if(!slot) return;
+                var v = get(k);
+                slot.textContent = v || '—';
+                slot.classList.toggle('is-empty', !v);
+              });
+            }
+
+            form.querySelectorAll('.ms-next').forEach(function(btn){
+              btn.addEventListener('click', function(){
+                if(!validateStep(current)) return;
+                setStep(Number(btn.dataset.goStep));
+              });
+            });
+            form.querySelectorAll('.ms-back').forEach(function(btn){
+              btn.addEventListener('click', function(){
+                setStep(Number(btn.dataset.goStep));
+              });
+            });
+
+            // clear error class on input
+            form.querySelectorAll('[data-step-required]').forEach(function(f){
+              f.addEventListener('input', function(){ f.classList.remove('is-error'); });
+              f.addEventListener('change', function(){ f.classList.remove('is-error'); });
+            });
+          })();
+        </script>
       </div>
 
     </div>
@@ -308,6 +476,172 @@
     flex-direction: column;
     gap: 16px;
   }
+
+  /* ── Multi-step progress ── */
+  .ms-progress {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 0 4px;
+    margin-bottom: 4px;
+  }
+  .ms-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(244,239,230,0.04);
+    border: 1px solid rgba(244,239,230,0.12);
+    color: rgba(244,239,230,0.45);
+    transition: all 0.25s ease;
+    flex-shrink: 0;
+  }
+  .ms-pill.is-active {
+    background: rgba(212,147,46,0.14);
+    border-color: rgba(212,147,46,0.5);
+    color: var(--amber);
+    box-shadow: 0 0 0 4px rgba(212,147,46,0.08);
+  }
+  .ms-pill.is-done {
+    background: rgba(212,147,46,0.06);
+    border-color: rgba(212,147,46,0.3);
+    color: var(--amber);
+  }
+  .ms-pill-num {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+  }
+  .ms-pill-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .ms-pill-line {
+    flex: 1;
+    height: 1px;
+    background: rgba(244,239,230,0.12);
+    position: relative;
+    overflow: hidden;
+  }
+  .ms-pill-line-fill {
+    position: absolute;
+    inset: 0;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .ms-pill-line.is-done .ms-pill-line-fill { transform: scaleX(1); }
+
+  /* ── Step pane ── */
+  .ms-step {
+    display: none;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .ms-step.is-active {
+    display: flex;
+    animation: ms-step-in 0.3s ease;
+  }
+  @keyframes ms-step-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .ms-step-head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding-bottom: 8px;
+    border-bottom: 1px dashed rgba(244,239,230,0.08);
+  }
+  .ms-step-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(212,147,46,0.85);
+    font-weight: 600;
+  }
+  .ms-step-h4 {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--cream);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  /* ── Step actions ── */
+  .ms-actions {
+    display: flex;
+    margin-top: 4px;
+  }
+  .ms-actions-split { justify-content: space-between; align-items: center; }
+  .ms-back {
+    background: transparent;
+    border: none;
+    color: rgba(244,239,230,0.5);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 8px 4px;
+    transition: color 0.2s ease;
+  }
+  .ms-back:hover { color: var(--cream); }
+  .ms-next {
+    margin-left: auto;
+  }
+  .ms-actions:not(.ms-actions-split) .ms-next { width: 100%; justify-content: center; }
+
+  /* ── Validation error state ── */
+  .form-input.is-error {
+    border-color: #d27a5a;
+    background: rgba(210, 122, 90, 0.08);
+  }
+
+  /* ── Summary list (step 3) ── */
+  .ms-summary {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(244,239,230,0.03);
+    border: 1px solid rgba(244,239,230,0.1);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .ms-summary-row {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    gap: 16px;
+    padding: 12px 14px;
+    border-bottom: 1px dashed rgba(244,239,230,0.08);
+    align-items: start;
+  }
+  .ms-summary-row:last-child { border-bottom: none; }
+  .ms-summary-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.4);
+    padding-top: 2px;
+  }
+  .ms-summary-val {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--cream);
+    word-break: break-word;
+  }
+  .ms-summary-val.is-empty { color: rgba(244,239,230,0.3); font-style: italic; }
+  .ms-summary-row-message .ms-summary-val { white-space: pre-wrap; }
 
   .form-row {
     display: grid;
