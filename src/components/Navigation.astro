@@ -501,16 +501,140 @@
 </nav>
 
 <!-- Mobile Nav -->
-<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
-  <ul class="mobile-nav-links" role="list">
-    <li><a href="#services" class="mobile-link">Services</a></li>
-    <li><a href="#industries" class="mobile-link">Industries</a></li>
-    <li><a href="#locations" class="mobile-link">Maryland</a></li>
-    <li><a href="#work" class="mobile-link">Work</a></li>
-    <li><a href="#blog" class="mobile-link">Resources</a></li>
-    <li><a href="/about/" class="mobile-link">Company</a></li>
-    <li><a href="/book-a-discovery-call/" class="mobile-link mobile-link-cta">Book a discovery call &rarr;</a></li>
-  </ul>
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
+  <div class="mobile-nav-inner">
+    <ul class="mobile-nav-links" role="list">
+
+      <li class="mobile-section">
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+          <span>Services</span>
+          <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-acc-panel">
+          <a href="/services/" class="mobile-sublink mobile-sublink-all">All services &rarr;</a>
+          <a href="/wordpress-agency/" class="mobile-sublink">WordPress Agency</a>
+          <a href="/services/wordpress-web-design/" class="mobile-sublink">Custom Web Design</a>
+          <a href="/services/wordpress-redesign/" class="mobile-sublink">WordPress Redesign</a>
+          <a href="/services/wordpress-migration/" class="mobile-sublink">WordPress Migration</a>
+          <a href="/services/woocommerce-development/" class="mobile-sublink">WooCommerce</a>
+          <a href="/services/wordpress-seo-services/" class="mobile-sublink">WordPress SEO</a>
+          <a href="/services/local-seo-maryland/" class="mobile-sublink">Local SEO Maryland</a>
+          <a href="/services/seo-audit/" class="mobile-sublink">SEO Audit</a>
+          <a href="/services/wordpress-speed-optimization/" class="mobile-sublink">Speed Optimization</a>
+          <a href="/services/wordpress-security/" class="mobile-sublink">Security</a>
+          <a href="/services/wordpress-hosting/" class="mobile-sublink">Hosting</a>
+          <a href="/services/wordpress-care-plans/" class="mobile-sublink">Care Plans</a>
+          <a href="/services/wordpress-support/" class="mobile-sublink">On-Demand Support</a>
+        </div>
+      </li>
+
+      <li class="mobile-section">
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+          <span>Industries</span>
+          <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-acc-panel">
+          <a href="/industries/" class="mobile-sublink mobile-sublink-all">All industries &rarr;</a>
+          <a href="/industries/law-firm-website-design/" class="mobile-sublink">Law Firms</a>
+          <a href="/industries/dental-website-design/" class="mobile-sublink">Dental Practices</a>
+          <a href="/industries/medical-website-design/" class="mobile-sublink">Medical Clinics</a>
+          <a href="/industries/real-estate-website-design/" class="mobile-sublink">Real Estate</a>
+          <a href="/industries/contractor-website-design/" class="mobile-sublink">Contractors</a>
+          <a href="/industries/nonprofit-website-design/" class="mobile-sublink">Nonprofits</a>
+          <a href="/industries/restaurant-website-design/" class="mobile-sublink">Restaurants</a>
+          <a href="/industries/ecommerce-website-design/" class="mobile-sublink">Ecommerce</a>
+          <a href="/industries/accountant-website-design/" class="mobile-sublink">Accountants</a>
+          <a href="/industries/church-website-design/" class="mobile-sublink">Churches</a>
+          <a href="/industries/gym-website-design/" class="mobile-sublink">Gyms &amp; Fitness</a>
+          <a href="/industries/small-business-website-design/" class="mobile-sublink">Small Business</a>
+        </div>
+      </li>
+
+      <li class="mobile-section">
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+          <span>Maryland locations</span>
+          <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-acc-panel">
+          <a href="/locations/" class="mobile-sublink mobile-sublink-all">All locations &rarr;</a>
+          <a href="/locations/maryland-web-design/" class="mobile-sublink">Maryland (statewide)</a>
+          <a href="/locations/baltimore-web-design/" class="mobile-sublink">Baltimore</a>
+          <a href="/locations/annapolis-web-design/" class="mobile-sublink">Annapolis</a>
+          <a href="/locations/frederick-web-design/" class="mobile-sublink">Frederick</a>
+          <a href="/locations/bethesda-web-design/" class="mobile-sublink">Bethesda</a>
+          <a href="/locations/rockville-web-design/" class="mobile-sublink">Rockville</a>
+          <a href="/locations/silver-spring-web-design/" class="mobile-sublink">Silver Spring</a>
+          <a href="/locations/columbia-web-design/" class="mobile-sublink">Columbia</a>
+          <a href="/locations/towson-web-design/" class="mobile-sublink">Towson</a>
+          <a href="/locations/gaithersburg-web-design/" class="mobile-sublink">Gaithersburg</a>
+          <a href="/locations/germantown-web-design/" class="mobile-sublink">Germantown</a>
+          <a href="/locations/ellicott-city-web-design/" class="mobile-sublink">Ellicott City</a>
+          <a href="/locations/catonsville-web-design/" class="mobile-sublink">Catonsville</a>
+          <a href="/locations/dundalk-web-design/" class="mobile-sublink">Dundalk</a>
+          <a href="/locations/hagerstown-web-design/" class="mobile-sublink">Hagerstown</a>
+          <a href="/locations/westminster-web-design/" class="mobile-sublink">Westminster</a>
+          <a href="/locations/bowie-web-design/" class="mobile-sublink">Bowie</a>
+          <a href="/locations/waldorf-web-design/" class="mobile-sublink">Waldorf</a>
+          <a href="/locations/salisbury-web-design/" class="mobile-sublink">Salisbury</a>
+        </div>
+      </li>
+
+      <li class="mobile-section">
+        <a href="/work/" class="mobile-link">Work</a>
+      </li>
+
+      <li class="mobile-section">
+        <a href="/reviews/" class="mobile-link">Reviews</a>
+      </li>
+
+      <li class="mobile-section">
+        <a href="/pricing/" class="mobile-link">Pricing</a>
+      </li>
+
+      <li class="mobile-section">
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+          <span>Resources</span>
+          <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-acc-panel">
+          <a href="/blog/" class="mobile-sublink">Blog</a>
+          <a href="/tools/installment-calculator/" class="mobile-sublink">Installment Calculator</a>
+          <a href="/tools/schema-generator/" class="mobile-sublink">Schema Generator</a>
+          <a href="/process/" class="mobile-sublink">Our Process</a>
+          <a href="/hire-wordpress-designer/" class="mobile-sublink">Hire a WP Designer</a>
+        </div>
+      </li>
+
+      <li class="mobile-section">
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+          <span>Company</span>
+          <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="mobile-acc-panel">
+          <a href="/about/" class="mobile-sublink">About</a>
+          <a href="/team/" class="mobile-sublink">Team</a>
+          <a href="/values/" class="mobile-sublink">Values</a>
+          <a href="/careers/" class="mobile-sublink">Careers</a>
+          <a href="/contact/" class="mobile-sublink">Contact</a>
+        </div>
+      </li>
+    </ul>
+
+    <!-- Direct contact block -->
+    <div class="mobile-contact">
+      <div class="mobile-contact-label">Direct line</div>
+      <a href="tel:+12402092757" class="mobile-contact-phone">+1 (240) 209 2757</a>
+      <div class="mobile-contact-row">
+        <a href="https://wa.me/12402092757?text=Hi%20Upcoming%20Brand%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noopener" class="mobile-contact-link mobile-contact-wa">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17.6 6.32A8 8 0 0 0 4.3 14.97L4 19.7l4.84-1.27A8 8 0 0 0 19.7 8.42a7.94 7.94 0 0 0-2.1-2.1ZM12 18.5a6.65 6.65 0 0 1-3.4-.94l-.24-.14-2.87.75.77-2.8-.16-.25a6.66 6.66 0 1 1 5.9 3.38Zm3.65-4.99c-.2-.1-1.18-.58-1.36-.65-.18-.07-.32-.1-.45.1-.13.2-.51.65-.63.78-.12.13-.23.15-.43.05a5.46 5.46 0 0 1-1.61-1 6 6 0 0 1-1.11-1.38c-.12-.2-.01-.31.09-.41.09-.09.2-.23.3-.35.1-.12.13-.2.2-.33.07-.13.03-.25-.02-.35-.05-.1-.45-1.08-.61-1.48-.16-.39-.32-.34-.45-.34h-.39c-.13 0-.34.05-.52.25s-.69.67-.69 1.64.71 1.91.81 2.04c.1.13 1.4 2.13 3.39 2.99.47.2.84.32 1.13.42.48.15.91.13 1.25.08.38-.06 1.18-.48 1.34-.94.17-.46.17-.86.12-.94-.05-.08-.18-.13-.38-.23Z" fill="currentColor"/></svg>
+          WhatsApp
+        </a>
+        <a href="mailto:hello@upcomingbrand.com" class="mobile-contact-link">Email</a>
+      </div>
+    </div>
+
+    <a href="/contact/" class="mobile-link mobile-link-cta">Start a project &rarr;</a>
+  </div>
 </div>
 
 <style>
@@ -836,45 +960,220 @@
   .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   /* ====================================================
-     MOBILE NAV
+     MOBILE NAV — full-screen overlay drawer
      ==================================================== */
   .mobile-nav {
-    display: none;
+    position: fixed;
+    inset: 68px 0 0 0;
     background: var(--paper);
     border-top: 1px solid var(--line);
-    padding: 16px var(--pad) 24px;
-    position: sticky;
-    top: 68px;
     z-index: 99;
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    display: block; /* always rendered for transitions */
   }
-  .mobile-nav.open { display: block; }
-  .mobile-nav-links {
+  .mobile-nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .mobile-nav-inner {
+    padding: 16px var(--pad) calc(40px + env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
     gap: 4px;
-    list-style: none;
+    max-width: 720px;
+    margin: 0 auto;
   }
+  .mobile-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .mobile-section {
+    border-bottom: 1px solid var(--line);
+  }
+  .mobile-section:first-child { border-top: 1px solid var(--line); }
+
   .mobile-link {
     display: block;
+    padding: 16px 4px;
+    font-family: var(--f-display);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .mobile-link:hover, .mobile-link:active { color: var(--amber-deep); }
+
+  /* Accordion button */
+  .mobile-acc-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 4px;
+    background: transparent;
+    border: none;
+    font-family: var(--f-display);
+    font-size: 17px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.2s;
+  }
+  .mobile-acc-btn:hover { color: var(--amber-deep); }
+  .mobile-acc-icon {
+    color: var(--amber-deep);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+  .mobile-acc-btn[aria-expanded="true"] .mobile-acc-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Accordion panel */
+  .mobile-acc-panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease;
+    overflow: hidden;
+  }
+  .mobile-acc-btn[aria-expanded="true"] + .mobile-acc-panel {
+    grid-template-rows: 1fr;
+  }
+  .mobile-acc-panel > * { min-height: 0; }
+  .mobile-acc-panel {
+    /* nested wrapper for padding */
+  }
+  .mobile-acc-btn[aria-expanded="true"] + .mobile-acc-panel::before {
+    content: "";
+  }
+  .mobile-sublink {
+    display: block;
     padding: 12px 16px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
     color: var(--ink-muted);
-    border-radius: 8px;
-    transition: background 0.2s, color 0.2s;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s, color 0.15s;
   }
-  .mobile-link:hover {
+  .mobile-sublink:first-child { margin-top: 4px; }
+  .mobile-sublink:last-child { margin-bottom: 12px; }
+  .mobile-sublink:hover, .mobile-sublink:active {
     background: var(--cream-soft);
     color: var(--ink);
   }
+  .mobile-sublink-all {
+    color: var(--amber-deep);
+    font-weight: 600;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Direct contact block in mobile drawer */
+  .mobile-contact {
+    margin-top: 24px;
+    padding: 20px;
+    background: var(--ink);
+    border-radius: var(--radius-lg);
+    color: var(--cream);
+    text-align: center;
+  }
+  .mobile-contact-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.5);
+    margin-bottom: 8px;
+  }
+  .mobile-contact-phone {
+    display: block;
+    font-family: var(--f-display);
+    font-size: 26px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--amber);
+    text-decoration: none;
+    margin-bottom: 14px;
+    line-height: 1.1;
+  }
+  .mobile-contact-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .mobile-contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    border: 1px solid rgba(244, 239, 230, 0.18);
+    border-radius: 999px;
+    background: rgba(244, 239, 230, 0.04);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--cream);
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .mobile-contact-link:hover, .mobile-contact-link:active {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .mobile-contact-wa {
+    background: rgba(37, 211, 102, 0.14);
+    border-color: rgba(37, 211, 102, 0.4);
+    color: #25D366;
+  }
+  .mobile-contact-wa:hover, .mobile-contact-wa:active {
+    background: #25D366;
+    color: #fff;
+    border-color: #25D366;
+  }
+
   .mobile-link-cta {
-    margin-top: 8px;
+    margin-top: 16px;
+    padding: 16px 24px;
     background: var(--ink);
     color: var(--cream) !important;
     text-align: center;
     border-radius: 999px;
+    font-family: var(--f-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
-  .mobile-link-cta:hover { background: var(--amber-deep) !important; }
+  .mobile-link-cta:hover, .mobile-link-cta:active {
+    background: var(--amber);
+    color: var(--ink) !important;
+  }
+
+  /* Body scroll lock when menu open */
+  :global(body.mobile-nav-open) {
+    overflow: hidden;
+  }
 
   /* ====================================================
      RESPONSIVE
@@ -937,27 +1236,50 @@
     });
   });
 
-  // Hamburger
+  // Hamburger + mobile drawer
   const burger = document.querySelector('.nav-burger');
   const mobileNav = document.getElementById('mobile-nav');
-  burger.addEventListener('click', () => {
-    const open = burger.getAttribute('aria-expanded') === 'true';
-    burger.setAttribute('aria-expanded', String(!open));
-    mobileNav.setAttribute('aria-hidden', String(open));
-    mobileNav.classList.toggle('open', !open);
-  });
-  mobileNav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      burger.setAttribute('aria-expanded', 'false');
-      mobileNav.setAttribute('aria-hidden', 'true');
-      mobileNav.classList.remove('open');
+
+  function setMobileOpen(open) {
+    if (!burger || !mobileNav) return;
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    mobileNav.setAttribute('aria-hidden', String(!open));
+    mobileNav.classList.toggle('open', open);
+    document.body.classList.toggle('mobile-nav-open', open);
+  }
+
+  if (burger && mobileNav) {
+    burger.addEventListener('click', () => {
+      const open = burger.getAttribute('aria-expanded') === 'true';
+      setMobileOpen(!open);
     });
-  });
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 1100) {
-      burger.setAttribute('aria-expanded', 'false');
-      mobileNav.setAttribute('aria-hidden', 'true');
-      mobileNav.classList.remove('open');
-    }
-  });
+
+    // Close drawer on regular link click (but NOT accordion buttons)
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => setMobileOpen(false));
+    });
+
+    // Accordion expand/collapse — close siblings so only one open at a time
+    const accBtns = mobileNav.querySelectorAll('[data-acc]');
+    accBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        accBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
+        btn.setAttribute('aria-expanded', String(!expanded));
+      });
+    });
+
+    // ESC key closes drawer
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true') {
+        setMobileOpen(false);
+      }
+    });
+
+    // Resize past mobile breakpoint resets state
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 1100) setMobileOpen(false);
+    });
+  }
 </script>

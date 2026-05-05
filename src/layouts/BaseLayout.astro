@@ -288,6 +288,25 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow";
       .wa-fab:hover { transform: none; }
     }
 
+    /* iOS Safari zoom-on-focus prevention: any input/textarea/select under 16px causes a zoom.
+       Force 16px effective rendering on small screens without changing visual sizing on desktop. */
+    @media (max-width: 640px) {
+      input[type="text"], input[type="email"], input[type="tel"], input[type="url"],
+      input[type="search"], input[type="number"], input[type="password"],
+      textarea, select {
+        font-size: max(16px, 1em) !important;
+      }
+    }
+
+    /* Prevent horizontal overflow site-wide on mobile — defensive */
+    @media (max-width: 640px) {
+      html, body { overflow-x: hidden; max-width: 100vw; }
+    }
+
+    /* WhatsApp FAB on smallest screens — sit above iOS home indicator */
+    .wa-fab { bottom: calc(clamp(16px, 3vw, 32px) + env(safe-area-inset-bottom, 0px)); }
+    .back-to-top { bottom: calc(clamp(16px, 3vw, 32px) + env(safe-area-inset-bottom, 0px)); }
+
     /* reCAPTCHA containment — never let the 304px widget overflow its parent */
     .uc-recaptcha {
       max-width: 100%;
