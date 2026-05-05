@@ -65,7 +65,7 @@
           <p class="contact-card-sub">45 minutes · No sales pitch · Fixed-scope quote within 24 hours</p>
         </div>
 
-        <form class="contact-form ms-form" name="contact" method="POST" novalidate data-uc-form="contact" id="hp-multistep-form">
+        <form class="contact-form ms-form" name="contact" method="POST" novalidate data-uc-form="contact" data-uc-recaptcha-defer="true" id="hp-multistep-form">
 
           <!-- Progress -->
           <div class="ms-progress" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Form progress">
@@ -227,7 +227,17 @@
                 l.classList.toggle('is-done', idx + 1 < n);
               });
               form.setAttribute('aria-valuenow', String(n));
-              if(n === 3) updateSummary();
+              if(n === 3){
+                updateSummary();
+                // Render reCAPTCHA only when reaching step 3 — guarantees it sits inside
+                // the visible step-3 pane, fits the container, and only appears after all
+                // step-1 + step-2 required fields have been validated.
+                var holder = form.querySelector('.uc-recaptcha');
+                if(holder && typeof window.ucRenderRecaptcha === 'function'){
+                  // Wait one frame so layout is correct, then render
+                  setTimeout(function(){ window.ucRenderRecaptcha(holder); }, 60);
+                }
+              }
               // smooth scroll-to-top of card on step change for mobile
               try {
                 form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });

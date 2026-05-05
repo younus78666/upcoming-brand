@@ -287,6 +287,26 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow";
       .wa-fab { animation: none; }
       .wa-fab:hover { transform: none; }
     }
+
+    /* reCAPTCHA containment — never let the 304px widget overflow its parent */
+    .uc-recaptcha {
+      max-width: 100%;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+    }
+    .uc-recaptcha > div,
+    .uc-recaptcha iframe { max-width: 100% !important; }
+    @media (max-width: 360px) {
+      .uc-recaptcha {
+        transform: scale(0.85);
+        transform-origin: 0 0;
+        width: 117.6%;
+      }
+    }
+    /* Hidden by default on multistep — shown when step 3 is active */
+    .ms-step .uc-recaptcha { display: none; }
+    .ms-step.is-active .uc-recaptcha { display: flex; }
   </style>
 
   <!-- Back to top button -->
@@ -366,12 +386,29 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow";
     var ENDPOINT = '/api/contact';
     var BLOCKED_LANG_RE = /[Ѐ-ӿԀ-ԯ぀-ヿ㐀-䶿一-鿿가-힯豈-﫿]/;
 
+    // Render reCAPTCHA explicitly via grecaptcha.render() so we control timing
+    // (auto-render via .g-recaptcha class fires once on page load — no good for hidden / deferred forms).
+    function renderCaptchaInto(holder){
+      if(!holder || holder.dataset.ucCaptchaId) return; // already rendered
+      if(window.grecaptcha && typeof window.grecaptcha.render === 'function'){
+        try {
+          var id = window.grecaptcha.render(holder, { sitekey: SITE_KEY });
+          holder.dataset.ucCaptchaId = String(id);
+        } catch(e){ /* already rendered or grecaptcha not ready */ }
+      } else {
+        // grecaptcha.js still loading — retry shortly
+        setTimeout(function(){ renderCaptchaInto(holder); }, 200);
+      }
+    }
+
     function ensureRecaptcha(form){
+      // If form opted into deferred captcha, the form's own script renders it (e.g. multistep on step 3)
+      if(form.dataset.ucRecaptchaDefer === 'true') return;
+
       var holder = form.querySelector('.uc-recaptcha');
       if(!holder){
         holder = document.createElement('div');
-        holder.className = 'uc-recaptcha g-recaptcha';
-        holder.setAttribute('data-sitekey', SITE_KEY);
+        holder.className = 'uc-recaptcha';
         holder.style.margin = '14px 0 4px';
         var submit = form.querySelector('button[type="submit"], input[type="submit"]');
         if(submit && submit.parentNode){
@@ -379,11 +416,13 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow";
         } else {
           form.appendChild(holder);
         }
-      } else if(!holder.classList.contains('g-recaptcha')){
-        holder.classList.add('g-recaptcha');
-        holder.setAttribute('data-sitekey', SITE_KEY);
       }
+      // Render after DOM settles so the holder has a real width (prevents widget from rendering at 0px and overflowing)
+      setTimeout(function(){ renderCaptchaInto(holder); }, 0);
     }
+
+    // Expose to forms that defer rendering (multistep)
+    window.ucRenderRecaptcha = renderCaptchaInto;
 
     function ensureHoneypot(form){
       if(form.querySelector('input[name="bot-field"]')) return;
