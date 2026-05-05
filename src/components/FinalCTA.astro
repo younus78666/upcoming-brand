@@ -1,4 +1,14 @@
 ---
+export interface Props {
+  eyebrow?: string;
+  heading?: string;
+  formName?: string;
+}
+const {
+  eyebrow = "Start your project",
+  heading = "Let's build the WordPress website your Maryland business actually needs.",
+  formName = "contact",
+} = Astro.props;
 ---
 <section class="final-cta section-pad" id="contact" aria-labelledby="final-cta-heading">
 
@@ -8,9 +18,9 @@
       <!-- LEFT: copy -->
       <div class="final-cta-content">
 
-        <p class="eyebrow final-cta-eyebrow">Ready to start?</p>
+        <p class="eyebrow final-cta-eyebrow">{eyebrow}</p>
         <h2 class="display-lg final-cta-h2" id="final-cta-heading">
-          Let's build the WordPress website your Maryland business actually needs.
+          {heading}
         </h2>
 
         <div class="final-cta-trust">
@@ -65,7 +75,7 @@
           <p class="contact-card-sub">45 minutes · No sales pitch · Fixed-scope quote within 24 hours</p>
         </div>
 
-        <form class="contact-form ms-form" name="contact" method="POST" novalidate data-uc-form="contact" data-uc-recaptcha-defer="true" id="hp-multistep-form">
+        <form class="contact-form ms-form" name={formName} method="POST" novalidate data-uc-form={formName} data-uc-recaptcha-defer="true" id="hp-multistep-form">
 
           <!-- Progress -->
           <div class="ms-progress" role="progressbar" aria-valuemin="1" aria-valuemax="3" aria-valuenow="1" aria-label="Form progress">
@@ -615,6 +625,20 @@
   .form-input.is-error {
     border-color: #d27a5a;
     background: rgba(210, 122, 90, 0.08);
+  }
+
+  /* ── Captcha sizing on the dark card ── */
+  .ms-form .uc-recaptcha {
+    transform: scale(0.88);
+    transform-origin: 0 0;
+    width: calc(100% / 0.88); /* compensate so layout still fills container */
+    margin: 8px 0 12px;
+  }
+  @media (max-width: 380px) {
+    .ms-form .uc-recaptcha {
+      transform: scale(0.78);
+      width: calc(100% / 0.78);
+    }
   }
 
   /* ── Summary list (step 3) ── */

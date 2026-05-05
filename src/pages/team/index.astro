@@ -4,7 +4,7 @@ import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
-import BottomFormCTA from '../../components/BottomFormCTA.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
 const canonical = "https://upcomingbrand.com/team/";
 
 const jsonLd = JSON.stringify({
@@ -379,9 +379,8 @@ const principles = [
     <!-- ====== FINAL CTA ====== -->
 </main>
 
-  <BottomFormCTA formName="team-cta" />
-
-  <Footer />
+<FinalCTA />
+<Footer />
 </BaseLayout>
 
 <style>

@@ -3,7 +3,6 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 
-import BottomFormCTA from '../../../components/BottomFormCTA.astro';
 const stats = [
   { val: "62%", label: "of medical sites fail Core Web Vitals" },
   { val: "4.2x", label: "More appointments from Local Pack" },
@@ -1020,9 +1019,7 @@ const schema = {
     <div class="lf-cta-watermark" aria-hidden="true">Medical</div>
   </section>
 
-  <BottomFormCTA formName="medical-cta" />
-
-  <Footer />
+<Footer />
 </BaseLayout>
 
 <style>

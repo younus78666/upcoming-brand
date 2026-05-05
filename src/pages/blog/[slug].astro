@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
-import BottomFormCTA from '../../components/BottomFormCTA.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
 import { articles, categories, type BlogArticle } from '../../data/blog-articles';
 
 export async function getStaticPaths() {
@@ -218,8 +218,8 @@ const jsonLd = JSON.stringify({
     </section>
 
   </main>
-  <BottomFormCTA formName={`blog-cta-${article.slug}`} heading="Need this answered today?" sub="If this topic is blocking a decision, book a free 15-minute call. We will share our thinking even though the article is not ready." />
-  <Footer />
+<FinalCTA />
+<Footer />
 </BaseLayout>
 
 <script is:inline define:vars={{ searchIndex }}>

@@ -503,6 +503,16 @@
 <!-- Mobile Nav -->
 <div class="mobile-nav" id="mobile-nav" aria-hidden="true" role="dialog" aria-label="Mobile navigation">
   <div class="mobile-nav-inner">
+
+    <div class="mobile-nav-header">
+      <span class="mobile-nav-eyebrow">Menu</span>
+      <button type="button" class="mobile-nav-close" aria-label="Close menu" data-mobile-close>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
     <ul class="mobile-nav-links" role="list">
 
       <li class="mobile-section">
@@ -960,37 +970,93 @@
   .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   /* ====================================================
-     MOBILE NAV — full-screen overlay drawer
+     MOBILE NAV — premium off-canvas dark drawer
+     Footer dark background, cream/white text, gold hover
      ==================================================== */
+
+  /* Backdrop overlay */
+  .mobile-nav::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 12, 16, 0.6);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+  .mobile-nav.open::before {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
   .mobile-nav {
     position: fixed;
-    inset: 68px 0 0 0;
-    background: var(--paper);
-    border-top: 1px solid var(--line);
-    z-index: 99;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(86vw, 380px);
+    background: var(--ink);
+    color: var(--cream);
+    z-index: 200;
     overflow-y: auto;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior: contain;
-    transform: translateY(-8px);
-    opacity: 0;
-    pointer-events: none;
-    transition: transform 0.25s ease, opacity 0.25s ease;
-    display: block; /* always rendered for transitions */
+    transform: translateX(100%);
+    transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+    display: block;
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
+    border-left: 1px solid rgba(244, 239, 230, 0.06);
   }
   .mobile-nav.open {
-    transform: translateY(0);
-    opacity: 1;
-    pointer-events: auto;
+    transform: translateX(0);
   }
   .mobile-nav-inner {
-    padding: 16px var(--pad) calc(40px + env(safe-area-inset-bottom));
+    padding: 24px 24px calc(40px + env(safe-area-inset-bottom));
     display: flex;
     flex-direction: column;
     gap: 4px;
-    max-width: 720px;
-    margin: 0 auto;
   }
+
+  /* Drawer header with close button */
+  .mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 4px 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid rgba(244, 239, 230, 0.08);
+  }
+  .mobile-nav-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 600;
+  }
+  .mobile-nav-close {
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(244, 239, 230, 0.06);
+    border: 1px solid rgba(244, 239, 230, 0.1);
+    border-radius: 50%;
+    color: var(--cream);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .mobile-nav-close:hover, .mobile-nav-close:active {
+    background: var(--amber);
+    color: var(--ink);
+    border-color: var(--amber);
+  }
+
   .mobile-nav-links {
     display: flex;
     flex-direction: column;
@@ -1000,9 +1066,8 @@
     margin: 0;
   }
   .mobile-section {
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(244, 239, 230, 0.08);
   }
-  .mobile-section:first-child { border-top: 1px solid var(--line); }
 
   .mobile-link {
     display: block;
@@ -1011,11 +1076,11 @@
     font-size: 17px;
     font-weight: 500;
     letter-spacing: -0.01em;
-    color: var(--ink);
+    color: var(--cream);
     text-decoration: none;
     transition: color 0.2s;
   }
-  .mobile-link:hover, .mobile-link:active { color: var(--amber-deep); }
+  .mobile-link:hover, .mobile-link:active { color: var(--amber); }
 
   /* Accordion button */
   .mobile-acc-btn {
@@ -1030,16 +1095,19 @@
     font-size: 17px;
     font-weight: 500;
     letter-spacing: -0.01em;
-    color: var(--ink);
+    color: var(--cream);
     cursor: pointer;
     text-align: left;
     transition: color 0.2s;
   }
-  .mobile-acc-btn:hover { color: var(--amber-deep); }
+  .mobile-acc-btn:hover { color: var(--amber); }
   .mobile-acc-icon {
-    color: var(--amber-deep);
+    color: var(--amber);
     transition: transform 0.25s ease;
     flex-shrink: 0;
+  }
+  .mobile-acc-btn[aria-expanded="true"] {
+    color: var(--amber);
   }
   .mobile-acc-btn[aria-expanded="true"] .mobile-acc-icon {
     transform: rotate(180deg);
@@ -1056,18 +1124,13 @@
     grid-template-rows: 1fr;
   }
   .mobile-acc-panel > * { min-height: 0; }
-  .mobile-acc-panel {
-    /* nested wrapper for padding */
-  }
-  .mobile-acc-btn[aria-expanded="true"] + .mobile-acc-panel::before {
-    content: "";
-  }
+
   .mobile-sublink {
     display: block;
-    padding: 12px 16px;
+    padding: 11px 16px;
     font-size: 14px;
     font-weight: 500;
-    color: var(--ink-muted);
+    color: rgba(244, 239, 230, 0.7);
     text-decoration: none;
     border-radius: 6px;
     transition: background 0.15s, color 0.15s;
@@ -1075,23 +1138,25 @@
   .mobile-sublink:first-child { margin-top: 4px; }
   .mobile-sublink:last-child { margin-bottom: 12px; }
   .mobile-sublink:hover, .mobile-sublink:active {
-    background: var(--cream-soft);
-    color: var(--ink);
+    background: rgba(244, 239, 230, 0.04);
+    color: var(--amber);
   }
   .mobile-sublink-all {
-    color: var(--amber-deep);
+    color: var(--amber);
     font-weight: 600;
     font-family: var(--f-mono);
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
   }
+  .mobile-sublink-all:hover { color: var(--amber); background: rgba(212, 147, 46, 0.08); }
 
   /* Direct contact block in mobile drawer */
   .mobile-contact {
     margin-top: 24px;
     padding: 20px;
-    background: var(--ink);
+    background: rgba(244, 239, 230, 0.04);
+    border: 1px solid rgba(244, 239, 230, 0.1);
     border-radius: var(--radius-lg);
     color: var(--cream);
     text-align: center;
@@ -1114,7 +1179,9 @@
     text-decoration: none;
     margin-bottom: 14px;
     line-height: 1.1;
+    transition: color 0.2s ease;
   }
+  .mobile-contact-phone:hover { color: var(--cream); }
   .mobile-contact-row {
     display: flex;
     gap: 8px;
@@ -1155,8 +1222,8 @@
   .mobile-link-cta {
     margin-top: 16px;
     padding: 16px 24px;
-    background: var(--ink);
-    color: var(--cream) !important;
+    background: var(--amber);
+    color: var(--ink) !important;
     text-align: center;
     border-radius: 999px;
     font-family: var(--f-mono);
@@ -1164,9 +1231,10 @@
     font-weight: 600;
     letter-spacing: 0.1em;
     text-transform: uppercase;
+    transition: all 0.2s ease;
   }
   .mobile-link-cta:hover, .mobile-link-cta:active {
-    background: var(--amber);
+    background: var(--cream);
     color: var(--ink) !important;
   }
 
@@ -1253,6 +1321,15 @@
     burger.addEventListener('click', () => {
       const open = burger.getAttribute('aria-expanded') === 'true';
       setMobileOpen(!open);
+    });
+
+    // Explicit close button inside drawer
+    const closeBtn = mobileNav.querySelector('[data-mobile-close]');
+    if (closeBtn) closeBtn.addEventListener('click', () => setMobileOpen(false));
+
+    // Click on backdrop (the ::before overlay area) closes drawer
+    mobileNav.addEventListener('click', (e) => {
+      if (e.target === mobileNav) setMobileOpen(false);
     });
 
     // Close drawer on regular link click (but NOT accordion buttons)

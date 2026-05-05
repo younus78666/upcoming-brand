@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
-import BottomFormCTA from '../../../components/BottomFormCTA.astro';
+import FinalCTA from '../../../components/FinalCTA.astro';
 
 const canonical = "https://upcomingbrand.com/tools/schema-generator/";
 
@@ -479,8 +479,8 @@ const jsonLdString = JSON.stringify({
     </section>
 
   </main>
-  <BottomFormCTA formName="schema-generator-cta" heading="Need a senior to set this up properly?" sub="Schema is one of five layers we cover. Book a free 15-minute call to audit your full structured data setup." />
-  <Footer />
+<FinalCTA />
+<Footer />
 </BaseLayout>
 
 <script is:inline>

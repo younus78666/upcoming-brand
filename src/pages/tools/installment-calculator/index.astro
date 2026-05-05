@@ -3,7 +3,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
-import BottomFormCTA from '../../../components/BottomFormCTA.astro';
+import FinalCTA from '../../../components/FinalCTA.astro';
 
 const canonical = "https://upcomingbrand.com/tools/installment-calculator/";
 
@@ -391,8 +391,8 @@ const jsonLd = JSON.stringify({
     </section>
 
   </main>
-  <BottomFormCTA formName="installment-cta" heading="Have questions about the plan?" sub="Book a free 15-minute call. We confirm scope and walk through the payment plan in plain language." />
-  <Footer />
+<FinalCTA />
+<Footer />
 </BaseLayout>
 
 <script is:inline>

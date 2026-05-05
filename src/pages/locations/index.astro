@@ -4,7 +4,7 @@ import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 
-import BottomFormCTA from '../../components/BottomFormCTA.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
 const canonical = "https://upcomingbrand.com/locations/";
 
 const jsonLd = JSON.stringify({
@@ -531,9 +531,8 @@ const totalCities = regions.reduce((sum, r) => sum + r.cities.length, 0);
 
   </main>
 
-  <BottomFormCTA formName="locations-cta" />
-
-  <Footer />
+<FinalCTA />
+<Footer />
 </BaseLayout>
 
 <style>

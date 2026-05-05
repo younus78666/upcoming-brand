@@ -3,7 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
-import BottomFormCTA from '../../components/BottomFormCTA.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
 import { projects, type Project } from '../../data/projects';
 
 export async function getStaticPaths() {
@@ -322,8 +322,8 @@ const sidebarFormId = `cs-sidebar-${project.slug}`;
     </section>
 
   </main>
-  <BottomFormCTA formName={`work-${project.slug}-cta`} heading="Want a project like this?" sub="Tell us about your situation. We map your competitive set and send a fixed-scope quote within 48 hours." />
-  <Footer />
+<FinalCTA />
+<Footer />
 </BaseLayout>
 
 <style>
