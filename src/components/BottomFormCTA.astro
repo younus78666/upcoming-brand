@@ -110,7 +110,7 @@ const totalStepsCount = formSteps.length;
           <div class="bcta-form-progress-fill" data-bcta-progress-fill style={`width: ${(1 / totalStepsCount) * 100}%`}></div>
         </div>
 
-        <form class="bcta-form" id={formId} name={formName} method="POST"-honeypot="bot-field" data-bcta-multistep name="generic-form" data-uc-form="generic-form" novalidate>
+        <form class="bcta-form" id={formId} name={formName} method="POST" data-bcta-multistep data-uc-form={formName} data-uc-recaptcha-defer="true" novalidate>
           <input type="hidden" name="form-name" value={formName} />
           {Object.entries(hiddenFields).map(([k, v]) => (
             <input type="hidden" name={k} value={v} />
@@ -121,7 +121,7 @@ const totalStepsCount = formSteps.length;
           <input type="hidden" name="_timestamp" id={tsId} value="" />
 
           {formSteps.map((step, sIdx) => (
-            <div class="bcta-step" data-bcta-step={sIdx + 1} data-bcta-step-active={sIdx === 0 ? '' : null}>
+            <div class="bcta-step" data-bcta-step={sIdx + 1} data-bcta-step-active={sIdx === 0 ? '' : null} data-bcta-is-last={sIdx === formSteps.length - 1 ? '' : null}>
               {step.fields.map((field) => {
                 const fieldId = `${formId}-${field.name}`;
                 if (field.type === 'select') {
@@ -181,6 +181,12 @@ const totalStepsCount = formSteps.length;
                   </div>
                 );
               })}
+              {sIdx === formSteps.length - 1 && (
+                <div class="bcta-form-row bcta-form-row-recaptcha">
+                  <span class="bcta-form-label">Verify you are human</span>
+                  <div class="uc-recaptcha"></div>
+                </div>
+              )}
             </div>
           ))}
 
@@ -245,7 +251,15 @@ const totalStepsCount = formSteps.length;
       labelEl.textContent = `Step ${n} of ${totalSteps}`;
       fillEl.style.width = `${(n / totalSteps) * 100}%`;
       backBtn.hidden = (n === 1);
-      if (n === totalSteps) { nextBtn.hidden = true; submitBtn.hidden = false; }
+      if (n === totalSteps) {
+        nextBtn.hidden = true; submitBtn.hidden = false;
+        // Render reCAPTCHA inline as the last field — only when user reaches the final step
+        const stepEl = card.querySelector(`[data-bcta-step="${n}"]`);
+        const captchaHolder = stepEl ? stepEl.querySelector('.uc-recaptcha') : null;
+        if (captchaHolder && typeof window.ucRenderRecaptcha === 'function') {
+          setTimeout(() => window.ucRenderRecaptcha(captchaHolder), 80);
+        }
+      }
       else { nextBtn.hidden = false; submitBtn.hidden = true; }
       const firstInput = card.querySelector(`[data-bcta-step="${n}"] input, [data-bcta-step="${n}"] select, [data-bcta-step="${n}"] textarea`);
       if (firstInput && n > 1) firstInput.focus({ preventScroll: true });
@@ -463,6 +477,19 @@ const totalStepsCount = formSteps.length;
   [data-bcta-step][data-bcta-step-active] { display: flex; }
 
   .bcta-form-row { display: flex; flex-direction: column; gap: 5px; }
+  .bcta-form-row-recaptcha { margin-top: 4px; padding-top: 12px; border-top: 1px dashed rgba(244, 239, 230, 0.1); }
+  .bcta-form-row-recaptcha .uc-recaptcha {
+    transform: scale(0.88);
+    transform-origin: 0 0;
+    width: calc(100% / 0.88);
+    margin-top: 6px;
+  }
+  @media (max-width: 380px) {
+    .bcta-form-row-recaptcha .uc-recaptcha {
+      transform: scale(0.78);
+      width: calc(100% / 0.78);
+    }
+  }
   .bcta-form-label {
     font-family: var(--f-mono);
     font-size: 10px;

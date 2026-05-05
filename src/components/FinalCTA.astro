@@ -200,8 +200,11 @@ const {
               </li>
             </ul>
 
-            <!-- captcha placeholder — universal handler injects g-recaptcha here -->
-            <div class="uc-recaptcha"></div>
+            <!-- captcha as the last field before submit -->
+            <div class="form-group ms-recaptcha-row">
+              <label class="form-label mono-xs">Verify you are human</label>
+              <div class="uc-recaptcha"></div>
+            </div>
 
             <div class="ms-actions ms-actions-split">
               <button type="button" class="ms-back" data-go-step="2">&larr; Back</button>
@@ -627,12 +630,17 @@ const {
     background: rgba(210, 122, 90, 0.08);
   }
 
-  /* ── Captcha sizing on the dark card ── */
+  /* ── Captcha sizing on the dark card (rendered as the last field) ── */
+  .ms-recaptcha-row {
+    padding-top: 12px;
+    border-top: 1px dashed rgba(244, 239, 230, 0.1);
+    margin-top: 4px;
+  }
   .ms-form .uc-recaptcha {
     transform: scale(0.88);
     transform-origin: 0 0;
     width: calc(100% / 0.88); /* compensate so layout still fills container */
-    margin: 8px 0 12px;
+    margin: 6px 0 0;
   }
   @media (max-width: 380px) {
     .ms-form .uc-recaptcha {
