@@ -1,0 +1,915 @@
+---
+// Exit-intent multi-step branching form. Captures qualified project briefs
+// from users who are about to leave. Triggers on:
+//   - Desktop: mouse-out at top of viewport (clientY <= 0)
+//   - Mobile: visibilitychange -> hidden, OR pagehide
+// Suppression rules:
+//   - Min engagement: 8 seconds since DOMContentLoaded
+//   - Once per session (sessionStorage flag)
+//   - Once dismissed, 7-day cooldown via localStorage
+//   - Suppressed on conversion-adjacent routes (/thank-you/, /contact/, /book-a-discovery-call/)
+---
+
+<div id="ei-overlay" class="ei-overlay" aria-hidden="true">
+  <div class="ei-modal" role="dialog" aria-modal="true" aria-labelledby="ei-headline">
+
+    <button type="button" class="ei-close" aria-label="Close" data-ei-close>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+        <path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <!-- Progress strip -->
+    <div class="ei-progress" id="ei-progress" aria-hidden="true">
+      <div class="ei-progress-track"><div class="ei-progress-fill" id="ei-progress-fill"></div></div>
+      <span class="ei-progress-label" id="ei-progress-label">Step 1 of 6</span>
+    </div>
+
+    <form id="ei-form" class="ei-form" name="exit-intent" method="POST" novalidate
+          data-uc-form="exit-intent" data-uc-recaptcha-defer="true">
+
+      <!-- ============= STEP 1: NEW vs UPDATE ============= -->
+      <section class="ei-step is-active" data-ei-step="intent">
+        <div class="ei-eyebrow">Wait — before you go</div>
+        <h2 class="ei-h2" id="ei-headline">Want to build a new site or update an existing one?</h2>
+        <p class="ei-sub">30-second project brief. We will reply with a fixed-scope quote within 24 hours.</p>
+
+        <div class="ei-cards">
+          <button type="button" class="ei-card" data-intent="new">
+            <span class="ei-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span class="ei-card-title">Build a new site</span>
+            <span class="ei-card-desc">Starting from scratch. Need design + dev + launch.</span>
+          </button>
+          <button type="button" class="ei-card" data-intent="update">
+            <span class="ei-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 12a9 9 0 1 1-3.8-7.3M21 4v5h-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="ei-card-title">Update an existing site</span>
+            <span class="ei-card-desc">Have a site already. Need redesign, fixes, SEO, more.</span>
+          </button>
+        </div>
+        <input type="hidden" name="project_type" id="ei-project-type" value="" />
+      </section>
+
+      <!-- ============= STEP 2A: existing URL ============= -->
+      <section class="ei-step" data-ei-step="existing">
+        <div class="ei-eyebrow">Tell us about your current site</div>
+        <h2 class="ei-h2">What's your site URL?</h2>
+        <p class="ei-sub">Drop the link so we can review it before our reply.</p>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-url">Current website URL</label>
+          <input class="ei-input" type="url" id="ei-url" name="existing_url"
+                 placeholder="https://yourbusiness.com" autocomplete="url"
+                 data-ei-required="existing" />
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-pain">What's not working? (optional)</label>
+          <textarea class="ei-input ei-textarea" id="ei-pain" name="current_pain" rows="3"
+                    placeholder="Slow load times, not ranking, outdated design, no online booking…"></textarea>
+        </div>
+      </section>
+
+      <!-- ============= STEP 2B: new business info ============= -->
+      <section class="ei-step" data-ei-step="new">
+        <div class="ei-eyebrow">Tell us about your business</div>
+        <h2 class="ei-h2">What's the company name?</h2>
+        <p class="ei-sub">We'll suggest domain options and check availability before our call.</p>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-company">Company / business name</label>
+          <input class="ei-input" type="text" id="ei-company" name="company_name"
+                 placeholder="Acme Studio" autocomplete="organization"
+                 data-ei-required="new" />
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-domain">Preferred domain (optional)</label>
+          <input class="ei-input" type="text" id="ei-domain" name="proposed_domain"
+                 placeholder="acmestudio.com" autocomplete="off" />
+          <p class="ei-hint">We will check availability + suggest 3 alternatives in our reply.</p>
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-industry-new">Industry</label>
+          <select class="ei-input ei-select" id="ei-industry-new" name="industry">
+            <option value="" disabled selected>Pick an industry</option>
+            <option>Law Firm / Attorney</option>
+            <option>Dental / Medical</option>
+            <option>Real Estate / Brokerage</option>
+            <option>Contractor / Trades</option>
+            <option>Restaurant / Hospitality</option>
+            <option>Nonprofit / Church</option>
+            <option>Ecommerce / DTC</option>
+            <option>Service Business</option>
+            <option>SaaS / Tool</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- ============= STEP 3: services needed ============= -->
+      <section class="ei-step" data-ei-step="services">
+        <div class="ei-eyebrow">What do you need</div>
+        <h2 class="ei-h2">Pick everything you need help with</h2>
+        <p class="ei-sub">Multi-select. You'll get one fixed-scope quote that covers all of them.</p>
+        <div class="ei-chips">
+          <label class="ei-chip"><input type="checkbox" name="services" value="Custom design" /><span>Custom design</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Full redesign" /><span>Full redesign</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="New build" /><span>New build</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Updates" /><span>Updates / edits</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Maintenance / care plan" /><span>Maintenance</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="SEO" /><span>SEO</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Technical SEO + schema" /><span>Technical SEO</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Speed optimization" /><span>Speed optimization</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Migration to WordPress" /><span>Migration</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Security / hardening" /><span>Security</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="WooCommerce" /><span>WooCommerce</span></label>
+          <label class="ei-chip"><input type="checkbox" name="services" value="Hosting setup" /><span>Hosting</span></label>
+        </div>
+      </section>
+
+      <!-- ============= STEP 4: budget vs installment ============= -->
+      <section class="ei-step" data-ei-step="payment">
+        <div class="ei-eyebrow">Investment</div>
+        <h2 class="ei-h2">How would you like to handle payment?</h2>
+        <p class="ei-sub">Pay upfront or split across 3-12 months. No credit checks, no third-party financiers — direct with us.</p>
+        <div class="ei-cards">
+          <button type="button" class="ei-card" data-payment="budget">
+            <span class="ei-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 7h20v10H2zM2 11h20" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="14" r="2" stroke="currentColor" stroke-width="1.8"/></svg></span>
+            <span class="ei-card-title">I have a budget</span>
+            <span class="ei-card-desc">Pay 50% to start, 50% at launch.</span>
+          </button>
+          <button type="button" class="ei-card" data-payment="installment">
+            <span class="ei-card-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 12h6m0 0l-2 -2m2 2l-2 2M15 12h6m0 0l-2 -2m2 2l-2 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="ei-card-title">Explore installments</span>
+            <span class="ei-card-desc">Spread across 3, 6, 9, or 12 months.</span>
+          </button>
+        </div>
+        <input type="hidden" name="payment_preference" id="ei-payment-pref" value="" />
+      </section>
+
+      <!-- ============= STEP 5A: budget details ============= -->
+      <section class="ei-step" data-ei-step="budget">
+        <div class="ei-eyebrow">Quick budget signal</div>
+        <h2 class="ei-h2">Pick a range you're comfortable with</h2>
+        <p class="ei-sub">Helps us scope the right deliverables. We'll quote a fixed number, not a range.</p>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-budget-range">Budget range</label>
+          <select class="ei-input ei-select" id="ei-budget-range" name="budget_range">
+            <option value="" disabled selected>Pick a range</option>
+            <option>Under $1,500</option>
+            <option>$1,500 - $3,000</option>
+            <option>$3,000 - $6,000</option>
+            <option>$6,000 - $12,000</option>
+            <option>$12,000 - $25,000</option>
+            <option>$25,000+</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-timeline-b">Ideal launch timeline</label>
+          <select class="ei-input ei-select" id="ei-timeline-b" name="timeline">
+            <option value="" disabled selected>Pick a timeline</option>
+            <option>Yesterday</option>
+            <option>Within 1 month</option>
+            <option>1-3 months</option>
+            <option>3-6 months</option>
+            <option>Just exploring</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- ============= STEP 5B: installment details ============= -->
+      <section class="ei-step" data-ei-step="installment">
+        <div class="ei-eyebrow">Installment plan</div>
+        <h2 class="ei-h2">Let's design a plan that fits</h2>
+        <p class="ei-sub">No credit check. No third-party. Just us, you, and a written schedule.</p>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-installment-months">How many months?</label>
+          <select class="ei-input ei-select" id="ei-installment-months" name="installment_months">
+            <option value="" disabled selected>Pick a term</option>
+            <option>3 months</option>
+            <option>6 months</option>
+            <option>9 months</option>
+            <option>12 months</option>
+          </select>
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-deposit">Comfortable deposit to start</label>
+          <select class="ei-input ei-select" id="ei-deposit" name="deposit_range">
+            <option value="" disabled selected>Pick a range</option>
+            <option>$500 or less</option>
+            <option>$500 - $1,000</option>
+            <option>$1,000 - $2,500</option>
+            <option>$2,500+</option>
+          </select>
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-monthly">Comfortable monthly payment</label>
+          <select class="ei-input ei-select" id="ei-monthly" name="monthly_range">
+            <option value="" disabled selected>Pick a range</option>
+            <option>Under $300/mo</option>
+            <option>$300 - $600/mo</option>
+            <option>$600 - $1,200/mo</option>
+            <option>$1,200+/mo</option>
+          </select>
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-timeline-i">Ideal launch timeline</label>
+          <select class="ei-input ei-select" id="ei-timeline-i" name="timeline">
+            <option value="" disabled selected>Pick a timeline</option>
+            <option>Within 1 month</option>
+            <option>1-3 months</option>
+            <option>3-6 months</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- ============= STEP 6: contact ============= -->
+      <section class="ei-step" data-ei-step="contact">
+        <div class="ei-eyebrow">Where to reach you</div>
+        <h2 class="ei-h2">Almost done — your contact details</h2>
+        <p class="ei-sub">We reply within 1 business day. We never pass details to third parties.</p>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-name">Your name</label>
+          <input class="ei-input" type="text" id="ei-name" name="name" placeholder="Jane Smith" autocomplete="name" data-ei-required="contact" />
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-email">Email address</label>
+          <input class="ei-input" type="email" id="ei-email" name="email" placeholder="jane@business.com" autocomplete="email" data-ei-required="contact" />
+        </div>
+        <div class="ei-field">
+          <label class="ei-label" for="ei-phone">Phone (optional, for WhatsApp)</label>
+          <input class="ei-input" type="tel" id="ei-phone" name="phone" placeholder="+1 555 123 4567" autocomplete="tel" />
+        </div>
+        <label class="ei-consent">
+          <input type="checkbox" name="whatsapp_ok" value="yes" />
+          <span>You can reply via WhatsApp on this number</span>
+        </label>
+      </section>
+
+      <!-- ============= STEP 7: recap + captcha + submit ============= -->
+      <section class="ei-step" data-ei-step="review">
+        <div class="ei-eyebrow">One last check</div>
+        <h2 class="ei-h2">Review your project brief</h2>
+        <ul class="ei-recap" id="ei-recap"></ul>
+        <div class="uc-recaptcha"></div>
+      </section>
+
+      <!-- Step nav (sticky bottom) -->
+      <div class="ei-nav">
+        <button type="button" class="ei-back" data-ei-back hidden>
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M10 5.5H1m4.5-4.5L1 5.5l4.5 4.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Back
+        </button>
+        <button type="button" class="ei-next" data-ei-next>
+          Continue
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button type="submit" class="ei-submit" hidden>
+          Send my project brief
+          <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script is:inline>
+(function(){
+  // Suppress on conversion-adjacent routes
+  var path = location.pathname;
+  if (/^\/(thank-you|contact|book-a-discovery-call)\/?$/i.test(path)) return;
+
+  var overlay = document.getElementById('ei-overlay');
+  var form = document.getElementById('ei-form');
+  if (!overlay || !form) return;
+
+  // Suppression: cooldown via localStorage (7 days) + once per session
+  try {
+    var cooldownUntil = Number(localStorage.getItem('ei-cooldown-until') || 0);
+    if (cooldownUntil && Date.now() < cooldownUntil) return;
+    if (sessionStorage.getItem('ei-shown') === '1') return;
+  } catch(_) {}
+
+  var startTs = Date.now();
+  var MIN_ENGAGEMENT_MS = 8000;
+  var hasShown = false;
+  var STEPS_BASE = ['intent']; // dynamic flow built per branch
+
+  function getFlow(){
+    var pt = document.getElementById('ei-project-type').value;
+    var pp = document.getElementById('ei-payment-pref').value;
+    var firstBranch = (pt === 'update') ? 'existing' : 'new';
+    var paymentBranch = (pp === 'installment') ? 'installment' : 'budget';
+    return ['intent', firstBranch, 'services', 'payment', paymentBranch, 'contact', 'review'];
+  }
+
+  var currentIndex = 0;
+
+  function showStep(name){
+    form.querySelectorAll('.ei-step').forEach(function(s){
+      s.classList.toggle('is-active', s.dataset.eiStep === name);
+    });
+    var flow = getFlow();
+    currentIndex = Math.max(0, flow.indexOf(name));
+    var total = flow.length;
+    var pctFill = Math.round(((currentIndex + 1) / total) * 100);
+    document.getElementById('ei-progress-fill').style.width = pctFill + '%';
+    document.getElementById('ei-progress-label').textContent = 'Step ' + (currentIndex + 1) + ' of ' + total;
+
+    // toggle back/next/submit visibility
+    var back = form.querySelector('.ei-back');
+    var next = form.querySelector('.ei-next');
+    var submit = form.querySelector('.ei-submit');
+    back.hidden = currentIndex === 0;
+    next.hidden = name === 'review';
+    submit.hidden = name !== 'review';
+
+    // intent + payment steps don't need a "Continue" since cards advance directly
+    if (name === 'intent' || name === 'payment') {
+      next.hidden = true;
+    }
+
+    // Render captcha when reaching review step (deferred — only when ready to submit)
+    if (name === 'review') {
+      buildRecap();
+      var holder = form.querySelector('.uc-recaptcha');
+      if (holder && typeof window.ucRenderRecaptcha === 'function') {
+        setTimeout(function(){ window.ucRenderRecaptcha(holder); }, 80);
+      }
+    }
+  }
+
+  function validateStep(name){
+    var requiredFields = form.querySelectorAll('[data-ei-required="' + name + '"]');
+    var ok = true;
+    requiredFields.forEach(function(f){
+      f.classList.remove('is-error');
+      var v = (f.value || '').trim();
+      if (!v) { ok = false; f.classList.add('is-error'); }
+      else if (f.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) {
+        ok = false; f.classList.add('is-error');
+      }
+      else if (f.type === 'url' && !/^https?:\/\/.+/i.test(v)) {
+        // soft fix: prepend https
+        f.value = 'https://' + v.replace(/^\/+/, '');
+      }
+    });
+    if (!ok && requiredFields[0]) try { requiredFields[0].focus(); } catch(_){}
+    return ok;
+  }
+
+  function next(){
+    var flow = getFlow();
+    var here = flow[currentIndex];
+    if (!validateStep(here)) return;
+    var nextName = flow[currentIndex + 1];
+    if (nextName) showStep(nextName);
+  }
+  function back(){
+    var flow = getFlow();
+    var prev = flow[currentIndex - 1];
+    if (prev) showStep(prev);
+  }
+
+  // Card-driven branching (intent + payment)
+  form.querySelectorAll('[data-intent]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var v = btn.dataset.intent;
+      document.getElementById('ei-project-type').value = v;
+      form.querySelectorAll('[data-intent]').forEach(function(b){ b.classList.toggle('is-selected', b === btn); });
+      setTimeout(function(){ showStep(v === 'update' ? 'existing' : 'new'); }, 180);
+    });
+  });
+  form.querySelectorAll('[data-payment]').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var v = btn.dataset.payment;
+      document.getElementById('ei-payment-pref').value = v;
+      form.querySelectorAll('[data-payment]').forEach(function(b){ b.classList.toggle('is-selected', b === btn); });
+      setTimeout(function(){ showStep(v === 'installment' ? 'installment' : 'budget'); }, 180);
+    });
+  });
+
+  form.querySelector('.ei-next').addEventListener('click', next);
+  form.querySelector('.ei-back').addEventListener('click', back);
+
+  // Clear validation styling on input
+  form.querySelectorAll('.ei-input').forEach(function(i){
+    i.addEventListener('input', function(){ i.classList.remove('is-error'); });
+    i.addEventListener('change', function(){ i.classList.remove('is-error'); });
+  });
+
+  function buildRecap(){
+    var fd = new FormData(form);
+    var entries = {};
+    fd.forEach(function(v,k){
+      if (k === 'services') { entries[k] = (entries[k] || []); entries[k].push(v); }
+      else { entries[k] = v; }
+    });
+    var rows = [];
+    function row(label, val){
+      if (val === undefined || val === null || val === '' || (Array.isArray(val) && !val.length)) return;
+      var display = Array.isArray(val) ? val.join(', ') : String(val);
+      rows.push('<li class="ei-recap-row"><span class="ei-recap-label">' + label + '</span><span class="ei-recap-val">' + escape(display) + '</span></li>');
+    }
+    function escape(s){ return s.replace(/[<>&"]/g, function(c){ return ({'<':'&lt;','>':'&gt;','&':'&amp;','"':'&quot;'})[c]; }); }
+    var pt = entries.project_type || '';
+    row('Project type', pt === 'new' ? 'New build' : (pt === 'update' ? 'Update existing' : ''));
+    row('Existing site', entries.existing_url);
+    row("What's not working", entries.current_pain);
+    row('Company', entries.company_name);
+    row('Preferred domain', entries.proposed_domain);
+    row('Industry', entries.industry);
+    row('Services needed', entries.services);
+    row('Payment', entries.payment_preference === 'installment' ? 'Installment plan' : 'Budget upfront');
+    row('Budget range', entries.budget_range);
+    row('Installment term', entries.installment_months);
+    row('Deposit', entries.deposit_range);
+    row('Monthly', entries.monthly_range);
+    row('Timeline', entries.timeline);
+    row('Name', entries.name);
+    row('Email', entries.email);
+    row('Phone', entries.phone);
+    row('WhatsApp ok?', entries.whatsapp_ok === 'yes' ? 'Yes' : '');
+    document.getElementById('ei-recap').innerHTML = rows.join('') || '<li class="ei-recap-row"><span class="ei-recap-val">(nothing yet)</span></li>';
+  }
+
+  // Open / close
+  function open(){
+    if (hasShown) return;
+    if (Date.now() - startTs < MIN_ENGAGEMENT_MS) return;
+    hasShown = true;
+    try { sessionStorage.setItem('ei-shown', '1'); } catch(_){}
+    overlay.setAttribute('aria-hidden', 'false');
+    overlay.classList.add('is-open');
+    document.body.classList.add('ei-open');
+    showStep('intent');
+  }
+  function close(){
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.classList.remove('is-open');
+    document.body.classList.remove('ei-open');
+    try { localStorage.setItem('ei-cooldown-until', String(Date.now() + 7 * 24 * 60 * 60 * 1000)); } catch(_){}
+  }
+  overlay.addEventListener('click', function(e){ if (e.target === overlay) close(); });
+  document.querySelectorAll('[data-ei-close]').forEach(function(b){ b.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape' && overlay.classList.contains('is-open')) close(); });
+
+  // Triggers
+  // Desktop: mouse leaves through the top
+  document.addEventListener('mouseout', function(e){
+    if (e.relatedTarget) return;
+    if (e.clientY > 0) return;
+    open();
+  });
+  // Mobile: visibility change to hidden + back navigation attempt
+  document.addEventListener('visibilitychange', function(){
+    // Only open when going hidden — this fires when user backgrounds the tab/app
+    if (document.visibilityState === 'hidden' && Date.now() - startTs > MIN_ENGAGEMENT_MS) {
+      // Defer a beat so we don't open behind a tab they intentionally backgrounded
+      // Most exit signals on mobile are not mouseleave — instead use scroll-up + idle
+    }
+  });
+  // Mobile: rapid scroll-up after first scroll (proxy for "they're about to bounce / leave")
+  var hasScrolledDown = false;
+  var lastY = window.scrollY;
+  window.addEventListener('scroll', function(){
+    var y = window.scrollY;
+    if (y > 300) hasScrolledDown = true;
+    if (hasScrolledDown && y < lastY - 200 && y < 60) open();
+    lastY = y;
+  }, { passive: true });
+
+  // Listen for successful submission to clear cooldown forever (already converted)
+  form.addEventListener('submit', function(){
+    // Universal handler intercepts the actual fetch; if it succeeds the user is redirected to /thank-you/
+    try { localStorage.setItem('ei-cooldown-until', String(Date.now() + 365 * 24 * 60 * 60 * 1000)); } catch(_){}
+  });
+})();
+</script>
+
+<style>
+  .ei-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 12, 16, 0.72);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+  }
+  .ei-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  :global(body.ei-open) { overflow: hidden; }
+
+  .ei-modal {
+    position: relative;
+    width: 100%;
+    max-width: 580px;
+    max-height: calc(100vh - 32px);
+    background: var(--ink);
+    color: var(--cream);
+    border-radius: 18px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.5);
+    border: 1px solid rgba(244, 239, 230, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transform: translateY(12px) scale(0.98);
+    transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  .ei-overlay.is-open .ei-modal { transform: translateY(0) scale(1); }
+
+  .ei-close {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(244, 239, 230, 0.06);
+    border: 1px solid rgba(244, 239, 230, 0.12);
+    border-radius: 50%;
+    color: var(--cream);
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.2s ease;
+  }
+  .ei-close:hover {
+    background: var(--amber);
+    color: var(--ink);
+    border-color: var(--amber);
+  }
+
+  /* Progress strip */
+  .ei-progress {
+    padding: 18px 24px 12px;
+    border-bottom: 1px solid rgba(244, 239, 230, 0.06);
+  }
+  .ei-progress-track {
+    height: 3px;
+    background: rgba(244, 239, 230, 0.08);
+    border-radius: 999px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .ei-progress-fill {
+    height: 100%;
+    width: 14%;
+    background: var(--amber);
+    border-radius: 999px;
+    transition: width 0.4s ease;
+  }
+  .ei-progress-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.45);
+    font-weight: 600;
+  }
+
+  .ei-form {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .ei-step {
+    display: none;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 28px 20px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    flex: 1;
+    min-height: 0;
+  }
+  .ei-step.is-active {
+    display: flex;
+    animation: ei-fade-in 0.25s ease;
+  }
+  @keyframes ei-fade-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .ei-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .ei-h2 {
+    font-family: var(--f-display);
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--cream);
+    margin: 0;
+  }
+  .ei-sub {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(244, 239, 230, 0.65);
+    margin: 0;
+  }
+
+  /* Cards (intent + payment) */
+  .ei-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 8px;
+  }
+  .ei-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 10px;
+    padding: 18px 16px 16px;
+    background: rgba(244, 239, 230, 0.03);
+    border: 1.5px solid rgba(244, 239, 230, 0.1);
+    border-radius: 14px;
+    color: var(--cream);
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ei-card:hover, .ei-card:focus-visible {
+    border-color: var(--amber);
+    background: rgba(212, 147, 46, 0.06);
+    outline: none;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(212, 147, 46, 0.12);
+  }
+  .ei-card.is-selected {
+    border-color: var(--amber);
+    background: rgba(212, 147, 46, 0.1);
+  }
+  .ei-card-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(212, 147, 46, 0.14);
+    border: 1px solid rgba(212, 147, 46, 0.3);
+    color: var(--amber);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ei-card-title {
+    font-family: var(--f-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+  }
+  .ei-card-desc {
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: rgba(244, 239, 230, 0.55);
+  }
+
+  /* Fields */
+  .ei-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ei-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.5);
+    font-weight: 600;
+  }
+  .ei-input {
+    width: 100%;
+    padding: 12px 14px;
+    background: rgba(244, 239, 230, 0.05);
+    border: 1px solid rgba(244, 239, 230, 0.14);
+    border-radius: 8px;
+    font-family: var(--f-body);
+    font-size: 14px;
+    color: var(--cream);
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+  }
+  .ei-input::placeholder { color: rgba(244, 239, 230, 0.3); }
+  .ei-input:focus {
+    border-color: var(--amber);
+    background: rgba(212, 147, 46, 0.06);
+  }
+  .ei-input.is-error {
+    border-color: #d27a5a;
+    background: rgba(210, 122, 90, 0.08);
+  }
+  .ei-textarea { min-height: 80px; resize: vertical; line-height: 1.5; }
+  .ei-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2 4l4 4 4-4' stroke='rgba(244,239,230,0.55)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 32px;
+    color: var(--cream);
+  }
+  .ei-select option {
+    background: #1a2030;
+    color: var(--cream);
+  }
+  .ei-hint {
+    font-size: 12px;
+    color: rgba(244, 239, 230, 0.45);
+    margin: 4px 0 0;
+    line-height: 1.5;
+  }
+
+  /* Service chips (multi-select) */
+  .ei-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  .ei-chip {
+    cursor: pointer;
+    user-select: none;
+  }
+  .ei-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .ei-chip span {
+    display: inline-block;
+    padding: 8px 14px;
+    background: rgba(244, 239, 230, 0.04);
+    border: 1px solid rgba(244, 239, 230, 0.14);
+    border-radius: 999px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: rgba(244, 239, 230, 0.85);
+    transition: all 0.18s ease;
+  }
+  .ei-chip:hover span {
+    border-color: rgba(212, 147, 46, 0.5);
+    color: var(--cream);
+  }
+  .ei-chip input:checked + span {
+    background: var(--amber);
+    color: var(--ink);
+    border-color: var(--amber);
+  }
+
+  /* Consent checkbox */
+  .ei-consent {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .ei-consent input {
+    margin-top: 2px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--amber);
+  }
+  .ei-consent span {
+    font-size: 13px;
+    color: rgba(244, 239, 230, 0.7);
+    line-height: 1.5;
+  }
+
+  /* Recap */
+  .ei-recap {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: rgba(244, 239, 230, 0.03);
+    border: 1px solid rgba(244, 239, 230, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .ei-recap-row {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 14px;
+    padding: 11px 14px;
+    border-bottom: 1px dashed rgba(244, 239, 230, 0.08);
+    align-items: start;
+  }
+  .ei-recap-row:last-child { border-bottom: none; }
+  .ei-recap-label {
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(244, 239, 230, 0.4);
+    padding-top: 2px;
+  }
+  .ei-recap-val {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--cream);
+    word-break: break-word;
+  }
+
+  /* Captcha containment inside modal */
+  .ei-step .uc-recaptcha {
+    transform: scale(0.85);
+    transform-origin: 0 0;
+    width: calc(100% / 0.85);
+    margin: 12px 0 0;
+  }
+  @media (max-width: 380px) {
+    .ei-step .uc-recaptcha {
+      transform: scale(0.74);
+      width: calc(100% / 0.74);
+    }
+  }
+
+  /* Sticky bottom nav */
+  .ei-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 24px calc(14px + env(safe-area-inset-bottom));
+    background: rgba(0, 0, 0, 0.25);
+    border-top: 1px solid rgba(244, 239, 230, 0.06);
+    flex-shrink: 0;
+  }
+  .ei-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: transparent;
+    border: 1px solid rgba(244, 239, 230, 0.14);
+    color: rgba(244, 239, 230, 0.65);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ei-back:hover {
+    border-color: var(--amber);
+    color: var(--amber);
+  }
+  .ei-next, .ei-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: auto;
+    background: var(--amber);
+    color: var(--ink);
+    border: 1px solid var(--amber);
+    font-family: var(--f-mono);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 12px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .ei-next:hover, .ei-submit:hover {
+    background: var(--cream);
+    color: var(--ink);
+    border-color: var(--cream);
+  }
+
+  /* Mobile */
+  @media (max-width: 540px) {
+    .ei-overlay { padding: 0; align-items: stretch; }
+    .ei-modal {
+      max-height: 100vh;
+      max-height: 100dvh;
+      border-radius: 0;
+      width: 100%;
+    }
+    .ei-cards { grid-template-columns: 1fr; }
+    .ei-step { padding: 20px 20px 16px; }
+    .ei-progress { padding: 14px 20px 10px; }
+    .ei-nav { padding: 12px 20px calc(12px + env(safe-area-inset-bottom)); }
+  }
+</style>

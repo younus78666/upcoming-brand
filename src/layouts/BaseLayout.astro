@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import ExitIntentPopup from '../components/ExitIntentPopup.astro';
 
 export interface Props {
   title?: string;
@@ -182,6 +183,9 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow";
 </head>
 <body>
   <slot />
+
+  <!-- Exit-intent popup (sitewide, suppressed on /thank-you/ /contact/ /book-a-discovery-call/) -->
+  <ExitIntentPopup />
 
   <!-- WhatsApp floating contact (left side) -->
   <a

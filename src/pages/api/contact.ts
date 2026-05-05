@@ -75,6 +75,8 @@ const SUBJECT_MAP: Record<string, string> = {
   // tools
   'installment-calculator':     'Installment calculator lead',
   'schema-generator':           'Schema generator follow-up',
+  // exit-intent
+  'exit-intent':                'EXIT-INTENT project brief',
 };
 
 // ---------- helpers ----------
