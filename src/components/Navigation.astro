@@ -516,7 +516,7 @@
     <ul class="mobile-nav-links" role="list">
 
       <li class="mobile-section">
-        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc data-href="/services/">
           <span>Services</span>
           <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -539,7 +539,7 @@
       </li>
 
       <li class="mobile-section">
-        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc data-href="/industries/">
           <span>Industries</span>
           <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -561,7 +561,7 @@
       </li>
 
       <li class="mobile-section">
-        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc data-href="/locations/">
           <span>Maryland locations</span>
           <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -602,7 +602,7 @@
       </li>
 
       <li class="mobile-section">
-        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc data-href="/blog/">
           <span>Resources</span>
           <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -616,7 +616,7 @@
       </li>
 
       <li class="mobile-section">
-        <button class="mobile-acc-btn" aria-expanded="false" data-acc>
+        <button class="mobile-acc-btn" aria-expanded="false" data-acc data-href="/about/">
           <span>Company</span>
           <svg class="mobile-acc-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
@@ -1008,11 +1008,12 @@
     transform: translateX(100%);
     transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
     display: block;
-    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
+    box-shadow: none;
     border-left: 1px solid rgba(244, 239, 230, 0.06);
   }
   .mobile-nav.open {
     transform: translateX(0);
+    box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
   }
   .mobile-nav-inner {
     padding: 24px 24px calc(40px + env(safe-area-inset-bottom));
@@ -1337,13 +1338,23 @@
       link.addEventListener('click', () => setMobileOpen(false));
     });
 
-    // Accordion expand/collapse — close siblings so only one open at a time
+    // Accordion expand/collapse — first tap opens, second tap navigates to section page
     const accBtns = mobileNav.querySelectorAll('[data-acc]');
     accBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const expanded = btn.getAttribute('aria-expanded') === 'true';
+        if (expanded) {
+          // Second tap: navigate to section page
+          const href = btn.getAttribute('data-href');
+          if (href) {
+            setMobileOpen(false);
+            window.location.href = href;
+          }
+          return;
+        }
+        // First tap: close siblings, open this one
         accBtns.forEach(b => b.setAttribute('aria-expanded', 'false'));
-        btn.setAttribute('aria-expanded', String(!expanded));
+        btn.setAttribute('aria-expanded', 'true');
       });
     });
 

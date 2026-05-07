@@ -1,0 +1,886 @@
+﻿---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../components/AnnouncementBar.astro';
+import Navigation from '../../components/Navigation.astro';
+import Footer from '../../components/Footer.astro';
+import FinalCTA from '../../components/FinalCTA.astro';
+import { articles, categories, articleUrl } from '../../data/blog-articles';
+
+const article = articles.find((a) => a.slug === 'website-for-a-small-business-cost')!;
+const category = categories[article.category];
+const canonical = 'https://upcomingbrand.com/website-for-a-small-business-cost/';
+
+const inCategory = articles.filter((a) => a.category === article.category && a.slug !== article.slug).slice(0, 6);
+const otherCategories = articles.filter((a) => a.category !== article.category).slice(0, 4);
+const relatedServices = article.relatedServices ?? [];
+const relatedIndustries = article.relatedIndustries ?? [];
+const searchIndex = articles.map((a) => ({ slug: a.slug, url: a.route ?? `/blog/${a.slug}/`, title: a.title, category: categories[a.category].label }));
+
+// Correct label conversion — strips leading slash before capitalising
+function serviceLabel(href: string): string {
+  return href.replace(/^\/services\//, '').replace(/^\//, '').replace(/\/$/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+function industryLabel(href: string): string {
+  return href.replace(/^\/industries\//, '').replace(/^\//, '').replace(/\/$/, '').replace(/-website-design$/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+
+const toc = [
+  { id: 'website-includes',  label: "What a professional website includes" },
+  { id: 'pricing-paths',     label: "2026 pricing: 3 build paths" },
+  { id: 'hidden-costs',      label: "Hidden recurring costs" },
+  { id: 'cost-drivers',      label: "What drives costs up or down" },
+  { id: 'wordpress-cost',    label: "WordPress cost breakdown" },
+  { id: 'roi',               label: "Is it worth the investment?" },
+  { id: 'budget',            label: "Setting a realistic budget" },
+  { id: 'questions-to-ask',  label: "7 questions to ask before hiring" },
+  { id: 'faq',               label: "FAQ" },
+];
+
+const metaTitle = 'How Much Does a Website Cost for a Small Business in 2026? [Real Numbers]';
+const metaDesc = 'A professional website for a small business costs $2,000-$15,000 in 2026. See real pricing for DIY, freelancer, and agency builds plus hidden costs most owners miss.';
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${canonical}#article`,
+      "url": canonical,
+      "headline": article.title,
+      "description": metaDesc,
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Younus",
+        "url": "https://upcomingbrand.com/about/",
+        "jobTitle": "Senior WordPress Developer",
+        "worksFor": { "@id": "https://upcomingbrand.com/#organization" }
+      },
+      "publisher": { "@id": "https://upcomingbrand.com/#organization" },
+      "datePublished": "2026-05-05",
+      "dateModified": "2026-05-05",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much does a basic 5-page website cost for a small business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A basic five-page website costs $1,500-$5,000 from a freelancer and $3,000-$8,000 from an agency in 2026. DIY builders produce similar results for $200-$600/year."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is WordPress free for small businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress software is free, but hosting ($25-$80/month), domain ($10-$20/year), plugins ($100-$400/year), and development labor ($3,000-$15,000) add up to real costs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does website maintenance cost per month?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Monthly maintenance costs $50-$500. Basic plans cover updates and security ($50-$150/month). Comprehensive plans add performance monitoring and content updates ($200-$500/month)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I use a website builder or hire a professional?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Use a DIY builder if your budget is under $1,500 and your site only needs to display basic information. Hire a professional if your website needs to generate leads, sell products, rank on Google, or represent your brand to high-value clients."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does it take to build a small business website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "DIY: 1-2 weeks. Freelancer: 4-6 weeks. Agency: 6-12 weeks. Content approval is the most common delay."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the most common hidden cost of a small business website?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Content creation and ongoing maintenance. Business owners consistently underestimate the time and cost to write professional copy ($500-$2,500) and the ongoing expense of keeping a site secure and updated ($600-$6,000/year)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does an ecommerce website cost for a small business?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "An ecommerce website for a small business costs $5,000-$25,000 for a custom WooCommerce or Shopify build. DIY ecommerce through Shopify starts at $39/month."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I build a website myself for free?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free plans from platforms like WordPress.com and Wix display platform branding, lack custom domains, and limit functionality. For a business that needs credibility, a free website often costs more in lost customers than a professional build would."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": `${metaTitle} | Upcoming Brand`,
+      "description": metaDesc,
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": "https://upcomingbrand.com/website-cost-3-paths.webp", "width": 1672, "height": 941 },
+      "datePublished": "2026-05-05",
+      "dateModified": "2026-05-05",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://upcomingbrand.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": article.title, "item": canonical }
+        ]
+      }
+    }
+  ]
+});
+---
+<BaseLayout
+  title={metaTitle + ' | Upcoming Brand'}
+  description={metaDesc}
+  canonicalUrl={canonical}
+  ogImage="https://upcomingbrand.com/website-cost-3-paths.webp"
+  ogImageAlt="3 paths to a small business website in 2026: DIY ($200–600), Freelancer ($1,500–$8,000), Agency ($5,000–$15,000)"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="art-hero">
+      <div class="container">
+        <div class="art-hero-inner">
+          <a href="/blog/" class="art-back-link">
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            All insights
+          </a>
+          <div class="art-meta">
+            <span class="art-cat-pill">{category.label}</span>
+            <span class="art-pub-pill">
+              <span class="art-pub-dot" aria-hidden="true"></span>
+              Published &middot; May 2026
+            </span>
+          </div>
+          <h1 class="art-h1">{article.title}</h1>
+          <p class="art-lead">{metaDesc}</p>
+          <!-- Article meta row -->
+          <div class="art-byline">
+            <span class="art-byline-author">
+              <span class="art-byline-avatar" aria-hidden="true">MY</span>
+              <a href="/about/" class="art-byline-name">Muhammad Younus</a>
+            </span>
+            <span class="art-byline-sep" aria-hidden="true">&middot;</span>
+            <time datetime="2026-05-05" class="art-byline-date">May 5, 2026</time>
+            <span class="art-byline-sep" aria-hidden="true">&middot;</span>
+            <span class="art-byline-read">15 min read</span>
+            <span class="art-byline-sep" aria-hidden="true">&middot;</span>
+            <span class="art-byline-updated">Last updated: May 5, 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BODY: 2-col with sticky sidebar -->
+    <section class="art-body">
+      <div class="container art-body-grid">
+
+        <!-- SIDEBAR -->
+        <aside class="art-sidebar">
+
+          <!-- Search -->
+          <div class="art-side-card">
+            <span class="art-side-eyebrow">Search insights</span>
+            <div class="art-side-search">
+              <svg class="art-side-search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9.5 9.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <input type="search" id="art-side-search-input" class="art-side-search-input" placeholder="Search articles..." aria-label="Search articles" />
+            </div>
+            <ul class="art-side-search-results" id="art-side-search-results" data-empty="">
+              <li class="art-side-search-empty">Start typing to search {articles.length} articles</li>
+            </ul>
+          </div>
+
+          <!-- Table of Contents -->
+          <div class="art-side-card art-toc-card">
+            <span class="art-side-eyebrow">Table of contents</span>
+            <nav aria-label="Article sections">
+              <ol class="art-toc-list">
+                {toc.map((item) => (
+                  <li>
+                    <a href={`#${item.id}`} class="art-toc-link" data-toc-link={item.id}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+
+          <!-- Related services CTA -->
+          {(relatedServices.length || relatedIndustries.length) && (
+            <div class="art-side-card art-side-cta-card">
+              <span class="art-side-eyebrow art-side-eyebrow-amber">Live and ready</span>
+              <h3 class="art-side-title">Ready to get a quote?</h3>
+              <p class="art-side-sub">These pages cover what a professional build looks like for your business.</p>
+              <div class="art-side-cta-list">
+                {relatedServices.map((href) => (
+                  <a href={href} class="art-side-cta-item">
+                    <span class="art-side-cta-tag">Service</span>
+                    <span class="art-side-cta-name">{serviceLabel(href)}</span>
+                    <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                ))}
+                {relatedIndustries.map((href) => (
+                  <a href={href} class="art-side-cta-item">
+                    <span class="art-side-cta-tag">Industry</span>
+                    <span class="art-side-cta-name">{industryLabel(href)}</span>
+                    <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                ))}
+              </div>
+              <a href="/contact/" class="art-side-discovery">
+                Book free 15-min call
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          )}
+
+          <!-- Related posts in same category -->
+          {inCategory.length > 0 && (
+            <div class="art-side-card">
+              <span class="art-side-eyebrow">More in {category.label}</span>
+              <ul class="art-side-list">
+                {inCategory.map((a) => (
+                  <li>
+                    <a href={articleUrl(a)} class="art-side-link">
+                      <span class="art-side-link-title">{a.title}</span>
+                      <span class="art-side-link-meta">{a.status === 'published' ? 'Published' : (a.estPublishMonth ?? 'Coming soon')}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- All categories -->
+          <div class="art-side-card">
+            <span class="art-side-eyebrow">All categories</span>
+            <ul class="art-side-cat-list">
+              {Object.entries(categories).map(([id, c]) => (
+                <li>
+                  <a href={`/blog/#${id}`} class={`art-side-cat-link ${id === article.category ? 'art-side-cat-link-active' : ''}`}>
+                    {c.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </aside>
+
+        <!-- MAIN ARTICLE COLUMN -->
+        <article class="art-main art-prose">
+
+          <!-- AEO Featured Snippet -->
+          <div class="art-snippet">
+            <span class="art-snippet-label">Quick answer</span>
+            <p>A professional website for a small business typically costs between $2,000 and $15,000 for design and development in 2026. DIY platforms run $200&ndash;$600 per year. Ongoing hosting, maintenance, and security add $1,100&ndash;$5,000 annually regardless of build method.</p>
+          </div>
+
+          <!-- Intro paragraphs -->
+          <p>You've Googled this question. You've gotten quotes ranging from $300 to $35,000. And you're no closer to knowing what your business actually needs to spend.</p>
+
+          <p>That confusion isn't accidental. A five-page brochure site for a plumber in Tampa and a 200-product WooCommerce store for a clothing brand are both called "a website." They're completely different products with completely different price tags.</p>
+
+          <p>This guide breaks it down with real 2026 numbers. You'll see what drives costs up, what keeps them reasonable, and where business owners consistently get blindsided by expenses they didn't budget for.</p>
+
+          <!-- Section 1 -->
+          <h2 id="website-includes" data-toc-section="website-includes">What Does a Professional Website for a Small Business Actually Include?</h2>
+
+          <p>Before talking price, you need to know what you're paying for. Every website has the same five building blocks.</p>
+
+          <p><strong>Domain name ($10&ndash;$20/year):</strong> Your address on the internet. You rent it annually. A standard .com from Namecheap or Google Domains costs about $12. Premium brandable domains can run into the thousands.</p>
+
+          <p><strong>Hosting ($5&ndash;$150/month):</strong> The server where your files live. Shared hosting starts around $5/month but slows down under traffic. Managed WordPress hosting from providers like SiteGround or Kinsta runs $25&ndash;$80/month and handles security, backups, and speed for you.</p>
+
+          <p><strong>SSL certificate ($0&ndash;$75/year):</strong> The padlock in your browser bar. Most hosting plans include it free through Let's Encrypt. Without SSL, Chrome flags your site as "Not Secure" and visitors bounce.</p>
+
+          <p><strong>Design and development ($0&ndash;$35,000+):</strong> The big variable. This covers layout, branding, responsive design, functionality (contact forms, booking systems, ecommerce), and the technical build. A five-page brochure site and a 50-product online store live at opposite ends of this range.</p>
+
+          <p><strong>Content ($0&ndash;$5,000):</strong> The text, images, and video on your pages. Many business owners write it themselves. Professional copywriting runs $50&ndash;$150/hour. Stock photography packages cost $200&ndash;$500. Custom photography for a local business averages $500&ndash;$2,500 for a half-day shoot.</p>
+
+          <figure class="art-figure">
+            <img src="/website-cost-building-blocks.webp" alt="The 5 building blocks of small business website cost: domain ($10–$20/year), hosting ($5–$150/month), SSL (free to $75/year), design and development ($0–$35,000), and content ($0–$5,000)" width="1672" height="941" loading="lazy" decoding="async" />
+            <figcaption>Every small business website has the same five cost components. Design and development is the biggest variable.</figcaption>
+          </figure>
+
+          <!-- Section 2 -->
+          <h2 id="pricing-paths" data-toc-section="pricing-paths">Real 2026 Pricing: Three Paths to a Small Business Website</h2>
+
+          <p>There are three realistic ways to get a website built in 2026. Each one trades money for time, control, or both.</p>
+
+          <figure class="art-figure">
+            <img src="/website-cost-3-paths.webp" alt="3 paths to a small business website: DIY ($200–$600), Freelancer ($1,500–$8,000), Agency ($5,000–$15,000)" width="1672" height="941" loading="lazy" decoding="async" />
+            <figcaption>Three realistic build paths for 2026. Each trades money for time, control, or professional results.</figcaption>
+          </figure>
+
+          <div class="art-table-wrap">
+            <table>
+              <thead>
+                <tr><th>Build Path</th><th>Upfront Cost</th><th>Monthly Ongoing</th><th>Best For</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>DIY Builder (Wix, Squarespace)</td><td>$0&ndash;$500</td><td>$16&ndash;$50/month</td><td>Solopreneurs, side hustles, budget-first</td></tr>
+                <tr><td>Self-Hosted WordPress (DIY)</td><td>$100&ndash;$500 first year</td><td>$15&ndash;$75/month</td><td>Tech-comfortable owners who want control</td></tr>
+                <tr><td>Freelance Designer</td><td>$1,500&ndash;$8,000</td><td>$50&ndash;$200/month</td><td>Custom brand look without agency overhead</td></tr>
+                <tr><td>Boutique Agency</td><td>$5,000&ndash;$15,000</td><td>$150&ndash;$500/month</td><td>Businesses needing strategy + design + SEO</td></tr>
+                <tr><td>Full-Service Agency</td><td>$10,000&ndash;$35,000+</td><td>$300&ndash;$1,000/month</td><td>Ecommerce, complex builds, enterprise needs</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <figure class="art-figure">
+            <img src="/website-cost-year1-breakdown.webp" alt="Year 1 website cost by build method: DIY builder ($500–$1,200 total), Freelancer ($3,000–$10,000), Agency ($8,000–$20,000), broken down by hosting, domain, plugins, maintenance, and content" width="1672" height="941" loading="lazy" decoding="async" />
+            <figcaption>Year 1 total cost broken down by category. Agency builds cost more upfront but the per-component costs are similar — you&rsquo;re paying for labor and strategy.</figcaption>
+          </figure>
+
+          <h3>Path 1: DIY Website Builders ($200&ndash;$600/Year)</h3>
+
+          <p>Platforms like Wix, Squarespace, and Shopify bundle hosting, templates, and a visual editor into one monthly fee. You pick a template, swap in your content, and publish.</p>
+
+          <p>Squarespace plans start at $16/month. Wix starts around $17/month. Shopify's basic ecommerce plan runs $39/month. These prices are real but they're not the full picture.</p>
+
+          <p>A custom domain adds $15&ndash;$20/year. Premium templates run $50&ndash;$200. Need a booking plugin, email marketing integration, or payment processing? Each one carries its own monthly fee. The advertised $16/month site often costs $40&ndash;$80/month once you add what a real business actually needs.</p>
+
+          <p>The bigger cost is your time. Building a site that looks polished, reads well on mobile, and converts visitors into customers takes 20&ndash;40 hours of focused work. For many small business owners, that's a week of billable hours spent learning a platform instead of serving clients.</p>
+
+          <h3>Path 2: Freelance Web Designer ($1,500&ndash;$8,000)</h3>
+
+          <p>A freelancer builds you a custom site on WordPress that matches your brand and functions the way your business needs it to. Expect to pay $50&ndash;$150/hour, or $1,500&ndash;$8,000 as a flat project fee for a typical five-to-ten page site.</p>
+
+          <p>The advantage is obvious: you get a professional result without the overhead of a full agency. Direct communication with the person writing your code. Faster turnaround for smaller projects (4&ndash;6 weeks is typical).</p>
+
+          <p>The risk is what happens after launch. A solo freelancer juggles multiple clients. If your site breaks on a Saturday, you might wait until Monday. Protect yourself: get the project delivered on your own hosting, under your own accounts. Make sure you own the design files and codebase. Negotiate a monthly maintenance retainer ($50&ndash;$200) to keep the relationship active post-launch.</p>
+
+          <h3>Path 3: Web Design Agency ($5,000&ndash;$35,000+)</h3>
+
+          <p>Agencies bring a team: project manager, designer, developer, QA tester, and often a copywriter or SEO strategist. You pay more, but you're buying a process, not just a product.</p>
+
+          <p>A standard small business WordPress website from a quality boutique agency runs $5,000&ndash;$15,000 in 2026. That typically includes discovery and strategy, custom design (not a modified template), responsive development, on-page SEO setup, and a round or two of revisions.</p>
+
+          <p>Full-service agencies that handle ecommerce, membership systems, API integrations, or multi-location sites start at $10,000 and scale well above $35,000 for complex builds. Industry data suggests 67% of businesses report better results from agency-built sites compared to freelancer builds.</p>
+
+          <!-- Section 3 -->
+          <h2 id="hidden-costs" data-toc-section="hidden-costs">Hidden Costs That Catch Small Business Owners Off Guard</h2>
+
+          <p>Your launch invoice is only the first bill. These recurring costs add $1,100 to $5,000 per year, and they're the expenses that blow budgets when owners don't plan for them.</p>
+
+          <div class="art-table-wrap">
+            <table>
+              <thead>
+                <tr><th>Cost Category</th><th>Annual Range</th><th>Notes</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Hosting renewal</td><td>$60&ndash;$1,800/year</td><td>Intro pricing expires after year one. Managed WP hosting averages $300&ndash;$960/year.</td></tr>
+                <tr><td>Domain renewal</td><td>$10&ndash;$20/year</td><td>Auto-renew or risk losing your URL.</td></tr>
+                <tr><td>Plugin licenses</td><td>$100&ndash;$500/year</td><td>Elementor Pro, WooCommerce extensions, security plugins, backup tools.</td></tr>
+                <tr><td>Maintenance + security</td><td>$600&ndash;$6,000/year</td><td>Plugin updates, core updates, malware scans, backups. $50&ndash;$500/month.</td></tr>
+                <tr><td>Content updates</td><td>$0&ndash;$2,000/year</td><td>Blog posts, seasonal page changes, new service pages. DIY or hire a writer.</td></tr>
+                <tr><td>Email hosting</td><td>$50&ndash;$150/year</td><td>Professional email via Google Workspace or Microsoft 365.</td></tr>
+                <tr><td>Stock photography</td><td>$200&ndash;$500/year</td><td>Subscription plans from Shutterstock, Adobe Stock, or Unsplash+.</td></tr>
+                <tr><td>SEO tools/services</td><td>$0&ndash;$3,000/year</td><td>Rank tracking, keyword research, technical audits. Optional but high-ROI.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>The single most overlooked expense: website maintenance. A WordPress site that doesn't get regular plugin updates and security patches becomes a liability, not an asset. Hacked sites cost $3,000&ndash;$12,000 to recover, per Sucuri's 2025 remediation data. A $100/month <a href="/services/wordpress-care-plans/">WordPress care plan</a> is insurance.</p>
+
+          <!-- Section 4 -->
+          <h2 id="cost-drivers" data-toc-section="cost-drivers">What Actually Drives Website Costs Up or Down?</h2>
+
+          <p>Not every small business website needs to cost $10,000. And not every $2,000 build is cutting corners. The price depends on six specific variables:</p>
+
+          <p><strong>Number of pages.</strong> A five-page brochure site costs dramatically less than a 30-page content hub with blog, case studies, and location pages. Each page requires design, development, and content.</p>
+
+          <p><strong>Custom design vs. template.</strong> A modified premium theme ($200&ndash;$500 for the theme plus developer time) costs far less than a fully custom design built from scratch ($3,000&ndash;$10,000 for design alone).</p>
+
+          <p><strong>Ecommerce functionality.</strong> Adding WooCommerce or Shopify turns a $3,000 project into a $5,000&ndash;$25,000 one. Product listings, payment processing, inventory management, shipping calculations, and abandoned cart recovery all add scope. See our <a href="/services/woocommerce-development/">WooCommerce development service</a> for a detailed breakdown.</p>
+
+          <p><strong>Integrations and automation.</strong> CRM connections (HubSpot, Salesforce), booking systems (Calendly, Acuity), email marketing (Mailchimp, Klaviyo), and payment gateways each add $200&ndash;$2,000 in development time.</p>
+
+          <p><strong>Content creation.</strong> If you write the copy and provide photos, you save $500&ndash;$5,000. If the agency handles strategy, copywriting, and photography, that gets added to the project fee.</p>
+
+          <p><strong>Timeline pressure.</strong> Rush projects (under 2 weeks) cost 25&ndash;50% more. Standard timelines: starter sites take 2&ndash;3 weeks, mid-range builds run 4&ndash;6 weeks, and complex projects need 6&ndash;12 weeks.</p>
+
+          <!-- Section 5 -->
+          <h2 id="wordpress-cost" data-toc-section="wordpress-cost">WordPress Website Cost: The Most Popular Choice for Small Businesses</h2>
+
+          <p>WordPress powers roughly 43% of all websites globally, and it's the go-to platform for small businesses that want flexibility without vendor lock-in. But "WordPress is free" is only half the story.</p>
+
+          <p>The software itself costs nothing. What you pay for is everything around it:</p>
+
+          <div class="art-table-wrap">
+            <table>
+              <thead>
+                <tr><th>WordPress Component</th><th>Cost Range</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>WordPress core software</td><td>Free (open-source)</td></tr>
+                <tr><td>Managed hosting (SiteGround, Kinsta, Rocket.net)</td><td>$25&ndash;$80/month</td></tr>
+                <tr><td>Premium theme (Astra, Kadence, GeneratePress)</td><td>$50&ndash;$200 one-time</td></tr>
+                <tr><td>Page builder (Elementor Pro)</td><td>$59&ndash;$399/year</td></tr>
+                <tr><td>SEO plugin (Rank Math Pro, Yoast)</td><td>$0&ndash;$99/year</td></tr>
+                <tr><td>Security plugin (Wordfence, Sucuri)</td><td>$0&ndash;$199/year</td></tr>
+                <tr><td>Backup plugin (UpdraftPlus, BlogVault)</td><td>$0&ndash;$99/year</td></tr>
+                <tr><td>Custom development labor</td><td>$1,500&ndash;$35,000 depending on scope</td></tr>
+                <tr><td><strong>Total DIY WordPress (first year)</strong></td><td><strong>$300&ndash;$800</strong></td></tr>
+                <tr><td><strong>Total Professional WordPress (first year)</strong></td><td><strong>$3,000&ndash;$18,000+</strong></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>The WordPress advantage for small businesses is ownership. Unlike Wix or Squarespace, you control the code, the hosting, and the data. You can switch developers, hosting providers, or design directions without starting from zero. That flexibility has long-term value that doesn't show up in the initial quote. See how we approach <a href="/services/wordpress-web-design/">custom WordPress web design</a> for small businesses across the US.</p>
+
+          <!-- Section 6 -->
+          <h2 id="roi" data-toc-section="roi">Is a Professional Website Worth the Investment?</h2>
+
+          <p>Here's the math most business owners don't run.</p>
+
+          <p>Say you invest $5,000 in a professional WordPress website. Your average customer is worth $500 in revenue. That site needs to bring in 10 new customers over its lifetime to pay for itself. For most local businesses with decent SEO and a clear call to action, that happens within the first three to six months.</p>
+
+          <p>A 2026 study from DigitalBTI found that businesses with professionally designed websites see 38% higher conversion rates than those using DIY templates. The difference comes down to three things: trust signals (professional design, real testimonials, clear CTAs), mobile performance (sites that load in under 2.5 seconds keep visitors engaged), and search visibility (proper technical SEO, schema markup, and page structure that Google rewards).</p>
+
+          <p>The real question isn't whether a website is worth $5,000. It's whether your business can afford the cost of a slow, poorly optimized, or unprofessional website that turns potential customers away before they ever pick up the phone. Our <a href="/services/wordpress-speed-optimization/">WordPress speed optimization</a> service is often the fastest ROI-positive investment for existing sites.</p>
+
+          <!-- Section 7 -->
+          <h2 id="budget" data-toc-section="budget">How to Set a Realistic Website Budget for Your Business</h2>
+
+          <p>Stop asking "What's the cheapest website I can get?" Start asking "What does my website need to do for my business?"</p>
+
+          <p>If your website needs to generate leads (contact forms, phone calls, quote requests), budget $3,000&ndash;$7,000 for the build plus $100&ndash;$300/month for hosting and maintenance. This gets you a custom WordPress site with professional design, mobile optimization, on-page SEO, and basic analytics.</p>
+
+          <p>If your website needs to sell products online, budget $5,000&ndash;$15,000 for a WooCommerce or Shopify build, plus $200&ndash;$500/month for hosting, plugin licenses, and ongoing optimization.</p>
+
+          <p>If your website just needs to exist as a digital business card (hours, location, phone number), a $16&ndash;$50/month DIY builder handles that. Start where you are, upgrade when revenue supports it.</p>
+
+          <div class="art-callout">
+            <strong>Budget rule of thumb:</strong> Plan to invest 2&ndash;5% of your first-year projected revenue into your website. A business expecting $200,000 in annual revenue should allocate $4,000&ndash;$10,000 for a site that actively contributes to that number.
+          </div>
+
+          <!-- Section 8 -->
+          <h2 id="questions-to-ask" data-toc-section="questions-to-ask">Seven Questions to Ask Before Hiring a Web Designer</h2>
+
+          <p>Whether you're vetting a freelancer or an agency, these questions separate competent professionals from operators who'll deliver a template and disappear:</p>
+
+          <ol>
+            <li>
+              <strong>What's included in the quoted price and what isn't?</strong>
+              <p>Get a line-item breakdown. If content, SEO setup, or revisions are extra, you need to know before signing.</p>
+            </li>
+            <li>
+              <strong>Who owns the site files and code after launch?</strong>
+              <p>The answer should be: you. Every time. If they're hosting your site on their proprietary system, you're locked in.</p>
+            </li>
+            <li>
+              <strong>What CMS will you build on, and why?</strong>
+              <p>For most small businesses, <a href="/wordpress-agency/">WordPress</a> with Elementor or Gutenberg is the right answer. Ask them to justify anything else.</p>
+            </li>
+            <li>
+              <strong>How do you handle post-launch maintenance?</strong>
+              <p>Good answers include retainer options, documented handoff, or a maintenance plan. Bad answers involve silence or "you're on your own."</p>
+            </li>
+            <li>
+              <strong>Can I see three live sites you've built for similar businesses?</strong>
+              <p>Check load speed (PageSpeed Insights), mobile responsiveness (resize your browser), and whether the sites actually rank on Google.</p>
+            </li>
+            <li>
+              <strong>What's the timeline, and what happens if deadlines slip?</strong>
+              <p>Professional teams provide a project timeline with milestones. Delays should come with written communication, not ghosting.</p>
+            </li>
+            <li>
+              <strong>Do you handle SEO, or do I need to hire someone else?</strong>
+              <p>A good developer includes basic on-page SEO: meta titles, descriptions, heading structure, alt text, and schema markup. Full SEO strategy is typically a separate engagement. See our <a href="/services/wordpress-seo-services/">WordPress SEO services</a> for what that looks like in practice.</p>
+            </li>
+          </ol>
+
+          <!-- FAQ Section -->
+          <h2 id="faq" data-toc-section="faq">Frequently Asked Questions About Small Business Website Costs</h2>
+
+          <div class="art-faq">
+            <div class="art-faq-item">
+              <h3>How much does a basic 5-page website cost for a small business?</h3>
+              <p>A basic five-page website (home, about, services, contact, blog) costs $1,500&ndash;$5,000 from a freelancer and $3,000&ndash;$8,000 from an agency in 2026. DIY builders can produce a similar structure for $200&ndash;$600 per year, though with limited customization and no professional strategy.</p>
+            </div>
+            <div class="art-faq-item">
+              <h3>Is WordPress free for small businesses?</h3>
+              <p>The WordPress software is free and open-source. But you'll pay for hosting ($25&ndash;$80/month), a domain ($10&ndash;$20/year), premium plugins ($100&ndash;$400/year), and design or development labor. A professionally built <a href="/services/wordpress-web-design/">WordPress site</a> typically costs $3,000&ndash;$15,000 total.</p>
+            </div>
+            <div class="art-faq-item">
+              <h3>How much does website maintenance cost per month?</h3>
+              <p>Monthly website maintenance runs $50&ndash;$500 depending on scope. Basic plans cover plugin updates, backups, and security scans ($50&ndash;$150/month). Comprehensive plans add performance monitoring, content updates, and priority support ($200&ndash;$500/month).</p>
+            </div>
+            <div class="art-faq-item">
+              <h3>Should I use a website builder or hire a professional?</h3>
+              <p>Use a DIY builder if your budget is under $1,500 and your site only needs to display basic information. Hire a professional if your website needs to generate leads, sell products, rank on Google, or represent your brand to high-value clients.</p>
+            </div>
+            <div class="art-faq-item">
+              <h3>How long does it take to build a small business website?</h3>
+              <p>Timeline depends on the build path. DIY: 1&ndash;2 weeks. Freelancer: 4&ndash;6 weeks. Agency: 6&ndash;12 weeks. Content approval and revisions are the most common reasons projects run longer than planned.</p>
+            </div>
+            <div class="art-faq-item">
+              <h3>What's the most common hidden cost of a small business website?</h3>
+              <p>Content creation and ongoing maintenance. Business owners consistently underestimate the time and cost to write professional copy ($500&ndash;$2,500) and the ongoing expense of keeping a site secure and updated ($600&ndash;$6,000/year).</p>
+            </div>
+            <div class="art-faq-item">
+              <h3>How much does an ecommerce website cost for a small business?</h3>
+              <p>An ecommerce website for a small business costs $5,000&ndash;$25,000 for a custom WooCommerce or Shopify build. Costs increase with product count, custom features, payment integrations, and inventory management needs. DIY ecommerce through Shopify starts at $39/month.</p>
+            </div>
+            <div class="art-faq-item">
+              <h3>Can I build a website myself for free?</h3>
+              <p>Technically yes. Platforms like WordPress.com and Wix offer free plans. But free sites display platform branding, lack custom domains, and limit functionality. For a business that needs credibility, a free website often costs more in lost customers than a professional build would.</p>
+            </div>
+          </div>
+
+          <!-- E-E-A-T Author CTA Block -->
+          <div class="art-cta-block">
+            <div class="art-cta-author-row">
+              <div class="art-cta-author-avatar" aria-hidden="true">MY</div>
+              <div class="art-cta-author-info">
+                <span class="art-cta-author-name">Muhammad Younus</span>
+                <span class="art-cta-author-cred">Senior WordPress Developer &middot; 7+ Years &middot; Founder, Upcoming Brand</span>
+              </div>
+            </div>
+            <blockquote class="art-cta-quote">
+              "Most small businesses get quoted enterprise prices for a 5-page site. At Upcoming Brand, our work starts at $2,500 and includes everything a real agency charges extra for: custom design, on-page SEO, Core Web Vitals optimization, and a post-launch maintenance plan. No template flipping, no handoffs to junior developers."
+            </blockquote>
+            <h2 class="art-cta-h2">Ready to Get a Clear Quote?</h2>
+            <p>We build performance-driven WordPress websites for small businesses across the United States. Every project starts with a free consultation where we scope your project, walk you through exactly what's included, and give you a transparent quote with no surprises.</p>
+            <p>Starter sites go live in 2&ndash;3 weeks. Growth builds take 4&ndash;6 weeks. Pro Commerce projects run 6&ndash;8 weeks. Every site ships with mobile-responsive design, on-page SEO, and Core Web Vitals optimization.</p>
+            <div class="art-cta-trust">
+              <span class="art-cta-trust-item">
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Custom design, not templates
+              </span>
+              <span class="art-cta-trust-item">
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                You own the code and hosting
+              </span>
+              <span class="art-cta-trust-item">
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                SEO and Core Web Vitals included
+              </span>
+              <span class="art-cta-trust-item">
+                <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7l3.5 3.5L12 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Transparent quote in 24 hours
+              </span>
+            </div>
+            <div class="art-cta-actions">
+              <a href="/contact/" class="art-cta-btn">Request a free consultation</a>
+              <a href="/work/" class="art-cta-btn-ghost">See our work</a>
+            </div>
+          </div>
+
+          <!-- Cross-category articles teaser -->
+          {otherCategories.length > 0 && (
+            <div class="art-other-cats">
+              <p class="art-other-eyebrow">Or explore other topics</p>
+              <div class="art-other-grid">
+                {otherCategories.map((a) => (
+                  <a href={articleUrl(a)} class="art-other-card">
+                    <span class="art-other-cat">{categories[a.category].label}</span>
+                    <span class="art-other-title">{a.title}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+  <FinalCTA />
+  <Footer />
+</BaseLayout>
+
+<script is:inline define:vars={{ searchIndex }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Search
+    const input = document.getElementById('art-side-search-input');
+    const results = document.getElementById('art-side-search-results');
+    if (input && results) {
+      function renderSearch(items, empty) {
+        results.innerHTML = '';
+        if (empty) {
+          results.dataset.empty = '';
+          const li = document.createElement('li');
+          li.className = 'art-side-search-empty';
+          li.textContent = `Start typing to search ${searchIndex.length} articles`;
+          results.appendChild(li);
+          return;
+        }
+        delete results.dataset.empty;
+        if (items.length === 0) {
+          const li = document.createElement('li');
+          li.className = 'art-side-search-empty';
+          li.textContent = 'No articles match your search.';
+          results.appendChild(li);
+          return;
+        }
+        items.slice(0, 6).forEach((a) => {
+          const li = document.createElement('li');
+          const anchor = document.createElement('a');
+          anchor.className = 'art-side-search-result';
+          anchor.href = a.url;
+          const titleSpan = document.createElement('span');
+          titleSpan.className = 'art-side-search-title';
+          titleSpan.textContent = a.title;
+          const catSpan = document.createElement('span');
+          catSpan.className = 'art-side-search-cat';
+          catSpan.textContent = a.category;
+          anchor.appendChild(titleSpan);
+          anchor.appendChild(catSpan);
+          li.appendChild(anchor);
+          results.appendChild(li);
+        });
+      }
+      input.addEventListener('input', () => {
+        const q = input.value.trim().toLowerCase();
+        if (!q) { renderSearch([], true); return; }
+        const matches = searchIndex.filter((a) =>
+          a.title.toLowerCase().includes(q) ||
+          a.slug.toLowerCase().includes(q) ||
+          a.category.toLowerCase().includes(q)
+        );
+        renderSearch(matches, false);
+      });
+    }
+
+    // TOC active state
+    const tocLinks = document.querySelectorAll('[data-toc-link]');
+    const sections = document.querySelectorAll('[data-toc-section]');
+    if (tocLinks.length && sections.length) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              tocLinks.forEach((l) => l.classList.remove('art-toc-link-active'));
+              const id = entry.target.getAttribute('data-toc-section');
+              const active = document.querySelector(`[data-toc-link="${id}"]`);
+              if (active) active.classList.add('art-toc-link-active');
+            }
+          });
+        },
+        { rootMargin: '-10% 0px -75% 0px', threshold: 0 }
+      );
+      sections.forEach((s) => observer.observe(s));
+    }
+  });
+</script>
+
+<style>
+  /* ── HERO ── */
+  .art-hero { background: var(--cream); padding: clamp(36px, 5vh, 60px) 0 clamp(28px, 4vh, 48px); border-bottom: 1px solid var(--line); position: relative; overflow: hidden; }
+  .art-hero::before { content: ""; position: absolute; top: -200px; right: -150px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 55%); pointer-events: none; }
+  .art-hero::after  { content: ""; position: absolute; bottom: -100px; left: -100px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(212,147,46,0.06) 0%, transparent 60%); pointer-events: none; }
+  .art-hero-inner { position: relative; z-index: 1; max-width: 880px; display: flex; flex-direction: column; gap: 12px; }
+  .art-h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px, 4.5vw, 48px); line-height: 1.07; letter-spacing: -0.03em; color: var(--ink); margin: 4px 0 0; }
+  .art-back-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s ease; align-self: flex-start; }
+  .art-back-link:hover { color: var(--amber-deep); }
+  .art-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .art-cat-pill { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); padding: 4px 12px; background: rgba(212,147,46,0.1); border-radius: var(--radius-pill); font-weight: 600; }
+  .art-pub-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); padding: 4px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-pill); }
+  .art-pub-dot { width: 6px; height: 6px; background: #4caf78; border-radius: 50%; }
+  .art-lead { font-size: clamp(15px, 1.15vw, 17px); line-height: 1.65; color: var(--ink-soft); margin: 0; max-width: 72ch; }
+
+  /* Byline */
+  .art-byline { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding-top: 4px; margin-top: 2px; border-top: 1px solid var(--line); }
+  .art-byline-author { display: inline-flex; align-items: center; gap: 8px; }
+  .art-byline-avatar { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; background: var(--ink); color: var(--cream); border-radius: 50%; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.04em; font-weight: 700; flex-shrink: 0; }
+  .art-byline-name { font-family: var(--f-body); font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; transition: color 0.2s ease; }
+  .art-byline-name:hover { color: var(--amber-deep); }
+  .art-byline-sep { color: var(--line); font-size: 13px; }
+  .art-byline-date, .art-byline-read, .art-byline-updated { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.05em; color: var(--ink-muted); }
+
+  /* ── BODY ── */
+  .art-body { background: var(--cream); padding: clamp(28px, 4vh, 52px) 0 clamp(40px, 5vh, 72px); border-bottom: 1px solid var(--line); }
+  .art-body-grid { display: grid; grid-template-columns: 300px 1fr; gap: clamp(20px, 3.5vw, 48px); align-items: start; }
+
+  /* ── SIDEBAR ── */
+  .art-sidebar { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 20px; align-self: start; }
+  .art-side-card { background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 18px 20px; }
+  .art-side-eyebrow { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; margin-bottom: 10px; }
+  .art-side-eyebrow-amber { color: var(--amber-deep); }
+  .art-side-title { font-family: var(--f-display); font-size: 17px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 4px; font-weight: 500; }
+  .art-side-sub { font-size: 12px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 10px; }
+
+  /* Search */
+  .art-side-search { position: relative; display: flex; align-items: center; }
+  .art-side-search-icon { position: absolute; left: 11px; color: var(--ink-muted); pointer-events: none; }
+  .art-side-search-input { width: 100%; padding: 9px 11px 9px 32px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); font-family: var(--f-body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+  .art-side-search-input::placeholder { color: var(--ink-muted); }
+  .art-side-search-input:focus { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(212,147,46,0.16); }
+  .art-side-search-results { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 3px; max-height: 220px; overflow-y: auto; }
+  .art-side-search-results[data-empty] { max-height: none; }
+  .art-side-search-empty { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); padding: 5px 0; letter-spacing: 0.04em; }
+  .art-side-search-result { display: flex; flex-direction: column; gap: 2px; padding: 7px 9px; border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: background 0.15s ease; }
+  .art-side-search-result:hover { background: var(--cream); }
+  .art-side-search-title { font-family: var(--f-display); font-size: 12.5px; line-height: 1.25; color: var(--ink); font-weight: 500; }
+  .art-side-search-cat { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-deep); }
+
+  /* TOC */
+  .art-toc-card { background: var(--cream); }
+  .art-toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1px; counter-reset: toc; }
+  .art-toc-link { display: flex; align-items: baseline; gap: 8px; padding: 6px 8px; font-family: var(--f-body); font-size: 12.5px; line-height: 1.4; color: var(--ink-soft); text-decoration: none; border-radius: var(--radius-md); transition: all 0.15s ease; border-left: 2px solid transparent; }
+  .art-toc-link::before { counter-increment: toc; content: counter(toc); font-family: var(--f-mono); font-size: 9px; color: var(--ink-muted); min-width: 14px; }
+  .art-toc-link:hover { color: var(--ink); background: var(--paper); border-left-color: var(--amber); }
+  .art-toc-link-active { color: var(--amber-deep); font-weight: 600; border-left-color: var(--amber); background: rgba(212,147,46,0.06); }
+
+  /* CTA card */
+  .art-side-cta-card { background: var(--ink); color: var(--cream); border-color: var(--amber); }
+  .art-side-cta-card .art-side-title { color: var(--cream); }
+  .art-side-cta-card .art-side-sub { color: rgba(244,239,230,0.65); }
+  .art-side-cta-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+  .art-side-cta-item { display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center; padding: 9px 11px; background: rgba(244,239,230,0.05); border: 1px solid rgba(244,239,230,0.12); border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all 0.2s ease; }
+  .art-side-cta-item:hover { background: rgba(244,239,230,0.08); border-color: var(--amber); }
+  .art-side-cta-tag { grid-column: 1; font-family: var(--f-mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+  .art-side-cta-name { grid-column: 1; font-family: var(--f-display); font-size: 13.5px; line-height: 1.2; color: var(--cream); font-weight: 500; }
+  .art-side-cta-arrow { grid-column: 2; grid-row: 1 / span 2; color: rgba(244,239,230,0.5); }
+  .art-side-cta-item:hover .art-side-cta-arrow { color: var(--amber); }
+  .art-side-discovery { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 9px 14px; background: var(--amber); color: var(--ink); border-radius: var(--radius-md); text-decoration: none; font-family: var(--f-body); font-size: 12px; font-weight: 600; transition: background 0.2s ease; }
+  .art-side-discovery:hover { background: var(--amber-deep); color: var(--ink); }
+
+  /* Related list */
+  .art-side-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; }
+  .art-side-link { display: flex; flex-direction: column; gap: 2px; padding: 9px 11px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all 0.2s ease; }
+  .art-side-link:hover { border-color: var(--amber); transform: translateX(2px); }
+  .art-side-link-title { font-family: var(--f-display); font-size: 12.5px; line-height: 1.3; color: var(--ink); font-weight: 500; }
+  .art-side-link-meta { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+
+  /* Category list */
+  .art-side-cat-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1px; }
+  .art-side-cat-link { display: block; padding: 7px 11px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-soft); text-decoration: none; border-radius: var(--radius-md); transition: all 0.15s ease; }
+  .art-side-cat-link:hover { background: var(--cream); color: var(--ink); }
+  .art-side-cat-link-active { background: var(--ink); color: var(--cream); }
+  .art-side-cat-link-active:hover { background: var(--ink); color: var(--cream); }
+
+  /* ── MAIN ── */
+  .art-main { display: flex; flex-direction: column; gap: 0; min-width: 0; }
+
+  /* AEO Snippet */
+  .art-snippet { background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 18px 22px; margin-bottom: 1.4em; position: relative; overflow: hidden; }
+  .art-snippet::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); }
+  .art-snippet-label { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber-deep); font-weight: 700; margin-bottom: 8px; }
+  .art-snippet p { font-size: 15px; line-height: 1.6; color: var(--ink); margin: 0; font-weight: 500; }
+
+  /* ── PROSE ── */
+  .art-prose h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(20px, 2.2vw, 27px); line-height: 1.18; letter-spacing: -0.022em; color: var(--ink); margin: 2em 0 0.55em; padding-top: 1.2em; border-top: 1px solid var(--line); }
+  .art-prose h2:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+  .art-prose h3 { font-family: var(--f-display); font-weight: 500; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.28; letter-spacing: -0.018em; color: var(--ink); margin: 1.4em 0 0.5em; }
+  .art-prose p { font-size: clamp(14.5px, 1.05vw, 16.5px); line-height: 1.75; color: var(--ink-soft); margin: 0 0 1em; }
+  .art-prose p:last-child { margin-bottom: 0; }
+  .art-prose strong { font-weight: 600; color: var(--ink); }
+  .art-prose a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease; }
+  .art-prose a:hover { color: var(--ink); }
+  .art-prose ol { padding-left: 1.25em; margin: 0 0 1.2em; display: flex; flex-direction: column; gap: 1em; }
+  .art-prose ol li { font-size: clamp(14.5px, 1.05vw, 16.5px); line-height: 1.65; color: var(--ink-soft); padding-left: 0.3em; }
+  .art-prose ol li p { margin: 0.3em 0 0; }
+  .art-prose ol li strong { color: var(--ink); }
+
+  /* Tables */
+  .art-figure { margin: 0 0 1.6em; border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--line); background: var(--paper); }
+  .art-figure img { display: block; width: 100%; height: auto; }
+  .art-figure figcaption { padding: 9px 14px; font-size: 12.5px; color: var(--ink-muted); font-family: var(--f-mono); line-height: 1.5; border-top: 1px solid var(--line); }
+  .art-table-wrap { overflow-x: auto; margin: 0 0 1.4em; border-radius: var(--radius-lg); border: 1.5px solid var(--line); }
+  .art-table-wrap table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .art-table-wrap thead tr { background: var(--ink); }
+  .art-table-wrap thead th { padding: 11px 14px; text-align: left; font-family: var(--f-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream); font-weight: 600; white-space: nowrap; }
+  .art-table-wrap tbody tr { border-top: 1px solid var(--line); background: var(--paper); }
+  .art-table-wrap tbody tr:nth-child(odd) { background: var(--cream); }
+  .art-table-wrap tbody td { padding: 11px 14px; color: var(--ink-soft); line-height: 1.5; vertical-align: top; }
+  .art-table-wrap tbody td strong { color: var(--ink); font-weight: 600; }
+
+  /* Callout */
+  .art-callout { background: rgba(212,147,46,0.08); border-left: 3px solid var(--amber); border-radius: 0 var(--radius-md) var(--radius-md) 0; padding: 14px 18px; margin: 1.2em 0; font-size: clamp(14px, 1vw, 15.5px); line-height: 1.65; color: var(--ink-soft); }
+  .art-callout strong { color: var(--ink); font-weight: 600; }
+
+  /* FAQ */
+  .art-faq { display: flex; flex-direction: column; gap: 0; margin: 0.4em 0 1.4em; border: 1.5px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; }
+  .art-faq-item { padding: 18px 22px; border-top: 1px solid var(--line); background: var(--paper); }
+  .art-faq-item:first-child { border-top: none; }
+  .art-faq-item:nth-child(odd) { background: var(--cream); }
+  .art-faq-item h3 { font-family: var(--f-display); font-size: clamp(14.5px, 1.1vw, 17px); line-height: 1.3; letter-spacing: -0.012em; color: var(--ink); margin: 0 0 6px; font-weight: 500; }
+  .art-faq-item p { font-size: 13.5px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+  .art-faq-item p a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+  /* E-E-A-T CTA block */
+  .art-cta-block { background: var(--ink); border-radius: var(--radius-lg); padding: clamp(24px, 3.5vw, 40px); margin: 1.8em 0 1.2em; position: relative; overflow: hidden; }
+  .art-cta-block::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); }
+  .art-cta-author-row { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; padding-bottom: 18px; border-bottom: 1px solid rgba(244,239,230,0.1); }
+  .art-cta-author-avatar { width: 52px; height: 52px; background: rgba(212,147,46,0.15); border: 2px solid var(--amber); color: var(--amber); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: var(--f-mono); font-size: 14px; font-weight: 700; letter-spacing: 0.04em; flex-shrink: 0; }
+  .art-cta-author-info { display: flex; flex-direction: column; gap: 3px; }
+  .art-cta-author-name { font-family: var(--f-display); font-size: 17px; font-weight: 500; color: var(--cream); letter-spacing: -0.01em; }
+  .art-cta-author-cred { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(244,239,230,0.55); }
+  .art-cta-quote { border-left: 2px solid var(--amber); margin: 0 0 18px; padding: 10px 16px; font-size: 14.5px; line-height: 1.65; color: rgba(244,239,230,0.8); font-style: italic; }
+  .art-cta-h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(20px, 2.2vw, 26px); line-height: 1.18; letter-spacing: -0.022em; color: var(--cream); margin: 0 0 12px; border: none; padding: 0; }
+  .art-cta-block p { font-size: clamp(13.5px, 1vw, 15.5px); line-height: 1.7; color: rgba(244,239,230,0.75); margin: 0 0 0.8em; }
+  .art-cta-block p:last-of-type { margin-bottom: 14px; }
+  .art-cta-trust { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 18px; }
+  .art-cta-trust-item { display: flex; align-items: center; gap: 7px; font-family: var(--f-body); font-size: 12.5px; color: rgba(244,239,230,0.75); }
+  .art-cta-trust-item svg { color: var(--amber); flex-shrink: 0; }
+  .art-cta-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .art-cta-btn { display: inline-flex; align-items: center; padding: 12px 22px; background: var(--cream); color: var(--ink); border-radius: var(--radius-pill); font-family: var(--f-body); font-size: 13.5px; font-weight: 700; text-decoration: none; transition: opacity 0.2s ease; }
+  .art-cta-btn:hover { opacity: 0.88; }
+  .art-cta-btn-ghost { display: inline-flex; align-items: center; padding: 12px 22px; background: rgba(0,0,0,0.35); color: var(--cream); border: 1.5px solid rgba(244,239,230,0.18); border-radius: var(--radius-pill); font-family: var(--f-body); font-size: 13.5px; font-weight: 600; text-decoration: none; transition: all 0.2s ease; }
+  .art-cta-btn-ghost:hover { border-color: rgba(244,239,230,0.5); background: rgba(0,0,0,0.5); }
+
+  /* Cross-category */
+  .art-other-cats { margin-top: 20px; padding: 20px 20px 0; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+  .art-other-eyebrow { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; margin: 0 0 12px; }
+  .art-other-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding-bottom: 18px; }
+  .art-other-card { display: flex; flex-direction: column; gap: 5px; padding: 12px 14px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all 0.25s ease; }
+  .art-other-card:hover { border-color: var(--amber); transform: translateY(-2px); }
+  .art-other-cat { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; }
+  .art-other-title { font-family: var(--f-display); font-size: 13.5px; line-height: 1.3; color: var(--ink); font-weight: 500; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    .art-body-grid { grid-template-columns: 1fr; }
+    .art-sidebar { position: static; order: 2; }
+    .art-main { order: 1; }
+    .art-other-grid { grid-template-columns: 1fr; }
+    .art-cta-trust { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .art-byline { gap: 6px; }
+    .art-byline-updated { display: none; }
+    .art-cta-actions { flex-direction: column; }
+  }
+</style>

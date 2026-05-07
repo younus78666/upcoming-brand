@@ -167,7 +167,7 @@ const totalStepsCount = formSteps.length;
           <div class="svc-hero-form-progress-fill" data-progress-fill style={`width: ${(1 / totalStepsCount) * 100}%`}></div>
         </div>
 
-        <form class="svc-hero-form" id={formId} name={formName} method="POST"-honeypot="bot-field" data-multistep name="generic-form" data-uc-form="generic-form" novalidate>
+        <form class="svc-hero-form" id={formId} name={formName} method="POST" data-uc-form={formName} data-uc-recaptcha-defer="true" novalidate>
           <input type="hidden" name="form-name" value={formName} />
           {Object.entries(hiddenFields).map(([k, v]) => (
             <input type="hidden" name={k} value={v} />
@@ -178,7 +178,7 @@ const totalStepsCount = formSteps.length;
           <input type="hidden" name="_timestamp" id={tsId} value="" />
 
           {formSteps.map((step, sIdx) => (
-            <div class="svc-hero-step" data-step={sIdx + 1} data-step-active={sIdx === 0 ? '' : null}>
+            <div class="svc-hero-step" data-step={sIdx + 1} data-step-active={sIdx === 0 ? '' : null} data-step-is-last={sIdx === formSteps.length - 1 ? '' : null}>
               {step.fields.map((field) => {
                 const fieldId = `${formId}-${field.name}`;
                 const presetMatch = field.name === 'business_type' ? servicePresetValue : undefined;
@@ -239,6 +239,12 @@ const totalStepsCount = formSteps.length;
                   </div>
                 );
               })}
+              {sIdx === formSteps.length - 1 && (
+                <div class="svc-hero-form-row svc-hero-recaptcha-row">
+                  <span class="svc-hero-form-label">Verify you are human</span>
+                  <div class="uc-recaptcha"></div>
+                </div>
+              )}
             </div>
           ))}
 
@@ -314,6 +320,12 @@ const totalStepsCount = formSteps.length;
       if (n === totalSteps) {
         nextBtn.hidden = true;
         submitBtn.hidden = false;
+        // Render captcha only when user reaches the final step
+        const stepEl = card.querySelector(`[data-step="${n}"]`);
+        const captchaHolder = stepEl ? stepEl.querySelector('.uc-recaptcha') : null;
+        if (captchaHolder && typeof window.ucRenderRecaptcha === 'function') {
+          setTimeout(() => window.ucRenderRecaptcha(captchaHolder), 80);
+        }
       } else {
         nextBtn.hidden = false;
         submitBtn.hidden = true;
@@ -625,6 +637,24 @@ const totalStepsCount = formSteps.length;
     flex-direction: column;
     gap: 5px;
     position: relative;
+  }
+
+  .svc-hero-recaptcha-row {
+    margin-top: 4px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(244, 239, 230, 0.1);
+  }
+  .svc-hero-recaptcha-row .uc-recaptcha {
+    transform: scale(0.88);
+    transform-origin: 0 0;
+    width: calc(100% / 0.88);
+    margin-top: 6px;
+  }
+  @media (max-width: 380px) {
+    .svc-hero-recaptcha-row .uc-recaptcha {
+      transform: scale(0.78);
+      width: calc(100% / 0.78);
+    }
   }
 
   .svc-hero-form-label {

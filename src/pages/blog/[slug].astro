@@ -4,13 +4,15 @@ import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import FinalCTA from '../../components/FinalCTA.astro';
-import { articles, categories, type BlogArticle } from '../../data/blog-articles';
+import { articles, categories, articleUrl, type BlogArticle } from '../../data/blog-articles';
 
 export async function getStaticPaths() {
-  return articles.map((a) => ({
-    params: { slug: a.slug },
-    props: { article: a },
-  }));
+  return articles
+    .filter((a) => a.status !== 'published')
+    .map((a) => ({
+      params: { slug: a.slug },
+      props: { article: a },
+    }));
 }
 
 interface Props { article: BlogArticle; }
@@ -26,7 +28,7 @@ const relatedServices = article.relatedServices ?? [];
 const relatedIndustries = article.relatedIndustries ?? [];
 
 // Searchable index for sidebar search (title + description + slug)
-const searchIndex = articles.map((a) => ({ slug: a.slug, title: a.title, category: categories[a.category].label }));
+const searchIndex = articles.map((a) => ({ slug: a.slug, url: a.route ?? `/blog/${a.slug}/`, title: a.title, category: categories[a.category].label }));
 
 const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
@@ -120,14 +122,14 @@ const jsonLd = JSON.stringify({
                 {relatedServices.map((href) => (
                   <a href={href} class="art-side-cta-item">
                     <span class="art-side-cta-tag">Service</span>
-                    <span class="art-side-cta-name">{href.replace('/services/', '').replace(/\/$/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</span>
+                    <span class="art-side-cta-name">{href.replace(/^\/services\//, '').replace(/^\//, '').replace(/\/$/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</span>
                     <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
                 ))}
                 {relatedIndustries.map((href) => (
                   <a href={href} class="art-side-cta-item">
                     <span class="art-side-cta-tag">Industry</span>
-                    <span class="art-side-cta-name">{href.replace('/industries/', '').replace(/\/$/, '').replace(/-website-design/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</span>
+                    <span class="art-side-cta-name">{href.replace(/^\/industries\//, '').replace(/^\//, '').replace(/\/$/, '').replace(/-website-design$/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</span>
                     <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
                 ))}
@@ -146,7 +148,7 @@ const jsonLd = JSON.stringify({
               <ul class="art-side-list">
                 {inCategory.map((a) => (
                   <li>
-                    <a href={`/blog/${a.slug}/`} class="art-side-link">
+                    <a href={articleUrl(a)} class="art-side-link">
                       <span class="art-side-link-title">{a.title}</span>
                       <span class="art-side-link-meta">{a.estPublishMonth ?? 'Coming soon'}</span>
                     </a>
@@ -187,7 +189,7 @@ const jsonLd = JSON.stringify({
           </div>
 
           <!-- Subscribe -->
-          <form class="art-subscribe" name={`blog-${article.slug}`} method="POST"-honeypot="bot-field" name="generic-form" data-uc-form="generic-form" novalidate>
+          <form class="art-subscribe" name={`blog-${article.slug}`} method="POST"-honeypot="bot-field" name="generic-form" data-uc-form="generic-form" data-uc-recaptcha-defer="true" novalidate>
             <input type="hidden" name="form-name" value={`blog-${article.slug}`} />
             <input type="hidden" name="article_slug" value={article.slug} />
             <div class="art-hp" aria-hidden="true"><label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
@@ -203,7 +205,7 @@ const jsonLd = JSON.stringify({
               <p class="art-other-eyebrow">Or explore other topics</p>
               <div class="art-other-grid">
                 {otherCategories.map((a) => (
-                  <a href={`/blog/${a.slug}/`} class="art-other-card">
+                  <a href={articleUrl(a)} class="art-other-card">
                     <span class="art-other-cat">{categories[a.category].label}</span>
                     <span class="art-other-title">{a.title}</span>
                   </a>
@@ -250,7 +252,7 @@ const jsonLd = JSON.stringify({
         const li = document.createElement('li');
         const anchor = document.createElement('a');
         anchor.className = 'art-side-search-result';
-        anchor.href = `/blog/${a.slug}/`;
+        anchor.href = a.url;
         const titleSpan = document.createElement('span');
         titleSpan.className = 'art-side-search-title';
         titleSpan.textContent = a.title;
