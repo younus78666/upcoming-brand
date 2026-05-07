@@ -10,6 +10,9 @@ export interface BlogArticle {
   status: 'coming-soon' | 'published';
   /** Custom URL for published articles that live outside /blog/[slug]/. Defaults to /blog/[slug]/ when omitted. */
   route?: string;
+  /** Featured image URL (relative, e.g. /website-cost-3-paths.webp). Shown on blog card and article top. */
+  image?: string;
+  imageAlt?: string;
   estPublishMonth?: string;
   relatedServices?: string[];
   relatedIndustries?: string[];
@@ -31,7 +34,7 @@ export const categories = {
 
 export const articles: BlogArticle[] = [
   // BUYING GUIDES (9)
-  { slug: 'website-for-a-small-business-cost', title: 'How Much Does a Professional Website for a Small Business Typically Cost?', category: 'buying-guides', description: 'Real 2026 pricing for small business websites across DIY, freelancer, and agency builds. Plus the recurring costs most owners miss when setting a budget.', status: 'published', route: '/website-for-a-small-business-cost/', relatedServices: ['/services/wordpress-web-design/', '/hire-wordpress-designer/'] },
+  { slug: 'website-for-a-small-business-cost', title: 'How Much Does a Professional Website for a Small Business Typically Cost?', category: 'buying-guides', description: 'Real 2026 pricing for small business websites across DIY, freelancer, and agency builds. Plus the recurring costs most owners miss when setting a budget.', status: 'published', route: '/website-for-a-small-business-cost/', image: '/website-cost-3-paths.webp', imageAlt: '3 paths to a small business website: DIY, Freelancer, and Agency with 2026 price ranges', relatedServices: ['/services/wordpress-web-design/', '/hire-wordpress-designer/'] },
   { slug: 'how-much-does-a-wordpress-website-cost', title: 'How Much Does a WordPress Website Cost in 2026?', category: 'buying-guides', description: 'Real WordPress website costs across builds, redesigns, and ongoing care. Numbers from 400+ shipped projects across 9 verticals.', status: 'coming-soon', estPublishMonth: '2026-06', relatedServices: ['/services/wordpress-web-design/', '/pricing/'] },
   { slug: 'attorney-website-design-cost', title: 'Attorney Website Design Cost: What Law Firms Actually Pay', category: 'buying-guides', description: 'Honest pricing breakdown for law firm websites including schema, intake forms, and Local Pack optimization.', status: 'coming-soon', estPublishMonth: '2026-06', relatedServices: ['/services/wordpress-web-design/'], relatedIndustries: ['/industries/law-firm-website-design/'] },
   { slug: 'dental-website-design-cost', title: 'Dental Website Design Cost: 2026 Pricing for Practices', category: 'buying-guides', description: 'What dental practices pay for a real website with online booking, MedicalProcedure schema, and HIPAA-aware forms.', status: 'coming-soon', estPublishMonth: '2026-06', relatedIndustries: ['/industries/dental-website-design/'] },

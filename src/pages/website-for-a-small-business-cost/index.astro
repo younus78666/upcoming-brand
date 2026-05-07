@@ -306,6 +306,11 @@ const jsonLd = JSON.stringify({
         <!-- MAIN ARTICLE COLUMN -->
         <article class="art-main art-prose">
 
+          <!-- Featured image -->
+          <figure class="art-featured-img">
+            <img src="/website-cost-3-paths.webp" alt="3 paths to a small business website in 2026: DIY ($200–$600), Freelancer ($1,500–$8,000), Agency ($5,000–$15,000)" width="1672" height="941" loading="eager" decoding="async" fetchpriority="high" />
+          </figure>
+
           <!-- AEO Featured Snippet -->
           <div class="art-snippet">
             <span class="art-snippet-label">Quick answer</span>
@@ -795,6 +800,8 @@ const jsonLd = JSON.stringify({
   .art-main { display: flex; flex-direction: column; gap: 0; min-width: 0; }
 
   /* AEO Snippet */
+  .art-featured-img { margin: 0 0 1.6em; border-radius: var(--radius-lg); overflow: hidden; }
+  .art-featured-img img { display: block; width: 100%; height: auto; }
   .art-snippet { background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 18px 22px; margin-bottom: 1.4em; position: relative; overflow: hidden; }
   .art-snippet::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); }
   .art-snippet-label { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber-deep); font-weight: 700; margin-bottom: 8px; }
