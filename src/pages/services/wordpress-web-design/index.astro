@@ -160,14 +160,14 @@ const compareRows = [
 ];
 
 const marylandCities = [
-  { city: "Baltimore",    context: "Competitive market with strong demand for law firm, medical, and contractor websites." },
-  { city: "Annapolis",    context: "State capital with high-intent searches from professional services and tourism businesses." },
-  { city: "Bethesda",     context: "High-income corridor with demand for medical, dental, and financial services web design." },
-  { city: "Frederick",    context: "Fast-growing market for contractor, home services, and small business websites." },
-  { city: "Rockville",    context: "Dense professional services corridor with multilingual and specialty business needs." },
-  { city: "Silver Spring", context: "Diverse market with strong demand for nonprofit, medical, and small business sites." },
-  { city: "Columbia",     context: "Planned community with high concentration of technology and professional services firms." },
-  { city: "Towson",       context: "Suburban hub with growing demand for dental, contractor, and retail websites." },
+  { city: "Baltimore",    href: "/locations/baltimore-web-design/",    context: "Competitive market with strong demand for law firm, medical, and contractor websites." },
+  { city: "Annapolis",    href: "/locations/annapolis-web-design/",    context: "State capital with high-intent searches from professional services and tourism businesses." },
+  { city: "Bethesda",     href: "/locations/bethesda-web-design/",     context: "High-income corridor with demand for medical, dental, and financial services web design." },
+  { city: "Frederick",    href: "/locations/frederick-web-design/",    context: "Fast-growing market for contractor, home services, and small business websites." },
+  { city: "Rockville",    href: "/locations/rockville-web-design/",    context: "Dense professional services corridor with multilingual and specialty business needs." },
+  { city: "Silver Spring", href: "/locations/silver-spring-web-design/", context: "Diverse market with strong demand for nonprofit, medical, and small business sites." },
+  { city: "Columbia",     href: "/locations/columbia-web-design/",     context: "Planned community with high concentration of technology and professional services firms." },
+  { city: "Towson",       href: "/locations/towson-web-design/",       context: "Suburban hub with growing demand for dental, contractor, and retail websites." },
 ];
 
 const tiers = [
@@ -715,10 +715,13 @@ const faqs = [
         </div>
         <div class="svc-maryland-grid">
           {marylandCities.map((m) => (
-            <article class="svc-maryland-card">
-              <h3 class="svc-maryland-city">{m.city}</h3>
+            <a href={m.href} class="svc-maryland-card">
+              <div class="svc-maryland-card-head">
+                <h3 class="svc-maryland-city">{m.city}</h3>
+                <span class="svc-maryland-arrow" aria-hidden="true">&rarr;</span>
+              </div>
               <p class="svc-maryland-context">{m.context}</p>
-            </article>
+            </a>
           ))}
         </div>
         <p class="svc-maryland-note">Serving all Maryland counties including Montgomery, Prince George's, Baltimore, Anne Arundel, Howard, Carroll, Harford, Frederick, Washington, and Allegany.</p>
@@ -1998,15 +2001,27 @@ const faqs = [
     margin: 0 auto;
   }
   .svc-maryland-card {
+    display: block;
     padding: 20px 22px 18px;
     background: var(--cream);
     border: 1px solid var(--line);
     border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
     transition: all 0.3s ease;
   }
   .svc-maryland-card:hover {
     border-color: var(--amber);
+    background: var(--amber-glow);
     transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(212,147,46,0.08);
+  }
+  .svc-maryland-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
   }
   .svc-maryland-city {
     font-family: var(--f-display);
@@ -2015,7 +2030,17 @@ const faqs = [
     color: var(--ink);
     font-weight: 600;
     letter-spacing: -0.01em;
-    margin: 0 0 8px;
+    margin: 0;
+  }
+  .svc-maryland-arrow {
+    color: var(--amber);
+    font-size: 14px;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+  .svc-maryland-card:hover .svc-maryland-arrow {
+    transform: translateX(3px);
+    color: var(--amber-deep);
   }
   .svc-maryland-context {
     font-size: 12.5px;
