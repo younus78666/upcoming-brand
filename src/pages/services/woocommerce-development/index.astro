@@ -126,6 +126,14 @@ const tiers = [
   },
 ];
 
+const storeComponents = [
+  { num: "01", name: "Product catalog",     detail: "Product pages with variants, images, pricing tiers, and Product/Offer/AggregateRating schema. Supports simple, variable, grouped, and downloadable product types." },
+  { num: "02", name: "Payment gateway",     detail: "PCI-compliant checkout via Stripe, PayPal, or Authorize.net. Apple Pay, Google Pay, and ACH supported. No transaction fees beyond the gateway's own rate." },
+  { num: "03", name: "Shipping and tax",    detail: "Real-time carrier rates (UPS, FedEx, USPS), flat-rate zones, free-shipping thresholds, and automated tax calculation via TaxJar or WooCommerce Tax." },
+  { num: "04", name: "Inventory management", detail: "Stock tracking, low-stock alerts, backorder handling, and multi-warehouse inventory. Syncs to ERP systems (NetSuite, QuickBooks) at the Enterprise tier." },
+  { num: "05", name: "Order management",    detail: "Admin order interface with status workflows (pending, processing, shipped, complete), customer-facing order history, and transactional email triggers." },
+];
+
 const capabilities = [
   { num: "01", area: "WooCommerce subscriptions",  detail: "Recurring billing, member-only products, payment retries, trial flows. Stripe Subscriptions or Authorize.net ARB." },
   { num: "02", area: "Product configurators",       detail: "Variable products, conditional options, custom add-ons. Real-time price updates as customers configure." },
@@ -308,6 +316,31 @@ const faqs = [
       </div>
     </section>
 
+    <!-- ====== COMPONENT FRAME (Frame 4) ====== -->
+    <section class="woo-components">
+      <div class="container">
+        <div class="woo-components-head">
+          <p class="woo-section-eyebrow">
+            <span class="woo-section-eyebrow-line"></span>
+            Store architecture
+          </p>
+          <h2 class="page-h2">What does <em>a WooCommerce store include?</em></h2>
+          <p class="page-section-lead">A WooCommerce store is not a single plugin. It is five interconnected systems. Each one is configured and optimized during the build to work together without slowing your product pages.</p>
+        </div>
+        <div class="woo-components-grid">
+          {storeComponents.map((c) => (
+            <div class="woo-component-item">
+              <span class="woo-component-num">{c.num}</span>
+              <div class="woo-component-body">
+                <h3 class="woo-component-name">{c.name}</h3>
+                <p class="woo-component-detail">{c.detail}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- ====== INCLUDES ====== -->
     <section class="woo-includes">
       <div class="container">
@@ -317,7 +350,7 @@ const faqs = [
             What's included
           </p>
           <h2 class="page-h2">
-            Eight things <em>every WooCommerce engagement ships with.</em>
+            What does <em>every WooCommerce project include?</em>
           </h2>
           <p class="page-section-lead">Tier-independent. The Setup tier ships with the same engineering bar as Enterprise; only catalog size and integration complexity change.</p>
         </div>
@@ -384,7 +417,7 @@ const faqs = [
             <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
           </div>
           <h2 class="page-h2 woo-capabilities-h2">
-            Six WooCommerce capabilities <em>under one engagement.</em>
+            What WooCommerce capabilities <em>come in one engagement?</em>
           </h2>
           <p class="woo-capabilities-lead">A real WooCommerce expert ships across all six. Not just a Shopify migrator with a WooCommerce theme.</p>
         </div>
@@ -410,7 +443,7 @@ const faqs = [
             When you need it
           </p>
           <h2 class="page-h2">
-            Six signals <em>your store needs WooCommerce development.</em>
+            When should you <em>choose WooCommerce development?</em>
           </h2>
           <p class="page-section-lead">If two or more match, the right answer is custom WooCommerce development services, not another Shopify upgrade. <a href="/services/wordpress-web-design/">See how WooCommerce fits with WordPress web design</a>. After launch, most WooCommerce clients add a <a href="/services/wordpress-care-plans/">monthly WordPress maintenance plan</a> to keep core, WooCommerce, and payment plugins updated safely on staging before production.</p>
         </div>
@@ -436,7 +469,7 @@ const faqs = [
             WooCommerce vs Shopify
           </p>
           <h2 class="page-h2">
-            Why WooCommerce <em>over Shopify or BigCommerce.</em>
+            Why does WooCommerce <em>beat Shopify for custom stores?</em>
           </h2>
         </div>
 
@@ -471,6 +504,48 @@ const faqs = [
               ))}
             </tbody>
           </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== MIGRATION (SERP gap — high buyer intent) ====== -->
+    <section class="woo-migrate">
+      <div class="container">
+        <div class="woo-migrate-inner">
+          <div class="woo-migrate-copy">
+            <p class="woo-section-eyebrow">
+              <span class="woo-section-eyebrow-line"></span>
+              Platform migrations
+            </p>
+            <h2 class="page-h2 woo-migrate-h2">Migrating from Shopify, BigCommerce, or Magento?</h2>
+            <p class="woo-migrate-lead">Shopify-to-WooCommerce migrations are one of our most common engagements. The process covers four phases: catalog export with product images and metadata, schema mapping to WooCommerce custom fields, customer and order import, and 301 redirect mapping to preserve every ranking page. Most Shopify migrations complete in 6 to 8 weeks and recover top-10 rankings within 4 weeks of launch.</p>
+            <ul class="woo-migrate-list">
+              <li><strong>Shopify to WooCommerce</strong> — catalog up to 2,000 products, pricing from $4,500</li>
+              <li><strong>BigCommerce to WooCommerce</strong> — full data export, order history preserved, pricing from $5,500</li>
+              <li><strong>Magento to WooCommerce</strong> — legacy catalog restructure, attribute mapping, pricing from $8,500</li>
+              <li><strong>Squarespace Commerce to WooCommerce</strong> — manual catalog rebuild with schema, pricing from $3,500</li>
+            </ul>
+            <a href="/contact/?service=woocommerce-migration" class="woo-migrate-cta">
+              Get a migration quote
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+          <div class="woo-migrate-platforms">
+            {[
+              { from: "Shopify", weeks: "6-8 wks", note: "Most common migration" },
+              { from: "BigCommerce", weeks: "7-9 wks", note: "Order history preserved" },
+              { from: "Magento", weeks: "9-12 wks", note: "Legacy catalog restructure" },
+              { from: "Squarespace", weeks: "4-6 wks", note: "Manual schema rebuild" },
+            ].map((p) => (
+              <div class="woo-migrate-platform">
+                <span class="woo-migrate-from">{p.from}</span>
+                <svg class="woo-migrate-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h12M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span class="woo-migrate-to">WooCommerce</span>
+                <span class="woo-migrate-weeks">{p.weeks}</span>
+                <span class="woo-migrate-note">{p.note}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -1340,6 +1415,179 @@ const faqs = [
     padding-top: 18px;
   }
 
+  /* COMPONENT FRAME */
+  .woo-components {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .woo-components-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .woo-components-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    max-width: 880px;
+    margin: 0 auto;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    background: var(--cream);
+  }
+  .woo-component-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 22px 28px;
+    border-bottom: 1px solid var(--line);
+    transition: background 0.2s ease;
+  }
+  .woo-component-item:last-child { border-bottom: none; }
+  .woo-component-item:hover { background: var(--paper); }
+  .woo-component-num {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    color: var(--amber-deep);
+    font-weight: 600;
+    min-width: 28px;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+  .woo-component-body { display: flex; flex-direction: column; gap: 6px; }
+  .woo-component-name {
+    font-family: var(--f-display);
+    font-size: 17px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin: 0;
+  }
+  .woo-component-detail {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* MIGRATION */
+  .woo-migrate {
+    background: var(--ink);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .woo-migrate-inner {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 56px;
+    align-items: start;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .woo-migrate-h2 { color: var(--cream); margin-top: 12px; }
+  .woo-migrate-h2 em { color: var(--amber); }
+  .woo-migrate-lead {
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(244,239,230,0.7);
+    margin: 16px 0 0;
+    max-width: 60ch;
+  }
+  .woo-migrate-list {
+    margin: 20px 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    list-style: none;
+  }
+  .woo-migrate-list li {
+    font-size: 14px;
+    line-height: 1.55;
+    color: rgba(244,239,230,0.75);
+    padding-left: 18px;
+    position: relative;
+  }
+  .woo-migrate-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 9px;
+    width: 10px; height: 1px;
+    background: var(--amber);
+  }
+  .woo-migrate-list li strong { color: var(--cream); font-weight: 600; }
+  .woo-migrate-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 24px;
+    padding: 12px 22px;
+    background: var(--amber);
+    color: var(--ink);
+    border-radius: var(--radius-pill);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.22s ease;
+  }
+  .woo-migrate-cta:hover { background: var(--cream); transform: translateY(-2px); }
+  .woo-migrate-platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .woo-migrate-platform {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    grid-template-rows: auto auto;
+    gap: 4px 10px;
+    align-items: center;
+    padding: 14px 16px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius-md);
+  }
+  .woo-migrate-from {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: rgba(244,239,230,0.6);
+    text-transform: uppercase;
+    text-align: right;
+  }
+  .woo-migrate-arrow { color: var(--amber); flex-shrink: 0; }
+  .woo-migrate-to {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--amber);
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .woo-migrate-weeks {
+    grid-column: 1 / -1;
+    font-family: var(--f-display);
+    font-size: 13px;
+    color: var(--cream);
+    font-weight: 500;
+    text-align: center;
+  }
+  .woo-migrate-note {
+    grid-column: 1 / -1;
+    font-size: 11px;
+    color: rgba(244,239,230,0.45);
+    text-align: center;
+    font-family: var(--f-mono);
+    letter-spacing: 0.06em;
+  }
+
   /* PAGE FINAL CTA */
   .page-cta {
     background: var(--ink);
@@ -1425,6 +1673,9 @@ const faqs = [
 
   /* RESPONSIVE */
   @media (max-width: 1024px) {
+    .woo-migrate-inner { grid-template-columns: 1fr; gap: 32px; }
+    .woo-migrate-platforms { grid-template-columns: repeat(2, 1fr); display: grid; }
+  }
     .woo-define-meta { grid-template-columns: 1fr; gap: 12px; }
     .woo-define-card { padding: 28px 24px; }
     .woo-includes-grid { grid-template-columns: 1fr; }
@@ -1435,6 +1686,8 @@ const faqs = [
     .woo-when-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
+    .woo-migrate-platforms { grid-template-columns: 1fr; }
+    .woo-component-item { gap: 16px; padding: 18px 20px; }
     .woo-capabilities-grid { grid-template-columns: 1fr; }
     .woo-when-grid { grid-template-columns: 1fr; }
     .woo-compare-table { font-size: 12px; }
