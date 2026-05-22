@@ -8,7 +8,7 @@ import { articles, categories, articleUrl } from '../../data/blog-articles';
 
 const article = articles.find((a) => a.slug === 'website-for-a-small-business-cost')!;
 const category = categories[article.category];
-const canonical = 'https://upcomingbrand.com/website-for-a-small-business-cost/';
+const canonical = 'https://www.upcomingbrand.com/website-for-a-small-business-cost/';
 
 const inCategory = articles.filter((a) => a.category === article.category && a.slug !== article.slug).slice(0, 6);
 const otherCategories = articles.filter((a) => a.category !== article.category).slice(0, 4);
@@ -51,15 +51,15 @@ const jsonLd = JSON.stringify({
       "author": {
         "@type": "Person",
         "name": "Muhammad Younus",
-        "url": "https://upcomingbrand.com/about/",
+        "url": "https://www.upcomingbrand.com/about/",
         "jobTitle": "Senior WordPress Developer",
-        "worksFor": { "@id": "https://upcomingbrand.com/#organization" }
+        "worksFor": { "@id": "https://www.upcomingbrand.com/#organization" }
       },
-      "publisher": { "@id": "https://upcomingbrand.com/#organization" },
+      "publisher": { "@id": "https://www.upcomingbrand.com/#organization" },
       "datePublished": "2026-05-05",
       "dateModified": "2026-05-05",
       "inLanguage": "en-US",
-      "isPartOf": { "@id": "https://upcomingbrand.com/#website" }
+      "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" }
     },
     {
       "@context": "https://schema.org",
@@ -138,15 +138,15 @@ const jsonLd = JSON.stringify({
       "name": `${metaTitle} | Upcoming Brand`,
       "description": metaDesc,
       "inLanguage": "en-US",
-      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
-      "primaryImageOfPage": { "@type": "ImageObject", "url": "https://upcomingbrand.com/website-cost-3-paths.webp", "width": 1672, "height": 941 },
+      "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
+      "primaryImageOfPage": { "@type": "ImageObject", "url": "https://www.upcomingbrand.com/website-cost-3-paths.webp", "width": 1672, "height": 941 },
       "datePublished": "2026-05-05",
       "dateModified": "2026-05-05",
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://upcomingbrand.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://upcomingbrand.com/blog/" },
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.upcomingbrand.com/blog/" },
           { "@type": "ListItem", "position": 3, "name": article.title, "item": canonical }
         ]
       }
@@ -158,7 +158,7 @@ const jsonLd = JSON.stringify({
   title={metaTitle + ' | Upcoming Brand'}
   description={metaDesc}
   canonicalUrl={canonical}
-  ogImage="https://upcomingbrand.com/website-cost-3-paths.webp"
+  ogImage="https://www.upcomingbrand.com/website-cost-3-paths.webp"
   ogImageAlt="3 paths to a small business website in 2026: DIY ($200–600), Freelancer ($1,500–$8,000), Agency ($5,000–$15,000)"
 >
   <Fragment slot="head">

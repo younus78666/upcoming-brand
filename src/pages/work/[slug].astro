@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
 interface Props { project: Project; }
 const { project } = Astro.props;
-const canonical = `https://upcomingbrand.com/work/${project.slug}/`;
+const canonical = `https://www.upcomingbrand.com/work/${project.slug}/`;
 
 const related = projects.filter((p) => p.filter === project.filter && p.slug !== project.slug).slice(0, 3);
 const otherProjects = projects.filter((p) => p.slug !== project.slug && p.filter !== project.filter).slice(0, 3);
@@ -28,8 +28,8 @@ const jsonLd = JSON.stringify({
       "@id": `${canonical}#article`,
       "headline": `${project.name}: ${project.headline}`,
       "description": project.summary,
-      "author": { "@id": "https://upcomingbrand.com/#organization" },
-      "publisher": { "@id": "https://upcomingbrand.com/#organization" },
+      "author": { "@id": "https://www.upcomingbrand.com/#organization" },
+      "publisher": { "@id": "https://www.upcomingbrand.com/#organization" },
       "datePublished": "2026-05-03",
       "dateModified": "2026-05-03",
       "mainEntityOfPage": { "@id": `${canonical}#webpage` }
@@ -41,14 +41,14 @@ const jsonLd = JSON.stringify({
       "name": `${project.name} | Case Study | Upcoming Brand`,
       "description": project.summary,
       "inLanguage": "en-US",
-      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
-      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
+      "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
       "dateModified": "2026-05-03",
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://upcomingbrand.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Portfolio",  "item": "https://upcomingbrand.com/work/" },
+          { "@type": "ListItem", "position": 1, "name": "Home",       "item": "https://www.upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Portfolio",  "item": "https://www.upcomingbrand.com/work/" },
           { "@type": "ListItem", "position": 3, "name": project.name, "item": canonical }
         ]
       }

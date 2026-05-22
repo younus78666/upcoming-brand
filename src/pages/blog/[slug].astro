@@ -18,7 +18,7 @@ export async function getStaticPaths() {
 interface Props { article: BlogArticle; }
 const { article } = Astro.props;
 const category = categories[article.category];
-const canonical = `https://upcomingbrand.com/blog/${article.slug}/`;
+const canonical = `https://www.upcomingbrand.com/blog/${article.slug}/`;
 
 const inCategory = articles.filter((a) => a.category === article.category && a.slug !== article.slug).slice(0, 6);
 const otherCategories = articles.filter((a) => a.category !== article.category).slice(0, 4);
@@ -40,14 +40,14 @@ const jsonLd = JSON.stringify({
       "name": `${article.title} | Upcoming Brand`,
       "description": article.description,
       "inLanguage": "en-US",
-      "isPartOf": { "@id": "https://upcomingbrand.com/#website" },
-      "primaryImageOfPage": { "@id": "https://upcomingbrand.com/#logo" },
+      "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
+      "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
       "dateModified": "2026-05-03",
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://upcomingbrand.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://upcomingbrand.com/blog/" },
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.upcomingbrand.com/blog/" },
           { "@type": "ListItem", "position": 3, "name": article.title, "item": canonical }
         ]
       }
