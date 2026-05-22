@@ -104,6 +104,70 @@ const includes = [
   "Two structured design rounds with comment-thread feedback",
   "Pre-launch redirect map and zero-downtime DNS cutover",
   "30-day post-launch monitoring with written report at day 30",
+  "WCAG 2.1 AA accessibility review on every page before launch",
+];
+
+const designTypes = [
+  {
+    type: "Elementor Pro on Astra Pro",
+    badge: "What we build on",
+    desc: "Drag-and-drop visual editor on the fastest WordPress theme stack available. Editors update copy, images, and layouts without touching code. Best for service businesses, local companies, and marketing-driven sites that need non-developer editing long-term.",
+  },
+  {
+    type: "Gutenberg block editor",
+    badge: "Native WordPress",
+    desc: "The built-in WordPress block editor: no third-party page builder required. All content is stored as clean, portable HTML. Best for content publishers and businesses reducing plugin dependency. We build reusable block patterns for consistent editing.",
+  },
+  {
+    type: "Custom PHP theme (FSE)",
+    badge: "Maximum performance",
+    desc: "A PHP theme built from scratch using WordPress Full Site Editing. Zero page builder overhead. Achieves 95+ Lighthouse on every page without caching tricks. Best for high-traffic sites and enterprises where performance is a hard requirement.",
+  },
+];
+
+const whyCustom = [
+  {
+    num: "01",
+    reason: "Schema that Google can actually read",
+    detail: "Stock themes ship without structured data or with generic schema that mismatches your business type. Custom WordPress design builds LocalBusiness, Service, FAQ, and vertical-specific schema directly into the template layer. Google AI Overviews cite structured content. Generic themes get crawled and ignored.",
+  },
+  {
+    num: "02",
+    reason: "Core Web Vitals you can actually hit",
+    detail: "Premium themes average 55-65 on Google Lighthouse. Custom builds targeting 90+ are engineered differently from the start: critical CSS inlined, unused scripts removed, images lazy-loaded, TTFB optimized at the server level. You cannot retrofit 90+ onto a bloated theme stack.",
+  },
+  {
+    num: "03",
+    reason: "AI-ready content architecture",
+    detail: "Google AI Overviews, Bing Copilot, and ChatGPT all cite pages with direct Q+A structure, factual density, and clean semantic HTML. A custom WordPress build lets you architect every page for machine extraction, not just human reading. Template sites can't do this without a full rebuild.",
+  },
+  {
+    num: "04",
+    reason: "ADA compliance that protects your business",
+    detail: "WCAG 2.1 AA compliance reduces ADA lawsuit exposure and is required under Maryland HB 1024 for covered organizations. Stock themes routinely fail contrast ratios, keyboard navigation, and screen reader compatibility. We build accessibility into the markup from day one, not as an afterthought.",
+  },
+];
+
+const compareRows = [
+  { feature: "Schema / structured data",      wp: "Full control",           wix: "None",                  sq: "Limited",               webflow: "Limited" },
+  { feature: "Lighthouse Performance score",   wp: "90+ achievable",         wix: "50-70 typical",         sq: "60-75 typical",         webflow: "80-90 possible" },
+  { feature: "Custom post types",              wp: "Yes",                    wix: "No",                    sq: "No",                    webflow: "Yes (CMS)" },
+  { feature: "Plugin ecosystem",               wp: "60,000+ plugins",        wix: "Limited marketplace",   sq: "No plugins",            webflow: "Limited" },
+  { feature: "Code and content ownership",     wp: "100% yours forever",     wix: "Locked to Wix",         sq: "Locked to Squarespace", webflow: "100% yours" },
+  { feature: "ADA / WCAG compliance control",  wp: "Full",                   wix: "Limited",               sq: "Limited",               webflow: "Full" },
+  { feature: "AI Overview optimization",       wp: "Full (semantic HTML)",   wix: "None",                  sq: "None",                  webflow: "Limited" },
+  { feature: "Platform lock-in risk",          wp: "None (open source)",     wix: "High",                  sq: "High",                  webflow: "Moderate" },
+];
+
+const marylandCities = [
+  { city: "Baltimore",    context: "Competitive market with strong demand for law firm, medical, and contractor websites." },
+  { city: "Annapolis",    context: "State capital with high-intent searches from professional services and tourism businesses." },
+  { city: "Bethesda",     context: "High-income corridor with demand for medical, dental, and financial services web design." },
+  { city: "Frederick",    context: "Fast-growing market for contractor, home services, and small business websites." },
+  { city: "Rockville",    context: "Dense professional services corridor with multilingual and specialty business needs." },
+  { city: "Silver Spring", context: "Diverse market with strong demand for nonprofit, medical, and small business sites." },
+  { city: "Columbia",     context: "Planned community with high concentration of technology and professional services firms." },
+  { city: "Towson",       context: "Suburban hub with growing demand for dental, contractor, and retail websites." },
 ];
 
 const tiers = [
@@ -254,6 +318,14 @@ const faqs = [
     q: "Can you redesign my existing WordPress site without rebuilding it?",
     a: "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. If the site has 40+ active plugins, broken schema, or Lighthouse scores in the 30s, redesign is the wrong tool. You need a rebuild. We audit the current state during discovery and recommend the right approach honestly. Redesigns start at $2,500.",
   },
+  {
+    q: "What does a custom WordPress website include?",
+    a: "Every custom WordPress website we build includes: custom Figma design matched to your schema graph and brand identity, Elementor Pro on Astra Pro (no per-site plugin fees), mobile-first responsive layouts, LocalBusiness and FAQ schema, Google Analytics 4 and Search Console setup, image optimization with WebP and lazy loading, contact and lead forms with anti-spam, 90+ Lighthouse on every page, WCAG 2.1 AA accessibility review, two structured design review rounds, a full 301 redirect map for migrations, and 30 days of post-launch Search Console monitoring with a written report at day 30.",
+  },
+  {
+    q: "Is custom WordPress design worth it?",
+    a: "For most Maryland businesses competing in local search, yes. A custom WordPress build gives you schema control, 90+ Lighthouse, and ADA compliance that template-based sites structurally cannot match. The cost difference between a $400 ThemeForest theme and a $1,500 custom build pays back in two ways: better local rankings from schema accuracy, and lower long-term maintenance cost from not fighting a stock theme's constraints every time you update the site. If you're getting fewer than 200 visits per month or have no competition in your market, a template may be sufficient. Be honest about where you are in your market before investing in custom.",
+  },
 ];
 ---
 <BaseLayout
@@ -332,7 +404,7 @@ const faqs = [
             What's included
           </p>
           <h2 class="page-h2">
-            Twelve things <em>every project ships with.</em>
+            Thirteen things <em>every project ships with.</em>
           </h2>
           <p class="page-section-lead">Tier-independent. Starter projects ship with the same engineering bar as Custom builds. Only scope and complexity change.</p>
         </div>
@@ -363,7 +435,7 @@ const faqs = [
             What is custom WordPress web design?
           </h2>
           <p class="svc-define-answer">
-            <strong>Custom WordPress web design is a website built from scratch on the WordPress platform, tailored to your specific content patterns, schema needs, and conversion architecture.</strong> We build on Elementor Pro and Astra Pro - a proven, performance-optimized stack that gives you flexible layouts matching your exact business needs, strong Core Web Vitals, and long-term editability without rebuilding from scratch.
+            <strong>Custom WordPress web design is a website built from scratch on the WordPress platform, tailored to your specific content patterns, schema needs, and conversion architecture.</strong> WordPress powers 43% of all websites globally, making it the most-supported, best-documented CMS for long-term business growth. We build on Elementor Pro and Astra Pro: a proven, performance-optimized stack that gives you flexible layouts matching your exact business needs, strong Core Web Vitals, and long-term editability without rebuilding from scratch.
           </p>
           <div class="svc-define-meta">
             <div class="svc-define-meta-item">
@@ -379,6 +451,31 @@ const faqs = [
               <span class="svc-define-meta-val">$1,500 (Starter) to $15,000+ (Custom WooCommerce / multi-location)</span>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DESIGN TYPES (Category frame - Frame 2) ====== -->
+    <section class="svc-types">
+      <div class="container">
+        <div class="svc-types-head">
+          <p class="svc-section-eyebrow">
+            <span class="svc-section-eyebrow-line"></span>
+            Types of WordPress design
+          </p>
+          <h2 class="page-h2">
+            Three approaches <em>to WordPress website design.</em>
+          </h2>
+          <p class="page-section-lead">The right WordPress design type depends on your editing needs, traffic volume, and long-term maintenance plan. All three approaches ship with schema architecture, 90+ Lighthouse, and full content ownership.</p>
+        </div>
+        <div class="svc-types-grid">
+          {designTypes.map((t) => (
+            <article class="svc-type-card">
+              <span class="svc-type-badge">{t.badge}</span>
+              <h3 class="svc-type-name">{t.type}</h3>
+              <p class="svc-type-desc">{t.desc}</p>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -431,6 +528,71 @@ const faqs = [
               <p class="svc-when-detail">{w.detail}</p>
             </article>
           ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== WHY CUSTOM WORDPRESS RANKS (Causation frame - Frame 6) ====== -->
+    <section class="svc-why">
+      <div class="container">
+        <div class="svc-why-head">
+          <p class="svc-section-eyebrow">
+            <span class="svc-section-eyebrow-line"></span>
+            Why custom WordPress outranks templates
+          </p>
+          <h2 class="page-h2">
+            Four reasons <em>custom WordPress ranks where templates can't.</em>
+          </h2>
+          <p class="page-section-lead">Google ranks pages, not websites. Custom WordPress web design gives you control over the four signals that actually move rankings: schema, Core Web Vitals, AI-extractable content architecture, and ADA compliance.</p>
+        </div>
+        <div class="svc-why-grid">
+          {whyCustom.map((w) => (
+            <article class="svc-why-card">
+              <span class="svc-why-num">{w.num}</span>
+              <h3 class="svc-why-reason">{w.reason}</h3>
+              <p class="svc-why-detail">{w.detail}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== PLATFORM COMPARISON (Comparison frame - Frame 7) ====== -->
+    <section class="svc-compare">
+      <div class="container">
+        <div class="svc-compare-head">
+          <p class="svc-section-eyebrow">
+            <span class="svc-section-eyebrow-line"></span>
+            Platform comparison
+          </p>
+          <h2 class="page-h2">
+            WordPress vs Wix vs Squarespace vs Webflow.
+          </h2>
+          <p class="page-section-lead">Eight features that determine whether your site ranks, converts, and stays maintainable. WordPress wins on the signals Google rewards most: schema control, Lighthouse performance, and open platform ownership.</p>
+        </div>
+        <div class="svc-compare-wrap">
+          <table class="svc-compare-table">
+            <thead>
+              <tr>
+                <th class="svc-compare-th svc-compare-th-feature">Feature</th>
+                <th class="svc-compare-th svc-compare-th-wp">WordPress</th>
+                <th class="svc-compare-th">Wix</th>
+                <th class="svc-compare-th">Squarespace</th>
+                <th class="svc-compare-th">Webflow</th>
+              </tr>
+            </thead>
+            <tbody>
+              {compareRows.map((row) => (
+                <tr class="svc-compare-row">
+                  <td class="svc-compare-td svc-compare-td-feature">{row.feature}</td>
+                  <td class="svc-compare-td svc-compare-td-wp">{row.wp}</td>
+                  <td class="svc-compare-td">{row.wix}</td>
+                  <td class="svc-compare-td">{row.sq}</td>
+                  <td class="svc-compare-td">{row.webflow}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -538,6 +700,31 @@ const faqs = [
       </div>
     </section>
 
+    <!-- ====== MARYLAND COVERAGE ====== -->
+    <section class="svc-maryland">
+      <div class="container">
+        <div class="svc-maryland-head">
+          <p class="svc-section-eyebrow">
+            <span class="svc-section-eyebrow-line"></span>
+            Maryland coverage
+          </p>
+          <h2 class="page-h2">
+            WordPress web design <em>across Maryland.</em>
+          </h2>
+          <p class="page-section-lead">All projects run fully remote via Zoom and async review. We serve Maryland businesses statewide. No geographic surcharge, no local-only restrictions.</p>
+        </div>
+        <div class="svc-maryland-grid">
+          {marylandCities.map((m) => (
+            <article class="svc-maryland-card">
+              <h3 class="svc-maryland-city">{m.city}</h3>
+              <p class="svc-maryland-context">{m.context}</p>
+            </article>
+          ))}
+        </div>
+        <p class="svc-maryland-note">Serving all Maryland counties including Montgomery, Prince George's, Baltimore, Anne Arundel, Howard, Carroll, Harford, Frederick, Washington, and Allegany.</p>
+      </div>
+    </section>
+
     <!-- ====== FAQ ====== -->
     <section class="svc-faq">
       <div class="container">
@@ -548,7 +735,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 svc-faq-h2">
-            Eight questions <em>before you hire.</em>
+            Ten questions <em>before you hire.</em>
           </h2>
         </div>
 
@@ -1579,6 +1766,272 @@ const faqs = [
   .page-cta-ghost-light svg { transition: transform 0.22s ease; }
   .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
 
+  /* DESIGN TYPES */
+  .svc-types {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-types-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .svc-types-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .svc-type-card {
+    padding: 28px 26px 24px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+  .svc-type-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+  .svc-type-badge {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.1);
+    border-radius: var(--radius-pill);
+    padding: 4px 10px;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .svc-type-name {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 10px;
+  }
+  .svc-type-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* WHY CUSTOM WORDPRESS RANKS */
+  .svc-why {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-why-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .svc-why-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .svc-why-card {
+    padding: 28px 26px 24px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .svc-why-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 100%;
+    background: var(--amber);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s ease;
+  }
+  .svc-why-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(212,147,46,0.1);
+  }
+  .svc-why-card:hover::before { transform: scaleY(1); }
+  .svc-why-num {
+    font-family: var(--f-display);
+    font-size: 14px;
+    font-style: italic;
+    color: var(--amber-deep);
+    font-weight: 400;
+  }
+  .svc-why-reason {
+    font-family: var(--f-display);
+    font-size: 19px;
+    line-height: 1.25;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 10px 0 8px;
+  }
+  .svc-why-detail {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+
+  /* PLATFORM COMPARISON TABLE */
+  .svc-compare {
+    background: var(--ink);
+    color: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-compare-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .svc-compare-head .page-h2 { color: var(--cream); }
+  .svc-compare-head .page-h2 em { color: var(--amber); }
+  .svc-compare-head .svc-section-eyebrow { color: var(--amber); }
+  .svc-compare-head .svc-section-eyebrow-line { background: var(--amber); }
+  .svc-compare-head .page-section-lead { color: rgba(244,239,230,0.65); }
+  .svc-compare-wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(244,239,230,0.1);
+  }
+  .svc-compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    min-width: 640px;
+  }
+  .svc-compare-th {
+    padding: 14px 18px;
+    text-align: left;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(244,239,230,0.5);
+    font-weight: 500;
+    background: rgba(244,239,230,0.04);
+    border-bottom: 1px solid rgba(244,239,230,0.1);
+    white-space: nowrap;
+  }
+  .svc-compare-th-feature {
+    width: 30%;
+    color: rgba(244,239,230,0.5);
+  }
+  .svc-compare-th-wp {
+    color: var(--amber);
+  }
+  .svc-compare-row {
+    border-bottom: 1px solid rgba(244,239,230,0.07);
+    transition: background 0.2s ease;
+  }
+  .svc-compare-row:last-child { border-bottom: none; }
+  .svc-compare-row:hover { background: rgba(244,239,230,0.03); }
+  .svc-compare-td {
+    padding: 14px 18px;
+    color: rgba(244,239,230,0.6);
+    line-height: 1.5;
+    vertical-align: top;
+  }
+  .svc-compare-td-feature {
+    font-weight: 500;
+    color: rgba(244,239,230,0.85);
+  }
+  .svc-compare-td-wp {
+    color: var(--amber);
+    font-weight: 500;
+  }
+
+  /* MARYLAND COVERAGE */
+  .svc-maryland {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .svc-maryland-head {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .svc-maryland-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .svc-maryland-card {
+    padding: 20px 22px 18px;
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    transition: all 0.3s ease;
+  }
+  .svc-maryland-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-2px);
+  }
+  .svc-maryland-city {
+    font-family: var(--f-display);
+    font-size: 17px;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    margin: 0 0 8px;
+  }
+  .svc-maryland-context {
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--ink-muted);
+    margin: 0;
+  }
+  .svc-maryland-note {
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin: 28px auto 0;
+    max-width: 680px;
+    line-height: 1.6;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 1024px) {
     .svc-includes-grid { grid-template-columns: 1fr; }
@@ -1591,6 +2044,9 @@ const faqs = [
     .svc-define-card { padding: 28px 24px; }
     .svc-customdev-grid { grid-template-columns: repeat(2, 1fr); }
     .svc-when-grid { grid-template-columns: repeat(2, 1fr); }
+    .svc-types-grid { grid-template-columns: 1fr; }
+    .svc-why-grid { grid-template-columns: 1fr; }
+    .svc-maryland-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 768px) {
@@ -1598,6 +2054,7 @@ const faqs = [
     .svc-verticals-grid { grid-template-columns: 1fr; }
     .svc-customdev-grid { grid-template-columns: 1fr; }
     .svc-when-grid { grid-template-columns: 1fr; }
+    .svc-maryland-grid { grid-template-columns: 1fr; }
     .svc-faq-q {
       grid-template-columns: 1fr 24px;
       gap: 12px;
