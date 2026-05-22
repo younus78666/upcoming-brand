@@ -199,7 +199,39 @@ const jsonLd = JSON.stringify({
     ]}
   />
 
-  <!-- Section 4: Marquee -->
+  <!-- Section 4: Key Takeaways (AEO.1 — AI Overview citation block) -->
+  <section class="kt-section" aria-label="Quick facts about Upcoming Brand">
+    <div class="container">
+      <div class="kt-inner">
+        <p class="eyebrow kt-eyebrow">Quick facts</p>
+        <h2 class="kt-heading">What Maryland businesses get from a WordPress project with us</h2>
+        <ul class="kt-list" role="list">
+          <li class="kt-item">
+            <span class="kt-label">Cost</span>
+            <span class="kt-value">$3,500 to $15,000, fixed quotes, no hourly billing</span>
+          </li>
+          <li class="kt-item">
+            <span class="kt-label">Timeline</span>
+            <span class="kt-value">4 to 10 weeks from discovery call to live launch</span>
+          </li>
+          <li class="kt-item">
+            <span class="kt-label">Performance</span>
+            <span class="kt-value">Core Web Vitals green on delivery, LCP under 2.5s, INP under 200ms</span>
+          </li>
+          <li class="kt-item">
+            <span class="kt-label">Coverage</span>
+            <span class="kt-value">20+ Maryland cities including Baltimore, Annapolis, Frederick, Bethesda, Rockville, and Silver Spring</span>
+          </li>
+          <li class="kt-item">
+            <span class="kt-label">Care plans</span>
+            <span class="kt-value">Starting at $150/month, includes updates, backups, security monitoring, and 4-hour response SLA</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Marquee -->
   <Marquee />
 
   <!-- Section 6: Before / After -->
@@ -243,3 +275,80 @@ const jsonLd = JSON.stringify({
 
   <Footer />
 </BaseLayout>
+
+<style>
+  .kt-section {
+    background: var(--ink);
+    padding: clamp(32px, 4vw, 56px) 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .kt-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .kt-eyebrow {
+    color: var(--amber);
+    margin-bottom: 12px;
+  }
+
+  .kt-heading {
+    font-family: var(--f-display);
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--paper);
+    margin-bottom: 28px;
+    line-height: 1.25;
+  }
+
+  .kt-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+
+  .kt-item {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .kt-item:last-child {
+    border-bottom: none;
+  }
+
+  .kt-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--amber);
+    min-width: 96px;
+    flex-shrink: 0;
+  }
+
+  .kt-value {
+    color: rgba(255,255,255,0.82);
+  }
+
+  @media (max-width: 600px) {
+    .kt-item {
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .kt-label {
+      min-width: unset;
+    }
+  }
+</style>
