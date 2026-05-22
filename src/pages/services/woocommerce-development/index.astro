@@ -127,10 +127,10 @@ const tiers = [
 ];
 
 const storeComponents = [
-  { num: "01", name: "Product catalog",     detail: "Product pages with variants, images, pricing tiers, and Product/Offer/AggregateRating schema. Supports simple, variable, grouped, and downloadable product types." },
+  { num: "01", name: "Product catalog",     detail: `Product pages with variants, images, pricing tiers, and <a href="/tools/schema-generator/">Product/Offer/AggregateRating schema</a>. Supports simple, variable, grouped, and downloadable product types.` },
   { num: "02", name: "Payment gateway",     detail: "PCI-compliant checkout via Stripe, PayPal, or Authorize.net. Apple Pay, Google Pay, and ACH supported. No transaction fees beyond the gateway's own rate." },
   { num: "03", name: "Shipping and tax",    detail: "Real-time carrier rates (UPS, FedEx, USPS), flat-rate zones, free-shipping thresholds, and automated tax calculation via TaxJar or WooCommerce Tax." },
-  { num: "04", name: "Inventory management", detail: "Stock tracking, low-stock alerts, backorder handling, and multi-warehouse inventory. Syncs to ERP systems (NetSuite, QuickBooks) at the Enterprise tier." },
+  { num: "04", name: "Inventory management", detail: `Stock tracking, low-stock alerts, backorder handling, and multi-warehouse inventory. Syncs to ERP systems (NetSuite, QuickBooks) at the Enterprise tier. Protected long-term by a <a href="/services/wordpress-care-plans/">WordPress care plan</a>.` },
   { num: "05", name: "Order management",    detail: "Admin order interface with status workflows (pending, processing, shipped, complete), customer-facing order history, and transactional email triggers." },
 ];
 
@@ -188,31 +188,31 @@ const wooVsShopify = [
 const faqs = [
   {
     q: "What is WooCommerce development?",
-    a: "WooCommerce development is the work of building, customizing, and maintaining ecommerce stores on the WooCommerce platform (a free WordPress plugin powering 28% of all online stores). WooCommerce development services range from basic store setup to custom plugin engineering, payment gateway integration, multi-vendor marketplace builds, and performance optimization for high-volume catalogs.",
+    a: `WooCommerce development is the work of building, customizing, and maintaining ecommerce stores on the WooCommerce platform — a free <a href="/services/wordpress-web-design/">WordPress plugin</a> powering 28% of all online stores. WooCommerce development services range from basic store setup to custom plugin engineering, payment gateway integration, multi-vendor marketplace builds, and <a href="/services/wordpress-speed-optimization/">performance optimization</a> for high-volume catalogs.`,
   },
   {
     q: "How much does WooCommerce development cost?",
-    a: "Quality WooCommerce development costs $4,500 to $25,000+ for most small-to-mid stores in 2026. Setup builds (50 products, single payment gateway) start at $4,500. Custom builds with subscriptions, configurators, or multi-vendor run $8,500-$15,000. Enterprise WooCommerce (high-volume, ERP integration, multi-currency) starts at $15,000 and can reach $80,000+. Hourly WooCommerce developer rates run $80-$200/hr; the higher-quality firms have moved to fixed-scope.",
+    a: `Quality WooCommerce development costs $4,500 to $25,000+ for most small-to-mid stores in 2026. Setup builds (50 products, single payment gateway) start at $4,500. Custom builds with subscriptions, configurators, or multi-vendor run $8,500–$15,000. Enterprise WooCommerce (high-volume, ERP integration, multi-currency) starts at $15,000 and can reach $80,000+. Hourly WooCommerce developer rates run $80–$200/hr; higher-quality firms have moved to <a href="/pricing/">fixed-scope pricing</a>. Hourly WooCommerce developer rates run $80–$200/hr.`,
   },
   {
     q: "Should I hire a WooCommerce developer or use Shopify instead?",
-    a: "Use Shopify if you have under 50 simple products, don't need custom checkout flows, and accept the $79+/month platform fee. Hire a WooCommerce developer if you need subscriptions, configurators, multi-vendor, custom plugins, ERP integration, or platform ownership. The break-even point is roughly 12-18 months: above that, WooCommerce is almost always cheaper and more flexible. Below that, Shopify saves you the upfront build cost.",
+    a: `Use Shopify if you have under 50 simple products, don't need custom checkout flows, and accept the $79+/month platform fee. <a href="/hire-wordpress-designer/">Hire a WooCommerce developer</a> if you need subscriptions, configurators, multi-vendor, custom plugins, ERP integration, or platform ownership. The break-even point is roughly 12–18 months: above that, WooCommerce is almost always cheaper and more flexible. Below that, Shopify saves you the upfront build cost.`,
   },
   {
     q: "What's the difference between a WooCommerce developer and a WooCommerce expert?",
-    a: "In practice, none. 'Developer' implies engineering focus; 'expert' implies senior strategic capability across both engineering and architecture. Quality WooCommerce hires bridge both: they can ship custom code AND make architecture decisions about catalog structure, schema, payment flows, and performance. Don't hire someone who can only do one or the other.",
+    a: `In practice, none. "Developer" implies engineering focus; "expert" implies senior strategic capability across both engineering and architecture. Quality WooCommerce hires bridge both: they can ship custom code AND make architecture decisions about catalog structure, <a href="/services/wordpress-seo-services/">schema and SEO</a>, payment flows, and performance. Don't hire someone who can only do one or the other.`,
   },
   {
     q: "Can you migrate my existing Shopify or BigCommerce store to WooCommerce?",
-    a: "Yes. Shopify-to-WooCommerce migrations are a common engagement. The process: catalog export with product images and metadata, schema mapping to WooCommerce custom fields, customer and order import, redirect mapping for SEO, and zero-downtime DNS cutover. Most Shopify migrations take 6-8 weeks and recover all top-10 rankings within 4 weeks of launch. Pricing starts at $4,500 for migrations under 200 products.",
+    a: `Yes. Shopify-to-WooCommerce migrations are one of our most common engagements. The process: catalog export with product images and metadata, schema mapping to WooCommerce custom fields, customer and order import, <a href="/services/wordpress-migration/">301 redirect mapping for SEO preservation</a>, and zero-downtime DNS cutover. Most Shopify migrations complete in 6–8 weeks and recover top-10 rankings within 4 weeks of launch. Pricing starts at $4,500 for catalogs under 200 products.`,
   },
   {
     q: "Do you offer ongoing WooCommerce support and maintenance?",
-    a: "Yes. Care plans from $150/month cover WooCommerce core + plugin updates tested on staging, daily off-site backups, security patching, performance monitoring, and a 4-hour SLA. Higher tiers include monthly performance audits, schema validation, and content / product updates. WooCommerce stores particularly benefit from active maintenance because plugin updates can break checkout flows in subtle ways.",
+    a: `Yes. <a href="/services/wordpress-care-plans/">Care plans from $150/month</a> cover WooCommerce core and plugin updates tested on staging, daily off-site backups, security patching, performance monitoring, and a 4-hour SLA. Higher tiers include monthly performance audits, schema validation, and content and product updates. WooCommerce stores particularly benefit from active maintenance because plugin updates can break checkout flows in subtle ways.`,
   },
   {
     q: "How long does a WooCommerce development project take?",
-    a: "Standard timelines: Setup tier in 5-7 weeks, Custom in 8-10 weeks, Enterprise in 10-14 weeks. The biggest variables are catalog complexity (50 vs 5,000 products), integration scope (single gateway vs multi-region with ERP), and how quickly you provide product content. We keep the build moving on our end, but timelines pause if we're waiting on you for more than 5 business days.",
+    a: `Standard timelines: Setup tier in 5–7 weeks, Custom in 8–10 weeks, Enterprise in 10–14 weeks. The biggest variables are catalog complexity (50 vs 5,000 products), integration scope (single gateway vs multi-region with ERP), and how quickly you provide product content. We keep the build moving on our end, but timelines pause if we're waiting on you for more than 5 business days. See the full <a href="/process/">project process page</a> for a phase breakdown.`,
   },
 ];
 ---
@@ -296,7 +296,7 @@ const faqs = [
             What is WooCommerce development?
           </h2>
           <p class="woo-define-answer">
-            <strong>WooCommerce development is the work of building, customizing, and maintaining ecommerce stores on the WooCommerce platform.</strong> WooCommerce is a free WordPress plugin that powers 28% of all online stores. WooCommerce development services range from basic store setup to custom plugin engineering, payment gateway integration, multi-vendor marketplace builds, and performance optimization for high-volume catalogs.
+            <strong>WooCommerce development is the work of building, customizing, and maintaining ecommerce stores on the WooCommerce platform.</strong> WooCommerce is a free <a href="/services/wordpress-web-design/" class="woo-define-link">WordPress plugin</a> that powers 28% of all online stores. WooCommerce development services range from basic store setup to custom plugin engineering, payment gateway integration, multi-vendor marketplace builds, and <a href="/services/wordpress-speed-optimization/" class="woo-define-link">performance optimization</a> for high-volume catalogs.
           </p>
           <div class="woo-define-meta">
             <div class="woo-define-meta-item">
@@ -325,7 +325,7 @@ const faqs = [
             Store architecture
           </p>
           <h2 class="page-h2">What does <em>a WooCommerce store include?</em></h2>
-          <p class="page-section-lead">A WooCommerce store is not a single plugin. It is five interconnected systems. Each one is configured and optimized during the build to work together without slowing your product pages.</p>
+          <p class="page-section-lead">A WooCommerce store is not a single plugin. It is five interconnected systems. Each one is configured and optimized during the build to work together without <a href="/services/wordpress-speed-optimization/">slowing your product pages</a>.</p>
         </div>
         <div class="woo-components-grid">
           {storeComponents.map((c) => (
@@ -333,7 +333,7 @@ const faqs = [
               <span class="woo-component-num">{c.num}</span>
               <div class="woo-component-body">
                 <h3 class="woo-component-name">{c.name}</h3>
-                <p class="woo-component-detail">{c.detail}</p>
+                <p class="woo-component-detail" set:html={c.detail} />
               </div>
             </div>
           ))}
@@ -419,7 +419,7 @@ const faqs = [
           <h2 class="page-h2 woo-capabilities-h2">
             What WooCommerce capabilities <em>come in one engagement?</em>
           </h2>
-          <p class="woo-capabilities-lead">A real WooCommerce expert ships across all six. Not just a Shopify migrator with a WooCommerce theme.</p>
+          <p class="woo-capabilities-lead">A real <a href="/hire-wordpress-designer/" class="woo-capabilities-link">WooCommerce expert</a> ships across all six. Not just a Shopify migrator with a WooCommerce theme.</p>
         </div>
 
         <div class="woo-capabilities-grid">
@@ -473,6 +473,7 @@ const faqs = [
           </h2>
         </div>
 
+        <p class="page-section-lead woo-compare-context">WooCommerce wins on cost, flexibility, and ownership for stores with more than 50 products or any custom logic. For a full look at ecommerce design options, see our <a href="/industries/ecommerce-website-design/">ecommerce website design</a> page. Already on Shopify and want to switch? See our <a href="/services/wordpress-migration/">WordPress migration service</a>.</p>
         <div class="woo-compare-table-wrap">
           <table class="woo-compare-table">
             <thead>
@@ -518,7 +519,7 @@ const faqs = [
               Platform migrations
             </p>
             <h2 class="page-h2 woo-migrate-h2">Migrating from Shopify, BigCommerce, or Magento?</h2>
-            <p class="woo-migrate-lead">Shopify-to-WooCommerce migrations are one of our most common engagements. The process covers four phases: catalog export with product images and metadata, schema mapping to WooCommerce custom fields, customer and order import, and 301 redirect mapping to preserve every ranking page. Most Shopify migrations complete in 6 to 8 weeks and recover top-10 rankings within 4 weeks of launch.</p>
+            <p class="woo-migrate-lead">Shopify-to-WooCommerce migrations are one of our most common engagements. The process covers four phases: catalog export with product images and metadata, schema mapping to WooCommerce custom fields, customer and order import, and <a href="/services/wordpress-migration/" class="woo-migrate-link">301 redirect mapping</a> to preserve every ranking page. Most Shopify migrations complete in 6 to 8 weeks and recover top-10 rankings within 4 weeks of launch.</p>
             <ul class="woo-migrate-list">
               <li><strong>Shopify to WooCommerce</strong> — catalog up to 2,000 products, pricing from $4,500</li>
               <li><strong>BigCommerce to WooCommerce</strong> — full data export, order history preserved, pricing from $5,500</li>
@@ -550,6 +551,37 @@ const faqs = [
       </div>
     </section>
 
+    <!-- ====== RELATED SERVICES ====== -->
+    <section class="woo-related">
+      <div class="container">
+        <div class="woo-related-head">
+          <p class="woo-section-eyebrow">
+            <span class="woo-section-eyebrow-line"></span>
+            Also from Upcoming Brand
+          </p>
+          <h2 class="page-h2 woo-related-h2">Services that work alongside <em>WooCommerce development.</em></h2>
+        </div>
+        <div class="woo-related-grid">
+          {[
+            { href: "/services/wordpress-web-design/",       label: "WordPress Web Design",        desc: "The full custom WordPress build that houses your WooCommerce store. Design, schema, and Core Web Vitals from one engagement." },
+            { href: "/services/wordpress-care-plans/",       label: "WordPress Care Plans",         desc: "Monthly WooCommerce and plugin updates tested on staging before production. From $150/month with 4-hour SLA." },
+            { href: "/services/wordpress-speed-optimization/", label: "Speed Optimization",         desc: "LCP under 2.5s and 90+ Lighthouse on product pages. Slow WooCommerce stores lose 7% of conversions per 100ms." },
+            { href: "/services/wordpress-migration/",        label: "WordPress Migration",          desc: "Move from Shopify, BigCommerce, or Magento to WooCommerce. 301 redirect mapping and zero-downtime DNS cutover included." },
+            { href: "/services/wordpress-security/",         label: "WordPress Security",           desc: "Harden your store against checkout page injection, brute force, and plugin vulnerabilities. Wordfence and Cloudflare WAF setup." },
+            { href: "/industries/ecommerce-website-design/", label: "Ecommerce Website Design",    desc: "Design-first ecommerce builds for direct-to-consumer and B2B stores. WooCommerce, product photography direction, and CRO baked in." },
+          ].map((r) => (
+            <a href={r.href} class="woo-related-card">
+              <span class="woo-related-label">{r.label}</span>
+              <p class="woo-related-desc">{r.desc}</p>
+              <span class="woo-related-arrow" aria-hidden="true">
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
     <!-- ====== FAQ ====== -->
     <section class="woo-faq">
       <div class="container">
@@ -574,7 +606,7 @@ const faqs = [
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
               </summary>
-              <p class="woo-faq-a">{f.a}</p>
+              <p class="woo-faq-a" set:html={f.a} />
             </details>
           ))}
         </div>
@@ -1415,6 +1447,117 @@ const faqs = [
     padding-top: 18px;
   }
 
+  /* INLINE LINK STYLES (contextual links in dark/light sections) */
+  .woo-define-link {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+  }
+  .woo-capabilities-link {
+    color: var(--amber);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .woo-migrate-link {
+    color: var(--amber);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+  }
+  .woo-component-detail a,
+  .woo-faq-a a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+  }
+  .woo-compare-context {
+    text-align: center;
+    margin-bottom: 28px;
+    margin-top: 0;
+  }
+  .woo-compare-context a {
+    color: var(--amber-deep);
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  /* RELATED SERVICES */
+  .woo-related {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .woo-related-head {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+  .woo-related-h2 { color: var(--ink); }
+  .woo-related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .woo-related-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px 20px 18px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.22s ease;
+    position: relative;
+  }
+  .woo-related-card:hover {
+    border-color: var(--amber);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(212,147,46,0.1);
+  }
+  .woo-related-label {
+    font-family: var(--f-display);
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .woo-related-desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: 0;
+    flex: 1;
+  }
+  .woo-related-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: rgba(212,147,46,0.1);
+    color: var(--amber-deep);
+    transition: all 0.22s ease;
+    align-self: flex-start;
+    margin-top: 4px;
+  }
+  .woo-related-card:hover .woo-related-arrow {
+    background: var(--amber);
+    color: var(--ink);
+    transform: translate(2px, -2px);
+  }
+
   /* COMPONENT FRAME */
   .woo-components {
     background: var(--paper);
@@ -1675,6 +1818,7 @@ const faqs = [
   @media (max-width: 1024px) {
     .woo-migrate-inner { grid-template-columns: 1fr; gap: 32px; }
     .woo-migrate-platforms { grid-template-columns: repeat(2, 1fr); display: grid; }
+    .woo-related-grid { grid-template-columns: repeat(2, 1fr); }
   }
     .woo-define-meta { grid-template-columns: 1fr; gap: 12px; }
     .woo-define-card { padding: 28px 24px; }
@@ -1686,6 +1830,7 @@ const faqs = [
     .woo-when-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
+    .woo-related-grid { grid-template-columns: 1fr; }
     .woo-migrate-platforms { grid-template-columns: 1fr; }
     .woo-component-item { gap: 16px; padding: 18px 20px; }
     .woo-capabilities-grid { grid-template-columns: 1fr; }
