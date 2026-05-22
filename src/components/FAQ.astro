@@ -28,7 +28,7 @@ const faqs = [
     num: "05",
     category: "Industries",
     q: "Do you work with law firms, dental practices, and regulated industries?",
-    a: "Yes. Law firm, dental, and medical websites make up a significant part of our Maryland client base. We understand the compliance considerations — HIPAA-aware forms, attorney ethics rules for testimonials — and the schema types (LegalService, Dentist, MedicalOrganization) that help these sites rank in competitive local searches.",
+    a: "Yes. Law firm, dental, and medical websites make up a significant part of our Maryland client base. We understand the compliance considerations — HIPAA-aware forms, attorney ethics rules for testimonials — and the schema types (LegalService, Dentist, MedicalOrganization) that help these sites rank in competitive local searches and Google Maps results. Every regulated-industry build includes a Google Business Profile review and structured NAP setup.",
   },
   {
     num: "06",
@@ -40,22 +40,28 @@ const faqs = [
     num: "07",
     category: "Platform",
     q: "Why WordPress instead of Webflow, Squarespace, or Wix?",
-    a: "WordPress is open source: you own your data, there's no platform lock-in, and no monthly SaaS fee that scales with your revenue. 43% of all websites run on WordPress for good reason. The total cost of ownership over 5 years is consistently lower than any SaaS website platform — and you can move hosts any time.",
+    a: "WordPress is open source: you own your data, there's no platform lock-in, and no monthly SaaS fee that scales with your revenue. 43% of all websites — including the majority of Fortune 500 sites — run on WordPress. The total cost of ownership over 5 years is consistently lower than any SaaS platform. On Wix or Squarespace, you can't add custom LocalBusiness, LegalService, or MedicalOrganization schema — the structured data that drives Local Pack rankings. You also can't move hosts, and if the platform raises prices or shuts down, your site goes with it. WordPress eliminates all three risks.",
   },
   {
     num: "08",
+    category: "SEO",
+    q: "Why does a custom WordPress site rank better than a Wix or template site?",
+    a: "Three technical reasons. First, page builder templates and Wix sites average 3.8–4.2s LCP on mobile — well above Google's 2.5s threshold. Custom WordPress builds with WP Rocket and Cloudflare consistently hit 1.6–1.9s. Second, template platforms don't support custom JSON-LD schema at the page-type level — a law firm on Wix can't add LegalService schema, a restaurant can't add FoodEstablishment schema. Third, Wix and Squarespace use JavaScript-rendered content that Googlebot must render before indexing — server-rendered WordPress HTML is indexed immediately.",
+  },
+  {
+    num: "09",
     category: "SEO",
     q: "Do you guarantee specific Google rankings?",
     a: "No ethical agency can guarantee rankings — anyone who does is lying. We guarantee clean schema markup, Core Web Vitals in the green, proper internal linking, and a topical map built for your market. Clients on our SEO care plan typically see top-10 positions for 20–40 targeted keywords within 6–9 months.",
   },
   {
-    num: "09",
+    num: "10",
     category: "Timeline",
     q: "What happens if I need changes after launch?",
     a: "The first 30 days post-launch are covered at no extra cost — we fix anything that doesn't match the agreed scope. After that, care plan clients get unlimited small changes (text, images, hours) included. Larger additions are quoted as fixed-scope additions, the same as the original project.",
   },
   {
-    num: "10",
+    num: "11",
     category: "Pricing",
     q: "Is there a payment plan or deposit structure?",
     a: "Yes. All projects are split 50% upfront and 50% before launch. We do not charge hourly at any point in the project. Care plans are billed monthly with a 30-day cancel notice — no contracts, no minimum commitment.",
@@ -87,7 +93,7 @@ const categoryColors = {
 
         <div class="faq-stats">
           <div class="faq-stat">
-            <span class="faq-stat-num">10</span>
+            <span class="faq-stat-num">11</span>
             <span class="faq-stat-label mono-xs">Questions answered</span>
           </div>
           <div class="faq-stat-divider" aria-hidden="true"></div>

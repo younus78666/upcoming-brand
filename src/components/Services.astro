@@ -3,8 +3,9 @@ const services = [
   {
     num: "001",
     title: "Custom WordPress Design",
+    href: "/services/wordpress-web-design/",
     summary: "Brand-first custom WordPress builds for Maryland businesses. AI-assisted design to live site — responsive, pixel-accurate, and fast.",
-    bullets: ["AI-generated designs · 2 revision rounds", "Elementor Pro build · Astra parent theme", "Pixel-accurate responsive"],
+    bullets: ["AI-generated designs · 2 revision rounds", "Elementor Pro on Astra Pro · mobile-first build", "Pixel-accurate responsive design for every screen size"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <rect x="2" y="3" width="20" height="14" rx="2"/>
       <path d="M8 21h8M12 17v4"/>
@@ -16,6 +17,7 @@ const services = [
   {
     num: "002",
     title: "WooCommerce Stores",
+    href: "/services/woocommerce-development/",
     summary: "Online stores built for real inventory, real checkout flows, and real Stripe edge cases — not demo data.",
     bullets: ["Stripe, PayPal, and Authorize.net", "Product configurators, variations, subscriptions", "Abandoned cart recovery"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -28,7 +30,8 @@ const services = [
   {
     num: "003",
     title: "Care Plans & Maintenance",
-    summary: "Monthly retainers covering updates, off-site backups, security monitoring, and uptime — with a 4-hour SLA.",
+    href: "/services/wordpress-care-plans/",
+    summary: "WordPress website maintenance retainers covering updates, off-site backups, security monitoring, and uptime — with a 4-hour SLA.",
     bullets: ["Weekly plugin and WordPress core updates", "Off-site backups to S3 or Google Drive", "Uptime monitoring · 4-hour incident response"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -39,6 +42,7 @@ const services = [
   {
     num: "004",
     title: "Speed Optimization",
+    href: "/services/wordpress-speed-optimization/",
     summary: "Core Web Vitals focused. Every project ships with LCP under 2s and all three vitals green in Search Console.",
     bullets: ["WP Rocket · image optimization · WebP conversion", "Cloudflare CDN · CSS/JS minification", "Post-launch PageSpeed verification report"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -49,6 +53,7 @@ const services = [
   {
     num: "005",
     title: "SEO & Schema",
+    href: "/services/wordpress-seo-services/",
     summary: "RankMath Pro, structured data, and topical maps — built to rank for the keywords that bring paying clients.",
     bullets: ["Keyword research and topical map", "JSON-LD schema for 15+ page types", "Internal linking plan"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -61,6 +66,7 @@ const services = [
   {
     num: "006",
     title: "Migration & Redesign",
+    href: "/services/wordpress-migration/",
     summary: "From Wix, Webflow, or Squarespace to custom WordPress — without losing your Google rankings.",
     bullets: ["301 redirect mapping", "Zero-downtime switchover", "Pre/post-launch rank parity check"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -72,6 +78,7 @@ const services = [
   {
     num: "007",
     title: "Security & Recovery",
+    href: "/services/wordpress-security/",
     summary: "Hardening, 2FA, firewall setup, and same-day recovery if your site gets hacked.",
     bullets: ["Wordfence with 2FA", "Daily malware scanning", "Same-day hacked site recovery"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -84,6 +91,7 @@ const services = [
   {
     num: "008",
     title: "Hosting & Server Setup",
+    href: "/services/wordpress-hosting/",
     summary: "Managed WordPress hosting configured for speed and reliability — WP Engine, Kinsta, or SiteGround, fully set up for you.",
     bullets: ["Server-level caching & PHP 8.2+", "SSL, DNS, and domain configuration", "Staging environment for safe updates"],
     icon: `<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
@@ -116,8 +124,9 @@ const services = [
     <div class="services-intro">
       <p class="eyebrow">What we do</p>
       <h2 class="h2-section">Which WordPress services does Upcoming Brand offer?</h2>
+      <p class="services-intro-sub mono-xs">Fixed-scope projects · No hourly billing · All Elementor Pro licences included</p>
       <p class="lead">
-        Upcoming Brand's WordPress web design services cover nine core areas: custom website design, WooCommerce development, monthly care plans, speed optimization, SEO and schema, website migration, security and recovery, hosting setup, and a bundled monthly partnership that covers everything above.
+        Upcoming Brand's WordPress web design services cover nine core areas: custom website design, WooCommerce development, monthly care plans, speed optimization, SEO and schema, website migration, security and recovery, hosting setup, and a bundled monthly partnership that covers everything above — built for small businesses, law firms, dental practices, restaurants, and contractors across Maryland.
       </p>
     </div>
 
@@ -141,7 +150,7 @@ const services = [
           <div class="svc-footer">
             {svc.cta
               ? <a href="#contact" class="cta-btn cta-btn-light" set:html={svc.cta} />
-              : <a href="#contact" class="svc-link">Learn more <span aria-hidden="true">&rarr;</span></a>
+              : <a href={svc.href} class="svc-link">Learn more <span aria-hidden="true">&rarr;</span></a>
             }
           </div>
         </div>
@@ -163,6 +172,16 @@ const services = [
 
   .services-intro .eyebrow {
     justify-content: center;
+  }
+
+  .services-intro-sub {
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    font-size: 11px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+    margin-top: -8px;
+    opacity: 0.85;
   }
 
   /* ── GRID ── */
