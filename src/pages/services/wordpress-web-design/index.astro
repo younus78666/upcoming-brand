@@ -22,8 +22,8 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
-      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "dateModified": "2026-05-28",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".svc-hero-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -86,6 +86,22 @@ const jsonLd = JSON.stringify({
         { "@type": "HowToStep", "position": 3, "name": "Build with Elementor Pro and Astra Pro",   "text": "Elementor Pro layouts on Astra Pro with performance-tuned markup, ACF Pro, and custom post types. Built for speed and long-term editability." },
         { "@type": "HowToStep", "position": 4, "name": "Optimize for Core Web Vitals",             "text": "Image optimization, critical CSS, lazy loading, and server-level tuning. Target 90+ Lighthouse on every page before launch." },
         { "@type": "HowToStep", "position": 5, "name": "Launch and monitor",                        "text": "Pre-launch performance audit, 301 redirect map, zero-downtime DNS cutover. Daily Search Console monitoring for the first 30 days post-launch." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        { "@type": "Question", "name": "How much does custom WordPress web design cost?",                          "acceptedAnswer": { "@type": "Answer", "text": "Quality custom WordPress web design in the US runs $1,500-$15,000 for most small-to-mid business projects. Starter tier builds start around $1,500 for a custom 8-page site with schema, performance, and Core Web Vitals included. Growth tier runs $3,500-$6,000. Custom builds with WooCommerce, IDX, or multi-location schema start at $6,000." } },
+        { "@type": "Question", "name": "What's the difference between custom WordPress design and a theme?",       "acceptedAnswer": { "@type": "Answer", "text": "A theme is a pre-built template you customize within its constraints. Custom WordPress design is built from scratch around your specific content patterns, schema needs, and conversion architecture." } },
+        { "@type": "Question", "name": "What page builder do you use for WordPress projects?",                     "acceptedAnswer": { "@type": "Answer", "text": "We build on Elementor Pro and Astra Pro. Elementor Pro gives editors a visual drag-and-drop interface that stays manageable long-term, and Astra Pro is one of the fastest, most performance-friendly WordPress themes available." } },
+        { "@type": "Question", "name": "How long does a WordPress web design project take?",                       "acceptedAnswer": { "@type": "Answer", "text": "Starter (8 pages) ships in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks." } },
+        { "@type": "Question", "name": "Will the new site lose my Google rankings?",                               "acceptedAnswer": { "@type": "Answer", "text": "Not if the migration is handled correctly. We map every existing URL, build a complete 301 redirect map, run the cutover during a low-traffic window, and monitor Search Console for 30 days post-launch." } },
+        { "@type": "Question", "name": "Do you write the website copy or do I provide it?",                        "acceptedAnswer": { "@type": "Answer", "text": "We write copy on every project tier. You complete a structured questionnaire after discovery and we draft service pages, team bios, FAQs, and city landing pages." } },
+        { "@type": "Question", "name": "What's included in the 90+ Lighthouse guarantee?",                        "acceptedAnswer": { "@type": "Answer", "text": "Every page on launch day must hit 90+ in all four Lighthouse categories: Performance, Accessibility, Best Practices, and SEO. If a page ships below the bar, we don't invoice the final launch milestone until it's green." } },
+        { "@type": "Question", "name": "Can you redesign my existing WordPress site without rebuilding it?",        "acceptedAnswer": { "@type": "Answer", "text": "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. Redesigns start at $2,500." } },
+        { "@type": "Question", "name": "What does a custom WordPress website include?",                            "acceptedAnswer": { "@type": "Answer", "text": "Every custom WordPress website includes: custom Figma design, Elementor Pro on Astra Pro, mobile-first responsive layouts, LocalBusiness and FAQ schema, Google Analytics 4 and Search Console setup, image optimization, contact forms, 90+ Lighthouse on every page, WCAG 2.1 AA accessibility review, two design review rounds, a full 301 redirect map, and 30 days of post-launch monitoring." } },
+        { "@type": "Question", "name": "Is custom WordPress design worth it?",                                      "acceptedAnswer": { "@type": "Answer", "text": "For most Maryland businesses competing in local search, yes. A custom WordPress build gives you schema control, 90+ Lighthouse, and ADA compliance that template-based sites structurally cannot match." } }
       ]
     }
   ]
@@ -332,6 +348,8 @@ const faqs = [
   title="WordPress Web Design Services Maryland | Upcoming Brand"
   description="Custom WordPress web design in Maryland. Elementor Pro on Astra Pro, schema architecture, 90+ Lighthouse. Fixed-scope from $1,500. Built to rank."
   canonicalUrl={canonical}
+  ogImage="https://www.upcomingbrand.com/og/wordpress-web-design.jpg"
+  ogImageAlt="Custom WordPress web design services Maryland — Upcoming Brand"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLd} />
@@ -395,6 +413,23 @@ const faqs = [
     />
     <Marquee />
 
+    <!-- ====== AEO KEY TAKEAWAYS ====== -->
+    <section class="wwd-kt-section">
+      <div class="container">
+        <div class="wwd-kt-inner">
+          <p class="wwd-kt-label">Key Takeaways</p>
+          <ul class="wwd-kt-list" role="list">
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Cost:</span><span class="wwd-kt-val">$1,500 to $15,000+ fixed-scope. Starter $1,500, Growth $3,500, Custom from $6,000.</span></li>
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Timeline:</span><span class="wwd-kt-val">4-6 weeks (Starter), 6-8 weeks (Growth), 8-10 weeks (Custom).</span></li>
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Stack:</span><span class="wwd-kt-val">Elementor Pro on Astra Pro. 90+ Lighthouse on every page, contractually.</span></li>
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Schema:</span><span class="wwd-kt-val">LocalBusiness, FAQPage, and vertical-specific schema built into every template layer.</span></li>
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Pricing model:</span><span class="wwd-kt-val">Fixed-scope PDF quote held for 30 days. No hourly billing, no retainer creep.</span></li>
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Location:</span><span class="wwd-kt-val">Maryland-based. All projects run fully remote via Zoom and async review, US-wide.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <!-- ====== INCLUDES ====== -->
     <section class="svc-includes">
       <div class="container">
@@ -404,9 +439,9 @@ const faqs = [
             What's included
           </p>
           <h2 class="page-h2">
-            Thirteen things <em>every project ships with.</em>
+            What's included in <em>every WordPress web design project?</em>
           </h2>
-          <p class="page-section-lead">Tier-independent. Starter projects ship with the same engineering bar as Custom builds. Only scope and complexity change.</p>
+          <p class="page-section-lead">All 13 items below are tier-independent. Starter projects ship with the same engineering bar as Custom builds. Only scope and complexity change.</p>
         </div>
 
         <div class="svc-includes-grid">
@@ -464,9 +499,9 @@ const faqs = [
             Types of WordPress design
           </p>
           <h2 class="page-h2">
-            Three approaches <em>to WordPress website design.</em>
+            Which WordPress design approach <em>is right for your business?</em>
           </h2>
-          <p class="page-section-lead">The right WordPress design type depends on your editing needs, traffic volume, and long-term maintenance plan. All three approaches ship with schema architecture, 90+ Lighthouse, and full content ownership.</p>
+          <p class="page-section-lead">The right approach depends on your editing needs, traffic volume, and long-term maintenance plan. All three ship with schema architecture, 90+ Lighthouse, and full content ownership.</p>
         </div>
         <div class="svc-types-grid">
           {designTypes.map((t) => (
@@ -489,7 +524,7 @@ const faqs = [
             Custom WordPress development services
           </p>
           <h2 class="page-h2">
-            Six development capabilities <em>under one engagement.</em>
+            What custom WordPress development services <em>do we include?</em>
           </h2>
           <p class="page-section-lead">A WordPress web design service is only as deep as the development underneath. We bundle six custom development capabilities into every project, from custom blocks to multi-vendor commerce.</p>
         </div>
@@ -515,7 +550,7 @@ const faqs = [
             When you need custom design
           </p>
           <h2 class="page-h2">
-            Six signals <em>your site needs a custom WordPress build.</em>
+            Does your site need <em>custom WordPress web design?</em>
           </h2>
           <p class="page-section-lead">If two or more of these match, the right answer is custom WordPress web design and development services, not another theme. Move from template territory to a build that scales. Many clients arriving from Wix, Squarespace, or GoDaddy also use our <a href="/services/wordpress-migration/">WordPress migration service</a> to carry over their content and preserve rankings. Every new build includes <a href="/services/wordpress-security/">WordPress security hardening</a> at launch, and most clients add a <a href="/services/wordpress-care-plans/">WordPress care plan</a> to maintain performance after launch.</p>
         </div>
@@ -541,7 +576,7 @@ const faqs = [
             Why custom WordPress outranks templates
           </p>
           <h2 class="page-h2">
-            Four reasons <em>custom WordPress ranks where templates can't.</em>
+            Why does custom WordPress <em>outrank templates in Google?</em>
           </h2>
           <p class="page-section-lead">Google ranks pages, not websites. Custom WordPress web design gives you control over the four signals that actually move rankings: schema, Core Web Vitals, AI-extractable content architecture, and ADA compliance.</p>
         </div>
@@ -566,7 +601,7 @@ const faqs = [
             Platform comparison
           </p>
           <h2 class="page-h2">
-            WordPress vs Wix vs Squarespace vs Webflow.
+            How does WordPress compare <em>to Wix, Squarespace, and Webflow?</em>
           </h2>
           <p class="page-section-lead">Eight features that determine whether your site ranks, converts, and stays maintainable. WordPress wins on the signals Google rewards most: schema control, Lighthouse performance, and open platform ownership.</p>
         </div>
@@ -645,7 +680,7 @@ const faqs = [
             <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
           </div>
           <h2 class="page-h2 svc-process-h2">
-            Six phases <em>from email to launch.</em>
+            How does our WordPress web design process work?
           </h2>
           <p class="svc-process-lead">Every WordPress web design project moves through the same six phases. Async by default, schema-led, Lighthouse 90+ as a deliverable.</p>
         </div>
@@ -807,6 +842,54 @@ const faqs = [
 </BaseLayout>
 
 <style>
+  /* AEO KEY TAKEAWAYS */
+  .wwd-kt-section {
+    background: var(--ink);
+    padding: 40px 0;
+    border-bottom: 1px solid rgba(244,239,230,0.08);
+  }
+  .wwd-kt-inner {
+    max-width: 900px;
+  }
+  .wwd-kt-label {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--amber);
+    margin: 0 0 16px;
+    font-weight: 600;
+  }
+  .wwd-kt-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .wwd-kt-item {
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: rgba(244,239,230,0.85);
+  }
+  .wwd-kt-key {
+    font-weight: 600;
+    color: var(--cream);
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 110px;
+  }
+  .wwd-kt-val {
+    color: rgba(244,239,230,0.75);
+  }
+  @media (max-width: 600px) {
+    .wwd-kt-item { flex-direction: column; gap: 3px; }
+    .wwd-kt-key { min-width: unset; }
+  }
+
   /* SHARED */
   .page-eyebrow-strip {
     display: inline-flex;
