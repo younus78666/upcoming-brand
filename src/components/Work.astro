@@ -2,15 +2,16 @@
 const cases = [
   {
     num: "01",
-    tag: "Law Firm",
-    city: "Baltimore",
-    year: "2026",
-    client: "Meridian Law Group",
-    desc: "48-page rebuild for a 40-year firm with six practice areas. Full intake routing, location schema, and a topical map targeting 22 Baltimore attorney keywords.",
+    tag: "Legal",
+    city: "USA",
+    year: "2024",
+    client: "Best Law",
+    desc: "Personal injury law firm website with 9+ practice areas, testimonials, and free case evaluation.",
+    url: "https://www.best-law.net/",
     stats: [
-      { val: "+312%", label: "Organic leads" },
-      { val: "94", label: "PageSpeed mobile" },
-      { val: "Pg 1", label: "11 keywords" },
+      { val: "9+", label: "Practice areas" },
+      { val: "Free", label: "Case evaluation" },
+      { val: "USA", label: "Injury law" },
     ],
     gradient: "linear-gradient(145deg, #111820 0%, #1C3A50 60%, #0F2035 100%)",
     accentColor: "rgba(212,147,46,0.7)",
@@ -20,15 +21,16 @@ const cases = [
   },
   {
     num: "02",
-    tag: "Dental Practice",
-    city: "Annapolis",
-    year: "2025",
-    client: "Chesapeake Dental",
-    desc: "3-location dental group unified under one WordPress install. Integrated online booking, insurance verification widget, and per-location SEO landing pages.",
+    tag: "Healthcare",
+    city: "Australia",
+    year: "2024",
+    client: "SHY Rehab",
+    desc: "Therapy website with referral system serving 6 Australian locations with holistic care.",
+    url: "https://shyrehab.com.au/",
     stats: [
-      { val: "+218%", label: "Online bookings" },
-      { val: "92", label: "PageSpeed mobile" },
-      { val: "3", label: "Locations unified" },
+      { val: "6", label: "Clinic locations" },
+      { val: "Live", label: "Referral system" },
+      { val: "AU", label: "Healthcare" },
     ],
     gradient: "linear-gradient(145deg, #0D1F1A 0%, #183828 60%, #0A1510 100%)",
     accentColor: "rgba(92,128,64,0.7)",
@@ -39,14 +41,15 @@ const cases = [
   {
     num: "03",
     tag: "Real Estate",
-    city: "Bethesda",
-    year: "2025",
-    client: "Tidewater Realty",
-    desc: "IDX-powered brokerage site with 80+ agent profiles, MLS data sync, and neighborhood pages targeting Bethesda, Chevy Chase, and Rockville buyers.",
+    city: "Dubai",
+    year: "2024",
+    client: "The Finest Brokers",
+    desc: "Luxury Dubai property investment website with elegant design and portfolio showcase.",
+    url: "https://thefinestbrokers.com/",
     stats: [
-      { val: "80+", label: "Agent profiles" },
-      { val: "2.4s", label: "LCP time" },
-      { val: "+156%", label: "Qualified leads" },
+      { val: "Dubai", label: "Luxury market" },
+      { val: "Live", label: "Property portal" },
+      { val: "UAE", label: "Real estate" },
     ],
     gradient: "linear-gradient(145deg, #1A1008 0%, #2E1C0A 60%, #3A2410 100%)",
     accentColor: "rgba(180,120,40,0.7)",
@@ -57,14 +60,15 @@ const cases = [
   {
     num: "04",
     tag: "E-commerce",
-    city: "Rockville",
-    year: "2025",
-    client: "Arden Interiors",
-    desc: "340-SKU WooCommerce store with a custom product configurator, fabric sample request flow, and Stripe checkout — shipping Maryland, Virginia, and DC.",
+    city: "UAE",
+    year: "2024",
+    client: "Veevere",
+    desc: "Fully custom luxury furniture store with Elementor dynamic templates for every page type.",
+    url: "https://veevere.com/",
     stats: [
-      { val: "3.8%", label: "Conversion rate" },
-      { val: "340", label: "Products live" },
-      { val: "+89%", label: "Avg order value" },
+      { val: "UAE", label: "Luxury furniture" },
+      { val: "Custom", label: "Dynamic templates" },
+      { val: "Live", label: "Full e-commerce" },
     ],
     gradient: "linear-gradient(145deg, #1A0F1E 0%, #2E183A 60%, #1C0E24 100%)",
     accentColor: "rgba(160,100,200,0.5)",
@@ -104,7 +108,7 @@ const cases = [
                 </div>
               ))}
             </div>
-            <a href="#contact" class="work-cta">View case study <span aria-hidden="true">&rarr;</span></a>
+            <a href={c.url} target="_blank" rel="noopener noreferrer" class="work-cta">View live site <span aria-hidden="true">&rarr;</span></a>
           </div>
 
           <!-- RIGHT: Browser mockup or screenshot -->
