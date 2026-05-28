@@ -89,4 +89,4 @@ User-agent: Omgili
 Disallow: /
 
 # Sitemap
-Sitemap: https://upcomingbrand.com/sitemap-index.xml
+Sitemap: https://www.upcomingbrand.com/sitemap-index.xml
