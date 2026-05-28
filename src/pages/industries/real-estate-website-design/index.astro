@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const painPoints = [
   {
@@ -561,67 +562,7 @@ const schemaOrg = {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
-          <h2 class="h2-section lf-case-h2">How Chesapeake Realty Group tripled their organic lead volume in 5 months</h2>
-          <p class="lf-case-desc">
-            David Kirwan at Chesapeake Realty Group had been relying on his brokerage's template site for four years. No neighborhood pages, no IDX integration, and a PageSpeed score of 33. Within 5 months of launching a custom site, his business looked different.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+312%</span>
-              <span class="lf-cr-label mono-xs">Organic buyer and seller leads</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">Pg 1</span>
-              <span class="lf-cr-label mono-xs">For 9 Annapolis neighborhood searches</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.7s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 6.9s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">8</span>
-              <span class="lf-cr-label mono-xs">Neighborhood pages ranking in 60 days</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"I was competing against Zillow and Realtor.com with a brokerage template. It was never going to work. Upcoming Brand built me neighborhood pages for every community I specialize in, integrated my IDX feed so buyers actually stay on my site, and set up my GBP properly. Within five months I had more inbound leads than I'd had in the previous two years combined. This is now my best source of business."</p>
-            <footer>
-              <cite class="lf-cite-name">David Kirwan</cite>
-              <span class="lf-cite-role mono-xs">Realtor &middot; Chesapeake Realty Group &middot; Annapolis, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_34_default.webp"
-            alt="The Finest Brokers luxury real estate website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site &middot; Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="The Finest Brokers" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS

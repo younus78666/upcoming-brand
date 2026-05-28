@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const painPoints = [
   {
@@ -581,67 +582,7 @@ const schema = {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
-          <h2 class="h2-section lf-case-h2">How Chesapeake Home Services doubled their monthly leads in 4 months</h2>
-          <p class="lf-case-desc">
-            Chesapeake Home Services, a general contractor in Annapolis serving Anne Arundel and Howard counties, came to us with a seven-year-old WordPress site with no schema, a 4.8-second mobile load time, and zero city-specific landing pages. Within 4 months of launch, the difference was clear.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+214%</span>
-              <span class="lf-cr-label mono-xs">Qualified estimate requests</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">Pg 1</span>
-              <span class="lf-cr-label mono-xs">For 14 city + service combinations</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.8s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 4.8s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">9</span>
-              <span class="lf-cr-label mono-xs">City landing pages live and ranking</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"We were spending $2,000 a month on ads because our organic visibility was essentially zero. Upcoming Brand built us city pages for every area we serve, fixed our site speed, and set up our GBP correctly. Within four months we cut our ad budget in half and were still getting more leads than before. The estimate form, where we can actually see what the job is before we call back, changed how our office operates."</p>
-            <footer>
-              <cite class="lf-cite-name">David Caruso</cite>
-              <span class="lf-cite-role mono-xs">Owner &middot; Chesapeake Home Services &middot; Annapolis, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_26_default.webp"
-            alt="Newlands Construction website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site · Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="Newlands Construction Ltd" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS

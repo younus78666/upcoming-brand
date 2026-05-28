@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const stats = [
   { val: "62%", label: "of medical sites fail Core Web Vitals" },
@@ -524,63 +525,7 @@ const schema = {
     </div>
   </section>
 
-  <!-- CASE STUDY -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
-          <h2 class="h2-section lf-case-h2">How Chesapeake Family Medicine went from invisible to fully booked in 90 days</h2>
-          <p class="lf-case-desc">
-            Chesapeake Family Medicine, a two-physician practice in Annapolis, came to us after their old site, built by a generalist agency, had no physician schema, a contact form that failed on mobile, and a PageSpeed score of 38. Within 90 days of launch, the results were measurable.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+284%</span>
-              <span class="lf-cr-label mono-xs">Organic patient inquiries</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">#1</span>
-              <span class="lf-cr-label mono-xs">Local Pack · "family doctor Annapolis"</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.4s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 7.2s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">31</span>
-              <span class="lf-cr-label mono-xs">New patient requests in first 60 days</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"We'd been invisible in search for two years despite being a well-established practice. Upcoming Brand rebuilt everything: the schema, the booking flow, the copy, and explained every decision without burying us in jargon. Within three months we had more new patient requests than we could handle, and our front desk stopped spending half their day answering calls that could have been handled online."</p>
-            <footer>
-              <cite class="lf-cite-name">Dr. Patricia Owens</cite>
-              <span class="lf-cite-role mono-xs">Physician &middot; Chesapeake Family Medicine &middot; Annapolis, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_15_default.webp"
-            alt="Bright Pathways ABA Therapy website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site · Google verified results
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="Bright Pathways ABA Therapy" />
 
   <!-- PROCESS -->
   <section class="lf-process section-pad-sm">

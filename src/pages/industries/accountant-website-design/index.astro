@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const painPoints = [
   {
@@ -574,67 +575,7 @@ const schemaData = {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
-          <h2 class="h2-section lf-case-h2">How Chesapeake Tax Partners went from zero organic leads to 14 new clients in 6 months</h2>
-          <p class="lf-case-desc">
-            David Harrington CPA at Chesapeake Tax Partners had been relying on referrals for nine years. His website had no AccountingService schema, ranked for nothing except his firm name, and had no way to capture inquiries outside of business hours. Six months after launch, his marketing had fundamentally changed.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+380%</span>
-              <span class="lf-cr-label mono-xs">Organic client inquiries</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">Pg 1</span>
-              <span class="lf-cr-label mono-xs">For 7 tax + CPA searches in Annapolis</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.5s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 5.8s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">14</span>
-              <span class="lf-cr-label mono-xs">New client engagements in 6 months from organic search</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"I built my entire practice on referrals and never thought my website would generate real business. Upcoming Brand built me service pages for everything I do: tax planning, small business bookkeeping, real estate investor accounting, and each one is actually finding people who need exactly that service. The intake form alone saves me two hours a week in back-and-forth emails. I wish I'd done this years ago."</p>
-            <footer>
-              <cite class="lf-cite-name">David Harrington, CPA</cite>
-              <span class="lf-cite-role mono-xs">Managing Partner &middot; Chesapeake Tax Partners &middot; Annapolis, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_17_default.webp"
-            alt="First Diligence financial advisory website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site &middot; Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="First Diligence" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS

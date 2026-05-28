@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const painPoints = [
   {
@@ -574,67 +575,7 @@ const schema = {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
-          <h2 class="h2-section lf-case-h2">How Annapolis Oyster House doubled weekend reservation volume in 90 days</h2>
-          <p class="lf-case-desc">
-            Annapolis Oyster House, a 60-seat seafood restaurant on the Annapolis waterfront, came to us with a PDF menu, no OpenTable integration, and a PageSpeed score of 28. Their old site had been built on a $49 template by a former employee. Within 90 days, the difference was measurable.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+187%</span>
-              <span class="lf-cr-label mono-xs">Online reservations</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">#1</span>
-              <span class="lf-cr-label mono-xs">Local Pack &middot; "seafood restaurant Annapolis"</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.9s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 9.3s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+4 days</span>
-              <span class="lf-cr-label mono-xs">Weekend tables now book in advance</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"We were running at 60% capacity on weekends because people couldn't figure out how to make a reservation online. Upcoming Brand rebuilt everything: the menu, the booking flow, the photography display. Our GBP actually shows our hours and menu now. Within three months we had to add a second seating on Fridays to handle the volume. The website is now our best marketing tool."</p>
-            <footer>
-              <cite class="lf-cite-name">James Whitfield</cite>
-              <span class="lf-cite-role mono-xs">Owner &middot; Annapolis Oyster House &middot; Annapolis, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_43_default.webp"
-            alt="Happy Valley Lodge hospitality website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site · Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="Happy Valley Lodge" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS

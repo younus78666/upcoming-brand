@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const painPoints = [
   {
@@ -567,67 +568,7 @@ const schema = {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Baltimore, MD</p>
-          <h2 class="h2-section lf-case-h2">How Grace Fellowship Church tripled first-time visitor contact forms in 60 days</h2>
-          <p class="lf-case-desc">
-            Grace Fellowship Church, a growing non-denominational congregation in Baltimore, came to us with a 7-year-old site that loaded in 9 seconds on mobile, had no local schema, and a giving form that redirected to a page with a completely different visual design. We rebuilt their site in 8 weeks.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+220%</span>
-              <span class="lf-cr-label mono-xs">Increase in organic search traffic</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">#1</span>
-              <span class="lf-cr-label mono-xs">Local Pack &middot; "non-denominational church Baltimore"</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.4s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 9.1s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">3x</span>
-              <span class="lf-cr-label mono-xs">Online giving signups month over month</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"Our old website was honestly embarrassing. We'd tell people our site address and then warn them it was 'a bit outdated.' Upcoming Brand rebuilt everything, set up our Tithe.ly integration properly for the first time, and actually helped us think through how new visitors move through the site. Within two months we had more first-time visitor connection cards than we'd ever received through the website. The sermon archive alone made a difference, and people are listening before they even visit in person."</p>
-            <footer>
-              <cite class="lf-cite-name">Pastor David Kim</cite>
-              <span class="lf-cite-role mono-xs">Executive Pastor &middot; Grace Fellowship Church &middot; Baltimore, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_12_default.webp"
-            alt="United Street Tours community organization website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site &middot; Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="United Street Tours" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS

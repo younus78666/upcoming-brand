@@ -4,6 +4,7 @@ import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Marquee from '../../../components/Marquee.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const stats = [
   { val: "Pg 1", label: "Rankings for 11 attorney keywords" },
@@ -608,67 +609,7 @@ const schema = {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Baltimore, MD</p>
-          <h2 class="h2-section lf-case-h2">How Meridian Law Group went from page 3 to the Local Pack in 90 days</h2>
-          <p class="lf-case-desc">
-            Meridian Law Group, a three-attorney family law firm in Baltimore, came to us after spending 14 months and $18,000 with a national legal marketing agency that delivered a slow, generic site with no local schema and a contact form that broke on mobile. Within 90 days of launch, their numbers told a different story.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+340%</span>
-              <span class="lf-cr-label mono-xs">Increase in organic traffic</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">#1</span>
-              <span class="lf-cr-label mono-xs">Local Pack &middot; "Baltimore divorce attorney"</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.3s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 4.1s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">22</span>
-              <span class="lf-cr-label mono-xs">New consultations in first 60 days</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"Before Upcoming Brand, we were invisible in search. Our old site didn't even load correctly on my own phone. They rebuilt everything, wrote copy that actually sounds like us, and explained every decision without burying us in technical talk. Within three months we had more inbound consultation requests than we'd ever handled in a quarter. The intake form alone changed how our front desk operates."</p>
-            <footer>
-              <cite class="lf-cite-name">Maya Rodriguez</cite>
-              <span class="lf-cite-role mono-xs">Managing Partner &middot; Meridian Law Group &middot; Baltimore, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_33_default.webp"
-            alt="Best Law personal injury website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site · Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="Best Law" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS

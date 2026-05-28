@@ -1,0 +1,235 @@
+---
+import { galleryProjects } from '../data/portfolio-gallery';
+
+interface Props {
+  projectTitle: string;
+}
+
+const { projectTitle } = Astro.props;
+const p = galleryProjects.find(g => g.title === projectTitle)!;
+const domain = new URL(p.url).hostname.replace('www.', '');
+---
+
+<section class="ps-section">
+  <div class="container">
+
+    <div class="ps-inner">
+
+      <div class="ps-content">
+        <p class="ps-eyebrow">Portfolio spotlight</p>
+        <h2 class="ps-h2">{p.title}</h2>
+        <p class="ps-badge-pill">{p.badge}</p>
+        <p class="ps-desc">{p.desc}</p>
+        <a
+          href={p.url}
+          class="ps-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View live site: {domain}
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+            <path d="M1 6.5h11M7 1l5.5 5.5L7 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="ps-visual">
+        <div class="ps-browser">
+          <div class="ps-chrome" aria-hidden="true">
+            <div class="ps-dots"><span></span><span></span><span></span></div>
+            <div class="ps-urlbar">{domain}</div>
+          </div>
+          <div class="ps-img-wrap">
+            <a href={p.url} target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true">
+              <img
+                src={p.img}
+                alt={`${p.title} website — built by Upcoming Brand`}
+                class="ps-img"
+                loading="lazy"
+                decoding="async"
+                width="700"
+                height="829"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .ps-section {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: clamp(40px, 6vh, 72px) 0;
+  }
+
+  .ps-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: center;
+  }
+
+  /* LEFT — content */
+  .ps-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .ps-eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .ps-h2 {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .ps-badge-pill {
+    display: inline-block;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    background: rgba(212,147,46,0.1);
+    border: 1px solid rgba(212,147,46,0.2);
+    padding: 5px 12px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    margin: 0;
+    align-self: flex-start;
+  }
+
+  .ps-desc {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 46ch;
+  }
+
+  .ps-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--cream);
+    background: var(--ink);
+    padding: 12px 20px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    text-decoration: none;
+    align-self: flex-start;
+    margin-top: 4px;
+    transition: background 0.22s ease, transform 0.22s ease;
+  }
+
+  .ps-cta:hover {
+    background: var(--amber-deep);
+    transform: translateY(-2px);
+  }
+
+  .ps-cta svg { transition: transform 0.2s ease; }
+  .ps-cta:hover svg { transform: translateX(3px); }
+
+  /* RIGHT — screenshot */
+  .ps-visual {
+    position: relative;
+  }
+
+  .ps-browser {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid var(--line);
+    box-shadow: 0 8px 40px rgba(15,20,25,0.12);
+  }
+
+  .ps-chrome {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 14px;
+    background: var(--ink);
+    flex-shrink: 0;
+  }
+
+  .ps-dots {
+    display: flex;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .ps-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    display: block;
+  }
+
+  .ps-urlbar {
+    flex: 1;
+    background: rgba(255,255,255,0.08);
+    border-radius: 4px;
+    padding: 4px 10px;
+    font-family: var(--f-mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.04em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Full-height scrollable image panel */
+  .ps-img-wrap {
+    max-height: 520px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: var(--paper);
+    scrollbar-width: thin;
+    scrollbar-color: var(--amber) transparent;
+  }
+
+  .ps-img-wrap::-webkit-scrollbar { width: 4px; }
+  .ps-img-wrap::-webkit-scrollbar-track { background: transparent; }
+  .ps-img-wrap::-webkit-scrollbar-thumb { background: var(--amber); border-radius: 2px; }
+
+  .ps-img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .ps-inner {
+      grid-template-columns: 1fr;
+    }
+    .ps-desc { max-width: 100%; }
+  }
+
+  @media (max-width: 640px) {
+    .ps-img-wrap { max-height: 380px; }
+  }
+</style>

@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const PAGE_URL = "https://www.upcomingbrand.com/industries/nonprofit-website-design/";
 
@@ -582,67 +583,7 @@ const tiers = [
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Baltimore, MD</p>
-          <h2 class="h2-section lf-case-h2">How Greater Baltimore Community Foundation tripled online donations in 4 months</h2>
-          <p class="lf-case-desc">
-            Greater Baltimore Community Foundation, a grantmaking foundation serving Baltimore City and County, came to us with a six-year-old Squarespace site with no NonprofitOrganization schema, a donation redirect to PayPal with no branding, and a PageSpeed score of 36. Within 4 months of launch, online giving had transformed.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+218%</span>
-              <span class="lf-cr-label mono-xs">Online donation completions</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">NPO</span>
-              <span class="lf-cr-label mono-xs">Enrolled in Google for Nonprofits</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.8s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 8.4s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">$10K</span>
-              <span class="lf-cr-label mono-xs">Google Ad Grants activated &middot; /month free ads</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"Our old donation experience was embarrassing. Donors had to leave our site, go to a PayPal page, and hope they came back. Upcoming Brand built us a proper giving platform, wrote copy that explains what their gift actually does, and set us up with Google Ad Grants we didn't even know we qualified for. Online donations tripled in four months and we now have recurring donors who never would have found us through our old site."</p>
-            <footer>
-              <cite class="lf-cite-name">Patricia Evans</cite>
-              <span class="lf-cite-role mono-xs">Executive Director &middot; Greater Baltimore Community Foundation &middot; Baltimore, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_40_default.webp"
-            alt="BraveBites Ability Café nonprofit website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site · Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="BraveBites Ability Café" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS

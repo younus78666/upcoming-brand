@@ -2,6 +2,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const painPoints = [
   {
@@ -566,67 +567,7 @@ const schema = {
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════════════
-       CASE STUDY
-  ══════════════════════════════════════════════ -->
-  <section class="lf-case section-pad-sm">
-    <div class="container">
-      <div class="lf-case-inner">
-
-        <div class="lf-case-content">
-          <p class="eyebrow lf-eyebrow-dark">Client result &middot; Annapolis, MD</p>
-          <h2 class="h2-section lf-case-h2">How Iron + Oak Strength doubled membership trials in 90 days</h2>
-          <p class="lf-case-desc">
-            Iron + Oak Strength, a functional fitness gym in Annapolis, came to us after their Squarespace site was generating almost no online trial requests. The form was four clicks deep, broke on Android, and the class schedule was a static PDF. We rebuilt their site in 7 weeks on WordPress.
-          </p>
-
-          <div class="lf-case-results">
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">+280%</span>
-              <span class="lf-cr-label mono-xs">Increase in organic search traffic</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">#1</span>
-              <span class="lf-cr-label mono-xs">Local Pack &middot; "functional fitness gym Annapolis"</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">1.6s</span>
-              <span class="lf-cr-label mono-xs">Mobile load time (was 7.3s)</span>
-            </div>
-            <div class="lf-cr-item">
-              <span class="lf-cr-val">2x</span>
-              <span class="lf-cr-label mono-xs">Online trial signups in first 90 days</span>
-            </div>
-          </div>
-
-          <blockquote class="lf-case-quote">
-            <p>"We were getting two or three trial form submissions per month from the old site. We figured that was just normal. Upcoming Brand rebuilt the site, got us into the Local Pack on Google, and put the trial form where people could actually find it. Within 90 days we were getting 15–20 trial requests per month. The class schedule integration alone cut our front desk call volume in half, and members book online now instead of calling to ask when the 6am class is."</p>
-            <footer>
-              <cite class="lf-cite-name">Marcus Webb</cite>
-              <span class="lf-cite-role mono-xs">Owner &middot; Iron + Oak Strength &middot; Annapolis, MD</span>
-            </footer>
-          </blockquote>
-        </div>
-
-        <div class="lf-case-visual">
-          <img
-            src="/Portfolio/imgi_1_default.webp"
-            alt="Movement Center of Medfield fitness studio website — custom WordPress design by Upcoming Brand"
-            class="lf-case-img"
-            width="600"
-            height="420"
-            loading="lazy"
-            decoding="async"
-          />
-          <div class="lf-case-badge mono-xs">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Live site &middot; Google verified results
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <PortfolioSpotlight projectTitle="Movement Center of Medfield" />
 
   <!-- ══════════════════════════════════════════════
        PROCESS
