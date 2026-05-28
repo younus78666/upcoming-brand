@@ -5,6 +5,7 @@ import Navigation from '../../components/Navigation.astro';
 import Footer from '../../components/Footer.astro';
 import FinalCTA from '../../components/FinalCTA.astro';
 import { projects } from '../../data/projects';
+import { galleryProjects } from '../../data/portfolio-gallery';
 
 const canonical = "https://www.upcomingbrand.com/work/";
 
@@ -21,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-28",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -35,23 +36,25 @@ const jsonLd = JSON.stringify({
 });
 
 
-const categories = [
-  { id: "all",           label: "All projects" },
-  { id: "law",           label: "Law firms" },
-  { id: "medical",       label: "Dental + Medical" },
-  { id: "real-estate",   label: "Real estate" },
-  { id: "ecommerce",     label: "Ecommerce" },
-  { id: "restaurant",    label: "Restaurants" },
-  { id: "nonprofit",     label: "Nonprofits" },
-  { id: "contractor",    label: "Contractors" },
-  { id: "redesign",      label: "Redesigns + migrations" },
+const galCategories = [
+  { id: "all",          label: "All work" },
+  { id: "ecommerce",   label: "E-commerce" },
+  { id: "healthcare",  label: "Healthcare" },
+  { id: "business",    label: "Business" },
+  { id: "homeservices",label: "Home Services" },
+  { id: "realestate",  label: "Real Estate" },
+  { id: "hospitality", label: "Hospitality" },
+  { id: "finance",     label: "Finance" },
+  { id: "entertainment",label: "Entertainment" },
+  { id: "technology",  label: "Technology" },
+  { id: "legal",       label: "Legal" },
 ];
 
 const stats = [
-  { num: "400+",    label: "WordPress projects shipped" },
-  { num: "12",      label: "Countries served" },
-  { num: "9",       label: "Verticals covered" },
-  { num: "5+ yrs",  label: "Senior WordPress experience" },
+  { num: "400+",   label: "WordPress projects shipped" },
+  { num: "12",     label: "Countries served" },
+  { num: "11",     label: "Industries covered" },
+  { num: "5+ yrs", label: "Senior WordPress experience" },
 ];
 ---
 <BaseLayout
@@ -72,9 +75,9 @@ const stats = [
           <div class="page-eyebrow-strip"><span class="page-eyebrow-line"></span><span class="page-eyebrow-text">Selected work</span><span class="page-eyebrow-line"></span></div>
           <h1 class="wrk-h1">
             <span class="wrk-h1-line">WordPress projects</span>
-            <span class="wrk-h1-line wrk-h1-accent"><em>across nine verticals.</em></span>
+            <span class="wrk-h1-line wrk-h1-accent"><em>across eleven industries.</em></span>
           </h1>
-          <p class="wrk-lead">A curated selection of recent <strong>WordPress web design and development projects</strong> across law firms, medical practices, real estate, ecommerce, restaurants, nonprofits, contractors, churches, and small business. Project specifics are anonymized at the client's request, but the metrics are real.</p>
+          <p class="wrk-lead">50 live client websites plus detailed case studies across healthcare, e-commerce, real estate, legal, hospitality, home services, and more. Built on <strong>WordPress and Elementor Pro</strong>, optimized for search, and delivered fully remote from Maryland.</p>
 
           <div class="wrk-stats">
             {stats.map((s) => (
@@ -88,18 +91,66 @@ const stats = [
       </div>
     </section>
 
-    <!-- FILTER BAR -->
+    <!-- GALLERY FILTER BAR -->
     <section class="wrk-filters">
       <div class="container">
-        <div class="wrk-filters-inner" id="wrk-filters">
-          {categories.map((c) => (
-            <button class="wrk-filter-btn" data-filter={c.id} type="button">{c.label}</button>
+        <div class="wrk-filters-inner" id="gal-filters">
+          {galCategories.map((c) => (
+            <button class="wrk-filter-btn" data-gfilter={c.id} type="button">{c.label}</button>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- PROJECT GRID -->
+    <!-- PORTFOLIO GALLERY -->
+    <section class="gal-section">
+      <div class="container">
+        <div class="gal-grid" id="gal-grid">
+          {galleryProjects.map((p) => (
+            <a
+              href={p.url}
+              class="gal-card"
+              data-gcat={p.cat}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`${p.title} — view live site`}
+            >
+              <div class="gal-img-wrap">
+                <img
+                  src={p.img}
+                  alt={`${p.title} website screenshot`}
+                  loading="lazy"
+                  decoding="async"
+                  class="gal-img"
+                  width="600"
+                  height="338"
+                />
+                <span class="gal-overlay" aria-hidden="true"></span>
+                <span class="gal-visit" aria-hidden="true">View site</span>
+              </div>
+              <div class="gal-body">
+                <span class="gal-badge">{p.badge}</span>
+                <h3 class="gal-name">{p.title}</h3>
+                <p class="gal-desc">{p.desc}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES DIVIDER -->
+    <section class="wrk-studies-intro">
+      <div class="container">
+        <div class="wrk-studies-head">
+          <div class="page-eyebrow-strip"><span class="page-eyebrow-line"></span><span class="page-eyebrow-text">Case studies</span><span class="page-eyebrow-line"></span></div>
+          <h2 class="wrk-studies-h2">Nine projects with full <em>metrics and methodology.</em></h2>
+          <p class="wrk-studies-lead">A subset of client work with complete challenge, approach, deliverables, tech stack, and before/after metrics. Project specifics are anonymized at the client's request.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CASE STUDIES GRID -->
     <section class="wrk-grid-wrap">
       <div class="container">
         <div class="wrk-grid" id="wrk-grid">
@@ -122,55 +173,45 @@ const stats = [
       </div>
     </section>
 
-    <!-- CTA -->
-</main>
-<FinalCTA />
-<Footer />
+  </main>
+  <FinalCTA />
+  <Footer />
 </BaseLayout>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const filterBar = document.getElementById('wrk-filters');
-    const grid = document.getElementById('wrk-grid');
-    if (!filterBar || !grid) return;
+    const galFilters = document.getElementById('gal-filters');
+    const galGrid = document.getElementById('gal-grid');
+    if (!galFilters || !galGrid) return;
 
-    const buttons = filterBar.querySelectorAll('.wrk-filter-btn');
-    const cards = grid.querySelectorAll('.wrk-card');
+    const galBtns = galFilters.querySelectorAll<HTMLButtonElement>('.wrk-filter-btn');
+    const galCards = galGrid.querySelectorAll<HTMLElement>('.gal-card');
 
-    function applyFilter(id) {
-      buttons.forEach((b) => {
-        b.classList.toggle('wrk-filter-btn-active', b.dataset.filter === id);
+    function applyGalFilter(id: string) {
+      galBtns.forEach((b) => {
+        b.classList.toggle('wrk-filter-btn-active', b.dataset.gfilter === id);
       });
-      cards.forEach((c) => {
-        const v = c.dataset.vertical;
-        c.style.display = (id === 'all' || v === id) ? '' : 'none';
+      galCards.forEach((c) => {
+        const match = id === 'all' || c.dataset.gcat === id;
+        (c as HTMLElement).style.display = match ? '' : 'none';
       });
     }
 
-    buttons.forEach((b) => {
-      b.addEventListener('click', () => applyFilter(b.dataset.filter));
+    galBtns.forEach((b) => {
+      b.addEventListener('click', () => applyGalFilter(b.dataset.gfilter!));
     });
 
-    // Honor ?filter= query param
     const qp = new URLSearchParams(window.location.search);
-    const initial = qp.get('filter') || 'all';
-    applyFilter(initial);
+    applyGalFilter(qp.get('filter') || 'all');
   });
 </script>
 
 <style>
-  .page-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 12px 0 0; }
-  .page-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
   .page-eyebrow-strip { display: inline-flex; align-items: center; gap: 14px; flex-wrap: nowrap; justify-content: center; }
   .page-eyebrow-line { display: inline-block; width: 48px; height: 1px; background: var(--amber); flex-shrink: 0; }
-  .page-eyebrow-line-amber { background: var(--amber); }
   .page-eyebrow-text { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; white-space: nowrap; }
-  .page-eyebrow-text-light { color: rgba(244,239,230,0.7); }
-  .lp-btn-primary { display: inline-flex; align-items: center; gap: 9px; font-family: var(--f-body); font-size: 15px; font-weight: 500; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; white-space: nowrap; transition: all 0.22s ease; cursor: pointer; background: var(--ink); color: var(--cream); border: 1.5px solid var(--ink); }
-  .lp-btn-primary:hover { background: var(--amber-deep); border-color: var(--amber-deep); transform: translateY(-2px); }
-  .lp-btn-primary svg { transition: transform 0.22s ease; flex-shrink: 0; }
-  .lp-btn-primary:hover svg { transform: translateX(3px); }
 
+  /* HERO */
   .wrk-hero { background: var(--cream); border-bottom: 1px solid var(--line); padding: clamp(56px, 8vh, 96px) 0 clamp(40px, 6vh, 64px); position: relative; overflow: hidden; text-align: center; }
   .wrk-hero::before { content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%); pointer-events: none; }
   .wrk-hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 20px; }
@@ -184,12 +225,37 @@ const stats = [
   .wrk-stat-num { font-family: var(--f-display); font-size: 28px; font-weight: 600; color: var(--amber-deep); letter-spacing: -0.02em; }
   .wrk-stat-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-top: 4px; }
 
+  /* FILTER BAR */
   .wrk-filters { background: var(--paper); border-bottom: 1px solid var(--line); padding: 20px 0; position: sticky; top: 0; z-index: 5; }
   .wrk-filters-inner { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .wrk-filter-btn { padding: 8px 16px; background: transparent; border: 1px solid var(--line-strong); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); cursor: pointer; transition: all 0.2s ease; font-weight: 500; }
   .wrk-filter-btn:hover { border-color: var(--amber); color: var(--ink); }
   .wrk-filter-btn-active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
 
+  /* GALLERY */
+  .gal-section { background: var(--cream); padding: clamp(32px, 5vh, 56px) 0 clamp(48px, 7vh, 80px); }
+  .gal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .gal-card { display: flex; flex-direction: column; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); overflow: hidden; text-decoration: none; color: inherit; transition: border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; }
+  .gal-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(212,147,46,0.1); }
+  .gal-img-wrap { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--line); }
+  .gal-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s ease; display: block; }
+  .gal-card:hover .gal-img { transform: scale(1.04); }
+  .gal-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(18,18,18,0.45) 0%, transparent 55%); pointer-events: none; }
+  .gal-visit { position: absolute; bottom: 10px; right: 12px; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); background: var(--ink); padding: 4px 10px; border-radius: var(--radius-pill); font-weight: 600; opacity: 0; transform: translateY(5px); transition: opacity 0.2s ease, transform 0.2s ease; }
+  .gal-card:hover .gal-visit { opacity: 1; transform: translateY(0); }
+  .gal-body { padding: 14px 16px 16px; display: flex; flex-direction: column; gap: 5px; flex: 1; }
+  .gal-badge { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); background: rgba(212,147,46,0.1); padding: 3px 8px; border-radius: var(--radius-pill); align-self: flex-start; font-weight: 600; }
+  .gal-name { font-family: var(--f-display); font-size: 15px; font-weight: 600; color: var(--ink); line-height: 1.25; letter-spacing: -0.01em; margin: 0; }
+  .gal-desc { font-size: 13px; line-height: 1.55; color: var(--ink-soft); margin: 0; }
+
+  /* CASE STUDIES DIVIDER */
+  .wrk-studies-intro { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(40px, 6vh, 64px) 0; text-align: center; }
+  .wrk-studies-head { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .wrk-studies-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(24px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 4px 0 0; }
+  .wrk-studies-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+  .wrk-studies-lead { font-size: 15px; line-height: 1.6; color: var(--ink-soft); max-width: 56ch; margin: 0; }
+
+  /* CASE STUDIES GRID */
   .wrk-grid-wrap { background: var(--cream); padding: clamp(40px, 6vh, 64px) 0 clamp(56px, 8vh, 96px); }
   .wrk-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
   .wrk-card { display: flex; flex-direction: column; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 26px 28px; transition: all 0.3s ease; position: relative; text-decoration: none; color: inherit; }
@@ -201,23 +267,17 @@ const stats = [
   .wrk-card-headline { font-family: var(--f-display); font-size: 14px; line-height: 1.4; color: var(--amber-deep); margin: 0 0 8px; font-weight: 300; }
   .wrk-card-headline em { font-style: italic; }
   .wrk-card-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--line); }
-  .wrk-card-scope { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.06em; color: var(--amber-deep); margin: 0 0 12px; font-weight: 500; }
   .wrk-card-detail { font-size: 14px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
 
-  .page-cta { background: var(--ink); padding: clamp(72px, 10vh, 112px) 0; position: relative; overflow: hidden; }
-  .page-cta::before { content: ""; position: absolute; top: -300px; left: -200px; width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 60%); pointer-events: none; }
-  .page-cta-inner { max-width: 720px; text-align: center; margin: 0 auto; position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 16px; }
-  .page-cta-h2 { color: var(--cream); margin-top: 8px; }
-  .page-cta-h2 em { color: var(--amber); }
-  .page-cta-lead { font-size: 16px; line-height: 1.6; color: rgba(244,239,230,0.65); max-width: 56ch; margin: 0 auto; }
-  .page-cta-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 20px; }
-  .page-cta-primary { background: var(--amber); border-color: var(--amber); color: var(--ink); }
-  .page-cta-primary:hover { background: var(--cream); border-color: var(--cream); color: var(--ink); }
-  .page-cta-ghost-light { display: inline-flex; align-items: center; gap: 9px; border: 1.5px solid rgba(244,239,230,0.2); color: var(--cream); background: transparent; padding: 14px 26px; border-radius: var(--radius-pill); text-decoration: none; font-size: 15px; font-weight: 500; transition: all 0.22s ease; }
-  .page-cta-ghost-light:hover { border-color: var(--amber); color: var(--amber); background: rgba(212,147,46,0.08); transform: translateY(-2px); }
-  .page-cta-ghost-light svg { transition: transform 0.22s ease; }
-  .page-cta-ghost-light:hover svg { transform: translate(2px, -2px); }
-
-  @media (max-width: 1024px) { .wrk-stats { grid-template-columns: repeat(2, 1fr); } .wrk-grid { grid-template-columns: 1fr; } }
-  @media (max-width: 640px) { .page-eyebrow-line { width: 24px; } }
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .wrk-stats { grid-template-columns: repeat(2, 1fr); }
+    .gal-grid { grid-template-columns: repeat(2, 1fr); }
+    .wrk-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .page-eyebrow-line { width: 24px; }
+    .gal-grid { grid-template-columns: 1fr; }
+    .wrk-stats { grid-template-columns: repeat(2, 1fr); }
+  }
 </style>

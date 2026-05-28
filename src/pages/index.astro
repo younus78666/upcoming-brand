@@ -9,6 +9,7 @@ import Services from '../components/Services.astro';
 import Metrics from '../components/Metrics.astro';
 import TechStack from '../components/TechStack.astro';
 import Work from '../components/Work.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
 import Process from '../components/Process.astro';
 import Industries from '../components/Industries.astro';
 import Pricing from '../components/Pricing.astro';
@@ -227,8 +228,8 @@ const jsonLd = JSON.stringify({
       <div class="kt-layout">
         <div class="kt-image-col">
           <img
-            src="/work/meridian-law-group.png"
-            alt="Maryland law firm WordPress website design by Upcoming Brand"
+            src="/Portfolio/imgi_33_default.webp"
+            alt="Real client WordPress website design by Upcoming Brand"
             loading="lazy"
             width="640"
             height="480"
@@ -282,6 +283,9 @@ const jsonLd = JSON.stringify({
 
   <!-- Section 10: Featured Work -->
   <Work />
+
+  <!-- Section 10.5: Portfolio Preview (real client projects) -->
+  <PortfolioPreview />
 
   <!-- Section 11: Process -->
   <Process />
