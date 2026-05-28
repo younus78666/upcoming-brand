@@ -13,7 +13,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://movementcenterofmedfield.com/",
     badge: "USA · Fitness & Wellness",
     desc: "Premium Gyrotonic & Pilates studio with booking integration and instructor profiles.",
-    img: "/Portfolio/imgi_1_default.webp",
+    img: "/Portfolio/imgi_15_default.webp",
     cat: "healthcare",
   },
   {
@@ -21,7 +21,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://helenafarmstop.com/",
     badge: "USA · E-commerce",
     desc: "Community marketplace connecting Montana farmers with local buyers.",
-    img: "/Portfolio/imgi_3_default.webp",
+    img: "/Portfolio/imgi_9_default.webp",
     cat: "ecommerce",
   },
   {
@@ -29,7 +29,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://awaazent.com/",
     badge: "USA · Entertainment",
     desc: "Premier South Asian wedding entertainment with DJs, lighting, and 20+ years of creating memories.",
-    img: "/Portfolio/imgi_5_default.webp",
+    img: "/Portfolio/imgi_8_default.webp",
     cat: "entertainment",
   },
   {
@@ -37,7 +37,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://digitalsilentnight.co.uk/",
     badge: "UK · Film & Entertainment",
     desc: "Lovable to WordPress conversion for AI-generated film. Full content control without credit limitations.",
-    img: "/Portfolio/imgi_7_default.webp",
+    img: "/Portfolio/imgi_37_default.webp",
     cat: "entertainment",
   },
   {
@@ -45,7 +45,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://hawaiianshirtphotography.co.uk/",
     badge: "UK · Photography",
     desc: "Complete redesign for documentary wedding photographer. Modern aesthetic with portfolio galleries.",
-    img: "/Portfolio/imgi_8_default.webp",
+    img: "/Portfolio/imgi_55_default.webp",
     cat: "entertainment",
   },
   {
@@ -53,7 +53,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://www.millenniumbs.com/",
     badge: "UAE · Business Consulting",
     desc: "UAE business consultancy redesign with government liaison services and online booking system.",
-    img: "/Portfolio/imgi_9_default.webp",
+    img: "/Portfolio/imgi_53_default.webp",
     cat: "business",
   },
   {
@@ -61,7 +61,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://unitedskiesimmigration.com/",
     badge: "Canada · Immigration Services",
     desc: "RCIC immigration consultancy built from scratch with booking system and trust indicators.",
-    img: "/Portfolio/imgi_10_default.webp",
+    img: "/Portfolio/imgi_45_default.webp",
     cat: "business",
   },
   {
@@ -69,7 +69,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://unitedstreettours.com/",
     badge: "USA · Tourism & Travel",
     desc: "Nashville's #1 history and culture walking tour with booking system and membership portal.",
-    img: "/Portfolio/imgi_12_default.webp",
+    img: "/Portfolio/imgi_40_default.webp",
     cat: "hospitality",
   },
   {
@@ -77,7 +77,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://arecahomes.com/",
     badge: "Jamaica · Vacation Rentals",
     desc: "Jamaica villas redesign with topical SEO strategy driving organic traffic for vacation rentals.",
-    img: "/Portfolio/imgi_13_default.webp",
+    img: "/Portfolio/imgi_26_default.webp",
     cat: "realestate",
   },
   {
@@ -85,7 +85,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://brightpathwaysaba.com/",
     badge: "USA · Healthcare",
     desc: "ABA therapy redesign with 3,000+ local pages across Arizona, Colorado, and Texas with Schema markup.",
-    img: "/Portfolio/imgi_15_default.webp",
+    img: "/Portfolio/imgi_60_default.webp",
     cat: "healthcare",
   },
   {
@@ -93,7 +93,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://brianbeers.com/",
     badge: "USA · Personal Branding",
     desc: "Personal branding website for franchise coach with $50M/year business and lead generation system.",
-    img: "/Portfolio/imgi_16_default.webp",
+    img: "/Portfolio/imgi_3_default.webp",
     cat: "business",
   },
   {
@@ -101,7 +101,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://first-diligence.com/",
     badge: "USA · Financial Advisory",
     desc: "Word document to professional website for financial due diligence firm with clean navigation.",
-    img: "/Portfolio/imgi_17_default.webp",
+    img: "/Portfolio/imgi_51_default.webp",
     cat: "finance",
   },
   {
@@ -109,7 +109,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://toplineroof.com/",
     badge: "USA · Home Services",
     desc: "Roofing contractor revamp with multiple page templates for services, roof types, and service areas.",
-    img: "/Portfolio/imgi_18_default.webp",
+    img: "/Portfolio/imgi_25_default.webp",
     cat: "homeservices",
   },
   {
@@ -117,7 +117,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://atlasatvin.com/",
     badge: "USA · Insurance",
     desc: "Client vision to professional insurance website with bilingual support and lead generation system.",
-    img: "/Portfolio/imgi_19_default.webp",
+    img: "/Portfolio/imgi_56_default.webp",
     cat: "finance",
   },
   {
@@ -125,7 +125,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://prestigeelectricca.com/",
     badge: "USA · Electrical Contractor",
     desc: "Theme to custom Elementor clone. Same design, full edit control, zero limitations.",
-    img: "/Portfolio/imgi_21_default.webp",
+    img: "/Portfolio/imgi_12_default.webp",
     cat: "homeservices",
   },
   {
@@ -133,7 +133,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://notebookline.am/",
     badge: "Armenia · E-commerce",
     desc: "Clean B2B/B2C laptop store. Full WooCommerce features without the clutter.",
-    img: "/Portfolio/imgi_22_default.webp",
+    img: "/Portfolio/imgi_47_default.webp",
     cat: "ecommerce",
   },
   {
@@ -141,7 +141,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://gkjewelers.pk/",
     badge: "Pakistan · E-commerce",
     desc: "Certified gemstone store with clean UI, 12+ categories, Zodiac filtering, and COD across Pakistan.",
-    img: "/Portfolio/imgi_24_default.webp",
+    img: "/Portfolio/imgi_36_default.webp",
     cat: "ecommerce",
   },
   {
@@ -149,7 +149,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://solar-bayern.de/",
     badge: "Germany · Solar Energy",
     desc: "German solar company with custom post type for projects and free analysis calculator.",
-    img: "/Portfolio/imgi_25_default.webp",
+    img: "/Portfolio/imgi_22_default.webp",
     cat: "homeservices",
   },
   {
@@ -157,7 +157,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://newlandsltd.co.uk/",
     badge: "UK · Construction",
     desc: "40-year construction company with modern design, impactful hero, and trust-building stats.",
-    img: "/Portfolio/imgi_26_default.webp",
+    img: "/Portfolio/imgi_50_default.webp",
     cat: "homeservices",
   },
   {
@@ -165,7 +165,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://calgarywindowrepair.ca/",
     badge: "Canada · Home Services",
     desc: "Lovable to Elementor conversion with on-page SEO best practices and 100% responsive design.",
-    img: "/Portfolio/imgi_28_default.webp",
+    img: "/Portfolio/imgi_61_default.webp",
     cat: "homeservices",
   },
   {
@@ -173,7 +173,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://jacksonportglass.com/",
     badge: "Canada · Home Services",
     desc: "Content, design, and internal linking improvements for stronger topical authority in glass services.",
-    img: "/Portfolio/imgi_30_default.webp",
+    img: "/Portfolio/imgi_59_default.webp",
     cat: "homeservices",
   },
   {
@@ -181,7 +181,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://floridaaesthetics.com/wellness",
     badge: "USA · Healthcare",
     desc: "Avada theme with Fusion Builder, custom CSS and HTML for a conversion-focused wellness landing page.",
-    img: "/Portfolio/imgi_31_default.webp",
+    img: "/Portfolio/imgi_43_default.webp",
     cat: "healthcare",
   },
   {
@@ -189,7 +189,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://jfgeneralconstruction.com/",
     badge: "USA · Home Remodeling",
     desc: "Home remodeling website with 6 service pages, project gallery, and 30+ years of trust indicators.",
-    img: "/Portfolio/imgi_32_default.webp",
+    img: "/Portfolio/imgi_34_default.webp",
     cat: "homeservices",
   },
   {
@@ -197,7 +197,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://www.best-law.net/",
     badge: "USA · Legal",
     desc: "Personal injury law firm website with 9+ practice areas, testimonials, and free case evaluation.",
-    img: "/Portfolio/imgi_33_default.webp",
+    img: "/Portfolio/imgi_32_default.webp",
     cat: "legal",
   },
   {
@@ -205,7 +205,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://thefinestbrokers.com/",
     badge: "Dubai · Real Estate",
     desc: "Luxury Dubai property investment website with elegant design and portfolio showcase.",
-    img: "/Portfolio/imgi_34_default.webp",
+    img: "/Portfolio/imgi_5_default.webp",
     cat: "realestate",
   },
   {
@@ -213,7 +213,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://realminvest.com.au/",
     badge: "Australia · Finance",
     desc: "Figma to Elementor with dynamic templates using Pods CPT for investment funds showcase.",
-    img: "/Portfolio/imgi_35_default.webp",
+    img: "/Portfolio/imgi_52_default.webp",
     cat: "finance",
   },
   {
@@ -221,7 +221,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://lamontflooring.com/",
     badge: "USA · Manufacturing",
     desc: "Photoshop to Elementor B2B wood flooring site with sample ordering and collection showcases.",
-    img: "/Portfolio/imgi_36_default.webp",
+    img: "/Portfolio/imgi_44_default.webp",
     cat: "business",
   },
   {
@@ -229,7 +229,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://darchitects.com.au/",
     badge: "Australia · Architecture",
     desc: "Luxury architecture firm website with minimalist design and masonry project gallery.",
-    img: "/Portfolio/imgi_37_default.webp",
+    img: "/Portfolio/imgi_54_default.webp",
     cat: "business",
   },
   {
@@ -237,7 +237,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://veevere.com/",
     badge: "UAE · E-commerce",
     desc: "Fully custom luxury furniture store with Elementor dynamic templates for every page type.",
-    img: "/Portfolio/imgi_38_default.webp",
+    img: "/Portfolio/imgi_39_default.webp",
     cat: "ecommerce",
   },
   {
@@ -245,7 +245,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://arrowworkforce.com/",
     badge: "Canada · Staffing",
     desc: "Modern staffing website with multilingual support, award badges, and 38+ industries served.",
-    img: "/Portfolio/imgi_39_default.webp",
+    img: "/Portfolio/imgi_58_default.webp",
     cat: "business",
   },
   {
@@ -253,7 +253,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://bravebitesability.com/",
     badge: "Australia · Restaurant",
     desc: "Healthcare café website with QR code ordering, vibrant menu design, and online orders.",
-    img: "/Portfolio/imgi_40_default.webp",
+    img: "/Portfolio/imgi_10_default.webp",
     cat: "hospitality",
   },
   {
@@ -261,7 +261,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://favori10.at/",
     badge: "Austria · E-commerce",
     desc: "German B2B furniture store with Request a Quote feature and 7 product categories.",
-    img: "/Portfolio/imgi_41_default.webp",
+    img: "/Portfolio/imgi_18_default.webp",
     cat: "ecommerce",
   },
   {
@@ -269,7 +269,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://333mediauae.com/",
     badge: "UAE · Media Production",
     desc: "Film production company website with creative design and media gallery showcase.",
-    img: "/Portfolio/imgi_42_default.webp",
+    img: "/Portfolio/imgi_38_default.webp",
     cat: "entertainment",
   },
   {
@@ -277,7 +277,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://happyvalleylodge.com/",
     badge: "USA · Hospitality",
     desc: "Lakeside resort website with date search booking and pet-friendly amenities showcase.",
-    img: "/Portfolio/imgi_43_default.webp",
+    img: "/Portfolio/imgi_7_default.webp",
     cat: "hospitality",
   },
   {
@@ -285,7 +285,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://harmonizedgetaways.com/",
     badge: "USA · Vacation Rental",
     desc: "Dual-purpose vacation rental site for travelers and property owners across VA and FL.",
-    img: "/Portfolio/imgi_44_default.webp",
+    img: "/Portfolio/imgi_41_default.webp",
     cat: "realestate",
   },
   {
@@ -293,7 +293,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://kt-trading.fi/",
     badge: "Finland · IT Trading",
     desc: "Wholesale IT equipment website with asset management solutions and global reach.",
-    img: "/Portfolio/imgi_45_default.webp",
+    img: "/Portfolio/imgi_1_default.webp",
     cat: "technology",
   },
   {
@@ -301,7 +301,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://shyrehab.com.au/",
     badge: "Australia · Healthcare",
     desc: "Therapy website with referral system serving 6 Australian locations with holistic care.",
-    img: "/Portfolio/imgi_47_default.webp",
+    img: "/Portfolio/imgi_30_default.webp",
     cat: "healthcare",
   },
   {
@@ -317,7 +317,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://deda.at/",
     badge: "Austria · Project Management",
     desc: "Illustrator to Elementor conversion for Austrian construction project management firm.",
-    img: "/Portfolio/imgi_50_default.webp",
+    img: "/Portfolio/imgi_31_default.webp",
     cat: "business",
   },
   {
@@ -325,7 +325,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://fliweel.tech/",
     badge: "UK · AI & Automation",
     desc: "AI automation company website with service showcase and impressive impact statistics.",
-    img: "/Portfolio/imgi_51_default.webp",
+    img: "/Portfolio/imgi_28_default.webp",
     cat: "technology",
   },
   {
@@ -333,7 +333,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://nexxviewadvisors.com/",
     badge: "USA · Tech Consulting",
     desc: "Custom corporate design for tech consultancy specializing in hospitality technology.",
-    img: "/Portfolio/imgi_52_default.webp",
+    img: "/Portfolio/imgi_24_default.webp",
     cat: "technology",
   },
   {
@@ -341,7 +341,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://atxlimousines.com/",
     badge: "USA · Luxury Transport",
     desc: "Luxury limousine website with 6 service categories and elegant dark design.",
-    img: "/Portfolio/imgi_53_default.webp",
+    img: "/Portfolio/imgi_42_default.webp",
     cat: "business",
   },
   {
@@ -349,7 +349,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://www.mscattea.com.au/",
     badge: "Australia · E-commerce",
     desc: "Homepage redesign plus plugin and theme fixes for Australian tea shop with booking system.",
-    img: "/Portfolio/imgi_54_default.webp",
+    img: "/Portfolio/imgi_17_default.webp",
     cat: "ecommerce",
   },
   {
@@ -357,7 +357,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://galaxyjob.at/",
     badge: "Austria · Recruitment",
     desc: "German recruitment website with modern gradient design and 3-tier service showcase.",
-    img: "/Portfolio/imgi_55_default.webp",
+    img: "/Portfolio/imgi_13_default.webp",
     cat: "business",
   },
   {
@@ -365,7 +365,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://333properties.pk/",
     badge: "Pakistan · Real Estate",
     desc: "Real estate brokerage landing page with EMAAR partnership and 4 service categories.",
-    img: "/Portfolio/imgi_56_default.webp",
+    img: "/Portfolio/imgi_19_default.webp",
     cat: "realestate",
   },
   {
@@ -373,7 +373,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://coolitebamboo.com/",
     badge: "USA · E-commerce",
     desc: "Magento to WooCommerce migration for bamboo furnishings store with Elementor.",
-    img: "/Portfolio/imgi_57_default.webp",
+    img: "/Portfolio/imgi_33_default.webp",
     cat: "ecommerce",
   },
   {
@@ -381,7 +381,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://foerdercoach.at/",
     badge: "Austria · Coaching",
     desc: "German personal coach landing page with minimalist design and 3 service pillars.",
-    img: "/Portfolio/imgi_58_default.webp",
+    img: "/Portfolio/imgi_21_default.webp",
     cat: "business",
   },
   {
@@ -389,7 +389,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://rocklane.com/",
     badge: "USA · Hospitality",
     desc: "Full-service lakeside resort with multi-booking system for lodging, boats, and entertainment.",
-    img: "/Portfolio/imgi_59_default.webp",
+    img: "/Portfolio/imgi_35_default.webp",
     cat: "hospitality",
   },
   {
@@ -397,7 +397,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://www.jove.com/schools/",
     badge: "USA · Education",
     desc: "Education platform with campaign landing pages for 20K+ science videos trusted by 1,000+ teachers.",
-    img: "/Portfolio/imgi_60_default.webp",
+    img: "/Portfolio/imgi_57_default.webp",
     cat: "technology",
   },
   {
@@ -405,7 +405,7 @@ export const galleryProjects: GalleryProject[] = [
     url: "https://leagueoffatbastards.com/",
     badge: "USA · E-commerce",
     desc: "Premium cigar e-commerce with VIP membership and mental health cause mission.",
-    img: "/Portfolio/imgi_61_default.webp",
+    img: "/Portfolio/imgi_16_default.webp",
     cat: "ecommerce",
   },
 ];
