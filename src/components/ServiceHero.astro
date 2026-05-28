@@ -112,19 +112,20 @@ const totalStepsCount = formSteps.length;
       </div>
 
       <h1 class="svc-hero-h1">
-        {h1Lines.map((line) => {
+        {h1Lines.map((line, i) => {
           const t = line.type ?? 'normal';
+          const text = i > 0 ? ` ${line.text}` : line.text;
           if (t === 'accent') {
             return (
-              <span class="svc-hero-h1-line"><em class="svc-hero-h1-accent">{line.text}</em></span>
+              <span class="svc-hero-h1-line"><em class="svc-hero-h1-accent">{text}</em></span>
             );
           }
           if (t === 'italic') {
             return (
-              <span class="svc-hero-h1-line svc-hero-h1-italic">{line.text}</span>
+              <span class="svc-hero-h1-line svc-hero-h1-italic">{text}</span>
             );
           }
-          return <span class="svc-hero-h1-line">{line.text}</span>;
+          return <span class="svc-hero-h1-line">{text}</span>;
         })}
       </h1>
 
