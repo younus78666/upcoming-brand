@@ -23,7 +23,7 @@ const jsonLd = JSON.stringify({
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
       "dateModified": "2026-05-28",
-      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".svc-hero-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -330,6 +330,42 @@ const lclVsAds = [
       ]}
     />
     <Marquee />
+
+    <!-- ====== AEO KEY TAKEAWAYS (dark ink) ====== -->
+    <section class="lcl-kt-section" aria-label="Key facts about local SEO">
+      <div class="container">
+        <div class="lcl-kt-inner">
+          <p class="lcl-kt-eyebrow">Key Takeaways</p>
+          <h2 class="lcl-kt-heading">What Maryland businesses get from local SEO with us</h2>
+          <ul class="lcl-kt-list" role="list">
+            <li class="lcl-kt-item">
+              <span class="lcl-kt-label">Service</span>
+              <span class="lcl-kt-value">Google Business Profile optimization, citation building, NAP consistency, LocalBusiness schema, and Local Pack ranking for Maryland businesses and US-wide remote clients</span>
+            </li>
+            <li class="lcl-kt-item">
+              <span class="lcl-kt-label">Cost</span>
+              <span class="lcl-kt-value">$750 (Audit) to $3,000+ (Multi-location), fixed-scope quotes before work begins</span>
+            </li>
+            <li class="lcl-kt-item">
+              <span class="lcl-kt-label">Timeline</span>
+              <span class="lcl-kt-value">30 days to deliver implementation; Local Pack visibility in 60 to 90 days for most verticals</span>
+            </li>
+            <li class="lcl-kt-item">
+              <span class="lcl-kt-label">Coverage</span>
+              <span class="lcl-kt-value">All four local SEO pillars in one engagement: GBP, citations, schema, and review acquisition</span>
+            </li>
+            <li class="lcl-kt-item">
+              <span class="lcl-kt-label">Reach</span>
+              <span class="lcl-kt-value">Maryland-based (Baltimore, Annapolis, Frederick, Bethesda) and US-wide remote across all 50 states</span>
+            </li>
+            <li class="lcl-kt-item">
+              <span class="lcl-kt-label">Tracking</span>
+              <span class="lcl-kt-value">90-day Local Pack rank report included on Standard and Multi-location tiers with before/after screenshots</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
     <section class="lcl-define">
       <div class="container">
@@ -710,6 +746,17 @@ const lclVsAds = [
   .lp-btn-primary:hover svg { transform: translateX(3px); }
   .lcl-section-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin: 0; font-weight: 500; }
   .lcl-section-eyebrow-line { display: inline-block; width: 32px; height: 1px; background: var(--amber); }
+
+  /* AEO KEY TAKEAWAYS */
+  .lcl-kt-section { background: var(--ink); padding: clamp(32px, 4vw, 56px) 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .lcl-kt-inner { max-width: 820px; margin: 0 auto; }
+  .lcl-kt-eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); font-weight: 500; display: flex; align-items: center; justify-content: center; margin-bottom: 12px; }
+  .lcl-kt-heading { font-family: var(--f-display); font-size: clamp(20px, 2.4vw, 28px); font-weight: 400; letter-spacing: -0.02em; color: var(--paper); margin-bottom: 28px; line-height: 1.25; text-align: center; }
+  .lcl-kt-list { display: flex; flex-direction: column; gap: 0; border: 1px solid rgba(255,255,255,0.1); border-radius: var(--radius-md); overflow: hidden; list-style: none; padding: 0; margin: 0; }
+  .lcl-kt-item { display: flex; align-items: baseline; gap: 16px; padding: 14px 20px; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 14px; line-height: 1.5; }
+  .lcl-kt-item:last-child { border-bottom: none; }
+  .lcl-kt-label { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); font-weight: 600; min-width: 88px; flex-shrink: 0; padding-top: 2px; }
+  .lcl-kt-value { color: rgba(244,239,230,0.8); line-height: 1.55; }
 
   .lcl-define { background: var(--paper); padding: clamp(48px, 6vh, 80px) 0; border-bottom: 1px solid var(--line); }
   .lcl-define-card { max-width: 880px; margin: 0 auto; background: var(--cream); border: 1.5px solid rgba(212,147,46,0.3); border-radius: var(--radius-lg); padding: 36px 40px; position: relative; box-shadow: var(--shadow-sm); overflow: hidden; }

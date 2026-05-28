@@ -2,6 +2,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Marquee from '../../../components/Marquee.astro';
 
 const painPoints = [
   {
@@ -221,7 +223,7 @@ const schema = {
       "dateModified": "2026-05-28",
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", "h2", ".lp-hero-headline", ".lp-hero-sub"]
+        "cssSelector": ["h1", "h2", ".lfh-h1", ".lfh-lede"]
       },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -343,6 +345,7 @@ const schema = {
 >
   <script type="application/ld+json" set:html={JSON.stringify(schema)} slot="head" />
 
+  <AnnouncementBar />
   <Navigation />
 
   <!-- ══════════════════════════════════════════════
@@ -499,6 +502,8 @@ const schema = {
     </div>
 
   </section>
+
+  <Marquee />
 
   <!-- ══════════════════════════════════════════════
        KEY TAKEAWAYS (AEO.1)

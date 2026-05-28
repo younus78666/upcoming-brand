@@ -35,7 +35,7 @@ const jsonLd = JSON.stringify({
       "dateModified": "2026-05-23",
       "speakable": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", "h2", ".hero-headline", ".hero-sub"]
+        "cssSelector": ["h1", "h2", ".svc-hero-lead"]
       },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -132,6 +132,23 @@ const jsonLd = JSON.stringify({
       },
       "provider": { "@id": "https://www.upcomingbrand.com/#organization" },
       "parentOrganization": { "@id": "https://www.upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.upcomingbrand.com/#faq",
+      "mainEntity": [
+        { "@type": "Question", "name": "How much does a WordPress website cost in Maryland?", "acceptedAnswer": { "@type": "Answer", "text": "Most Maryland small business WordPress websites fall between $1,500 and $10,000. A straightforward 8-page site for a contractor or solo practitioner starts at $1,500 to $3,500. A 15 to 20 page site with custom design, SEO setup, and blog runs $3,500 to $6,000. Complex WooCommerce, booking, or IDX builds start at $6,000. Every quote is fixed-scope: one price, no hourly surprises." } },
+        { "@type": "Question", "name": "How long does a WordPress project take from start to launch?", "acceptedAnswer": { "@type": "Answer", "text": "Starter sites (up to 8 pages) take 4 to 6 weeks. Growth sites (up to 20 pages with custom design) take 6 to 8 weeks. Custom builds take 8 to 10 weeks. Timeline depends most on how quickly you can review and provide feedback." } },
+        { "@type": "Question", "name": "Will my site score 90+ on Google PageSpeed?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We commit to it in writing. Every site we launch targets a PageSpeed score of 90+ on both mobile and desktop, with LCP under 2.5s, INP under 200ms, and all three Core Web Vitals passing in Search Console." } },
+        { "@type": "Question", "name": "Can you migrate my existing Wix or Squarespace site to WordPress?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, without losing your Google rankings. We build a complete 301 redirect map before any DNS changes, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch. Most migrations see no ranking loss and often see improvement within 60 days." } },
+        { "@type": "Question", "name": "Do you work with law firms, dental practices, and regulated industries?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Law firm, dental, and medical websites make up a significant part of our Maryland client base. We understand compliance considerations and the schema types (LegalService, Dentist, MedicalOrganization) that help these sites rank in competitive local searches and Google Maps results." } },
+        { "@type": "Question", "name": "What is included in your monthly care plans?", "acceptedAnswer": { "@type": "Answer", "text": "Care plans start at $150/month and include weekly WordPress core and plugin updates, off-site backups to S3 or Google Drive, uptime monitoring, and a 4-hour SLA for support tickets. Higher-tier plans include content updates, SEO reporting, and quarterly strategy reviews." } },
+        { "@type": "Question", "name": "Why WordPress instead of Webflow, Squarespace, or Wix?", "acceptedAnswer": { "@type": "Answer", "text": "WordPress is open source: you own your data, there is no platform lock-in, and no monthly SaaS fee. 43% of all websites run on WordPress. On Wix or Squarespace, you cannot add custom LocalBusiness, LegalService, or MedicalOrganization schema, which drives Local Pack rankings." } },
+        { "@type": "Question", "name": "Why does a custom WordPress site rank better than a Wix or template site?", "acceptedAnswer": { "@type": "Answer", "text": "Three technical reasons. First, page builder templates and Wix sites average 3.8 to 4.2s LCP on mobile, above Google's 2.5s threshold. Second, template platforms do not support custom JSON-LD schema at the page-type level. Third, Wix and Squarespace use JavaScript-rendered content that Googlebot must render before indexing; server-rendered WordPress HTML is indexed immediately." } },
+        { "@type": "Question", "name": "Do you guarantee specific Google rankings?", "acceptedAnswer": { "@type": "Answer", "text": "No ethical agency can guarantee rankings. We guarantee clean schema markup, Core Web Vitals in the green, proper internal linking, and a topical map built for your market. Clients on our SEO care plan typically see top-10 positions for 20 to 40 targeted keywords within 6 to 9 months." } },
+        { "@type": "Question", "name": "What happens if I need changes after launch?", "acceptedAnswer": { "@type": "Answer", "text": "The first 30 days post-launch are covered at no extra cost. After that, care plan clients get unlimited small changes included. Larger additions are quoted as fixed-scope additions, the same as the original project." } },
+        { "@type": "Question", "name": "Is there a payment plan or deposit structure?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. All projects are split 50% upfront and 50% before launch. We do not charge hourly at any point in the project. Care plans are billed monthly with a 30-day cancel notice: no contracts, no minimum commitment." } }
+      ]
     }
   ]
 });
