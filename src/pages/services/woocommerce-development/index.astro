@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-28",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -82,6 +82,19 @@ const jsonLd = JSON.stringify({
         { "@type": "HowToStep", "position": 3, "name": "Integrations and payment gateways",         "text": "Stripe, Authorize.net, PayPal integration. Subscriptions, configurators, multi-vendor as scoped." },
         { "@type": "HowToStep", "position": 4, "name": "Schema and performance optimization",        "text": "Product schema across catalog, image optimization, lazy loading, and Core Web Vitals tuning. 90+ Lighthouse on every product page." },
         { "@type": "HowToStep", "position": 5, "name": "Launch and 30-day monitoring",                "text": "Pre-launch performance audit, redirect map (if migrating), DNS cutover, daily Search Console + sales monitoring for 30 days post-launch." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      "mainEntity": [
+        { "@type": "Question", "name": "What is WooCommerce development?", "acceptedAnswer": { "@type": "Answer", "text": "WooCommerce development is the work of building, customizing, and maintaining ecommerce stores on the WooCommerce platform, a free WordPress plugin powering 28% of all online stores. Services range from basic store setup to custom plugin engineering, payment gateway integration, multi-vendor marketplace builds, and performance optimization for high-volume catalogs." } },
+        { "@type": "Question", "name": "How much does WooCommerce development cost?", "acceptedAnswer": { "@type": "Answer", "text": "Quality WooCommerce development costs $4,500 to $25,000+ for most small-to-mid stores in 2026. Setup builds (50 products, single payment gateway) start at $4,500. Custom builds with subscriptions, configurators, or multi-vendor run $8,500 to $15,000. Enterprise WooCommerce (high-volume, ERP integration, multi-currency) starts at $15,000 and can reach $80,000+. Hourly WooCommerce developer rates run $80 to $200/hr; higher-quality firms use fixed-scope pricing." } },
+        { "@type": "Question", "name": "Should I hire a WooCommerce developer or use Shopify instead?", "acceptedAnswer": { "@type": "Answer", "text": "Use Shopify if you have under 50 simple products, do not need custom checkout flows, and accept the $79+/month platform fee. Hire a WooCommerce developer if you need subscriptions, configurators, multi-vendor, custom plugins, ERP integration, or platform ownership. The break-even point is roughly 12 to 18 months: above that, WooCommerce is almost always cheaper and more flexible." } },
+        { "@type": "Question", "name": "What is the difference between a WooCommerce developer and a WooCommerce expert?", "acceptedAnswer": { "@type": "Answer", "text": "In practice, none. Developer implies engineering focus; expert implies senior strategic capability across both engineering and architecture. Quality WooCommerce hires bridge both: they can ship custom code and make architecture decisions about catalog structure, schema and SEO, payment flows, and performance." } },
+        { "@type": "Question", "name": "Can you migrate my existing Shopify or BigCommerce store to WooCommerce?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Shopify-to-WooCommerce migrations are one of our most common engagements. The process covers catalog export with product images and metadata, schema mapping to WooCommerce custom fields, customer and order import, 301 redirect mapping for SEO preservation, and zero-downtime DNS cutover. Most Shopify migrations complete in 6 to 8 weeks and recover top-10 rankings within 4 weeks of launch. Pricing starts at $4,500 for catalogs under 200 products." } },
+        { "@type": "Question", "name": "Do you offer ongoing WooCommerce support and maintenance?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Care plans from $150/month cover WooCommerce core and plugin updates tested on staging, daily off-site backups, security patching, performance monitoring, and a 4-hour SLA. Higher tiers include monthly performance audits, schema validation, and content and product updates." } },
+        { "@type": "Question", "name": "How long does a WooCommerce development project take?", "acceptedAnswer": { "@type": "Answer", "text": "Standard timelines: Setup tier in 5 to 7 weeks, Custom in 8 to 10 weeks, Enterprise in 10 to 14 weeks. The biggest variables are catalog complexity, integration scope, and how quickly you provide product content." } }
       ]
     }
   ]
@@ -220,6 +233,7 @@ const faqs = [
   title="WooCommerce Development Services | Upcoming Brand"
   description="Senior WooCommerce development: custom builds, subscriptions, multi-vendor, Stripe integration. Schema-first, 90+ Lighthouse, fixed-scope from $4,500."
   canonicalUrl={canonical}
+  ogImageAlt="WooCommerce Development Services Maryland — Upcoming Brand"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLd} />

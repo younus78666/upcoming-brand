@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-28",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -88,6 +88,19 @@ const jsonLd = JSON.stringify({
         { "@type": "HowToStep", "position": 3, "name": "Citation + NAP cleanup",  "text": "Submit to top 50 industry-specific directories, fix NAP inconsistencies via Whitespark or Yext, and remove duplicate listings." },
         { "@type": "HowToStep", "position": 4, "name": "On-page + schema",        "text": "LocalBusiness schema on every key page, location landing pages with neighborhood-specific content, internal linking from service pages." },
         { "@type": "HowToStep", "position": 5, "name": "Reviews + monitoring",    "text": "Review acquisition strategy, response templates, monthly Local Pack tracking, and 90-day report on Local Pack position changes." }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      "mainEntity": [
+        { "@type": "Question", "name": "What is local SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Local SEO is the practice of optimizing a business to rank in geographically-targeted search results, especially Google's Local Pack (the map-based 3-result block above organic results). Local SEO covers four pillars: Google Business Profile optimization, citation building and NAP consistency across directories, LocalBusiness schema and on-page optimization, and review acquisition." } },
+        { "@type": "Question", "name": "How much does local SEO cost?", "acceptedAnswer": { "@type": "Answer", "text": "Quality local SEO services run $750 to $5,000+ per location depending on competition and scope. A local SEO audit alone runs $750. Standard single-location local SEO (audit plus implementation plus 90-day tracking) runs $1,500. Multi-location local SEO for 2 to 20 locations starts at $3,000 and scales by location count." } },
+        { "@type": "Question", "name": "How long does local SEO take to work?", "acceptedAnswer": { "@type": "Answer", "text": "Local Pack ranking improvements typically appear in 60 to 90 days for low-to-medium competition verticals. Highly competitive verticals take 6 to 12 months. The 30-day delivery window covers implementation; the ranking impact compounds as Google reindexes citations, schema, and GBP signals." } },
+        { "@type": "Question", "name": "Do you only serve Maryland businesses?", "acceptedAnswer": { "@type": "Answer", "text": "No. Upcoming Brand is Maryland-based, but local SEO work is location-agnostic. We serve Maryland clients (Baltimore, Annapolis, Frederick, Bethesda, Rockville, Silver Spring, Columbia, Towson) and US-wide remote clients across all 50 states. Local SEO does not require physical proximity to the client; it requires the client's service area to be clearly defined." } },
+        { "@type": "Question", "name": "What is the Local Pack?", "acceptedAnswer": { "@type": "Answer", "text": "The Local Pack is Google's map-based search result block that appears for geographically-relevant queries. It shows three businesses with name, rating, address, hours, and a website or directions button. Ranking in the Local Pack typically drives more leads than ranking number one organic for the same query." } },
+        { "@type": "Question", "name": "How is local SEO different from regular SEO?", "acceptedAnswer": { "@type": "Answer", "text": "Regular SEO targets organic search results. Local SEO specifically targets the Local Pack, Google Maps, and Apple Maps using different ranking factors: proximity, GBP signals, citations, and NAP consistency. Most service businesses need both: regular SEO drives top-of-funnel discovery, local SEO drives bottom-of-funnel calls and visits." } },
+        { "@type": "Question", "name": "Do I need both Google Business Profile and a website?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Google Business Profile alone ranks in the Local Pack but cannot rank for broader organic queries, accept payments, host detailed service descriptions, or capture leads via forms. The website handles organic visibility, conversion, and content depth. The two work together: GBP drives Pack clicks, the website converts those visits into booked calls or form submissions." } }
       ]
     }
   ]
@@ -255,6 +268,7 @@ const lclVsAds = [
   title="Local SEO Maryland | GBP + Local Pack | Upcoming Brand"
   description="Local SEO for Maryland businesses: Google Business Profile optimization, citation building, NAP consistency, Local Pack ranking. Fixed-scope from $1,500."
   canonicalUrl={canonical}
+  ogImageAlt="Local SEO Services Maryland — Upcoming Brand"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLd} />
