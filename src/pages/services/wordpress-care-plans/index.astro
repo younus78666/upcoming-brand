@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -72,6 +72,47 @@ const jsonLd = JSON.stringify({
         "reviewCount": "12",
         "bestRating": "5"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Do I have to be locked into an annual contract?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. All WordPress care plans are month-to-month with no minimum term. Cancel any time with no penalty or fee." }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between a $99/month plan and a $150 care plan?",
+          "acceptedAnswer": { "@type": "Answer", "text": "$99/month plans are typically automated. Our care plans involve a person testing every update on staging first, rolling back if anything breaks, monitoring uptime live, and personally responding to emails within hours." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the 4-hour SLA actually cover?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The 4-hour SLA covers our response to your email or ticket: we respond within the SLA window, diagnose the issue, and either fix it immediately or give a written ETA. For critical issues (site down, security breach), we begin work immediately regardless of SLA." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I include content changes in the plan, or is that extra?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Essential covers technical maintenance only. Growth includes 1 hour of content updates per month. Pro includes 3 hours per month. Any additional content work is billed at $150/hr with a written estimate before work begins." }
+        },
+        {
+          "@type": "Question",
+          "name": "What happens if my site gets hacked?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Care plans include malware recovery at no extra charge. We restore from the most recent clean backup, patch the vulnerability, scan for residual malware, and document the incident in writing. No hourly billing for incident response on care plan clients." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do care plans cover the hosting bill?",
+          "acceptedAnswer": { "@type": "Answer", "text": "No. You pay your own hosting. Care plans cover maintenance, monitoring, and support — not the server. This means you keep ownership of the hosting account if you ever cancel the plan." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I add a care plan later, after the project launches?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Care plans can start at any time: at launch, three months later, or three years later. There is no deadline. You can pause the relationship at launch and pick up a care plan whenever it makes sense." }
+        }
+      ]
     },
     {
       "@type": "HowTo",
@@ -354,7 +395,7 @@ const faqs = [
             When you need one
           </p>
           <h2 class="page-h2">
-            Six signals <em>you need a WordPress maintenance service.</em>
+            How do you know <em>when you need a WordPress maintenance service?</em>
           </h2>
           <p class="page-section-lead">If two or more match, the right answer is a real WordPress care plan, not a bot or a $99/month "managed hosting" upsell. Predictable monthly maintenance prevents most of the issues clients pay emergency rates to fix.</p>
         </div>
@@ -380,7 +421,7 @@ const faqs = [
             Three plans
           </p>
           <h2 class="page-h2">
-            Three care plans. <em>One fixed monthly price.</em>
+            Which WordPress care plan <em>is right for your site?</em>
           </h2>
           <p class="page-section-lead">Every plan is month-to-month with no minimum term. Move up, down, or cancel any time without a fee.</p>
         </div>
@@ -457,7 +498,7 @@ const faqs = [
             <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
           </div>
           <h2 class="page-h2 care-tasks-h2">
-            Eight tasks <em>every month, on every plan.</em>
+            What does a WordPress care plan <em>do every month?</em>
           </h2>
           <p class="care-tasks-lead">A real human runs through this list every week. Updates tested on staging before production. Backups verified, not just scheduled.</p>
         </div>
@@ -492,7 +533,7 @@ const faqs = [
             SLA breakdown
           </p>
           <h2 class="page-h2">
-            Response times <em>by plan tier.</em>
+            How fast does <em>Upcoming Brand respond on each plan?</em>
           </h2>
           <p class="page-section-lead">SLA covers our first response (diagnosis + ETA). Critical issues like site down or a security breach get worked on immediately regardless of plan tier. For sites that need a full one-time hardening before going on a care plan, see our standalone <a href="/services/wordpress-security/">WordPress security service</a> covering malware removal and server-level hardening.</p>
         </div>
@@ -539,7 +580,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 care-faq-h2">
-            Seven questions <em>before you sign up.</em>
+            What should you ask <em>before choosing a WordPress care plan?</em>
           </h2>
         </div>
 
