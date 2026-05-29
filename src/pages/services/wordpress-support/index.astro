@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -44,6 +44,60 @@ const jsonLd = JSON.stringify({
       "offers": { "@type": "Offer", "price": "150", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-31" },
       "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "12", "bestRating": "5" },
       "knowsAbout": ["WordPress support", "WordPress support service", "WordPress help", "WordPress tech support", "WordPress emergency support", "On-demand WordPress support", "Hourly WordPress help", "WordPress troubleshooting"]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is WordPress support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress support is on-demand help with WordPress sites for tasks that do not warrant a full engagement. Typical tasks include plugin troubleshooting, theme tweaks, content updates, performance fixes, security patches, WooCommerce issues, and emergency outage response. Quality WordPress support is billed hourly or in blocks rather than as a fixed-scope project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does WordPress support cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quality WordPress support runs $80 to $250/hr depending on seniority. Our WordPress support is $150/hr with a 30-minute minimum, billed in 15-minute increments after that. Blocks of 10 hours run $1,500 and are valid 6 months from purchase. Retainers start at $500/mo for businesses with ongoing WordPress needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast do you respond to WordPress support requests?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard WordPress support response is 4 hours during business hours (Eastern Time, Monday to Friday) and 8 hours otherwise. Emergency support for confirmed-down events targets 1-hour response during business hours. Retainer clients get priority response with 1-hour SLA on all requests."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer WordPress emergency support?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. WordPress emergency support is for confirmed-down sites, hacked sites, or active outages affecting business operations. We respond within 4 hours during business hours and 8 hours otherwise. Emergency support is billed at $200/hr. Most emergencies are resolved within 1 to 4 hours of starting work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you help with WooCommerce issues?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. WooCommerce support is a major portion of our WordPress support work. Common issues include checkout errors, payment gateway failures, shipping calculation bugs, subscription renewal problems, product variation issues, and inventory sync errors. WooCommerce support is billed at $150/hr."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between WordPress support and a care plan?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Care plans cover scheduled recurring maintenance: weekly plugin updates tested on staging, daily backups, security monitoring, uptime tracking, and performance reports. WordPress support is on-demand help for unscheduled tasks: troubleshooting, content updates, new features, emergency response. Most clients use both."
+          }
+        }
+      ]
     }
   ]
 });
@@ -140,7 +194,7 @@ const faqs = [
       <div class="container">
         <div class="sup-tiers-head">
           <p class="sup-section-eyebrow"><span class="sup-section-eyebrow-line"></span>Three options</p>
-          <h2 class="page-h2">Three <em>WordPress support packages.</em></h2>
+          <h2 class="page-h2">Which <em>WordPress support package is right for your site?</em></h2>
           <p class="page-section-lead">Pay for the help, not for a contract. The block is the most popular option for businesses with periodic WordPress needs. If you find yourself calling for support every month, a <a href="/services/wordpress-care-plans/">monthly WordPress care plan</a> from $150/month covers proactive maintenance and prevents most support tickets before they happen.</p>
         </div>
         <div class="sup-tiers-grid">
@@ -166,7 +220,7 @@ const faqs = [
       <div class="container">
         <div class="sup-when-head">
           <p class="sup-section-eyebrow"><span class="sup-section-eyebrow-line"></span>When to call</p>
-          <h2 class="page-h2">Six signals <em>your WordPress site needs hourly support.</em></h2>
+          <h2 class="page-h2">How do you know <em>when your WordPress site needs hourly support?</em></h2>
         </div>
         <div class="sup-when-grid">
           {whenSupport.map((w) => (
@@ -184,7 +238,7 @@ const faqs = [
       <div class="container">
         <div class="sup-faq-head">
           <div class="page-eyebrow-strip"><span class="page-eyebrow-line"></span><span class="page-eyebrow-text">WordPress support FAQ</span><span class="page-eyebrow-line"></span></div>
-          <h2 class="page-h2 sup-faq-h2">Six questions <em>before you call.</em></h2>
+          <h2 class="page-h2 sup-faq-h2">What should you ask <em>before booking a WordPress support service?</em></h2>
         </div>
         <div class="sup-faq-list">
           {faqs.map((f, i) => (
