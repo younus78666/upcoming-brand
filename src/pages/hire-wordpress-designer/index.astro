@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-02",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -65,6 +65,60 @@ const jsonLd = JSON.stringify({
         "Dedicated WordPress developer",
         "WordPress developers near me",
         "WordPress designers near me"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I hire a WordPress designer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Three steps: send a brief (form or email), book a free 45-minute discovery call, and sign the fixed-scope quote we send within 48 hours. The quote is held at the stated price for 30 days. No funnels, no qualifying calls, no follow-up emails. One reply, one quote, one decision."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does it cost to hire a WordPress designer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Senior WordPress designers and developers in the US typically charge $80 to $200/hr or $4,000 to $25,000+ per fixed-scope project. Marketplace freelancers go as low as $200 to $2,000. Upcoming Brand sits at $1,500 to $15,000 per project, fixed-scope, with schema and 90+ Lighthouse contractually included."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I hire a freelance WordPress designer or an agency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Freelancers work for simple sites or tight budgets. An agency is the better fit when you need schema architecture, contractual Core Web Vitals, compliance work, continuity if a single developer disappears, and post-launch monitoring. Upcoming Brand gives you agency-level deliverables at freelancer-adjacent pricing: fixed scope from $1,500, no agency overhead."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I hire a WordPress designer without going through Upwork or Fiverr?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, and we recommend it for any project above $1,500. Marketplaces introduce platform fees, payment gates, and review-driven incentives. Direct hire gives you a written contract, fixed price, and a real human you can email post-launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can you start a project?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Discovery within 24 to 48 hours of your first email. Fixed-scope quote within 48 hours of the discovery call. Project kickoff within 5 business days of signature and deposit. Starter (8 pages) ships in 4 to 6 weeks, Growth in 6 to 8 weeks, Custom in 8 to 10 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you only work with Maryland businesses?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. We are based in Maryland but work entirely remote with clients across all US states and 12 countries. Discovery on Zoom, async build with weekly staging links, written status updates. Maryland clients get local schema and Local Pack expertise; out-of-state clients get the same engineering standard."
+          }
+        }
       ]
     },
     {
@@ -390,7 +444,7 @@ const faqs = [
             When to hire one
           </p>
           <h2 class="page-h2">
-            Six signals <em>you need to hire a WordPress expert.</em>
+            How do you know <em>when you need to hire a WordPress expert?</em>
           </h2>
           <p class="page-section-lead">If two or more of these match your situation, the right answer is direct hire of a senior WordPress designer or developer, not another freelance marketplace search. <a href="/wordpress-agency/">Compare with hiring a full WordPress agency</a> if your project needs broader scope.</p>
         </div>
@@ -416,7 +470,7 @@ const faqs = [
             Three ways to hire
           </p>
           <h2 class="page-h2">
-            Three places to hire <em>a WordPress designer.</em>
+            Where should you hire <em>a WordPress designer?</em>
           </h2>
           <p class="page-section-lead">Marketplace freelancer, big-agency contract, or direct hire. The trade-offs are real, and the one on the right is the option most clients land on. See <a href="/pricing/">transparent pricing</a> before the call, review our <a href="/work/">portfolio of recent projects</a>, or read <a href="/reviews/">client reviews</a> to evaluate fit.</p>
         </div>
@@ -464,7 +518,7 @@ const faqs = [
             <span class="page-eyebrow-line page-eyebrow-line-light"></span>
           </div>
           <h2 class="page-h2 hire-skills-h2">
-            Six skills <em>you'd otherwise hire separately.</em>
+            What skills does <em>a WordPress designer bring to one engagement?</em>
           </h2>
           <p class="hire-skills-lead">Most projects need a designer, a developer, an SEO specialist, and a performance engineer. We bundle all four, plus migrations and integrations, into one engagement.</p>
         </div>
@@ -491,7 +545,7 @@ const faqs = [
             How to hire
           </p>
           <h2 class="page-h2">
-            From email <em>to project kickoff.</em>
+            How does the process work <em>from first email to project kickoff?</em>
           </h2>
           <p class="page-section-lead">Five steps. The first three are free. Total time from first email to kickoff: typically 7-10 business days.</p>
         </div>
@@ -533,7 +587,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 hire-faq-h2">
-            Six questions <em>about hiring a WordPress designer.</em>
+            What should you ask <em>before hiring a WordPress designer?</em>
           </h2>
         </div>
 
