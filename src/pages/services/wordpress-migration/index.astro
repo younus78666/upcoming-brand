@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -66,6 +66,68 @@ const jsonLd = JSON.stringify({
         "Shopify to WordPress migration",
         "Migrate website to WordPress",
         "WordPress migration company"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is WordPress migration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress migration is the process of moving a website from another platform (Wix, Squarespace, GoDaddy, Shopify, or older WordPress) to a new WordPress installation. It includes content extraction, schema preservation or improvement, complete 301 redirect mapping, zero-downtime DNS cutover, and 30-day post-launch monitoring. Done correctly, all rankings are preserved; cheap migrations skip the redirect map and lose 30 to 50 percent of organic visibility."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does WordPress migration cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quality WordPress migration costs $750 to $5,000+ depending on source platform and complexity. WordPress-to-WordPress or small Wix / Squarespace / GoDaddy moves start at $750. Standard migrations with redirect map, DNS cutover, and 30-day monitoring run $1,500 to $2,500. Complex Shopify-to-WooCommerce or multi-language migrations start at $3,500."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will I lose Google rankings during a WordPress migration?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not if done correctly. Properly migrated WordPress sites recover all top-10 rankings within 4 weeks. The keys are: a complete 301 redirect map (every old URL routes to the right new one), a zero-downtime DNS cutover during a low-traffic window, schema preservation or improvement, and 30-day Search Console monitoring post-launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a WordPress migration take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Simple WordPress-to-WordPress migrations take 1 to 2 weeks. Wix, Squarespace, or GoDaddy migrations take 2 to 4 weeks. Complex Shopify-to-WooCommerce or multi-language migrations take 4 to 8 weeks. The biggest variables are content volume and whether the migration includes a design refresh."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I migrate from Wix or Squarespace to WordPress?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If you have under 5 simple pages and no schema needs, stay on Wix or Squarespace. Migrate to WordPress if you need vertical-specific schema, Local Pack ranking, custom integrations, faster page speed, or want to own the platform. The break-even point is roughly 12 to 24 months of platform fees versus a one-time WordPress build."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you migrate without taking the site offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every migration is zero-downtime. We build the new WordPress site on a staging URL while your existing site stays live. On launch day, we do a DNS cutover during a low-traffic window. Both the old and new IPs render correctly during propagation. No maintenance page."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's included in the redirect map?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Every old URL on the source site is paired with its new equivalent on the WordPress site. URLs that move get a 301 redirect. URLs that are removed entirely get redirected to the closest topical match or parent category. We document the entire map in a spreadsheet you keep, so any future developer can see exactly what was redirected and why."
+          }
+        }
       ]
     },
     {
@@ -269,7 +331,7 @@ const faqs = [
             What we migrate from
           </p>
           <h2 class="page-h2">
-            Six platforms <em>migrated to WordPress.</em>
+            Which platforms <em>can you migrate to WordPress?</em>
           </h2>
           <p class="page-section-lead">If your platform isn't listed, ask. We've handled custom CMSes, ASP.NET sites, Drupal, Joomla, and a few platforms even Google has forgotten about.</p>
         </div>
@@ -295,7 +357,7 @@ const faqs = [
             Three tiers
           </p>
           <h2 class="page-h2">
-            Three <em>WordPress migration packages.</em>
+            Which <em>WordPress migration package is right for your site?</em>
           </h2>
           <p class="page-section-lead">Each tier is fixed-scope, documented in a PDF, and held at the stated price for 30 days after the discovery call. Clients migrating from Wix, Squarespace, or GoDaddy often combine the migration with <a href="/services/wordpress-web-design/">custom WordPress web design</a> to launch on a properly built theme rather than a template import. After the migration goes live, most clients add a <a href="/services/wordpress-care-plans/">WordPress care plan</a> to monitor rankings and keep the freshly migrated site updated.</p>
         </div>
@@ -333,7 +395,7 @@ const faqs = [
             When to migrate
           </p>
           <h2 class="page-h2">
-            Six signals <em>your site needs migrating.</em>
+            How do you know <em>when your site needs migrating to WordPress?</em>
           </h2>
         </div>
 
@@ -359,7 +421,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 mig-faq-h2">
-            Seven questions <em>before you migrate.</em>
+            What should you ask <em>before starting a WordPress migration?</em>
           </h2>
         </div>
         <div class="mig-faq-list">
