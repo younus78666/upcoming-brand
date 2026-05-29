@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-02",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -107,6 +107,68 @@ const jsonLd = JSON.stringify({
       },
       "provider": { "@id": "https://www.upcomingbrand.com/#organization" },
       "parentOrganization": { "@id": "https://www.upcomingbrand.com/#organization" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What does a WordPress agency actually do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A WordPress agency designs, develops, optimises, and maintains WordPress websites. The strongest WordPress agencies bundle four services in one engagement: custom design, custom development on a proven stack, schema and SEO architecture, and Core Web Vitals optimisation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a WordPress agency charge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quality WordPress agency pricing in the US runs $1,500 to $15,000 for most small-to-mid business projects, with enterprise builds ranging $20,000-$80,000+. Upcoming Brand is fixed-scope only: Starter at $1,500, Growth at $3,500, Custom from $6,000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "WordPress agency vs freelancer: which is right?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A WordPress agency is the better fit when you need schema-led architecture, contractual Core Web Vitals, compliance work (HIPAA, MRPC), continuity, and post-launch monitoring. Freelancers work well for simple sites or MVPs with tight budgets."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between a WordPress web design agency and a WordPress development agency?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In practice, none. Most senior firms do both. Upcoming Brand is both: designers know schema and developers know conversion architecture. The same person who runs the discovery call writes the schema and ships the launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work as a white-label WordPress agency for other agencies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Selectively. We white-label WordPress development for marketing agencies and design studios that need a senior implementation partner. Pricing is the same as direct-client work; the agreement is project-by-project."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are you a Maryland-based WordPress agency or do you work nationally?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both. We're based in Maryland and have built sites for businesses across all US states, plus 12 countries internationally. Every project runs entirely remote via Zoom, async build with weekly staging links, and written status updates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can a WordPress agency project be delivered?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard delivery: Starter (8 pages) in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks."
+          }
+        }
+      ]
     },
     {
       "@type": "HowTo",
@@ -370,7 +432,7 @@ const faqs = [
             What makes us different
           </p>
           <h2 class="page-h2">
-            Why Maryland businesses pick <em>Upcoming Brand</em> over generic WordPress agencies.
+            Why do Maryland businesses pick <em>Upcoming Brand</em> over generic WordPress agencies?
           </h2>
           <p class="page-section-lead">Four things every WordPress agency claims. Four things we put in the contract.</p>
         </div>
@@ -429,7 +491,7 @@ const faqs = [
             When to hire one
           </p>
           <h2 class="page-h2">
-            Six signals <em>you need a WordPress agency.</em>
+            How do you know <em>when you need a WordPress agency?</em>
           </h2>
           <p class="page-section-lead">If two or more of these match your situation, the right answer is hiring a <a href="/services/wordpress-web-design/">WordPress development services</a> partner with the depth to fix the underlying issue. Not all problems need an agency. These six usually do.</p>
         </div>
@@ -528,8 +590,7 @@ const faqs = [
             Agency vs freelancer
           </p>
           <h2 class="page-h2">
-            What you get from a WordPress agency<br>
-            <em>that you don't get from a $400 freelancer build.</em>
+            What does a WordPress agency give you <em>that a $400 freelancer can't?</em>
           </h2>
         </div>
 
@@ -577,7 +638,7 @@ const faqs = [
             Agency pricing
           </p>
           <h2 class="page-h2">
-            Three packages. <em>One fixed price.</em>
+            How much does <em>a WordPress agency charge?</em>
           </h2>
           <p class="page-section-lead">Real WordPress agency pricing: written down, fixed-scope, no hourly billing. The Growth tier is what most clients pick. Before committing, many clients review our <a href="/work/">recent client projects</a> and <a href="/reviews/">client reviews</a> to assess fit.</p>
         </div>
@@ -623,7 +684,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 agency-faq-h2">
-            Seven questions <em>before you hire a WordPress agency.</em>
+            What should you ask <em>before hiring a WordPress agency?</em>
           </h2>
         </div>
 
