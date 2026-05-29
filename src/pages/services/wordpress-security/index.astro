@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -72,6 +72,47 @@ const jsonLd = JSON.stringify({
         "Secure WordPress site",
         "WordPress security best practices",
         "WordPress vulnerability"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faq`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is WordPress security?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WordPress security is the practice of preventing, detecting, and responding to attacks against a WordPress site. It covers four layers: hardening (wp-config, file permissions, user roles), firewall (Cloudflare WAF or Wordfence), authentication (2FA, login limits), and monitoring (daily integrity scans, malware detection, written reports)." }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does WordPress security cost?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A WordPress security audit runs $750 for sites under 50 pages. Standard hardening (audit plus implementation) runs $1,500. Emergency hacked site recovery runs $750 to $2,500. Ongoing monitoring runs $150 to $500/month via care plans." }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a free WordPress security plugin replace a security service?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Free WordPress security plugins handle 40 to 60 percent of the work. They do not perform per-site hardening, configure server-level firewalls, audit user roles, or recover hacked sites. Free plugins are a useful baseline but not a substitute for a real security engagement." }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I know if my WordPress site is hacked?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Common signs include: Google Safe Browsing flag in Search Console, unfamiliar admin users in wp-admin, strange redirects to spam or pharma sites, popups you did not add, search results showing Japanese or pharma keywords, sudden traffic drop, and .php files in /wp-content/uploads." }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does WordPress malware removal take?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Standard WordPress malware removal takes 24 to 48 hours from kickoff to clean confirmation. Simple infections clean in 4 to 8 hours. Deep infections take 48 hours. Google Safe Browsing reconsideration adds 1 to 14 days for Google to re-crawl and clear the warning." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will hardening my WordPress site break it?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Done correctly, hardening will not break a WordPress site. Every hardening rule is verified on staging before production. The Standard package includes a written changelog so you can revert any specific change if it conflicts with future development." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer ongoing WordPress security monitoring?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Pro and WooCommerce care plans include daily security monitoring: file integrity scans, malware checks, uptime monitoring, vulnerability database alerts, and weekly written reports. Standalone monitoring is available at $150/month." }
+        }
       ]
     },
     {
@@ -297,7 +338,7 @@ const faqs = [
             Four security layers
           </p>
           <h2 class="page-h2">
-            Four layers <em>that stop 99% of WordPress attacks.</em>
+            What are the four layers <em>that stop 99% of WordPress attacks?</em>
           </h2>
           <p class="page-section-lead">WordPress security is not one fix; it is a stack. Each layer catches what the previous layer missed. A single security plugin covers parts of two layers; a real engagement covers all four.</p>
         </div>
@@ -325,7 +366,7 @@ const faqs = [
             What we cover
           </p>
           <h2 class="page-h2">
-            Twelve checks <em>across four security layers.</em>
+            What does a WordPress security engagement <em>include?</em>
           </h2>
           <p class="page-section-lead">Hardening, firewall, authentication, and monitoring. Every check is documented in the engagement changelog so future developers know what was changed and why.</p>
         </div>
@@ -353,7 +394,7 @@ const faqs = [
             Three tiers
           </p>
           <h2 class="page-h2">
-            Three <em>WordPress security packages.</em>
+            Which WordPress security package <em>is right for your site?</em>
           </h2>
           <p class="page-section-lead">Each tier is fixed-scope. Recovery is priced per incident based on infection depth, with a $750 minimum and a 24-48 hour SLA from confirmation. For ongoing protection after a one-time hardening engagement, our <a href="/services/wordpress-care-plans/">WordPress care plan</a> includes daily security monitoring, Wordfence management, and malware recovery at no additional charge.</p>
         </div>
@@ -391,7 +432,7 @@ const faqs = [
             When you need it
           </p>
           <h2 class="page-h2">
-            Six signals <em>your WordPress site needs security work.</em>
+            How do you know <em>if your WordPress site needs security work?</em>
           </h2>
         </div>
 
@@ -416,7 +457,7 @@ const faqs = [
             Paid service vs free WordPress security plugin
           </p>
           <h2 class="page-h2">
-            What a paid security engagement covers <em>that a free WordPress security plugin skips.</em>
+            What does a paid security engagement cover <em>that a free WordPress plugin skips?</em>
           </h2>
         </div>
 
@@ -465,7 +506,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 sec-faq-h2">
-            Seven questions <em>before you book.</em>
+            What should you know <em>before booking a WordPress security service?</em>
           </h2>
         </div>
 
