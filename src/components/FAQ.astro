@@ -140,7 +140,7 @@ const categoryColors = {
                 aria-labelledby={`faq-btn-${i}`}
                 hidden={i !== 0 ? true : undefined}
               >
-                <p class="faq-a">{faq.a}</p>
+                <p class="faq-a" set:html={faq.a} />
               </div>
             </div>
           );

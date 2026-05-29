@@ -924,7 +924,7 @@ const schemaData = {
                   aria-labelledby={`acc-faq-btn-${i}`}
                   hidden={i !== 0 ? true : undefined}
                 >
-                  <p class="lf-faq-a">{faq.a}</p>
+                  <p class="lf-faq-a" set:html={faq.a} />
                 </div>
               </div>
             );

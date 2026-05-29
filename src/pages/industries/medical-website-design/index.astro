@@ -887,7 +887,7 @@ const schema = {
                   </span>
                 </button>
                 <div class="lf-faq-answer" id={`lf-faq-${i}`} role="region" aria-labelledby={`lf-faq-btn-${i}`} hidden={i !== 0 ? true : undefined}>
-                  <p class="lf-faq-a">{faq.a}</p>
+                  <p class="lf-faq-a" set:html={faq.a} />
                 </div>
               </div>
             );

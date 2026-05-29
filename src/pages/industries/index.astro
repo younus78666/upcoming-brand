@@ -578,7 +578,7 @@ const faqCategoryColors: Record<string, { bg: string; text: string; border: stri
                 >{f.category}</span>
               </div>
               <h3 class="ih-faq-q">{f.q}</h3>
-              <p class="ih-faq-a">{f.a}</p>
+              <p class="ih-faq-a" set:html={f.a} />
             </div>
           );
         })}

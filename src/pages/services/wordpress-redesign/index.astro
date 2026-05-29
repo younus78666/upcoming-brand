@@ -196,7 +196,7 @@ const faqs = [
                 <span class="rds-faq-q-text">{f.q}</span>
                 <span class="rds-faq-icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
               </summary>
-              <p class="rds-faq-a">{f.a}</p>
+              <p class="rds-faq-a" set:html={f.a} />
             </details>
           ))}
         </div>
