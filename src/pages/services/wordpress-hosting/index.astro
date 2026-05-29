@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -68,6 +68,68 @@ const jsonLd = JSON.stringify({
         "Cloudways WordPress",
         "SiteGround WordPress",
         "WordPress hosting expert"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is WordPress hosting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress hosting is the server infrastructure that runs your WordPress site. It comes in three tiers: shared hosting (Bluehost, GoDaddy, Hostinger) where hundreds of sites share one server, managed WordPress hosting (Kinsta, WP Engine, Cloudways, SiteGround) where the host handles WordPress-specific optimization, and self-hosted (DigitalOcean, AWS, Linode) where you control the server yourself. Most growing businesses outgrow shared hosting between 5,000 and 50,000 monthly visits."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the best WordPress hosting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no single best WordPress hosting. For performance-first marketing sites, Kinsta is excellent. For agency multisite networks, WP Engine is the standard. For flexible-budget setups with full control, Cloudways on DigitalOcean or Vultr is hard to beat. For budget-conscious starter sites, SiteGround is reasonable until renewal pricing kicks in. Our hosting setup engagement includes a host recommendation matched to your specific needs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does WordPress hosting cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quality managed WordPress hosting runs $14 to $200/mo depending on traffic and storage. Cloudways starts at $14/mo on DigitalOcean 1GB. WP Engine and Kinsta start at $25 to $35/mo for 10,000 visits. Enterprise-grade managed WordPress hosting runs $300 to $1,000+/mo. Shared WordPress hosting is cheaper ($3 to $20/mo) but performance and support quality drop accordingly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you sell WordPress hosting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. We are not a hosting reseller and do not earn affiliate commissions on the hosts we recommend. We charge a fixed engagement fee for hosting setup, migration, or ongoing management. The host invoices you directly, avoiding the conflict of interest where agencies push expensive hosts for kickbacks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does WordPress hosting migration take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard WordPress hosting migration takes 5 to 7 business days. Days 1 to 2 cover host setup and staging configuration. Days 3 to 4 cover full site migration and testing. Day 5 covers DNS preparation and cutover scheduling. We then monitor uptime and Search Console for 30 days post-cutover. Larger sites can take 7 to 14 days."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will switching WordPress hosting affect my SEO rankings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Done correctly, switching WordPress hosting will not affect SEO rankings. The site remains at the same URL with the same content. Done badly (no redirect verification, broken canonical tags, lost robots.txt) it can drop rankings temporarily. Our migration includes Search Console verification, robots.txt confirmation, redirect map validation, and 30-day post-cutover ranking monitoring."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you set up WordPress hosting on AWS or DigitalOcean directly?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. For clients who want full control and lower long-term cost, we set up WordPress on AWS Lightsail, DigitalOcean droplets, Linode, or Vultr instances directly. This avoids managed-host markup and gives you root access. Pricing for self-managed hosting setups starts at $1,500 for initial configuration plus optional $300/mo ongoing management."
+          }
+        }
       ]
     },
     {
@@ -284,7 +346,7 @@ const faqs = [
             What we cover
           </p>
           <h2 class="page-h2">
-            Twelve checks <em>across setup, migration, and tuning.</em>
+            What does <em>a WordPress hosting setup include?</em>
           </h2>
           <p class="page-section-lead">From host evaluation to DNS cutover to 30-day monitoring. Every engagement ships with a written hosting configuration document so future developers know exactly what was changed.</p>
         </div>
@@ -311,7 +373,7 @@ const faqs = [
             Three tiers
           </p>
           <h2 class="page-h2">
-            Three <em>WordPress hosting packages.</em>
+            Which <em>WordPress hosting package is right for your site?</em>
           </h2>
           <p class="page-section-lead">Each tier is fixed-scope. The host invoices you directly; we do not mark up hosting fees or earn affiliate commissions on placements. The Managed tier pairs with our <a href="/services/wordpress-care-plans/">WordPress care plan</a>, which adds weekly plugin updates, off-site backups, and a 4-hour human SLA on top of the hosting setup.</p>
         </div>
@@ -348,7 +410,7 @@ const faqs = [
             When you need it
           </p>
           <h2 class="page-h2">
-            Six signals <em>your WordPress hosting needs to change.</em>
+            How do you know <em>when your WordPress hosting needs to change?</em>
           </h2>
         </div>
 
@@ -372,7 +434,7 @@ const faqs = [
             Host comparison
           </p>
           <h2 class="page-h2">
-            How four managed WordPress hosts <em>actually compare.</em>
+            How do Kinsta, WP Engine, Cloudways, <em>and SiteGround actually compare?</em>
           </h2>
           <p class="page-section-lead">Honest comparison from someone who has migrated sites onto and off all four. Pricing accurate as of May 2026; verify on the host website before committing.</p>
         </div>
@@ -413,7 +475,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 hst-faq-h2">
-            Seven questions <em>before you book.</em>
+            What should you ask <em>before booking a WordPress hosting service?</em>
           </h2>
         </div>
 
