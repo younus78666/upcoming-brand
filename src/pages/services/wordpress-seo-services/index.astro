@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -70,6 +70,68 @@ const jsonLd = JSON.stringify({
         "RankMath setup",
         "Yoast SEO configuration",
         "On-page WordPress optimization"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What are WordPress SEO services?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress SEO services are professional engagements that improve a WordPress site's ability to rank in Google and Bing. Quality WordPress SEO services cover schema architecture (LocalBusiness, FAQ, Service, vertical-specific types), on-page optimization (titles, meta descriptions, headings, internal linking), Core Web Vitals tuning, and Search Console monitoring. The strongest WordPress SEO experts handle all four as a single engagement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much do WordPress SEO services cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quality WordPress SEO services run $1,500 to $5,000+ for one-time audits and implementation, or $1,500 to $5,000+ per month for ongoing engagements. Hourly WordPress SEO consultant rates run $80 to $250/hr. Cheap WordPress SEO ($200/month plans) typically delivers automated reports with no actual implementation work."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I need a WordPress SEO expert or can I use Yoast / RankMath myself?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For content-only sites with simple needs, Yoast or RankMath plus a few good guides will get you 70% of the way. For service businesses competing in commercial verticals (legal, medical, dental, real estate, contractor), a WordPress SEO expert is necessary because vertical-specific schema, Local Pack architecture, and internal linking strategy are not covered by stock plugin tutorials."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between RankMath and Yoast SEO?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Both are excellent WordPress SEO plugins. RankMath has a more flexible schema framework and better Local Pack support; Yoast has more refined content readability tools and a longer track record. The choice depends on what your site already uses and what your team is comfortable maintaining post-launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is WordPress good for SEO compared to Shopify or Webflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress is the strongest SEO platform if set up correctly. The advantages: full control over schema markup, page speed, URL structure, internal linking, and content architecture. With proper WordPress SEO services, the platform outperforms Shopify and Webflow on every measurable SEO metric for businesses competing in organic search."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does WordPress SEO take to show results?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Schema and on-page changes typically show in Search Console within 4 to 12 weeks. Local Pack improvements often show in 6 to 12 weeks. Major content gaps and internal linking restructure can take 3 to 6 months to fully reflect in rankings. SEO results compound over time."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you fix SEO problems caused by a previous developer?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most often, yes. Common issues we inherit: schema implemented incorrectly or duplicated, broken redirect maps from previous migrations, plugin bloat killing Core Web Vitals, internal linking that does not follow topical authority, and content that targets keywords nobody searches for. The audit ($1,500) surfaces what is broken; the implementation tier ($3,500) fixes it."
+          }
+        }
       ]
     },
     {
@@ -310,7 +372,7 @@ const faqs = [
             What's included
           </p>
           <h2 class="page-h2">
-            Ten things <em>every WordPress SEO engagement covers.</em>
+            What does <em>every WordPress SEO engagement include?</em>
           </h2>
           <p class="page-section-lead">Tier-independent. The Audit tier covers the same ground as ongoing engagements; only depth and continuity change.</p>
         </div>
@@ -338,7 +400,7 @@ const faqs = [
             Three tiers
           </p>
           <h2 class="page-h2">
-            Three <em>WordPress SEO engagements.</em>
+            Which <em>WordPress SEO engagement is right for your site?</em>
           </h2>
           <p class="page-section-lead">Each tier is fixed-scope, documented in a PDF, and held at the stated price for 30 days after the discovery call.</p>
         </div>
@@ -377,7 +439,7 @@ const faqs = [
             <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
           </div>
           <h2 class="page-h2 seo-capabilities-h2">
-            Six WordPress SEO capabilities <em>under one engagement.</em>
+            What are the six WordPress SEO capabilities <em>we ship in one engagement?</em>
           </h2>
           <p class="seo-capabilities-lead">A real WordPress SEO expert ships across all six. Not just a Yoast checklist run, not just a meta-title rewrite. The compound effect is the point.</p>
         </div>
@@ -403,7 +465,7 @@ const faqs = [
             When you need it
           </p>
           <h2 class="page-h2">
-            Six signals <em>your site needs WordPress SEO services.</em>
+            How do you know <em>if your site needs WordPress SEO services?</em>
           </h2>
           <p class="page-section-lead">If two or more match, the right answer is a WordPress SEO audit followed by full implementation. Not a hourly consultant retainer. Maryland businesses also benefit from our dedicated <a href="/services/local-seo-maryland/">local SEO services in Maryland</a> covering Google Business Profile and Local Pack ranking. Before starting full implementation, many clients commission a standalone <a href="/services/seo-audit/">SEO audit</a> to baseline the existing site. After implementation, a <a href="/services/wordpress-care-plans/">WordPress care plan</a> preserves rankings through safe plugin updates and monthly schema validation.</p>
         </div>
@@ -430,7 +492,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 seo-faq-h2">
-            Seven questions <em>before you hire.</em>
+            What should you ask <em>before hiring a WordPress SEO expert?</em>
           </h2>
         </div>
 
