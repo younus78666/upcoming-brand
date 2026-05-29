@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2", ".page-lead"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -71,6 +71,68 @@ const jsonLd = JSON.stringify({
         "WordPress speed plugin",
         "Optimize WordPress",
         "WordPress slow"
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is WordPress speed optimization?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "WordPress speed optimization is the process of reducing how long your WordPress site takes to load and become interactive. It covers five layers: server response (TTFB, caching, PHP tuning), frontend rendering (render-blocking JS and CSS, critical CSS), image pipeline (WebP, AVIF, lazy loading, hero preload), Core Web Vitals tuning (LCP, INP, CLS field data), and ongoing monitoring. The output is a Lighthouse 90+ score on every key page and green Core Web Vitals in Search Console."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does WordPress speed optimization cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quality WordPress speed optimization services run $750 to $5,000+ depending on site complexity. A speed audit alone runs $750. Standard speed optimization (audit plus full implementation) runs $1,500 for sites under 200 pages. Custom speed optimization for WooCommerce stores, multilingual sites, or JS-heavy custom themes starts at $4,500."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can a free WordPress speed plugin replace this service?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Free WordPress speed plugins (W3 Total Cache, WP Super Cache, Autoptimize) handle 30 to 50 percent of the work. They enable caching but cannot diagnose render-blocking specifics, identify the LCP element on each page, or fix server-side TTFB. Paid plugins are better but still apply blanket settings to every site. Real WordPress speed optimization requires per-page analysis a plugin cannot perform."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good WordPress Lighthouse score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A good WordPress Lighthouse mobile score is 90 or above. Anything 70 to 89 is acceptable but suboptimal. Below 70 is actively losing search visibility. Desktop scores of 95+ are achievable for most marketing sites; mobile is harder because Lighthouse simulates a slower 4G connection. Our contract guarantees 90+ mobile Lighthouse on every key page after optimization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does WordPress speed optimization take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Standard WordPress speed optimization takes 5 to 7 business days from kickoff to delivery. The audit phase takes 1 to 2 days. Implementation runs 2 to 4 days. Verification and monitoring setup runs 1 day. Custom projects (WooCommerce, multilingual, JS-heavy themes) take 2 to 3 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you guarantee a specific Lighthouse score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The Standard and Custom packages guarantee 90+ mobile Lighthouse on every key page contractually. The Audit-only package does not guarantee a score because we are not implementing the fixes. If we miss the contractual score, we work the issue at no charge until it passes or refund 50 percent of the fee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will speeding up my WordPress site improve rankings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Speed has measurable ranking impact in two specific cases. First, when a site is below the Core Web Vitals threshold, Google treats it as a usability signal that suppresses rankings. Moving from red to green typically returns 5 to 15 percent of lost traffic. Second, faster pages reduce bounce rate, improving engagement signals. Speed alone will not lift a site with weak content or no schema."
+          }
+        }
       ]
     },
     {
@@ -296,7 +358,7 @@ const faqs = [
             Core Web Vitals
           </p>
           <h2 class="page-h2">
-            Four metrics <em>that decide your search visibility.</em>
+            What are the four Core Web Vitals <em>that decide your search visibility?</em>
           </h2>
           <p class="page-section-lead">Google's Core Web Vitals are the field-data benchmarks that decide whether Search Console flags your site as slow. WordPress speed optimization targets each metric individually, not via a blanket plugin setting.</p>
         </div>
@@ -325,7 +387,7 @@ const faqs = [
             What we optimize
           </p>
           <h2 class="page-h2">
-            Twelve checks <em>across five layers.</em>
+            What does <em>a WordPress speed optimization engagement include?</em>
           </h2>
           <p class="page-section-lead">Server, frontend, images, Core Web Vitals, and verification. Every fix is documented with before / after numbers in the final report.</p>
         </div>
@@ -353,7 +415,7 @@ const faqs = [
             Three tiers
           </p>
           <h2 class="page-h2">
-            Three <em>WordPress speed packages.</em>
+            Which <em>WordPress speed package is right for your site?</em>
           </h2>
           <p class="page-section-lead">Each tier is fixed-scope, documented in a PDF, and held at the stated price for 30 days after the discovery call. To maintain your Lighthouse score after the engagement, pair any speed sprint with a <a href="/services/wordpress-care-plans/">WordPress care plan</a> that includes monthly Core Web Vitals monitoring.</p>
         </div>
@@ -391,7 +453,7 @@ const faqs = [
             When you need it
           </p>
           <h2 class="page-h2">
-            Six signals <em>your WordPress site needs speed optimization.</em>
+            How do you know <em>if your WordPress site needs speed optimization?</em>
           </h2>
         </div>
 
@@ -416,7 +478,7 @@ const faqs = [
             Paid service vs free WordPress speed plugin
           </p>
           <h2 class="page-h2">
-            What a paid speed engagement covers <em>that a free WordPress speed plugin skips.</em>
+            What does a paid speed engagement cover <em>that a free WordPress speed plugin skips?</em>
           </h2>
         </div>
 
@@ -465,7 +527,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 spd-faq-h2">
-            Seven questions <em>before you book.</em>
+            What should you ask <em>before booking a WordPress speed optimization service?</em>
           </h2>
         </div>
 
