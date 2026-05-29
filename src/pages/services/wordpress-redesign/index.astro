@@ -22,7 +22,7 @@ const jsonLd = JSON.stringify({
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
       "primaryImageOfPage": { "@id": "https://www.upcomingbrand.com/#logo" },
-      "dateModified": "2026-05-03",
+      "dateModified": "2026-05-30",
       "speakable": { "@type": "SpeakableSpecification", "cssSelector": ["h1", "h2"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
@@ -44,6 +44,60 @@ const jsonLd = JSON.stringify({
       "offers": { "@type": "Offer", "price": "2500", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "priceValidUntil": "2026-12-31" },
       "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "12", "bestRating": "5" },
       "knowsAbout": ["WordPress redesign", "WordPress redesign service", "Redesign WordPress site", "Website redesign service", "WordPress refresh", "WordPress site refresh", "Rebrand WordPress site", "WordPress redesign cost"]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${canonical}#faqpage`,
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a WordPress redesign?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A WordPress redesign is the process of updating an existing WordPress site's visual design, structure, or both without losing the rankings, content, and traffic the original site has built. Quality WordPress redesigns preserve URL structure, schema, internal linking, and content depth while refreshing visual design, custom blocks, performance, and conversion architecture."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does a WordPress redesign cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quality WordPress redesigns run $2,500 to $15,000+ depending on scope. A visual refresh runs $2,500 for sites under 10 pages. A full redesign (new design system, custom blocks, schema rebuild) runs $5,000 for sites under 30 pages. Custom redesigns with information architecture changes or WooCommerce overhauls start at $10,000."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Will a WordPress redesign hurt my SEO rankings?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Done correctly, a WordPress redesign improves SEO rankings rather than hurting them. Done badly (URL changes without redirects, schema removed, content depth reduced), redesigns can drop rankings 30 to 60 percent. Our process preserves URL structure by default, validates schema on every page, and rebuilds internal linking. Redirect maps cover any unavoidable URL changes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a WordPress redesign take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A visual refresh takes 3 to 5 weeks. A full redesign takes 6 to 8 weeks. Custom redesigns with structural changes take 8 to 14 weeks. We commit to a delivery date in the SOW and credit 10 percent of the fee if we miss it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you redesign Divi sites?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. We migrate Divi and WPBakery sites to Elementor Pro on Astra Pro during the redesign. This removes the heavy page builder dependency, reduces page weight, and lifts Lighthouse scores significantly. Migration is included in the Standard and Custom redesign tiers without additional cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between a redesign and a rebuild?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A redesign preserves the existing site's URL structure, content, and SEO equity while refreshing design and structure. A rebuild starts from scratch with new URLs, new content, and a new architecture. Redesigns cost less, take less time, and protect rankings. Rebuilds make sense when the site is so structurally broken that fixing it costs more than starting fresh."
+          }
+        }
+      ]
     }
   ]
 });
@@ -142,7 +196,7 @@ const faqs = [
       <div class="container">
         <div class="rds-tiers-head">
           <p class="rds-section-eyebrow"><span class="rds-section-eyebrow-line"></span>Three tiers</p>
-          <h2 class="page-h2">Three <em>WordPress redesign packages.</em></h2>
+          <h2 class="page-h2">Which <em>WordPress redesign package is right for your site?</em></h2>
           <p class="page-section-lead">Each tier is fixed-scope. The Refresh tier is for budget-constrained brand updates; Standard is the most common engagement; Custom handles structural changes. If the existing site's platform is the core problem rather than the design, our <a href="/services/wordpress-migration/">WordPress migration service</a> handles switching from Wix, Squarespace, or GoDaddy. After a redesign goes live, pairing with a <a href="/services/wordpress-care-plans/">WordPress care plan</a> prevents update-related regressions from undoing the performance gains.</p>
         </div>
         <div class="rds-tiers-grid">
@@ -168,7 +222,7 @@ const faqs = [
       <div class="container">
         <div class="rds-when-head">
           <p class="rds-section-eyebrow"><span class="rds-section-eyebrow-line"></span>When you need it</p>
-          <h2 class="page-h2">Six signals <em>your WordPress site needs a redesign.</em></h2>
+          <h2 class="page-h2">How do you know <em>if your WordPress site needs a redesign?</em></h2>
         </div>
         <div class="rds-when-grid">
           {whenRedesign.map((w) => (
@@ -186,7 +240,7 @@ const faqs = [
       <div class="container">
         <div class="rds-faq-head">
           <div class="page-eyebrow-strip"><span class="page-eyebrow-line"></span><span class="page-eyebrow-text">WordPress redesign FAQ</span><span class="page-eyebrow-line"></span></div>
-          <h2 class="page-h2 rds-faq-h2">Six questions <em>before you book.</em></h2>
+          <h2 class="page-h2 rds-faq-h2">What should you ask <em>before booking a WordPress redesign?</em></h2>
         </div>
         <div class="rds-faq-list">
           {faqs.map((f, i) => (
