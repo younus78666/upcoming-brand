@@ -96,10 +96,10 @@ const jsonLd = JSON.stringify({
         { "@type": "Question", "name": "What's the difference between custom WordPress design and a theme?",       "acceptedAnswer": { "@type": "Answer", "text": "A theme is a pre-built template you customize within its constraints. Custom WordPress design is built from scratch around your specific content patterns, schema needs, and conversion architecture." } },
         { "@type": "Question", "name": "What page builder do you use for WordPress projects?",                     "acceptedAnswer": { "@type": "Answer", "text": "We build on Elementor Pro and Astra Pro. Elementor Pro gives editors a visual drag-and-drop interface that stays manageable long-term, and Astra Pro is one of the fastest, most performance-friendly WordPress themes available." } },
         { "@type": "Question", "name": "How long does a WordPress web design project take?",                       "acceptedAnswer": { "@type": "Answer", "text": "Starter (8 pages) ships in 4-6 weeks, Growth (15-20 pages) in 6-8 weeks, Custom (WooCommerce / IDX / multi-location) in 8-10 weeks." } },
-        { "@type": "Question", "name": "Will the new site lose my Google rankings?",                               "acceptedAnswer": { "@type": "Answer", "text": "Not if the migration is handled correctly. We map every existing URL, build a complete 301 redirect map, run the cutover during a low-traffic window, and monitor Search Console for 30 days post-launch." } },
+        { "@type": "Question", "name": "Will the new site lose my Google rankings?",                               "acceptedAnswer": { "@type": "Answer", "text": "Not if the migration is handled correctly. We map every existing URL, build a complete 301 redirect map, run the cutover during a low-traffic window, and monitor Search Console for 30 days post-launch. Properly migrated WordPress sites recover all top-10 rankings within 4 weeks." } },
         { "@type": "Question", "name": "Do you write the website copy or do I provide it?",                        "acceptedAnswer": { "@type": "Answer", "text": "We write copy on every project tier. You complete a structured questionnaire after discovery and we draft service pages, team bios, FAQs, and city landing pages." } },
         { "@type": "Question", "name": "What's included in the 90+ Lighthouse guarantee?",                        "acceptedAnswer": { "@type": "Answer", "text": "Every page on launch day must hit 90+ in all four Lighthouse categories: Performance, Accessibility, Best Practices, and SEO. If a page ships below the bar, we don't invoice the final launch milestone until it's green." } },
-        { "@type": "Question", "name": "Can you redesign my existing WordPress site without rebuilding it?",        "acceptedAnswer": { "@type": "Answer", "text": "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. Redesigns start at $2,500." } },
+        { "@type": "Question", "name": "Can you redesign my existing WordPress site without rebuilding it?",        "acceptedAnswer": { "@type": "Answer", "text": "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. If the site has 40+ active plugins, broken schema, or Lighthouse scores in the 30s, you need a rebuild. We audit the current state during discovery and give a direct redesign vs rebuild recommendation. Redesigns start at $2,500." } },
         { "@type": "Question", "name": "What does a custom WordPress website include?",                            "acceptedAnswer": { "@type": "Answer", "text": "Every custom WordPress website includes: custom Figma design, Elementor Pro on Astra Pro, mobile-first responsive layouts, LocalBusiness and FAQ schema, Google Analytics 4 and Search Console setup, image optimization, contact forms, 90+ Lighthouse on every page, WCAG 2.1 AA accessibility review, two design review rounds, a full 301 redirect map, and 30 days of post-launch monitoring." } },
         { "@type": "Question", "name": "Is custom WordPress design worth it?",                                      "acceptedAnswer": { "@type": "Answer", "text": "For most Maryland businesses competing in local search, yes. A custom WordPress build gives you schema control, 90+ Lighthouse, and ADA compliance that template-based sites structurally cannot match." } }
       ]
@@ -320,7 +320,7 @@ const faqs = [
   },
   {
     q: "Will the new site lose my Google rankings?",
-    a: "Not if the migration is handled correctly. We map every existing URL, build a complete 301 redirect map, run the cutover during a low-traffic window, and monitor Search Console for 30 days post-launch. Properly migrated WordPress sites typically recover all top-10 rankings within 4 weeks. We've handled hundreds of migrations with zero ranking loss when we control the redirect map and DNS schedule.",
+    a: "Not if the migration is handled correctly. We map every existing URL, build a complete 301 redirect map, run the cutover during a low-traffic window, and monitor Search Console for 30 days post-launch. Properly migrated WordPress sites recover all top-10 rankings within 4 weeks. We've handled hundreds of migrations with zero ranking loss when we control the redirect map and DNS schedule.",
   },
   {
     q: "Do you write the website copy or do I provide it?",
@@ -332,7 +332,7 @@ const faqs = [
   },
   {
     q: "Can you redesign my existing WordPress site without rebuilding it?",
-    a: "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. If the site has 40+ active plugins, broken schema, or Lighthouse scores in the 30s, redesign is the wrong tool. You need a rebuild. We audit the current state during discovery and recommend the right approach honestly. Redesigns start at $2,500.",
+    a: "Sometimes. If the existing site has clean architecture (no plugin bloat, valid schema, decent performance baseline) we can run a redesign sprint that refreshes the visual layer without touching the codebase. If the site has 40+ active plugins, broken schema, or Lighthouse scores in the 30s, redesign is the wrong tool. You need a rebuild. We audit the current state during discovery and give a direct redesign vs rebuild recommendation. Redesigns start at $2,500.",
   },
   {
     q: "What does a custom WordPress website include?",
@@ -340,7 +340,7 @@ const faqs = [
   },
   {
     q: "Is custom WordPress design worth it?",
-    a: "For most Maryland businesses competing in local search, yes. A custom WordPress build gives you schema control, 90+ Lighthouse, and ADA compliance that template-based sites structurally cannot match. The cost difference between a $400 ThemeForest theme and a $1,500 custom build pays back in two ways: better local rankings from schema accuracy, and lower long-term maintenance cost from not fighting a stock theme's constraints every time you update the site. If you're getting fewer than 200 visits per month or have no competition in your market, a template may be sufficient. Be honest about where you are in your market before investing in custom.",
+    a: "For most Maryland businesses competing in local search, yes. A custom WordPress build gives you schema control, 90+ Lighthouse, and ADA compliance that template-based sites structurally cannot match. The cost difference between a $400 ThemeForest theme and a $1,500 custom build pays back in two ways: better local rankings from schema accuracy, and lower long-term maintenance cost from not fighting a stock theme's constraints every time you update the site. If you're getting fewer than 200 visits per month or have no competition in your market, a template may be sufficient. Know where you stand in your market before investing in custom.",
   },
 ];
 ---
@@ -349,7 +349,7 @@ const faqs = [
   description="Custom WordPress website design Maryland. Elementor Pro, schema architecture, 90+ Lighthouse. Fixed-scope from $1,500. Maryland's top-rated WP design agency."
   canonicalUrl={canonical}
   ogImage="https://www.upcomingbrand.com/og/wordpress-web-design.jpg"
-  ogImageAlt="Custom WordPress web design services Maryland — Upcoming Brand"
+  ogImageAlt="Custom WordPress web design services Maryland | Upcoming Brand"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLd} />
@@ -641,7 +641,7 @@ const faqs = [
             Three tiers
           </p>
           <h2 class="page-h2">
-            Three <em>WordPress web design packages.</em>
+            Which three <em>WordPress web design packages do we offer?</em>
           </h2>
           <p class="page-section-lead">Each tier is fixed-scope, documented in a PDF, and held at the stated price for 30 days after the discovery call.</p>
         </div>
@@ -720,7 +720,7 @@ const faqs = [
             Industry expertise
           </p>
           <h2 class="page-h2">
-            WordPress web design <em>across nine verticals.</em>
+            Which nine verticals <em>get dedicated WordPress web design?</em>
           </h2>
           <p class="page-section-lead">Each vertical gets vertical-specific schema, compliance-aware copy, and conversion architecture matched to how that industry's customers actually decide.</p>
         </div>
@@ -745,7 +745,7 @@ const faqs = [
             Maryland coverage
           </p>
           <h2 class="page-h2">
-            WordPress web design <em>across Maryland.</em>
+            Which Maryland cities <em>does Upcoming Brand serve?</em>
           </h2>
           <p class="page-section-lead">Our WordPress designers serve Maryland businesses statewide, fully remote via Zoom and async review. As a Maryland-based WordPress web design agency, we cover all 23 counties with no geographic surcharge and no local-only restrictions.</p>
         </div>
@@ -774,7 +774,7 @@ const faqs = [
             <span class="page-eyebrow-line"></span>
           </div>
           <h2 class="page-h2 svc-faq-h2">
-            Ten questions <em>before you hire.</em>
+            What do clients ask <em>before hiring a WordPress web designer?</em>
           </h2>
         </div>
 
