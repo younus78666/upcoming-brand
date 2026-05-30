@@ -674,6 +674,67 @@ const faqs = [
       </div>
     </section>
 
+    <!-- ====== COST LADDER ====== -->
+  <section class="lp-cost section-pad-sm" id="agency-pricing" aria-labelledby="cost-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Transparent pricing</p>
+        <h2 class="h2-section" id="cost-heading">What does a Maryland WordPress agency project cost?</h2>
+        <p class="lead">WordPress agency projects at Upcoming Brand cost between <strong>$1,500 and $10,000+</strong> fixed-scope. No retainers, no hourly billing, no scope-creep invoices. One price before the project starts.</p>
+      </div>
+      <div class="lp-cost-ladder">
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$1,500 - $3,500</div>
+          <div class="lp-cost-name">Starter</div>
+          <div class="lp-cost-desc">Custom 8-page WordPress site with schema, 90+ PageSpeed, contact forms, and Core Web Vitals green on delivery. Best for small businesses and solo practitioners replacing a template or Wix site and competing in local search.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$3,500 - $6,000</div>
+          <div class="lp-cost-name">Growth</div>
+          <div class="lp-cost-desc">Up to 20 pages with custom design, city landing pages, vertical-specific schema, multi-step intake form, and full Local Pack optimization. Best for businesses competing in Baltimore, DC metro, or competitive Maryland markets where organic search drives revenue.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$6,000+</div>
+          <div class="lp-cost-name">Custom</div>
+          <div class="lp-cost-desc">WooCommerce stores, IDX real estate sites, HIPAA-aware medical builds, multi-location schema networks, and complex integrations. Scoped after a free discovery call - every Custom build is quoted individually.</div>
+        </div>
+      </div>
+      <p class="lp-cost-note">Need to <a href="/tools/installment-calculator/">spread the cost</a>? Use our <a href="/tools/installment-calculator/">payment plan calculator</a>. <a href="/pricing/">Full pricing breakdown &rarr;</a></p>
+    </div>
+  </section>
+
+    <!-- ====== IS THIS RIGHT FOR YOU ====== -->
+  <section class="lp-eval section-pad-sm" aria-labelledby="eval-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Is this right for you?</p>
+        <h2 class="h2-section" id="eval-heading">Is Upcoming Brand the right WordPress agency for your project?</h2>
+        <p class="lead">We work with a specific type of client. Here is an honest description of who we are and are not a good fit for.</p>
+      </div>
+      <div class="lp-eval-cols">
+        <div class="lp-eval-col lp-eval-yes">
+          <h3 class="lp-eval-col-title">Strong fit if you:</h3>
+          <ul class="lp-eval-list">
+            <li>Need your website to generate leads or rank in Google - not just look good as a digital business card</li>
+            <li>Operate in a vertical where schema, Local Pack, and Core Web Vitals matter (law, medical, dental, real estate, contractor, restaurant, nonprofit)</li>
+            <li>Want a fixed price before the project starts - not an estimate that changes as the scope becomes clearer</li>
+            <li>Want direct access to the senior developer writing your code - not an account manager who relays messages to an offshore team</li>
+            <li>Are comfortable with a remote-first, async workflow (Zoom calls, staging URL reviews, written updates) and don't need weekly in-person meetings</li>
+          </ul>
+        </div>
+        <div class="lp-eval-col lp-eval-no">
+          <h3 class="lp-eval-col-title">Not the right fit if you:</h3>
+          <ul class="lp-eval-list">
+            <li>Need a site built in under 2 weeks - we don't rush builds that need schema, performance, and SEO done correctly</li>
+            <li>Want the cheapest possible option - if budget is the primary criterion and quality is secondary, there are faster and cheaper alternatives</li>
+            <li>Prefer a large agency with a dedicated account manager, project coordinator, and weekly status decks - we're a focused studio, not a full-service agency</li>
+            <li>Need a physical office visit - every engagement is fully remote</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
     <!-- ====== FAQ ====== -->
     <section class="agency-faq">
       <div class="container">
@@ -1651,6 +1712,242 @@ const faqs = [
   .agency-pricing-foot-link:hover {
     gap: 12px;
     color: var(--ink);
+  }
+
+  /* ===========================================
+     COST LADDER
+     =========================================== */
+  .lp-cost {
+    background: var(--paper);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .section-pad-sm {
+    padding-top: clamp(56px, 8vh, 96px);
+    padding-bottom: clamp(56px, 8vh, 96px);
+  }
+
+  .lp-section-intro {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .lp-section-intro .eyebrow {
+    font-family: var(--f-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .lp-section-intro .h2-section {
+    font-family: var(--f-display);
+    font-weight: 400;
+    font-size: clamp(26px, 3.2vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .lp-section-intro .lead {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    max-width: 60ch;
+    margin: 0;
+  }
+
+  .lp-cost-ladder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 1100px;
+    margin: 0 auto 28px;
+  }
+
+  .lp-cost-tier {
+    padding: 28px 26px 26px;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-md);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lp-cost-tier::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--amber);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .lp-cost-tier:hover {
+    border-color: var(--amber);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(212,147,46,0.12);
+  }
+
+  .lp-cost-tier:hover::before {
+    transform: scaleX(1);
+  }
+
+  .lp-cost-range {
+    font-family: var(--f-display);
+    font-size: clamp(24px, 3vw, 36px);
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    color: var(--amber-deep);
+    line-height: 1;
+  }
+
+  .lp-cost-name {
+    font-family: var(--f-mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .lp-cost-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-top: 8px;
+  }
+
+  .lp-cost-note {
+    text-align: center;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .lp-cost-note a {
+    color: var(--amber-deep);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    font-weight: 500;
+  }
+
+  .lp-cost-note a:hover {
+    color: var(--ink);
+  }
+
+  /* ===========================================
+     EVALUATION / FIT CHECK
+     =========================================== */
+  .lp-eval {
+    background: var(--cream);
+    padding: clamp(56px, 8vh, 96px) 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .lp-eval-cols {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .lp-eval-col {
+    padding: 32px 30px;
+    border-radius: var(--radius-md);
+    border: 1.5px solid var(--line);
+  }
+
+  .lp-eval-yes {
+    background: var(--paper);
+    border-color: rgba(92,128,64,0.25);
+  }
+
+  .lp-eval-no {
+    background: var(--paper);
+    border-color: rgba(176,74,62,0.2);
+  }
+
+  .lp-eval-col-title {
+    font-family: var(--f-display);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+    margin: 0 0 20px;
+  }
+
+  .lp-eval-yes .lp-eval-col-title {
+    color: var(--green, #5c8040);
+  }
+
+  .lp-eval-no .lp-eval-col-title {
+    color: var(--red, #b04a3e);
+  }
+
+  .lp-eval-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .lp-eval-list li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    padding-left: 22px;
+    position: relative;
+  }
+
+  .lp-eval-yes .lp-eval-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(92,128,64,0.18);
+    border: 1.5px solid rgba(92,128,64,0.45);
+  }
+
+  .lp-eval-no .lp-eval-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(176,74,62,0.1);
+    border: 1.5px solid rgba(176,74,62,0.35);
+  }
+
+  @media (max-width: 1024px) {
+    .lp-cost-ladder { grid-template-columns: 1fr; }
+    .lp-eval-cols { grid-template-columns: 1fr; }
   }
 
   /* ===========================================

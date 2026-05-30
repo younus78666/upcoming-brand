@@ -596,6 +596,34 @@ const faqs = [
       </div>
     </section>
 
+  <section class="lp-cost section-pad-sm" id="woo-pricing" aria-labelledby="cost-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Transparent pricing</p>
+        <h2 class="h2-section" id="cost-heading">What does WooCommerce development cost in Maryland?</h2>
+        <p class="lead">A custom WooCommerce store for a Maryland business costs between <strong>$4,500 and $15,000</strong> depending on catalog size and custom functionality. Every quote is fixed-scope - one price, no hourly surprises.</p>
+      </div>
+      <div class="lp-cost-ladder">
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$4,500 - $7,000</div>
+          <div class="lp-cost-name">Starter Store</div>
+          <div class="lp-cost-desc">Up to 50 products, custom WooCommerce design on Elementor Pro and Astra, Stripe and PayPal checkout, Product schema, abandoned cart recovery, 90+ PageSpeed, and Google Analytics e-commerce tracking. Best for Maryland businesses launching their first online store.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$7,000 - $12,000</div>
+          <div class="lp-cost-name">Growth Store</div>
+          <div class="lp-cost-desc">50-500 products, product variations, subscription products (WooCommerce Subscriptions), advanced product filtering, Google Shopping feed setup, multi-payment gateway, membership-based pricing, and category page SEO architecture. Best for scaling Maryland retailers.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$12,000+</div>
+          <div class="lp-cost-name">Enterprise or B2B</div>
+          <div class="lp-cost-desc">Large catalogs (500+ products), B2B wholesale pricing tiers, quote request workflows, ERP/inventory integrations (QuickBooks, Shopify migration), multi-vendor marketplace, and custom checkout logic. Scope and price set after discovery.</div>
+        </div>
+      </div>
+      <p class="lp-cost-note">Need to <a href="/tools/installment-calculator/">spread the cost</a>? Use our <a href="/tools/installment-calculator/">payment plan calculator</a>. <a href="/pricing/">Full pricing breakdown &rarr;</a></p>
+    </div>
+  </section>
+
     <!-- ====== FAQ ====== -->
     <section class="woo-faq">
       <div class="container">
@@ -677,6 +705,23 @@ const faqs = [
 </BaseLayout>
 
 <style>
+  /* PRICING COST SECTION */
+  .lp-cost { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .lp-section-intro { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+  .lp-section-intro .eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin: 0 0 10px; }
+  .lp-section-intro .h2-section { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 0 0 16px; }
+  .lp-section-intro .lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+  .lp-section-intro .lead strong { font-weight: 600; color: var(--ink); }
+  .lp-cost-ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .lp-cost-tier { background: var(--cream); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; transition: all 0.3s ease; }
+  .lp-cost-tier:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(212,147,46,0.1); }
+  .lp-cost-range { font-family: var(--f-display); font-size: 28px; font-weight: 500; letter-spacing: -0.02em; color: var(--amber-deep); line-height: 1; }
+  .lp-cost-name { font-family: var(--f-display); font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+  .lp-cost-desc { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; flex: 1; }
+  .lp-cost-note { text-align: center; font-size: 14px; color: var(--ink-soft); margin: 32px auto 0; max-width: 60ch; }
+  .lp-cost-note a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 2px; font-weight: 500; }
+  @media (max-width: 1024px) { .lp-cost-ladder { grid-template-columns: 1fr; } }
+
   /* SHARED */
   .page-eyebrow-strip {
     display: inline-flex;

@@ -411,6 +411,37 @@ const faqs = [
       </div>
     </section>
 
+    <!-- ══════════════════════════════════════════
+         PRICING
+    ══════════════════════════════════════════ -->
+    <section class="lp-cost section-pad-sm" id="mig-pricing" aria-labelledby="cost-heading">
+      <div class="container">
+        <div class="lp-section-intro">
+          <p class="eyebrow">Transparent pricing</p>
+          <h2 class="h2-section" id="cost-heading">What does a WordPress migration cost?</h2>
+          <p class="lead">WordPress migration is a <strong>fixed-scope service starting at $750</strong> for straightforward platform moves. Complex migrations with large redirect maps run $1,500 - $2,500. Every migration includes a complete 301 redirect map and 30-day Search Console monitoring.</p>
+        </div>
+        <div class="lp-cost-ladder">
+          <div class="lp-cost-tier">
+            <div class="lp-cost-range">$750</div>
+            <div class="lp-cost-name">Platform Migration</div>
+            <div class="lp-cost-desc">Wix, Squarespace, or GoDaddy to WordPress. Complete 301 redirect map, content migration, DNS cutover, and 30-day Search Console monitoring. Best for sites with under 50 pages and no significant organic rankings to protect.</div>
+          </div>
+          <div class="lp-cost-tier">
+            <div class="lp-cost-range">$1,500</div>
+            <div class="lp-cost-name">SEO-Safe Migration</div>
+            <div class="lp-cost-desc">Full migration with pre-launch ranking benchmark, complete URL audit, 301 redirect map for every indexed URL, zero-downtime DNS cutover, and 30-day post-launch Search Console monitoring with ranking comparison report. Best for sites with meaningful organic rankings that cannot afford position loss.</div>
+          </div>
+          <div class="lp-cost-tier">
+            <div class="lp-cost-range">$2,500</div>
+            <div class="lp-cost-name">Migration + Redesign</div>
+            <div class="lp-cost-desc">Full SEO-safe migration combined with a custom WordPress redesign on the new platform. Same redirect and monitoring deliverables plus new design, schema rebuild, and speed optimization. Best for businesses whose old platform site also needs a visual and technical overhaul.</div>
+          </div>
+        </div>
+        <p class="lp-cost-note">Every migration includes a no-ranking-loss guarantee - if rankings drop due to a technical error we caused, we fix it under the original scope. <a href="/pricing/">Full pricing breakdown &rarr;</a></p>
+      </div>
+    </section>
+
     <!-- FAQ -->
     <section class="mig-faq">
       <div class="container">
@@ -656,4 +687,23 @@ const faqs = [
     .mig-faq-a { padding-left: 24px; }
   }
   @media (max-width: 640px) { .page-eyebrow-line { width: 24px; } }
+
+  /* PRICING */
+  .lp-cost { background: var(--cream); border-bottom: 1px solid var(--line); }
+  .section-pad-sm { padding: clamp(48px, 6vh, 80px) 0; }
+  .lp-section-intro { text-align: center; max-width: 720px; margin: 0 auto 40px; }
+  .lp-section-intro .eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin: 0 0 12px; }
+  .lp-section-intro .h2-section { font-family: var(--f-display); font-weight: 400; font-size: clamp(24px, 3vw, 38px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 0 0 16px; }
+  .lp-section-intro .lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+  .lp-section-intro .lead strong { font-weight: 600; color: var(--ink); }
+  .lp-cost-ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto 24px; }
+  .lp-cost-tier { padding: 28px 26px 24px; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); display: flex; flex-direction: column; gap: 10px; transition: all 0.3s ease; }
+  .lp-cost-tier:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 26px rgba(212,147,46,0.1); }
+  .lp-cost-range { font-family: var(--f-display); font-size: 28px; line-height: 1; color: var(--amber-deep); font-weight: 500; letter-spacing: -0.02em; }
+  .lp-cost-name { font-family: var(--f-display); font-size: 17px; font-weight: 600; color: var(--ink); letter-spacing: -0.01em; padding-top: 8px; border-top: 1px dashed var(--line); }
+  .lp-cost-desc { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; }
+  .lp-cost-note { text-align: center; max-width: 640px; margin: 0 auto; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+  .lp-cost-note a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 3px; }
+  .lp-cost-note a:hover { color: var(--ink); }
+  @media (max-width: 1024px) { .lp-cost-ladder { grid-template-columns: 1fr; } }
 </style>

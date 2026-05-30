@@ -478,6 +478,34 @@ const faqs = [
       </div>
     </section>
 
+  <section class="lp-cost section-pad-sm" id="audit-pricing" aria-labelledby="cost-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Transparent pricing</p>
+        <h2 class="h2-section" id="cost-heading">What does a WordPress SEO audit cost?</h2>
+        <p class="lead">A comprehensive WordPress SEO audit costs <strong>$1,500 as a fixed-scope engagement</strong>. The fee is credited toward implementation if you proceed. Delivered in 5-7 business days.</p>
+      </div>
+      <div class="lp-cost-ladder">
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$1,500</div>
+          <div class="lp-cost-name">SEO Audit</div>
+          <div class="lp-cost-desc">Full technical SEO audit covering schema architecture, Core Web Vitals scores, on-page optimization gaps, internal linking structure, content gap analysis, and Local Pack eligibility check. Delivered as a prioritized action list you can take to any developer. Fee credited toward implementation if you proceed with us.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$3,500 - $5,000</div>
+          <div class="lp-cost-name">Audit + Implementation</div>
+          <div class="lp-cost-desc">The full audit plus implementation of every finding. Schema architecture rebuild, RankMath Pro configuration, internal linking restructure, on-page optimization for all target pages, and 60-day Search Console monitoring. Audit fee credited toward total. Best for sites where you want the problems found and fixed in a single engagement.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$750</div>
+          <div class="lp-cost-name">Quick Schema Audit</div>
+          <div class="lp-cost-desc">Focused audit of JSON-LD schema only - checking current implementation against Google Rich Results Test requirements, identifying duplicate or incorrect types, and delivering a specific fix list. Best for businesses that have already had an SEO audit and want a targeted schema review.</div>
+        </div>
+      </div>
+      <p class="lp-cost-note">The audit tells you exactly what's broken - so you only pay to fix what actually needs fixing. <a href="/pricing/">Full pricing breakdown &rarr;</a></p>
+    </div>
+  </section>
+
     <!-- FAQ -->
     <section class="aud-faq">
       <div class="container">
@@ -558,6 +586,23 @@ const faqs = [
 </BaseLayout>
 
 <style>
+  /* PRICING COST SECTION */
+  .lp-cost { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .lp-section-intro { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+  .lp-section-intro .eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin: 0 0 10px; }
+  .lp-section-intro .h2-section { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 0 0 16px; }
+  .lp-section-intro .lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+  .lp-section-intro .lead strong { font-weight: 600; color: var(--ink); }
+  .lp-cost-ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .lp-cost-tier { background: var(--cream); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; transition: all 0.3s ease; }
+  .lp-cost-tier:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(212,147,46,0.1); }
+  .lp-cost-range { font-family: var(--f-display); font-size: 28px; font-weight: 500; letter-spacing: -0.02em; color: var(--amber-deep); line-height: 1; }
+  .lp-cost-name { font-family: var(--f-display); font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+  .lp-cost-desc { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; flex: 1; }
+  .lp-cost-note { text-align: center; font-size: 14px; color: var(--ink-soft); margin: 32px auto 0; max-width: 60ch; }
+  .lp-cost-note a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 2px; font-weight: 500; }
+  @media (max-width: 1024px) { .lp-cost-ladder { grid-template-columns: 1fr; } }
+
   .page-hero { background: var(--cream); border-bottom: 1px solid var(--line); padding: clamp(72px, 10vh, 128px) 0 clamp(48px, 7vh, 80px); position: relative; overflow: hidden; text-align: center; }
   .page-hero::before { content: ""; position: absolute; top: -300px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 60%); pointer-events: none; }
   .page-hero-inner { position: relative; z-index: 1; max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 28px; }

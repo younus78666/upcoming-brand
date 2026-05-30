@@ -656,6 +656,34 @@ const lclVsAds = [
       </div>
     </section>
 
+  <section class="lp-cost section-pad-sm" id="lseo-pricing" aria-labelledby="cost-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Transparent pricing</p>
+        <h2 class="h2-section" id="cost-heading">What does local SEO in Maryland cost?</h2>
+        <p class="lead">Local SEO services for Maryland businesses start at <strong>$1,500 for a one-time setup</strong>. Ongoing monthly local SEO runs $500 - $1,000/month. Every engagement is fixed-scope - no retainer lock-in on the setup tier.</p>
+      </div>
+      <div class="lp-cost-ladder">
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$1,500</div>
+          <div class="lp-cost-name">Local SEO Setup</div>
+          <div class="lp-cost-desc">Google Business Profile audit and optimization, LocalBusiness schema implementation and validation, NAP citation audit across 20+ directories, citation cleanup, and a written local SEO action plan. Best for Maryland businesses with a new site or one that has never had proper local SEO work done.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$500/month</div>
+          <div class="lp-cost-name">Local SEO Management</div>
+          <div class="lp-cost-desc">Monthly GBP post publishing, review response management, citation monitoring, local keyword ranking tracking, and a monthly performance report covering Local Pack positions, GBP impressions, and direction requests. Best for Maryland businesses actively building Local Pack presence over 6-12 months.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$1,000/month</div>
+          <div class="lp-cost-name">Local SEO + Content</div>
+          <div class="lp-cost-desc">Full management plus two locally-targeted content pieces per month (service area pages, FAQ content, neighborhood guides), Google Ad Grants campaign management for eligible nonprofits, and quarterly Local Pack competitive analysis. Best for businesses in competitive Maryland markets targeting multiple cities or counties.</div>
+        </div>
+      </div>
+      <p class="lp-cost-note">Start with the setup - it gives you a clear baseline and action plan before committing to ongoing work. <a href="/pricing/">Full pricing breakdown &rarr;</a></p>
+    </div>
+  </section>
+
     <section class="lcl-faq">
       <div class="container">
         <div class="lcl-faq-head">
@@ -734,6 +762,23 @@ const lclVsAds = [
 </BaseLayout>
 
 <style>
+  /* PRICING COST SECTION */
+  .lp-cost { background: var(--paper); padding: clamp(56px, 8vh, 96px) 0; border-bottom: 1px solid var(--line); }
+  .lp-section-intro { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+  .lp-section-intro .eyebrow { font-family: var(--f-mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin: 0 0 10px; }
+  .lp-section-intro .h2-section { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 40px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 0 0 16px; }
+  .lp-section-intro .lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); margin: 0; }
+  .lp-section-intro .lead strong { font-weight: 600; color: var(--ink); }
+  .lp-cost-ladder { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .lp-cost-tier { background: var(--cream); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 28px 24px; display: flex; flex-direction: column; gap: 10px; transition: all 0.3s ease; }
+  .lp-cost-tier:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 28px rgba(212,147,46,0.1); }
+  .lp-cost-range { font-family: var(--f-display); font-size: 28px; font-weight: 500; letter-spacing: -0.02em; color: var(--amber-deep); line-height: 1; }
+  .lp-cost-name { font-family: var(--f-display); font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink); line-height: 1.2; padding-bottom: 10px; border-bottom: 1px dashed var(--line); }
+  .lp-cost-desc { font-size: 13.5px; line-height: 1.6; color: var(--ink-muted); margin: 0; flex: 1; }
+  .lp-cost-note { text-align: center; font-size: 14px; color: var(--ink-soft); margin: 32px auto 0; max-width: 60ch; }
+  .lp-cost-note a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 2px; font-weight: 500; }
+  @media (max-width: 1024px) { .lp-cost-ladder { grid-template-columns: 1fr; } }
+
   .page-h2 { font-family: var(--f-display); font-weight: 400; font-size: clamp(26px, 3.2vw, 42px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 12px 0 0; }
   .page-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
   .page-section-lead { font-size: 16px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; margin: 16px auto 0; }
