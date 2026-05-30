@@ -117,7 +117,7 @@ const jsonLd = JSON.stringify({
           "name": "Can you migrate without taking the site offline?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Every migration is zero-downtime. We build the new WordPress site on a staging URL while your existing site stays live. On launch day, we do a DNS cutover during a low-traffic window. Both the old and new IPs render correctly during propagation. No maintenance page."
+            "text": "Every migration is zero-downtime. We build the new WordPress site on a staging URL while your existing site stays live. On launch day, we do a DNS cutover during a low-traffic window. Both the old and new IPs render correctly during propagation. No maintenance page."
           }
         },
         {
@@ -216,7 +216,7 @@ const faqs = [
   },
   {
     q: "Can you migrate without taking the site offline?",
-    a: "Yes. Every migration we run is zero-downtime. We build the new WordPress site on a staging URL while your existing site stays live and serving traffic. On launch day, we do a DNS cutover during a low-traffic window (2-4 AM Eastern). Visitors hitting the old IP during the propagation window get the old site; visitors hitting the new IP get the new site. Both render correctly. No 'this site is down for maintenance' page.",
+    a: "Every migration we run is zero-downtime. We build the new WordPress site on a staging URL while your existing site stays live and serving traffic. On launch day, we do a DNS cutover during a low-traffic window (2-4 AM Eastern). Visitors hitting the old IP during the propagation window get the old site; visitors hitting the new IP get the new site. Both render correctly. No 'this site is down for maintenance' page.",
   },
   {
     q: "What's included in the redirect map?",
