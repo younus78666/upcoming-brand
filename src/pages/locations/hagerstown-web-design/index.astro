@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
@@ -135,7 +135,7 @@ const jsonLd = JSON.stringify({
         {
           "@type": "Question",
           "name": "Do you work with Hagerstown contractors and trades businesses?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Hagerstown and Washington County contractors are a significant part of our western Maryland client base. The area has some of the oldest housing stock in the state and a strong renovation and trades market. We build service area pages covering all of Washington County, HomeAndConstructionBusiness schema, and quote request forms that convert the homeowners already searching on Google." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Hagerstown and Washington County contractors are a significant part of our western Maryland client base. The area has some of the oldest housing stock in the state and a strong renovation and trades market. We build service area pages covering all of Washington County, HomeAndConstructionBusiness schema, and quote request forms that convert the homeowners already searching on Google." }
         },
         {
           "@type": "Question",
@@ -155,7 +155,7 @@ const jsonLd = JSON.stringify({
         {
           "@type": "Question",
           "name": "Can you redesign my existing Hagerstown business website?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many Hagerstown businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - often built before Core Web Vitals or local schema requirements existed. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Many Hagerstown businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements existed. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." }
         }
       ]
     }
@@ -317,11 +317,11 @@ const areas = [
 
 const faqs = [
   { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Hagerstown, MD?",           a: "Most Hagerstown small business WordPress websites fall between $1,500 and $10,000. A simple 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce, contractor portfolio, or medical practice builds start at $6,000. Every quote is fixed-scope - one price, no hourly surprises. <a href='/pricing/'>View our transparent pricing</a> for full scope breakdowns." },
-  { num: "02", category: "Industries", q: "Do you work with Hagerstown contractors and trades businesses?",       a: "Yes. Hagerstown and Washington County contractors are a significant part of our western Maryland client base. The area has some of the oldest housing stock in the state and a strong renovation and trades market. We build service area pages covering all of Washington County, HomeAndConstructionBusiness schema, and quote request forms that convert the homeowners already searching on Google." },
+  { num: "02", category: "Industries", q: "Do you work with Hagerstown contractors and trades businesses?",       a: "Hagerstown and Washington County contractors are a significant part of our western Maryland client base. The area has some of the oldest housing stock in the state and a strong renovation and trades market. We build service area pages covering all of Washington County, HomeAndConstructionBusiness schema, and quote request forms that convert the homeowners already searching on Google." },
   { num: "03", category: "Timeline",   q: "How long does a Hagerstown website project take?",                     a: "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce or contractor portfolio builds take 8-10 weeks. The biggest timeline variable is how quickly you review and approve design rounds." },
   { num: "04", category: "Location",   q: "How do you work with Hagerstown clients remotely?",                    a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. Hagerstown clients across Washington County and the tri-state area all get the same process with no loss of quality." },
   { num: "05", category: "SEO",        q: "Will my Hagerstown website rank in Google's Local Pack?",              a: "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct Hagerstown NAP, city-specific service pages, internal linking, and Core Web Vitals in the green. Pair this with our <a href='/services/local-seo-maryland/'>local SEO Maryland</a> service for the complete foundation every Local Pack ranking in Washington County is built on." },
-  { num: "06", category: "Migration",  q: "Can you redesign my existing Hagerstown business website?",            a: "Yes. Many Hagerstown businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - often built before Core Web Vitals or local schema requirements existed. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." },
+  { num: "06", category: "Migration",  q: "Can you redesign my existing Hagerstown business website?",            a: "Many Hagerstown businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements existed. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." },
 ];
 
 const catColors: Record<string, { bg: string; text: string; border: string }> = {
@@ -541,7 +541,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">004</span>
           </div>
           <h3 class="lp-svc-title">Speed Optimization</h3>
-          <p class="lp-svc-desc">Hagerstown clients search on their phones - often on slower rural or exurban mobile connections. A homeowner comparing two Washington County contractors, a patient finding a Robinwood specialist, a diner deciding between three downtown restaurants - they're all making the comparison on a phone in under 30 seconds. If your site loads in 4 seconds and the competitor loads in 1.6, the competitor gets the call - not because they're better, but because their site is faster. We run a full speed audit before every launch: LCP under 2.5 seconds, zero layout shift, interaction under 200ms. WP Rocket caches server responses, WebP cuts image weight by 40-60%, Cloudflare CDN serves assets from the nearest edge node. PageSpeed measured on mobile and desktop. 90+ or we don't go live.</p>
+          <p class="lp-svc-desc">Hagerstown clients search on their phones - on slower rural or exurban mobile connections. A homeowner comparing two Washington County contractors, a patient finding a Robinwood specialist, a diner deciding between three downtown restaurants - they're all making the comparison on a phone in under 30 seconds. If your site loads in 4 seconds and the competitor loads in 1.6, the competitor gets the call - not because they're better, but because their site is faster. We run a full speed audit before every launch: LCP under 2.5 seconds, zero layout shift, interaction under 200ms. WP Rocket caches server responses, WebP cuts image weight by 40-60%, Cloudflare CDN serves assets from the nearest edge node. PageSpeed measured on mobile and desktop. 90+ or we don't go live.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>WP Rocket caching + Cloudflare CDN</li>
             <li><span class="lp-bullet-dot"></span>WebP image conversion on every image</li>
@@ -657,7 +657,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
           </div>
           <ul class="lp-compare-list">
             <li class="lp-ci lp-ci-neutral">Fast to get started - drag and drop, no developer needed initially</li>
-            <li class="lp-ci lp-ci-bad">PageSpeed typically 50-70 - Core Web Vitals frequently fail on mobile</li>
+            <li class="lp-ci lp-ci-bad">PageSpeed 50-70 - Core Web Vitals frequently fail on mobile</li>
             <li class="lp-ci lp-ci-bad">Limited schema markup - Local Pack ranking is harder without full JSON-LD control</li>
             <li class="lp-ci lp-ci-bad">You rent the site - the platform controls your data, your URL structure, your export options</li>
             <li class="lp-ci lp-ci-bad">Monthly fees scale with traffic, ecommerce features, and storage</li>

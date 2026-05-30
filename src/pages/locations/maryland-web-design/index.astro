@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
@@ -147,7 +147,7 @@ const jsonLd = JSON.stringify({
         {
           "@type": "Question",
           "name": "Do you serve businesses across all of Maryland?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. We work with businesses across all 24 Maryland counties and Baltimore City - from the DC Metro corridor (Bethesda, Rockville, Silver Spring, Gaithersburg, Germantown) to the Baltimore region (Baltimore, Towson, Catonsville, Dundalk) to Howard County (Columbia, Ellicott City), Western Maryland (Frederick, Hagerstown, Westminster), the Annapolis area, and the Eastern Shore (Salisbury). Every project runs entirely remote over Zoom, Google Meet, and async staging reviews." }
+          "acceptedAnswer": { "@type": "Answer", "text": "We work with businesses across all 24 Maryland counties and Baltimore City - from the DC Metro corridor (Bethesda, Rockville, Silver Spring, Gaithersburg, Germantown) to the Baltimore region (Baltimore, Towson, Catonsville, Dundalk) to Howard County (Columbia, Ellicott City), Western Maryland (Frederick, Hagerstown, Westminster), the Annapolis area, and the Eastern Shore (Salisbury). Every project runs entirely remote over Zoom, Google Meet, and async staging reviews." }
         },
         {
           "@type": "Question",
@@ -167,7 +167,7 @@ const jsonLd = JSON.stringify({
         {
           "@type": "Question",
           "name": "Can you redesign my existing Maryland business website?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many Maryland businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements created a real ranking gap. We benchmark every page before touching anything, build a complete 301 redirect map, run a zero-downtime DNS cutover, and monitor Search Console for 30 days after launch to catch any slippage early." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Many Maryland businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements created a real ranking gap. We benchmark every page before touching anything, build a complete 301 redirect map, run a zero-downtime DNS cutover, and monitor Search Console for 30 days after launch to catch any slippage early." }
         }
       ]
     }
@@ -288,11 +288,11 @@ const regions = [
 
 const faqs = [
   { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Maryland?",           a: "Maryland WordPress websites range from $1,500 to $10,000+ depending on scope. An 8-page starter site runs $1,500-$3,500. A 15-20 page site with custom design and local SEO runs $3,500-$6,000. Complex builds for law firms, medical practices, or contractors with WooCommerce start at $6,000. Every project is fixed-scope - one price, no hourly billing. <a href='/pricing/'>View our transparent pricing</a> for full details on every tier." },
-  { num: "02", category: "Location",   q: "Do you serve businesses across all of Maryland?",               a: "Yes. We work with businesses across all 24 Maryland counties and Baltimore City - from the DC Metro corridor to the Baltimore region, Howard County, Western Maryland, the Annapolis area, and the Eastern Shore. Every project runs entirely remote over Zoom, Google Meet, and async staging reviews." },
+  { num: "02", category: "Location",   q: "Do you serve businesses across all of Maryland?",               a: "We work with businesses across all 24 Maryland counties and Baltimore City - from the DC Metro corridor to the Baltimore region, Howard County, Western Maryland, the Annapolis area, and the Eastern Shore. Every project runs entirely remote over Zoom, Google Meet, and async staging reviews." },
   { num: "03", category: "Timeline",   q: "How long does a Maryland WordPress project take?",               a: "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Custom WooCommerce, IDX real estate, or medical practice builds take 8-10 weeks. Timeline depends most on how quickly you review and approve design rounds - we keep the build moving on our end." },
   { num: "04", category: "Process",    q: "How do you work with Maryland clients remotely?",                a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. A Frederick contractor reviewing designs between job sites gets the same process as a Bethesda law firm reviewing from a conference room. No commutes, no lost time." },
   { num: "05", category: "SEO",        q: "Will my Maryland website rank in Google's Local Pack?",          a: "Local Pack rankings need your Google Business Profile, review velocity, and local citations working together with your website. We handle the website side: LocalBusiness schema with correct NAP data for your specific city, service area pages covering your county and neighboring cities, internal linking, and Core Web Vitals in the green. Pairing this with our <a href='/services/local-seo-maryland/'>local SEO Maryland</a> service gives you the complete foundation every Local Pack ranking in Maryland is built on." },
-  { num: "06", category: "Migration",  q: "Can you redesign my existing Maryland business website?",        a: "Yes. Many Maryland businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements created a real ranking gap. We benchmark every page before touching anything, build a complete 301 redirect map, run a zero-downtime DNS cutover, and monitor Search Console for 30 days after launch to catch any slippage early." },
+  { num: "06", category: "Migration",  q: "Can you redesign my existing Maryland business website?",        a: "Many Maryland businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements created a real ranking gap. We benchmark every page before touching anything, build a complete 301 redirect map, run a zero-downtime DNS cutover, and monitor Search Console for 30 days after launch to catch any slippage early." },
 ];
 
 const catColors: Record<string, { bg: string; text: string; border: string }> = {
@@ -627,7 +627,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
           </div>
           <ul class="lp-compare-list">
             <li class="lp-ci lp-ci-neutral">Fast to get started - drag and drop, no developer needed initially</li>
-            <li class="lp-ci lp-ci-bad">PageSpeed typically 50-70 - Core Web Vitals frequently fail on mobile</li>
+            <li class="lp-ci lp-ci-bad">PageSpeed 50-70 - Core Web Vitals frequently fail on mobile</li>
             <li class="lp-ci lp-ci-bad">Limited schema markup - Local Pack ranking is harder without full JSON-LD control</li>
             <li class="lp-ci lp-ci-bad">You rent the site - the platform controls your data, your URL structure, your export options</li>
             <li class="lp-ci lp-ci-bad">Monthly fees scale with traffic, ecommerce features, and storage</li>

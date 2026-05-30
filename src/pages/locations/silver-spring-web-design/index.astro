@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
@@ -135,7 +135,7 @@ const jsonLd = JSON.stringify({
         {
           "@type": "Question",
           "name": "Do you build multilingual websites for Silver Spring businesses?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Silver Spring has one of the most diverse populations in the United States - a large Spanish-speaking community along Georgia Avenue, significant Ethiopian and Amharic-speaking neighborhoods, and Korean business owners in the Wheaton corridor. We build multilingual WordPress sites using WPML with proper hreflang tags so Google serves the right language to the right searcher." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Silver Spring has one of the most diverse populations in the United States - a large Spanish-speaking community along Georgia Avenue, significant Ethiopian and Amharic-speaking neighborhoods, and Korean business owners in the Wheaton corridor. We build multilingual WordPress sites using WPML with proper hreflang tags so Google serves the right language to the right searcher." }
         },
         {
           "@type": "Question",
@@ -155,7 +155,7 @@ const jsonLd = JSON.stringify({
         {
           "@type": "Question",
           "name": "Can you redesign my existing Silver Spring business website?",
-          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Many Silver Spring businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - before Core Web Vitals and local schema requirements tightened. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." }
+          "acceptedAnswer": { "@type": "Answer", "text": "Many Silver Spring businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - before Core Web Vitals and local schema requirements tightened. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." }
         }
       ]
     }
@@ -212,7 +212,7 @@ const industries = [
     num: "06",
     name: "Small Business & Diverse Retail",
     stat: "WPML multilingual ready",
-    hook: "Silver Spring's retail corridors serve customers who speak Spanish, Amharic, French Creole, Korean, and English - often at the same address. A business running a single-language English site is invisible to a significant share of its own neighborhood. We build multilingual WordPress sites using WPML with hreflang tags, Google Business Profile optimization for each language, and product pages that load under 2 seconds on the mobile connections Silver Spring shoppers actually use.",
+    hook: "Silver Spring's retail corridors serve customers who speak Spanish, Amharic, French Creole, Korean, and English - at the same address. A business running a single-language English site is invisible to a significant share of its own neighborhood. We build multilingual WordPress sites using WPML with hreflang tags, Google Business Profile optimization for each language, and product pages that load under 2 seconds on the mobile connections Silver Spring shoppers actually use.",
     schema: "LocalBusiness",
     tags: ["WPML multilingual", "hreflang tags", "Diverse corridor SEO"],
     href: "/industries/small-business-website-design/",
@@ -317,11 +317,11 @@ const areas = [
 
 const faqs = [
   { num: "01", category: "Pricing",    q: "How much does a WordPress website cost in Silver Spring, MD?",         a: "Most Silver Spring small business WordPress websites fall between $1,500 and $10,000. A simple 8-page site starts at $1,500-$3,500. A 15-20 page site with custom design and SEO runs $3,500-$6,000. Complex WooCommerce, multilingual WPML builds, or nonprofit donation platforms start at $6,000. Every quote is fixed-scope with one price and no hourly surprises. <a href='/pricing/'>View our transparent pricing</a> for full scope breakdowns." },
-  { num: "02", category: "Industries", q: "Do you build multilingual websites for Silver Spring businesses?",      a: "Yes. Silver Spring has one of the most diverse populations in the United States - a large Spanish-speaking community along Georgia Avenue, significant Ethiopian and Amharic-speaking neighborhoods, and Korean business owners in the Wheaton corridor. We build multilingual WordPress sites using WPML with proper hreflang tags so Google serves the right language to the right searcher." },
+  { num: "02", category: "Industries", q: "Do you build multilingual websites for Silver Spring businesses?",      a: "Silver Spring has one of the most diverse populations in the United States - a large Spanish-speaking community along Georgia Avenue, significant Ethiopian and Amharic-speaking neighborhoods, and Korean business owners in the Wheaton corridor. We build multilingual WordPress sites using WPML with proper hreflang tags so Google serves the right language to the right searcher." },
   { num: "03", category: "Timeline",   q: "How long does a Silver Spring website project take?",                   a: "Starter sites (up to 8 pages) take 4-6 weeks. Growth sites (15-20 pages with custom design) take 6-8 weeks. Multilingual WPML builds or nonprofit donation platforms take 8-10 weeks. The biggest timeline variable is how quickly you review and approve design rounds." },
   { num: "04", category: "Location",   q: "How do you work with Silver Spring clients remotely?",                  a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. Silver Spring clients across Montgomery County all follow the same process with no loss of quality." },
   { num: "05", category: "SEO",        q: "Will my Silver Spring website rank in Google's Local Pack?",            a: "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct Silver Spring NAP, city-specific service pages, internal linking, and Core Web Vitals in the green. Pair this with our <a href='/services/local-seo-maryland/'>local SEO Maryland</a> service for the complete foundation every Local Pack ranking in Montgomery County is built on." },
-  { num: "06", category: "Migration",  q: "Can you redesign my existing Silver Spring business website?",          a: "Yes. Many Silver Spring businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - before Core Web Vitals and local schema requirements tightened. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." },
+  { num: "06", category: "Migration",  q: "Can you redesign my existing Silver Spring business website?",          a: "Many Silver Spring businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - before Core Web Vitals and local schema requirements tightened. We migrate to a custom WordPress build without losing your Google rankings. We build a complete 301 redirect map, run a pre-launch ranking benchmark, and monitor Search Console for 30 days post-launch." },
 ];
 
 const catColors: Record<string, { bg: string; text: string; border: string }> = {
@@ -657,7 +657,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
           </div>
           <ul class="lp-compare-list">
             <li class="lp-ci lp-ci-neutral">Fast to get started - drag and drop, no developer needed initially</li>
-            <li class="lp-ci lp-ci-bad">PageSpeed typically 50-70 - Core Web Vitals frequently fail on mobile</li>
+            <li class="lp-ci lp-ci-bad">PageSpeed 50-70 - Core Web Vitals frequently fail on mobile</li>
             <li class="lp-ci lp-ci-bad">Limited schema markup - Local Pack ranking is harder without full JSON-LD control</li>
             <li class="lp-ci lp-ci-bad">You rent the site - the platform controls your data, your URL structure, your export options</li>
             <li class="lp-ci lp-ci-bad">Monthly fees scale with traffic, ecommerce features, and storage</li>
