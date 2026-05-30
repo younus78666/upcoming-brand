@@ -75,10 +75,20 @@ const jsonLd = JSON.stringify({
       },
       "areaServed": [
         { "@type": "City", "name": "Columbia", "sameAs": "https://en.wikipedia.org/wiki/Columbia,_Maryland" },
+        { "@type": "City", "name": "Wilde Lake" },
+        { "@type": "City", "name": "Harper's Choice" },
+        { "@type": "City", "name": "Owen Brown" },
+        { "@type": "City", "name": "Long Reach" },
+        { "@type": "City", "name": "Hickory Ridge" },
+        { "@type": "City", "name": "Kings Contrivance" },
+        { "@type": "City", "name": "River Hill" },
+        { "@type": "City", "name": "Oakland Mills" },
+        { "@type": "City", "name": "Clarksville" },
         { "@type": "City", "name": "Ellicott City" },
         { "@type": "City", "name": "Catonsville" },
-        { "@type": "City", "name": "Baltimore" },
         { "@type": "City", "name": "Laurel" },
+        { "@type": "City", "name": "Fulton" },
+        { "@type": "AdministrativeArea", "name": "Howard County", "sameAs": "https://en.wikipedia.org/wiki/Howard_County,_Maryland" },
         { "@type": "State", "name": "Maryland", "sameAs": "https://en.wikipedia.org/wiki/Maryland" }
       ],
       "knowsAbout": [
@@ -156,6 +166,36 @@ const jsonLd = JSON.stringify({
           "@type": "Question",
           "name": "Can you redesign my existing Columbia business website?",
           "acceptedAnswer": { "@type": "Answer", "text": "Many Columbia businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements existed. In a market where clients research multiple vendors before calling, an outdated site costs you leads every week. We migrate to a custom WordPress build with a complete 301 redirect map, pre-launch ranking benchmark, and 30 days of Search Console monitoring post-launch." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do I own my website if you build it on WordPress?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes - you own the code outright. Once your final payment clears, all custom design, custom code, content, and configuration belong to you. No platform can raise prices, shut you down, or hold your URL hostage. You can move it to any host, hand it to any developer, or modify it however you like - without our permission or involvement." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is WordPress a good choice for a small business in 2026?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WordPress powers 43% of all websites and remains the strongest choice for small businesses that care about local search. It gives you full schema control for Local Pack rankings, complete flexibility for custom functionality, and zero platform lock-in. For a Columbia small business competing in Google search, the alternatives (Wix, Squarespace, Webflow) impose schema limits and Core Web Vitals ceilings that hurt Local Pack eligibility." }
+        },
+        {
+          "@type": "Question",
+          "name": "WordPress vs Wix for a Columbia small business - which is better?",
+          "acceptedAnswer": { "@type": "Answer", "text": "WordPress for any Columbia business competing on Google. Wix restricts your JSON-LD schema output, which limits Local Pack eligibility. Its Core Web Vitals ceiling sits around 50-70 PageSpeed - well below the 90+ you need to compete with optimized WordPress sites already ranking in Howard County. If you're not competing on search at all, Wix is faster to set up." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you offer payment plans for web design?",
+          "acceptedAnswer": { "@type": "Answer", "text": "The standard schedule is 40% deposit, 30% on design approval, 30% on launch - three clear milestones, no surprises. For projects over $3,500 we can discuss a phased structure. Use our payment plan calculator at upcomingbrand.com/tools/installment-calculator/ to see what a spread-cost schedule looks like before you book a call." }
+        },
+        {
+          "@type": "Question",
+          "name": "Will my Columbia website work properly on mobile?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Every build is mobile-first - meaning the design process starts at the smallest screen and scales up, not the other way around. We test on real iOS and Android devices before launch, not just browser emulators. Click-to-call phone numbers, tap-friendly buttons, readable font sizes without pinch-zoom, and sub-2-second load times on 4G connections are standard deliverables on every project." }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between a $59 template site and a custom build?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A $59 template runs on the same code as tens of thousands of other sites, with no schema customization, generic page structure, and PageSpeed that sits around 50-65. A custom build is designed for your specific business type, with JSON-LD schema matched to your vertical (LegalService, MedicalOrganization, HomeAndConstructionBusiness), 90+ PageSpeed, and a conversion architecture built around how your customers actually decide to contact you. For a Columbia business competing for Local Pack positions, the difference shows up in your Google rankings within 90 days." }
         }
       ]
     }
@@ -322,6 +362,12 @@ const faqs = [
   { num: "04", category: "Location",   q: "How do you work with Columbia clients remotely?",                    a: "Entirely remote, by design. Discovery calls and design reviews run over Zoom or Google Meet. The build phase is async - you get weekly staging links, leave feedback directly on the site, and we iterate on your schedule. Columbia clients across Howard County all get the same process with no loss of quality." },
   { num: "05", category: "SEO",        q: "Will my Columbia website rank in Google's Local Pack?",              a: "Local Pack rankings depend on your Google Business Profile, review velocity, and local citations - not just your website. We handle the website side: LocalBusiness schema with correct Columbia NAP, village-specific service pages targeting Wilde Lake, River Hill, and Town Center, internal linking, and Core Web Vitals in the green. Pair this with our <a href='/services/local-seo-maryland/'>local SEO Maryland</a> service for the complete foundation every Local Pack ranking in Howard County is built on." },
   { num: "06", category: "Migration",  q: "Can you redesign my existing Columbia business website?",            a: "Many Columbia businesses have been on the same Wix, GoDaddy, or outdated WordPress theme for years - built before Core Web Vitals or local schema requirements existed. In a market where clients research multiple vendors before calling, an outdated site costs you leads every week. We migrate to a custom WordPress build with a complete 301 redirect map, pre-launch ranking benchmark, and 30 days of Search Console monitoring post-launch." },
+  { num: "07", category: "Ownership",  q: "Do I own my website if you build it on WordPress?",                 a: "Yes - you own the code outright. Once your final payment clears, all custom design, custom code, content, and configuration belong to you. No platform can raise prices, shut you down, or hold your URL hostage. You can move it to any host, hand it to any developer, or modify it however you like - without our permission or involvement." },
+  { num: "08", category: "Platform",   q: "Is WordPress a good choice for a small business in 2026?",           a: "WordPress powers 43% of all websites and remains the strongest choice for small businesses that care about local search. It gives you full schema control for Local Pack rankings, complete flexibility for custom functionality, and zero platform lock-in. For a Columbia small business competing in Google search, the alternatives (Wix, Squarespace, Webflow) impose schema limits and Core Web Vitals ceilings that hurt Local Pack eligibility." },
+  { num: "09", category: "Platform",   q: "WordPress vs Wix for a Columbia small business - which is better?",  a: "WordPress for any Columbia business competing on Google. Wix restricts your JSON-LD schema output, which limits Local Pack eligibility. Its Core Web Vitals ceiling sits around 50-70 PageSpeed - well below the 90+ you need to compete with optimized WordPress sites already ranking in Howard County. If you're not competing on search at all, Wix is faster to set up. See a full comparison: <a href='/blog/wordpress-vs-wix/'>WordPress vs Wix for small businesses →</a>" },
+  { num: "10", category: "Payment",    q: "Do you offer payment plans for web design?",                         a: "The standard schedule is 40% deposit, 30% on design approval, 30% on launch - three clear milestones, no surprises. For projects over $3,500 we can discuss a phased structure. Use our <a href='/tools/installment-calculator/'>payment plan calculator</a> to see what a spread-cost schedule looks like before you book a call." },
+  { num: "11", category: "Mobile",     q: "Will my Columbia website work properly on mobile?",                   a: "Every build is mobile-first - meaning the design process starts at the smallest screen and scales up, not the other way around. We test on real iOS and Android devices before launch, not just browser emulators. Click-to-call phone numbers, tap-friendly buttons, readable font sizes without pinch-zoom, and sub-2-second load times on 4G connections are standard deliverables on every project." },
+  { num: "12", category: "Platform",   q: "What's the difference between a $59 template site and a custom build?", a: "A $59 template runs on the same code as tens of thousands of other sites, with no schema customization, generic page structure, and PageSpeed that sits around 50-65. A custom build is designed for your specific business type, with JSON-LD schema matched to your vertical (LegalService, MedicalOrganization, HomeAndConstructionBusiness), 90+ PageSpeed, and a conversion architecture built around how your customers actually decide to contact you. For a Columbia business competing for Local Pack positions, the difference shows up in your Google rankings within 90 days." },
 ];
 
 const catColors: Record<string, { bg: string; text: string; border: string }> = {
@@ -331,6 +377,10 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
   "Industries": { bg: "rgba(176,74,62,0.08)",  text: "#b04a3e",           border: "rgba(176,74,62,0.18)"   },
   "SEO":        { bg: "rgba(92,128,64,0.09)",  text: "#4a7a28",           border: "rgba(92,128,64,0.2)"    },
   "Migration":  { bg: "rgba(160,100,200,0.08)",text: "#7a40b0",           border: "rgba(160,100,200,0.2)"  },
+  "Ownership":  { bg: "rgba(66,133,244,0.08)", text: "#2a6fc4",           border: "rgba(66,133,244,0.18)"  },
+  "Platform":   { bg: "rgba(92,64,128,0.08)",  text: "#5c3a8a",           border: "rgba(92,64,128,0.2)"    },
+  "Payment":    { bg: "rgba(46,160,96,0.08)",  text: "#1e7a4a",           border: "rgba(46,160,96,0.18)"   },
+  "Mobile":     { bg: "rgba(0,150,136,0.08)",  text: "#007a6e",           border: "rgba(0,150,136,0.18)"   },
 };
 ---
 <BaseLayout
@@ -413,7 +463,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
         </div>
 
         <div class="lp-def-right">
-          <p class="lp-def-body">Custom WordPress web design means building your site from a blank canvas on WordPress CMS - not installing a $59 theme already running on 40,000 other businesses. For a Columbia contractor working on aging Wilde Lake housing stock competing for renovation searches on mobile, that means a quote request form that actually submits, HomeAndConstructionBusiness schema, and service area pages covering River Hill, Clarksville, and Ellicott City. For a Howard County General-affiliated specialist practice, it means HIPAA-aware contact forms, Physician schema, and appointment pages that rank for condition-specific searches in a high-competition medical corridor. For a Town Center restaurant competing for Merriweather event-night diners against a dozen nearby options, it means a menu that loads under 1.5 seconds and a reservation flow that works on the first tap. You own the code outright with no monthly platform fee. Every build ships with 90+ PageSpeed, JSON-LD schema matched to your exact business type, and all three Core Web Vitals passing before the DNS transfers.</p>
+          <p class="lp-def-body">Custom WordPress web design means building your site from a blank canvas on WordPress CMS - not installing a $59 theme already running on 40,000 other businesses. Every <strong>web design Columbia MD</strong> project we build is purpose-built for your business type. For a Columbia contractor working on aging Wilde Lake housing stock competing for renovation searches on mobile, that means a quote request form that actually submits, HomeAndConstructionBusiness schema, and service area pages covering River Hill, Clarksville, and Ellicott City. For a Howard County General-affiliated specialist practice, it means HIPAA-aware contact forms, Physician schema, and appointment pages that rank for condition-specific searches in a high-competition medical corridor. For a Town Center restaurant competing for Merriweather event-night diners against a dozen nearby options, it means a menu that loads under 1.5 seconds and a reservation flow that works on the first tap. You own the code outright with no monthly platform fee. Every build ships with 90+ PageSpeed, JSON-LD schema matched to your exact business type, and all three Core Web Vitals (LCP under 2.5s, INP under 200ms, CLS under 0.1) passing before the DNS transfers.</p>
 
           <div class="lp-def-facts">
             <div class="lp-def-fact">
@@ -443,7 +493,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
       <div class="lp-section-intro">
         <p class="eyebrow">Why local matters</p>
         <h2 class="h2-section" id="pillars-heading">What does a {city}-based WordPress studio do differently?</h2>
-        <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever's available. We're a Maryland studio - remote-first by design, but built around the Columbia and Howard County market. We know which corridors are competitive, which industries search most aggressively, and exactly what a Columbia business or Howard County client compares before they make contact.</p>
+        <p class="lead">Most web design agencies are remote-only marketplaces that assign your project to whoever's available. As a <strong>columbia web design company</strong> rooted in the Maryland market, we're remote-first by design but built around the Columbia and Howard County market. Our senior web designer knows which corridors are competitive, which industries search most aggressively, and exactly what a Columbia business or <strong>howard county web design</strong> client compares before making contact.</p>
       </div>
 
       <div class="lp-pillars-grid">
@@ -480,7 +530,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
       <div class="lp-section-intro">
         <p class="eyebrow">What we build</p>
         <h2 class="h2-section" id="services-heading">What does every {city} business need from its WordPress website?</h2>
-        <p class="lead">From an 8-page starter site to a full WooCommerce store - every build is custom, fixed-scope, and shipped with 90+ PageSpeed and clean schema out of the box.</p>
+        <p class="lead">From an 8-page starter site to a full WooCommerce store - every build is custom, fixed-scope, and shipped with 90+ PageSpeed and clean schema out of the box. From custom multi-page business sites and WooCommerce stores to IDX real-estate sites and HIPAA-aware medical builds - every type is custom and fixed-scope.</p>
       </div>
 
       <div class="lp-svc-grid">
@@ -558,7 +608,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
             <span class="lp-svc-num mono-xs">005</span>
           </div>
           <h3 class="lp-svc-title">SEO &amp; Schema</h3>
-          <p class="lp-svc-desc">Columbia search is highly competitive - you're not just competing against local businesses, you're competing against Ellicott City and Baltimore firms ranking for Howard County terms, and national directories outranking local practices on condition-specific searches. A Columbia contractor searching their own trade finds Ellicott City competitors above their listing. A Howard County specialist finds a Healthgrades directory above their practice page. We build keyword maps for those searches, write JSON-LD schema matched to your business type - LegalService, MedicalOrganization, Restaurant, HomeAndConstructionBusiness, RealEstateAgent - and structure internal links so Google understands exactly what your site is the authority on in Columbia. That's what generates consistent leads month after month.</p>
+          <p class="lp-svc-desc">Columbia search is highly competitive - you're not just competing against local businesses, you're competing against Ellicott City and Baltimore firms ranking for Howard County terms, and national directories outranking local practices on condition-specific searches. A Columbia contractor searching their own trade finds Ellicott City competitors above their listing. A Howard County specialist finds a Healthgrades directory above their practice page. We build keyword maps for those searches, write JSON-LD schema matched to your business type - LegalService, MedicalOrganization, Restaurant, HomeAndConstructionBusiness, RealEstateAgent - and structure internal links so Google understands exactly what your site is the authority on in Columbia. That includes the Google Local Pack (the 3-business map block that appears above organic results for local searches) - ranking there is what generates consistent leads month after month.</p>
           <ul class="lp-svc-bullets">
             <li><span class="lp-bullet-dot"></span>Columbia + village + Howard County keyword mapping</li>
             <li><span class="lp-bullet-dot"></span>JSON-LD schema for 15+ Columbia business types</li>
@@ -583,6 +633,62 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
           <a href="#contact" class="lp-svc-cta">Start a migration project &rarr;</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       COMPONENTS - What's included (9-frame #4)
+  ══════════════════════════════════════════ -->
+  <section class="lp-includes section-pad-sm" aria-labelledby="includes-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Every build includes</p>
+        <h2 class="h2-section" id="includes-heading">What's included in every Columbia web design build?</h2>
+        <p class="lead">No add-on fees for the fundamentals. Every Columbia website design project ships with the complete stack - design, development, SEO, and schema - at one fixed price.</p>
+      </div>
+      <div class="lp-includes-grid">
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>Custom Figma design - not a modified template</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>Mobile-first responsive layouts, tested on real devices</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>90+ PageSpeed on mobile and desktop - guaranteed before launch</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>JSON-LD schema matched to your business type (LocalBusiness, LegalService, MedicalOrganization, and more)</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>On-page SEO setup: RankMath Pro, meta titles, descriptions, heading structure</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>Contact and quote request forms wired to your inbox</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>2 design review rounds on a live staging URL</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>Zero-downtime DNS cutover and 30-day Search Console monitoring post-launch</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>Recorded admin walkthrough so your team can manage the site without a developer</span></div>
+        <div class="lp-include-item"><span class="lp-include-check" aria-hidden="true">✓</span><span>Optional care plan from $150/month for ongoing updates, backups, and support</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
+       PRICING BLOCK (P0.3)
+  ══════════════════════════════════════════ -->
+  <section class="lp-cost section-pad-sm" id="pricing" aria-labelledby="cost-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Transparent pricing</p>
+        <h2 class="h2-section" id="cost-heading">What does a Columbia website design project cost?</h2>
+        <p class="lead">A custom WordPress website for a Columbia small business costs between <strong>$1,500 and $6,000</strong> for most projects. Complex builds (WooCommerce, medical practice, nonprofit, IDX real estate) start at $6,000. Every quote is fixed-scope - one price, no hourly surprises.</p>
+      </div>
+      <div class="lp-cost-ladder">
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$1,500 – $3,500</div>
+          <div class="lp-cost-name">Starter</div>
+          <div class="lp-cost-desc">8-page custom WordPress site. LocalBusiness schema, contact form, 90+ PageSpeed, Google Analytics. Best for service businesses and solo practices starting from scratch or replacing an outdated Wix or GoDaddy site.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$3,500 – $6,000</div>
+          <div class="lp-cost-name">Growth</div>
+          <div class="lp-cost-desc">15–20 page site with village-specific landing pages, custom design, full Local Pack optimization, and Columbia + Howard County keyword targeting. Best for contractors, law firms, restaurants, and medical practices competing in the Local Pack.</div>
+        </div>
+        <div class="lp-cost-tier">
+          <div class="lp-cost-range">$6,000+</div>
+          <div class="lp-cost-name">Custom</div>
+          <div class="lp-cost-desc">WooCommerce stores, IDX real estate sites, HIPAA-aware medical builds, multi-location schema, and nonprofit donation flows. Scope and price set after discovery - every Custom build is quoted individually.</div>
+        </div>
+      </div>
+      <p class="lp-cost-note">Need to <a href="/tools/installment-calculator/">spread the cost</a>? Use our <a href="/tools/installment-calculator/">payment plan calculator</a> to see what a phased payment schedule looks like for your project. <a href="/pricing/">Full pricing breakdown →</a></p>
     </div>
   </section>
 
@@ -754,7 +860,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
     <div class="container">
       <div class="lp-section-intro">
         <p class="eyebrow">How we work</p>
-        <h2 class="h2-section" id="process-heading">How does an {city} WordPress project actually run from first call to launch?</h2>
+        <h2 class="h2-section" id="process-heading">How does a {city} WordPress project actually run from first call to launch?</h2>
         <p class="lead">Fixed scope, fixed price, fixed timeline. No chasing, no ambiguity - you know what's happening at every stage.</p>
       </div>
 
@@ -792,7 +898,7 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
       <div class="lp-section-intro">
         <p class="eyebrow">Service area</p>
         <h2 class="h2-section" id="areas-heading">Which {city}-area cities does Upcoming Brand serve?</h2>
-        <p class="lead">Serving Columbia and its surrounding communities entirely remotely across Howard County. Discovery calls on Zoom, async design reviews, weekly staging links. Each village and community below has distinct demographics, industries, and web design needs - we know all of them.</p>
+        <p class="lead">Serving Columbia and its surrounding communities entirely remotely across Howard County. Discovery calls on Zoom, async design reviews, weekly staging links. When a Howard County business owner searches "wordpress web design near me" or "web design columbia md," we're built to show up and deliver - every village and community below has distinct demographics, industries, and website design needs, and we know all of them.</p>
       </div>
 
       <!-- Coverage stat bar -->
@@ -928,6 +1034,40 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
   </section>
 
   <!-- ══════════════════════════════════════════
+       EVALUATION - Is custom WP right for you? (9-frame #9)
+  ══════════════════════════════════════════ -->
+  <section class="lp-eval section-pad-sm" aria-labelledby="eval-heading">
+    <div class="container">
+      <div class="lp-section-intro">
+        <p class="eyebrow">Is it right for you?</p>
+        <h2 class="h2-section" id="eval-heading">Is custom WordPress web design right for your Columbia business?</h2>
+        <p class="lead">Custom WordPress web design is the right investment for most Columbia businesses competing on Google. It's not the right fit for every situation. Here's an honest breakdown.</p>
+      </div>
+      <div class="lp-eval-cols">
+        <div class="lp-eval-col lp-eval-yes">
+          <h3 class="lp-eval-col-title">Strong fit - custom WordPress makes sense if:</h3>
+          <ul class="lp-eval-list">
+            <li>You're competing for Local Pack positions in Columbia, Howard County, or nearby markets like Ellicott City or Clarksville - and your current site isn't ranking</li>
+            <li>Your audience researches online before committing (contractors, medical practices, law firms, real estate agents - all common in this market)</li>
+            <li>You serve multiple Columbia villages or Howard County communities and need location-specific pages that rank independently</li>
+            <li>You need a specific integration - WooCommerce, online booking, IDX real estate, HIPAA-aware forms, donation flows - that DIY platforms can't support cleanly</li>
+            <li>You want to own your site outright with no platform lock-in, no monthly fee tied to your URL, and no migration risk three years from now</li>
+          </ul>
+        </div>
+        <div class="lp-eval-col lp-eval-no">
+          <h3 class="lp-eval-col-title">Not the right fit if:</h3>
+          <ul class="lp-eval-list">
+            <li>You need a one-page placeholder site with no SEO goals - a Squarespace or Wix template is faster and cheaper for that use case</li>
+            <li>You're pre-launch with no revenue yet and a strict $500 budget - start with a simpler platform and migrate later when the business justifies the investment</li>
+            <li>Your business doesn't rely on Google search at all - if you operate entirely on referrals and have no interest in local search, the schema and SEO work adds cost without proportional return</li>
+          </ul>
+          <p class="lp-eval-honest">Most Columbia businesses in competitive verticals - contractors, medical, legal, real estate, restaurants - are in the first category. If you're not sure which applies to you, the 45-minute discovery call is the right first step. We'll tell you directly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════
        FAQ
   ══════════════════════════════════════════ -->
   <section class="lp-faq section-pad-sm" id="faq" aria-labelledby="faq-heading">
@@ -942,12 +1082,12 @@ const catColors: Record<string, { bg: string; text: string; border: string }> = 
 
           <div class="lp-faq-stats">
             <div class="lp-faq-stat">
-              <span class="lp-faq-stat-num">6</span>
+              <span class="lp-faq-stat-num">12</span>
               <span class="lp-faq-stat-label mono-xs">Questions answered</span>
             </div>
             <div class="lp-faq-stat-divider" aria-hidden="true"></div>
             <div class="lp-faq-stat">
-              <span class="lp-faq-stat-num">4</span>
+              <span class="lp-faq-stat-num">8</span>
               <span class="lp-faq-stat-label mono-xs">Topic areas</span>
             </div>
           </div>
