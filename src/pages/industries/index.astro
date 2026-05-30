@@ -59,9 +59,9 @@ const schema = {
       "mainEntity": [
         { "@type": "Question", "name": "Do you specialise in one industry or work across all 12?", "acceptedAnswer": { "@type": "Answer", "text": "We work across all 12 verticals listed on this page, but vertical-specific experience is the point. Each industry has distinct schema requirements, compliance constraints, and conversion patterns. We have built enough sites in each vertical to know the pitfalls before your project hits them." } },
         { "@type": "Question", "name": "What does 'vertical-specific' web design actually mean?", "acceptedAnswer": { "@type": "Answer", "text": "It means three things change by industry: the schema type Google needs to classify your business correctly, the compliance rules that govern what you can say, and the conversion architecture that matches how your customer decides to act. A dental site needs Dentist schema and online booking. A law firm site needs LegalService schema and MRPC-compliant copy. A contractor site needs HomeAndConstructionBusiness schema and multi-step estimate forms." } },
-        { "@type": "Question", "name": "How long does it take to rank for industry-specific searches in Maryland?", "acceptedAnswer": { "@type": "Answer", "text": "For less competitive Maryland markets like Frederick or Annapolis, most industries see meaningful ranking movement in 60 to 90 days. Baltimore, Bethesda, and Columbia take 3 to 6 months for consistent first-page presence. Google Business Profile and Local Pack optimisation typically produce the fastest early results, with improvements appearing within 30 to 45 days of launch." } },
-        { "@type": "Question", "name": "Do you write the website copy for every industry?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Copy is included in every project tier. You provide raw material via a structured questionnaire and we draft everything: service pages, team bios, FAQs, and location pages. For regulated industries like law and healthcare, we handle the compliance framing. You review one draft for factual accuracy." } },
-        { "@type": "Question", "name": "Can you handle HIPAA, MRPC, and other compliance requirements?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Medical and dental sites receive HIPAA-aware form structures that collect only scheduling-necessary information without requesting protected health information. Law firm copy is written under Maryland Rules of Professional Conduct 7.1 through 7.5. Nonprofit donation flows are structured to avoid FEC gray areas. We flag compliance considerations at Discovery before a line of code is written." } },
+        { "@type": "Question", "name": "How long does it take to rank for industry-specific searches in Maryland?", "acceptedAnswer": { "@type": "Answer", "text": "For less competitive Maryland markets like Frederick or Annapolis, most industries see meaningful ranking movement in 60 to 90 days. Baltimore, Bethesda, and Columbia take 3 to 6 months for consistent first-page presence. Google Business Profile and Local Pack optimisation produce the fastest early results, with improvements appearing within 30 to 45 days of launch." } },
+        { "@type": "Question", "name": "Do you write the website copy for every industry?", "acceptedAnswer": { "@type": "Answer", "text": "Copy is included in every project tier. You provide raw material via a structured questionnaire and we draft everything: service pages, team bios, FAQs, and location pages. For regulated industries like law and healthcare, we handle the compliance framing. You review one draft for factual accuracy." } },
+        { "@type": "Question", "name": "Can you handle HIPAA, MRPC, and other compliance requirements?", "acceptedAnswer": { "@type": "Answer", "text": "Medical and dental sites receive HIPAA-aware form structures that collect only scheduling-necessary information without requesting protected health information. Law firm copy is written under Maryland Rules of Professional Conduct 7.1 through 7.5. Nonprofit donation flows are structured to avoid FEC gray areas. We flag compliance considerations at Discovery before a line of code is written." } },
         { "@type": "Question", "name": "What is the starting price for an industry-specific site?", "acceptedAnswer": { "@type": "Answer", "text": "Starter builds begin at $1,500 for a 5 to 8 page site with custom design, vertical-specific schema, and Core Web Vitals green on delivery. Growth tier builds with 14 or more pages, city landing pages, and full Local Pack optimization run $3,500 to $6,000. Custom builds with IDX integration, WooCommerce, or multi-location schema start at $6,000. All pricing is fixed-scope. You know the full number before signing." } }
       ]
     }
@@ -284,19 +284,19 @@ const faqs = [
     num: "03",
     category: "SEO",
     q: "How long does it take to rank for industry-specific searches in Maryland?",
-    a: "For less competitive Maryland markets like Frederick or Annapolis, most industries see meaningful ranking movement in 60 to 90 days post-launch. Baltimore, Bethesda, and Columbia take 3 to 6 months for consistent first-page presence. Google Business Profile and Local Pack optimisation produce the fastest early results, often appearing within 30 to 45 days. We set these expectations in writing during Discovery.",
+    a: "For less competitive Maryland markets like Frederick or Annapolis, most industries see meaningful ranking movement in 60 to 90 days post-launch. Baltimore, Bethesda, and Columbia take 3 to 6 months for consistent first-page presence. Google Business Profile and Local Pack optimisation produce the fastest early results, appearing within 30 to 45 days. We set these expectations in writing during Discovery.",
   },
   {
     num: "04",
     category: "Services",
     q: "Do you write the website copy for every industry?",
-    a: "Yes. Copy is included at every project tier. You provide raw material via a structured questionnaire covering your services, team, and any differentiators. We draft everything: service pages, bios, FAQs, and location pages. For regulated industries like law and healthcare, we handle the compliance framing. You review one draft for factual accuracy and we handle the rest.",
+    a: "Copy is included at every project tier. You provide raw material via a structured questionnaire covering your services, team, and any differentiators. We draft everything: service pages, bios, FAQs, and location pages. For regulated industries like law and healthcare, we handle the compliance framing. You review one draft for factual accuracy and we handle the rest.",
   },
   {
     num: "05",
     category: "Compliance",
     q: "Can you handle HIPAA, MRPC, and other compliance requirements?",
-    a: "Yes. Medical and dental sites receive HIPAA-aware form structures that collect only scheduling-necessary information without requesting protected health information. Law firm copy is written under Maryland Rules of Professional Conduct 7.1 through 7.5. Nonprofit donation flows are structured to avoid compliance gray areas. We flag all compliance considerations at Discovery before a line of code is written.",
+    a: "Medical and dental sites receive HIPAA-aware form structures that collect only scheduling-necessary information without requesting protected health information. Law firm copy is written under Maryland Rules of Professional Conduct 7.1 through 7.5. Nonprofit donation flows are structured to avoid compliance gray areas. We flag all compliance considerations at Discovery before a line of code is written.",
   },
   {
     num: "06",
@@ -467,7 +467,7 @@ const faqCategoryColors: Record<string, { bg: string; text: string; border: stri
     <div class="container">
       <div class="ih-pillars-head">
         <p class="eyebrow">Why vertical expertise matters</p>
-        <h2 class="h2-section">Three things that change completely by industry</h2>
+        <h2 class="h2-section">What three things change completely by industry?</h2>
         <p class="lead">Generic agencies deliver the same site to every business. We don't. Here's what changes every time we switch industries.</p>
       </div>
       <div class="ih-pillars-grid">
@@ -541,7 +541,7 @@ const faqCategoryColors: Record<string, { bg: string; text: string; border: stri
     <div class="container">
       <div class="ih-cap-intro">
         <p class="eyebrow">What every build includes</p>
-        <h2 class="h2-section">The same foundation under every vertical</h2>
+        <h2 class="h2-section">What foundation runs under every vertical?</h2>
         <p class="lead">Schema, speed, and fixed pricing don't change by industry. Here's what ships with every project regardless of vertical.</p>
       </div>
       <div class="ih-cap-grid" role="list">
@@ -562,7 +562,7 @@ const faqCategoryColors: Record<string, { bg: string; text: string; border: stri
     <div class="container">
       <div class="ih-faq-head">
         <p class="eyebrow">Common questions</p>
-        <h2 class="h2-section">What Maryland businesses ask before starting</h2>
+        <h2 class="h2-section">What do Maryland businesses ask before starting?</h2>
         <p class="lead">Questions about schema, compliance, timelines, and pricing, answered once so you don't have to ask twice.</p>
       </div>
       <div class="ih-faq-grid">
