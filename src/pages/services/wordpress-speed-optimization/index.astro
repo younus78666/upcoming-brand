@@ -130,7 +130,7 @@ const jsonLd = JSON.stringify({
           "name": "Will speeding up my WordPress site improve rankings?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Speed has measurable ranking impact in two specific cases. First, when a site is below the Core Web Vitals threshold, Google treats it as a usability signal that suppresses rankings. Moving from red to green typically returns 5 to 15 percent of lost traffic. Second, faster pages reduce bounce rate, improving engagement signals. Speed alone will not lift a site with weak content or no schema."
+            "text": "Speed has measurable ranking impact in two specific cases. First, when a site is below the Core Web Vitals threshold, Google treats it as a usability signal that suppresses rankings. Moving from red to green returns 5 to 15 percent of lost traffic. Second, faster pages reduce bounce rate, improving engagement signals. Speed alone will not lift a site with weak content or no schema."
           }
         }
       ]
@@ -197,7 +197,7 @@ const tiers = [
 
 const whenSpeed = [
   { num: "01", signal: "Lighthouse score under 50",            detail: "If your mobile Lighthouse score is below 50 you are losing rankings to competitors who score 80+. Speed optimization moves you to 90+ on every key page in one engagement." },
-  { num: "02", signal: "TTFB above 1.5 seconds",                 detail: "Time to First Byte above 1.5s means the server is the bottleneck. Object caching, OPcache tuning, and database query optimization typically halve TTFB without changing hosts." },
+  { num: "02", signal: "TTFB above 1.5 seconds",                 detail: "Time to First Byte above 1.5s means the server is the bottleneck. Object caching, OPcache tuning, and database query optimization halve TTFB without changing hosts." },
   { num: "03", signal: "Mobile Core Web Vitals failing",         detail: "If LCP is above 2.5s, INP above 200ms, or CLS above 0.1 on mobile, you are flagged in Search Console. Speed optimization fixes the field data, not just the lab score." },
   { num: "04", signal: "Site feels slow but Lighthouse passes",  detail: "Lighthouse runs on a fast simulated connection. Real users on 4G see different numbers. Field data audits reveal the gap between lab tests and reality." },
   { num: "05", signal: "Plugin bloat after years of additions",   detail: "Sites accumulating 30+ active plugins almost always have 5-10 that contribute zero value while eating 60% of load time. A plugin audit identifies what to cut." },
@@ -247,7 +247,7 @@ const faqs = [
   },
   {
     q: "Will speeding up my WordPress site improve rankings?",
-    a: "Speed is one of many ranking factors but it has measurable impact in two specific cases. First, when a site is below the Core Web Vitals threshold, Google treats it as a usability signal that suppresses rankings. Moving from red to green typically returns 5 to 15 percent of lost traffic. Second, when bounce rate is high, faster pages reduce bounce, which improves engagement signals. Speed alone will not lift a site that has weak content or no schema; it removes a barrier rather than creating new traffic.",
+    a: "Speed is one of many ranking factors but it has measurable impact in two specific cases. First, when a site is below the Core Web Vitals threshold, Google treats it as a usability signal that suppresses rankings. Moving from red to green returns 5 to 15 percent of lost traffic. Second, when bounce rate is high, faster pages reduce bounce, which improves engagement signals. Speed alone will not lift a site that has weak content or no schema; it removes a barrier rather than creating new traffic.",
   },
 ];
 ---

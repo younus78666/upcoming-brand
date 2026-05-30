@@ -193,7 +193,7 @@ const tiers = [
 ];
 
 const whenHosting = [
-  { num: "01", signal: "Currently on shared hosting (GoDaddy, Bluehost, Hostinger)", detail: "Shared WordPress hosting is the most common cause of slow site speed. Migrating to managed WordPress hosting (Kinsta, WP Engine, Cloudways) typically halves TTFB and lifts Lighthouse by 20+ points without any code changes." },
+  { num: "01", signal: "Currently on shared hosting (GoDaddy, Bluehost, Hostinger)", detail: "Shared WordPress hosting is the most common cause of slow site speed. Migrating to managed WordPress hosting (Kinsta, WP Engine, Cloudways) halves TTFB and lifts Lighthouse by 20+ points without any code changes." },
   { num: "02", signal: "TTFB above 1.5 seconds despite caching",                    detail: "If your Time to First Byte is consistently above 1.5s with caching enabled, the host is the bottleneck. No amount of plugin caching fixes a slow upstream server. A migration is the answer." },
   { num: "03", signal: "Site outgrew its hosting plan",                              detail: "Traffic doubled, you added WooCommerce, or you launched a content marketing strategy. Plans that worked at 5,000 visits/mo break at 50,000. Right-sizing the host prevents the next outage." },
   { num: "04", signal: "Hosting renewal sticker shock",                              detail: "Bluehost and SiteGround renewals routinely 2-4x the introductory price. By month 13 you are paying $400+/year for shared hosting that performs worse than $20/month Cloudways. Migration usually pays back in 6-12 months." },
