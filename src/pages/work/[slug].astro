@@ -15,6 +15,26 @@ export async function getStaticPaths() {
 interface Props { project: Project; }
 const { project } = Astro.props;
 const canonical = `https://www.upcomingbrand.com/work/${project.slug}/`;
+
+// Phase grouping: split approach steps into 3 phases
+const totalSteps = project.approach.length;
+const d = Math.floor(totalSteps * 0.34);          // discovery boundary
+const b = Math.floor(totalSteps * 0.84);           // build boundary
+const phases = [
+  { id: '01', label: 'Discovery & Audit',    sub: 'Weeks 1–2',  steps: project.approach.slice(0, d) },
+  { id: '02', label: 'Design & Build',       sub: 'Weeks 3–6',  steps: project.approach.slice(d, b) },
+  { id: '03', label: 'Launch & Optimize',    sub: 'Month 2+',   steps: project.approach.slice(b) },
+].filter(p => p.steps.length > 0);
+
+// Total monthly search volume from clientKeywords
+const totalVol = project.clientKeywords.reduce((sum, k) => {
+  const n = parseInt(k.vol.replace(/,/g, ''), 10);
+  return sum + (isNaN(n) ? 0 : n);
+}, 0);
+const totalVolStr = totalVol >= 1000
+  ? (totalVol >= 100000 ? `${Math.round(totalVol / 1000)}K` : `${(totalVol / 1000).toFixed(1)}K`)
+  : totalVol.toString();
+
 const related = projects.filter((p) => p.filter === project.filter && p.slug !== project.slug).slice(0, 3);
 const moreProjects = projects.filter((p) => p.slug !== project.slug).slice(0, 3);
 
@@ -44,9 +64,9 @@ const jsonLd = JSON.stringify({
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home",      "item": "https://www.upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.upcomingbrand.com/" },
           { "@type": "ListItem", "position": 2, "name": "Portfolio", "item": "https://www.upcomingbrand.com/work/" },
-          { "@type": "ListItem", "position": 3, "name": project.name,"item": canonical }
+          { "@type": "ListItem", "position": 3, "name": project.name, "item": canonical }
         ]
       }
     }
@@ -64,101 +84,254 @@ const jsonLd = JSON.stringify({
 
   <main id="main-content">
 
-    <!-- ═══════════════════════════════════════════════
-         HERO — dark, dramatic, result-first
-    ═══════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════
+         HERO
+    ════════════════════════════════════════ -->
     <section class="cs-hero">
-      <div class="cs-hero-noise" aria-hidden="true"></div>
-      <div class="cs-hero-glow cs-hero-glow-1" aria-hidden="true"></div>
-      <div class="cs-hero-glow cs-hero-glow-2" aria-hidden="true"></div>
+      <div class="cs-hero-orb cs-hero-orb-1" aria-hidden="true"></div>
+      <div class="cs-hero-orb cs-hero-orb-2" aria-hidden="true"></div>
       <div class="container">
 
-        <a href="/work/" class="cs-back">
-          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          All projects
-        </a>
+        <nav class="cs-breadcrumb" aria-label="Breadcrumb">
+          <a href="/work/" class="cs-back-link">
+            <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Portfolio
+          </a>
+          <span class="cs-breadcrumb-sep" aria-hidden="true">/</span>
+          <span class="cs-breadcrumb-cur">{project.name}</span>
+        </nav>
 
-        <div class="cs-hero-layout">
-
-          <!-- Left: metadata + headline -->
-          <div class="cs-hero-content">
-            <div class="cs-hero-meta">
+        <div class="cs-hero-grid">
+          <div class="cs-hero-left">
+            <div class="cs-hero-pills">
               <span class="cs-pill cs-pill-vertical">{project.vertical}</span>
-              <span class="cs-pill cs-pill-neutral">{project.scope}</span>
-              <span class="cs-pill cs-pill-neutral">{project.timeline}</span>
+              <span class="cs-pill cs-pill-mono">{project.scope}</span>
+              <span class="cs-pill cs-pill-mono">{project.timeline}</span>
               <span class="cs-pill cs-pill-budget">{project.budget}</span>
             </div>
-
             <h1 class="cs-hero-name">{project.name}</h1>
-            <p class="cs-hero-result">
-              <span class="cs-result-icon" aria-hidden="true">→</span>
-              {project.headline}
-            </p>
+            <p class="cs-hero-result">{project.headline}</p>
             <p class="cs-hero-summary">{project.summary}</p>
-
-            <div class="cs-hero-client">
-              <div class="cs-hero-client-row">
-                <span class="cs-hero-client-label">Client</span>
-                <span class="cs-hero-client-val">{project.client.type} · {project.client.size}</span>
+            <div class="cs-hero-meta-row">
+              <div class="cs-hero-meta-item">
+                <span class="cs-hmi-label">Client</span>
+                <span class="cs-hmi-val">{project.client.type}</span>
               </div>
-              <div class="cs-hero-client-row">
-                <span class="cs-hero-client-label">Market</span>
-                <span class="cs-hero-client-val">{project.client.market}</span>
+              <div class="cs-hero-meta-sep" aria-hidden="true"></div>
+              <div class="cs-hero-meta-item">
+                <span class="cs-hmi-label">Team</span>
+                <span class="cs-hmi-val">{project.client.size}</span>
+              </div>
+              <div class="cs-hero-meta-sep" aria-hidden="true"></div>
+              <div class="cs-hero-meta-item">
+                <span class="cs-hmi-label">Market</span>
+                <span class="cs-hmi-val">{project.client.market}</span>
               </div>
             </div>
           </div>
 
-          <!-- Right: headline metric card -->
-          <div class="cs-hero-metric-card">
-            <div class="cs-hmc-stripe" aria-hidden="true"></div>
-            <span class="cs-hmc-eyebrow">Top result</span>
-            <div class="cs-hmc-number">{project.metrics[0].after}</div>
-            {project.metrics[0].delta && <div class="cs-hmc-delta">{project.metrics[0].delta}</div>}
-            <div class="cs-hmc-label">{project.metrics[0].label}</div>
-            <div class="cs-hmc-divider" aria-hidden="true"></div>
-            <div class="cs-hmc-before">from <s>{project.metrics[0].before}</s></div>
+          <div class="cs-hero-stat-card">
+            <div class="cs-hsc-glow" aria-hidden="true"></div>
+            <div class="cs-hsc-badge">Top result</div>
+            <div class="cs-hsc-big">{project.metrics[0].after}</div>
+            {project.metrics[0].delta && <span class="cs-hsc-delta">{project.metrics[0].delta}</span>}
+            <div class="cs-hsc-label">{project.metrics[0].label}</div>
+            <div class="cs-hsc-from">from <s>{project.metrics[0].before}</s></div>
 
-            <!-- mini metrics list -->
-            <ul class="cs-hmc-mini" role="list">
+            <div class="cs-hsc-divider"></div>
+
+            <ul class="cs-hsc-list" role="list">
               {project.metrics.slice(1).map((m) => (
-                <li class="cs-hmc-mini-item">
-                  <span class="cs-hmc-mini-label">{m.label}</span>
-                  <span class="cs-hmc-mini-val">{m.after}</span>
+                <li class="cs-hsc-item">
+                  <span class="cs-hsc-item-label">{m.label}</span>
+                  <span class="cs-hsc-item-val">{m.after}</span>
                 </li>
               ))}
             </ul>
 
-            <a href="#inquiry" class="cs-hmc-cta">Start a similar project</a>
+            <a href="#inquiry" class="cs-hsc-cta">Start a similar project</a>
+            {project.liveUrl && (
+              <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="cs-hsc-live">
+                View live site
+                <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 1h10M11 1v10M11 1L1 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         SITE SCREENSHOT MOCKUP
+    ════════════════════════════════════════ -->
+    <section class="cs-screens">
+      <div class="container">
+        <div class="cs-screens-grid">
+
+          <!-- Before -->
+          <div class="cs-screen-wrap cs-screen-before">
+            <div class="cs-screen-label-row">
+              <span class="cs-screen-badge cs-screen-badge-before">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><circle cx="4" cy="4" r="3.5" fill="currentColor"/></svg>
+                Before
+              </span>
+              <span class="cs-screen-sub">Original site</span>
+            </div>
+            <div class="cs-browser-frame cs-browser-before">
+              <div class="cs-browser-bar">
+                <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
+                <div class="cs-browser-url">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1" width="10" height="10" rx="2" stroke="currentColor" stroke-width="1.2"/><path d="M4 6h4M4 8h2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                  Old site · Wix / Squarespace / legacy WordPress
+                </div>
+              </div>
+              <div class="cs-browser-body cs-browser-body-before">
+                <!-- Visual representation of broken/old site -->
+                <div class="cs-mockup-before">
+                  <div class="cs-mb-nav"></div>
+                  <div class="cs-mb-hero">
+                    <div class="cs-mb-hero-text">
+                      <div class="cs-mb-line cs-mb-line-title"></div>
+                      <div class="cs-mb-line cs-mb-line-sub"></div>
+                      <div class="cs-mb-line cs-mb-line-sub cs-mb-line-short"></div>
+                    </div>
+                    <div class="cs-mb-hero-score">
+                      <div class="cs-mb-score-label">Mobile Score</div>
+                      <div class="cs-mb-score-bad">{project.metrics[0].label === 'Lighthouse mobile' ? project.metrics[0].before : (project.metrics.find(m => m.label === 'Lighthouse mobile')?.before ?? '—')}</div>
+                    </div>
+                  </div>
+                  <div class="cs-mb-content">
+                    <div class="cs-mb-card"></div>
+                    <div class="cs-mb-card"></div>
+                    <div class="cs-mb-card"></div>
+                  </div>
+                  <div class="cs-mb-warning">
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2L13 12H1L7 2z" stroke="currentColor" stroke-width="1.2"/><path d="M7 6v3M7 10.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+                    No schema · No Local Pack · Slow mobile
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Arrow -->
+          <div class="cs-screens-arrow" aria-hidden="true">
+            <div class="cs-sa-line"></div>
+            <svg class="cs-sa-icon" width="48" height="48" viewBox="0 0 48 48" fill="none">
+              <circle cx="24" cy="24" r="23" stroke="rgba(212,147,46,0.3)" stroke-width="1"/>
+              <circle cx="24" cy="24" r="23" stroke="url(#sa-grad)" stroke-width="1.5" stroke-dasharray="144" stroke-dashoffset="36"/>
+              <path d="M16 24h16M28 18l6 6-6 6" stroke="#D4932E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <defs>
+                <linearGradient id="sa-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#D4932E" stop-opacity="0"/>
+                  <stop offset="50%" stop-color="#D4932E"/>
+                  <stop offset="100%" stop-color="#A86F1F"/>
+                </linearGradient>
+              </defs>
+            </svg>
+            <div class="cs-sa-line"></div>
+          </div>
+
+          <!-- After -->
+          <div class="cs-screen-wrap cs-screen-after">
+            <div class="cs-screen-label-row">
+              <span class="cs-screen-badge cs-screen-badge-after">
+                <svg width="8" height="8" viewBox="0 0 8 8" fill="none" aria-hidden="true"><circle cx="4" cy="4" r="3.5" fill="currentColor"/></svg>
+                After
+              </span>
+              <span class="cs-screen-sub">New WordPress site</span>
+              {project.liveUrl && (
+                <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" class="cs-screen-visit">
+                  Visit ↗
+                </a>
+              )}
+            </div>
+            <div class="cs-browser-frame cs-browser-after">
+              <div class="cs-browser-bar">
+                <span class="cs-browser-dot"></span><span class="cs-browser-dot"></span><span class="cs-browser-dot"></span>
+                <div class="cs-browser-url cs-browser-url-live">
+                  <svg width="10" height="10" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M6 1a5 5 0 100 10A5 5 0 006 1zM1 6h10M6 1C4.5 3 3.8 4.5 3.8 6S4.5 9 6 11M6 1c1.5 2 2.2 3.5 2.2 5S7.5 9 6 11" stroke="currentColor" stroke-width="1.1"/></svg>
+                  wordpress · custom theme · {project.techStack.slice(0, 2).join(' · ')}
+                </div>
+              </div>
+              <div class="cs-browser-body cs-browser-body-after">
+                <div class="cs-mockup-after">
+                  <div class="cs-ma-nav">
+                    <div class="cs-ma-logo"></div>
+                    <div class="cs-ma-nav-links">
+                      <div class="cs-ma-nav-link"></div>
+                      <div class="cs-ma-nav-link"></div>
+                      <div class="cs-ma-nav-link"></div>
+                      <div class="cs-ma-cta-btn"></div>
+                    </div>
+                  </div>
+                  <div class="cs-ma-hero">
+                    <div class="cs-ma-hero-left">
+                      <div class="cs-ma-h1"></div>
+                      <div class="cs-ma-sub"></div>
+                      <div class="cs-ma-sub cs-ma-sub-short"></div>
+                      <div class="cs-ma-btns">
+                        <div class="cs-ma-btn-primary"></div>
+                        <div class="cs-ma-btn-ghost"></div>
+                      </div>
+                    </div>
+                    <div class="cs-ma-hero-score">
+                      <div class="cs-ma-score-ring">
+                        <svg width="56" height="56" viewBox="0 0 56 56" aria-hidden="true">
+                          <circle cx="28" cy="28" r="24" fill="none" stroke="rgba(212,147,46,0.2)" stroke-width="4"/>
+                          <circle cx="28" cy="28" r="24" fill="none" stroke="#D4932E" stroke-width="4" stroke-linecap="round"
+                            stroke-dasharray="150.8" stroke-dashoffset="18" transform="rotate(-90 28 28)"/>
+                        </svg>
+                        <span class="cs-ma-score-num">{project.metrics.find(m => m.label.includes('Lighthouse') || m.label.includes('mobile'))?.after?.replace(/[^0-9]/g, '').slice(0, 2) ?? '9'}+</span>
+                      </div>
+                      <div class="cs-ma-score-label">Mobile Score</div>
+                    </div>
+                  </div>
+                  <div class="cs-ma-content">
+                    <div class="cs-ma-services">
+                      {project.deliverables.slice(0, 3).map((d) => (
+                        <div class="cs-ma-service-card">
+                          <div class="cs-ma-svc-icon"></div>
+                          <div class="cs-ma-svc-label">{d.split(' ').slice(0, 3).join(' ')}</div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         TRANSFORMATION STRIP — before vs after
-    ═══════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════
+         TRANSFORMATION METRICS
+    ════════════════════════════════════════ -->
     <section class="cs-transform">
       <div class="container">
         <div class="cs-transform-head">
           <p class="cs-eyebrow"><span class="cs-eyebrow-line" aria-hidden="true"></span>Measured results</p>
           <h2 class="cs-section-h2">The transformation, <em>by the numbers.</em></h2>
         </div>
-        <div class="cs-transform-grid">
+        <div class="cs-tf-grid">
           {project.metrics.map((m, i) => (
             <div class={`cs-tf-card${i === 0 ? ' cs-tf-card-hero' : ''}`}>
               <span class="cs-tf-label">{m.label}</span>
-              <div class="cs-tf-compare">
+              <div class="cs-tf-row">
                 <div class="cs-tf-before">
-                  <span class="cs-tf-before-label">Before</span>
-                  <span class="cs-tf-before-val">{m.before}</span>
+                  <span class="cs-tf-tag">Before</span>
+                  <span class="cs-tf-val cs-tf-val-before">{m.before}</span>
                 </div>
-                <div class="cs-tf-arrow" aria-hidden="true">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M2 10h16M12 4l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <div class="cs-tf-arrow-wrap" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 12h16M14 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
                 </div>
                 <div class="cs-tf-after">
-                  <span class="cs-tf-after-label">After</span>
-                  <span class="cs-tf-after-val">{m.after}</span>
+                  <span class="cs-tf-tag cs-tf-tag-after">After</span>
+                  <span class="cs-tf-val cs-tf-val-after">{m.after}</span>
                 </div>
               </div>
               {m.delta && <div class="cs-tf-delta">{m.delta}</div>}
@@ -168,101 +341,132 @@ const jsonLd = JSON.stringify({
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         PROBLEM — what was broken
-    ═══════════════════════════════════════════════ -->
-    <section class="cs-problem">
-      <div class="container cs-problem-grid">
-
-        <div class="cs-problem-text">
+    <!-- ════════════════════════════════════════
+         CHALLENGE
+    ════════════════════════════════════════ -->
+    <section class="cs-challenge">
+      <div class="container cs-challenge-grid">
+        <div class="cs-challenge-text">
           <p class="cs-eyebrow"><span class="cs-eyebrow-line" aria-hidden="true"></span>The challenge</p>
           <h2 class="cs-section-h2">Where the project <em>started.</em></h2>
           <p class="cs-prose">{project.challenge}</p>
-
-          <div class="cs-client-profile">
-            <div class="cs-cp-item">
-              <span class="cs-cp-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M4 6h6M4 9h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              </span>
-              <div>
-                <span class="cs-cp-label">Client type</span>
-                <span class="cs-cp-val">{project.client.type}</span>
-              </div>
+          <div class="cs-client-chips">
+            <div class="cs-chip">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><rect x="1" y="1.5" width="10" height="9" rx="1.5" stroke="currentColor" stroke-width="1.2"/><path d="M3 5h6M3 7.5h4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              {project.client.type}
             </div>
-            <div class="cs-cp-item">
-              <span class="cs-cp-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 12c0-2.5 2-4 5-4s5 1.5 5 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              </span>
-              <div>
-                <span class="cs-cp-label">Team size</span>
-                <span class="cs-cp-val">{project.client.size}</span>
-              </div>
+            <div class="cs-chip">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="4.5" r="2" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 10.5c0-2.5 2-3.5 4.5-3.5s4.5 1 4.5 3.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              {project.client.size}
             </div>
-            <div class="cs-cp-item">
-              <span class="cs-cp-icon" aria-hidden="true">
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/><path d="M7 1.5v2M7 10.5v2M1.5 7h2M10.5 7h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-              </span>
-              <div>
-                <span class="cs-cp-label">Market</span>
-                <span class="cs-cp-val">{project.client.market}</span>
-              </div>
+            <div class="cs-chip">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M6 1.5v1.5M6 9v1.5M1.5 6H3M9 6h1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+              {project.client.market}
             </div>
           </div>
         </div>
 
-        <div class="cs-problem-quote">
-          <div class="cs-pq-card">
-            <div class="cs-pq-mark" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none"><path d="M8 22v-7c0-3.5 1.5-5 5-6l1 2c-2.5 1-3.5 1.5-3.5 3.5H14V22H8zm12 0v-7c0-3.5 1.5-5 5-6l1 2c-2.5 1-3.5 1.5-3.5 3.5H26V22h-6z" fill="currentColor"/></svg>
-            </div>
-            <blockquote class="cs-pq-quote">{project.testimonial.quote}</blockquote>
-            <cite class="cs-pq-cite">— {project.testimonial.role}<br/><span>{project.client.type}</span></cite>
-          </div>
+        <div class="cs-testimonial-card">
+          <div class="cs-tc-accent" aria-hidden="true"></div>
+          <svg class="cs-tc-quote" width="36" height="28" viewBox="0 0 36 28" fill="none" aria-hidden="true">
+            <path d="M8 20V12c0-4 2-6 6-7l1.5 3C13 9 12 10 12 12h4v8H8zm16 0V12c0-4 2-6 6-7l1.5 3C29 9 28 10 28 12h4v8H24z" fill="currentColor"/>
+          </svg>
+          <blockquote class="cs-tc-text">{project.testimonial.quote}</blockquote>
+          <cite class="cs-tc-cite">
+            <span class="cs-tc-role">{project.testimonial.role}</span>
+            <span class="cs-tc-company">{project.client.type}</span>
+          </cite>
         </div>
-
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         APPROACH — visual numbered timeline
-    ═══════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════
+         APPROACH — 3-PHASE TIMELINE
+    ════════════════════════════════════════ -->
     <section class="cs-approach">
       <div class="container">
         <div class="cs-approach-head">
           <p class="cs-eyebrow"><span class="cs-eyebrow-line" aria-hidden="true"></span>Our approach</p>
-          <h2 class="cs-section-h2">How we shipped it, <em>step by step.</em></h2>
+          <h2 class="cs-section-h2">How we shipped it, <em>phase by phase.</em></h2>
+          <p class="cs-approach-sub">Every project runs through the same three-phase process. Discovery first, build second, optimize ongoing. No shortcuts.</p>
         </div>
 
-        <ol class="cs-steps" role="list">
-          {project.approach.map((step, i) => (
-            <li class="cs-step">
-              <div class="cs-step-node">
-                <span class="cs-step-num">{String(i + 1).padStart(2, '0')}</span>
-                {i < project.approach.length - 1 && <div class="cs-step-line" aria-hidden="true"></div>}
+        <div class="cs-phases-track">
+          {phases.map((phase, pi) => (
+            <div class="cs-phase-col">
+              <div class="cs-phase-header">
+                <div class="cs-phase-num-wrap">
+                  <span class="cs-phase-num">{phase.id}</span>
+                </div>
+                <div>
+                  <div class="cs-phase-name">{phase.label}</div>
+                  <div class="cs-phase-sub">{phase.sub}</div>
+                </div>
               </div>
-              <div class="cs-step-body">
-                <p class="cs-step-text">{step}</p>
+
+              <div class="cs-phase-steps">
+                {phase.steps.map((step, si) => (
+                  <div class="cs-phase-step">
+                    <div class="cs-ps-icon" aria-hidden="true">
+                      {pi === 0 && (
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.3"/>
+                          <path d="M5 7l1.5 1.5L9 5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      )}
+                      {pi === 1 && (
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <rect x="1.5" y="1.5" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.3"/>
+                          <path d="M4 7h6M4 4.5h3M4 9.5h5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                        </svg>
+                      )}
+                      {pi === 2 && (
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                          <path d="M2 10l3-3 2 2 5-5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+                          <circle cx="12" cy="4" r="1.5" fill="currentColor"/>
+                        </svg>
+                      )}
+                    </div>
+                    <p class="cs-ps-text">{step}</p>
+                  </div>
+                ))}
               </div>
-            </li>
+
+              {pi < phases.length - 1 && (
+                <div class="cs-phase-connector" aria-hidden="true">
+                  <svg width="100%" height="32" viewBox="0 0 300 32" preserveAspectRatio="none" fill="none">
+                    <path d="M0 16 Q150 2 300 16" stroke="url(#phase-conn)" stroke-width="1.5" stroke-dasharray="6 4"/>
+                    <polygon points="294,12 300,16 294,20" fill="#D4932E" opacity="0.7"/>
+                    <defs>
+                      <linearGradient id="phase-conn" x1="0" y1="0" x2="300" y2="0" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#D4932E" stop-opacity="0.3"/>
+                        <stop offset="60%" stop-color="#D4932E" stop-opacity="0.8"/>
+                        <stop offset="100%" stop-color="#A86F1F"/>
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+              )}
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
+    <!-- ════════════════════════════════════════
          DELIVERABLES + STACK
-    ═══════════════════════════════════════════════ -->
+    ════════════════════════════════════════ -->
     <section class="cs-built">
       <div class="container cs-built-grid">
 
-        <div class="cs-built-col">
+        <div>
           <p class="cs-eyebrow"><span class="cs-eyebrow-line" aria-hidden="true"></span>Deliverables</p>
           <h2 class="cs-section-h2">What was <em>built and shipped.</em></h2>
-          <ul class="cs-deliverable-list" role="list">
+          <ul class="cs-deliver-list" role="list">
             {project.deliverables.map((d) => (
-              <li class="cs-deliverable-item">
-                <span class="cs-deliverable-check" aria-hidden="true">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5.5l2 2 4-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <li class="cs-deliver-item">
+                <span class="cs-deliver-check" aria-hidden="true">
+                  <svg width="9" height="9" viewBox="0 0 9 9" fill="none"><path d="M1.5 4.5l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </span>
                 {d}
               </li>
@@ -270,28 +474,42 @@ const jsonLd = JSON.stringify({
           </ul>
         </div>
 
-        <div class="cs-built-col cs-stack-col">
+        <div>
           <p class="cs-eyebrow"><span class="cs-eyebrow-line" aria-hidden="true"></span>Tech stack</p>
           <h2 class="cs-section-h2">What it <em>runs on.</em></h2>
-          <div class="cs-stack-grid">
+          <div class="cs-stack-list">
             {project.techStack.map((t) => (
               <div class="cs-stack-item">
-                <span class="cs-stack-icon" aria-hidden="true">
+                <div class="cs-si-icon" aria-hidden="true">
                   <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4-2 4 2v4l-4 2-4-2V4z" stroke="currentColor" stroke-width="1.2"/></svg>
-                </span>
-                <span class="cs-stack-name">{t}</span>
+                </div>
+                <div>
+                  <span class="cs-si-name">{t}</span>
+                  <span class="cs-si-tag">
+                    {t.toLowerCase().includes('wordpress') ? 'CMS' :
+                     t.toLowerCase().includes('cloudway') || t.toLowerCase().includes('wp engine') || t.toLowerCase().includes('kinsta') ? 'Hosting' :
+                     t.toLowerCase().includes('stripe') || t.toLowerCase().includes('givewp') || t.toLowerCase().includes('woo') ? 'Payments' :
+                     t.toLowerCase().includes('rank') || t.toLowerCase().includes('seo') || t.toLowerCase().includes('whitespark') ? 'SEO' :
+                     t.toLowerCase().includes('cloudflare') || t.toLowerCase().includes('bunny') || t.toLowerCase().includes('algolia') ? 'Performance' :
+                     'Plugin'}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
 
           <div class="cs-built-facts">
-            <div class="cs-fact-row">
-              <span class="cs-fact-key">Timeline</span>
-              <span class="cs-fact-val">{project.timeline}</span>
+            <div class="cs-bf-row">
+              <span class="cs-bf-key">Timeline</span>
+              <span class="cs-bf-val">{project.timeline}</span>
             </div>
-            <div class="cs-fact-row">
-              <span class="cs-fact-key">Investment</span>
-              <span class="cs-fact-val">{project.budget}</span>
+            <div class="cs-bf-row">
+              <span class="cs-bf-key">Investment</span>
+              <span class="cs-bf-val">{project.budget}</span>
+            </div>
+            <div class="cs-bf-row">
+              <span class="cs-bf-key">Platform</span>
+              <span class="cs-bf-val">WordPress (self-hosted)</span>
             </div>
           </div>
         </div>
@@ -299,110 +517,144 @@ const jsonLd = JSON.stringify({
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         ROI BAND — returns frame
-    ═══════════════════════════════════════════════ -->
+    <!-- ════════════════════════════════════════
+         CLIENT KEYWORD DEMAND
+    ════════════════════════════════════════ -->
+    <section class="cs-demand">
+      <div class="container">
+        <div class="cs-demand-inner">
+          <div class="cs-demand-left">
+            <p class="cs-eyebrow cs-eyebrow-light"><span class="cs-eyebrow-line" aria-hidden="true"></span>Search demand</p>
+            <h2 class="cs-demand-h2">What {project.client.type.toLowerCase()}s' <em>customers search for.</em></h2>
+            <p class="cs-demand-sub">These are real monthly searches people make when looking for a business like this one. The new site is built to capture them.</p>
+            <div class="cs-demand-total">
+              <span class="cs-demand-total-num">{totalVolStr}</span>
+              <span class="cs-demand-total-label">combined searches / month<br/>in their market</span>
+            </div>
+          </div>
+          <div class="cs-demand-right">
+            <div class="cs-kw-grid">
+              {project.clientKeywords.map((kw) => (
+                <div class={`cs-kw-card cs-kw-intent-${kw.intent}`}>
+                  <span class="cs-kw-intent-dot" aria-hidden="true"></span>
+                  <div class="cs-kw-body">
+                    <span class="cs-kw-term">{kw.term}</span>
+                    <div class="cs-kw-stats">
+                      <span class="cs-kw-vol">{kw.vol}/mo</span>
+                      <span class="cs-kw-cpc">{kw.cpc} CPC</span>
+                      <span class="cs-kw-badge">{kw.intent}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <p class="cs-kw-note">
+              Data via Ubersuggest · US search volume · intent classified by query type
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════════
+         ROI BAND
+    ════════════════════════════════════════ -->
     <section class="cs-roi">
-      <div class="cs-roi-glow" aria-hidden="true"></div>
-      <div class="container cs-roi-inner">
+      <div class="cs-roi-orb" aria-hidden="true"></div>
+      <div class="container cs-roi-grid">
         <div class="cs-roi-text">
           <p class="cs-eyebrow cs-eyebrow-light"><span class="cs-eyebrow-line" aria-hidden="true"></span>Why it matters</p>
           <h2 class="cs-roi-h2">WordPress done right <em>pays back the investment.</em></h2>
           <p class="cs-roi-sub">Every project we ship is designed to generate leads, bookings, or revenue — not just look good. The metrics above are what our clients track 90 days post-launch.</p>
-          <a href="#inquiry" class="cs-roi-cta">Get similar results →</a>
+          <a href="#inquiry" class="cs-roi-btn">Get similar results →</a>
         </div>
-        <div class="cs-roi-stat-grid">
+        <div class="cs-roi-metrics">
           {project.metrics.map((m) => (
-            <div class="cs-roi-stat">
-              <span class="cs-roi-stat-after">{m.after}</span>
-              <span class="cs-roi-stat-label">{m.label}</span>
-              {m.delta && <span class="cs-roi-stat-delta">{m.delta}</span>}
+            <div class="cs-roi-metric">
+              <span class="cs-roi-after">{m.after}</span>
+              <span class="cs-roi-label">{m.label}</span>
+              {m.delta && <span class="cs-roi-delta">{m.delta}</span>}
             </div>
           ))}
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
-         INQUIRY + LINKS (2-col)
-    ═══════════════════════════════════════════════ -->
-    <section class="cs-cta-section" id="inquiry">
+    <!-- ════════════════════════════════════════
+         INQUIRY + LINKS
+    ════════════════════════════════════════ -->
+    <section class="cs-cta-block" id="inquiry">
       <div class="container cs-cta-grid">
 
-        <!-- Inquiry form -->
-        <div class="cs-inquiry-card">
-          <div class="cs-inquiry-stripe" aria-hidden="true"></div>
+        <div class="cs-form-card">
+          <div class="cs-form-stripe" aria-hidden="true"></div>
           <p class="cs-eyebrow cs-eyebrow-light"><span class="cs-eyebrow-line" aria-hidden="true"></span>Start a project</p>
-          <h2 class="cs-inquiry-title">Want results like these?</h2>
-          <p class="cs-inquiry-sub">Tell us about your site. We'll reply within 4 business hours with an honest assessment — no pitch.</p>
+          <h2 class="cs-form-title">Want results like these?</h2>
+          <p class="cs-form-sub">Tell us about your site. We reply within 4 business hours — no pitch, just an honest assessment.</p>
 
           <form class="cs-form" name={`work-${project.slug}`} method="POST" data-uc-form={`work-${project.slug}`} novalidate>
             <input type="hidden" name="form-name" value={`work-${project.slug}`} />
             <input type="hidden" name="reference_project" value={project.slug} />
             <div style="display:none"><label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
-
-            <div class="cs-form-row cs-form-2col">
-              <div class="cs-form-field">
-                <label class="cs-form-label" for={`cs-name-${project.slug}`}>Your name</label>
-                <input class="cs-form-input" type="text" id={`cs-name-${project.slug}`} name="name" placeholder="Jane Smith" required autocomplete="name" />
+            <div class="cs-form-2col">
+              <div class="cs-field">
+                <label class="cs-label" for={`f-name-${project.slug}`}>Your name</label>
+                <input class="cs-input" type="text" id={`f-name-${project.slug}`} name="name" placeholder="Jane Smith" required autocomplete="name" />
               </div>
-              <div class="cs-form-field">
-                <label class="cs-form-label" for={`cs-email-${project.slug}`}>Email</label>
-                <input class="cs-form-input" type="email" id={`cs-email-${project.slug}`} name="email" placeholder="jane@company.com" required autocomplete="email" />
+              <div class="cs-field">
+                <label class="cs-label" for={`f-email-${project.slug}`}>Email</label>
+                <input class="cs-input" type="email" id={`f-email-${project.slug}`} name="email" placeholder="jane@company.com" required autocomplete="email" />
               </div>
             </div>
-            <div class="cs-form-field">
-              <label class="cs-form-label" for={`cs-msg-${project.slug}`}>What are you trying to fix or build?</label>
-              <textarea class="cs-form-input cs-form-textarea" id={`cs-msg-${project.slug}`} name="message" rows="3" placeholder={`Similar goals to ${project.name}? Tell us the situation.`} required></textarea>
+            <div class="cs-field">
+              <label class="cs-label" for={`f-msg-${project.slug}`}>What are you trying to fix or build?</label>
+              <textarea class="cs-input cs-textarea" id={`f-msg-${project.slug}`} name="message" rows="3" placeholder={`Similar goals to this project? Tell us the situation.`} required></textarea>
             </div>
-            <button type="submit" class="cs-form-submit">
+            <button type="submit" class="cs-submit">
               Send brief
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <p class="cs-form-note">4-hour reply · Fixed-scope quote · No retainer required · <a href="/privacy-policy/">Privacy policy</a></p>
+            <p class="cs-form-footer">4-hour reply · Fixed-scope quote · No retainer required · <a href="/privacy-policy/">Privacy policy</a></p>
           </form>
         </div>
 
-        <!-- Links: services + more projects -->
-        <div class="cs-links-col">
-
+        <div class="cs-links-panel">
           {(project.relatedServices?.length || project.relatedIndustries?.length) && (
-            <div class="cs-links-block">
+            <div class="cs-lp-block">
               <p class="cs-eyebrow"><span class="cs-eyebrow-line" aria-hidden="true"></span>Services behind this project</p>
-              <div class="cs-links-list">
+              <div class="cs-link-list">
                 {project.relatedServices?.map((href) => (
-                  <a href={href} class="cs-link-card">
+                  <a href={href} class="cs-link-row">
                     <div>
-                      <span class="cs-link-tag">Service</span>
-                      <span class="cs-link-name">{href.replace('/services/', '').replace(/\/$/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())}</span>
+                      <span class="cs-lr-tag">Service</span>
+                      <span class="cs-lr-name">{href.replace('/services/', '').replace(/\/$/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}</span>
                     </div>
-                    <span class="cs-link-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true" class="cs-lr-arrow"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
                 ))}
                 {project.relatedIndustries?.map((href) => (
-                  <a href={href} class="cs-link-card">
+                  <a href={href} class="cs-link-row">
                     <div>
-                      <span class="cs-link-tag">Industry page</span>
-                      <span class="cs-link-name">{href.replace('/industries/', '').replace(/\/$/, '').replace(/-website-design/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())} Website Design</span>
+                      <span class="cs-lr-tag">Industry page</span>
+                      <span class="cs-lr-name">{href.replace('/industries/', '').replace(/\/$/, '').replace(/-website-design/, '').replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())} Website Design</span>
                     </div>
-                    <span class="cs-link-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true" class="cs-lr-arrow"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
                 ))}
               </div>
             </div>
           )}
-
           {related.length > 0 && (
-            <div class="cs-links-block">
+            <div class="cs-lp-block">
               <p class="cs-eyebrow"><span class="cs-eyebrow-line" aria-hidden="true"></span>Similar projects</p>
-              <div class="cs-links-list">
+              <div class="cs-link-list">
                 {related.map((p) => (
-                  <a href={`/work/${p.slug}/`} class="cs-link-card">
+                  <a href={`/work/${p.slug}/`} class="cs-link-row">
                     <div>
-                      <span class="cs-link-tag">{p.vertical} · {p.timeline}</span>
-                      <span class="cs-link-name">{p.name}</span>
+                      <span class="cs-lr-tag">{p.vertical} · {p.timeline}</span>
+                      <span class="cs-lr-name">{p.name}</span>
                     </div>
-                    <span class="cs-link-arrow" aria-hidden="true"><svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true" class="cs-lr-arrow"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                   </a>
                 ))}
               </div>
@@ -413,9 +665,9 @@ const jsonLd = JSON.stringify({
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════
+    <!-- ════════════════════════════════════════
          MORE PROJECTS
-    ═══════════════════════════════════════════════ -->
+    ════════════════════════════════════════ -->
     <section class="cs-more">
       <div class="container">
         <div class="cs-more-head">
@@ -425,24 +677,21 @@ const jsonLd = JSON.stringify({
         <div class="cs-more-grid">
           {moreProjects.map((p) => (
             <a href={`/work/${p.slug}/`} class="cs-more-card">
-              <div class="cs-more-top">
-                <span class="cs-more-vertical">{p.vertical}</span>
-                <span class="cs-more-budget">{p.budget}</span>
+              <div class="cs-mc-top">
+                <span class="cs-mc-vertical">{p.vertical}</span>
+                <span class="cs-mc-budget">{p.budget}</span>
               </div>
-              <h3 class="cs-more-name">{p.name}</h3>
-              <p class="cs-more-headline">{p.headline}</p>
-              <div class="cs-more-metrics">
+              <h3 class="cs-mc-name">{p.name}</h3>
+              <p class="cs-mc-headline">{p.headline}</p>
+              <div class="cs-mc-metrics">
                 {p.metrics.slice(0, 2).map((m) => (
-                  <div class="cs-more-metric">
-                    <span class="cs-more-metric-val">{m.after}</span>
-                    <span class="cs-more-metric-label">{m.label}</span>
+                  <div class="cs-mc-metric">
+                    <span class="cs-mc-val">{m.after}</span>
+                    <span class="cs-mc-label">{m.label}</span>
                   </div>
                 ))}
               </div>
-              <span class="cs-more-link">
-                Read case study
-                <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
+              <span class="cs-mc-cta">Read case study →</span>
             </a>
           ))}
         </div>
@@ -457,533 +706,571 @@ const jsonLd = JSON.stringify({
 </BaseLayout>
 
 <style>
-/* ─── TOKENS (local) ──────────────────────────────────── */
+/* ─── TOKEN ALIASES ───────────────────────────────── */
 :root {
-  --cs-ink: var(--ink);
-  --cs-cream: var(--cream);
-  --cs-paper: var(--paper);
-  --cs-amber: var(--amber);
-  --cs-amber-deep: var(--amber-deep);
-  --cs-line: var(--line);
-  --cs-radius: var(--radius-lg);
+  --ink: var(--ink, #0F1419);
+  --amber: #D4932E;
+  --amber-deep: #A86F1F;
 }
 
-/* ─── SHARED ──────────────────────────────────────────── */
+/* ─── UTILITIES ───────────────────────────────────── */
 .cs-eyebrow {
   display: inline-flex; align-items: center; gap: 10px;
-  font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--cs-amber-deep); margin: 0; font-weight: 600;
+  font-family: var(--f-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep);
+  margin: 0;
 }
-.cs-eyebrow-light { color: var(--cs-amber); }
-.cs-eyebrow-line { display: inline-block; width: 28px; height: 1px; background: var(--cs-amber); flex-shrink: 0; }
+.cs-eyebrow-light { color: var(--amber); }
+.cs-eyebrow-line { display: inline-block; width: 28px; height: 1px; background: currentColor; flex-shrink: 0; opacity: 0.7; }
 
 .cs-section-h2 {
   font-family: var(--f-display); font-weight: 500;
-  font-size: clamp(26px, 3.2vw, 38px); line-height: 1.12;
-  letter-spacing: -0.028em; color: var(--cs-ink); margin: 10px 0 0;
+  font-size: clamp(26px, 3.2vw, 38px); line-height: 1.1;
+  letter-spacing: -0.028em; color: var(--ink); margin: 10px 0 0;
 }
-.cs-section-h2 em { font-style: italic; font-weight: 300; color: var(--cs-amber-deep); }
+.cs-section-h2 em { font-style: italic; font-weight: 300; color: var(--amber-deep); }
+.cs-prose { font-size: 15.5px; line-height: 1.76; color: var(--ink-soft); margin: 0; }
 
-.cs-prose {
-  font-size: 15.5px; line-height: 1.75; color: var(--ink-soft); margin: 0; max-width: 66ch;
-}
-
-/* ─── HERO ──────────────────────────────────────────────── */
+/* ─── HERO ────────────────────────────────────────── */
 .cs-hero {
-  background: var(--ink);
-  padding: clamp(40px, 6vh, 72px) 0 clamp(56px, 8vh, 96px);
+  background: var(--ink); padding: clamp(36px, 5vh, 64px) 0 clamp(52px, 7vh, 80px);
   position: relative; overflow: hidden;
 }
-.cs-hero-noise {
-  position: absolute; inset: 0; pointer-events: none; opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+.cs-hero-orb {
+  position: absolute; border-radius: 50%; pointer-events: none; filter: blur(72px);
 }
-.cs-hero-glow {
-  position: absolute; pointer-events: none; border-radius: 50%;
-  filter: blur(80px);
-}
-.cs-hero-glow-1 {
-  width: 600px; height: 600px; top: -200px; right: -100px;
-  background: radial-gradient(circle, rgba(212,147,46,0.18) 0%, transparent 60%);
-}
-.cs-hero-glow-2 {
-  width: 400px; height: 400px; bottom: -150px; left: -80px;
-  background: radial-gradient(circle, rgba(212,147,46,0.08) 0%, transparent 65%);
-}
+.cs-hero-orb-1 { width: 560px; height: 560px; top: -180px; right: -80px; background: radial-gradient(circle, rgba(212,147,46,0.16) 0%, transparent 62%); }
+.cs-hero-orb-2 { width: 320px; height: 320px; bottom: -100px; left: -60px; background: radial-gradient(circle, rgba(212,147,46,0.07) 0%, transparent 65%); }
 
-.cs-back {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: rgba(244,239,230,0.5);
-  text-decoration: none; transition: color 0.2s ease; margin-bottom: 28px;
-  position: relative; z-index: 1;
+.cs-breadcrumb {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 24px; position: relative; z-index: 1;
 }
-.cs-back:hover { color: var(--cs-amber); }
-
-.cs-hero-layout {
-  display: grid; grid-template-columns: 1fr 360px;
-  gap: clamp(28px, 5vw, 64px); align-items: center;
-  position: relative; z-index: 1;
+.cs-back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(244,239,230,0.45); text-decoration: none; transition: color 0.2s ease;
 }
+.cs-back-link:hover { color: var(--amber); }
+.cs-breadcrumb-sep { color: rgba(244,239,230,0.2); font-size: 11px; }
+.cs-breadcrumb-cur { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,239,230,0.55); }
 
-.cs-hero-content { display: flex; flex-direction: column; gap: 16px; }
-
-.cs-hero-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.cs-hero-grid {
+  display: grid; grid-template-columns: 1fr 340px;
+  gap: clamp(24px, 4vw, 56px); align-items: center; position: relative; z-index: 1;
+}
+.cs-hero-left { display: flex; flex-direction: column; gap: 14px; }
+.cs-hero-pills { display: flex; flex-wrap: wrap; gap: 6px; }
 .cs-pill {
-  font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em;
-  text-transform: uppercase; padding: 4px 12px; border-radius: var(--radius-pill);
-  font-weight: 600; white-space: nowrap;
+  font-family: var(--f-mono); font-size: 9px; font-weight: 600; letter-spacing: 0.14em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 999px; white-space: nowrap;
 }
-.cs-pill-vertical { background: rgba(212,147,46,0.2); color: var(--cs-amber); }
-.cs-pill-neutral { background: rgba(244,239,230,0.06); color: rgba(244,239,230,0.6); border: 1px solid rgba(244,239,230,0.12); }
-.cs-pill-budget { background: rgba(244,239,230,0.1); color: rgba(244,239,230,0.8); border: 1px solid rgba(244,239,230,0.2); }
+.cs-pill-vertical { background: rgba(212,147,46,0.2); color: var(--amber); }
+.cs-pill-mono { background: rgba(244,239,230,0.07); color: rgba(244,239,230,0.55); border: 1px solid rgba(244,239,230,0.12); }
+.cs-pill-budget { background: rgba(244,239,230,0.12); color: rgba(244,239,230,0.8); border: 1px solid rgba(244,239,230,0.22); }
 
 .cs-hero-name {
-  font-family: var(--f-display); font-weight: 500;
-  font-size: clamp(28px, 3.5vw, 42px); line-height: 1.1;
-  letter-spacing: -0.025em; color: rgba(244,239,230,0.7); margin: 0;
+  font-family: var(--f-display); font-weight: 500; font-size: clamp(26px, 3.2vw, 38px);
+  line-height: 1.1; letter-spacing: -0.02em; color: rgba(244,239,230,0.6); margin: 0;
 }
 .cs-hero-result {
-  font-family: var(--f-display); font-weight: 400;
-  font-size: clamp(22px, 2.8vw, 34px); line-height: 1.2;
-  letter-spacing: -0.02em; color: var(--cs-cream); margin: 0;
-  display: flex; align-items: flex-start; gap: 12px;
+  font-family: var(--f-display); font-weight: 400; font-size: clamp(20px, 2.6vw, 32px);
+  line-height: 1.22; letter-spacing: -0.02em; color: var(--cream); margin: 0;
 }
-.cs-result-icon {
-  color: var(--cs-amber); font-size: 1em; line-height: 1.2;
-  flex-shrink: 0; font-weight: 300;
-}
-.cs-hero-summary {
-  font-size: 14.5px; line-height: 1.65; color: rgba(244,239,230,0.55);
-  margin: 0; max-width: 56ch;
-}
+.cs-hero-summary { font-size: 14.5px; line-height: 1.66; color: rgba(244,239,230,0.52); margin: 0; max-width: 56ch; }
+.cs-hero-meta-row { display: flex; align-items: center; gap: 0; flex-wrap: wrap; border-top: 1px solid rgba(244,239,230,0.1); padding-top: 14px; margin-top: 4px; }
+.cs-hero-meta-item { display: flex; flex-direction: column; gap: 3px; padding: 0 16px; }
+.cs-hero-meta-item:first-child { padding-left: 0; }
+.cs-hero-meta-sep { width: 1px; height: 32px; background: rgba(244,239,230,0.12); }
+.cs-hmi-label { font-family: var(--f-mono); font-size: 8.5px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,239,230,0.38); font-weight: 600; }
+.cs-hmi-val { font-size: 12.5px; color: rgba(244,239,230,0.68); line-height: 1.35; }
 
-.cs-hero-client {
-  display: flex; flex-direction: column; gap: 8px;
-  padding: 16px 0 0; border-top: 1px solid rgba(244,239,230,0.1); margin-top: 4px;
+/* Hero stat card */
+.cs-hero-stat-card {
+  background: linear-gradient(160deg, rgba(244,239,230,0.07), rgba(244,239,230,0.03));
+  border: 1px solid rgba(244,239,230,0.14); border-radius: 24px;
+  padding: 26px 22px; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; gap: 7px;
 }
-.cs-hero-client-row { display: grid; grid-template-columns: 60px 1fr; gap: 12px; align-items: baseline; }
-.cs-hero-client-label {
-  font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(244,239,230,0.4); font-weight: 600;
+.cs-hsc-glow {
+  position: absolute; width: 200px; height: 200px; top: -60px; right: -40px;
+  background: radial-gradient(circle, rgba(212,147,46,0.18) 0%, transparent 60%);
+  filter: blur(30px); pointer-events: none;
 }
-.cs-hero-client-val { font-size: 13px; color: rgba(244,239,230,0.7); line-height: 1.4; }
+.cs-hsc-badge {
+  font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--amber); font-weight: 700; align-self: flex-start;
+}
+.cs-hsc-big {
+  font-family: var(--f-display); font-size: clamp(40px, 5vw, 58px); font-weight: 700;
+  color: var(--amber); line-height: 0.95; letter-spacing: -0.04em;
+}
+.cs-hsc-delta {
+  display: inline-flex; align-self: flex-start; padding: 3px 10px;
+  background: rgba(212,147,46,0.2); color: var(--amber); border-radius: 999px;
+  font-family: var(--f-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+}
+.cs-hsc-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,239,230,0.5); }
+.cs-hsc-from { font-size: 11.5px; color: rgba(244,239,230,0.38); }
+.cs-hsc-from s { text-decoration-color: rgba(244,239,230,0.25); }
+.cs-hsc-divider { height: 1px; background: rgba(244,239,230,0.1); margin: 4px 0; }
 
-/* Hero metric card */
-.cs-hero-metric-card {
-  background: linear-gradient(160deg, rgba(244,239,230,0.07) 0%, rgba(244,239,230,0.03) 100%);
-  border: 1px solid rgba(244,239,230,0.14); border-radius: var(--cs-radius);
-  padding: 28px 26px; position: relative; overflow: hidden;
-  display: flex; flex-direction: column; gap: 8px;
-  backdrop-filter: blur(8px);
-}
-.cs-hmc-stripe {
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent 0%, var(--cs-amber) 20%, var(--cs-amber-deep) 80%, transparent 100%);
-}
-.cs-hmc-eyebrow {
-  font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.18em;
-  text-transform: uppercase; color: var(--cs-amber); font-weight: 700;
-}
-.cs-hmc-number {
-  font-family: var(--f-display); font-size: clamp(44px, 5.5vw, 64px);
-  font-weight: 700; color: var(--cs-amber); line-height: 0.95;
-  letter-spacing: -0.04em; margin-top: 4px;
-}
-.cs-hmc-delta {
-  display: inline-flex; align-self: flex-start;
-  padding: 4px 12px; background: rgba(212,147,46,0.2); color: var(--cs-amber);
-  border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 11px;
-  font-weight: 600; letter-spacing: 0.08em;
-}
-.cs-hmc-label {
-  font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em;
-  text-transform: uppercase; color: rgba(244,239,230,0.55); font-weight: 500;
-}
-.cs-hmc-divider { height: 1px; background: rgba(244,239,230,0.1); margin: 8px 0 4px; }
-.cs-hmc-before { font-size: 12px; color: rgba(244,239,230,0.45); }
-.cs-hmc-before s { text-decoration-color: rgba(244,239,230,0.3); }
+.cs-hsc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 7px; }
+.cs-hsc-item { display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 7px; border-bottom: 1px solid rgba(244,239,230,0.07); }
+.cs-hsc-item:last-child { border-bottom: none; padding-bottom: 0; }
+.cs-hsc-item-label { font-size: 11px; color: rgba(244,239,230,0.45); line-height: 1.4; max-width: 60%; }
+.cs-hsc-item-val { font-family: var(--f-mono); font-size: 11.5px; color: rgba(244,239,230,0.78); font-weight: 600; white-space: nowrap; }
 
-.cs-hmc-mini { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 8px; }
-.cs-hmc-mini-item {
-  display: flex; justify-content: space-between; align-items: baseline;
-  padding-bottom: 8px; border-bottom: 1px solid rgba(244,239,230,0.08);
-}
-.cs-hmc-mini-item:last-child { border-bottom: none; padding-bottom: 0; }
-.cs-hmc-mini-label { font-size: 11.5px; color: rgba(244,239,230,0.5); line-height: 1.4; max-width: 60%; }
-.cs-hmc-mini-val { font-family: var(--f-mono); font-size: 12px; color: rgba(244,239,230,0.8); font-weight: 600; white-space: nowrap; }
-
-.cs-hmc-cta {
+.cs-hsc-cta {
   display: flex; align-items: center; justify-content: center;
-  padding: 11px 16px; background: var(--cs-amber); color: var(--ink);
-  border-radius: var(--radius-md); font-family: var(--f-body); font-size: 13px;
-  font-weight: 600; text-decoration: none; transition: background 0.2s ease;
-  margin-top: 8px; text-align: center;
+  padding: 11px 16px; background: var(--amber); color: var(--ink);
+  border-radius: 14px; font-size: 13px; font-weight: 600;
+  text-decoration: none; margin-top: 6px; transition: background 0.2s ease;
 }
-.cs-hmc-cta:hover { background: var(--cs-amber-deep); }
-
-/* ─── TRANSFORMATION STRIP ──────────────────────────────── */
-.cs-transform {
-  background: var(--cs-cream); padding: clamp(56px, 8vh, 96px) 0;
-  border-bottom: 1px solid var(--cs-line);
-}
-.cs-transform-head {
-  text-align: center; display: flex; flex-direction: column;
-  align-items: center; gap: 8px; margin-bottom: 40px;
-}
-.cs-transform-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 14px; max-width: 1200px; margin: 0 auto;
-}
-.cs-tf-card {
-  background: var(--cs-paper); border: 1.5px solid var(--cs-line);
-  border-radius: var(--cs-radius); padding: 22px 20px;
-  display: flex; flex-direction: column; gap: 12px;
-  transition: all 0.3s ease; position: relative; overflow: hidden;
-}
-.cs-tf-card-hero {
-  background: var(--ink); border-color: rgba(212,147,46,0.4);
-  box-shadow: 0 8px 32px rgba(15,20,25,0.2);
-}
-.cs-tf-card:hover { transform: translateY(-4px); border-color: var(--cs-amber); box-shadow: 0 8px 32px rgba(212,147,46,0.12); }
-.cs-tf-label {
-  font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.16em;
-  text-transform: uppercase; color: var(--ink-muted); font-weight: 600;
-}
-.cs-tf-card-hero .cs-tf-label { color: rgba(244,239,230,0.55); }
-
-.cs-tf-compare { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-.cs-tf-before, .cs-tf-after { display: flex; flex-direction: column; gap: 2px; }
-.cs-tf-before-label, .cs-tf-after-label {
-  font-family: var(--f-mono); font-size: 8px; letter-spacing: 0.12em;
-  text-transform: uppercase; font-weight: 600;
-}
-.cs-tf-before-label { color: var(--ink-muted); }
-.cs-tf-after-label { color: var(--cs-amber-deep); }
-.cs-tf-card-hero .cs-tf-before-label { color: rgba(244,239,230,0.4); }
-.cs-tf-card-hero .cs-tf-after-label { color: var(--cs-amber); }
-
-.cs-tf-before-val {
-  font-family: var(--f-display); font-size: clamp(16px, 2vw, 22px);
-  color: var(--ink-muted); font-weight: 400; text-decoration: line-through;
-  text-decoration-thickness: 1px; text-decoration-color: rgba(100,100,100,0.5);
-  letter-spacing: -0.02em;
-}
-.cs-tf-after-val {
-  font-family: var(--f-display); font-size: clamp(22px, 2.8vw, 30px);
-  color: var(--cs-ink); font-weight: 600; letter-spacing: -0.03em;
-}
-.cs-tf-card-hero .cs-tf-after-val { color: var(--cs-amber); }
-.cs-tf-card-hero .cs-tf-before-val { color: rgba(244,239,230,0.3); }
-
-.cs-tf-arrow { color: var(--cs-amber); flex-shrink: 0; }
-.cs-tf-card-hero .cs-tf-arrow { color: rgba(212,147,46,0.7); }
-
-.cs-tf-delta {
-  display: inline-flex; align-self: flex-start;
-  padding: 3px 10px; background: rgba(92,128,64,0.12); color: #4a7a28;
-  border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 10px;
-  font-weight: 700; letter-spacing: 0.06em;
-}
-.cs-tf-card-hero .cs-tf-delta { background: rgba(212,147,46,0.2); color: var(--cs-amber); }
-
-/* ─── PROBLEM ──────────────────────────────────────────── */
-.cs-problem {
-  background: var(--cs-paper); padding: clamp(56px, 8vh, 96px) 0;
-  border-bottom: 1px solid var(--cs-line);
-}
-.cs-problem-grid {
-  display: grid; grid-template-columns: 1fr 380px;
-  gap: clamp(32px, 5vw, 72px); align-items: center;
-}
-
-.cs-client-profile {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 10px; margin-top: 24px; padding-top: 24px;
-  border-top: 1px solid var(--cs-line);
-}
-.cs-cp-item {
-  display: flex; gap: 10px; align-items: flex-start;
-  padding: 12px; background: var(--cs-cream);
-  border: 1px solid var(--cs-line); border-radius: var(--radius-md);
-}
-.cs-cp-icon {
-  width: 28px; height: 28px; border-radius: 50%;
-  background: rgba(212,147,46,0.1); color: var(--cs-amber-deep);
-  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.cs-cp-label {
-  display: block; font-family: var(--f-mono); font-size: 8px;
-  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600;
-}
-.cs-cp-val { display: block; font-size: 12px; color: var(--cs-ink); font-weight: 500; margin-top: 2px; line-height: 1.4; }
-
-/* Problem quote card */
-.cs-pq-card {
-  background: var(--ink); border-radius: var(--cs-radius); padding: 32px 28px;
-  display: flex; flex-direction: column; gap: 12px;
-  box-shadow: 0 20px 50px rgba(15,20,25,0.25); position: relative; overflow: hidden;
-}
-.cs-pq-card::before {
-  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--cs-amber), transparent);
-}
-.cs-pq-mark { color: rgba(212,147,46,0.35); }
-.cs-pq-quote {
-  font-family: var(--f-display); font-size: clamp(16px, 1.9vw, 20px);
-  line-height: 1.5; color: var(--cs-cream); font-weight: 400;
-  font-style: italic; margin: 0;
-}
-.cs-pq-cite {
-  font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: rgba(244,239,230,0.5);
-  font-style: normal; line-height: 1.6;
-}
-.cs-pq-cite span { color: var(--cs-amber); display: block; margin-top: 2px; }
-
-/* ─── APPROACH / STEPS ──────────────────────────────────── */
-.cs-approach {
-  background: var(--cs-cream); padding: clamp(56px, 8vh, 96px) 0;
-  border-bottom: 1px solid var(--cs-line);
-}
-.cs-approach-head {
-  max-width: 640px; margin-bottom: 40px;
-  display: flex; flex-direction: column; gap: 8px;
-}
-.cs-steps {
-  list-style: none; padding: 0; margin: 0;
-  display: flex; flex-direction: column; gap: 0;
-  max-width: 860px;
-}
-.cs-step {
-  display: grid; grid-template-columns: 64px 1fr;
-  gap: 20px; align-items: stretch;
-}
-.cs-step-node {
-  display: flex; flex-direction: column;
-  align-items: center; gap: 0; position: relative;
-}
-.cs-step-num {
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--ink); color: var(--cs-amber);
-  display: inline-flex; align-items: center; justify-content: center;
-  font-family: var(--f-mono); font-size: 12px; font-weight: 700;
-  letter-spacing: 0.04em; flex-shrink: 0; position: relative; z-index: 1;
-  box-shadow: 0 0 0 4px var(--cs-cream), 0 0 0 6px rgba(212,147,46,0.2);
-}
-.cs-step-line {
-  flex: 1; width: 2px; background: linear-gradient(180deg, rgba(212,147,46,0.3) 0%, rgba(212,147,46,0.08) 100%);
-  margin: 6px 0;
-}
-.cs-step-body {
-  padding: 10px 0 32px;
-}
-.cs-step-text { font-size: 15px; line-height: 1.7; color: var(--ink-soft); margin: 0; }
-
-/* ─── DELIVERABLES + STACK ──────────────────────────────── */
-.cs-built {
-  background: var(--cs-paper); padding: clamp(56px, 8vh, 96px) 0;
-  border-bottom: 1px solid var(--cs-line);
-}
-.cs-built-grid {
-  display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 72px);
-  align-items: start;
-}
-.cs-built-col { display: flex; flex-direction: column; gap: 16px; }
-
-.cs-deliverable-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-.cs-deliverable-item {
-  display: grid; grid-template-columns: 24px 1fr; gap: 10px;
-  align-items: flex-start; font-size: 14.5px; line-height: 1.55; color: var(--ink-soft);
-  padding: 12px 14px; background: var(--cs-cream);
-  border: 1px solid var(--cs-line); border-radius: var(--radius-md);
-  transition: border-color 0.2s ease;
-}
-.cs-deliverable-item:hover { border-color: var(--cs-amber); }
-.cs-deliverable-check {
-  width: 24px; height: 24px; border-radius: 50%;
-  background: rgba(92,128,64,0.12); color: #4a7a28;
-  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-
-.cs-stack-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.cs-stack-item {
-  display: flex; align-items: center; gap: 10px;
-  padding: 12px 14px; background: var(--cs-cream);
-  border: 1px solid var(--cs-line); border-radius: var(--radius-md);
+.cs-hsc-cta:hover { background: var(--amber-deep); }
+.cs-hsc-live {
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 8px 14px; background: transparent;
+  border: 1px solid rgba(244,239,230,0.15); border-radius: 12px;
+  font-family: var(--f-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(244,239,230,0.5); text-decoration: none;
   transition: all 0.2s ease;
 }
-.cs-stack-item:hover { border-color: var(--cs-amber); transform: translateY(-1px); }
-.cs-stack-icon {
-  width: 28px; height: 28px; border-radius: var(--radius-md);
-  background: var(--ink); color: var(--cs-amber);
-  display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
-}
-.cs-stack-name { font-family: var(--f-mono); font-size: 11px; font-weight: 600; color: var(--cs-ink); letter-spacing: 0.03em; }
+.cs-hsc-live:hover { border-color: var(--amber); color: var(--amber); }
 
-.cs-built-facts {
-  display: flex; flex-direction: column; gap: 0;
-  border: 1px solid var(--cs-line); border-radius: var(--radius-md);
-  overflow: hidden; margin-top: 8px;
+/* ─── SCREENSHOT MOCKUP ──────────────────────────── */
+.cs-screens {
+  background: var(--cream); padding: clamp(48px, 7vh, 80px) 0;
+  border-bottom: 1px solid var(--line);
 }
-.cs-fact-row {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 12px 16px; background: var(--cs-cream); border-bottom: 1px solid var(--cs-line);
+.cs-screens-grid {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  gap: 20px; align-items: center;
 }
-.cs-fact-row:last-child { border-bottom: none; }
-.cs-fact-key { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
-.cs-fact-val { font-size: 13.5px; font-weight: 500; color: var(--cs-ink); }
+.cs-screen-wrap { display: flex; flex-direction: column; gap: 12px; }
+.cs-screen-label-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cs-screen-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--f-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 999px;
+}
+.cs-screen-badge-before { background: rgba(200,80,80,0.12); color: #c85050; }
+.cs-screen-badge-after { background: rgba(212,147,46,0.15); color: var(--amber-deep); }
+.cs-screen-sub { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.06em; }
+.cs-screen-visit { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-deep); text-decoration: none; margin-left: auto; font-weight: 600; }
+.cs-screen-visit:hover { text-decoration: underline; }
 
-/* ─── ROI BAND ──────────────────────────────────────────── */
-.cs-roi {
-  background: var(--ink); padding: clamp(64px, 9vh, 100px) 0;
+.cs-browser-frame { border-radius: 12px; overflow: hidden; box-shadow: 0 12px 48px rgba(15,20,25,0.18); border: 1px solid var(--line); }
+.cs-browser-bar {
+  display: flex; align-items: center; gap: 10px;
+  background: #F0ECE4; padding: 10px 14px;
+  border-bottom: 1px solid rgba(15,20,25,0.08);
+}
+.cs-browser-before .cs-browser-bar { background: #F0ECE4; }
+.cs-browser-after .cs-browser-bar { background: #1E2832; }
+.cs-browser-dot { width: 9px; height: 9px; border-radius: 50%; background: rgba(0,0,0,0.2); flex-shrink: 0; }
+.cs-browser-before .cs-browser-dot:nth-child(1) { background: #ff5f57; }
+.cs-browser-before .cs-browser-dot:nth-child(2) { background: #ffbd2e; }
+.cs-browser-before .cs-browser-dot:nth-child(3) { background: #28ca42; }
+.cs-browser-after .cs-browser-dot { background: rgba(244,239,230,0.15); }
+.cs-browser-url {
+  display: flex; align-items: center; gap: 5px;
+  flex: 1; background: rgba(0,0,0,0.07); border-radius: 6px;
+  padding: 4px 10px; font-family: var(--f-mono); font-size: 9px; color: var(--ink-muted);
+}
+.cs-browser-url-live { background: rgba(244,239,230,0.08); color: rgba(244,239,230,0.45); }
+
+/* Before mockup */
+.cs-browser-body-before { background: #E8E4DA; padding: 0; min-height: 260px; }
+.cs-mockup-before { padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 260px; }
+.cs-mb-nav { height: 28px; background: rgba(0,0,0,0.07); border-radius: 4px; }
+.cs-mb-hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 0; }
+.cs-mb-hero-text { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.cs-mb-line { height: 8px; background: rgba(0,0,0,0.1); border-radius: 4px; }
+.cs-mb-line-title { width: 70%; height: 14px; background: rgba(0,0,0,0.15); }
+.cs-mb-line-sub { width: 85%; }
+.cs-mb-line-short { width: 55%; }
+.cs-mb-hero-score { text-align: center; background: rgba(0,0,0,0.07); border-radius: 8px; padding: 10px 14px; }
+.cs-mb-score-label { font-family: var(--f-mono); font-size: 8px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.1em; }
+.cs-mb-score-bad { font-family: var(--f-display); font-size: 28px; font-weight: 700; color: #c85050; letter-spacing: -0.03em; margin-top: 2px; }
+.cs-mb-content { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+.cs-mb-card { height: 52px; background: rgba(0,0,0,0.07); border-radius: 6px; }
+.cs-mb-warning {
+  display: flex; align-items: center; gap: 6px; padding: 8px 12px;
+  background: rgba(200,80,80,0.1); border-radius: 6px; border: 1px solid rgba(200,80,80,0.2);
+  font-family: var(--f-mono); font-size: 9px; color: #c85050; letter-spacing: 0.06em; margin-top: auto;
+}
+
+/* After mockup */
+.cs-browser-body-after { background: #0F1419; padding: 0; min-height: 260px; }
+.cs-mockup-after { padding: 16px; display: flex; flex-direction: column; gap: 12px; min-height: 260px; }
+.cs-ma-nav { display: flex; align-items: center; justify-content: space-between; }
+.cs-ma-logo { width: 80px; height: 18px; background: rgba(212,147,46,0.4); border-radius: 4px; }
+.cs-ma-nav-links { display: flex; align-items: center; gap: 8px; }
+.cs-ma-nav-link { width: 36px; height: 8px; background: rgba(244,239,230,0.15); border-radius: 4px; }
+.cs-ma-cta-btn { width: 56px; height: 22px; background: var(--amber); border-radius: 6px; opacity: 0.8; }
+.cs-ma-hero { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding: 12px 0; }
+.cs-ma-hero-left { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.cs-ma-h1 { width: 75%; height: 16px; background: rgba(244,239,230,0.7); border-radius: 4px; }
+.cs-ma-sub { width: 90%; height: 7px; background: rgba(244,239,230,0.25); border-radius: 4px; }
+.cs-ma-sub-short { width: 60%; }
+.cs-ma-btns { display: flex; gap: 6px; margin-top: 4px; }
+.cs-ma-btn-primary { width: 72px; height: 22px; background: var(--amber); border-radius: 6px; opacity: 0.9; }
+.cs-ma-btn-ghost { width: 64px; height: 22px; border: 1px solid rgba(244,239,230,0.25); border-radius: 6px; }
+.cs-ma-hero-score { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.cs-ma-score-ring { position: relative; display: flex; align-items: center; justify-content: center; }
+.cs-ma-score-num {
+  position: absolute; font-family: var(--f-display); font-size: 14px; font-weight: 700;
+  color: var(--amber); letter-spacing: -0.03em;
+}
+.cs-ma-score-label { font-family: var(--f-mono); font-size: 7.5px; color: rgba(244,239,230,0.4); text-transform: uppercase; letter-spacing: 0.08em; }
+.cs-ma-content { margin-top: auto; }
+.cs-ma-services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.cs-ma-service-card { background: rgba(244,239,230,0.05); border: 1px solid rgba(244,239,230,0.1); border-radius: 6px; padding: 8px; }
+.cs-ma-svc-icon { width: 18px; height: 18px; background: rgba(212,147,46,0.2); border-radius: 4px; margin-bottom: 5px; }
+.cs-ma-svc-label { font-family: var(--f-mono); font-size: 7px; color: rgba(244,239,230,0.45); line-height: 1.3; display: block; }
+
+/* Arrow between mockups */
+.cs-screens-arrow {
+  display: flex; flex-direction: column; align-items: center; gap: 0;
+  width: 64px; flex-shrink: 0;
+}
+.cs-sa-line { flex: 1; width: 1px; min-height: 40px; background: linear-gradient(180deg, transparent, rgba(212,147,46,0.3), transparent); }
+.cs-sa-icon { flex-shrink: 0; }
+
+/* ─── TRANSFORMATION METRICS ─────────────────────── */
+.cs-transform {
+  background: var(--paper); padding: clamp(52px, 7vh, 80px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.cs-transform-head { text-align: center; max-width: 600px; margin: 0 auto 36px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.cs-tf-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.cs-tf-card {
+  background: var(--cream); border: 1.5px solid var(--line); border-radius: 20px;
+  padding: 20px 18px; display: flex; flex-direction: column; gap: 10px;
+  transition: all 0.3s ease; position: relative; overflow: hidden;
+}
+.cs-tf-card-hero { background: var(--ink); border-color: rgba(212,147,46,0.35); }
+.cs-tf-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 32px rgba(212,147,46,0.1); }
+
+.cs-tf-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
+.cs-tf-card-hero .cs-tf-label { color: rgba(244,239,230,0.5); }
+
+.cs-tf-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cs-tf-before, .cs-tf-after { display: flex; flex-direction: column; gap: 2px; }
+.cs-tf-tag { font-family: var(--f-mono); font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+.cs-tf-tag { color: var(--ink-muted); }
+.cs-tf-tag-after { color: var(--amber-deep); }
+.cs-tf-card-hero .cs-tf-tag { color: rgba(244,239,230,0.38); }
+.cs-tf-card-hero .cs-tf-tag-after { color: var(--amber); }
+
+.cs-tf-val { font-family: var(--f-display); letter-spacing: -0.025em; line-height: 1.05; }
+.cs-tf-val-before { font-size: clamp(15px, 1.8vw, 20px); color: var(--ink-muted); text-decoration: line-through; text-decoration-thickness: 1px; font-weight: 400; }
+.cs-tf-val-after { font-size: clamp(20px, 2.4vw, 28px); color: var(--ink); font-weight: 600; }
+.cs-tf-card-hero .cs-tf-val-before { color: rgba(244,239,230,0.28); }
+.cs-tf-card-hero .cs-tf-val-after { color: var(--amber); }
+
+.cs-tf-arrow-wrap { color: var(--amber); flex-shrink: 0; }
+.cs-tf-card-hero .cs-tf-arrow-wrap { color: rgba(212,147,46,0.6); }
+
+.cs-tf-delta {
+  display: inline-flex; align-self: flex-start; padding: 3px 9px;
+  background: rgba(92,128,64,0.12); color: #4a7a28;
+  border-radius: 999px; font-family: var(--f-mono); font-size: 10px; font-weight: 700;
+}
+.cs-tf-card-hero .cs-tf-delta { background: rgba(212,147,46,0.2); color: var(--amber); }
+
+/* ─── CHALLENGE ──────────────────────────────────── */
+.cs-challenge {
+  background: var(--cream); padding: clamp(52px, 7vh, 80px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.cs-challenge-grid { display: grid; grid-template-columns: 1fr 360px; gap: clamp(28px, 5vw, 64px); align-items: center; }
+.cs-challenge-text { display: flex; flex-direction: column; gap: 14px; }
+.cs-client-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.cs-chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 999px;
+  font-size: 12px; color: var(--ink-soft); transition: border-color 0.2s ease;
+}
+.cs-chip:hover { border-color: var(--amber); }
+.cs-chip svg { color: var(--amber-deep); flex-shrink: 0; }
+
+.cs-testimonial-card {
+  background: var(--ink); border-radius: 22px; padding: 30px 26px;
+  display: flex; flex-direction: column; gap: 10px;
   position: relative; overflow: hidden;
+  box-shadow: 0 20px 52px rgba(15,20,25,0.22);
 }
-.cs-roi-glow {
-  position: absolute; width: 700px; height: 700px;
-  top: -200px; left: -150px; pointer-events: none;
-  background: radial-gradient(circle, rgba(212,147,46,0.14) 0%, transparent 58%);
-  filter: blur(40px);
+.cs-tc-accent {
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
 }
-.cs-roi-inner {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(32px, 5vw, 72px); align-items: center;
-  position: relative; z-index: 1;
+.cs-tc-quote { color: rgba(212,147,46,0.35); flex-shrink: 0; }
+.cs-tc-text { font-family: var(--f-display); font-size: clamp(15px, 1.8vw, 20px); line-height: 1.52; color: var(--cream); font-style: italic; font-weight: 400; margin: 0; }
+.cs-tc-cite { font-style: normal; display: flex; flex-direction: column; gap: 2px; }
+.cs-tc-role { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); font-weight: 700; }
+.cs-tc-company { font-size: 12px; color: rgba(244,239,230,0.45); }
+
+/* ─── APPROACH — 3-PHASE ─────────────────────────── */
+.cs-approach {
+  background: var(--paper); padding: clamp(52px, 7vh, 80px) 0;
+  border-bottom: 1px solid var(--line);
 }
-.cs-roi-h2 {
-  font-family: var(--f-display); font-weight: 500;
-  font-size: clamp(24px, 3vw, 36px); line-height: 1.15;
-  letter-spacing: -0.025em; color: var(--cs-cream); margin: 10px 0 0;
+.cs-approach-head { max-width: 680px; margin-bottom: 40px; display: flex; flex-direction: column; gap: 8px; }
+.cs-approach-sub { font-size: 14.5px; line-height: 1.7; color: var(--ink-muted); margin: 6px 0 0; max-width: 56ch; }
+
+.cs-phases-track {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0; position: relative;
 }
-.cs-roi-h2 em { font-style: italic; font-weight: 300; color: var(--cs-amber); }
-.cs-roi-sub { font-size: 14.5px; line-height: 1.65; color: rgba(244,239,230,0.55); margin: 12px 0 0; max-width: 52ch; }
-.cs-roi-cta {
-  display: inline-flex; align-items: center;
-  margin-top: 20px; padding: 12px 24px;
-  background: var(--cs-amber); color: var(--ink);
-  border-radius: var(--radius-md); font-family: var(--f-body);
-  font-size: 14px; font-weight: 600; text-decoration: none;
+.cs-phase-col { position: relative; padding: 0 24px 0 0; }
+.cs-phase-col:last-child { padding-right: 0; }
+
+.cs-phase-header {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 20px; background: var(--ink); border-radius: 16px 16px 0 0;
+  border: 1px solid rgba(244,239,230,0.1); border-bottom: none;
+  margin-bottom: 0;
+}
+.cs-phase-num-wrap {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(212,147,46,0.15); border: 1.5px solid rgba(212,147,46,0.3);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.cs-phase-num { font-family: var(--f-mono); font-size: 13px; font-weight: 700; color: var(--amber); letter-spacing: 0.05em; }
+.cs-phase-name { font-family: var(--f-display); font-size: 15px; font-weight: 500; color: var(--cream); letter-spacing: -0.01em; }
+.cs-phase-sub { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,239,230,0.4); margin-top: 2px; }
+
+.cs-phase-steps {
+  display: flex; flex-direction: column; gap: 0;
+  border: 1px solid rgba(244,239,230,0.08); border-top: none;
+  border-radius: 0 0 16px 16px; overflow: hidden;
+  background: rgba(15,20,25,0.96);
+}
+.cs-phase-step {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 18px; border-bottom: 1px solid rgba(244,239,230,0.06);
   transition: background 0.2s ease;
 }
-.cs-roi-cta:hover { background: var(--cs-amber-deep); }
+.cs-phase-step:last-child { border-bottom: none; }
+.cs-phase-step:hover { background: rgba(212,147,46,0.06); }
+.cs-ps-icon {
+  width: 28px; height: 28px; flex-shrink: 0; border-radius: 8px;
+  background: rgba(212,147,46,0.1); color: var(--amber);
+  display: flex; align-items: center; justify-content: center; margin-top: 1px;
+}
+.cs-ps-text { font-size: 13.5px; line-height: 1.62; color: rgba(244,239,230,0.62); margin: 0; }
 
-.cs-roi-stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.cs-roi-stat {
-  padding: 22px 20px; background: rgba(244,239,230,0.05);
-  border: 1px solid rgba(244,239,230,0.1); border-radius: var(--radius-md);
-  display: flex; flex-direction: column; gap: 6px;
+.cs-phase-connector {
+  width: 100%; padding: 0; margin: 12px 0; opacity: 0.9;
+}
+
+/* ─── DELIVERABLES + STACK ────────────────────────── */
+.cs-built {
+  background: var(--cream); padding: clamp(52px, 7vh, 80px) 0;
+  border-bottom: 1px solid var(--line);
+}
+.cs-built-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+
+.cs-deliver-list { list-style: none; padding: 0; margin: 14px 0 0; display: flex; flex-direction: column; gap: 8px; }
+.cs-deliver-item {
+  display: grid; grid-template-columns: 26px 1fr; gap: 10px; align-items: flex-start;
+  padding: 12px 14px; background: var(--paper); border: 1.5px solid var(--line);
+  border-radius: 14px; font-size: 14px; line-height: 1.5; color: var(--ink-soft);
+  transition: border-color 0.2s ease;
+}
+.cs-deliver-item:hover { border-color: var(--amber); }
+.cs-deliver-check {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(92,128,64,0.12); color: #4a7a28;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+
+.cs-stack-list { display: flex; flex-direction: column; gap: 8px; margin: 14px 0 0; }
+.cs-stack-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 14px; background: var(--paper); border: 1.5px solid var(--line);
+  border-radius: 14px; transition: all 0.2s ease;
+}
+.cs-stack-item:hover { border-color: var(--amber); transform: translateX(4px); }
+.cs-si-icon {
+  width: 32px; height: 32px; flex-shrink: 0; border-radius: 10px;
+  background: var(--ink); color: var(--amber);
+  display: flex; align-items: center; justify-content: center;
+}
+.cs-si-name { font-family: var(--f-mono); font-size: 12px; font-weight: 600; color: var(--ink); display: block; }
+.cs-si-tag { font-family: var(--f-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); font-weight: 500; display: block; margin-top: 2px; }
+
+.cs-built-facts { display: flex; flex-direction: column; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-top: 16px; }
+.cs-bf-row { display: flex; justify-content: space-between; align-items: center; padding: 12px 16px; background: var(--paper); border-bottom: 1px solid var(--line); }
+.cs-bf-row:last-child { border-bottom: none; }
+.cs-bf-key { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; }
+.cs-bf-val { font-size: 13px; font-weight: 500; color: var(--ink); }
+
+/* ─── CLIENT KEYWORD DEMAND ──────────────────────── */
+.cs-demand {
+  background: var(--ink); padding: clamp(52px, 7vh, 80px) 0;
+  position: relative; overflow: hidden;
+}
+.cs-demand::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,147,46,0.3), transparent);
+}
+.cs-demand-inner { display: grid; grid-template-columns: 360px 1fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+.cs-demand-left { display: flex; flex-direction: column; gap: 12px; }
+.cs-demand-h2 {
+  font-family: var(--f-display); font-weight: 500;
+  font-size: clamp(24px, 3vw, 34px); line-height: 1.15; letter-spacing: -0.025em;
+  color: var(--cream); margin: 0;
+}
+.cs-demand-h2 em { font-style: italic; font-weight: 300; color: var(--amber); }
+.cs-demand-sub { font-size: 14px; line-height: 1.65; color: rgba(244,239,230,0.5); margin: 0; }
+
+.cs-demand-total {
+  display: flex; align-items: baseline; gap: 10px;
+  padding: 18px 20px; background: rgba(212,147,46,0.1);
+  border: 1px solid rgba(212,147,46,0.25); border-radius: 16px; margin-top: 6px;
+}
+.cs-demand-total-num { font-family: var(--f-display); font-size: clamp(36px, 4.5vw, 52px); font-weight: 700; color: var(--amber); letter-spacing: -0.04em; line-height: 1; }
+.cs-demand-total-label { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,239,230,0.55); line-height: 1.5; font-weight: 600; }
+
+.cs-kw-grid { display: flex; flex-direction: column; gap: 8px; }
+.cs-kw-card {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 14px 16px; background: rgba(244,239,230,0.04);
+  border: 1px solid rgba(244,239,230,0.09); border-radius: 14px;
   transition: all 0.25s ease;
 }
-.cs-roi-stat:hover { background: rgba(244,239,230,0.08); border-color: rgba(212,147,46,0.3); }
-.cs-roi-stat-after { font-family: var(--f-display); font-size: clamp(26px, 3vw, 36px); font-weight: 600; color: var(--cs-amber); letter-spacing: -0.03em; line-height: 1; }
-.cs-roi-stat-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(244,239,230,0.5); font-weight: 600; }
-.cs-roi-stat-delta { display: inline-flex; align-self: flex-start; padding: 3px 9px; background: rgba(212,147,46,0.18); color: var(--cs-amber); border-radius: var(--radius-pill); font-family: var(--f-mono); font-size: 10px; font-weight: 700; }
+.cs-kw-card:hover { background: rgba(244,239,230,0.07); border-color: rgba(212,147,46,0.3); transform: translateX(4px); }
+.cs-kw-intent-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+.cs-kw-intent-local .cs-kw-intent-dot { background: var(--amber); }
+.cs-kw-intent-commercial .cs-kw-intent-dot { background: #7ec87e; }
+.cs-kw-intent-informational .cs-kw-intent-dot { background: #7eb4e8; }
 
-/* ─── CTA SECTION ───────────────────────────────────────── */
-.cs-cta-section { background: var(--cs-cream); padding: clamp(64px, 9vh, 100px) 0; border-bottom: 1px solid var(--cs-line); }
-.cs-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 5vw, 64px); align-items: start; }
+.cs-kw-body { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+.cs-kw-term { font-size: 13.5px; color: rgba(244,239,230,0.8); font-weight: 500; line-height: 1.35; }
+.cs-kw-stats { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.cs-kw-vol { font-family: var(--f-mono); font-size: 10px; color: var(--amber); font-weight: 700; }
+.cs-kw-cpc { font-family: var(--f-mono); font-size: 10px; color: rgba(244,239,230,0.38); }
+.cs-kw-badge {
+  font-family: var(--f-mono); font-size: 8.5px; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 999px; font-weight: 600;
+}
+.cs-kw-intent-local .cs-kw-badge { background: rgba(212,147,46,0.15); color: var(--amber); }
+.cs-kw-intent-commercial .cs-kw-badge { background: rgba(126,200,126,0.15); color: #7ec87e; }
+.cs-kw-intent-informational .cs-kw-badge { background: rgba(126,180,232,0.15); color: #7eb4e8; }
 
-.cs-inquiry-card {
-  background: var(--ink); border-radius: var(--cs-radius);
-  padding: 32px 28px; position: relative; overflow: hidden;
-}
-.cs-inquiry-stripe {
-  position: absolute; top: 0; left: 0; right: 0; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--cs-amber), var(--cs-amber-deep), transparent);
-}
-.cs-inquiry-title {
-  font-family: var(--f-display); font-size: clamp(22px, 2.8vw, 30px);
-  font-weight: 500; letter-spacing: -0.025em; color: var(--cs-cream);
-  margin: 8px 0 6px; line-height: 1.2;
-}
-.cs-inquiry-sub { font-size: 13.5px; line-height: 1.6; color: rgba(244,239,230,0.55); margin: 0 0 20px; }
+.cs-kw-note { font-family: var(--f-mono); font-size: 9px; color: rgba(244,239,230,0.3); letter-spacing: 0.08em; margin-top: 8px; }
 
-.cs-form { display: flex; flex-direction: column; gap: 12px; }
+/* ─── ROI BAND ───────────────────────────────────── */
+.cs-roi {
+  background: var(--ink); padding: clamp(64px, 9vh, 96px) 0;
+  position: relative; overflow: hidden;
+  border-top: 1px solid rgba(244,239,230,0.08);
+}
+.cs-roi-orb {
+  position: absolute; width: 640px; height: 640px; top: -220px; left: -150px;
+  background: radial-gradient(circle, rgba(212,147,46,0.12) 0%, transparent 58%);
+  filter: blur(50px); pointer-events: none;
+}
+.cs-roi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 64px); align-items: center; position: relative; z-index: 1; }
+.cs-roi-h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(24px, 3vw, 34px); line-height: 1.15; letter-spacing: -0.025em; color: var(--cream); margin: 8px 0 0; }
+.cs-roi-h2 em { font-style: italic; font-weight: 300; color: var(--amber); }
+.cs-roi-sub { font-size: 14px; line-height: 1.65; color: rgba(244,239,230,0.5); margin: 10px 0 0; max-width: 50ch; }
+.cs-roi-btn {
+  display: inline-flex; align-items: center; margin-top: 18px;
+  padding: 12px 22px; background: var(--amber); color: var(--ink);
+  border-radius: 14px; font-size: 14px; font-weight: 600; text-decoration: none; transition: background 0.2s ease;
+}
+.cs-roi-btn:hover { background: var(--amber-deep); }
+.cs-roi-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.cs-roi-metric {
+  padding: 20px 18px; background: rgba(244,239,230,0.05);
+  border: 1px solid rgba(244,239,230,0.09); border-radius: 16px;
+  display: flex; flex-direction: column; gap: 5px;
+  transition: all 0.25s ease;
+}
+.cs-roi-metric:hover { background: rgba(244,239,230,0.08); border-color: rgba(212,147,46,0.25); }
+.cs-roi-after { font-family: var(--f-display); font-size: clamp(24px, 3vw, 34px); font-weight: 600; color: var(--amber); letter-spacing: -0.03em; line-height: 1; }
+.cs-roi-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,239,230,0.45); font-weight: 600; }
+.cs-roi-delta { display: inline-flex; align-self: flex-start; padding: 2px 8px; background: rgba(212,147,46,0.18); color: var(--amber); border-radius: 999px; font-family: var(--f-mono); font-size: 10px; font-weight: 700; margin-top: 2px; }
+
+/* ─── CTA BLOCK ──────────────────────────────────── */
+.cs-cta-block { background: var(--cream); padding: clamp(64px, 9vh, 96px) 0; border-bottom: 1px solid var(--line); }
+.cs-cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 5vw, 56px); align-items: start; }
+
+.cs-form-card { background: var(--ink); border-radius: 22px; padding: 30px 26px; position: relative; overflow: hidden; }
+.cs-form-stripe { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--amber), var(--amber-deep), transparent); }
+.cs-form-title { font-family: var(--f-display); font-size: clamp(22px, 2.8vw, 30px); font-weight: 500; letter-spacing: -0.025em; color: var(--cream); margin: 8px 0 4px; line-height: 1.2; }
+.cs-form-sub { font-size: 13.5px; line-height: 1.6; color: rgba(244,239,230,0.5); margin: 0 0 18px; }
+.cs-form { display: flex; flex-direction: column; gap: 10px; }
 .cs-form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.cs-form-field { display: flex; flex-direction: column; gap: 5px; }
-.cs-form-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,239,230,0.55); font-weight: 600; }
-.cs-form-input {
-  padding: 10px 13px; background: rgba(244,239,230,0.06);
-  border: 1px solid rgba(244,239,230,0.15); border-radius: var(--radius-md);
-  font-family: var(--f-body); font-size: 13.5px; color: var(--cs-cream);
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-.cs-form-input::placeholder { color: rgba(244,239,230,0.35); }
-.cs-form-input:focus { outline: none; border-color: var(--cs-amber); box-shadow: 0 0 0 3px rgba(212,147,46,0.2); }
-.cs-form-textarea { resize: vertical; min-height: 80px; font-family: var(--f-body); }
-.cs-form-submit {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
-  padding: 12px 20px; background: var(--cs-amber); color: var(--ink);
-  border: none; border-radius: var(--radius-md);
-  font-family: var(--f-body); font-size: 14px; font-weight: 600;
-  cursor: pointer; transition: background 0.2s ease; margin-top: 4px;
-}
-.cs-form-submit:hover { background: var(--cs-amber-deep); }
-.cs-form-note { font-size: 10.5px; line-height: 1.5; color: rgba(244,239,230,0.4); text-align: center; margin: 6px 0 0; }
-.cs-form-note a { color: var(--cs-amber); text-decoration: underline; text-underline-offset: 2px; }
+.cs-field { display: flex; flex-direction: column; gap: 5px; }
+.cs-label { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(244,239,230,0.5); font-weight: 600; }
+.cs-input { padding: 10px 13px; background: rgba(244,239,230,0.06); border: 1px solid rgba(244,239,230,0.14); border-radius: 12px; font-family: var(--f-body); font-size: 13.5px; color: var(--cream); transition: border-color 0.2s, box-shadow 0.2s; }
+.cs-input::placeholder { color: rgba(244,239,230,0.3); }
+.cs-input:focus { outline: none; border-color: var(--amber); box-shadow: 0 0 0 3px rgba(212,147,46,0.18); }
+.cs-textarea { resize: vertical; min-height: 80px; font-family: var(--f-body); }
+.cs-submit { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 20px; background: var(--amber); color: var(--ink); border: none; border-radius: 14px; font-size: 14px; font-weight: 600; cursor: pointer; transition: background 0.2s ease; margin-top: 4px; }
+.cs-submit:hover { background: var(--amber-deep); }
+.cs-form-footer { font-size: 10.5px; line-height: 1.5; color: rgba(244,239,230,0.38); text-align: center; margin: 4px 0 0; }
+.cs-form-footer a { color: var(--amber); text-decoration: underline; text-underline-offset: 2px; }
 
-.cs-links-col { display: flex; flex-direction: column; gap: 24px; }
-.cs-links-block { display: flex; flex-direction: column; gap: 10px; }
-.cs-links-list { display: flex; flex-direction: column; gap: 6px; margin-top: 4px; }
-.cs-link-card {
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
-  padding: 14px 16px; background: var(--cs-paper);
-  border: 1.5px solid var(--cs-line); border-radius: var(--radius-md);
-  text-decoration: none; color: inherit; transition: all 0.25s ease;
-}
-.cs-link-card:hover { border-color: var(--cs-amber); transform: translateX(3px); }
-.cs-link-tag { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cs-amber-deep); font-weight: 600; margin-bottom: 3px; }
-.cs-link-name { font-family: var(--f-display); font-size: 14.5px; color: var(--cs-ink); font-weight: 500; line-height: 1.25; }
-.cs-link-arrow { color: var(--ink-muted); flex-shrink: 0; transition: color 0.2s ease, transform 0.2s ease; }
-.cs-link-card:hover .cs-link-arrow { color: var(--cs-amber-deep); transform: translateX(2px); }
+.cs-links-panel { display: flex; flex-direction: column; gap: 22px; }
+.cs-lp-block { display: flex; flex-direction: column; gap: 8px; }
+.cs-link-list { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.cs-link-row { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 15px; background: var(--paper); border: 1.5px solid var(--line); border-radius: 14px; text-decoration: none; color: inherit; transition: all 0.25s ease; }
+.cs-link-row:hover { border-color: var(--amber); transform: translateX(3px); }
+.cs-lr-tag { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; margin-bottom: 2px; }
+.cs-lr-name { font-family: var(--f-display); font-size: 14px; color: var(--ink); font-weight: 500; }
+.cs-lr-arrow { color: var(--ink-muted); flex-shrink: 0; transition: all 0.2s ease; }
+.cs-link-row:hover .cs-lr-arrow { color: var(--amber-deep); transform: translateX(2px); }
 
-/* ─── MORE PROJECTS ─────────────────────────────────────── */
-.cs-more { background: var(--cs-paper); padding: clamp(64px, 9vh, 100px) 0; }
-.cs-more-head { max-width: 760px; margin: 0 auto 36px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
-.cs-more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 1200px; margin: 0 auto; }
-.cs-more-card {
-  display: flex; flex-direction: column; gap: 10px;
-  padding: 24px 22px; background: var(--cs-cream);
-  border: 1.5px solid var(--cs-line); border-radius: var(--cs-radius);
-  text-decoration: none; color: inherit; transition: all 0.3s ease;
-}
-.cs-more-card:hover { border-color: var(--cs-amber); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(212,147,46,0.1); }
-.cs-more-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 6px; }
-.cs-more-vertical { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cs-amber-deep); padding: 3px 9px; background: rgba(212,147,46,0.1); border-radius: var(--radius-pill); font-weight: 600; }
-.cs-more-budget { font-family: var(--f-mono); font-size: 9px; color: var(--ink-muted); }
-.cs-more-name { font-family: var(--f-display); font-size: 18px; line-height: 1.25; color: var(--cs-ink); font-weight: 600; letter-spacing: -0.02em; margin: 0; }
-.cs-more-headline { font-size: 13px; line-height: 1.55; color: var(--ink-soft); margin: 0; flex: 1; font-style: italic; }
-.cs-more-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
-.cs-more-metric { padding: 10px 12px; background: var(--cs-paper); border: 1px solid var(--cs-line); border-radius: var(--radius-md); }
-.cs-more-metric-val { display: block; font-family: var(--f-display); font-size: 18px; font-weight: 600; color: var(--cs-amber-deep); letter-spacing: -0.02em; line-height: 1.1; }
-.cs-more-metric-label { display: block; font-family: var(--f-mono); font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-top: 3px; }
-.cs-more-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--cs-amber-deep); font-weight: 600; padding-top: 12px; border-top: 1px dashed var(--cs-line); margin-top: 4px; }
-.cs-more-footer { text-align: center; margin-top: 32px; }
-.cs-more-all { font-family: var(--f-mono); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cs-amber-deep); text-decoration: none; padding: 12px 24px; border: 1.5px solid var(--cs-amber-deep); border-radius: var(--radius-pill); font-weight: 600; transition: all 0.2s ease; display: inline-flex; }
-.cs-more-all:hover { background: var(--cs-amber-deep); color: var(--ink); }
+/* ─── MORE PROJECTS ──────────────────────────────── */
+.cs-more { background: var(--paper); padding: clamp(64px, 9vh, 96px) 0; }
+.cs-more-head { max-width: 640px; margin: 0 auto 36px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.cs-more-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cs-more-card { display: flex; flex-direction: column; gap: 10px; padding: 22px 20px; background: var(--cream); border: 1.5px solid var(--line); border-radius: 20px; text-decoration: none; color: inherit; transition: all 0.3s ease; }
+.cs-more-card:hover { border-color: var(--amber); transform: translateY(-4px); box-shadow: 0 14px 40px rgba(212,147,46,0.1); }
+.cs-mc-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; flex-wrap: wrap; }
+.cs-mc-vertical { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); padding: 3px 9px; background: rgba(212,147,46,0.1); border-radius: 999px; font-weight: 700; }
+.cs-mc-budget { font-family: var(--f-mono); font-size: 9px; color: var(--ink-muted); }
+.cs-mc-name { font-family: var(--f-display); font-size: 17px; line-height: 1.25; color: var(--ink); font-weight: 600; letter-spacing: -0.02em; margin: 0; }
+.cs-mc-headline { font-size: 12.5px; line-height: 1.55; color: var(--ink-soft); margin: 0; flex: 1; font-style: italic; }
+.cs-mc-metrics { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.cs-mc-metric { padding: 10px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: 12px; }
+.cs-mc-val { display: block; font-family: var(--f-display); font-size: 18px; font-weight: 600; color: var(--amber-deep); letter-spacing: -0.025em; line-height: 1.1; }
+.cs-mc-label { display: block; font-family: var(--f-mono); font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-muted); margin-top: 3px; }
+.cs-mc-cta { display: inline-flex; align-items: center; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-deep); font-weight: 700; padding-top: 10px; border-top: 1px dashed var(--line); margin-top: 4px; }
+.cs-more-footer { text-align: center; margin-top: 28px; }
+.cs-more-all { font-family: var(--f-mono); font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-deep); text-decoration: none; padding: 11px 22px; border: 1.5px solid var(--amber-deep); border-radius: 999px; font-weight: 700; display: inline-flex; transition: all 0.2s ease; }
+.cs-more-all:hover { background: var(--amber-deep); color: var(--ink); }
 
-/* ─── RESPONSIVE ─────────────────────────────────────────── */
+/* ─── RESPONSIVE ──────────────────────────────────── */
 @media (max-width: 1024px) {
-  .cs-hero-layout { grid-template-columns: 1fr; gap: 32px; }
-  .cs-transform-grid { grid-template-columns: repeat(2, 1fr); }
-  .cs-problem-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cs-hero-grid { grid-template-columns: 1fr; gap: 28px; }
+  .cs-screens-grid { grid-template-columns: 1fr; gap: 16px; }
+  .cs-screens-arrow { flex-direction: row; width: 100%; justify-content: center; height: 48px; }
+  .cs-sa-line { flex: none; width: 80px; height: 1px; background: linear-gradient(90deg, transparent, rgba(212,147,46,0.3), transparent); align-self: center; }
+  .cs-tf-grid { grid-template-columns: 1fr 1fr; }
+  .cs-challenge-grid { grid-template-columns: 1fr; gap: 28px; }
+  .cs-phases-track { grid-template-columns: 1fr; gap: 12px; }
+  .cs-phase-col { padding-right: 0; }
+  .cs-phase-connector { display: none; }
   .cs-built-grid { grid-template-columns: 1fr; gap: 32px; }
-  .cs-roi-inner { grid-template-columns: 1fr; gap: 36px; }
-  .cs-cta-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cs-demand-inner { grid-template-columns: 1fr; gap: 28px; }
+  .cs-roi-grid { grid-template-columns: 1fr; gap: 32px; }
+  .cs-cta-grid { grid-template-columns: 1fr; gap: 28px; }
   .cs-more-grid { grid-template-columns: 1fr 1fr; }
 }
-@media (max-width: 768px) {
-  .cs-client-profile { grid-template-columns: 1fr; }
-  .cs-stack-grid { grid-template-columns: 1fr; }
-  .cs-roi-stat-grid { grid-template-columns: 1fr 1fr; }
-  .cs-form-2col { grid-template-columns: 1fr; }
-}
 @media (max-width: 640px) {
-  .cs-transform-grid { grid-template-columns: 1fr; }
+  .cs-tf-grid { grid-template-columns: 1fr; }
   .cs-more-grid { grid-template-columns: 1fr; }
-  .cs-more-metrics { grid-template-columns: 1fr 1fr; }
-  .cs-roi-stat-grid { grid-template-columns: 1fr; }
-  .cs-step { grid-template-columns: 48px 1fr; }
-  .cs-hmc-number { font-size: 40px; }
+  .cs-roi-metrics { grid-template-columns: 1fr 1fr; }
+  .cs-form-2col { grid-template-columns: 1fr; }
+  .cs-hero-meta-row { gap: 8px; }
+  .cs-hero-meta-sep { display: none; }
+  .cs-hero-meta-item { padding: 0; }
 }
 </style>

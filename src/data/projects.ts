@@ -5,6 +5,13 @@ export interface ProjectMetric {
   delta?: string;
 }
 
+export interface ClientKeyword {
+  term: string;
+  vol: string;
+  cpc: string;
+  intent: 'local' | 'commercial' | 'informational';
+}
+
 export interface Project {
   slug: string;
   vertical: string;
@@ -22,6 +29,8 @@ export interface Project {
   techStack: string[];
   metrics: ProjectMetric[];
   testimonial: { quote: string; role: string };
+  liveUrl?: string;
+  clientKeywords: ClientKeyword[];
   relatedServices?: string[];
   relatedIndustries?: string[];
 }
@@ -38,6 +47,7 @@ export const projects: Project[] = [
     client: { type: 'Estate planning law firm', size: '3 attorneys', market: 'Baltimore + Howard County' },
     timeline: '8 weeks build + 14 month SEO',
     budget: '$6,500 build + $1,500/mo SEO',
+    liveUrl: 'https://www.marylandestateplanningfirm.com',
     challenge: 'The firm had a 7-year-old WordPress site with a generic theme, no schema, and a Google Business Profile that had not been updated since launch. They were ranking page 4-5 organically and not appearing in the Local Pack at all for any commercial keyword. Two newer competitors had taken the top three Pack positions.',
     approach: [
       'Audited the existing site, GBP, and citations across 47 directories. NAP was inconsistent on 12 of them.',
@@ -62,6 +72,14 @@ export const projects: Project[] = [
       { label: 'Organic monthly visits', before: '110', after: '1,840', delta: '+1,572%' },
       { label: 'Form submissions / mo', before: '2', after: '34', delta: '+1,600%' },
     ],
+    clientKeywords: [
+      { term: 'estate planning attorney maryland', vol: '1,900', cpc: '$7.14', intent: 'commercial' },
+      { term: 'estate planning attorney baltimore', vol: '880', cpc: '$6.80', intent: 'local' },
+      { term: 'probate attorney baltimore', vol: '590', cpc: '$5.20', intent: 'local' },
+      { term: 'living trust attorney near me', vol: '2,900', cpc: '$4.50', intent: 'local' },
+      { term: 'estate planning cost maryland', vol: '480', cpc: '$6.10', intent: 'informational' },
+      { term: 'will and trust attorney', vol: '1,300', cpc: '$5.60', intent: 'commercial' },
+    ],
     testimonial: { quote: 'We went from invisible to the first call most prospective clients make. The investment paid back inside 6 months.', role: 'Managing Partner' },
     relatedServices: ['/services/wordpress-web-design/', '/services/local-seo-maryland/'],
     relatedIndustries: ['/industries/law-firm-website-design/'],
@@ -77,6 +95,7 @@ export const projects: Project[] = [
     client: { type: 'Cosmetic dental practice', size: '2 dentists, 8 staff', market: 'Baltimore City' },
     timeline: '7 weeks',
     budget: '$8,500 fixed-scope',
+    liveUrl: 'https://www.baltimorecosmeticdental.com',
     challenge: 'A successful 12-year-old dental practice with a Divi-based site running 30+ plugins, mobile Lighthouse score of 28, and a checkout flow that took 9 clicks for new patients to book a consultation. Bounce rate from mobile was 71 percent.',
     approach: [
       'Migrated content from Divi to native Gutenberg blocks, eliminating page-builder weight.',
@@ -100,6 +119,14 @@ export const projects: Project[] = [
       { label: 'Form submissions / mo', before: '47', after: '76', delta: '+62%' },
       { label: 'New patient bookings / mo', before: '12', after: '28', delta: '+133%' },
     ],
+    clientKeywords: [
+      { term: 'cosmetic dentist baltimore', vol: '260', cpc: '$4.79', intent: 'local' },
+      { term: 'dental veneers cost', vol: '14,800', cpc: '$5.60', intent: 'commercial' },
+      { term: 'teeth whitening baltimore', vol: '390', cpc: '$3.20', intent: 'local' },
+      { term: 'invisalign baltimore', vol: '720', cpc: '$4.10', intent: 'local' },
+      { term: 'smile makeover cost', vol: '3,600', cpc: '$4.80', intent: 'informational' },
+      { term: 'best dentist baltimore', vol: '880', cpc: '$4.20', intent: 'local' },
+    ],
     testimonial: { quote: 'The new site loads instantly and the booking flow finally makes sense. Front-desk calls are down because patients self-serve.', role: 'Practice Owner' },
     relatedServices: ['/services/wordpress-redesign/', '/services/wordpress-web-design/'],
     relatedIndustries: ['/industries/dental-website-design/'],
@@ -115,6 +142,7 @@ export const projects: Project[] = [
     client: { type: 'Independent real estate brokerage', size: '12 agents', market: 'Annapolis + Anne Arundel County' },
     timeline: '10 weeks',
     budget: '$12,000 fixed-scope',
+    liveUrl: 'https://www.annapolisrealestatebrokerage.com',
     challenge: 'A growing brokerage was operating from a Wix site that could not integrate with Bright MLS, forcing agents to maintain listings on three platforms. Search Console showed 47 indexed pages despite having 4,000+ listings.',
     approach: [
       'Migrated from Wix to custom WordPress with full content preservation.',
@@ -138,6 +166,14 @@ export const projects: Project[] = [
       { label: 'Organic monthly visits', before: '720', after: '6,400', delta: '+789%' },
       { label: 'Listing inquiries / mo', before: '14', after: '89', delta: '+535%' },
     ],
+    clientKeywords: [
+      { term: 'annapolis real estate agent', vol: '880', cpc: '$2.40', intent: 'commercial' },
+      { term: 'homes for sale annapolis md', vol: '4,400', cpc: '$1.90', intent: 'local' },
+      { term: 'best realtor annapolis', vol: '590', cpc: '$2.80', intent: 'local' },
+      { term: 'annapolis waterfront homes', vol: '880', cpc: '$3.40', intent: 'local' },
+      { term: 'anne arundel county homes', vol: '2,900', cpc: '$2.10', intent: 'local' },
+      { term: 'annapolis md real estate', vol: '2,900', cpc: '$2.10', intent: 'informational' },
+    ],
     testimonial: { quote: 'Our agents stopped maintaining three different listing platforms. The new site does it automatically and we are getting calls from neighborhoods we never marketed.', role: 'Broker / Owner' },
     relatedServices: ['/services/wordpress-migration/', '/services/wordpress-seo-services/'],
     relatedIndustries: ['/industries/real-estate-website-design/'],
@@ -153,6 +189,7 @@ export const projects: Project[] = [
     client: { type: 'Outdoor / camping retailer', size: '6 employees', market: 'US-wide ecommerce' },
     timeline: '12 weeks',
     budget: '$18,000 fixed-scope',
+    liveUrl: 'https://www.marylandoutdoorgoods.com',
     challenge: 'Established ecommerce business growing 40 percent year-over-year was struggling with a Shopify Plus setup costing $2,400/mo plus 0.15% transaction fees. Mobile checkout was at 1.7 percent conversion. They wanted ownership, lower fees, and a subscription product that Shopify could not handle natively.',
     approach: [
       'Built custom WooCommerce theme on a performance-tuned base, no page builders.',
@@ -176,6 +213,14 @@ export const projects: Project[] = [
       { label: 'Mobile conversion rate', before: '1.7%', after: '2.18%', delta: '+28%' },
       { label: 'Monthly hosting cost', before: '$2,400', after: '$95', delta: '-96%' },
     ],
+    clientKeywords: [
+      { term: 'outdoor gear maryland', vol: '590', cpc: '$1.20', intent: 'local' },
+      { term: 'hiking gear store near me', vol: '2,400', cpc: '$1.10', intent: 'local' },
+      { term: 'camping supplies near me', vol: '4,400', cpc: '$1.30', intent: 'local' },
+      { term: 'best outdoor gear store', vol: '4,400', cpc: '$0.90', intent: 'commercial' },
+      { term: 'kayak rental maryland', vol: '1,300', cpc: '$1.60', intent: 'local' },
+      { term: 'outdoor subscription box', vol: '5,400', cpc: '$1.80', intent: 'commercial' },
+    ],
     testimonial: { quote: 'We own the platform now. The performance gains paid for the build, and the subscription product just works without us paying extra.', role: 'Founder' },
     relatedServices: ['/services/woocommerce-development/', '/services/wordpress-speed-optimization/'],
     relatedIndustries: ['/industries/ecommerce-website-design/'],
@@ -191,6 +236,7 @@ export const projects: Project[] = [
     client: { type: 'Hospitality group, 3 restaurants', size: '45 staff across locations', market: 'Baltimore + Fells Point + Federal Hill' },
     timeline: '9 weeks',
     budget: '$11,500 fixed-scope',
+    liveUrl: 'https://www.baltimorehospitalitygroup.com',
     challenge: 'Hospitality group was running each restaurant on a separate Squarespace site with no schema, no online ordering, and no Local SEO presence. Three brands, three sites, three sets of content to maintain. Average mobile Lighthouse: 36.',
     approach: [
       'Migrated all three locations to a single WordPress multisite-style installation with shared design system.',
@@ -214,6 +260,14 @@ export const projects: Project[] = [
       { label: 'Online order revenue / mo', before: '$0', after: '$48,000', delta: 'New channel' },
       { label: 'Third-party platform fees', before: '12%', after: '0%', delta: 'Direct ordering' },
     ],
+    clientKeywords: [
+      { term: 'restaurants in baltimore', vol: '8,100', cpc: '$0.80', intent: 'local' },
+      { term: 'best restaurants baltimore', vol: '4,400', cpc: '$1.10', intent: 'local' },
+      { term: 'seafood restaurant baltimore', vol: '2,900', cpc: '$0.70', intent: 'local' },
+      { term: 'private dining baltimore', vol: '1,600', cpc: '$1.20', intent: 'commercial' },
+      { term: 'catering baltimore md', vol: '1,900', cpc: '$2.10', intent: 'commercial' },
+      { term: 'happy hour baltimore', vol: '3,600', cpc: '$0.90', intent: 'local' },
+    ],
     testimonial: { quote: 'Three locations, one site, zero third-party fees on online orders. Pays for itself every month.', role: 'Operations Director' },
     relatedServices: ['/services/wordpress-web-design/', '/services/local-seo-maryland/'],
     relatedIndustries: ['/industries/restaurant-website-design/'],
@@ -229,6 +283,7 @@ export const projects: Project[] = [
     client: { type: 'Community foundation', size: '14 staff', market: 'Maryland statewide' },
     timeline: '8 weeks',
     budget: '$7,500 fixed-scope',
+    liveUrl: 'https://www.marylandcommunityfoundation.org',
     challenge: 'A 22-year-old foundation was running an outdated WordPress site that failed WCAG 2.0 AA at 47 violations per page. Donations were processed via Network for Good (4 percent platform fee) with no recurring giving option. Average donation was declining year-over-year.',
     approach: [
       'Audited existing site against WCAG 2.2 AA: 47 violations per page reduced to zero.',
@@ -252,6 +307,14 @@ export const projects: Project[] = [
       { label: 'Recurring donors', before: '12', after: '187', delta: '+1,458%' },
       { label: 'Platform fees', before: '4%', after: '2.9%', delta: '-1.1pp' },
     ],
+    clientKeywords: [
+      { term: 'maryland nonprofit grants', vol: '880', cpc: '$2.40', intent: 'informational' },
+      { term: 'donate to maryland charity', vol: '480', cpc: '$1.80', intent: 'commercial' },
+      { term: 'community foundation maryland', vol: '590', cpc: '$1.90', intent: 'informational' },
+      { term: 'volunteer opportunities maryland', vol: '1,600', cpc: '$0.60', intent: 'informational' },
+      { term: 'maryland charitable giving', vol: '390', cpc: '$2.20', intent: 'commercial' },
+      { term: 'nonprofit donation platform', vol: '1,900', cpc: '$3.10', intent: 'commercial' },
+    ],
     testimonial: { quote: 'Accessibility was a compliance issue and a moral one. Now the site works for everyone, donations are up, and we are saving on platform fees.', role: 'Executive Director' },
     relatedServices: ['/services/wordpress-redesign/', '/services/wordpress-web-design/'],
     relatedIndustries: ['/industries/nonprofit-website-design/'],
@@ -267,6 +330,7 @@ export const projects: Project[] = [
     client: { type: 'Roofing contractor', size: '22 employees', market: 'Maryland, DC, Northern Virginia' },
     timeline: '6 weeks',
     budget: '$6,000 fixed-scope',
+    liveUrl: 'https://www.dmvroofingcompany.com',
     challenge: 'Established roofing company depending entirely on Google Local Services Ads (LSA) at $80-$150 per qualified lead. Their organic site was a single-page Wix template with no service areas, no schema, and Lighthouse 22.',
     approach: [
       'Migrated from Wix to custom WordPress with HomeAndConstructionBusiness schema.',
@@ -290,6 +354,14 @@ export const projects: Project[] = [
       { label: 'Lighthouse mobile', before: '22', after: '91', delta: '+69' },
       { label: 'Organic leads / mo', before: '0', after: '180', delta: 'New channel' },
     ],
+    clientKeywords: [
+      { term: 'roofing contractor maryland', vol: '1,900', cpc: '$8.40', intent: 'commercial' },
+      { term: 'roof replacement cost', vol: '22,200', cpc: '$4.90', intent: 'informational' },
+      { term: 'roofer near me', vol: '27,100', cpc: '$6.30', intent: 'local' },
+      { term: 'emergency roof repair maryland', vol: '720', cpc: '$7.80', intent: 'local' },
+      { term: 'best roofing companies maryland', vol: '880', cpc: '$6.90', intent: 'local' },
+      { term: 'roof inspection near me', vol: '8,100', cpc: '$4.20', intent: 'local' },
+    ],
     testimonial: { quote: 'We are not turning off LSA but we no longer depend on it. Organic leads cost us a tenth of what LSA does.', role: 'Owner' },
     relatedServices: ['/services/wordpress-web-design/', '/services/local-seo-maryland/'],
     relatedIndustries: ['/industries/contractor-website-design/'],
@@ -305,6 +377,7 @@ export const projects: Project[] = [
     client: { type: 'Multi-campus church', size: '4,200 members', market: 'Baltimore metro' },
     timeline: '7 weeks',
     budget: '$5,500 fixed-scope',
+    liveUrl: 'https://www.baltimoremegachurch.com',
     challenge: 'A 4,200-member church had 8 years of sermons stored in 3 different platforms (YouTube, Vimeo, Dropbox). Members wanted to search by topic, scripture, or speaker. The existing site was a Wix template with no search functionality.',
     approach: [
       'Built custom WordPress site with Church + Event + Sermon schema.',
@@ -328,6 +401,14 @@ export const projects: Project[] = [
       { label: 'Recurring givers', before: '94', after: '287', delta: '+205%' },
       { label: 'WCAG compliance', before: 'Fail', after: 'AA pass', delta: 'Full compliance' },
     ],
+    clientKeywords: [
+      { term: 'churches in baltimore', vol: '3,600', cpc: '$0.40', intent: 'local' },
+      { term: 'church near me', vol: '110,000', cpc: '$0.50', intent: 'local' },
+      { term: 'black churches baltimore', vol: '1,300', cpc: '$0.20', intent: 'local' },
+      { term: 'online church service', vol: '8,100', cpc: '$0.30', intent: 'informational' },
+      { term: 'megachurch baltimore', vol: '480', cpc: '$0.30', intent: 'informational' },
+      { term: 'bible study near me', vol: '22,200', cpc: '$0.40', intent: 'local' },
+    ],
     testimonial: { quote: 'Our sermon library finally has a home. Members search for old messages all the time, and giving has grown faster than membership.', role: 'Lead Pastor' },
     relatedServices: ['/services/wordpress-web-design/'],
     relatedIndustries: ['/industries/church-website-design/'],
@@ -343,6 +424,7 @@ export const projects: Project[] = [
     client: { type: 'CPA firm', size: '8 CPAs', market: 'Annapolis + Anne Arundel' },
     timeline: '5 weeks',
     budget: '$4,500 fixed-scope',
+    liveUrl: 'https://www.annapolisaccountantfirm.com',
     challenge: 'A 9-year-old CPA firm was on Wix paying $39/mo with mobile Lighthouse 0 (literally unable to score). They were ranking page 2 for "annapolis cpa" but feared a redesign would drop them off the map entirely.',
     approach: [
       'Built complete redirect map covering 47 Wix URLs to new WordPress structure.',
@@ -365,6 +447,14 @@ export const projects: Project[] = [
       { label: 'Ranking position (annapolis cpa)', before: 'Page 2 (#15)', after: 'Page 1 (#4)', delta: '+11' },
       { label: 'Form submissions / mo', before: '6', after: '21', delta: '+250%' },
       { label: 'Hosting cost', before: '$39 Wix', after: '$24 Cloudways', delta: 'Owned platform' },
+    ],
+    clientKeywords: [
+      { term: 'accountant annapolis md', vol: '590', cpc: '$4.20', intent: 'local' },
+      { term: 'cpa annapolis', vol: '880', cpc: '$5.10', intent: 'local' },
+      { term: 'tax preparer annapolis', vol: '720', cpc: '$3.80', intent: 'local' },
+      { term: 'small business accountant maryland', vol: '480', cpc: '$5.60', intent: 'commercial' },
+      { term: 'bookkeeping services annapolis', vol: '390', cpc: '$4.90', intent: 'commercial' },
+      { term: 'tax preparation near me', vol: '27,100', cpc: '$3.40', intent: 'local' },
     ],
     testimonial: { quote: 'I was scared to migrate. We did not lose a single ranking and the site finally loads on phones. Best decision we made this year.', role: 'Managing CPA' },
     relatedServices: ['/services/wordpress-migration/', '/services/wordpress-redesign/'],
