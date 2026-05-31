@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
@@ -103,9 +103,9 @@ const jsonLd = JSON.stringify({
 });
 
 const tiers = [
-  { name: "Refresh",  price: "$2,500", duration: "3-5 weeks",   summary: "Visual refresh: new colors, typography, hero updates, CTA polish. Existing structure and pages preserved. No URL changes.", fits: ["Brand looks tired", "Homepage + 5 key pages", "No structural changes"], href: "/contact/?plan=redesign-refresh" },
-  { name: "Standard", price: "$5,000", duration: "6-8 weeks",   summary: "Full WordPress redesign: new design system, custom blocks, schema rebuild, Core Web Vitals optimization. URL structure preserved. SEO-safe.", fits: ["Sites under 30 pages", "Full visual redesign", "Schema + performance work"], href: "/contact/?plan=redesign-standard", highlight: true },
-  { name: "Custom",   price: "From $10,000", duration: "8-14 weeks", summary: "Major redesign with information architecture changes, content restructure, custom plugins, or WooCommerce overhaul. Includes redirect map and 30-day post-launch monitoring.", fits: ["Sites 30+ pages", "Site architecture changes", "WooCommerce stores"], href: "/contact/?plan=redesign-custom" },
+  { name: "Refresh",  price: "$2,500", duration: "3-5 weeks",   summary: "Visual refresh: new colors, typography, hero updates, CTA polish. Existing structure and pages preserved. No URL changes.", fits: ["Brand looks tired", "Homepage + 5 key pages", "No structural changes"], href: "/contact/" },
+  { name: "Standard", price: "$5,000", duration: "6-8 weeks",   summary: "Full WordPress redesign: new design system, custom blocks, schema rebuild, Core Web Vitals optimization. URL structure preserved. SEO-safe.", fits: ["Sites under 30 pages", "Full visual redesign", "Schema + performance work"], href: "/contact/", highlight: true },
+  { name: "Custom",   price: "From $10,000", duration: "8-14 weeks", summary: "Major redesign with information architecture changes, content restructure, custom plugins, or WooCommerce overhaul. Includes redirect map and 30-day post-launch monitoring.", fits: ["Sites 30+ pages", "Site architecture changes", "WooCommerce stores"], href: "/contact/" },
 ];
 
 const whenRedesign = [

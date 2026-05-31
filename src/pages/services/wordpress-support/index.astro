@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Navigation from '../../../components/Navigation.astro';
@@ -103,9 +103,9 @@ const jsonLd = JSON.stringify({
 });
 
 const tiers = [
-  { name: "One-time",   price: "$150/hr",        duration: "Same-week scheduling", summary: "On-demand WordPress help billed hourly. Pay only for what you use. 30-minute minimum, 4-hour SLA reply during business hours.", fits: ["Single fix or task", "Plugin or theme issue", "One-off troubleshooting"], href: "/contact/?plan=support-hourly" },
-  { name: "Block",      price: "$1,500",         duration: "10 hours, valid 6 months", summary: "Block of 10 hours at $150/hr. Useful for businesses with periodic WordPress needs. No expiration anxiety; the block is good for 6 months from purchase.", fits: ["Periodic WordPress work", "Multiple small fixes", "Occasional new content"], href: "/contact/?plan=support-block", highlight: true },
-  { name: "Retainer",   price: "From $500/mo",   duration: "Month-to-month",        summary: "Monthly retainer with priority response and dedicated hours. Pairs with care plans for clients who want guaranteed hands available without buying blocks.", fits: ["Monthly WordPress needs", "Priority response (1-hour SLA)", "Pairs with care plan"], href: "/contact/?plan=support-retainer" },
+  { name: "One-time",   price: "$150/hr",        duration: "Same-week scheduling", summary: "On-demand WordPress help billed hourly. Pay only for what you use. 30-minute minimum, 4-hour SLA reply during business hours.", fits: ["Single fix or task", "Plugin or theme issue", "One-off troubleshooting"], href: "/contact/" },
+  { name: "Block",      price: "$1,500",         duration: "10 hours, valid 6 months", summary: "Block of 10 hours at $150/hr. Useful for businesses with periodic WordPress needs. No expiration anxiety; the block is good for 6 months from purchase.", fits: ["Periodic WordPress work", "Multiple small fixes", "Occasional new content"], href: "/contact/", highlight: true },
+  { name: "Retainer",   price: "From $500/mo",   duration: "Month-to-month",        summary: "Monthly retainer with priority response and dedicated hours. Pairs with care plans for clients who want guaranteed hands available without buying blocks.", fits: ["Monthly WordPress needs", "Priority response (1-hour SLA)", "Pairs with care plan"], href: "/contact/" },
 ];
 
 const whenSupport = [
