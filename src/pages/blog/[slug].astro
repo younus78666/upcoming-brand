@@ -20,15 +20,15 @@ const { article } = Astro.props;
 const category = categories[article.category];
 const canonical = `https://www.upcomingbrand.com/blog/${article.slug}/`;
 
-const inCategory = articles.filter((a) => a.category === article.category && a.slug !== article.slug).slice(0, 6);
-const otherCategories = articles.filter((a) => a.category !== article.category).slice(0, 4);
+const inCategory = articles.filter((a) => a.category === article.category && a.slug !== article.slug && a.status === 'published').slice(0, 6);
+const otherCategories = articles.filter((a) => a.category !== article.category && a.status === 'published').slice(0, 4);
 
 // Dynamic CTAs derived from article relations
 const relatedServices = article.relatedServices ?? [];
 const relatedIndustries = article.relatedIndustries ?? [];
 
 // Searchable index for sidebar search (title + description + slug)
-const searchIndex = articles.map((a) => ({ slug: a.slug, url: a.route ?? `/blog/${a.slug}/`, title: a.title, category: categories[a.category].label }));
+const searchIndex = articles.filter((a) => a.status === 'published').map((a) => ({ slug: a.slug, url: a.route ?? `/blog/${a.slug}/`, title: a.title, category: categories[a.category].label }));
 
 const jsonLd = JSON.stringify({
   "@context": "https://schema.org",

@@ -10,11 +10,11 @@ const article = articles.find((a) => a.slug === 'website-for-a-small-business-co
 const category = categories[article.category];
 const canonical = 'https://www.upcomingbrand.com/website-for-a-small-business-cost/';
 
-const inCategory = articles.filter((a) => a.category === article.category && a.slug !== article.slug).slice(0, 6);
-const otherCategories = articles.filter((a) => a.category !== article.category).slice(0, 4);
+const inCategory = articles.filter((a) => a.category === article.category && a.slug !== article.slug && a.status === 'published').slice(0, 6);
+const otherCategories = articles.filter((a) => a.category !== article.category && a.status === 'published').slice(0, 4);
 const relatedServices = article.relatedServices ?? [];
 const relatedIndustries = article.relatedIndustries ?? [];
-const searchIndex = articles.map((a) => ({ slug: a.slug, url: a.route ?? `/blog/${a.slug}/`, title: a.title, category: categories[a.category].label }));
+const searchIndex = articles.filter((a) => a.status === 'published').map((a) => ({ slug: a.slug, url: a.route ?? `/blog/${a.slug}/`, title: a.title, category: categories[a.category].label }));
 
 // Correct label conversion — strips leading slash before capitalising
 function serviceLabel(href: string): string {
@@ -36,7 +36,7 @@ const toc = [
   { id: 'faq',               label: "FAQ" },
 ];
 
-const metaTitle = 'How Much Does a Website Cost for a Small Business?';
+const metaTitle = 'Small Business Website Cost in 2026';
 const metaDesc = 'A small business website costs $2,000–$15,000 in 2026. Real pricing for DIY, freelancer, and agency builds plus hidden recurring costs most owners miss.';
 
 const jsonLd = JSON.stringify({

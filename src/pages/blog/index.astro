@@ -112,7 +112,7 @@ const stats = [
 
     <!-- CATEGORIES + ARTICLES -->
     {Object.entries(categories).map(([catId, cat]) => {
-      const catArticles = articles.filter((a) => a.category === catId);
+      const catArticles = articles.filter((a) => a.category === catId && a.status === 'published');
       return (
         <section class="blg-cat-section" data-cat-section={catId}>
           <div class="container">
