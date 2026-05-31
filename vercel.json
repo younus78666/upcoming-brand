@@ -5,7 +5,7 @@
       "source": "/:path*",
       "has": [{ "type": "host", "value": "upcomingbrand.com" }],
       "destination": "https://www.upcomingbrand.com/:path*",
-      "permanent": true
+      "statusCode": 301
     }
   ],
   "headers": [

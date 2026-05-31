@@ -8,7 +8,7 @@ import { articles, categories, articleUrl, type BlogArticle } from '../../data/b
 
 export async function getStaticPaths() {
   return articles
-    .filter((a) => a.status !== 'published')
+    .filter((a) => a.status === 'published')
     .map((a) => ({
       params: { slug: a.slug },
       props: { article: a },
@@ -56,13 +56,12 @@ const jsonLd = JSON.stringify({
 });
 ---
 <BaseLayout
-  title={`${article.title} | Coming Soon | Upcoming Brand`}
+  title={`${article.title} | Upcoming Brand`}
   description={article.description}
   canonicalUrl={canonical}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLd} />
-    <meta name="robots" content="noindex" />
   </Fragment>
   <AnnouncementBar />
   <Navigation />

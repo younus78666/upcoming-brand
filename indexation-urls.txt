@@ -1,0 +1,78 @@
+# upcomingbrand.com — Pages To Index (60 URLs)
+# Generated: 2026-05-30
+# Exclude list (noindex by design): /privacy-policy/ /terms-and-conditions/ /accessibility/ /careers/ /values/ /team/ /book-a-discovery-call/ /thank-you/ /tools/ /blog/[slug]
+# ─────────────────────────────────────────────────────────────────
+
+# ── CORE (11) ──────────────────────────────────────────────────
+https://upcomingbrand.com/
+https://upcomingbrand.com/about/
+https://upcomingbrand.com/pricing/
+https://upcomingbrand.com/process/
+https://upcomingbrand.com/work/
+https://upcomingbrand.com/reviews/
+https://upcomingbrand.com/contact/
+https://upcomingbrand.com/hire-wordpress-designer/
+https://upcomingbrand.com/wordpress-agency/
+https://upcomingbrand.com/website-for-a-small-business-cost/
+https://upcomingbrand.com/blog/
+
+# ── SERVICES (13) ──────────────────────────────────────────────
+https://upcomingbrand.com/services/
+https://upcomingbrand.com/services/wordpress-web-design/
+https://upcomingbrand.com/services/woocommerce-development/
+https://upcomingbrand.com/services/wordpress-care-plans/
+https://upcomingbrand.com/services/wordpress-speed-optimization/
+https://upcomingbrand.com/services/wordpress-seo-services/
+https://upcomingbrand.com/services/wordpress-migration/
+https://upcomingbrand.com/services/wordpress-security/
+https://upcomingbrand.com/services/wordpress-hosting/
+https://upcomingbrand.com/services/wordpress-redesign/
+https://upcomingbrand.com/services/wordpress-support/
+https://upcomingbrand.com/services/local-seo-maryland/
+https://upcomingbrand.com/services/seo-audit/
+
+# ── INDUSTRIES (13) ────────────────────────────────────────────
+https://upcomingbrand.com/industries/
+https://upcomingbrand.com/industries/law-firm-website-design/
+https://upcomingbrand.com/industries/dental-website-design/
+https://upcomingbrand.com/industries/medical-website-design/
+https://upcomingbrand.com/industries/real-estate-website-design/
+https://upcomingbrand.com/industries/restaurant-website-design/
+https://upcomingbrand.com/industries/contractor-website-design/
+https://upcomingbrand.com/industries/nonprofit-website-design/
+https://upcomingbrand.com/industries/ecommerce-website-design/
+https://upcomingbrand.com/industries/small-business-website-design/
+https://upcomingbrand.com/industries/church-website-design/
+https://upcomingbrand.com/industries/gym-website-design/
+https://upcomingbrand.com/industries/accountant-website-design/
+
+# ── LOCATIONS (20) ─────────────────────────────────────────────
+https://upcomingbrand.com/locations/
+https://upcomingbrand.com/locations/maryland-web-design/
+https://upcomingbrand.com/locations/baltimore-web-design/
+https://upcomingbrand.com/locations/annapolis-web-design/
+https://upcomingbrand.com/locations/bethesda-web-design/
+https://upcomingbrand.com/locations/frederick-web-design/
+https://upcomingbrand.com/locations/rockville-web-design/
+https://upcomingbrand.com/locations/silver-spring-web-design/
+https://upcomingbrand.com/locations/columbia-web-design/
+https://upcomingbrand.com/locations/towson-web-design/
+https://upcomingbrand.com/locations/bowie-web-design/
+https://upcomingbrand.com/locations/gaithersburg-web-design/
+https://upcomingbrand.com/locations/germantown-web-design/
+https://upcomingbrand.com/locations/ellicott-city-web-design/
+https://upcomingbrand.com/locations/catonsville-web-design/
+https://upcomingbrand.com/locations/dundalk-web-design/
+https://upcomingbrand.com/locations/hagerstown-web-design/
+https://upcomingbrand.com/locations/salisbury-web-design/
+https://upcomingbrand.com/locations/waldorf-web-design/
+https://upcomingbrand.com/locations/westminster-web-design/
+
+# ── TOOLS (2) ──────────────────────────────────────────────────
+https://upcomingbrand.com/tools/installment-calculator/
+https://upcomingbrand.com/tools/schema-generator/
+
+# ─────────────────────────────────────────────────────────────────
+# TOTAL: 59 indexable URLs
+# Highest priority (by CPC): law-firm ($27.82) → dental ($22.80) → medical ($18.44) → nonprofit ($9.99) → accountant ($9.82)
+# ─────────────────────────────────────────────────────────────────
