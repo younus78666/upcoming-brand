@@ -24,13 +24,20 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow";
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q794J9JFE1"></script>
+  <!-- Google Analytics — deferred 3s after load to avoid blocking LCP -->
   <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-Q794J9JFE1');
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-Q794J9JFE1';
+        s.async = true;
+        document.head.appendChild(s);
+      }, 3000);
+    });
   </script>
 
   <meta charset="UTF-8" />
@@ -76,8 +83,36 @@ const robotsContent = noindex ? "noindex, follow" : "index, follow";
   <meta name="msapplication-TileImage" content="/favicon.png" />
   <meta name="msapplication-TileColor" content="#0F1419" />
 
-  <!-- reCAPTCHA v2 (I'm not a robot) -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <!-- reCAPTCHA v2 — lazy-loaded via IntersectionObserver to avoid blocking mobile LCP -->
+  <script is:inline>
+    (function() {
+      var rcLoaded = false;
+      function loadRC() {
+        if (rcLoaded) return;
+        rcLoaded = true;
+        var s = document.createElement('script');
+        s.src = 'https://www.google.com/recaptcha/api.js';
+        s.async = true;
+        s.defer = true;
+        document.head.appendChild(s);
+      }
+      function observe() {
+        var targets = document.querySelectorAll('.uc-recaptcha, [data-uc-recaptcha-defer]');
+        if (!targets.length) { setTimeout(loadRC, 6000); return; }
+        if (!('IntersectionObserver' in window)) { loadRC(); return; }
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(e) { if (e.isIntersecting) { loadRC(); io.disconnect(); } });
+        }, { rootMargin: '300px' });
+        targets.forEach(function(el) { io.observe(el); });
+        setTimeout(loadRC, 8000);
+      }
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', observe);
+      } else {
+        observe();
+      }
+    })();
+  </script>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
