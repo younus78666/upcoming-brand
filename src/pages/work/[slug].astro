@@ -196,8 +196,8 @@ const jsonLd = JSON.stringify({
                       <div class="cs-mb-line cs-mb-line-sub cs-mb-line-short"></div>
                     </div>
                     <div class="cs-mb-hero-score">
-                      <div class="cs-mb-score-label">Mobile Score</div>
-                      <div class="cs-mb-score-bad">{project.metrics[0].label === 'Lighthouse mobile' ? project.metrics[0].before : (project.metrics.find(m => m.label === 'Lighthouse mobile')?.before ?? '—')}</div>
+                      <div class="cs-mb-score-label">{project.metrics.find(m => m.label.toLowerCase().includes('lighthouse') || m.label.toLowerCase().includes('score')) ? 'Mobile Score' : project.metrics[0].label.split(' ').slice(0,2).join(' ')}</div>
+                      <div class="cs-mb-score-bad">{project.metrics.find(m => m.label.toLowerCase().includes('lighthouse'))?.before ?? project.metrics[0].before.replace(' words','').split('/')[0]}</div>
                     </div>
                   </div>
                   <div class="cs-mb-content">
@@ -207,7 +207,7 @@ const jsonLd = JSON.stringify({
                   </div>
                   <div class="cs-mb-warning">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 2L13 12H1L7 2z" stroke="currentColor" stroke-width="1.2"/><path d="M7 6v3M7 10.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
-                    No schema · No Local Pack · Slow mobile
+                    {project.metrics.find(m => m.label.toLowerCase().includes('lighthouse')) ? 'No schema · No Local Pack · Slow mobile' : `${project.metrics[0].before} · ${project.metrics[2]?.before ?? 'No structure'} duplicates · Thin content`}
                   </div>
                 </div>
               </div>
