@@ -8,7 +8,6 @@
       "statusCode": 301
     },
     { "source": "/blog/abandoned-cart-recovery-guide/",      "destination": "/blog/", "statusCode": 301 },
-    { "source": "/blog/attorney-website-design-cost/",       "destination": "/blog/", "statusCode": 301 },
     { "source": "/blog/best-wordpress-hosting/",             "destination": "/blog/", "statusCode": 301 },
     { "source": "/blog/church-local-seo-google/",            "destination": "/blog/", "statusCode": 301 },
     { "source": "/blog/church-website-design-tips/",         "destination": "/blog/", "statusCode": 301 },
