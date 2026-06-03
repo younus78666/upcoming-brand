@@ -1,45 +1,37 @@
 ---
-const articles = [
-  {
-    num: "01",
-    tag: "Pricing Guide",
-    readTime: "10 min read",
-    date: "Apr 2026",
-    title: "How Much Does a WordPress Website Cost in Maryland? (2026 Complete Pricing Guide)",
-    desc: "Everything you need to know about Maryland web design costs — from a 5-page contractor site at $2,500 to a custom law firm build at $10,000. Fixed pricing explained.",
-    href: "#",
-    imgGradient: "linear-gradient(145deg, #1A2535 0%, #0F1A28 60%, #1C2C20 100%)",
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
-    </svg>`,
+import { articles, categories, articleUrl } from '../data/blog-articles';
+
+// Show up to 3 published articles; fall back to newest coming-soon if fewer than 3 published
+const published = articles.filter((a) => a.status === 'published');
+const preview = published.slice(0, 3);
+
+// Per-category gradient + icon for cards without a real image
+const catMeta: Record<string, { gradient: string; icon: string }> = {
+  'local-seo': {
+    gradient: 'linear-gradient(145deg, #0F1A28 0%, #0F1419 60%, #1A2535 100%)',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>`,
   },
-  {
-    num: "02",
-    tag: "Platform Comparison",
-    readTime: "9 min read",
-    date: "Mar 2026",
-    title: "WordPress vs. Squarespace for Maryland Law Firms: Which Platform Wins?",
-    desc: "We run both platforms through the same 12-point test — Core Web Vitals, SEO, attorney schema markup, content management, and total 3-year cost.",
-    href: "#",
-    imgGradient: "linear-gradient(145deg, #0F1A10 0%, #0F1419 60%, #1A2020 100%)",
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-    </svg>`,
+  'buying-guides': {
+    gradient: 'linear-gradient(145deg, #2C1A0A 0%, #1A120A 60%, #200F0F 100%)',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>`,
   },
-  {
-    num: "03",
-    tag: "Performance",
-    readTime: "7 min read",
-    date: "Feb 2026",
-    title: "Why 56% of Maryland Businesses Are Leaving PageSpeed Points on the Table",
-    desc: "Only 44% of WordPress sites pass all three Core Web Vitals on mobile. Here's exactly what's failing and the fastest fixes for Maryland service businesses.",
-    href: "#",
-    imgGradient: "linear-gradient(145deg, #2C1A0A 0%, #1A120A 60%, #200F0F 100%)",
-    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-      <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-    </svg>`,
+  'industry-seo': {
+    gradient: 'linear-gradient(145deg, #0F1A10 0%, #0F1419 60%, #1A2020 100%)',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>`,
   },
-];
+  'industry-design': {
+    gradient: 'linear-gradient(145deg, #1A0F2C 0%, #140F1A 60%, #200F28 100%)',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>`,
+  },
+  'technical': {
+    gradient: 'linear-gradient(145deg, #0F1828 0%, #0F1419 60%, #0F1820 100%)',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>`,
+  },
+  'vertical-deep-dive': {
+    gradient: 'linear-gradient(145deg, #200F0F 0%, #1A0F0F 60%, #2C1010 100%)',
+    icon: `<svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>`,
+  },
+};
 ---
 <section class="blog-section section-pad" id="blog">
   <div class="container">
@@ -51,45 +43,61 @@ const articles = [
     </div>
 
     <div class="blog-grid">
-      {articles.map((article) => (
-        <article class="blog-card">
-          <a href={article.href} class="blog-card-link" aria-label={`Read: ${article.title}`}>
+      {preview.map((article, i) => {
+        const meta = catMeta[article.category] ?? catMeta['technical'];
+        const cat = categories[article.category];
+        const num = String(i + 1).padStart(2, '0');
+        return (
+          <article class="blog-card">
+            <a href={articleUrl(article)} class="blog-card-link" aria-label={`Read: ${article.title}`}>
 
-            <!-- Image area -->
-            <div class="blog-img" style={`background: ${article.imgGradient}`}>
-              <div class="blog-img-noise"></div>
-              <div class="blog-img-icon" aria-hidden="true" set:html={article.icon} />
-              <div class="blog-img-overlay"></div>
-              <div class="blog-img-bottom">
-                <span class="blog-img-tag mono-xs">{article.tag}</span>
-                <span class="blog-img-num mono-xs">{article.num}</span>
+              <!-- Image area -->
+              {article.image ? (
+                <div class="blog-img blog-img-photo">
+                  <img src={article.image} alt={article.imageAlt ?? article.title} width="800" height="450" loading="lazy" decoding="async" />
+                  <div class="blog-img-overlay"></div>
+                  <div class="blog-img-bottom">
+                    <span class="blog-img-tag mono-xs">{cat.label}</span>
+                    <span class="blog-img-num mono-xs">{num}</span>
+                  </div>
+                </div>
+              ) : (
+                <div class="blog-img" style={`background: ${meta.gradient}`}>
+                  <div class="blog-img-noise"></div>
+                  <div class="blog-img-icon" aria-hidden="true" set:html={meta.icon} />
+                  <div class="blog-img-overlay"></div>
+                  <div class="blog-img-bottom">
+                    <span class="blog-img-tag mono-xs">{cat.label}</span>
+                    <span class="blog-img-num mono-xs">{num}</span>
+                  </div>
+                </div>
+              )}
+
+              <!-- Body -->
+              <div class="blog-body">
+                <div class="blog-meta">
+                  <span class="blog-date mono-xs">{article.estPublishMonth ?? 'Published'}</span>
+                  <span class="blog-dot" aria-hidden="true"></span>
+                  <span class="blog-read mono-xs">Published</span>
+                </div>
+                <h3 class="blog-title">{article.title}</h3>
+                <p class="blog-desc">{article.description}</p>
+                <span class="blog-cta-link">
+                  Read article
+                  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
+                    <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
               </div>
-            </div>
 
-            <!-- Body -->
-            <div class="blog-body">
-              <div class="blog-meta">
-                <span class="blog-date mono-xs">{article.date}</span>
-                <span class="blog-dot" aria-hidden="true"></span>
-                <span class="blog-read mono-xs">{article.readTime}</span>
-              </div>
-              <h3 class="blog-title">{article.title}</h3>
-              <p class="blog-desc">{article.desc}</p>
-              <span class="blog-cta-link">
-                Read article
-                <svg width="13" height="13" viewBox="0 0 13 13" fill="none" aria-hidden="true">
-                  <path d="M2 6.5h9M7 2.5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </span>
-            </div>
-
-          </a>
-        </article>
-      ))}
+            </a>
+          </article>
+        );
+      })}
     </div>
 
     <div class="blog-footer">
-      <a href="#" class="cta-outline">Browse all articles &rarr;</a>
+      <a href="/blog/" class="cta-outline">Browse all articles &rarr;</a>
       <p class="blog-footer-note mono-xs">New articles every 2 weeks · No newsletter required</p>
     </div>
 
@@ -157,6 +165,22 @@ const articles = [
     justify-content: center;
   }
 
+  .blog-img-photo {
+    display: block;
+  }
+
+  .blog-img-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
+  .blog-card:hover .blog-img-photo img {
+    transform: scale(1.04);
+  }
+
   .blog-img-noise {
     position: absolute;
     inset: 0;
@@ -195,6 +219,7 @@ const articles = [
     position: absolute;
     inset: 0;
     background: linear-gradient(to top, rgba(15,20,25,0.5) 0%, transparent 50%);
+    pointer-events: none;
   }
 
   .blog-img-bottom {

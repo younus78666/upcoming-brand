@@ -78,7 +78,7 @@ const stats = [
             Buying guides, technical deep-dives, and vertical-specific playbooks for businesses serious about WordPress. New posts <strong>every Tuesday</strong>. The catalog below shows what is in production; subscribe to be notified when each ships.
           </p>
 
-          <form class="blg-subscribe" name="blog-subscribe" method="POST"-honeypot="bot-field" data-uc-form="blog-subscribe" data-uc-recaptcha-defer="true" novalidate>
+          <form class="blg-subscribe" method="POST" name="blog-subscribe" data-netlify="true" data-netlify-honeypot="bot-field" data-uc-form="blog-subscribe" data-uc-recaptcha-defer="true" novalidate>
             <input type="hidden" name="form-name" value="blog-subscribe" />
             <div class="blg-hp" aria-hidden="true"><label>Leave blank: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></div>
             <input class="blg-subscribe-input" type="email" name="email" placeholder="your@email.com" required autocomplete="email" aria-label="Email address" />
@@ -110,20 +110,26 @@ const stats = [
       </div>
     </section>
 
-    <!-- CATEGORIES + ARTICLES -->
+    <!-- CATEGORIES + ARTICLES (published first, then coming-soon; skip empty categories) -->
     {Object.entries(categories).map(([catId, cat]) => {
-      const catArticles = articles.filter((a) => a.category === catId && a.status === 'published');
+      const published = articles.filter((a) => a.category === catId && a.status === 'published');
+      const comingSoon = articles.filter((a) => a.category === catId && a.status === 'coming-soon');
+      const catArticles = [...published, ...comingSoon];
+      if (catArticles.length === 0) return null;
       return (
-        <section class="blg-cat-section" data-cat-section={catId}>
+        <section class="blg-cat-section" id={catId} data-cat-section={catId}>
           <div class="container">
             <div class="blg-cat-head">
               <h2 class="blg-cat-h2">{cat.label}</h2>
               <p class="blg-cat-desc">{cat.desc}</p>
-              <span class="blg-cat-count">{catArticles.length} article{catArticles.length === 1 ? '' : 's'}</span>
+              <div class="blg-cat-badges">
+                {published.length > 0 && <span class="blg-cat-count blg-cat-count-pub">{published.length} published</span>}
+                {comingSoon.length > 0 && <span class="blg-cat-count blg-cat-count-soon">{comingSoon.length} in production</span>}
+              </div>
             </div>
             <div class="blg-grid">
               {catArticles.map((a) => (
-                <a href={articleUrl(a)} class={`blg-card${a.image ? ' blg-card-has-img' : ''}`} data-cat={catId}>
+                <a href={articleUrl(a)} class={`blg-card${a.image ? ' blg-card-has-img' : ''}${a.status === 'coming-soon' ? ' blg-card-soon' : ''}`} data-cat={catId}>
                   {a.image && (
                     <div class="blg-card-img">
                       <img src={a.image} alt={a.imageAlt ?? a.title} width="800" height="450" loading="lazy" decoding="async" />
@@ -132,12 +138,15 @@ const stats = [
                   <div class="blg-card-body">
                     <div class="blg-card-meta">
                       <span class="blg-card-cat">{cat.label}</span>
-                      <span class="blg-card-status">{a.status === 'published' ? 'Published' : (a.estPublishMonth ?? 'Coming soon')}</span>
+                      {a.status === 'published'
+                        ? <span class="blg-card-status blg-card-status-live"><span class="blg-status-dot"></span>Published</span>
+                        : <span class="blg-card-status">{a.estPublishMonth ?? 'Coming soon'}</span>
+                      }
                     </div>
                     <h3 class="blg-card-title">{a.title}</h3>
                     <p class="blg-card-desc">{a.description}</p>
                     <span class="blg-card-cta">
-                      {a.status === 'published' ? 'Read article' : 'Get notified'}
+                      {a.status === 'published' ? 'Read article' : 'Get notified when it ships'}
                       <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
                     </span>
                   </div>
@@ -217,7 +226,10 @@ const stats = [
   .blg-cat-head { max-width: 880px; margin: 0 auto 32px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 8px; }
   .blg-cat-h2 { font-family: var(--f-display); font-weight: 500; font-size: clamp(24px, 3vw, 36px); line-height: 1.15; letter-spacing: -0.025em; color: var(--ink); margin: 0; }
   .blg-cat-desc { font-size: 15px; line-height: 1.6; color: var(--ink-soft); max-width: 60ch; margin: 0; }
+  .blg-cat-badges { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
   .blg-cat-count { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); padding: 4px 10px; background: rgba(212,147,46,0.1); border-radius: var(--radius-pill); font-weight: 600; }
+  .blg-cat-count-pub { color: #2e6e2e; background: rgba(92,128,64,0.1); }
+  .blg-cat-count-soon { color: var(--amber-deep); background: rgba(212,147,46,0.1); }
 
   .blg-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; max-width: 1100px; margin: 0 auto; }
   .blg-card { display: flex; flex-direction: column; gap: 0; background: var(--cream); border: 1.5px solid var(--line); border-radius: var(--radius-lg); text-decoration: none; color: inherit; transition: all 0.3s ease; position: relative; overflow: hidden; }
@@ -230,6 +242,11 @@ const stats = [
   .blg-card-meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
   .blg-card-cat { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); font-weight: 600; }
   .blg-card-status { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); letter-spacing: 0.06em; padding: 3px 8px; background: rgba(15,20,25,0.05); border-radius: var(--radius-pill); }
+  .blg-card-status-live { color: #2e6e2e; background: rgba(92,128,64,0.1); display: inline-flex; align-items: center; gap: 5px; }
+  .blg-status-dot { width: 5px; height: 5px; border-radius: 50%; background: #4caf78; display: inline-block; animation: pubpulse 2.5s ease-in-out infinite; }
+  @keyframes pubpulse { 0%,100%{opacity:1}50%{opacity:0.4} }
+  .blg-card-soon { opacity: 0.75; }
+  .blg-card-soon:hover { opacity: 1; }
   .blg-card-title { font-family: var(--f-display); font-size: 19px; line-height: 1.25; color: var(--ink); font-weight: 600; letter-spacing: -0.02em; margin: 0; }
   .blg-card-desc { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); margin: 0; flex: 1; }
   .blg-card-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber-deep); font-weight: 500; margin-top: 6px; padding-top: 12px; border-top: 1px dashed var(--line); }
