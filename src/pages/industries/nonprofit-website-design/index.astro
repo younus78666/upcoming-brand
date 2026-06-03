@@ -1,8 +1,10 @@
----
+﻿---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import StickyPageNav from '../../../components/StickyPageNav.astro';
 
 const PAGE_URL = "https://www.upcomingbrand.com/industries/nonprofit-website-design/";
 
@@ -534,6 +536,18 @@ const tiers = [
     </div>
 
   </section>
+
+  <TrustBar />
+
+  <StickyPageNav
+    links={[
+      { label: "Pricing", anchor: "cost-heading" },
+      { label: "What's Included", anchor: "includes-heading" },
+      { label: "FAQ", anchor: "lp-faq-section" },
+    ]}
+    ctaLabel="Book Free Call"
+    ctaHref="/contact/"
+  />
 
   <!-- ══════════════════════════════════════════════
        PAIN POINTS

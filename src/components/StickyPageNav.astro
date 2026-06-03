@@ -1,0 +1,103 @@
+---
+// StickyPageNav — anchor nav that appears after hero scroll
+// Props: links array with label + anchor, ctaLabel, ctaHref
+interface NavLink { label: string; anchor: string; }
+interface Props {
+  links?: NavLink[];
+  ctaLabel?: string;
+  ctaHref?: string;
+  heroSelector?: string;
+}
+const {
+  links = [],
+  ctaLabel = "Book Discovery Call",
+  ctaHref = "/contact/",
+  heroSelector = ".svc-hero, .lp-hero, .page-hero",
+} = Astro.props;
+---
+
+<nav class="spn-nav" id="sticky-page-nav" aria-label="Page sections" hidden>
+  <div class="spn-inner">
+    <div class="spn-links">
+      {links.map((l) => (
+        <a href={`#${l.anchor}`} class="spn-link">{l.label}</a>
+      ))}
+    </div>
+    <a href={ctaHref} class="spn-cta">{ctaLabel}</a>
+  </div>
+</nav>
+
+<script define:vars={{ heroSelector }}>
+(function () {
+  var nav = document.getElementById('sticky-page-nav');
+  if (!nav) return;
+
+  var hero = document.querySelector(heroSelector);
+  if (!hero) {
+    // Fallback: show after 400px scroll
+    window.addEventListener('scroll', function () {
+      nav.hidden = window.scrollY < 400;
+    }, { passive: true });
+    return;
+  }
+
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      nav.hidden = entry.isIntersecting;
+    });
+  }, { threshold: 0.1 });
+
+  observer.observe(hero);
+
+  // Smooth scroll for anchor links
+  nav.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var id = link.getAttribute('href').slice(1);
+      var target = document.getElementById(id);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+})();
+</script>
+
+<style>
+.spn-nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 90;
+  background: var(--ink); border-bottom: 1px solid rgba(244,239,230,0.1);
+  box-shadow: 0 2px 20px rgba(15,20,25,0.4);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+.spn-nav[hidden] { display: block !important; transform: translateY(-100%); pointer-events: none; opacity: 0; }
+.spn-nav:not([hidden]) { transform: translateY(0); opacity: 1; }
+
+.spn-inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px);
+  display: flex; align-items: center; justify-content: space-between; height: 44px; gap: 16px;
+}
+.spn-links { display: flex; align-items: center; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.spn-links::-webkit-scrollbar { display: none; }
+
+.spn-link {
+  font-family: var(--f-mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(244,239,230,0.55);
+  padding: 6px 10px; border-radius: 6px; text-decoration: none; white-space: nowrap;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+.spn-link:hover { color: var(--amber); background: rgba(212,147,46,0.1); }
+
+.spn-cta {
+  font-family: var(--f-body); font-size: 11.5px; font-weight: 600;
+  background: var(--amber); color: var(--ink); padding: 7px 16px;
+  border-radius: 8px; text-decoration: none; white-space: nowrap; flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+.spn-cta:hover { background: var(--amber-deep); }
+
+@media (max-width: 600px) {
+  .spn-links { display: none; }
+  .spn-inner { justify-content: center; }
+}
+</style>

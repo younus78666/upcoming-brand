@@ -1,0 +1,99 @@
+---
+// TrustBar — compact social proof strip for service and industry pages
+// Place immediately after Marquee/hero on any service or industry page
+const reviews = [
+  { q: "Hit 91 on PageSpeed and ranked page one for three practice area keywords.", name: "Maya R.", role: "Managing Partner, Meridian Law Group", city: "Baltimore, MD" },
+  { q: "New patient online bookings went from 4 a month to 19 within 90 days.", name: "Dr. David C.", role: "Owner, Chesapeake Dental", city: "Annapolis, MD" },
+  { q: "Google Local Pack calls started within 6 weeks of going live.", name: "James W.", role: "Owner, Whitfield HVAC", city: "Frederick, MD" },
+];
+---
+
+<section class="tb-section" aria-label="Client reviews">
+  <div class="tb-container">
+
+    <!-- Stats row -->
+    <div class="tb-stats">
+      <div class="tb-stat">
+        <span class="tb-stat-num">5.0</span>
+        <span class="tb-stat-label">
+          <svg width="68" height="12" viewBox="0 0 68 12" aria-label="5 stars" fill="#D4932E">
+            {[0,1,2,3,4].map(i => (
+              <path d={`M${6+i*14} 0l1.4 4.2h4.4l-3.6 2.6 1.4 4.2-3.6-2.6-3.6 2.6 1.4-4.2L0.6+${i*14} 4.2h4.4z`} fill="#D4932E"/>
+            ))}
+          </svg>
+          on Google
+        </span>
+      </div>
+      <div class="tb-divider" aria-hidden="true"></div>
+      <div class="tb-stat">
+        <span class="tb-stat-num">400+</span>
+        <span class="tb-stat-label">WordPress projects shipped</span>
+      </div>
+      <div class="tb-divider" aria-hidden="true"></div>
+      <div class="tb-stat">
+        <span class="tb-stat-num">99%</span>
+        <span class="tb-stat-label">Upwork job success score</span>
+      </div>
+      <div class="tb-divider" aria-hidden="true"></div>
+      <div class="tb-stat">
+        <span class="tb-stat-num">90+</span>
+        <span class="tb-stat-label">PageSpeed guaranteed at launch</span>
+      </div>
+    </div>
+
+    <!-- Review cards -->
+    <div class="tb-reviews">
+      {reviews.map((r) => (
+        <div class="tb-review">
+          <svg class="tb-stars" width="72" height="12" viewBox="0 0 72 12" aria-label="5 stars" fill="#D4932E">
+            <path d="M6 0l1.5 4.5H12L8 7.3l1.5 4.5L6 9l-3.5 2.8L4 7.3 0 4.5h4.5z"/>
+            <path d="M20 0l1.5 4.5H26l-4 2.8 1.5 4.5L20 9l-3.5 2.8L18 7.3l-4-2.8h4.5z"/>
+            <path d="M34 0l1.5 4.5H40l-4 2.8 1.5 4.5L34 9l-3.5 2.8L32 7.3l-4-2.8h4.5z"/>
+            <path d="M48 0l1.5 4.5H54l-4 2.8 1.5 4.5L48 9l-3.5 2.8L46 7.3l-4-2.8h4.5z"/>
+            <path d="M62 0l1.5 4.5H68l-4 2.8 1.5 4.5L62 9l-3.5 2.8L60 7.3l-4-2.8h4.5z"/>
+          </svg>
+          <p class="tb-quote">{r.q}</p>
+          <div class="tb-cite">
+            <span class="tb-name">{r.name}</span>
+            <span class="tb-role">{r.role} · {r.city}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<style>
+.tb-section {
+  background: var(--cream);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(28px, 4vh, 48px) 0;
+}
+.tb-container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 20px; }
+
+/* Stats row */
+.tb-stats { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 0; }
+.tb-stat { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 0 clamp(14px, 2.5vw, 32px); }
+.tb-stat-num { font-family: var(--f-display); font-size: clamp(26px, 3.2vw, 36px); font-weight: 700; color: var(--ink); letter-spacing: -0.03em; line-height: 1; }
+.tb-stat-label { font-family: var(--f-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; display: flex; flex-direction: column; align-items: center; gap: 3px; text-align: center; }
+.tb-divider { width: 1px; height: 40px; background: var(--line); flex-shrink: 0; }
+
+/* Review cards */
+.tb-reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.tb-review { background: var(--paper); border: 1.5px solid var(--line); border-radius: 16px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; transition: border-color 0.2s ease; }
+.tb-review:hover { border-color: var(--amber); }
+.tb-stars { flex-shrink: 0; }
+.tb-quote { font-size: 13.5px; line-height: 1.6; color: var(--ink-soft); margin: 0; font-style: italic; }
+.tb-cite { display: flex; flex-direction: column; gap: 2px; margin-top: 2px; }
+.tb-name { font-family: var(--f-mono); font-size: 11px; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; }
+.tb-role { font-family: var(--f-mono); font-size: 9.5px; color: var(--ink-muted); letter-spacing: 0.04em; }
+
+@media (max-width: 768px) {
+  .tb-reviews { grid-template-columns: 1fr; }
+  .tb-stats { gap: 8px; }
+  .tb-divider { display: none; }
+  .tb-stat { padding: 6px 12px; }
+}
+</style>

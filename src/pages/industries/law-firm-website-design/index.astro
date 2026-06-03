@@ -4,6 +4,8 @@ import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Marquee from '../../../components/Marquee.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import StickyPageNav from '../../../components/StickyPageNav.astro';
 import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const stats = [
@@ -90,8 +92,8 @@ const process = [
     num: "02",
     phase: "Design",
     timing: "Weeks 1–2",
-    title: "AI-generated designs + copy draft",
-    body: "We use AI-assisted design to generate and refine your homepage and key practice area pages, across desktop and mobile, based on your firm's positioning and the competitive landscape in your market. Simultaneously, we draft all page copy following MRPC guidelines and your brand voice. You review both in one consolidated feedback round to keep the project moving.",
+    title: "Custom Figma designs + copy draft",
+    body: "We design your homepage and key practice area pages in Figma across desktop and mobile, based on your firm's positioning and competitive landscape. Simultaneously, we draft all page copy following MRPC guidelines and your brand voice. You review both in one consolidated feedback round on a private staging URL.",
   },
   {
     num: "03",
@@ -500,6 +502,19 @@ const schema = {
   </section>
 
   <Marquee />
+
+  <TrustBar />
+
+  <StickyPageNav
+    links={[
+      { label: "Why WordPress", anchor: "lf-why-section" },
+      { label: "Pricing", anchor: "cost-heading" },
+      { label: "Process", anchor: "lf-process-section" },
+      { label: "FAQ", anchor: "lf-faq-section" },
+    ]}
+    ctaLabel="Book Free Call"
+    ctaHref="/contact/"
+  />
 
   <!-- ══════════════════════════════════════════════
        KEY TAKEAWAYS (AEO.1)

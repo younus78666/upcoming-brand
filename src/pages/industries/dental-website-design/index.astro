@@ -4,6 +4,8 @@ import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 import AnnouncementBar from '../../../components/AnnouncementBar.astro';
 import Marquee from '../../../components/Marquee.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import StickyPageNav from '../../../components/StickyPageNav.astro';
 import PortfolioSpotlight from '../../../components/PortfolioSpotlight.astro';
 
 const painPoints = [
@@ -506,8 +508,20 @@ const schema = {
 
   <Marquee />
 
-  <!-- ══════════════════════════════════════════════
-       KEY TAKEAWAYS (AEO.1)
+  <TrustBar />
+
+  <StickyPageNav
+    links={[
+      { label: "Pricing", anchor: "cost-heading" },
+      { label: "What's Included", anchor: "includes-heading" },
+      { label: "FAQ", anchor: "lp-faq-section" },
+    ]}
+    ctaLabel="Book Free Call"
+    ctaHref="/contact/"
+  />
+
+  <!-- ═══
+  KEY TAKEAWAYS (AEO.1)
   ══════════════════════════════════════════════ -->
   <section class="dn-kt-section" aria-label="Quick facts about dental website design">
     <div class="container">

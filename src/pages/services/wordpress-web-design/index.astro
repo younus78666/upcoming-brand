@@ -5,6 +5,8 @@ import Navigation from '../../../components/Navigation.astro';
 import Footer from '../../../components/Footer.astro';
 import ServiceHero from '../../../components/ServiceHero.astro';
 import Marquee from '../../../components/Marquee.astro';
+import TrustBar from '../../../components/TrustBar.astro';
+import StickyPageNav from '../../../components/StickyPageNav.astro';
 
 import BottomFormCTA from '../../../components/BottomFormCTA.astro';
 const canonical = "https://www.upcomingbrand.com/services/wordpress-web-design/";
@@ -115,12 +117,12 @@ const includes = [
   "Custom WordPress theme with modern PHP, ACF Pro, and custom post types",
   "Contact and lead-capture forms with anti-spam protection",
   "Google Analytics 4 + Search Console + Bing Webmaster setup",
-  "Image optimization, lazy loading, and Core Web Vitals tuning",
-  "90+ Lighthouse score on every page on launch day, contractually",
+  "Image optimization, lazy loading, and Core Web Vitals tuning (Google's official speed measurements)",
+  "90+ Lighthouse score on every page at launch — guaranteed before we invoice (measures speed, accessibility, SEO health, and best practices)",
   "Two structured design rounds with comment-thread feedback",
   "Pre-launch redirect map and zero-downtime DNS cutover",
   "30-day post-launch monitoring with written report at day 30",
-  "WCAG 2.1 AA accessibility review on every page before launch",
+  "WCAG 2.1 AA accessibility review on every page before launch (U.S. web accessibility compliance standard)",
 ];
 
 const designTypes = [
@@ -413,6 +415,19 @@ const faqs = [
     />
     <Marquee />
 
+    <TrustBar />
+
+    <StickyPageNav
+      links={[
+        { label: "What's Included", anchor: "includes-heading" },
+        { label: "Pricing", anchor: "cost-heading" },
+        { label: "Process", anchor: "process-heading" },
+        { label: "FAQ", anchor: "faq-heading" },
+      ]}
+      ctaLabel="Book Free Call"
+      ctaHref="/contact/"
+    />
+
     <!-- ====== AEO KEY TAKEAWAYS ====== -->
     <section class="wwd-kt-section">
       <div class="container">
@@ -421,8 +436,8 @@ const faqs = [
           <ul class="wwd-kt-list" role="list">
             <li class="wwd-kt-item"><span class="wwd-kt-key">Cost:</span><span class="wwd-kt-val">$1,500 to $15,000+ fixed-scope. Starter $1,500, Growth $3,500, Custom from $6,000.</span></li>
             <li class="wwd-kt-item"><span class="wwd-kt-key">Timeline:</span><span class="wwd-kt-val">4-6 weeks (Starter), 6-8 weeks (Growth), 8-10 weeks (Custom).</span></li>
-            <li class="wwd-kt-item"><span class="wwd-kt-key">Stack:</span><span class="wwd-kt-val">Elementor Pro on Astra Pro. 90+ Lighthouse on every page, contractually.</span></li>
-            <li class="wwd-kt-item"><span class="wwd-kt-key">Schema:</span><span class="wwd-kt-val">LocalBusiness, FAQPage, and vertical-specific schema built into every template layer.</span></li>
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Stack:</span><span class="wwd-kt-val">Elementor Pro on Astra Pro. 90+ Lighthouse (Google's speed + quality score) on every page, contractually guaranteed.</span></li>
+            <li class="wwd-kt-item"><span class="wwd-kt-key">Schema:</span><span class="wwd-kt-val">LocalBusiness, FAQPage, and vertical-specific schema (structured data that tells Google exactly what your business does) built into every template layer.</span></li>
             <li class="wwd-kt-item"><span class="wwd-kt-key">Pricing model:</span><span class="wwd-kt-val">Fixed-scope PDF quote held for 30 days. No hourly billing, no retainer creep.</span></li>
             <li class="wwd-kt-item"><span class="wwd-kt-key">Location:</span><span class="wwd-kt-val">Maryland-based. All projects run fully remote via Zoom and async review, US-wide.</span></li>
           </ul>
@@ -679,7 +694,7 @@ const faqs = [
             <span class="page-eyebrow-text page-eyebrow-text-light">How we build</span>
             <span class="page-eyebrow-line page-eyebrow-line-amber"></span>
           </div>
-          <h2 class="page-h2 svc-process-h2">
+          <h2 class="page-h2 svc-process-h2" id="process-heading">
             How does our WordPress web design process work?
           </h2>
           <p class="svc-process-lead">Every WordPress web design project moves through the same six phases. Async by default, schema-led, Lighthouse 90+ as a deliverable.</p>
@@ -804,7 +819,7 @@ const faqs = [
             <span class="page-eyebrow-text">WordPress web design FAQ</span>
             <span class="page-eyebrow-line"></span>
           </div>
-          <h2 class="page-h2 svc-faq-h2">
+          <h2 class="page-h2 svc-faq-h2" id="faq-heading">
             What do clients ask <em>before hiring a WordPress web designer?</em>
           </h2>
         </div>
