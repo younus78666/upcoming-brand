@@ -577,9 +577,12 @@ function industryLabel(href: string) {
 .art-author-link-cta:hover { background: var(--amber-deep); border-color: var(--amber-deep); color: var(--ink); }
 
 /* ── FIGURE ── */
-.art-featured-img, .art-figure { margin: 0 0 1.6em; border-radius: var(--radius-lg); overflow: hidden; }
-.art-featured-img img, .art-figure img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: cover; }
-.art-figure figcaption { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 8px 14px 10px; background: var(--cream); text-align: center; }
+.art-featured-img { margin: 0 0 1.6em; border-radius: var(--radius-lg); overflow: hidden; }
+.art-featured-img img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: cover; }
+/* Content figures (infographics, diagrams) — never crop */
+.art-figure { margin: 1em 0 1.6em; border-radius: var(--radius-lg); overflow: hidden; border: 1.5px solid var(--line); }
+.art-figure img { display: block; width: 100%; height: auto; }
+.art-figure figcaption { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.04em; color: var(--ink-muted); padding: 8px 14px 10px; background: var(--cream); text-align: center; border-top: 1px solid var(--line); }
 
 /* ── TABLE WRAP ── */
 .art-table-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1.5px solid var(--line); margin: 1em 0 1.4em; }
