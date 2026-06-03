@@ -39,7 +39,7 @@ const toc = [
 const faqs = [
   {
     q: 'How much does a Baltimore web design company charge?',
-    a: 'A Baltimore web design company charges between $1,500 and $15,000 for a custom WordPress project, depending on scope. A basic 8-page site for a contractor or service business starts around $1,500 to $3,500. A 15-page site with custom design, SEO setup, and booking integration runs $3,500 to $6,000. Complex WooCommerce or multi-location builds start at $6,000. Avoid companies that quote $299 or $499 for a custom site — that is a template with your logo swapped in, not a site built to rank.',
+    a: 'A Baltimore web design company charges between $1,500 and $15,000 for a custom WordPress project, depending on scope. A basic 8-page site for a contractor or service business starts around $1,500 to $3,500. A 15-page site with custom design, SEO setup, and booking integration runs $3,500 to $6,000. Complex WooCommerce or multi-location builds start at $6,000. Avoid companies that quote $299 or $499 for a custom site. That is a template with your logo swapped in, not a site built to rank.',
   },
   {
     q: 'What should a Baltimore web design company include in every project?',
@@ -55,7 +55,7 @@ const faqs = [
   },
   {
     q: 'What is the difference between a web design company and a web developer?',
-    a: 'A web design company handles the full project: strategy, visual design, development, SEO setup, and launch. A freelance web developer typically handles coding only and hands off design or SEO to someone else. For most Baltimore small businesses, a fixed-scope web design company is more predictable: one contract, one price, one point of accountability.',
+    a: 'A web design company handles the full project: strategy, visual design, development, SEO setup, and launch. A freelance web developer handles coding only and hands off design or SEO to someone else. For most Baltimore small businesses, a fixed-scope web design company is more predictable: one contract, one price, one point of accountability.',
   },
   {
     q: 'How do I check if a Baltimore web design company actually ranks its clients in Google?',
@@ -67,17 +67,26 @@ const jsonLd = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Article",
+      "@type": "BlogPosting",
       "@id": `${canonical}#article`,
       "url": canonical,
       "headline": "Baltimore Web Design Company: What to Look for in 2026",
       "description": "What separates a real Baltimore web design company from a template shop. 2026 checklist, pricing guide, and 6 questions to ask before signing.",
-      "author": { "@type": "Person", "name": "Muhammad Younus", "url": "https://www.upcomingbrand.com/about/" },
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Younus",
+        "url": "https://www.upcomingbrand.com/about/",
+        "jobTitle": "Founder, WordPress Web Design Specialist",
+        "knowsAbout": ["WordPress web design", "Local SEO", "Schema markup", "Core Web Vitals"]
+      },
       "publisher": { "@id": "https://www.upcomingbrand.com/#organization" },
       "datePublished": "2026-06-03",
       "dateModified": "2026-06-03",
       "mainEntityOfPage": { "@id": `${canonical}#webpage` },
-      "image": { "@type": "ImageObject", "url": "https://www.upcomingbrand.com/blog/baltimore-web-design-company/og.webp", "width": 1200, "height": 630 }
+      "image": { "@type": "ImageObject", "url": "https://www.upcomingbrand.com/blog/baltimore-web-design-company/og.webp", "width": 1200, "height": 630 },
+      "keywords": ["Baltimore web design company", "web design company Baltimore", "Baltimore WordPress agency", "web designers Baltimore", "custom WordPress web design Maryland"],
+      "wordCount": 2400,
+      "articleSection": "Local SEO"
     },
     {
       "@type": "WebPage",
@@ -88,6 +97,7 @@ const jsonLd = JSON.stringify({
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "dateModified": "2026-06-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".art-h2", ".art-snippet-list"] },
       "breadcrumb": {
         "@type": "BreadcrumbList",
         "itemListElement": [
@@ -109,11 +119,11 @@ const jsonLd = JSON.stringify({
 });
 ---
 <BaseLayout
-  title="Baltimore Web Design Company: What to Look for in 2026 | Upcoming Brand"
+  title="Baltimore Web Design Company Guide 2026 | Upcoming Brand"
   description="What separates a real Baltimore web design company from a template shop. 2026 checklist, pricing guide, and 6 questions to ask before signing."
   canonicalUrl={canonical}
   ogImage="https://www.upcomingbrand.com/blog/baltimore-web-design-company/og.webp"
-  ogImageAlt="Baltimore Web Design Company — What to Look for in 2026"
+  ogImageAlt="Baltimore Web Design Company: What to Look for in 2026"
 >
   <Fragment slot="head"><script type="application/ld+json" set:html={jsonLd} /></Fragment>
   <AnnouncementBar />
@@ -238,7 +248,7 @@ const jsonLd = JSON.stringify({
           <div class="art-featured-img">
             <img
               src="/blog/baltimore-web-design-company/hero.webp"
-              alt="Baltimore web design company office — what to look for in 2026"
+              alt="Baltimore web design company office: what to look for in 2026"
               width="1200" height="480"
               loading="eager"
               fetchpriority="high"
@@ -262,13 +272,14 @@ const jsonLd = JSON.stringify({
           <p><strong>A Baltimore web design company is a studio or agency that designs, builds, and launches websites for Baltimore-area businesses, with the goal of generating leads, bookings, or sales through organic search.</strong> The distinguishing feature of a serious Baltimore web design company versus a generic freelancer or template shop is its approach to technical SEO: schema markup, Core Web Vitals performance, and Local Pack optimization built into every project, not added as an afterthought.</p>
           <p>Baltimore has a competitive commercial landscape spanning law firms in Mount Vernon, dental practices in Towson, contractors serving the DMV corridor, and hospitality businesses in Fells Point and Federal Hill. Each vertical requires different schema types, different conversion architecture, and different Local Pack strategies. A Baltimore web design company that does not specialize in this technical layer is selling aesthetics, not a ranking asset.</p>
           <p><strong>Also known as:</strong> Baltimore web design agency, web design company Baltimore MD, Baltimore WordPress agency, web designers Baltimore, Baltimore website design company.</p>
+          <p>Google evaluates agencies through its E-E-A-T framework (Experience, Expertise, Authoritativeness, and Trustworthiness). A company that publishes specific case study results, names the schema types it implements per vertical, and shows verifiable client rankings demonstrates E-E-A-T. Generic testimonials and stock photography do not. Upcoming Brand publishes fixed-scope pricing, named client results, and specific technical methodology on every service page.</p>
 
           <!-- Frame 2: Category -->
           <h2 id="types" class="art-h2">What types of Baltimore web design services are available?</h2>
           <p><strong>Baltimore businesses have four main categories of web design service to choose from, each with different trade-offs in cost, quality, and long-term ranking potential.</strong></p>
           <ul>
             <li><strong>Custom WordPress builds.</strong> The most scalable and SEO-capable option. A developer builds your site from scratch on WordPress with schema tailored to your vertical, a performance-tuned stack, and full content ownership. Best for law firms, medical practices, contractors, real estate, and any business competing in local search. Cost: $1,500 to $15,000 depending on scope.</li>
-            <li><strong>Elementor or Divi template customization.</strong> A designer takes a premium WordPress theme and customizes it for your brand. Lower cost than fully custom but carries page-builder performance overhead. Lighthouse scores often land in the 60 to 75 range without additional optimization. Cost: $800 to $3,000.</li>
+            <li><strong>Elementor or Divi template customization.</strong> A designer takes a premium WordPress theme and customizes it for your brand. Lower cost than fully custom but carries page-builder performance overhead. Without performance tuning, Lighthouse scores on these builds land between 60 and 75. Cost: $800 to $3,000.</li>
             <li><strong>Wix, Squarespace, or GoDaddy builds.</strong> Fast and cheap, but structurally unable to support custom JSON-LD schema and frequently score below 60 on mobile PageSpeed. Fine for a one-page portfolio or a business that does not compete in local search. Cost: $300 to $1,500 plus ongoing platform fees.</li>
             <li><strong>Template swap services.</strong> Companies that advertise sites for $99 to $499. They install a premium WordPress theme, swap in your logo and copy, and deliver in 3 to 7 days. No custom code, no schema, no performance optimization, no post-launch monitoring. Not suitable for businesses that need to rank.</li>
           </ul>
@@ -278,7 +289,7 @@ const jsonLd = JSON.stringify({
           <h2 id="why-fail" class="art-h2">Why do most Baltimore web design projects fail before they even rank?</h2>
           <p><strong>Most Baltimore web design projects fail for one of three technical reasons: no schema markup, poor mobile performance, or a DNS cutover that destroys existing rankings.</strong> None of these failures are visible in the finished design. A site can look polished and still be structurally incapable of ranking.</p>
           <p><strong>Missing schema.</strong> Google uses structured data to classify businesses precisely. A law firm without <code>LegalService</code> and <code>Attorney</code> schema is just a generic <code>LocalBusiness</code> in Google's knowledge graph. It competes with every other service business in Baltimore instead of ranking specifically for practice-area searches. Schema takes less than 4 hours to implement correctly and most Baltimore agencies skip it entirely.</p>
-          <p><strong>Mobile PageSpeed below 70.</strong> Google's Core Web Vitals (specifically LCP — the time it takes for the main content to load) is a confirmed ranking factor. Sites below 70 on mobile are structurally penalized in local search. Page builders like Divi load 300 to 600KB of JavaScript on every page regardless of what is on it. Custom WordPress builds without a page builder load 40 to 80KB. The difference is measurable in search position.</p>
+          <p><strong>Mobile PageSpeed below 70.</strong> Google's Core Web Vitals (specifically LCP, the time it takes for the main content to load) is a confirmed ranking factor. Sites below 70 on mobile are structurally penalized in local search. Page builders like Divi load 300 to 600KB of JavaScript on every page regardless of what is on it. Custom WordPress builds without a page builder load 40 to 80KB. The difference is measurable in search position.</p>
           <p><strong>No redirect map on migration.</strong> Every URL change during a site launch must be accompanied by 301 redirects. Without them, every backlink and every crawled page becomes a 404 error. Businesses lose 20 to 60% of their organic traffic within 30 days of a botched migration.</p>
 
           <!-- Frame 4: Component -->
@@ -288,7 +299,7 @@ const jsonLd = JSON.stringify({
             <li><strong>Schema markup matched to your vertical.</strong> LocalBusiness for general service businesses. LegalService and Attorney for law firms. Dentist and MedicalBusiness for dental practices. FAQPage on any page with questions and answers. HomeAndConstructionBusiness for contractors.</li>
             <li><strong>Lighthouse/PageSpeed guarantee.</strong> Any serious web design company should be willing to put 90+ Lighthouse in the contract. If the site launches below 90 on mobile, the project is not done.</li>
             <li><strong>301 redirect map.</strong> If you have an existing site, every page URL must be mapped and redirected. This is a spreadsheet exercise that takes 2 to 4 hours and prevents catastrophic ranking loss.</li>
-            <li><strong>Post-launch Search Console monitoring.</strong> The first 30 days after launch are when crawl errors, indexation problems, and redirect failures surface. A responsible Baltimore web design company monitors Search Console weekly and fixes anything that appears — included in the original project scope.</li>
+            <li><strong>Post-launch Search Console monitoring.</strong> The first 30 days after launch are when crawl errors, indexation problems, and redirect failures surface. A responsible Baltimore web design company monitors Search Console weekly and fixes anything that appears, included in the original project scope.</li>
             <li><strong>Google Analytics 4 configuration.</strong> GA4 should be set up with conversion events configured: form submissions, phone click events, and button clicks mapped to goals.</li>
           </ul>
 
@@ -296,7 +307,7 @@ const jsonLd = JSON.stringify({
           <h2 id="process" class="art-h2">How does the process work with a Baltimore web design company?</h2>
           <p><strong>A well-run Baltimore web design project moves through five phases: discovery, quote, design, build, and launch with monitoring.</strong> The total timeline is 4 to 10 weeks depending on scope.</p>
           <ol>
-            <li><strong>Discovery (free, 45 minutes).</strong> A call where the company audits your current site, maps your competitive SERP landscape, and identifies schema gaps and Local Pack opportunity. At Upcoming Brand, the discovery call ends with a written summary of exactly what we found — whether or not you hire us.</li>
+            <li><strong>Discovery (free, 45 minutes).</strong> A call where the company audits your current site, maps your competitive SERP landscape, and identifies schema gaps and Local Pack opportunity. At Upcoming Brand, the discovery call ends with a written summary of exactly what we found, whether or not you hire us.</li>
             <li><strong>Fixed-scope quote (48 hours).</strong> One PDF with every deliverable, milestone, price, and timeline listed. No hourly billing, no scope-creep retainers. You know the total before you sign.</li>
             <li><strong>Design rounds (1 to 2 weeks).</strong> Designs are built on a private staging URL. You review on your own schedule and leave comments directly on the design. Two structured rounds of feedback are included.</li>
             <li><strong>Build and schema (3 to 6 weeks).</strong> Schema goes in first, then page templates, integrations, and content. Performance tuning happens throughout, not as a last step.</li>
@@ -331,8 +342,7 @@ const jsonLd = JSON.stringify({
 
           <!-- Frame 8: Application -->
           <h2 id="when" class="art-h2">When does your Baltimore business actually need a web design company?</h2>
-          <p><strong>Your Baltimore business needs a web design company when organic search is a meaningful customer acquisition channel and your current site is not performing in it.</strong></p>
-          <p>Specific signals:</p>
+          <p>Five signals tell you it is time. Each one is measurable. You can verify it yourself in under 10 minutes without paying anyone.</p>
           <ul>
             <li>Your site scores below 70 on Google PageSpeed mobile. Run it at <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer">pagespeed.web.dev</a>. Below 70 means Core Web Vitals are failing and rankings are structurally penalized.</li>
             <li>You do not appear in the Google Local Pack (the map results) for your primary service. Search "[your service] [your city]" in incognito. If you are not in the top 3 map results, schema and GBP work is needed.</li>
@@ -343,7 +353,7 @@ const jsonLd = JSON.stringify({
 
           <!-- Frame 9: Evaluation -->
           <h2 id="how-evaluate" class="art-h2">How do you evaluate a Baltimore web design company before signing?</h2>
-          <p><strong>Evaluate on six specific technical questions before you sign anything.</strong> These separate studios that build sites that rank from studios that build sites that look good.</p>
+          <p>Six questions. Ask all of them. Any company that deflects or gives vague answers on more than two is not equipped to build a site that ranks.</p>
           <ol>
             <li><strong>Ask for three client URLs and check their mobile PageSpeed.</strong> Go to pagespeed.web.dev and test each one. If any site scores below 80 on mobile, walk away.</li>
             <li><strong>Ask what schema they implement per vertical.</strong> The answer should be specific: "For a dental practice we implement Dentist, MedicalBusiness, and FAQPage." If they say "we use Yoast" with no further detail, they are using generic LocalBusiness output.</li>
@@ -362,6 +372,12 @@ const jsonLd = JSON.stringify({
                 <p class="art-faq-a">{f.a}</p>
               </details>
             ))}
+          </div>
+
+          <!-- Location/NAP block (Visit-in-Person intent + local SEO signal) -->
+          <div class="art-location-block">
+            <p class="art-location-label">Upcoming Brand | Maryland-based, serving Baltimore and the DMV remotely</p>
+            <p class="art-location-detail">We work with businesses across <strong>Baltimore, Annapolis, Towson, Bethesda, Frederick, Silver Spring, Columbia, and the broader DMV metro</strong>. All projects run via Zoom, async staging review, and written weekly updates. No in-person meetings required. Discovery calls are free, 45 minutes, and include a live audit of your current site. <a href="/contact/">Book yours</a> or email <a href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>.</p>
           </div>
 
           <!-- Final CTA inline -->
@@ -509,6 +525,12 @@ const jsonLd = JSON.stringify({
 .art-faq-q::after { content: "+"; font-family: var(--f-mono); font-size: 18px; color: var(--amber-deep); line-height: 1; flex-shrink: 0; }
 .art-faq-item[open] .art-faq-q::after { content: "−"; }
 .art-faq-a { font-size: 14.5px; line-height: 1.72; color: var(--ink-soft); padding: 14px 18px 16px; margin: 0; border-top: 1px solid var(--line); }
+
+/* Location block */
+.art-location-block { background: var(--paper); border: 1.5px solid var(--line); border-left: 4px solid var(--amber); border-radius: var(--radius-md); padding: 16px 20px; margin: 2em 0; }
+.art-location-label { font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin: 0 0 8px; }
+.art-location-detail { font-size: 14px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+.art-location-detail a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 3px; }
 
 /* Inline CTA */
 .art-inline-cta { background: var(--ink); border-radius: var(--radius-lg); padding: 28px 26px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 2.4em; }
