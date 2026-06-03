@@ -7,8 +7,13 @@ import FinalCTA from '../../components/FinalCTA.astro';
 import { articles, categories, articleUrl, type BlogArticle } from '../../data/blog-articles';
 
 export async function getStaticPaths() {
+  // Exclude articles that have their own standalone page file — those take priority
+  const standalonePages = new Set([
+    'baltimore-web-design-company',
+    'attorney-website-design-cost',
+  ]);
   return articles
-    .filter((a) => a.status === 'published')
+    .filter((a) => a.status === 'coming-soon' && !standalonePages.has(a.slug))
     .map((a) => ({
       params: { slug: a.slug },
       props: { article: a },

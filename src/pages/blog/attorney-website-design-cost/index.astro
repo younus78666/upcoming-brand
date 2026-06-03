@@ -1,0 +1,310 @@
+---
+import BlogArticleLayout from '../../../layouts/BlogArticleLayout.astro';
+
+const canonical = 'https://www.upcomingbrand.com/blog/attorney-website-design-cost/';
+
+const toc = [
+  { id: 'what-is',       label: 'What is attorney website design?' },
+  { id: 'cost',          label: 'What does it cost in 2026?' },
+  { id: 'what-includes', label: 'What every law firm site needs' },
+  { id: 'why-fail',      label: 'Why cheap attorney websites fail' },
+  { id: 'schema',        label: 'Schema markup for law firms' },
+  { id: 'comparison',    label: 'Agency vs freelancer vs template' },
+  { id: 'when',          label: 'When your firm needs a new site' },
+  { id: 'questions',     label: '6 questions before hiring' },
+  { id: 'faq',           label: 'FAQ' },
+];
+
+const faqs = [
+  {
+    q: 'How much does a solo attorney website cost?',
+    a: 'A solo attorney website costs $3,500 to $5,500 for a custom WordPress build. This scope covers 8 to 12 pages: home, about, attorney profile, two to three practice area pages, contact, and a blog structure. It includes LegalService and Attorney schema, a basic intake form, bar-compliant disclaimer language, and 30 days of post-launch Search Console monitoring. Solo practices in low-competition markets can start at the lower end. Practices competing for high-value keywords like personal injury or family law in major metros should budget toward the higher end.',
+  },
+  {
+    q: 'What is LegalService schema and why does a law firm website need it?',
+    a: 'LegalService is a schema.org type that tells Google precisely what legal services your firm provides and where it provides them. It extends LocalBusiness with legal-specific fields: practiceArea (FamilyLaw, CriminalLaw, PersonalInjuryLaw), serviceArea (your geographic coverage), and hasOfferCatalog (your specific services). Without LegalService schema, Google classifies your firm as a generic local business and your site competes with every service provider in the area rather than specifically with other attorneys in your practice areas. Implementing it correctly takes 3 to 4 hours and is one of the highest-ROI technical investments in a law firm website.',
+  },
+  {
+    q: 'Do attorney websites need bar-compliant disclaimers?',
+    a: 'Yes. Most state bars regulate attorney advertising, which includes websites. Maryland, Virginia, and DC all require that any website describing case outcomes or results include language noting that prior results do not guarantee similar outcomes. Some states require an Attorney Advertising label in the footer. The specific requirements vary by jurisdiction. A web designer who builds attorney websites regularly will include a bar compliance review in their process. One who does not is likely unfamiliar with legal advertising rules entirely.',
+  },
+  {
+    q: 'How long does a law firm website take to build?',
+    a: 'A starter solo practice site takes 4 to 6 weeks. A growth build for a 2 to 5 attorney firm with multiple practice areas and intake form integration runs 6 to 8 weeks. A full firm build with CRM integration and multiple locations takes 8 to 12 weeks. The most common source of delays is content approval. Attorney profiles and practice area page copy require review and revision cycles that add 1 to 2 weeks beyond the initial timeline if not planned for upfront.',
+  },
+  {
+    q: 'Can a law firm use a template website instead of a custom build?',
+    a: 'A template works for a solo practice in a low-competition market that does not rely on organic search for new clients. For any firm competing in a metro area for high-value practice area keywords, a template creates a structural ceiling. Template builds use generic schema, share design patterns with thousands of other sites, and frequently score below 75 on mobile PageSpeed. These factors compound over 12 to 18 months into a measurable ranking disadvantage against firms that invested in a custom build.',
+  },
+  {
+    q: 'What are the ongoing costs of a law firm website?',
+    a: 'Ongoing costs for a law firm website typically run $150 to $600 per month depending on hosting, maintenance, and whether you have a content retainer. Managed WordPress hosting runs $30 to $80 per month on platforms like Kinsta or WP Engine. A monthly care plan covering security updates, plugin maintenance, backup verification, and Search Console monitoring runs $75 to $200 per month. A writing retainer for practice area content or blog posts adds $300 to $600 per month. Total annual ongoing cost: $1,800 to $5,000.',
+  },
+];
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": `${canonical}#article`,
+      "url": canonical,
+      "headline": "Attorney Website Design Cost: What Law Firms Actually Pay in 2026",
+      "description": "Attorney website design costs $3,500 to $12,000 for a custom WordPress build. What every law firm site must include, schema breakdown, and 6 questions to ask before signing.",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Younus",
+        "url": "https://www.upcomingbrand.com/about/",
+        "jobTitle": "Founder, WordPress Web Design Specialist",
+        "knowsAbout": ["WordPress web design", "Law firm SEO", "LegalService schema", "Local SEO"]
+      },
+      "publisher": { "@id": "https://www.upcomingbrand.com/#organization" },
+      "datePublished": "2026-06-03",
+      "dateModified": "2026-06-03",
+      "mainEntityOfPage": { "@id": `${canonical}#webpage` },
+      "image": { "@type": "ImageObject", "url": "https://www.upcomingbrand.com/blog/attorney-website-design-cost/og.webp", "width": 1200, "height": 630 },
+      "keywords": ["attorney website design cost", "law firm website design cost", "lawyer website design", "attorney website design", "law firm website cost"],
+      "wordCount": 2800,
+      "articleSection": "Buying Guides"
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Attorney Website Design Cost: What Law Firms Actually Pay in 2026 | Upcoming Brand",
+      "description": "Attorney website design costs $3,500 to $12,000 for a custom WordPress build. What every law firm site must include, schema breakdown, and 6 questions to ask before signing.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
+      "dateModified": "2026-06-03",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".art-h2", ".art-snippet-list"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",   "item": "https://www.upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog",   "item": "https://www.upcomingbrand.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Attorney Website Design Cost", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+});
+---
+
+<BlogArticleLayout
+  title="Attorney Website Design Cost: What Law Firms Actually Pay in 2026"
+  description="Attorney website design costs $3,500 to $12,000 for a custom WordPress build. What every law firm site must include, schema breakdown, and 6 questions to ask before signing."
+  canonicalUrl={canonical}
+  ogImage="https://www.upcomingbrand.com/blog/attorney-website-design-cost/og.webp"
+  ogImageAlt="Attorney Website Design Cost: What Law Firms Actually Pay in 2026"
+  jsonLd={jsonLd}
+  articleSlug="attorney-website-design-cost"
+  category="buying-guides"
+  publishDate="2026-06-03"
+  publishLabel="June 3, 2026"
+  readTime="11 min read"
+  toc={toc}
+  relatedServices={['/services/wordpress-web-design/']}
+  relatedIndustries={['/industries/law-firm-website-design/']}
+  ctaTitle="Ready to get a quote for your law firm?"
+  ctaLabel="Book free discovery call"
+>
+
+  <!-- Featured image -->
+  <div class="art-featured-img">
+    <img
+      src="/blog/attorney-website-design-cost/hero.webp"
+      alt="Attorney website design cost guide 2026"
+      width="1200" height="480"
+      loading="eager"
+      fetchpriority="high"
+      onerror="this.parentElement.style.display='none'"
+    />
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="art-snippet">
+    <span class="art-snippet-label">Key takeaways</span>
+    <ul class="art-snippet-list">
+      <li>Attorney website design costs $3,500 to $12,000 for a custom WordPress build in 2026. Solo practices start at $3,500. Mid-size firms with multiple practice areas run $5,500 to $9,000. Complex multi-attorney builds with CRM integration start at $9,000.</li>
+      <li>Every law firm website needs LegalService and Attorney schema markup, an online client intake form, practice-area pages, and bar-compliant advertising disclaimers. Missing any of these is both a ranking gap and a professional liability exposure.</li>
+      <li>Sites priced under $2,000 almost never include schema markup, intake form integration, or bar compliance review. They look professional but will not rank in local search or convert visitors into clients.</li>
+      <li>You do not need a legal-industry-only web design company. You need one that understands LegalService schema, state bar advertising compliance, and Local Pack optimization specifically.</li>
+    </ul>
+  </div>
+
+  <!-- Frame 1: Definition -->
+  <h2 id="what-is" class="art-h2">What is attorney website design?</h2>
+  <p><strong>Attorney website design is the process of building a WordPress website that generates client inquiries for a law firm through organic search, Local Pack rankings, and conversion-optimized practice area pages.</strong> The distinguishing factor of a law firm website versus a generic professional services site is the legal-specific technical layer: LegalService and Attorney schema markup, client intake forms that connect to legal CRM software like Clio or Lawmatics, and bar-compliant advertising language on every page.</p>
+  <p>A well-built attorney website does three things simultaneously: it ranks in Google's Local Pack for "[practice area] attorney [city]" searches, it converts visitors into intake form submissions, and it satisfies state bar advertising rules. A site that accomplishes two of the three is incomplete. Most affordable attorney website builds deliver only the appearance of credibility. They lack the schema to rank and the intake architecture to convert.</p>
+  <p><strong>Also known as:</strong> law firm website design, lawyer website design, legal website design, law office website design, attorney web design.</p>
+  <p>Google's E-E-A-T framework (Experience, Expertise, Authoritativeness, Trustworthiness) scrutinizes legal content carefully because it falls under the "Your Money or Your Life" category. A site without verifiable attorney credentials, bar number citations, and accurate practice area information ranks below competitors who have these signals embedded in their page structure and schema.</p>
+
+  <!-- Frame 2: Cost table -->
+  <h2 id="cost" class="art-h2">What does attorney website design cost in 2026?</h2>
+  <p><strong>Attorney website design costs between $3,500 and $15,000 for a custom WordPress build in 2026, depending on the number of attorneys, practice areas, and integration requirements.</strong></p>
+  <div class="art-compare-wrap" role="region" aria-label="Attorney website design cost by project type">
+    <table class="art-compare-table">
+      <thead>
+        <tr>
+          <th scope="col">Project Type</th>
+          <th scope="col">Firm Size</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Key Features</th>
+          <th scope="col">Cost Range</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Starter</td>
+          <td>Solo, 1-2 practice areas</td>
+          <td>8-12</td>
+          <td>LegalService schema, basic intake form, attorney profile</td>
+          <td class="art-ct-partial">$3,500-$5,500</td>
+        </tr>
+        <tr>
+          <td>Growth</td>
+          <td>2-5 attorneys, multiple practice areas</td>
+          <td>15-25</td>
+          <td>Intake form with CRM integration, multi-attorney profiles, Local Pack optimization</td>
+          <td class="art-ct-partial">$5,500-$9,000</td>
+        </tr>
+        <tr>
+          <td>Full Firm</td>
+          <td>6+ attorneys, multiple locations</td>
+          <td>25-40</td>
+          <td>Custom intake system, Clio/Lawmatics integration, multi-location schema</td>
+          <td class="art-ct-partial">$9,000-$15,000</td>
+        </tr>
+        <tr>
+          <td>Redesign</td>
+          <td>Any size</td>
+          <td>Existing pages</td>
+          <td>Migration, 301 redirects, schema retrofit, performance tuning</td>
+          <td class="art-ct-partial">$3,000-$8,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p>Attorney websites cost more than comparable-size service business sites for two structural reasons. First, every attorney needs an individual profile page with schema-marked credentials, bar number, and practice areas. Second, bar-compliant disclaimer language must be verified against state-specific advertising rules and applied across every page that describes outcomes or services.</p>
+  <p>Avoid any attorney website quote under $2,000. At that price point, the build is a modified premium theme with your logo and contact information swapped in. There is no schema markup, no intake form, and no bar compliance review. It will not rank for practice area keywords in local search.</p>
+
+  <!-- Frame 4: Components -->
+  <h2 id="what-includes" class="art-h2">What does every attorney website need to include?</h2>
+  <p><strong>A complete attorney website must include five technical components beyond standard pages: LegalService schema, an intake form connected to legal CRM software, individual attorney profile pages, practice-area pages built for keyword targeting, and bar-compliant disclaimers on every page.</strong> Any proposal that does not enumerate all five is incomplete.</p>
+  <p><strong>LegalService and Attorney schema markup.</strong> Google uses structured data to classify law firms precisely. Without LegalService schema specifying your practiceArea fields, your firm ranks as a generic LocalBusiness. With it, you rank specifically for the practice areas your firm handles. The full schema stack is covered in detail below.</p>
+  <p><strong>Client intake form with CRM integration.</strong> A contact form that sends an email is not sufficient for a law firm. A complete intake collects case type, timeline, contact details, and preferred contact method, then routes directly to your case management software. Integration with Clio, MyCase, or Lawmatics costs $300 to $800 in additional development time and is the difference between a captured lead and a missed client.</p>
+  <p><strong>Individual attorney profile pages.</strong> Each attorney needs a dedicated page with photo, bar number, practice areas, admitted jurisdictions, education, and notable cases or results. These pages carry their own schema (Attorney type) and rank individually for name-based searches. They also satisfy Google's E-E-A-T requirements for legal content.</p>
+  <p><strong>Practice area pages built for keyword targeting.</strong> A page titled "Services" does not rank. A page titled "Baltimore Family Law Attorney" with LegalService schema and 800 words of practice-specific content does. Every practice area your firm handles should have its own page targeting the "[practice area] attorney [city]" keyword combination.</p>
+  <p><strong>Bar-compliant advertising disclaimers.</strong> Most states require attorney websites to include language like "prior results do not guarantee similar outcomes" on any page that describes case results. Some states require "Attorney Advertising" labels in footers. A web designer unfamiliar with legal advertising rules will never include this language because they have no reason to know it is required. Missing it exposes the firm to bar complaints and ethics reviews.</p>
+
+  <!-- Frame 6: Causation -->
+  <h2 id="why-fail" class="art-h2">Why do cheap attorney websites fail before they ever rank?</h2>
+  <p><strong>Most law firm websites priced under $3,000 fail for the same three reasons: they use generic LocalBusiness schema instead of LegalService schema, they have no client intake system, and they do not include bar-compliant advertising language.</strong> None of these failures are visible in the finished design. The site can look polished and still be structurally unable to rank or convert.</p>
+  <p><strong>Generic schema means invisible practice areas.</strong> Google's Local Knowledge Graph classifies businesses by schema type. A firm tagged only as LocalBusiness competes with every other service provider in the area. A firm tagged with LegalService plus specific practiceArea values (FamilyLaw, CriminalLaw, PersonalInjuryLaw) ranks specifically for those searches. The implementation takes 3 to 4 hours. Most cheap builds skip it entirely.</p>
+  <p><strong>No intake form means no client pipeline.</strong> Contact forms that send a generic email generate a mix of spam, lead broker inquiries, and real potential clients with no filtering mechanism. A structured intake form that captures case type, approximate timeline, and contact preference filters that pipeline before the attorney spends time on a call. Firms without intake forms spend significantly more time qualifying leads by phone rather than on billable work.</p>
+  <p><strong>Missing bar disclaimers create ethics exposure.</strong> State bars treat attorney websites as advertising. In Maryland, Virginia, DC, and most other jurisdictions, websites that describe outcomes or results require specific disclaimer language. A general web designer builds what they see on other sites. If those sites are not law firm sites, they will not know what to include.</p>
+
+  <!-- Frame 3: Schema -->
+  <h2 id="schema" class="art-h2">What schema markup does an attorney website actually need?</h2>
+  <p><strong>A complete attorney website schema stack includes five types: LegalService, Attorney, FAQPage, BreadcrumbList, and LocalBusiness.</strong> Implementing all five consistently across pages is what separates sites that rank in the Local Pack from those that do not.</p>
+  <p><strong>LegalService</strong> is the primary type. It specifies your firm's practiceArea fields, serviceArea, and hasOfferCatalog. Example practiceArea values: FamilyLaw, CriminalLaw, PersonalInjuryLaw, RealEstateLaw, EstatesAndTrusts. This is the type most template builds omit entirely.</p>
+  <p><strong>Attorney</strong> applies to individual attorney profile pages. It includes name, jobTitle (Attorney), alumniOf (law school), memberOf (state bar associations), and a reference back to the LegalService entity. Without it, Google treats your attorney profiles as generic person pages rather than licensed legal professionals.</p>
+  <p><strong>FAQPage</strong> applies to any page with question-and-answer content. Google uses this for expandable Q&A rich results in search. It is the fastest schema-driven result to appear and requires no link authority to trigger. It should be on every practice area page and your main FAQ page.</p>
+  <p><strong>BreadcrumbList</strong> on every page enables the breadcrumb display in search results (Home &gt; Practice Areas &gt; Family Law). It reduces bounce rate by showing users where they are in the site structure before they click.</p>
+  <p><strong>LocalBusiness</strong> (inherited by LegalService) carries your NAP: Name, Address, Phone. This must match your Google Business Profile exactly. One character difference between your website schema and your GBP listing weakens your Local Pack ranking signal. Most firms have at least one mismatch, usually a phone number format or address abbreviation.</p>
+  <p>Most template-based attorney websites implement only LocalBusiness. Growth-tier and firm-tier custom builds implement all five. The difference in Local Pack performance is measurable within 60 to 90 days of launch. For a full walkthrough of how we implement legal schema, see our <a href="/industries/law-firm-website-design/">law firm website design page</a>.</p>
+
+  <!-- Frame 7: Comparison -->
+  <h2 id="comparison" class="art-h2">Agency vs freelancer vs template builder: which is right for a law firm?</h2>
+  <p><strong>The right choice depends on how competitively your practice area ranks in local search and whether your state bar's advertising rules apply to your website.</strong></p>
+  <div class="art-compare-wrap" role="region" aria-label="Attorney website design option comparison">
+    <table class="art-compare-table">
+      <thead>
+        <tr>
+          <th scope="col">Factor</th>
+          <th scope="col">Web design agency</th>
+          <th scope="col">Freelancer</th>
+          <th scope="col">Template builder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>LegalService schema</td><td class="art-ct-yes">Vertical-specific, complete</td><td class="art-ct-partial">Varies by legal experience</td><td class="art-ct-no">Generic or absent</td></tr>
+        <tr><td>Intake form + CRM integration</td><td class="art-ct-yes">Clio/Lawmatics/MyCase included</td><td class="art-ct-partial">Sometimes, at extra cost</td><td class="art-ct-no">Not available</td></tr>
+        <tr><td>Bar compliance review</td><td class="art-ct-yes">Included</td><td class="art-ct-partial">Rarely included</td><td class="art-ct-no">Not included</td></tr>
+        <tr><td>Attorney profile pages</td><td class="art-ct-yes">Structured with schema</td><td class="art-ct-partial">Usually included</td><td class="art-ct-partial">Template-based only</td></tr>
+        <tr><td>Post-launch monitoring</td><td class="art-ct-yes">30+ days included</td><td class="art-ct-partial">Rarely included</td><td class="art-ct-no">Not included</td></tr>
+        <tr><td>Cost</td><td class="art-ct-partial">$3,500 to $15,000</td><td class="art-ct-yes">$1,500 to $6,000</td><td class="art-ct-yes">$500 to $2,500</td></tr>
+        <tr><td>Ranking potential</td><td class="art-ct-yes">High</td><td class="art-ct-partial">Medium (skill-dependent)</td><td class="art-ct-no">Low</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>For solo practices in low-competition markets (rural counties, niche practice areas with few local competitors), a freelancer with WordPress experience and a basic understanding of legal schema can deliver a functional site at a lower cost.</p>
+  <p>For any practice competing in a metro area for high-value keywords like "personal injury attorney Baltimore" or "family law attorney DC," an agency that specializes in schema and Local Pack optimization is the only build worth commissioning. Template builders including turnkey legal platforms like Mockingbird or Scorpion carry ongoing platform fees of $200 to $800 per month, exceed what managed WordPress hosting costs, and deliver significantly less ranking capability.</p>
+
+  <!-- Frame 8: Application -->
+  <h2 id="when" class="art-h2">When does your law firm actually need a new website?</h2>
+  <p>Five signals indicate it is time. Each one is verifiable in under 10 minutes without paying anyone.</p>
+  <ul>
+    <li>Your firm does not appear in the Google Local Pack for your primary practice area in your city. Search "[practice area] attorney [your city]" in incognito mode. If you are not in the top three map results, your schema or Google Business Profile is incomplete or inconsistent.</li>
+    <li>Your mobile PageSpeed score is below 75. Run your URL at <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer">pagespeed.web.dev</a>. Legal sites frequently score poorly on mobile because they were built on page builders that load excess JavaScript. Core Web Vitals is a confirmed ranking factor.</li>
+    <li>Your site has no intake form, only a contact form with name, email, and message. Every potential client inquiry is going through a process designed for newsletter subscriptions, not legal consultations.</li>
+    <li>You recently merged with another firm, expanded your practice areas, or moved to a new city, and your site still reflects the old positioning. Schema and keyword targeting do not update themselves.</li>
+    <li>Your site has not been redesigned in more than four years. Google's mobile-first indexing requirements changed significantly in 2020. Sites built on pre-2020 architecture often fail mobile Core Web Vitals in ways that require a rebuild rather than a patch.</li>
+  </ul>
+
+  <!-- Frame 9: Evaluation -->
+  <h2 id="questions" class="art-h2">What 6 questions should you ask before hiring an attorney web designer?</h2>
+  <p>Ask all six. Any company that deflects or gives vague answers on more than two does not have the legal-specific technical experience the work requires.</p>
+  <ol>
+    <li><strong>What LegalService schema practiceArea values do you implement?</strong> The answer should name specific values: FamilyLaw, PersonalInjuryLaw, CriminalLaw, EstatesAndTrusts. "We use schema" without specifics means they use generic LocalBusiness output from Yoast, not custom JSON-LD built for your practice areas.</li>
+    <li><strong>Does your quote include bar compliance review?</strong> The answer should be yes, with a description of what they check: result disclaimer language, state-specific footer requirements, and cross-verification against your state bar's advertising rules. If they do not know what bar compliance review means, they are not experienced in law firm web design.</li>
+    <li><strong>Which legal CRM integrations have you built?</strong> A legitimate answer names specific platforms: Clio, MyCase, Lawmatics, Smokeball, PracticePanther. "We can integrate anything" without named experience is not the same as having actually built legal intake pipelines.</li>
+    <li><strong>Do you include a 301 redirect map if we are migrating from an existing site?</strong> If you have an existing site with any search visibility, this is non-negotiable. A migration without documented redirects typically causes 20 to 60% organic traffic loss within 30 days of launch.</li>
+    <li><strong>What does your post-launch period include?</strong> The answer should specify Search Console monitoring, 404 error resolution, and a written report at day 30. "We are available if anything comes up" is not monitoring. Issues surface after launch, not before.</li>
+    <li><strong>Can you show three live law firm sites you have built and their mobile PageSpeed scores?</strong> Run each URL at pagespeed.web.dev yourself. If any client site scores below 80 on mobile, the company is not prioritizing Core Web Vitals, which directly affects legal keyword rankings.</li>
+  </ol>
+
+  <!-- Inline mid-article CTA -->
+  <div class="art-inline-cta">
+    <div class="art-inline-cta-text">
+      <h3 class="art-inline-cta-h3">Not sure what your law firm site is missing?</h3>
+      <p class="art-inline-cta-sub">Free 45-minute audit. We pull up your site live, check your schema stack, run your PageSpeed score, and tell you exactly what is costing you Local Pack rankings. No pitch, no obligation.</p>
+    </div>
+    <a href="/contact/" class="art-inline-cta-btn">Book free audit</a>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq" class="art-h2">Frequently asked questions about attorney website design cost</h2>
+  <div class="art-faq">
+    {faqs.map((f) => (
+      <details class="art-faq-item">
+        <summary class="art-faq-q">{f.q}</summary>
+        <p class="art-faq-a">{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <!-- Location block -->
+  <div class="art-location-block">
+    <p class="art-location-label">Upcoming Brand | Maryland-based, serving law firms across the DMV and beyond</p>
+    <p class="art-location-detail">We build attorney websites for solo practices, boutique firms, and multi-attorney practices across <strong>Baltimore, Annapolis, Bethesda, Washington DC, Northern Virginia, Frederick, and the broader DMV metro</strong>. Every law firm project includes LegalService and Attorney schema, client intake form integration, bar compliance review, and 30 days of post-launch Search Console monitoring. All work runs via Zoom discovery calls and async staging review. Discovery calls are free, 45 minutes, and include a live audit of your current site and schema. <a href="/contact/">Book yours</a> or email <a href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>.</p>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="art-inline-cta">
+    <div class="art-inline-cta-text">
+      <h3 class="art-inline-cta-h3">Ready to find out what your law firm site needs?</h3>
+      <p class="art-inline-cta-sub">Free 45-minute discovery call. We audit your current site, check your schema and GBP, and give you a fixed-scope quote. No hourly billing, no surprises.</p>
+    </div>
+    <a href="/contact/" class="art-inline-cta-btn">Book free call</a>
+  </div>
+
+</BlogArticleLayout>
