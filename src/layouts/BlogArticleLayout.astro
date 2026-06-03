@@ -1,0 +1,469 @@
+---
+/**
+ * BlogArticleLayout — Shared layout for ALL blog posts.
+ * Used by every published article to guarantee identical structure,
+ * sidebar, author box, and styles sitewide.
+ */
+import BaseLayout from './BaseLayout.astro';
+import AnnouncementBar from '../components/AnnouncementBar.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import FinalCTA from '../components/FinalCTA.astro';
+import { articles, categories, articleUrl } from '../data/blog-articles';
+
+export interface TocItem { id: string; label: string; }
+export interface RelatedPost { url: string; title: string; meta?: string; }
+
+export interface Props {
+  /* SEO */
+  title: string;
+  description: string;
+  canonicalUrl: string;
+  ogImage?: string;
+  ogImageAlt?: string;
+  jsonLd?: string;
+
+  /* Article meta */
+  articleSlug: string;
+  category: keyof typeof categories;
+  publishDate: string;         // ISO: "2026-06-03"
+  publishLabel: string;        // Display: "June 3, 2026"
+  readTime: string;            // "9 min read"
+  lastUpdated?: string;        // Display: "June 2026" — optional
+
+  /* Structure */
+  toc: TocItem[];
+  relatedServices?: string[];
+  relatedIndustries?: string[];
+  ctaTitle?: string;
+  ctaLabel?: string;
+}
+
+const {
+  title, description, canonicalUrl,
+  ogImage = 'https://www.upcomingbrand.com/og-image.jpg',
+  ogImageAlt = 'Upcoming Brand | WordPress Web Design Maryland',
+  jsonLd,
+  articleSlug, category,
+  publishDate, publishLabel, readTime, lastUpdated,
+  toc,
+  relatedServices = [],
+  relatedIndustries = [],
+  ctaTitle = 'Ready to get a quote?',
+  ctaLabel = 'Book free discovery call',
+} = Astro.props;
+
+const cat = categories[category];
+const inCategory = articles
+  .filter((a) => a.category === category && a.slug !== articleSlug && a.status === 'published')
+  .slice(0, 5);
+
+const allArticles = articles.filter((a) => a.status === 'published');
+const searchIndex = allArticles.map((a) => ({
+  slug: a.slug,
+  url: a.route ?? `/blog/${a.slug}/`,
+  title: a.title,
+  category: categories[a.category].label,
+}));
+
+function serviceLabel(href: string) {
+  return href.replace(/^\/services\//, '').replace(/^\//, '').replace(/\/$/, '')
+    .replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase());
+}
+function industryLabel(href: string) {
+  return href.replace(/^\/industries\//, '').replace(/^\//, '').replace(/\/$/, '')
+    .replace(/-website-design$/, '').replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase()) + ' Website Design';
+}
+---
+
+<BaseLayout
+  title={`${title} | Upcoming Brand`}
+  description={description}
+  canonicalUrl={canonicalUrl}
+  ogImage={ogImage}
+  ogImageAlt={ogImageAlt}
+>
+  {jsonLd && <Fragment slot="head"><script type="application/ld+json" set:html={jsonLd} /></Fragment>}
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- ── HERO (light cream, consistent across all posts) ── -->
+    <section class="art-hero">
+      <div class="container">
+        <div class="art-hero-inner">
+          <a href="/blog/" class="art-back-link">
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            All insights
+          </a>
+          <div class="art-meta">
+            <span class="art-cat-pill">{cat.label}</span>
+            <span class="art-pub-pill">
+              <span class="art-pub-dot" aria-hidden="true"></span>
+              Published
+            </span>
+          </div>
+          <h1 class="art-h1">{title}</h1>
+          <p class="art-lead">{description}</p>
+          <div class="art-byline">
+            <span class="art-byline-author">
+              <span class="art-byline-avatar" aria-hidden="true">MY</span>
+              <a href="/about/" class="art-byline-name">Muhammad Younus</a>
+            </span>
+            <span class="art-byline-sep" aria-hidden="true">&middot;</span>
+            <time datetime={publishDate} class="art-byline-date">{publishLabel}</time>
+            <span class="art-byline-sep" aria-hidden="true">&middot;</span>
+            <span class="art-byline-read">{readTime}</span>
+            {lastUpdated && <>
+              <span class="art-byline-sep" aria-hidden="true">&middot;</span>
+              <span class="art-byline-updated">Last updated: {lastUpdated}</span>
+            </>}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── BODY: 2-col with sticky sidebar ── -->
+    <section class="art-body">
+      <div class="container art-body-grid">
+
+        <!-- SIDEBAR (left) -->
+        <aside class="art-sidebar">
+
+          <!-- Search -->
+          <div class="art-side-card">
+            <span class="art-side-eyebrow">Search insights</span>
+            <div class="art-side-search">
+              <svg class="art-side-search-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M9.5 9.5l3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+              <input type="search" id="art-side-search-input" class="art-side-search-input" placeholder="Search articles..." aria-label="Search articles" />
+            </div>
+            <ul class="art-side-search-results" id="art-side-search-results" data-empty="">
+              <li class="art-side-search-empty">Start typing to search {articles.length} articles</li>
+            </ul>
+          </div>
+
+          <!-- TOC -->
+          <div class="art-side-card art-toc-card">
+            <span class="art-side-eyebrow">Table of contents</span>
+            <nav aria-label="Article sections">
+              <ol class="art-toc-list">
+                {toc.map((item) => (
+                  <li>
+                    <a href={`#${item.id}`} class="art-toc-link" data-toc-link={item.id}>
+                      {item.label}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+
+          <!-- CTA -->
+          {(relatedServices.length > 0 || relatedIndustries.length > 0) && (
+            <div class="art-side-card art-side-cta-card">
+              <span class="art-side-eyebrow art-side-eyebrow-amber">Live and ready</span>
+              <h3 class="art-side-title">{ctaTitle}</h3>
+              <p class="art-side-sub">These pages cover what a professional build looks like for your business.</p>
+              <div class="art-side-cta-list">
+                {relatedServices.map((href) => (
+                  <a href={href} class="art-side-cta-item">
+                    <span class="art-side-cta-tag">Service</span>
+                    <span class="art-side-cta-name">{serviceLabel(href)}</span>
+                    <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                ))}
+                {relatedIndustries.map((href) => (
+                  <a href={href} class="art-side-cta-item">
+                    <span class="art-side-cta-tag">Industry</span>
+                    <span class="art-side-cta-name">{industryLabel(href)}</span>
+                    <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  </a>
+                ))}
+              </div>
+              <a href="/contact/" class="art-side-discovery">
+                {ctaLabel}
+                <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+          )}
+
+          <!-- Related posts -->
+          {inCategory.length > 0 && (
+            <div class="art-side-card">
+              <span class="art-side-eyebrow">More in {cat.label}</span>
+              <ul class="art-side-list">
+                {inCategory.map((a) => (
+                  <li>
+                    <a href={articleUrl(a)} class="art-side-link">
+                      <span class="art-side-link-title">{a.title}</span>
+                      <span class="art-side-link-meta">{a.status === 'published' ? 'Published' : (a.estPublishMonth ?? 'Coming soon')}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- All categories -->
+          <div class="art-side-card">
+            <span class="art-side-eyebrow">All categories</span>
+            <ul class="art-side-cat-list">
+              {Object.entries(categories).map(([id, c]) => (
+                <li>
+                  <a href={`/blog/#${id}`} class={`art-side-cat-link${id === category ? ' art-side-cat-link-active' : ''}`}>
+                    {c.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT (right) — article body goes here via slot -->
+        <div class="art-main">
+          <slot />
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <FinalCTA />
+  <Footer />
+</BaseLayout>
+
+<!-- Search JS -->
+<script define:vars={{ searchIndex }}>
+(function () {
+  var input = document.getElementById('art-side-search-input');
+  var results = document.getElementById('art-side-search-results');
+  if (!input || !results) return;
+  input.addEventListener('input', function () {
+    var q = input.value.trim().toLowerCase();
+    if (!q) {
+      results.setAttribute('data-empty', '');
+      results.innerHTML = '<li class="art-side-search-empty">Start typing to search articles</li>';
+      return;
+    }
+    results.removeAttribute('data-empty');
+    var hits = searchIndex.filter(function (a) { return a.title.toLowerCase().includes(q); }).slice(0, 6);
+    if (!hits.length) {
+      results.innerHTML = '<li class="art-side-search-empty">No results found</li>';
+      return;
+    }
+    results.innerHTML = hits.map(function (a) {
+      return '<li><a href="' + a.url + '" class="art-side-search-result"><span class="art-side-search-title">' + a.title + '</span><span class="art-side-search-cat">' + a.category + '</span></a></li>';
+    }).join('');
+  });
+})();
+</script>
+
+<!-- TOC active state JS -->
+<script>
+(function () {
+  var links = document.querySelectorAll('[data-toc-link]');
+  if (!links.length) return;
+  var sections = Array.from(links).map(function (l) {
+    return document.getElementById(l.getAttribute('data-toc-link') || '');
+  }).filter(Boolean);
+  if (!sections.length) return;
+  var observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      var link = document.querySelector('[data-toc-link="' + e.target.id + '"]');
+      if (link) {
+        if (e.isIntersecting) link.classList.add('art-toc-link-active');
+        else link.classList.remove('art-toc-link-active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -75% 0px', threshold: 0 });
+  sections.forEach(function (s) { observer.observe(s); });
+})();
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════
+   SHARED BLOG ARTICLE STYLES
+   Used by ALL blog posts via BlogArticleLayout
+   ═══════════════════════════════════════════════════ */
+
+/* ── HERO (light, consistent) ── */
+.art-hero {
+  background: var(--cream);
+  padding: clamp(36px,5vh,60px) 0 clamp(28px,4vh,48px);
+  border-bottom: 1px solid var(--line);
+  position: relative; overflow: hidden;
+}
+.art-hero::before {
+  content: ""; position: absolute; top: -200px; right: -150px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(212,147,46,0.1) 0%, transparent 55%);
+  pointer-events: none;
+}
+.art-hero-inner { position: relative; z-index: 1; max-width: 880px; display: flex; flex-direction: column; gap: 12px; }
+.art-back-link { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s ease; align-self: flex-start; }
+.art-back-link:hover { color: var(--amber-deep); }
+
+.art-meta { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.art-cat-pill { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); padding: 4px 12px; background: rgba(212,147,46,0.1); border-radius: var(--radius-pill); font-weight: 600; }
+.art-pub-pill { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); padding: 4px 12px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-pill); }
+.art-pub-dot { width: 6px; height: 6px; background: #4caf78; border-radius: 50%; animation: pubpulse 2.5s ease-in-out infinite; }
+@keyframes pubpulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.3)} }
+
+.art-h1 { font-family: var(--f-display); font-weight: 500; font-size: clamp(28px,4.5vw,48px); line-height: 1.07; letter-spacing: -0.03em; color: var(--ink); margin: 4px 0 0; }
+.art-lead { font-size: clamp(15px,1.15vw,17px); line-height: 1.65; color: var(--ink-soft); margin: 0; max-width: 72ch; }
+
+/* Byline / Author box */
+.art-byline { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; padding-top: 4px; margin-top: 2px; border-top: 1px solid var(--line); }
+.art-byline-author { display: inline-flex; align-items: center; gap: 8px; }
+.art-byline-avatar { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: var(--ink); color: var(--cream); border-radius: 50%; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.04em; font-weight: 700; flex-shrink: 0; }
+.art-byline-name { font-family: var(--f-body); font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; transition: color 0.2s ease; }
+.art-byline-name:hover { color: var(--amber-deep); }
+.art-byline-sep { color: var(--line); font-size: 13px; }
+.art-byline-date, .art-byline-read, .art-byline-updated { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.05em; color: var(--ink-muted); }
+
+/* ── BODY ── */
+.art-body { background: var(--cream); padding: clamp(28px,4vh,52px) 0 clamp(40px,5vh,72px); border-bottom: 1px solid var(--line); }
+.art-body-grid { display: grid; grid-template-columns: 300px 1fr; gap: clamp(20px,3.5vw,48px); align-items: start; }
+
+/* ── SIDEBAR ── */
+.art-sidebar { display: flex; flex-direction: column; gap: 12px; position: sticky; top: 20px; align-self: start; }
+.art-side-card { background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 18px 20px; }
+.art-side-eyebrow { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600; margin-bottom: 10px; }
+.art-side-eyebrow-amber { color: var(--amber-deep); }
+.art-side-title { font-family: var(--f-display); font-size: 17px; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 4px; font-weight: 500; }
+.art-side-sub { font-size: 12px; line-height: 1.5; color: var(--ink-soft); margin: 0 0 10px; }
+
+/* Search */
+.art-side-search { position: relative; display: flex; align-items: center; }
+.art-side-search-icon { position: absolute; left: 11px; color: var(--ink-muted); pointer-events: none; }
+.art-side-search-input { width: 100%; padding: 9px 11px 9px 32px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); font-family: var(--f-body); font-size: 13px; color: var(--ink); outline: none; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.art-side-search-input::placeholder { color: var(--ink-muted); }
+.art-side-search-input:focus { border-color: var(--amber); box-shadow: 0 0 0 3px rgba(212,147,46,0.16); }
+.art-side-search-results { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 3px; max-height: 220px; overflow-y: auto; }
+.art-side-search-results[data-empty] { max-height: none; }
+.art-side-search-empty { font-family: var(--f-mono); font-size: 10px; color: var(--ink-muted); padding: 5px 0; letter-spacing: 0.04em; }
+.art-side-search-result { display: flex; flex-direction: column; gap: 2px; padding: 7px 9px; border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: background 0.15s ease; }
+.art-side-search-result:hover { background: var(--cream); }
+.art-side-search-title { font-family: var(--f-display); font-size: 12.5px; line-height: 1.25; color: var(--ink); font-weight: 500; }
+.art-side-search-cat { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-deep); }
+
+/* TOC */
+.art-toc-card { background: var(--cream); }
+.art-toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1px; counter-reset: toc; }
+.art-toc-link { display: flex; align-items: baseline; gap: 8px; padding: 6px 8px; font-family: var(--f-body); font-size: 12.5px; line-height: 1.4; color: var(--ink-soft); text-decoration: none; border-radius: var(--radius-md); transition: all 0.15s ease; border-left: 2px solid transparent; }
+.art-toc-link::before { counter-increment: toc; content: counter(toc); font-family: var(--f-mono); font-size: 9px; color: var(--ink-muted); min-width: 14px; flex-shrink: 0; }
+.art-toc-link:hover { color: var(--ink); background: var(--paper); border-left-color: var(--amber); }
+.art-toc-link-active { color: var(--amber-deep); font-weight: 600; border-left-color: var(--amber); background: rgba(212,147,46,0.06); }
+
+/* CTA sidebar card */
+.art-side-cta-card { background: var(--ink); color: var(--cream); border-color: var(--amber); }
+.art-side-cta-card .art-side-title { color: var(--cream); }
+.art-side-cta-card .art-side-sub { color: rgba(244,239,230,0.65); }
+.art-side-cta-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.art-side-cta-item { display: grid; grid-template-columns: 1fr auto; gap: 6px; align-items: center; padding: 9px 11px; background: rgba(244,239,230,0.05); border: 1px solid rgba(244,239,230,0.12); border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all 0.2s ease; }
+.art-side-cta-item:hover { background: rgba(244,239,230,0.08); border-color: var(--amber); }
+.art-side-cta-tag { grid-column: 1; font-family: var(--f-mono); font-size: 8px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber); font-weight: 600; }
+.art-side-cta-name { grid-column: 1; font-family: var(--f-display); font-size: 13.5px; line-height: 1.2; color: var(--cream); font-weight: 500; }
+.art-side-cta-arrow { grid-column: 2; grid-row: 1 / span 2; color: rgba(244,239,230,0.5); }
+.art-side-cta-item:hover .art-side-cta-arrow { color: var(--amber); }
+.art-side-discovery { display: inline-flex; align-items: center; justify-content: center; gap: 6px; width: 100%; padding: 9px 14px; background: var(--amber); color: var(--ink); border-radius: var(--radius-md); text-decoration: none; font-family: var(--f-body); font-size: 12px; font-weight: 600; transition: background 0.2s ease; }
+.art-side-discovery:hover { background: var(--amber-deep); }
+
+/* Related posts */
+.art-side-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 3px; }
+.art-side-link { display: flex; flex-direction: column; gap: 2px; padding: 9px 11px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius-md); text-decoration: none; color: inherit; transition: all 0.2s ease; }
+.art-side-link:hover { border-color: var(--amber); transform: translateX(2px); }
+.art-side-link-title { font-family: var(--f-display); font-size: 12.5px; line-height: 1.3; color: var(--ink); font-weight: 500; }
+.art-side-link-meta { font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-muted); }
+
+/* All categories */
+.art-side-cat-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 1px; }
+.art-side-cat-link { display: block; padding: 7px 11px; font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-soft); text-decoration: none; border-radius: var(--radius-md); transition: all 0.15s ease; }
+.art-side-cat-link:hover { background: var(--cream); color: var(--ink); }
+.art-side-cat-link-active { background: var(--ink); color: var(--cream); }
+.art-side-cat-link-active:hover { background: var(--ink); color: var(--cream); }
+
+/* ── MAIN CONTENT ── */
+.art-main { display: flex; flex-direction: column; gap: 0; min-width: 0; }
+
+/* Featured image */
+.art-featured-img { margin: 0 0 1.6em; border-radius: var(--radius-lg); overflow: hidden; }
+.art-featured-img img { display: block; width: 100%; height: auto; max-height: 520px; object-fit: cover; }
+
+/* Snippet / Key takeaways / Quick answer */
+.art-snippet { background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); padding: 18px 22px; margin-bottom: 1.4em; position: relative; overflow: hidden; }
+.art-snippet::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--amber); }
+.art-snippet-label { display: block; font-family: var(--f-mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber-deep); font-weight: 700; margin-bottom: 12px; }
+.art-snippet-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.art-snippet-list li { display: grid; grid-template-columns: 16px 1fr; gap: 0; align-items: start; font-size: 14px; line-height: 1.6; color: var(--ink-soft); }
+.art-snippet-list li::before { content: ""; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); margin-top: 7px; }
+.art-snippet p { font-size: 15px; line-height: 1.6; color: var(--ink); margin: 0; font-weight: 500; }
+
+/* Prose headings */
+.art-h2 { font-family: var(--f-display); font-size: clamp(20px,2.4vw,28px); font-weight: 500; letter-spacing: -0.022em; color: var(--ink); line-height: 1.22; margin: 2em 0 0.6em; scroll-margin-top: 80px; }
+.art-h2:first-child { margin-top: 0; }
+
+/* Prose body text */
+.art-main p { font-size: 15.5px; line-height: 1.76; color: var(--ink-soft); margin: 0 0 1em; }
+.art-main ul, .art-main ol { font-size: 15.5px; line-height: 1.76; color: var(--ink-soft); margin: 0 0 1.2em; padding-left: 24px; display: flex; flex-direction: column; gap: 8px; }
+.art-main li { padding-left: 4px; }
+.art-main li strong { color: var(--ink); }
+.art-main a:not(.art-inline-cta-btn) { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 3px; }
+.art-main a:not(.art-inline-cta-btn):hover { color: var(--ink); }
+.art-main code { font-family: var(--f-mono); font-size: 13px; background: var(--paper); padding: 2px 6px; border-radius: 4px; color: var(--ink); border: 1px solid var(--line); }
+
+/* Comparison table */
+.art-compare-wrap { overflow-x: auto; border-radius: var(--radius-lg); border: 1.5px solid var(--line); margin: 1em 0 1.4em; }
+.art-compare-table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 560px; }
+.art-compare-table thead tr { background: var(--ink); }
+.art-compare-table th { padding: 12px 14px; text-align: left; font-family: var(--f-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: rgba(244,239,230,0.8); }
+.art-compare-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.art-compare-table tr:last-child td { border-bottom: none; }
+.art-compare-table tr:hover td { background: var(--paper); }
+.art-compare-table td:first-child { font-weight: 600; color: var(--ink); }
+.art-ct-yes { color: #2e6e2e; font-weight: 500; }
+.art-ct-no { color: #8b2020; }
+.art-ct-partial { color: #7a6020; }
+
+/* FAQ */
+.art-faq { display: flex; flex-direction: column; gap: 8px; margin: 1em 0 2em; }
+.art-faq-item { border: 1.5px solid var(--line); border-radius: var(--radius-md); overflow: hidden; transition: border-color 0.2s ease; }
+.art-faq-item[open] { border-color: var(--amber); }
+.art-faq-q { font-size: 15px; font-weight: 600; color: var(--ink); padding: 16px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; line-height: 1.4; }
+.art-faq-q::-webkit-details-marker { display: none; }
+.art-faq-q::after { content: "+"; font-family: var(--f-mono); font-size: 18px; color: var(--amber-deep); line-height: 1; flex-shrink: 0; }
+.art-faq-item[open] .art-faq-q::after { content: "−"; }
+.art-faq-a { font-size: 14.5px; line-height: 1.72; color: var(--ink-soft); padding: 14px 18px 16px; margin: 0; border-top: 1px solid var(--line); }
+
+/* Location block */
+.art-location-block { background: var(--paper); border: 1.5px solid var(--line); border-left: 4px solid var(--amber); border-radius: var(--radius-md); padding: 16px 20px; margin: 2em 0; }
+.art-location-label { font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); margin: 0 0 8px; }
+.art-location-detail { font-size: 14px; line-height: 1.65; color: var(--ink-soft); margin: 0; }
+.art-location-detail a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+/* Inline CTA block */
+.art-inline-cta { background: var(--ink); border-radius: var(--radius-lg); padding: 28px 26px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 2.4em; }
+.art-inline-cta-text { flex: 1; min-width: 240px; }
+.art-inline-cta-h3 { font-family: var(--f-display); font-size: 22px; font-weight: 500; color: var(--cream); margin: 0 0 8px; letter-spacing: -0.02em; }
+.art-inline-cta-sub { font-size: 14px; line-height: 1.6; color: rgba(244,239,230,0.92); margin: 0; }
+.art-inline-cta-btn { padding: 13px 22px; background: var(--amber); color: var(--ink); border-radius: var(--radius-md); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 0.2s ease; }
+.art-inline-cta-btn:hover { background: var(--amber-deep); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .art-body-grid { grid-template-columns: 1fr; }
+  .art-sidebar { position: static; order: 2; }
+}
+@media (max-width: 600px) {
+  .art-h1 { font-size: 26px; }
+  .art-inline-cta { flex-direction: column; }
+}
+</style>
