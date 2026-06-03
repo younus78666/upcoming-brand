@@ -127,6 +127,13 @@ const jsonLd = JSON.stringify({
           <h1 class="art-h1">Baltimore Web Design Company: What to Look for in 2026</h1>
           <p class="art-lead">Most Baltimore businesses hire a web design company based on portfolio aesthetics. That is the wrong filter. A site that looks good but scores 40 on mobile PageSpeed, carries no schema, and targets no specific keywords will not rank, will not convert, and will not return the investment. Here is how to evaluate a Baltimore web design company on the signals that matter.</p>
           <div class="art-byline">
+            <img
+              src="/team-younus.svg"
+              alt="Muhammad Younus — Founder, Upcoming Brand"
+              width="32" height="32"
+              class="art-byline-avatar"
+              loading="lazy"
+            />
             <span class="art-byline-name">Muhammad Younus</span>
             <span class="art-byline-sep" aria-hidden="true">·</span>
             <span class="art-byline-role">Founder, Upcoming Brand</span>
@@ -136,6 +143,18 @@ const jsonLd = JSON.stringify({
         </div>
       </div>
     </section>
+
+    <!-- HERO IMAGE -->
+    <div class="art-hero-img-wrap">
+      <img
+        src="/blog/baltimore-web-design-company/hero.svg"
+        alt="Baltimore web design company — what to look for in 2026"
+        width="1200" height="420"
+        class="art-hero-img"
+        loading="eager"
+        fetchpriority="high"
+      />
+    </div>
 
     <!-- BODY -->
     <section class="art-body">
@@ -335,7 +354,14 @@ const jsonLd = JSON.stringify({
 
 <style>
 /* ── HERO ─────────────────────────────────────────── */
-.art-hero { background: var(--ink); padding: clamp(40px,6vh,72px) 0 clamp(48px,7vh,80px); }
+.art-hero { background: var(--ink); padding: clamp(40px,6vh,72px) 0 clamp(32px,4vh,48px); }
+
+/* Hero image strip */
+.art-hero-img-wrap { background: var(--ink); padding: 0; line-height: 0; }
+.art-hero-img { width: 100%; height: clamp(240px, 35vw, 420px); object-fit: cover; display: block; }
+
+/* Byline avatar */
+.art-byline-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1.5px solid rgba(244,239,230,0.2); flex-shrink: 0; }
 .art-hero-inner { max-width: 780px; display: flex; flex-direction: column; gap: 16px; }
 .art-back-link { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,239,230,0.45); text-decoration: none; transition: color 0.2s ease; }
 .art-back-link:hover { color: var(--amber); }

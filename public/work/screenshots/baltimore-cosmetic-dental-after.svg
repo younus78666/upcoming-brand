@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <rect width="1280" height="800" fill="#0f1419"/>
+  <rect x="1" y="1" width="1278" height="798" fill="none" stroke="#D4932E" stroke-width="2" stroke-dasharray="12 6"/>
+  <text x="640" y="372" font-family="monospace" font-size="22" fill="#D4932E" text-anchor="middle" font-weight="bold">Baltimore Cosmetic Dental AFTER</text>
+  <text x="640" y="408" font-family="monospace" font-size="14" fill="rgba(244,239,230,0.6)" text-anchor="middle">New WordPress site · screenshot of live site</text>
+  <text x="640" y="432" font-family="monospace" font-size="12" fill="rgba(244,239,230,0.35)" text-anchor="middle">1280x800px · Replace with real image</text>
+</svg>

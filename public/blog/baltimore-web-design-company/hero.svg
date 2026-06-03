@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a1f26"/>
+  <rect x="1" y="1" width="1198" height="628" fill="none" stroke="#D4932E" stroke-width="2" stroke-dasharray="12 6"/>
+  <text x="600" y="287" font-family="monospace" font-size="22" fill="#D4932E" text-anchor="middle" font-weight="bold">Blog Hero Image</text>
+  <text x="600" y="323" font-family="monospace" font-size="14" fill="rgba(244,239,230,0.6)" text-anchor="middle">Baltimore Web Design Company article header</text>
+  <text x="600" y="347" font-family="monospace" font-size="12" fill="rgba(244,239,230,0.35)" text-anchor="middle">1200x630px · Replace with real image</text>
+</svg>

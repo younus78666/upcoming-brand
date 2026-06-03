@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="400" viewBox="0 0 400 400">
+  <rect width="400" height="400" fill="#1a1f26"/>
+  <rect x="1" y="1" width="398" height="398" fill="none" stroke="#D4932E" stroke-width="2" stroke-dasharray="12 6"/>
+  <text x="200" y="172" font-family="monospace" font-size="22" fill="#D4932E" text-anchor="middle" font-weight="bold">Muhammad Younus</text>
+  <text x="200" y="208" font-family="monospace" font-size="14" fill="rgba(244,239,230,0.6)" text-anchor="middle">Founder portrait · 400x400px · professional headshot</text>
+  <text x="200" y="232" font-family="monospace" font-size="12" fill="rgba(244,239,230,0.35)" text-anchor="middle">400x400px · Replace with real image</text>
+</svg>
