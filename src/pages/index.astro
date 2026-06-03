@@ -167,7 +167,7 @@ const jsonLd = JSON.stringify({
   <!-- Section 2: Navigation (sticky) -->
   <Navigation />
 
-  <!-- Section 3: Hero -->
+  <!-- 1: Hero — entity definition -->
   <ServiceHero
     eyebrow='A studio, not a factory'
     pillText='WordPress Agency · Maryland'
@@ -219,16 +219,16 @@ const jsonLd = JSON.stringify({
     ]}
   />
 
-  <!-- Section 4: Marquee -->
+  <!-- 2: Marquee — trust strip -->
   <Marquee />
 
-  <!-- Section 4.5: Testimonials — social proof immediately after hero trust strip -->
-  <Testimonials />
+  <!-- 3: Services — attribute frame: what do you do -->
+  <Services />
 
-  <!-- Section 4.6: Proof Metrics — numbers right after social proof -->
-  <Metrics />
+  <!-- 4: Industries — relationship frame: who do you serve -->
+  <Industries />
 
-  <!-- Section 5: Key Takeaways (AEO.1 — AI Overview citation block) -->
+  <!-- 5: Key Takeaways — AEO attribute specifics / AI citation block -->
   <section class="kt-section" aria-label="Quick facts about Upcoming Brand">
     <div class="container">
       <div class="kt-layout">
@@ -275,40 +275,40 @@ const jsonLd = JSON.stringify({
     </div>
   </section>
 
-  <!-- Section 6: Before / After -->
+  <!-- 6: BeforeAfter — causation frame: problem solved -->
   <BeforeAfter />
 
-  <!-- Section 7: Services -->
-  <Services />
-
-  <!-- Section 9: Tech Stack -->
-  <TechStack />
-
-  <!-- Section 10: Featured Work -->
-  <Work />
-
-  <!-- Section 10.5: Portfolio Preview (real client projects) -->
-  <PortfolioPreview />
-
-  <!-- Section 11: Process -->
+  <!-- 7: Process — process frame: how it works -->
   <Process />
 
-  <!-- Section 12: Industries -->
-  <Industries />
+  <!-- 8: TechStack — component frame: tools used -->
+  <TechStack />
 
-  <!-- Section 13: Pricing -->
+  <!-- 9: Work — evaluation: proof of work -->
+  <Work />
+
+  <!-- 10: PortfolioPreview — evaluation: more proof -->
+  <PortfolioPreview />
+
+  <!-- 11: Testimonials — evaluation: social proof (after entity is established) -->
+  <Testimonials />
+
+  <!-- 12: Metrics — evaluation: data supporting social proof -->
+  <Metrics />
+
+  <!-- 13: Pricing — evaluation: cost -->
   <Pricing />
 
-  <!-- Section 14: Locations -->
+  <!-- 14: Locations — application: where -->
   <Locations />
 
-  <!-- Section 16: FAQ -->
+  <!-- 15: FAQ — answers remaining questions -->
   <FAQ />
 
-  <!-- Section 17: Blog Preview -->
+  <!-- 16: BlogPreview — supplementary topical authority -->
   <BlogPreview />
 
-  <!-- Section 18: Final CTA -->
+  <!-- 17: Final CTA -->
   <FinalCTA />
 
   <Footer />
