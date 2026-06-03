@@ -486,3 +486,78 @@ section[id] {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--cream-soft); }
 ::-webkit-scrollbar-thumb { background: var(--ink-muted); border-radius: 3px; }
+
+/* ============================================================
+   KORAY FRAMEWORK — Definition Block + Comparison Table
+   Shared across all industry + service pages
+   ============================================================ */
+
+/* Definition Block (Frame 1) */
+.lp-defn { background: var(--ink); padding: clamp(40px,6vh,64px) 0; }
+.lp-defn-card {
+  max-width: 900px; margin: 0 auto;
+  background: rgba(244,239,230,0.05); border: 1px solid rgba(244,239,230,0.14);
+  border-radius: 24px; padding: clamp(28px,4vw,44px); position: relative; overflow: hidden;
+}
+.lp-defn-card::before {
+  content:""; position:absolute; top:0; left:0; right:0; height:3px;
+  background: linear-gradient(90deg, transparent, var(--amber), var(--amber-deep), transparent);
+}
+.lp-defn-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+.lp-defn-pulse {
+  width:8px; height:8px; border-radius:50%; background:var(--amber);
+  animation: defn-pulse 2s ease-in-out infinite;
+}
+@keyframes defn-pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50% { opacity:0.5; transform:scale(1.4); }
+}
+.lp-defn-label {
+  font-family:var(--f-mono); font-size:9px; font-weight:700; letter-spacing:0.18em;
+  text-transform:uppercase; color:var(--amber);
+}
+.lp-defn-h2 {
+  font-family:var(--f-display); font-size:clamp(22px,2.8vw,32px); font-weight:500;
+  line-height:1.15; letter-spacing:-0.025em; color:var(--cream); margin:0 0 16px !important;
+}
+.lp-defn-answer {
+  font-size:15.5px; line-height:1.75; color:rgba(244,239,230,0.72);
+  margin:0 0 20px;
+}
+.lp-defn-answer strong { color:var(--cream); }
+.lp-defn-meta {
+  display:grid; grid-template-columns:repeat(3,1fr); gap:12px;
+  padding-top:20px; border-top:1px solid rgba(244,239,230,0.12);
+}
+.lp-defn-meta-item { display:flex; flex-direction:column; gap:4px; }
+.lp-defn-meta-label {
+  font-family:var(--f-mono); font-size:8.5px; font-weight:700; letter-spacing:0.14em;
+  text-transform:uppercase; color:rgba(244,239,230,0.4);
+}
+.lp-defn-meta-val { font-size:13px; color:rgba(244,239,230,0.72); line-height:1.45; }
+@media(max-width:640px) { .lp-defn-meta { grid-template-columns:1fr; } }
+
+/* Comparison Table (Frame 7) */
+.lp-compare { background:var(--paper); padding:clamp(48px,7vh,80px) 0; border-bottom:1px solid var(--line); }
+.lp-compare-intro { max-width:760px; margin:0 0 32px; }
+.lp-compare-intro .eyebrow { margin-bottom:8px; display:flex; align-items:center; gap:10px; }
+.lp-compare-intro .eyebrow::before { content:""; display:inline-block; width:28px; height:1px; background:var(--amber-deep); opacity:.7; }
+.lp-compare-intro h2 { margin:8px 0 10px !important; }
+.lp-compare-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:16px; border:1.5px solid var(--line); }
+.lp-compare-table { width:100%; border-collapse:collapse; font-size:13.5px; min-width:640px; }
+.lp-compare-table thead tr { background:var(--ink); }
+.lp-compare-table th {
+  padding:14px 16px; text-align:left; font-family:var(--f-mono); font-size:10px;
+  letter-spacing:0.1em; text-transform:uppercase; font-weight:700; color:rgba(244,239,230,0.85);
+}
+.lp-compare-table th.lp-ct-us { color:var(--amber); border-bottom:2px solid var(--amber); }
+.lp-ct-sub { display:block; font-size:8px; letter-spacing:0.08em; opacity:0.6; margin-top:2px; font-weight:400; }
+.lp-compare-table td { padding:12px 16px; border-bottom:1px solid var(--line); vertical-align:middle; color:var(--ink-soft); line-height:1.45; }
+.lp-compare-table tr:last-child td { border-bottom:none; }
+.lp-compare-table tr:hover td { background:var(--cream); }
+.lp-ct-feature { font-size:12.5px; font-weight:600; color:var(--ink); width:22%; }
+.lp-ct-us { background:rgba(212,147,46,0.05); }
+.lp-ct-yes { color:#2e6e2e; font-weight:500; }
+.lp-ct-no { color:#8b2020; }
+.lp-ct-partial { color:#7a6020; }
+@media(max-width:768px) { .lp-compare-table { font-size:12px; } .lp-compare-table td,.lp-compare-table th { padding:10px 12px; } }
