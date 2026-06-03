@@ -58,6 +58,23 @@ const inCategory = articles
   .filter((a) => a.category === category && a.slug !== articleSlug && a.status === 'published')
   .slice(0, 5);
 
+// Other-category posts (cross-category discovery)
+const otherPosts = articles
+  .filter((a) => a.category !== category && a.slug !== articleSlug && a.status === 'published')
+  .slice(0, 4);
+
+// Bottom related posts grid: same-category first, then cross-category, max 3
+const relatedPosts = [
+  ...articles.filter((a) => a.category === category && a.slug !== articleSlug && a.status === 'published'),
+  ...articles.filter((a) => a.category !== category && a.slug !== articleSlug && a.status === 'published'),
+].slice(0, 3).map((a) => ({
+  url: a.route ?? `/blog/${a.slug}/`,
+  title: a.title,
+  description: a.description,
+  category: categories[a.category].label,
+  slug: a.slug,
+}));
+
 const allArticles = articles.filter((a) => a.status === 'published');
 const searchIndex = allArticles.map((a) => ({
   slug: a.slug,
@@ -194,6 +211,7 @@ function industryLabel(href: string) {
           )}
 
           <!-- Related posts -->
+          {/* Same-category related posts */}
           {inCategory.length > 0 && (
             <div class="art-side-card">
               <span class="art-side-eyebrow">More in {cat.label}</span>
@@ -202,7 +220,24 @@ function industryLabel(href: string) {
                   <li>
                     <a href={articleUrl(a)} class="art-side-link">
                       <span class="art-side-link-title">{a.title}</span>
-                      <span class="art-side-link-meta">{a.status === 'published' ? 'Published' : (a.estPublishMonth ?? 'Coming soon')}</span>
+                      <span class="art-side-link-meta">Published</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* Cross-category posts when no same-category posts exist */}
+          {inCategory.length === 0 && otherPosts.length > 0 && (
+            <div class="art-side-card">
+              <span class="art-side-eyebrow">More insights</span>
+              <ul class="art-side-list">
+                {otherPosts.map((a) => (
+                  <li>
+                    <a href={articleUrl(a)} class="art-side-link">
+                      <span class="art-side-link-title">{a.title}</span>
+                      <span class="art-side-link-meta">{categories[a.category].label}</span>
                     </a>
                   </li>
                 ))}
@@ -255,6 +290,31 @@ function industryLabel(href: string) {
         </div>
       </div>
     </section>
+
+    <!-- ── RELATED POSTS GRID (full width, below author bio) ── -->
+    {relatedPosts.length > 0 && (
+      <section class="art-related-section">
+        <div class="container">
+          <div class="art-related-head">
+            <p class="art-related-eyebrow">Keep reading</p>
+            <h2 class="art-related-h2">More from Upcoming Brand</h2>
+          </div>
+          <div class="art-related-grid">
+            {relatedPosts.map((p) => (
+              <a href={p.url} class="art-related-card">
+                <span class="art-related-cat">{p.category}</span>
+                <h3 class="art-related-title">{p.title}</h3>
+                <p class="art-related-desc">{p.description}</p>
+                <span class="art-related-cta">
+                  Read article
+                  <svg width="10" height="10" viewBox="0 0 11 11" fill="none" aria-hidden="true"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
 
   </main>
 
@@ -478,6 +538,21 @@ function industryLabel(href: string) {
 .art-inline-cta-sub { font-size: 14px; line-height: 1.6; color: rgba(244,239,230,0.92); margin: 0; }
 .art-inline-cta-btn { padding: 13px 22px; background: var(--amber); color: var(--ink); border-radius: var(--radius-md); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 0.2s ease; }
 .art-inline-cta-btn:hover { background: var(--amber-deep); }
+
+/* ── RELATED POSTS GRID ── */
+.art-related-section { background: var(--cream); padding: clamp(40px,6vh,72px) 0; border-top: 1px solid var(--line); }
+.art-related-head { margin-bottom: 28px; }
+.art-related-eyebrow { font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); margin: 0 0 6px; }
+.art-related-h2 { font-family: var(--f-display); font-size: clamp(22px,2.8vw,32px); font-weight: 500; letter-spacing: -0.025em; color: var(--ink); margin: 0; }
+.art-related-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.art-related-card { display: flex; flex-direction: column; gap: 10px; padding: 22px 20px; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); text-decoration: none; color: inherit; transition: all 0.25s ease; }
+.art-related-card:hover { border-color: var(--amber); transform: translateY(-3px); box-shadow: 0 10px 32px rgba(212,147,46,0.1); }
+.art-related-cat { font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--amber-deep); }
+.art-related-title { font-family: var(--f-display); font-size: 17px; font-weight: 500; letter-spacing: -0.015em; color: var(--ink); line-height: 1.3; margin: 0; flex: 1; }
+.art-related-desc { font-size: 13px; line-height: 1.6; color: var(--ink-muted); margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.art-related-cta { display: inline-flex; align-items: center; gap: 6px; font-family: var(--f-mono); font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--amber-deep); padding-top: 10px; border-top: 1px dashed var(--line); margin-top: auto; }
+@media (max-width: 900px) { .art-related-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 600px) { .art-related-grid { grid-template-columns: 1fr; } }
 
 /* ── AUTHOR BIO SECTION ── */
 .art-author-section { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(32px,5vh,56px) 0; }
