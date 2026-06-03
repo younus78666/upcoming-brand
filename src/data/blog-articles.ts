@@ -41,6 +41,8 @@ export const articles: BlogArticle[] = [
     description: 'What separates a real Baltimore web design company from a template shop. 2026 checklist, pricing guide, and 6 questions to ask before signing.',
     status: 'published',
     route: '/blog/baltimore-web-design-company/',
+    image: '/blog/baltimore-web-design-company/hero.webp',
+    imageAlt: 'Baltimore web design company: what to look for in 2026',
     relatedServices: ['/services/wordpress-web-design/', '/services/local-seo-maryland/'],
   },
 
