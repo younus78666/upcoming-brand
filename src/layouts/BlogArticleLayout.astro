@@ -264,30 +264,26 @@ function industryLabel(href: string) {
         <!-- MAIN CONTENT (right) — article body goes here via slot -->
         <div class="art-main">
           <slot />
-        </div>
 
-      </div>
-    </section>
-
-    <!-- ── AUTHOR BIO (full width, below body) ── -->
-    <section class="art-author-section">
-      <div class="container">
-        <div class="art-author-card">
-          <div class="art-author-avatar-lg" aria-hidden="true">MY</div>
-          <div class="art-author-info">
-            <p class="art-author-eyebrow">About the author</p>
-            <h3 class="art-author-name">
-              <a href="/about/">Muhammad Younus</a>
-            </h3>
-            <p class="art-author-title">Founder, Upcoming Brand</p>
-            <p class="art-author-bio">WordPress web design specialist with 7+ years building sites for law firms, dental practices, contractors, and small businesses across Maryland. Every project ships with vertical-specific schema markup, a contractual 90+ Lighthouse guarantee, and 30 days of post-launch Search Console monitoring. Fixed-scope quotes only — no hourly billing, ever.</p>
-            <div class="art-author-links">
-              <a href="/about/" class="art-author-link">About</a>
-              <a href="/work/" class="art-author-link">Portfolio</a>
-              <a href="/contact/" class="art-author-link art-author-link-cta">Book a free call</a>
+          <!-- ── AUTHOR BIO (inline, after article content) ── -->
+          <div class="art-author-inline">
+            <div class="art-author-avatar-lg" aria-hidden="true">MY</div>
+            <div class="art-author-info">
+              <p class="art-author-eyebrow">About the author</p>
+              <h3 class="art-author-name">
+                <a href="/about/">Muhammad Younus</a>
+              </h3>
+              <p class="art-author-title">Founder, Upcoming Brand</p>
+              <p class="art-author-bio">WordPress web design specialist with 7+ years building sites for law firms, dental practices, contractors, and small businesses across Maryland. Every project ships with vertical-specific schema markup, a contractual 90+ Lighthouse guarantee, and 30 days of post-launch Search Console monitoring. Fixed-scope quotes only — no hourly billing, ever.</p>
+              <div class="art-author-links">
+                <a href="/about/" class="art-author-link">About</a>
+                <a href="/work/" class="art-author-link">Portfolio</a>
+                <a href="/contact/" class="art-author-link art-author-link-cta">Book a free call</a>
+              </div>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -533,7 +529,7 @@ function industryLabel(href: string) {
 .art-inline-cta { background: var(--ink); border-radius: var(--radius-lg); padding: 28px 26px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 2.4em; }
 .art-inline-cta-text { flex: 1; min-width: 240px; }
 .art-inline-cta-h3 { font-family: var(--f-display); font-size: 22px; font-weight: 500; color: var(--cream); margin: 0 0 8px; letter-spacing: -0.02em; }
-.art-inline-cta-sub { font-size: 14px; line-height: 1.6; color: rgba(244,239,230,0.92); margin: 0; }
+.art-inline-cta .art-inline-cta-sub, .art-inline-cta-sub { font-size: 14px; line-height: 1.6; color: rgba(244,239,230,0.92) !important; margin: 0; }
 .art-inline-cta-btn { padding: 13px 22px; background: var(--amber); color: var(--ink); border-radius: var(--radius-md); font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 0.2s ease; }
 .art-inline-cta-btn:hover { background: var(--amber-deep); }
 
@@ -552,26 +548,25 @@ function industryLabel(href: string) {
 @media (max-width: 900px) { .art-related-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .art-related-grid { grid-template-columns: 1fr; } }
 
-/* ── AUTHOR BIO SECTION ── */
-.art-author-section { background: var(--paper); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: clamp(32px,5vh,56px) 0; }
-.art-author-card { display: flex; align-items: flex-start; gap: clamp(20px,3vw,36px); max-width: 860px; }
+/* ── AUTHOR BIO (inline, inside art-main) ── */
+.art-author-inline { display: flex; align-items: flex-start; gap: clamp(16px,2.5vw,28px); margin-top: 2.4em; padding: 24px 24px 20px; background: var(--paper); border: 1.5px solid var(--line); border-radius: var(--radius-lg); border-top: 3px solid var(--amber); }
 .art-author-avatar-lg {
   display: inline-flex; align-items: center; justify-content: center;
-  width: 64px; height: 64px; flex-shrink: 0;
+  width: 56px; height: 56px; flex-shrink: 0;
   background: var(--ink); color: var(--amber);
-  border-radius: 50%; font-family: var(--f-mono); font-size: 16px;
+  border-radius: 50%; font-family: var(--f-mono); font-size: 14px;
   font-weight: 700; letter-spacing: 0.04em;
   border: 3px solid rgba(212,147,46,0.25);
 }
-.art-author-info { display: flex; flex-direction: column; gap: 6px; flex: 1; }
+.art-author-info { display: flex; flex-direction: column; gap: 5px; flex: 1; }
 .art-author-eyebrow { font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--amber-deep); margin: 0; }
-.art-author-name { font-family: var(--f-display); font-size: 20px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); margin: 0; line-height: 1.2; }
+.art-author-name { font-family: var(--f-display); font-size: 18px; font-weight: 500; letter-spacing: -0.02em; color: var(--ink); margin: 0; line-height: 1.2; }
 .art-author-name a { color: inherit; text-decoration: none; transition: color 0.2s ease; }
 .art-author-name a:hover { color: var(--amber-deep); }
-.art-author-title { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.06em; color: var(--ink-muted); margin: 0; }
-.art-author-bio { font-size: 14.5px; line-height: 1.72; color: var(--ink-soft); margin: 4px 0 0; max-width: 68ch; }
-.art-author-links { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-.art-author-link { font-family: var(--f-mono); font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--ink-muted); text-decoration: none; padding: 6px 12px; border: 1.5px solid var(--line); border-radius: var(--radius-pill); transition: all 0.2s ease; }
+.art-author-title { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.06em; color: var(--ink-muted); margin: 0; }
+.art-author-bio { font-size: 14px; line-height: 1.7; color: var(--ink-soft); margin: 2px 0 0; }
+.art-author-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.art-author-link { font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--ink-muted); text-decoration: none; padding: 5px 11px; border: 1.5px solid var(--line); border-radius: var(--radius-pill); transition: all 0.2s ease; }
 .art-author-link:hover { border-color: var(--amber); color: var(--amber-deep); }
 .art-author-link-cta { background: var(--amber); color: var(--ink); border-color: var(--amber); }
 .art-author-link-cta:hover { background: var(--amber-deep); border-color: var(--amber-deep); color: var(--ink); }
@@ -639,8 +634,8 @@ function industryLabel(href: string) {
 @media (max-width: 600px) {
   .art-h1 { font-size: 26px; }
   .art-inline-cta { flex-direction: column; }
-  .art-author-card { flex-direction: column; }
-  .art-author-avatar-lg { width: 52px; height: 52px; font-size: 14px; }
+  .art-author-inline { flex-direction: column; }
+  .art-author-avatar-lg { width: 48px; height: 48px; font-size: 12px; }
   .art-cta-actions { flex-direction: column; align-items: stretch; }
   .art-cta-block { padding: 22px 18px; }
 }
