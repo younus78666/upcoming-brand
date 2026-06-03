@@ -1,4 +1,4 @@
----
+﻿---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import AnnouncementBar from '../../components/AnnouncementBar.astro';
 import Navigation from '../../components/Navigation.astro';
@@ -15,7 +15,7 @@ const jsonLd = JSON.stringify({
       "@id": `${canonical}#webpage`,
       "url": canonical,
       "name": "Values & Principles | Upcoming Brand",
-      "description": "The nine principles Upcoming Brand operates by. How we build, how we collaborate, and what we ship — written down so clients know exactly what to expect before they sign.",
+      "description": "The nine principles Upcoming Brand operates by. How we build, how we collaborate, and what we ship, written down so clients know exactly what to expect before they sign.",
       "inLanguage": "en-US",
       "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
       "about": { "@id": "https://www.upcomingbrand.com/#organization" },
@@ -46,13 +46,13 @@ const groups = [
       {
         num: "01",
         title: "Schema is the first artifact",
-        body: "Before a single block is designed, we map your schema graph. LocalBusiness, FAQ, Service, vertical-specific types like LegalService or Dentist. Schema isn't a launch-day add-on — it's the architecture that determines what Google can do with your site for the next ten years.",
+        body: "Before a single block is designed, we map your schema graph. LocalBusiness, FAQ, Service, vertical-specific types like LegalService or Dentist. Schema is not a launch-day add-on. It's the architecture that determines what Google can do with your site for the next ten years.",
         tag: "Architecture",
       },
       {
         num: "02",
         title: "Performance is a contractual deliverable",
-        body: "90+ Lighthouse on every page, every device, on launch day. Not 'something we'll look at after launch' — it's in the contract. If the site doesn't ship green, we don't invoice the final milestone. Core Web Vitals tracking continues for 30 days post-launch.",
+        body: "90+ Lighthouse on every page, every device, on launch day. Not something to look at after launch. It is in the contract. If the site doesn't ship green, we don't invoice the final milestone. Core Web Vitals tracking continues for 30 days post-launch.",
         tag: "Engineering",
       },
       {
@@ -104,13 +104,13 @@ const groups = [
       {
         num: "08",
         title: "We say no to the wrong work",
-        body: "We turn down about one in four inquiries — the timeline is unrealistic, the brief asks us to skip schema or skip performance, or the project is the wrong fit. Saying no early protects every other client we said yes to.",
+        body: "We turn down about one in four inquiries when the timeline is unrealistic, the brief asks us to skip schema or performance, or the project is the wrong fit. Saying no early protects every other client we said yes to.",
         tag: "Boundaries",
       },
       {
         num: "09",
         title: "Long-term over churn",
-        body: "We'd rather work with a client for ten years than turn over twenty in one. Care plans renew month-to-month, never annually. We'll point out when you don't need us anymore. Repeat work and referrals are how the studio grows — not paid acquisition.",
+        body: "We'd rather work with a client for ten years than turn over twenty in one. Care plans renew month-to-month, never annually. We'll point out when you don't need us anymore. Repeat work and referrals are how the studio grows, not paid acquisition.",
         tag: "Approach",
       },
     ],
@@ -121,7 +121,7 @@ const decisionRules = [
   {
     when: "When a brief asks us to skip schema",
     we: "We politely decline the project.",
-    why: "Schema isn't optional — it's the foundation that determines what Google does with your site for the next decade.",
+    why: "Schema is not optional. It is the foundation that determines what Google does with your site for the next decade.",
   },
   {
     when: "When a client requests page builders or pre-built themes",
@@ -136,7 +136,7 @@ const decisionRules = [
   {
     when: "When the timeline is unrealistic",
     we: "We turn down the project or propose a phased version.",
-    why: "Compressed timelines force the wrong shortcuts — skipping schema, performance, or QA. We'd rather not start than ship something that won't perform.",
+    why: "Compressed timelines force the wrong shortcuts: skipping schema, performance, or QA. We'd rather not start than ship something that won't perform.",
   },
   {
     when: "When a launch hits a Lighthouse score below 90",
@@ -152,7 +152,7 @@ const decisionRules = [
 ---
 <BaseLayout
   title="Values & Principles | Upcoming Brand WordPress Studio"
-  description="The nine principles Upcoming Brand operates by. How we build, collaborate, and ship — written down so clients know what to expect before signing."
+  description="The nine principles Upcoming Brand operates by. How we build, collaborate, and ship, written down so clients know what to expect before signing."
   canonicalUrl={canonical}
   noindex
 >
@@ -181,7 +181,7 @@ const decisionRules = [
         </h1>
 
         <p class="page-lead">
-          These aren't marketing positions or values posters. They're the constraints we set on every project before kickoff — <strong>how we build, how we collaborate, and what we ship</strong>. If a brief asks us to violate one, we politely decline the project.
+          These aren't marketing positions or values posters. They're the constraints we set on every project before kickoff: <strong>how we build, how we collaborate, and what we ship</strong>. If a brief asks us to violate one, we politely decline the project.
         </p>
 
         <div class="page-hero-ctas">
@@ -217,7 +217,7 @@ const decisionRules = [
         <div class="values-manifesto-inner">
           <span class="values-manifesto-mark" aria-hidden="true">&ldquo;</span>
           <p class="values-manifesto-text">
-            We don't ship sites that look beautiful and rank for nothing. We don't bill hourly. We don't hand you off to an account manager. We don't skip schema. We don't ignore Core Web Vitals. We don't take projects that ask us to break any of these rules — <em>even when the timeline is tight or the budget is large.</em>
+            We don't ship sites that look beautiful and rank for nothing. We don't bill hourly. We don't hand you off to an account manager. We don't skip schema. We don't ignore Core Web Vitals. We don't take projects that ask us to break any of these rules, even when the timeline is tight or the budget is large.
           </p>
           <span class="values-manifesto-attr">
             <span class="values-manifesto-attr-line" aria-hidden="true"></span>
@@ -276,7 +276,7 @@ const decisionRules = [
           <h2 class="page-h2 values-decisions-h2">
             Six real situations <em>and how we resolve them.</em>
           </h2>
-          <p class="page-section-lead values-decisions-lead">Principles only matter if they hold up when reality pushes back. These are the recurring scenarios where the rules get tested — and what we do about them.</p>
+          <p class="page-section-lead values-decisions-lead">Principles only matter if they hold up when reality pushes back. These are the recurring scenarios where the rules get tested, and what we do about them.</p>
         </div>
 
         <div class="values-decisions-grid">
