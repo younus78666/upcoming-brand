@@ -33,6 +33,17 @@ export const categories = {
 };
 
 export const articles: BlogArticle[] = [
+  // LOCAL SEO — PUBLISHED
+  {
+    slug: 'baltimore-web-design-company',
+    title: 'Baltimore Web Design Company: What to Look for in 2026',
+    category: 'local-seo',
+    description: 'What separates a real Baltimore web design company from a template shop. 2026 checklist, pricing guide, and 6 questions to ask before signing.',
+    status: 'published',
+    route: '/blog/baltimore-web-design-company/',
+    relatedServices: ['/services/wordpress-web-design/', '/services/local-seo-maryland/'],
+  },
+
   // BUYING GUIDES (9)
   { slug: 'website-for-a-small-business-cost', title: 'How Much Does a Professional Website for a Small Business Typically Cost?', category: 'buying-guides', description: 'Real 2026 pricing for small business websites across DIY, freelancer, and agency builds. Plus the recurring costs most owners miss when setting a budget.', status: 'published', route: '/website-for-a-small-business-cost/', image: '/website-cost-3-paths.webp', imageAlt: '3 paths to a small business website: DIY, Freelancer, and Agency with 2026 price ranges', relatedServices: ['/services/wordpress-web-design/', '/hire-wordpress-designer/'] },
   { slug: 'how-much-does-a-wordpress-website-cost', title: 'How Much Does a WordPress Website Cost in 2026?', category: 'buying-guides', description: 'Real WordPress website costs across builds, redesigns, and ongoing care. Numbers from 400+ shipped projects across 9 verticals.', status: 'coming-soon', estPublishMonth: '2026-06', relatedServices: ['/services/wordpress-web-design/', '/pricing/'] },

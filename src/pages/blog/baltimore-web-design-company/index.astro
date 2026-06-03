@@ -1,0 +1,433 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import AnnouncementBar from '../../../components/AnnouncementBar.astro';
+import Navigation from '../../../components/Navigation.astro';
+import Footer from '../../../components/Footer.astro';
+import FinalCTA from '../../../components/FinalCTA.astro';
+import { articles, categories, articleUrl } from '../../../data/blog-articles';
+
+const article = articles.find((a) => a.slug === 'baltimore-web-design-company')!;
+const category = categories[article?.category ?? 'local-seo'];
+const canonical = 'https://www.upcomingbrand.com/blog/baltimore-web-design-company/';
+
+const inCategory = articles.filter((a) => a.category === (article?.category ?? 'local-seo') && a.slug !== 'baltimore-web-design-company' && a.status === 'published').slice(0, 5);
+const relatedServices = ['/services/wordpress-web-design/', '/services/local-seo-maryland/'];
+const searchIndex = articles.filter((a) => a.status === 'published').map((a) => ({ slug: a.slug, url: a.route ?? `/blog/${a.slug}/`, title: a.title, category: categories[a.category].label }));
+
+const toc = [
+  { id: 'what-is',       label: 'What is a Baltimore web design company?' },
+  { id: 'types',         label: 'Types of Baltimore web design services' },
+  { id: 'why-fail',      label: 'Why most Baltimore web projects fail' },
+  { id: 'what-includes', label: 'What every project should include' },
+  { id: 'process',       label: 'How the process works' },
+  { id: 'comparison',    label: 'Agency vs freelancer vs template builder' },
+  { id: 'when',          label: 'When to hire one' },
+  { id: 'how-evaluate',  label: 'How to evaluate before signing' },
+  { id: 'faq',           label: 'FAQ' },
+];
+
+const faqs = [
+  {
+    q: 'How much does a Baltimore web design company charge?',
+    a: 'A Baltimore web design company charges between $1,500 and $15,000 for a custom WordPress project, depending on scope. A basic 8-page site for a contractor or service business starts around $1,500 to $3,500. A 15-page site with custom design, SEO setup, and booking integration runs $3,500 to $6,000. Complex WooCommerce or multi-location builds start at $6,000. Avoid companies that quote $299 or $499 for a "custom site" — that is a template with your logo swapped in, not a site built to rank.',
+  },
+  {
+    q: 'What should a Baltimore web design company include in every project?',
+    a: 'Every project should include: a mobile-first responsive design tested on real devices, 90+ Lighthouse/PageSpeed score (not just a vague "fast site" promise), schema markup matched to your business type (LocalBusiness, LegalService, Dentist, etc.), a 301 redirect map if you are migrating from an old site, and 30 days of post-launch monitoring in Search Console. If a company does not mention schema or Core Web Vitals in the proposal, they are building a site that looks good but will not rank.',
+  },
+  {
+    q: 'How long does a Baltimore web design project take?',
+    a: 'Most Baltimore web design projects run 4 to 10 weeks. A starter site (up to 8 pages) takes 4 to 6 weeks. A growth site with custom design, 15 to 20 pages, and integrations takes 6 to 8 weeks. Complex builds with WooCommerce, IDX, or booking platforms take 8 to 10 weeks. Timeline depends mostly on how quickly you can review designs and provide feedback. Agencies that promise a full site in 5 to 7 days are using templates, not custom builds.',
+  },
+  {
+    q: 'Do I need a Baltimore-based web design company, or can I hire remotely?',
+    a: 'You do not need a local company. The value a web design agency provides, schema architecture, performance optimization, Local Pack rankings, and conversion design, is entirely remote work. Upcoming Brand is Maryland-based and serves Baltimore businesses remotely via Zoom discovery calls and async staging reviews. If a company insists on in-person meetings as part of the process, that often signals slower delivery, not better quality.',
+  },
+  {
+    q: 'What is the difference between a web design company and a web developer?',
+    a: 'A web design company handles the full project: strategy, visual design, development, SEO setup, and launch. A freelance web developer typically handles coding only and hands off the visual design or SEO to someone else. For most Baltimore small businesses, a fixed-scope web design company is the more predictable choice because you get one contract, one price, and one point of accountability. Freelancers can be excellent, but the coordination across design, development, and SEO is the client\'s responsibility.',
+  },
+  {
+    q: 'How do I check if a Baltimore web design company actually ranks its clients in Google?',
+    a: 'Ask for three specific client URLs and search the primary keyword for each business in an incognito browser. If a dental practice they built does not appear in the Local Pack for "[their city] dentist," the site looks good but does not rank. Also run their portfolio sites through Google PageSpeed Insights. If any client site scores below 75 on mobile, the company is not optimizing for Core Web Vitals, which directly affects Google rankings.',
+  },
+];
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": `${canonical}#article`,
+      "url": canonical,
+      "headline": "Baltimore Web Design Company: What to Look for in 2026",
+      "description": "What separates a real Baltimore web design company from a template shop. 2026 checklist, pricing guide, and 6 questions to ask before signing.",
+      "author": { "@type": "Person", "name": "Muhammad Younus", "url": "https://www.upcomingbrand.com/about/" },
+      "publisher": { "@id": "https://www.upcomingbrand.com/#organization" },
+      "datePublished": "2026-06-03",
+      "dateModified": "2026-06-03",
+      "mainEntityOfPage": { "@id": `${canonical}#webpage` },
+      "image": { "@type": "ImageObject", "url": "https://www.upcomingbrand.com/blog/baltimore-web-design-company/og.webp", "width": 1200, "height": 630 }
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Baltimore Web Design Company: What to Look for in 2026 | Upcoming Brand",
+      "description": "What separates a real Baltimore web design company from a template shop. 2026 checklist, pricing guide, and 6 questions to ask before signing.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
+      "dateModified": "2026-06-03",
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",     "item": "https://www.upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog",     "item": "https://www.upcomingbrand.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Baltimore Web Design Company", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+});
+---
+<BaseLayout
+  title="Baltimore Web Design Company: What to Look for in 2026 | Upcoming Brand"
+  description="What separates a real Baltimore web design company from a template shop. 2026 checklist, pricing guide, and 6 questions to ask before signing."
+  canonicalUrl={canonical}
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLd} />
+  </Fragment>
+  <AnnouncementBar />
+  <Navigation />
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="art-hero">
+      <div class="container">
+        <div class="art-hero-inner">
+          <a href="/blog/" class="art-back-link">
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M13 7H1M6 12L1 7l5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            All insights
+          </a>
+          <div class="art-meta">
+            <span class="art-cat-pill">Local SEO</span>
+            <span class="art-date-pill">June 3, 2026</span>
+            <span class="art-read-pill">9 min read</span>
+          </div>
+          <h1 class="art-h1">Baltimore Web Design Company: What to Look for in 2026</h1>
+          <p class="art-lead">Most Baltimore businesses hire a web design company based on portfolio aesthetics. That is the wrong filter. A site that looks good but scores 40 on mobile PageSpeed, carries no schema, and targets no specific keywords will not rank, will not convert, and will not return the investment. Here is how to evaluate a Baltimore web design company on the signals that matter.</p>
+          <div class="art-byline">
+            <span class="art-byline-name">Muhammad Younus</span>
+            <span class="art-byline-sep" aria-hidden="true">·</span>
+            <span class="art-byline-role">Founder, Upcoming Brand</span>
+            <span class="art-byline-sep" aria-hidden="true">·</span>
+            <span class="art-byline-date">Updated June 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BODY -->
+    <section class="art-body">
+      <div class="container art-body-grid">
+
+        <!-- SIDEBAR -->
+        <aside class="art-sidebar" aria-label="Article sidebar">
+
+          <div class="art-side-card">
+            <span class="art-side-eyebrow">On this page</span>
+            <nav aria-label="Table of contents">
+              <ol class="art-toc-list">
+                {toc.map((item) => (
+                  <li><a href={`#${item.id}`} class="art-toc-link">{item.label}</a></li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+
+          <div class="art-side-card art-side-cta-card">
+            <span class="art-side-eyebrow art-side-eyebrow-amber">Ready to start?</span>
+            <h3 class="art-side-title">Talk to a Baltimore WordPress specialist</h3>
+            <p class="art-side-sub">Free 45-minute discovery call. We audit your current site live on the call.</p>
+            <div class="art-side-cta-list">
+              <a href="/services/wordpress-web-design/" class="art-side-cta-item">
+                <span class="art-side-cta-tag">Service</span>
+                <span class="art-side-cta-name">WordPress Web Design</span>
+                <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="/services/local-seo-maryland/" class="art-side-cta-item">
+                <span class="art-side-cta-tag">Service</span>
+                <span class="art-side-cta-name">Local SEO Maryland</span>
+                <svg class="art-side-cta-arrow" width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+            </div>
+            <a href="/contact/" class="art-side-discovery">
+              Book free discovery call
+              <svg width="11" height="11" viewBox="0 0 11 11" fill="none"><path d="M1 5.5h9M6 1l4.5 4.5L6 10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div>
+
+          {inCategory.length > 0 && (
+            <div class="art-side-card">
+              <span class="art-side-eyebrow">Related articles</span>
+              <ul class="art-side-list">
+                {inCategory.map((a) => (
+                  <li>
+                    <a href={articleUrl(a)} class="art-side-link">
+                      <span class="art-side-link-title">{a.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <div class="art-main art-prose">
+
+          <!-- Key Takeaways (AEO block) -->
+          <div class="art-takeaways">
+            <p class="art-takeaways-label">Key takeaways</p>
+            <ul class="art-takeaways-list">
+              <li>A real Baltimore web design company includes schema markup, 90+ Lighthouse guarantee, and a post-launch monitoring period.</li>
+              <li>Most Baltimore businesses pay $1,500 to $6,000 for a custom WordPress site. Quotes below $500 are template swaps, not custom builds.</li>
+              <li>The three signals that separate serious companies from template shops: they mention schema, they guarantee Lighthouse scores, and they can name the hosting stack they use.</li>
+              <li>You do not need an in-person Baltimore agency. All real web design work runs fully remote with better documentation and faster turnaround.</li>
+            </ul>
+          </div>
+
+          <!-- Frame 1: Definition -->
+          <h2 id="what-is" class="art-h2">What is a Baltimore web design company?</h2>
+          <p><strong>A Baltimore web design company is a studio or agency that designs, builds, and launches websites for Baltimore-area businesses, with the goal of generating leads, bookings, or sales through organic search.</strong> The distinguishing feature of a serious Baltimore web design company versus a generic freelancer or template shop is its approach to technical SEO: schema markup, Core Web Vitals performance, and Local Pack optimization built into every project, not added as an afterthought.</p>
+          <p>Baltimore has a competitive commercial landscape spanning law firms in Mount Vernon, dental practices in Towson, contractors serving the DMV corridor, and hospitality businesses in Fells Point and Federal Hill. Each vertical requires different schema types, different conversion architecture, and different Local Pack strategies. A Baltimore web design company that does not specialize in this technical layer is selling aesthetics, not a ranking asset.</p>
+          <p><strong>Also known as:</strong> Baltimore web design agency, web design company Baltimore MD, Baltimore WordPress agency, web designers Baltimore, Baltimore website design company.</p>
+
+          <!-- Frame 2: Category -->
+          <h2 id="types" class="art-h2">What types of Baltimore web design services are available?</h2>
+          <p><strong>Baltimore businesses have four main categories of web design service to choose from, each with different trade-offs in cost, quality, and long-term ranking potential.</strong></p>
+          <ul>
+            <li><strong>Custom WordPress builds.</strong> The most scalable and SEO-capable option. A developer builds your site from scratch on WordPress with schema tailored to your vertical, a performance-tuned stack, and full content ownership. Best for law firms, medical practices, contractors, real estate, and any business competing in local search. Cost: $1,500 to $15,000 depending on scope.</li>
+            <li><strong>Elementor or Divi template customization.</strong> A designer takes a premium WordPress theme and customizes it for your brand. Lower cost than fully custom but carries page-builder performance overhead. Lighthouse scores often land in the 60 to 75 range without additional optimization. Cost: $800 to $3,000.</li>
+            <li><strong>Wix, Squarespace, or GoDaddy builds.</strong> Fast and cheap, but structurally unable to support custom JSON-LD schema (which drives Local Pack rankings) and frequently score below 60 on mobile PageSpeed. Fine for a one-page portfolio or a business that does not compete in local search. Cost: $300 to $1,500 plus ongoing platform fees.</li>
+            <li><strong>Template swap services.</strong> Companies that advertise sites for $99 to $499. They install a premium WordPress theme, swap in your logo and copy, and deliver in 3 to 7 days. No custom code, no schema, no performance optimization, no post-launch monitoring. Not suitable for businesses that need to rank.</li>
+          </ul>
+          <p>For most Baltimore businesses competing for local search traffic, custom WordPress is the only option that compounds in value over time.</p>
+
+          <!-- Frame 6: Causation -->
+          <h2 id="why-fail" class="art-h2">Why do most Baltimore web design projects fail before they even rank?</h2>
+          <p><strong>Most Baltimore web design projects fail for one of three technical reasons: no schema markup, poor mobile performance, or a DNS cutover that destroys existing rankings.</strong> None of these failures are visible in the finished design. A site can look polished and still be structurally incapable of ranking.</p>
+          <p><strong>Missing schema.</strong> Google uses structured data to classify businesses precisely. A law firm without <code>LegalService</code> and <code>Attorney</code> schema is just a generic <code>LocalBusiness</code> in Google's knowledge graph. It competes with every other service business in Baltimore instead of ranking specifically for practice-area searches. Schema takes less than 4 hours to implement correctly and most Baltimore agencies skip it entirely.</p>
+          <p><strong>Mobile PageSpeed below 70.</strong> Google's Core Web Vitals, specifically Largest Contentful Paint (the time it takes for the main content to load), is a confirmed ranking factor. Sites that score below 70 on mobile are structurally penalized in local search. Page builders like Divi load 300 to 600KB of JavaScript on every page regardless of what is on the page. Custom WordPress builds without a page builder load 40 to 80KB. The difference is measurable in search position.</p>
+          <p><strong>No redirect map on migration.</strong> Every URL change during a site launch, from a Wix or Squarespace migration or even a WordPress redesign, must be accompanied by 301 redirects from old URLs to new. Without them, every backlink and every crawled page becomes a 404 error. Businesses lose 20 to 60% of their organic traffic within 30 days. A properly handled migration preserves all existing rankings and often improves them within 60 days.</p>
+
+          <!-- Frame 4: Component -->
+          <h2 id="what-includes" class="art-h2">What should every Baltimore web design project include?</h2>
+          <p><strong>A complete Baltimore web design project should include at minimum: custom schema markup, a Lighthouse score guarantee, a full 301 redirect map (for migrations), and 30 days of Search Console monitoring after launch.</strong> Any proposal that does not mention these four elements explicitly is not a complete engagement.</p>
+          <ul>
+            <li><strong>Schema markup matched to your vertical.</strong> LocalBusiness for general service businesses. LegalService and Attorney for law firms. Dentist and MedicalBusiness for dental practices. FAQPage on any page with questions and answers. HomeAndConstructionBusiness for contractors. Each schema type tells Google precisely what your business does and where, which is the foundation of Local Pack rankings.</li>
+            <li><strong>Lighthouse/PageSpeed guarantee.</strong> Any serious web design company should be willing to put 90+ Lighthouse in the contract. If the site launches below 90 on mobile, the project is not done. Upcoming Brand does not invoice the final milestone until every page passes.</li>
+            <li><strong>301 redirect map.</strong> If you have an existing site, every page URL must be mapped and redirected. This is a spreadsheet exercise that takes 2 to 4 hours and prevents catastrophic ranking loss. Many agencies skip it and blame Google when rankings drop.</li>
+            <li><strong>Post-launch Search Console monitoring.</strong> The first 30 days after launch are when crawl errors, indexation problems, and redirect failures surface. A responsible Baltimore web design company monitors your Search Console weekly and fixes anything that appears, included in the original project scope.</li>
+            <li><strong>Google Analytics 4 configuration.</strong> GA4 should be set up with conversion events configured: form submissions, phone click events, and button clicks mapped to goals. Without this, you cannot measure whether the site is performing.</li>
+          </ul>
+
+          <!-- Frame 5: Process -->
+          <h2 id="process" class="art-h2">How does the process work with a Baltimore web design company?</h2>
+          <p><strong>A well-run Baltimore web design project moves through five phases: discovery, quote, design, build, and launch with monitoring.</strong> The total timeline is 4 to 10 weeks depending on scope. Here is what each phase should look like.</p>
+          <ol>
+            <li><strong>Discovery (free, 45 minutes).</strong> A call where the company audits your current site, maps your competitive SERP landscape, and identifies schema gaps and Local Pack opportunity. At Upcoming Brand, the discovery call ends with a written summary of exactly what we found. You receive this whether or not you hire us.</li>
+            <li><strong>Fixed-scope quote (48 hours).</strong> One PDF with every deliverable, milestone, price, and timeline listed. No hourly billing, no scope-creep retainers. You know the total before you sign.</li>
+            <li><strong>Design rounds (1 to 2 weeks).</strong> Designs are built on a private staging URL. You review on your own schedule and leave comments directly on the design. Two structured rounds of feedback are included. No conference calls required.</li>
+            <li><strong>Build and schema (3 to 6 weeks).</strong> Schema goes in first, then page templates, integrations, and content. Performance tuning happens throughout, not as a last step.</li>
+            <li><strong>Launch and monitoring (1 week + 30 days).</strong> DNS cutover is handled with zero downtime. Search Console is monitored for 30 days with a written report at day 30.</li>
+          </ol>
+
+          <!-- Frame 7: Comparison -->
+          <h2 id="comparison" class="art-h2">Baltimore web design company vs freelancer vs template builder: which is right for your business?</h2>
+          <p><strong>The right choice depends on how competitively your business needs to rank in local search.</strong></p>
+          <div class="art-compare-wrap" role="region" aria-label="Web design option comparison">
+            <table class="art-compare-table">
+              <thead>
+                <tr>
+                  <th scope="col">Factor</th>
+                  <th scope="col">Web design company</th>
+                  <th scope="col">Freelancer</th>
+                  <th scope="col">Template builder</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Schema markup</td><td class="art-ct-yes">Vertical-specific, complete</td><td class="art-ct-partial">Varies by freelancer</td><td class="art-ct-no">Generic or absent</td></tr>
+                <tr><td>Lighthouse guarantee</td><td class="art-ct-yes">90+ contractual</td><td class="art-ct-partial">Rare; depends on skill</td><td class="art-ct-no">Not available</td></tr>
+                <tr><td>Redirect map on migration</td><td class="art-ct-yes">Standard deliverable</td><td class="art-ct-partial">Sometimes included</td><td class="art-ct-no">Not included</td></tr>
+                <tr><td>Post-launch monitoring</td><td class="art-ct-yes">30+ days included</td><td class="art-ct-partial">Rarely included</td><td class="art-ct-no">Not included</td></tr>
+                <tr><td>Single point of accountability</td><td class="art-ct-yes">Yes (one contract)</td><td class="art-ct-partial">Yes, but limited scope</td><td class="art-ct-no">No</td></tr>
+                <tr><td>Cost</td><td class="art-ct-partial">$1,500 to $15,000</td><td class="art-ct-yes">$500 to $5,000</td><td class="art-ct-yes">$300 to $1,500</td></tr>
+                <tr><td>Ranking potential</td><td class="art-ct-yes">High</td><td class="art-ct-partial">Medium (skill-dependent)</td><td class="art-ct-no">Low</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>For Baltimore businesses competing in any category where Google organic or Local Pack traffic matters, a web design company with a technical SEO foundation is the only option that returns the investment. A freelancer can be excellent if they have schema skills and performance discipline, but verifying this before signing is the client's responsibility. Template builders are appropriate only for businesses that do not depend on organic search.</p>
+
+          <!-- Frame 8: Application -->
+          <h2 id="when" class="art-h2">When does your Baltimore business actually need a web design company?</h2>
+          <p><strong>Your Baltimore business needs a web design company when organic search is a meaningful patient, client, or customer acquisition channel and your current site is not performing in it.</strong></p>
+          <p>Specific signals that it is time:</p>
+          <ul>
+            <li>Your site scores below 70 on Google PageSpeed mobile. Run it yourself at <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer">pagespeed.web.dev</a>. Below 70 means Google's Core Web Vitals are failing and rankings are structurally penalized.</li>
+            <li>You do not appear in the Google Local Pack (the map results) for your primary service. Search "[your service] [your city]" in an incognito window. If you are not in the top 3 map results, schema and GBP work is needed.</li>
+            <li>Your site is on Wix, Squarespace, or a generic GoDaddy template and you are in a competitive local vertical (law, dental, medical, contracting, real estate).</li>
+            <li>You migrated to a new site in the last 12 months and your organic traffic dropped. This is almost always a redirect map failure that can still be fixed retroactively.</li>
+            <li>Your site has not been redesigned in more than 4 years. Mobile-first rendering requirements changed significantly with Google's 2020 mobile-first indexing switch. Sites designed before 2022 frequently have structural issues that are invisible to the owner but visible to Google.</li>
+          </ul>
+
+          <!-- Frame 9: Evaluation -->
+          <h2 id="how-evaluate" class="art-h2">How do you evaluate a Baltimore web design company before signing?</h2>
+          <p><strong>Evaluate a Baltimore web design company on six specific technical questions before you sign anything.</strong> These separate studios that build sites that rank from studios that build sites that look good.</p>
+          <ol>
+            <li><strong>Ask for three client URLs and check their mobile PageSpeed.</strong> Go to <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer">pagespeed.web.dev</a> and test each one. If any site scores below 80 on mobile, the company does not optimize for Core Web Vitals. Walk away.</li>
+            <li><strong>Ask what schema they implement per vertical.</strong> The answer should be specific: "For a dental practice we implement Dentist, MedicalBusiness, and FAQPage." If they say "we use Yoast" with no further detail, they are using Yoast's generic LocalBusiness output and not customizing it.</li>
+            <li><strong>Ask what hosting stack they use.</strong> A legitimate answer includes a named host (Kinsta, WP Engine, Cloudways, SiteGround) and a reason. "We use Cloudways because it gives us Redis object caching and server-level OPcache" is a real answer. "We use whatever hosting you prefer" means they have no performance opinion.</li>
+            <li><strong>Ask if a 301 redirect map is in scope.</strong> If you have an existing site, this is non-negotiable. Any company that says "we will handle redirects" without producing a documented spreadsheet before launch is guessing.</li>
+            <li><strong>Ask what is in the post-launch period.</strong> The answer should be: Search Console monitoring, 404 error resolution, and a written report at day 30. If they say "we are done at launch," that is a company that does not care whether the site actually performs.</li>
+            <li><strong>Ask for a fixed-scope quote, not an estimate.</strong> Hourly billing on web projects creates the wrong incentives. A fixed-scope quote means the company has thought through the project deeply enough to price it with confidence. Anything open-ended puts the risk on you.</li>
+          </ol>
+
+          <!-- FAQ -->
+          <h2 id="faq" class="art-h2">Frequently asked questions about Baltimore web design companies</h2>
+          <div class="art-faq">
+            {faqs.map((f) => (
+              <details class="art-faq-item">
+                <summary class="art-faq-q">{f.q}</summary>
+                <p class="art-faq-a">{f.a}</p>
+              </details>
+            ))}
+          </div>
+
+          <!-- Final CTA inline -->
+          <div class="art-inline-cta">
+            <div class="art-inline-cta-text">
+              <h3 class="art-inline-cta-h3">Ready to find out what your Baltimore site needs?</h3>
+              <p class="art-inline-cta-sub">Free 45-minute discovery call. We pull up your site, run live audits, and tell you exactly what is missing.</p>
+            </div>
+            <a href="/contact/" class="art-inline-cta-btn">Book free call</a>
+          </div>
+
+        </div><!-- end art-main -->
+      </div><!-- end art-body-grid -->
+    </section>
+
+  </main>
+  <FinalCTA />
+  <Footer />
+</BaseLayout>
+
+<style>
+/* ── HERO ─────────────────────────────────────────── */
+.art-hero { background: var(--ink); padding: clamp(40px,6vh,72px) 0 clamp(48px,7vh,80px); }
+.art-hero-inner { max-width: 780px; display: flex; flex-direction: column; gap: 16px; }
+.art-back-link { display: inline-flex; align-items: center; gap: 7px; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(244,239,230,0.45); text-decoration: none; transition: color 0.2s ease; }
+.art-back-link:hover { color: var(--amber); }
+.art-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.art-cat-pill, .art-date-pill, .art-read-pill { font-family: var(--f-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; }
+.art-cat-pill { background: rgba(212,147,46,0.2); color: var(--amber); }
+.art-date-pill, .art-read-pill { background: rgba(244,239,230,0.08); color: rgba(244,239,230,0.55); }
+.art-h1 { font-family: var(--f-display); font-size: clamp(28px,4vw,48px); font-weight: 500; line-height: 1.1; letter-spacing: -0.03em; color: var(--cream); margin: 0; }
+.art-lead { font-size: 16px; line-height: 1.7; color: rgba(244,239,230,0.65); margin: 0; max-width: 68ch; }
+.art-byline { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: var(--f-mono); font-size: 10px; letter-spacing: 0.08em; color: rgba(244,239,230,0.45); }
+.art-byline-name { font-weight: 700; color: rgba(244,239,230,0.7); }
+.art-byline-sep { opacity: 0.3; }
+
+/* ── BODY GRID ────────────────────────────────────── */
+.art-body { background: var(--paper); padding: clamp(40px,6vh,72px) 0; }
+.art-body-grid { display: grid; grid-template-columns: 280px 1fr; gap: clamp(24px,4vw,56px); align-items: start; }
+
+/* ── SIDEBAR ──────────────────────────────────────── */
+.art-sidebar { position: sticky; top: 64px; display: flex; flex-direction: column; gap: 16px; }
+.art-side-card { background: var(--cream); border: 1.5px solid var(--line); border-radius: 16px; padding: 20px 18px; }
+.art-side-cta-card { background: var(--ink); border-color: rgba(244,239,230,0.1); }
+.art-side-eyebrow { font-family: var(--f-mono); font-size: 9px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-muted); display: block; margin-bottom: 10px; }
+.art-side-eyebrow-amber { color: var(--amber); }
+.art-side-title { font-family: var(--f-display); font-size: 16px; font-weight: 500; color: var(--cream); line-height: 1.3; margin: 0 0 6px; }
+.art-side-sub { font-size: 12.5px; line-height: 1.6; color: rgba(244,239,230,0.5); margin: 0 0 14px; }
+.art-toc-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; counter-reset: toc; }
+.art-toc-link { font-size: 12.5px; color: var(--ink-soft); text-decoration: none; display: block; padding: 4px 8px; border-radius: 6px; transition: all 0.15s ease; line-height: 1.45; }
+.art-toc-link:hover { background: var(--paper); color: var(--amber-deep); }
+.art-side-cta-list { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+.art-side-cta-item { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: rgba(244,239,230,0.05); border: 1px solid rgba(244,239,230,0.1); border-radius: 10px; text-decoration: none; transition: all 0.2s ease; }
+.art-side-cta-item:hover { background: rgba(212,147,46,0.1); border-color: rgba(212,147,46,0.3); }
+.art-side-cta-tag { font-family: var(--f-mono); font-size: 8px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--amber); font-weight: 700; white-space: nowrap; }
+.art-side-cta-name { font-size: 12.5px; color: rgba(244,239,230,0.75); flex: 1; }
+.art-side-cta-arrow { color: var(--amber); flex-shrink: 0; }
+.art-side-discovery { display: flex; align-items: center; justify-content: center; gap: 7px; padding: 10px 14px; background: var(--amber); color: var(--ink); border-radius: 10px; font-size: 12.5px; font-weight: 600; text-decoration: none; transition: background 0.2s ease; }
+.art-side-discovery:hover { background: var(--amber-deep); }
+.art-side-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; }
+.art-side-link { display: block; text-decoration: none; padding: 6px 0; border-bottom: 1px solid var(--line); transition: color 0.15s ease; }
+.art-side-link:last-child { border-bottom: none; }
+.art-side-link-title { display: block; font-size: 12.5px; color: var(--ink-soft); line-height: 1.45; }
+.art-side-link:hover .art-side-link-title { color: var(--amber-deep); }
+
+/* ── PROSE ────────────────────────────────────────── */
+.art-prose { display: flex; flex-direction: column; gap: 0; }
+.art-h2 { font-family: var(--f-display); font-size: clamp(20px,2.4vw,28px); font-weight: 500; letter-spacing: -0.022em; color: var(--ink); line-height: 1.22; margin: 40px 0 14px; scroll-margin-top: 80px; }
+.art-h2:first-child { margin-top: 0; }
+.art-prose p { font-size: 15.5px; line-height: 1.76; color: var(--ink-soft); margin: 0 0 16px; }
+.art-prose ul, .art-prose ol { font-size: 15.5px; line-height: 1.76; color: var(--ink-soft); margin: 0 0 20px; padding-left: 24px; display: flex; flex-direction: column; gap: 8px; }
+.art-prose li { padding-left: 4px; }
+.art-prose li strong { color: var(--ink); }
+.art-prose a { color: var(--amber-deep); text-decoration: underline; text-underline-offset: 3px; }
+.art-prose a:hover { color: var(--ink); }
+.art-prose code { font-family: var(--f-mono); font-size: 13px; background: var(--cream); padding: 2px 6px; border-radius: 4px; color: var(--ink); }
+
+/* ── KEY TAKEAWAYS ────────────────────────────────── */
+.art-takeaways { background: var(--ink); border-radius: 16px; padding: 22px 24px; margin-bottom: 36px; }
+.art-takeaways-label { font-family: var(--f-mono); font-size: 9.5px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--amber); margin: 0 0 12px; }
+.art-takeaways-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
+.art-takeaways-list li { font-size: 14px; line-height: 1.6; color: rgba(244,239,230,0.72); padding-left: 18px; position: relative; }
+.art-takeaways-list li::before { content: ""; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+
+/* ── COMPARISON TABLE ─────────────────────────────── */
+.art-compare-wrap { overflow-x: auto; border-radius: 12px; border: 1.5px solid var(--line); margin: 20px 0 24px; }
+.art-compare-table { width: 100%; border-collapse: collapse; font-size: 13.5px; min-width: 560px; }
+.art-compare-table thead tr { background: var(--ink); }
+.art-compare-table th { padding: 12px 14px; text-align: left; font-family: var(--f-mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; color: rgba(244,239,230,0.8); }
+.art-compare-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); color: var(--ink-soft); }
+.art-compare-table tr:last-child td { border-bottom: none; }
+.art-compare-table tr:hover td { background: var(--cream); }
+.art-compare-table td:first-child { font-weight: 600; color: var(--ink); font-size: 13px; }
+.art-ct-yes { color: #2e6e2e; font-weight: 500; }
+.art-ct-no { color: #8b2020; }
+.art-ct-partial { color: #7a6020; }
+
+/* ── FAQ ──────────────────────────────────────────── */
+.art-faq { display: flex; flex-direction: column; gap: 8px; margin: 20px 0 40px; }
+.art-faq-item { border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; transition: border-color 0.2s ease; }
+.art-faq-item[open] { border-color: var(--amber); }
+.art-faq-q { font-size: 15px; font-weight: 600; color: var(--ink); padding: 16px 18px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+.art-faq-q::after { content: "+"; font-family: var(--f-mono); font-size: 18px; color: var(--amber-deep); line-height: 1; }
+.art-faq-item[open] .art-faq-q::after { content: "−"; }
+.art-faq-a { font-size: 14.5px; line-height: 1.72; color: var(--ink-soft); padding: 0 18px 16px; margin: 0; border-top: 1px solid var(--line); }
+
+/* ── INLINE CTA ───────────────────────────────────── */
+.art-inline-cta { background: var(--ink); border-radius: 16px; padding: 28px 26px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 40px; }
+.art-inline-cta-text { flex: 1; min-width: 240px; }
+.art-inline-cta-h3 { font-family: var(--f-display); font-size: 22px; font-weight: 500; color: var(--cream); margin: 0 0 8px; letter-spacing: -0.02em; }
+.art-inline-cta-sub { font-size: 14px; line-height: 1.6; color: rgba(244,239,230,0.55); margin: 0; }
+.art-inline-cta-btn { padding: 13px 22px; background: var(--amber); color: var(--ink); border-radius: 12px; font-size: 14px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: background 0.2s ease; }
+.art-inline-cta-btn:hover { background: var(--amber-deep); }
+
+/* ── RESPONSIVE ───────────────────────────────────── */
+@media (max-width: 900px) { .art-body-grid { grid-template-columns: 1fr; } .art-sidebar { position: static; } }
+@media (max-width: 600px) { .art-h1 { font-size: 28px; } .art-inline-cta { flex-direction: column; } }
+</style>
