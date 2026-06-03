@@ -37,6 +37,7 @@ export interface Props {
   relatedIndustries?: string[];
   ctaTitle?: string;
   ctaLabel?: string;
+  showAuthorBio?: boolean;
 }
 
 const {
@@ -51,6 +52,7 @@ const {
   relatedIndustries = [],
   ctaTitle = 'Ready to get a quote?',
   ctaLabel = 'Book free discovery call',
+  showAuthorBio = true,
 } = Astro.props;
 
 const cat = categories[category];
@@ -266,22 +268,24 @@ function industryLabel(href: string) {
           <slot />
 
           <!-- ── AUTHOR BIO (inline, after article content) ── -->
-          <div class="art-author-inline">
-            <div class="art-author-avatar-lg" aria-hidden="true">MY</div>
-            <div class="art-author-info">
-              <p class="art-author-eyebrow">About the author</p>
-              <h3 class="art-author-name">
-                <a href="/about/">Muhammad Younus</a>
-              </h3>
-              <p class="art-author-title">Founder, Upcoming Brand</p>
-              <p class="art-author-bio">WordPress web design specialist with 7+ years building sites for law firms, dental practices, contractors, and small businesses across Maryland. Every project ships with vertical-specific schema markup, a contractual 90+ Lighthouse guarantee, and 30 days of post-launch Search Console monitoring. Fixed-scope quotes only — no hourly billing, ever.</p>
-              <div class="art-author-links">
-                <a href="/about/" class="art-author-link">About</a>
-                <a href="/work/" class="art-author-link">Portfolio</a>
-                <a href="/contact/" class="art-author-link art-author-link-cta">Book a free call</a>
+          {showAuthorBio && (
+            <div class="art-author-inline">
+              <div class="art-author-avatar-lg" aria-hidden="true">MY</div>
+              <div class="art-author-info">
+                <p class="art-author-eyebrow">About the author</p>
+                <h3 class="art-author-name">
+                  <a href="/about/">Muhammad Younus</a>
+                </h3>
+                <p class="art-author-title">Founder, Upcoming Brand</p>
+                <p class="art-author-bio">WordPress web design specialist with 7+ years building sites for law firms, dental practices, contractors, and small businesses across Maryland. Every project ships with vertical-specific schema markup, a contractual 90+ Lighthouse guarantee, and 30 days of post-launch Search Console monitoring. Fixed-scope quotes only — no hourly billing, ever.</p>
+                <div class="art-author-links">
+                  <a href="/about/" class="art-author-link">About</a>
+                  <a href="/work/" class="art-author-link">Portfolio</a>
+                  <a href="/contact/" class="art-author-link art-author-link-cta">Book a free call</a>
+                </div>
               </div>
             </div>
-          </div>
+          )}
         </div>
 
       </div>
