@@ -1,0 +1,270 @@
+---
+import BlogArticleLayout from '../../../layouts/BlogArticleLayout.astro';
+
+const canonical = 'https://www.upcomingbrand.com/blog/dental-website-design-company/';
+
+const toc = [
+  { id: 'what-is',       label: 'What is a dental website design company?' },
+  { id: 'types',         label: 'Three types: platforms vs agencies vs templates' },
+  { id: 'what-includes', label: 'What every dental website must include' },
+  { id: 'why-fail',      label: 'Why dental websites fail to rank' },
+  { id: 'schema',        label: 'Schema markup for dental websites' },
+  { id: 'comparison',    label: 'PBHS vs ProSites vs WordPress agency' },
+  { id: 'when',          label: 'When your practice needs a new website' },
+  { id: 'questions',     label: '6 questions before hiring' },
+  { id: 'faq',           label: 'FAQ' },
+];
+
+const faqs = [
+  {
+    q: 'What is the difference between PBHS and a custom dental website?',
+    a: 'PBHS is a subscription platform ($199 to $599 per month) that builds templated dental websites on their own infrastructure. You do not own the site — if you cancel, it disappears. PBHS includes basic dental SEO and templated schema but shares design patterns across thousands of practices. A custom dental website is built on WordPress that you own completely: the code, domain history, and design files. Custom builds cost $3,500 to $12,000 upfront, but the 3-year total cost is comparable to PBHS while giving you a fully owned asset rather than a rental.',
+  },
+  {
+    q: 'Do dental websites need to be HIPAA compliant?',
+    a: 'Dental websites do not need full HIPAA certification, but contact forms that collect health-related information must be handled in a HIPAA-aware way. This means the form provider must sign a Business Associate Agreement with the practice, submissions must be transmitted encrypted, and PHI must not be stored in a standard WordPress database. Standard contact form plugins (Contact Form 7, Gravity Forms without encryption add-ons) create HIPAA exposure by default. Ask any dental web design company specifically about their BAA coverage before signing.',
+  },
+  {
+    q: 'What is Dentist schema and how is it different from LocalBusiness schema?',
+    a: 'Dentist is a schema.org type that inherits from MedicalBusiness and LocalBusiness but adds dental-specific fields: practiceArea, medicalSpecialty, isAcceptingPatients, and healthPlanNetworkId. When Google processes Dentist schema, it classifies the practice specifically in the dental category and enables procedure-specific Local Pack rankings. LocalBusiness schema treats a dental practice the same as a hardware store. Most dental platforms and generic agencies implement only LocalBusiness. Custom WordPress builds with dental experience implement the full Dentist plus MedicalBusiness plus MedicalProcedure stack.',
+  },
+  {
+    q: 'How much does a dental website design company charge per month?',
+    a: 'Monthly ongoing costs depend on build type. PBHS and ProSites charge $199 to $599 per month as a platform fee covering hosting, updates, and their content system. A custom WordPress dental website costs $150 to $300 per month for a managed care plan covering hosting, plugin updates, security monitoring, and Search Console tracking. PMS booking integrations are separate: NexHealth runs $250 to $400 per month, Weave runs $500 to $700 per month. At three years, the total cost of a custom WordPress build with care plan is comparable to PBHS, with the advantage that you own what you built.',
+  },
+  {
+    q: 'Can a general web designer build a dental website?',
+    a: 'A general web designer can build a dental website but will almost never implement Dentist schema, MedicalProcedure schema, HIPAA-aware forms, or PMS booking integrations. These are dental-specific technical requirements outside standard web design education. For a practice in a low-competition market that just needs a professional online presence, a general designer at $1,500 to $3,500 may be sufficient. For any practice competing for new patient searches in a metro area, the schema and HIPAA gaps in a general designer\'s work will cost more in lost patients over 12 months than the premium for a dental-specific agency.',
+  },
+  {
+    q: 'How long does it take to build a dental website?',
+    a: 'A starter dental website for a solo practice (8 to 12 pages, basic schema, contact form) takes 4 to 6 weeks. A growth build with multiple procedure pages, MedicalProcedure schema on each, and PMS booking integration takes 6 to 8 weeks. Practices migrating from PBHS or ProSites need an additional 2 to 3 weeks for 301 redirect mapping and schema migration. The most common delay is content approval — procedure page copy requires clinical review that adds 1 to 2 weeks if not planned upfront.',
+  },
+];
+
+const jsonLd = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": `${canonical}#article`,
+      "url": canonical,
+      "headline": "Dental Website Design Company: How to Choose the Right One in 2026",
+      "description": "What every dental website design company should include: Dentist schema, HIPAA forms, booking integration. Pricing tiers and 6 questions before signing.",
+      "author": {
+        "@type": "Person",
+        "name": "Muhammad Younus",
+        "url": "https://www.upcomingbrand.com/about/",
+        "jobTitle": "Founder, WordPress Web Design Specialist",
+        "knowsAbout": ["WordPress web design", "Dental SEO", "Dentist schema", "HIPAA-aware web forms", "Local SEO"]
+      },
+      "publisher": { "@id": "https://www.upcomingbrand.com/#organization" },
+      "datePublished": "2026-06-04",
+      "dateModified": "2026-06-04",
+      "mainEntityOfPage": { "@id": `${canonical}#webpage` },
+      "image": { "@type": "ImageObject", "url": "https://www.upcomingbrand.com/blog/dental-website-design-company/hero.webp", "width": 1200, "height": 630 },
+      "keywords": ["dental website design company", "dentist website design", "dental web design", "dental website design agency", "dental practice website design"],
+      "wordCount": 2900,
+      "articleSection": "Buying Guides"
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${canonical}#webpage`,
+      "url": canonical,
+      "name": "Dental Website Design Company: How to Choose the Right One in 2026 | Upcoming Brand",
+      "description": "What every dental website design company should include: Dentist schema, HIPAA forms, booking integration. Pricing tiers and 6 questions before signing.",
+      "inLanguage": "en-US",
+      "isPartOf": { "@id": "https://www.upcomingbrand.com/#website" },
+      "dateModified": "2026-06-04",
+      "speakable": { "@type": "SpeakableSpecification", "cssSelector": [".art-h2", ".art-snippet-list"] },
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home",   "item": "https://www.upcomingbrand.com/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog",   "item": "https://www.upcomingbrand.com/blog/" },
+          { "@type": "ListItem", "position": 3, "name": "Dental Website Design Company", "item": canonical }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map((f) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    }
+  ]
+});
+---
+
+<BlogArticleLayout
+  title="Dental Website Design Company: How to Choose the Right One in 2026"
+  description="What every dental website design company should include: Dentist schema, HIPAA forms, booking integration. Pricing tiers and 6 questions before signing."
+  canonicalUrl={canonical}
+  ogImage="https://www.upcomingbrand.com/blog/dental-website-design-company/hero.webp"
+  ogImageAlt="Dental Website Design Company: How to Choose the Right One in 2026"
+  jsonLd={jsonLd}
+  articleSlug="dental-website-design-company"
+  category="buying-guides"
+  publishDate="2026-06-04"
+  publishLabel="June 4, 2026"
+  readTime="11 min read"
+  toc={toc}
+  relatedServices={['/services/wordpress-web-design/']}
+  relatedIndustries={['/industries/dental-website-design/']}
+  ctaTitle="Ready to get a quote for your dental practice?"
+  ctaLabel="Book free discovery call"
+>
+
+  <!-- Featured image -->
+  <div class="art-featured-img">
+    <img
+      src="/blog/dental-website-design-company/hero.webp"
+      alt="Dental website design company guide 2026"
+      width="1200" height="480"
+      loading="eager"
+      fetchpriority="high"
+    />
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="art-snippet">
+    <span class="art-snippet-label">Key takeaways</span>
+    <ul class="art-snippet-list">
+      <li>A dental website design company builds practice websites that attract new patients through Local Pack rankings, convert visitors to bookings, and handle patient data without HIPAA exposure. Generic web agencies miss all three technical requirements.</li>
+      <li>There are three types: dental platform companies like PBHS ($199 to $599/month with no ownership), custom WordPress agencies ($3,500 to $12,000 one-time, you own everything), and template builders ($500 to $2,500 with limited ranking potential).</li>
+      <li>Every dental website needs Dentist schema, MedicalProcedure schema per service page, a HIPAA-aware contact form with a Business Associate Agreement, and an online booking integration connected to your PMS.</li>
+      <li>The most common reason dental websites do not generate new patients: generic LocalBusiness schema instead of Dentist schema, standard contact forms without HIPAA coverage, and mobile PageSpeed below 70.</li>
+    </ul>
+  </div>
+
+  <!-- Frame 1: Definition -->
+  <h2 id="what-is" class="art-h2">What is a dental website design company?</h2>
+  <p><strong>A dental website design company is a studio or agency that builds, launches, and optimizes websites for dental practices, with the goal of generating new patient appointments through organic search, Local Pack rankings, and online booking integration.</strong> What separates a dental-focused web company from a generic agency is the technical layer: Dentist and MedicalBusiness schema markup, HIPAA-aware contact forms, integration with practice management software like Dentrix or Eaglesoft, and local SEO structured specifically for dental and procedure-specific searches.</p>
+  <p>A complete dental practice website does three things simultaneously. It ranks in Google's Local Pack for "[procedure] dentist [city]" searches. It converts visitors into appointment requests through a properly structured booking flow. And it handles patient contact data in a way that does not expose the practice to HIPAA liability. A web company that delivers two of the three is delivering an incomplete product.</p>
+  <p><strong>Also known as:</strong> dentist website design company, dental web design agency, dental marketing company, dental website agency, dental practice web design company.</p>
+  <p>Google's E-E-A-T framework (Experience, Expertise, Authoritativeness, Trustworthiness) treats dental content as YMYL (Your Money or Your Life). Sites without verifiable practitioner credentials, correct dental schema, and accurate procedure information rank below competitors that have these signals embedded in their page structure. Forty-three percent of new dental patients check a practice website before booking. A site that cannot rank or convert is costing your practice new patients every month it stays underperforming.</p>
+
+  <!-- Frame 2: Category — Three Types -->
+  <h2 id="types" class="art-h2">What are the three types of dental website design companies?</h2>
+  <p><strong>There are three distinct types of dental web design companies, and the differences in ownership, schema capability, and long-term ranking performance are significant.</strong> Understanding which type you are buying from before signing is the most important step in the process.</p>
+  <p><strong>Dental platform companies.</strong> PBHS, ProSites, and Smile Marketing are subscription platforms built specifically for dental practices. They charge $199 to $599 per month and provide templated designs, dental-specific content, and basic local SEO. The advantage is speed — a site can be live within days. The problem is ownership: you do not own the code, the design, or your rankings history. If you cancel, your site disappears. Platform companies also share design templates across thousands of practices, which limits differentiation and SEO performance in competitive markets.</p>
+  <p><strong>Custom WordPress agencies with dental experience.</strong> These studios build a unique site on WordPress that you own outright. Cost is $3,500 to $12,000 one-time, plus $150 to $300 per month for hosting and maintenance. The build takes 6 to 10 weeks but the result compounds: your domain accumulates authority, your content stays under your control, and you can switch agencies without losing anything. Custom builds support the full Dentist schema stack and HIPAA-aware form configurations that platforms cannot match.</p>
+  <p><strong>Generic web agencies and template builders.</strong> General web designers can produce dental websites, but they almost never implement Dentist schema correctly, rarely address HIPAA form requirements, and typically cannot integrate with dental practice management software. Wix and Squarespace score below 60 on mobile PageSpeed for most dental sites and do not support custom JSON-LD schema at the page level. Template builders are appropriate for practices with no competition and no need for organic patient acquisition.</p>
+
+  <!-- Frame 4: Components -->
+  <h2 id="what-includes" class="art-h2">What does every dental website need to include?</h2>
+  <p><strong>A complete dental website must include six technical components: Dentist schema, MedicalProcedure schema on each service page, a HIPAA-aware contact form with a Business Associate Agreement, an online booking integration, individual procedure pages, and a NAP that matches your Google Business Profile exactly.</strong> Any dental web company that does not build all six into every project is delivering an incomplete site.</p>
+  <p><strong>Dentist and MedicalBusiness schema.</strong> Google uses structured data to classify dental practices precisely. Without Dentist schema specifying your practiceArea fields (dentistry, orthodontics, periodontics, pediatric dentistry), your practice ranks as a generic LocalBusiness. With it, you rank for procedure-specific searches. Implementation takes 4 to 6 hours and is the single highest-impact technical investment in a dental website.</p>
+  <p><strong>MedicalProcedure schema on service pages.</strong> Each procedure page — dental implants, teeth whitening, Invisalign, root canal, veneers — should carry MedicalProcedure schema with procedureType, bodyLocation, and howPerformed fields. Google uses this to classify the practice as a specialist in specific procedures, not just a general dentist.</p>
+  <p><strong>HIPAA-aware contact forms.</strong> Standard contact form plugins (Contact Form 7, Gravity Forms without encryption) store patient-submitted data in WordPress database tables and send unencrypted emails. If a patient submits symptoms, insurance information, or health details through a standard form, the practice has handled PHI without a proper Business Associate Agreement. A HIPAA-aware form encrypts submissions in transit, avoids server-side PHI storage, and requires a BAA with the form provider. Most generic agencies never address this.</p>
+  <p><strong>Practice management system integration.</strong> Patients expect online booking. The most common integrations are NexHealth ($250 to $400/month), Weave ($500 to $700/month), and direct online booking modules from Dentrix or Eaglesoft. A dental website without online booking loses an estimated 30 to 40 percent of potential appointment requests to practices that have it.</p>
+  <p><strong>Individual procedure pages.</strong> A single "Services" page does not rank. "Dental Implants Baltimore" with MedicalProcedure schema and 600 words of procedure-specific content will. Every major procedure your practice offers needs its own page targeting the "[procedure] dentist [city]" keyword.</p>
+  <p><strong>GBP-matched NAP.</strong> Your Name, Address, and Phone number in your website schema must match your Google Business Profile exactly. A single formatting difference — Suite vs Ste, phone number with dashes vs parentheses — weakens your Local Pack signal. Most practices have at least one mismatch that is suppressing map pack performance.</p>
+
+  <!-- Frame 6: Causation -->
+  <h2 id="why-fail" class="art-h2">Why do most dental websites fail to bring in new patients?</h2>
+  <p><strong>Most dental websites fail to generate consistent new patient inquiries for three technical reasons: generic LocalBusiness schema instead of Dentist schema, contact forms that create HIPAA exposure, and mobile PageSpeed scores below 70.</strong> None of these failures are visible in the finished design. A site can look professional and still be structurally unable to rank or convert.</p>
+  <p><strong>Generic schema means generic rankings.</strong> When a dental website uses only LocalBusiness schema, Google's Local Knowledge Graph treats the practice the same as a dry cleaner. It cannot rank for "pediatric dentist near me" or "dental implants Baltimore" because nothing in its technical architecture tells Google it belongs in those specific categories. Dentist schema with practiceArea fields is what enables procedure-specific and specialty-specific rankings.</p>
+  <p><strong>Standard contact forms create liability.</strong> Most dental web companies use standard WordPress contact form plugins without BAA coverage. When a patient submits their condition, insurance information, or any health detail, the practice has stored protected health information without the required safeguards. The risk is regulatory, but it also signals to Google's quality reviewers that the practice is not operating to a professional standard in its digital presence.</p>
+  <p><strong>Mobile PageSpeed below 70 causes ranking penalties.</strong> Dental practices in competitive markets are competing for Local Pack positions against practices that have invested in performance. A dental site on an unoptimized page builder typically scores 45 to 65 on mobile PageSpeed and loads in 4 to 5 seconds. Sites in the top three Local Pack positions in most metro markets score above 80. Google confirmed Core Web Vitals as a ranking factor, and slow dental sites are structurally penalized against faster competitors.</p>
+
+  <!-- Frame 3: Schema -->
+  <h2 id="schema" class="art-h2">What schema markup does a dental website actually need?</h2>
+  <p><strong>The complete dental website schema stack includes five types: Dentist, MedicalBusiness, MedicalProcedure, FAQPage, and LocalBusiness.</strong> Most platform sites implement only LocalBusiness. The difference in local search performance between a full implementation and a partial one is measurable within 90 days of launch.</p>
+  <p><strong>Dentist</strong> is the primary type. It specifies practiceArea, medicalSpecialty, and isAcceptingPatients. Example practiceArea values: dentistry, orthodontics, periodontics, endodontics, oral surgery, pediatric dentistry, cosmetic dentistry. This is the schema type that distinguishes a dental practice from every other LocalBusiness in Google's knowledge graph.</p>
+  <p><strong>MedicalBusiness</strong> extends LocalBusiness with healthcare-specific fields: medicalSpecialty, healthPlanNetworkId, and isAcceptingPatients. It works alongside Dentist as part of a nested type declaration.</p>
+  <p><strong>MedicalProcedure</strong> applies to individual treatment pages. It includes procedureType (Therapeutic, Diagnostic, Preventive), bodyLocation (teeth, gums, jaw), and howPerformed. For a dental implants page, this markup tells Google exactly what the procedure is and separates it from general dentist content. For a root canal page, it specifies endodontic treatment. This schema is what enables rankings for procedure-specific searches that represent your highest-value patients.</p>
+  <p><strong>FAQPage</strong> on every procedure page and your main FAQ generates expandable Q&A rich results in search. It requires no link authority to trigger and improves click-through rate on high-intent searches.</p>
+  <p><strong>LocalBusiness</strong> (inherited by Dentist) carries your NAP. This must match your Google Business Profile exactly. Most practices have at least one formatting mismatch between their site schema and their GBP listing that is suppressing Local Pack performance.</p>
+  <p>A dental web company that says "we use schema" without naming the specific types is using generic LocalBusiness output from Yoast SEO. That is not the same as a hand-coded JSON-LD implementation using Dentist and MedicalProcedure types. For how we implement the full dental schema stack, see our <a href="/industries/dental-website-design/">dental website design service page</a>.</p>
+
+  <!-- Frame 7: Comparison -->
+  <h2 id="comparison" class="art-h2">PBHS vs ProSites vs custom WordPress agency: which is right for your practice?</h2>
+  <p><strong>The right choice depends on whether you need speed or ownership, and whether your market is competitive enough to require custom schema and performance optimization.</strong></p>
+  <div class="art-compare-wrap" role="region" aria-label="Dental website design company comparison">
+    <table class="art-compare-table">
+      <thead>
+        <tr>
+          <th scope="col">Factor</th>
+          <th scope="col">PBHS / ProSites</th>
+          <th scope="col">Custom WordPress agency</th>
+          <th scope="col">Template builder</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Site ownership</td><td class="art-ct-no">Rented — disappears on cancel</td><td class="art-ct-yes">You own code, domain, content</td><td class="art-ct-partial">Platform-dependent</td></tr>
+        <tr><td>Dentist schema</td><td class="art-ct-partial">Basic, templated only</td><td class="art-ct-yes">Custom JSON-LD, all types</td><td class="art-ct-no">Not supported</td></tr>
+        <tr><td>MedicalProcedure schema</td><td class="art-ct-no">Not available</td><td class="art-ct-yes">Per procedure, fully custom</td><td class="art-ct-no">Not available</td></tr>
+        <tr><td>HIPAA-aware forms + BAA</td><td class="art-ct-partial">Premium tiers only</td><td class="art-ct-yes">Included with BAA</td><td class="art-ct-no">Not available</td></tr>
+        <tr><td>PMS booking integration</td><td class="art-ct-partial">PBHS-native only</td><td class="art-ct-yes">NexHealth, Weave, Dentrix, Eaglesoft</td><td class="art-ct-no">Not available</td></tr>
+        <tr><td>Monthly platform cost</td><td class="art-ct-no">$199-$599/month</td><td class="art-ct-yes">$150-$300/month (after build)</td><td class="art-ct-yes">$50-$150/month</td></tr>
+        <tr><td>Build cost</td><td class="art-ct-yes">$0 upfront</td><td class="art-ct-partial">$3,500-$12,000</td><td class="art-ct-yes">$500-$2,500</td></tr>
+        <tr><td>3-year total cost</td><td class="art-ct-partial">$7,200-$21,600</td><td class="art-ct-partial">$8,900-$22,800</td><td class="art-ct-yes">$2,300-$7,900</td></tr>
+        <tr><td>Ranking potential</td><td class="art-ct-partial">Medium</td><td class="art-ct-yes">High</td><td class="art-ct-no">Low</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>At three years, PBHS and a custom WordPress build have comparable total cost. The difference is that at year three, the WordPress build owns its domain authority, content, and rankings history. You can redesign, switch agencies, or optimize without starting over. If you cancel PBHS at year three, you start from zero.</p>
+  <p>Platform companies are appropriate for rural practices or new practices in low-competition markets that need to launch within two weeks. For any practice competing in a metro area for high-value procedures — implants, Invisalign, cosmetic dentistry — a custom WordPress build with the full Dentist schema stack is the only option that compounds in ranking value over time. Our attorney website design cost guide covers a similar decision framework for <a href="/blog/attorney-website-design-cost/">law firm website design</a>, and the same ownership logic applies to dental.</p>
+
+  <!-- Inline mid-article CTA -->
+  <div class="art-inline-cta">
+    <div class="art-inline-cta-text">
+      <h3 class="art-inline-cta-h3">Not sure what your dental website is missing?</h3>
+      <p class="art-inline-cta-sub">Free 45-minute audit. We pull up your site, check your schema stack, run your PageSpeed score, and review your GBP consistency. No pitch, no obligation.</p>
+    </div>
+    <a href="/contact/" class="art-inline-cta-btn">Book free audit</a>
+  </div>
+
+  <!-- Frame 8: Application -->
+  <h2 id="when" class="art-h2">When does your dental practice actually need a new website?</h2>
+  <p>Five signals indicate it is time. Each one is verifiable in under 10 minutes without paying anyone.</p>
+  <ul>
+    <li>Your practice does not appear in the top three Google Local Pack results for your primary service in your city. Search "[your specialty] dentist [your city]" in incognito. If you are not in the map pack, your Dentist schema or Google Business Profile is incomplete or mismatched.</li>
+    <li>Your mobile PageSpeed score is below 75. Run your site at <a href="https://pagespeed.web.dev" target="_blank" rel="noopener noreferrer">pagespeed.web.dev</a>. Dental sites below 75 on mobile have failing Core Web Vitals and are structurally ranked below faster competitors.</li>
+    <li>Your contact form does not have a HIPAA Business Associate Agreement with the form provider. If you do not know whether you have a BAA, you do not have one.</li>
+    <li>You are paying PBHS or ProSites $300 per month or more, your practice has been established for over two years, and you are competing for high-value procedures in your market. At that point, a custom WordPress build pays for itself within 18 to 24 months and starts compounding in value.</li>
+    <li>Your site has not been redesigned in more than four years. Google's mobile-first indexing requirements changed significantly in 2020. Pre-2020 dental sites often fail Core Web Vitals in ways that require a full rebuild rather than a patch.</li>
+  </ul>
+
+  <!-- Frame 9: Evaluation -->
+  <h2 id="questions" class="art-h2">What 6 questions should you ask a dental website design company before hiring?</h2>
+  <p>Ask all six. Any company that gives a vague answer on more than two does not have the dental-specific technical experience the work requires.</p>
+  <ol>
+    <li><strong>What Dentist schema practiceArea values do you implement?</strong> The answer should name specific values: dentistry, periodontics, orthodontics, pediatric dentistry, cosmetic dentistry. "We use schema markup" without specifics means they use generic LocalBusiness output from Yoast, not custom JSON-LD built for your practice's specialties.</li>
+    <li><strong>Do your contact forms include a HIPAA Business Associate Agreement?</strong> The answer should be yes, with the name of the form provider and their BAA coverage. If they do not know what a BAA is, do not hire them for a dental website.</li>
+    <li><strong>Which practice management systems have you integrated with?</strong> A legitimate answer names specific platforms: Dentrix, Eaglesoft, Open Dental, NexHealth, Weave. "We can integrate with anything" without named experience is not the same as having built dental PMS integrations before.</li>
+    <li><strong>Do you implement MedicalProcedure schema on individual service pages?</strong> This is the schema type that enables procedure-specific rankings — dental implants, root canal, Invisalign. Most agencies do not implement it. If they cannot explain what MedicalProcedure schema is, they have not built with it.</li>
+    <li><strong>If we leave, do we own all the code, content, and domain outright?</strong> The answer must be an unconditional yes. If any site assets are hosted on the company's proprietary infrastructure with lock-in, you are renting, not owning.</li>
+    <li><strong>Can you show three live dental practice sites and their mobile PageSpeed scores?</strong> Run each URL at pagespeed.web.dev yourself. If any client site scores below 80 on mobile, the company is not prioritizing Core Web Vitals for dental clients.</li>
+  </ol>
+
+  <!-- FAQ -->
+  <h2 id="faq" class="art-h2">Frequently asked questions about dental website design companies</h2>
+  <div class="art-faq">
+    {faqs.map((f) => (
+      <details class="art-faq-item">
+        <summary class="art-faq-q">{f.q}</summary>
+        <p class="art-faq-a">{f.a}</p>
+      </details>
+    ))}
+  </div>
+
+  <!-- Location block -->
+  <div class="art-location-block">
+    <p class="art-location-label">Upcoming Brand | Maryland-based, serving dental practices across the DMV and beyond</p>
+    <p class="art-location-detail">We build dental websites for solo practices, group practices, and multi-location DSOs across <strong>Baltimore, Annapolis, Bethesda, Washington DC, Northern Virginia, Frederick, and the broader DMV metro</strong>. Every dental project includes the full Dentist and MedicalProcedure schema stack, HIPAA-aware contact forms with BAA, PMS booking integration, and 30 days of post-launch Search Console monitoring. Discovery calls are free, 45 minutes, and include a live audit of your current site, schema, and GBP consistency. <a href="/contact/">Book yours</a> or email <a href="mailto:hello@upcomingbrand.com">hello@upcomingbrand.com</a>.</p>
+  </div>
+
+  <!-- Final CTA -->
+  <div class="art-inline-cta">
+    <div class="art-inline-cta-text">
+      <h3 class="art-inline-cta-h3">Ready to find out what your dental website is missing?</h3>
+      <p class="art-inline-cta-sub">Free 45-minute discovery call. We audit your schema, PageSpeed, and GBP consistency, then give you a fixed-scope quote. No hourly billing, no surprises.</p>
+    </div>
+    <a href="/contact/" class="art-inline-cta-btn">Book free call</a>
+  </div>
+
+</BlogArticleLayout>
